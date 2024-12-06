@@ -1,7 +1,0 @@
-#ifndef GERENCIADOR_COLISOES_H
-#define GERENCIADOR_COLISOES_H
-
-
-
-
-#endif
