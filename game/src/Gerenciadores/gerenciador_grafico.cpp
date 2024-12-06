@@ -36,7 +36,7 @@ void Gerenciador_Grafico::desenharEnte(Ente *pE)
 {
     if(pE)
     {
-
+        // FAZ ALGO (FALTA)
 
     }
 
@@ -49,7 +49,7 @@ void Gerenciador_Grafico::inicializador()
 
 }
 
-void Gerenciador_Grafico::adicionarObjetos()( /*Alguma coisa*/ )
+void Gerenciador_Grafico::adicionarObjetos( /*Alguma coisa*/ )
 {
 
 
