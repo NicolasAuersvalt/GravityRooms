@@ -15,7 +15,7 @@ namespace Gerenciadores{
 
         public:
 
-            // Obrigatórios
+            // ===/===/===/===/ Obrigatórios ===/===/===/===/
 
             // Construtor (FALTA)
             Gerenciador_Colisoes(){
@@ -38,19 +38,19 @@ namespace Gerenciadores{
             void incluirProjetil(Projetil *pj);
             void executar();
 
-            // Outros  
+            // ===/===/===/===/ Outros  ===/===/===/===/
 
 
         protected:
 
-            // Obrigatório
+            // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 
-            // Outros 
+            // ===/===/===/===/ Outros ===/===/===/===/
 
         private:
 
-            // Obrigatório
+            // ===/===/===/===/ Obrigatório ===/===/===/===/
             vector<Inimigo*> LIs;  
             list<Obstaculo*> LOs;   
             set<Projetil*> LPs;     
@@ -58,7 +58,7 @@ namespace Gerenciadores{
 
             
 
-            // Outros
+            // ===/===/===/===/ Outros ===/===/===/===/
 
 
     };

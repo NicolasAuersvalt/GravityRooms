@@ -3,21 +3,30 @@
 
 #include "stdafx.h"
 
+
 class BiblioGrafica;
 class Ente;
 
-namespace Gerenciadores{
+namespace Gerenciadores
+{
 
-    class Gerenciador_Grafico{
+    class Gerenciador_Grafico
+    {
 
 
         private:
 
-            // Obrigatório
+            // ===/===/===/===/ Obrigatório ===/===/===/===/
 
             BiblioGrafica obj;
 
-            // Outros
+            // ===/===/===/===/ Outros  ===/===/===/===/
+
+            // Nome do título da janela
+            string nomeJanela =  "GravityRooms";
+
+            // Fps padrão
+            const int fps = 60;
 
             void desenharEnte(Ente *pE);
 
@@ -41,15 +50,15 @@ namespace Gerenciadores{
 
         protected:
 
-            // Obrigatório
+            // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 
-            // Outros 
+            // ===/===/===/===/ Outros ===/===/===/===/
 
             
         public:
 
-            // Obrigatórios
+            // ===/===/===/===/ Obrigatórios ===/===/===/===/
 
             // Construtor (FALTA)
             Gerenciador_Grafico();
@@ -57,7 +66,7 @@ namespace Gerenciadores{
                 // Destrutor (FALTA)
             ~Gerenciador_Grafico();
 
-            // Outros  
+            // ===/===/===/===/ Outros ===/===/===/===/
 
 
     };
