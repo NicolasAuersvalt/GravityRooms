@@ -1,13 +1,13 @@
 #include "gerenciador_colisoes.h"
 
 // Construtor (FALTA)
-Gerenciador_Colisoes(){
+Gerenciador_Colisoes::Gerenciador_Colisoes(){
 
 
 }
 
 // Destrutor (FALTA)
-~Gerenciador_Colisoes(){
+Gerenciador_Colisoes::~Gerenciador_Colisoes(){
 
 }
 
