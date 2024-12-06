@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
-#include <windows.h>
+// #include <windows.h>
 #include <iostream>
 class Cube {
 public:
