@@ -28,6 +28,7 @@ void Gerenciador_Colisoes::ColisoewsJogsProjeteis()
 {
 
 }
+// LKABFKBAJKFBJKAWBFKJABKDBWAKJDGAWDGWAKF
 void Gerenciador_Colisoes::incluirInimigo(Inimigo *pi)
 {
 
