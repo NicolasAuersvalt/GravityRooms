@@ -9,11 +9,14 @@ using namespace std;
 
 
 // Construtor
-
+Jogo::Jogo();
+    
+    
 
 // Destrutor
+Jogo::~Jogo();
 
-
+void Jogo::executar();
 
             
 

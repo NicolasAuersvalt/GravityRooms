@@ -1,33 +1,45 @@
 #ifndef JOGO_H
 #define JOGO_H
 
-class Jogo{
 
-    public:
+class Jogador;
+class GerenciadorGrafico;
 
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
+namespace Listas{
 
-            
+    class Jogo{
 
-    // ===/===/===/===/ Outros  ===/===/===/===/
+        public:
 
-    protected:
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
+            Jogo();
+            ~Jogo();
+            void executar();
+                
 
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
+        // ===/===/===/===/ Outros  ===/===/===/===/
+        
 
-            
 
-    // ===/===/===/===/ Outros  ===/===/===/===/
+        protected:
 
-    private:
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
+                
 
-            
+        // ===/===/===/===/ Outros  ===/===/===/===/
 
-    // ===/===/===/===/ Outros  ===/===/===/===/
+        private:
 
-};
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
 
+        Jogador pJog1;
+        GerenciadorGrafico GG;
+                
+
+        // ===/===/===/===/ Outros  ===/===/===/===/
+
+    };
+}
 
 #endif
