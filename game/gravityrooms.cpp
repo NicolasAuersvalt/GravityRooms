@@ -1,7 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
-
+#include <windows.h>
+#include <iostream>
 class Cube {
 public:
     sf::RectangleShape shape;
@@ -104,6 +105,8 @@ public:
 };
 
 int main() {
+    
+
     // Cria a janela do jogo
     sf::RenderWindow window(sf::VideoMode(800, 600), "GravityRooms");
 
