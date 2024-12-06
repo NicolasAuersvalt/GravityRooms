@@ -15,6 +15,17 @@ class Gerenciador_Colisoes{
 
         // Obrigatórios
 
+         // Construtor (FALTA)
+        Gerenciador_Colisoes(){
+
+
+            }
+            // Destrutor (FALTA)
+        ~Gerenciador_Colisoes(){
+
+
+            }
+
         const bool verificarColisao(Entidade *pe1, Entidade *pe2);
         void tratarColisoesJogsObstacs();
         void tratarColisoesJogsInimgs();
@@ -42,16 +53,7 @@ class Gerenciador_Colisoes{
         set<Projetil*> LPs;     
         Jogador pJog1;
 
-            // Construtor (FALTA)
-        Gerenciador_Colisoes(){
-
-
-            }
-            // Destrutor (FALTA)
-        ~Gerenciador_Colisoes(){
-
-
-            }
+           
 
         // Outros
 
