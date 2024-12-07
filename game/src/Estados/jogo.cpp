@@ -9,14 +9,27 @@ using namespace std;
 
 
 // Construtor
-Jogo::Jogo();
-    
-    
+Jogo::Jogo()
+{
+
+
+
+}
 
 // Destrutor
-Jogo::~Jogo();
+Jogo::~Jogo()
+{
 
-void Jogo::executar();
+
+}
+
+void Jogo::executar()
+{
+
+    // Cria uma janela gŕafica (JOGO CONHECE GERENCIADOR GRAFICO)
+    
+
+}
 
             
 

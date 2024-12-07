@@ -1,7 +1,6 @@
 #ifndef JOGO_H
 #define JOGO_H
 
-
 class Jogador;
 class GerenciadorGrafico;
 
@@ -12,14 +11,13 @@ namespace Listas{
         public:
 
         // ===/===/===/===/ Obrigatório ===/===/===/===/
+
             Jogo();
             ~Jogo();
             void executar();
-                
 
         // ===/===/===/===/ Outros  ===/===/===/===/
         
-
 
         protected:
 
