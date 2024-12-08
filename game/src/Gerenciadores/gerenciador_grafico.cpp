@@ -44,8 +44,19 @@ void Gerenciador_Grafico::desenharEnte(Ente *pE)
 
 void Gerenciador_Grafico::inicializador()
 {
-    // Definir framerate para 60fps
+    // Definir framerate para 60fps 
     m_window.setFramerateLimit(fps);
+
+    while (window.isOpen())
+            sf::Event event;
+
+            while (window.pollEvent(event))
+            {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+                window.close();
+            }
+
 
 }
 
