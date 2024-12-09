@@ -19,13 +19,15 @@ namespace Gerenciadores
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
             //BiblioGrafica obj;
+            static Gerenciador_Grafico *grafico;
+
 
             // ===/===/===/===/ Outros  ===/===/===/===/
 
             // Nome do título da janela
             string nomeJanela =  "GravityRooms";
 
-            sf::RenderWindow window;  // Adicionando m_window
+            sf::RenderWindow window;  // Padrão Singleton
 
             // Fps padrão
             const int fps = 60;
@@ -44,11 +46,20 @@ namespace Gerenciadores
             // atualiza a janela (frames)
             void atualizar();
 
+            void start();
+
+            void shutdown();
+
             // verifica se a janela está aberta
             const bool estaAberta();
 
             // usar futuramente
             void operator+(int val);
+
+
+            // Singleton - Impedir cópia
+            Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
+            Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
 
         protected:
 
@@ -68,10 +79,15 @@ namespace Gerenciadores
                 // Destrutor (FALTA)
             ~Gerenciador_Grafico();
 
+            static Gerenciador_Grafico* getInstancia();
+
             // ===/===/===/===/ Outros ===/===/===/===/
 
 
     };
 }
+
+// Inicializacao membro estatico
+Gerenciador_Grafico* Gerenciador_Grafico::grafico = nullptr;
 
 #endif

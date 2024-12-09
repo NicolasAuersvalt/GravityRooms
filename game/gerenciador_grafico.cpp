@@ -24,17 +24,30 @@ namespace Gerenciadores{
     // Construtor (FALTA) 
     // O construtor inicializa a janela e a lista de objetos gráficos.
     Gerenciador_Grafico::Gerenciador_Grafico()
-    : window(sf::VideoMode(WIDTH,HEIGHT), nomeJanela)
     {
-        inicializador();
+
+        Gerenciador_Grafico janela = Gerenciador_Grafico::getInstancia();
+
+        janela->inicializador();
+
     }
 
     // Destrutor (FALTA)
     // O destruidor libera recursos, como a janela.
     Gerenciador_Grafico::~Gerenciador_Grafico(){
 
-
+        janela->fechar;
     }
+
+    static Gerenciador_Grafico::Gerenciador_Grafico* getInstancia()
+    {
+        if (grafico == nullptr)
+        {
+            grafico = new Gerenciador_Grafico();
+        }   
+        return grafico;
+    }
+
 
     void Gerenciador_Grafico::desenharEnte(Ente *pE)
     {
@@ -52,8 +65,8 @@ namespace Gerenciadores{
 
      void Gerenciador_Grafico::inicializador()
     {
-        // Definir framerate para 60fps
-        window.setFramerateLimit(fps);
+        // Desacoplamento
+        start();
 
         // Define o Jogador
         sf::RectangleShape jogador (sf::Vector2f(50.0f, 50.0f));
@@ -66,11 +79,25 @@ namespace Gerenciadores{
             {
                 // "close requested" event: we close the window
                 if (event.type == sf::Event::Closed)
-                    window.close();
+                    shutdown(); // Substituir pelo Método fechar
             }
             window.draw(jogador);
             window.display();
         }
+    }
+
+    void Gerenciador_Grafico::start(){
+
+        // Desenha a Janela
+        window(sf::VideoMode(WIDTH,HEIGHT), nomeJanela)
+
+        // Definir framerate para 60fps
+        window.setFramerateLimit(fps);
+
+    }
+
+    void Gerenciador_Grafico::shutdown(){
+        window.close();
     }
 
     void Gerenciador_Grafico::adicionarObjetos( /*Alguma coisa*/ )
