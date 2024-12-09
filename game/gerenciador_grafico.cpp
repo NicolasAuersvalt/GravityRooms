@@ -18,13 +18,15 @@ Atualizar a tela a cada quadro.
 
 namespace Gerenciadores{
 
+    // ===/===/===/===/ Obrigatórios ===/===/===/===/
+
+
     // Construtor (FALTA) 
     // O construtor inicializa a janela e a lista de objetos gráficos.
     Gerenciador_Grafico::Gerenciador_Grafico()
     : window(sf::VideoMode(WIDTH,HEIGHT), nomeJanela)
     {
-        // Inicializa a janela com o tamanho e largura e o nome
-
+        inicializador();
     }
 
     // Destrutor (FALTA)
@@ -39,15 +41,22 @@ namespace Gerenciadores{
         if(pE)
         {
             // FAZ ALGO (FALTA)
+            //jogador.setFillCollor(sf::Color::Blue);
+            //jogador.setPosition(50.0f, 50.0f);
 
         }
 
     }
 
+    // ===/===/===/===/ Outros ===/===/===/===/
+
      void Gerenciador_Grafico::inicializador()
     {
         // Definir framerate para 60fps
         window.setFramerateLimit(fps);
+
+        // Define o Jogador
+        sf::RectangleShape jogador (sf::Vector2f(50.0f, 50.0f));
 
         sf::Event event; // Declarar evento fora do loop
 
@@ -59,6 +68,8 @@ namespace Gerenciadores{
                 if (event.type == sf::Event::Closed)
                     window.close();
             }
+            window.draw(jogador);
+            window.display();
         }
     }
 
@@ -73,8 +84,7 @@ namespace Gerenciadores{
         // Limpa a tela com a cor preta
         window.clear(sf::Color::Black);
 
-        // Desenha todos os objetos na lista
-        // ...
+        
 
     }
 
