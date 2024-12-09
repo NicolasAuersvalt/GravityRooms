@@ -18,12 +18,14 @@ namespace Gerenciadores
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            BiblioGrafica obj;
+            //BiblioGrafica obj;
 
             // ===/===/===/===/ Outros  ===/===/===/===/
 
             // Nome do título da janela
             string nomeJanela =  "GravityRooms";
+
+            sf::RenderWindow window;  // Adicionando m_window
 
             // Fps padrão
             const int fps = 60;
