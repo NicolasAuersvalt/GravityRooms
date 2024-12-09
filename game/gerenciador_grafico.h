@@ -1,8 +1,8 @@
 #ifndef GERENCIADOR_GRAFICO_H
 #define GERENCIADOR_GRAFICO_H
 
-#include <SFML/Graphics.hpp>
-#include <string>
+
+#include "stdafx.h"
 
 class Ente;
 

@@ -65,6 +65,8 @@ namespace Gerenciadores {
         if (pE) {
             // Lógica para desenhar o ente, implementar conforme necessário
             // Exemplo: pE->desenharNaTela(window);
+
+            
         }
     }
 

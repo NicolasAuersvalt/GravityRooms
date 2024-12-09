@@ -1,6 +1,7 @@
 #ifndef ENTE_H
 #define ENTE_H
 
+
 class Figura;
 class GerenciadorGrafico;
 

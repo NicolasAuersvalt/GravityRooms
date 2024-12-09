@@ -1,4 +1,5 @@
 #include "ente.h"
+#include "gerenciador_grafico.h"
 
 #include <iostream>
 
@@ -26,7 +27,7 @@ Ente::Ente()
 }
 
 void Ente::desenhar(){
-
+    Gerenciadores::Gerenciador_Grafico::desenharEnte(&this);
 
 }
 
