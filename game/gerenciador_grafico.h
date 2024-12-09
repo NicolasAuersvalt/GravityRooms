@@ -12,14 +12,14 @@ namespace Gerenciadores {
     private:
         static Gerenciador_Grafico* grafico;  // Instância única
 
-        std::string nomeJanela = "GravityRooms"; // Nome da janela
+        string nomeJanela = "GravityRooms"; // Nome da janela
         sf::RenderWindow window;  // Janela de renderização
         const int fps = 60;  // Limite de frames por segundo
 
         const int width;
         const int height;
 
-        // Impedir cópia
+        // Impedir cópia SINGLETON
         Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
         Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
 
@@ -27,7 +27,7 @@ namespace Gerenciadores {
 
         // Construtor 
         Gerenciador_Grafico();
-        
+
         // Destrutor
         ~Gerenciador_Grafico();
 
@@ -40,7 +40,7 @@ namespace Gerenciadores {
         // Encerrar a janela
         void shutdown();
 
-        // Desenhar um ente
+        // Desenhar um ente OBRIGATÓRIO
         void desenharEnte(Ente* pE);
 
         // Adicionar objetos
