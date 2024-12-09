@@ -1,137 +1,103 @@
-//#include "Gerenciadores/gerenciador_colisoes.h"
 #include "gerenciador_grafico.h"
-#include<string>
 #include <iostream>
 
-// Dos objetivos
+namespace Gerenciadores {
 
-/*
-Criar e gerenciar a janela de exibição.
-Desenhar objetos gráficos, como sprites ou formas.
-Atualizar a tela a cada quadro.
+    // Inicializar o atributo estático
+    Gerenciador_Grafico* Gerenciador_Grafico::grafico = nullptr;
 
-*/
-
-// Resolução da Janela
-#define WIDTH 1280
-#define HEIGHT 720
-
-namespace Gerenciadores{
-
-    // ===/===/===/===/ Obrigatórios ===/===/===/===/
-
-
-    // Construtor (FALTA) 
-    // O construtor inicializa a janela e a lista de objetos gráficos.
+    // Construtor
     Gerenciador_Grafico::Gerenciador_Grafico()
+    : width(1280), height(920)  // Inicialização das variáveis membro
     {
-
-        Gerenciador_Grafico janela = Gerenciador_Grafico::getInstancia();
-
-        janela->inicializador();
-
+        inicializador();
     }
 
-    // Destrutor (FALTA)
-    // O destruidor libera recursos, como a janela.
-    Gerenciador_Grafico::~Gerenciador_Grafico(){
-
-        janela->fechar;
+    // Destrutor
+    Gerenciador_Grafico::~Gerenciador_Grafico() {
+        shutdown();
     }
 
-    static Gerenciador_Grafico::Gerenciador_Grafico* getInstancia()
-    {
-        if (grafico == nullptr)
-        {
+    // Método estático para obter a instância única
+    Gerenciador_Grafico* Gerenciador_Grafico::getInstancia() {
+        if (grafico == nullptr) {
             grafico = new Gerenciador_Grafico();
-        }   
+        }
         return grafico;
     }
 
-
-    void Gerenciador_Grafico::desenharEnte(Ente *pE)
-    {
-        if(pE)
-        {
-            // FAZ ALGO (FALTA)
-            //jogador.setFillCollor(sf::Color::Blue);
-            //jogador.setPosition(50.0f, 50.0f);
-
-        }
-
-    }
-
-    // ===/===/===/===/ Outros ===/===/===/===/
-
-     void Gerenciador_Grafico::inicializador()
-    {
-        // Desacoplamento
-        start();
-
-        // Define o Jogador
-        sf::RectangleShape jogador (sf::Vector2f(50.0f, 50.0f));
-
-        sf::Event event; // Declarar evento fora do loop
-
-        while (window.isOpen()) // Usando window
-        {
-            while (window.pollEvent(event)) // Usando window
-            {
-                // "close requested" event: we close the window
-                if (event.type == sf::Event::Closed)
-                    shutdown(); // Substituir pelo Método fechar
-            }
-            window.draw(jogador);
-            window.display();
-        }
-    }
-
-    void Gerenciador_Grafico::start(){
-
-        // Desenha a Janela
-        window(sf::VideoMode(WIDTH,HEIGHT), nomeJanela)
+    // Inicializador de janela
+    void Gerenciador_Grafico::inicializador() {
+        // Corrigido para criar a janela corretamente
+        window.create(sf::VideoMode(width, height), nomeJanela);
 
         // Definir framerate para 60fps
         window.setFramerateLimit(fps);
 
+        // Define o Jogador
+        sf::RectangleShape jogador(sf::Vector2f(50.0f, 50.0f));  // Jogador com tamanho 50x50
+
+        sf::Event event; // Declarar evento fora do loop
+
+        // Loop principal de renderização
+        while (window.isOpen()) {
+            while (window.pollEvent(event)) {
+                // "close requested" event: fecha a janela
+                if (event.type == sf::Event::Closed) {
+                    shutdown();
+                }
+            }
+            
+            // Desenha o jogador na tela
+            window.clear(sf::Color::Black);  // Limpa a tela com a cor preta
+            window.draw(jogador);  // Desenha o objeto jogador
+            window.display();  // Exibe o que foi desenhado
+        }
     }
 
-    void Gerenciador_Grafico::shutdown(){
+    // Fechar a janela
+    void Gerenciador_Grafico::shutdown() {
         window.close();
     }
 
-    void Gerenciador_Grafico::adicionarObjetos( /*Alguma coisa*/ )
-    {
-
-
+    // Desenhar um ente (entidade)
+    void Gerenciador_Grafico::desenharEnte(Ente* pE) {
+        if (pE) {
+            // Lógica para desenhar o ente, implementar conforme necessário
+            // Exemplo: pE->desenharNaTela(window);
+        }
     }
 
-    void Gerenciador_Grafico::desenhar()
-    {
-        // Limpa a tela com a cor preta
-        window.clear(sf::Color::Black);
-
-        
-
+    // Adicionar objetos (vazio por enquanto)
+    void Gerenciador_Grafico::adicionarObjetos(/*Alguma coisa*/) {
+        // Lógica para adicionar objetos ao gerenciamento gráfico
     }
 
-    void Gerenciador_Grafico::atualizar()
-    {
-
-
+    // Desenhar todos os objetos na tela
+    void Gerenciador_Grafico::desenhar() {
+        window.clear(sf::Color::Black);  // Limpa a tela com a cor preta
+        // Lógica para desenhar objetos na tela
+        window.display();  // Exibe o conteúdo na tela
     }
 
-    const bool Gerenciador_Grafico::estaAberta()
-    {
-
-    
+    // Atualizar a janela (captura eventos)
+    void Gerenciador_Grafico::atualizar() {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                shutdown();
+            }
+        }
     }
 
-    
-    void Gerenciador_Grafico::operator+(int val)
-    {
-
-
+    // Verificar se a janela está aberta
+    const bool Gerenciador_Grafico::estaAberta() {
+        return window.isOpen();
     }
-    
+
+    // Sobrecarga de operador (futuro uso)
+    void Gerenciador_Grafico::operator+(int val) {
+        // Implementar lógica quando necessário
+    }
+
 }

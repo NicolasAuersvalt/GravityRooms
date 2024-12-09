@@ -1,93 +1,64 @@
 #ifndef GERENCIADOR_GRAFICO_H
 #define GERENCIADOR_GRAFICO_H
 
-#include "stdafx.h"
+#include <SFML/Graphics.hpp>
+#include <string>
 
-
-class BiblioGrafica;
 class Ente;
 
-namespace Gerenciadores
-{
+namespace Gerenciadores {
 
-    class Gerenciador_Grafico
-    {
+    class Gerenciador_Grafico {
+    private:
+        static Gerenciador_Grafico* grafico;  // Instância única
 
+        std::string nomeJanela = "GravityRooms"; // Nome da janela
+        sf::RenderWindow window;  // Janela de renderização
+        const int fps = 60;  // Limite de frames por segundo
 
-        private:
+        const int width;
+        const int height;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+        // Impedir cópia
+        Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
+        Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
 
-            //BiblioGrafica obj;
-            static Gerenciador_Grafico *grafico;
+    public:
 
+        // Construtor 
+        Gerenciador_Grafico();
+        
+        // Destrutor
+        ~Gerenciador_Grafico();
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+        // Método para obter a instância única
+        static Gerenciador_Grafico* getInstancia();
 
-            // Nome do título da janela
-            string nomeJanela =  "GravityRooms";
+        // Inicializador de janela
+        void inicializador();
 
-            sf::RenderWindow window;  // Padrão Singleton
+        // Encerrar a janela
+        void shutdown();
 
-            // Fps padrão
-            const int fps = 60;
+        // Desenhar um ente
+        void desenharEnte(Ente* pE);
 
-            void desenharEnte(Ente *pE);
+        // Adicionar objetos
+        void adicionarObjetos(/*Alguma coisa*/);
 
-            // Inicializador de janelas
-            void inicializador(); // COLOCAR UML
+        // Desenhar todos os objetos
+        void desenhar();
 
-            // para adicionar um objeto à lista
-            void adicionarObjetos( /*Alguma coisa*/ );
+        // Atualizar a janela
+        void atualizar();
 
-            // desenha todos os objetos na tela
-            void desenhar();
+        // Verificar se a janela está aberta
+        const bool estaAberta();
 
-            // atualiza a janela (frames)
-            void atualizar();
-
-            void start();
-
-            void shutdown();
-
-            // verifica se a janela está aberta
-            const bool estaAberta();
-
-            // usar futuramente
-            void operator+(int val);
-
-
-            // Singleton - Impedir cópia
-            Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
-            Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
-
-        protected:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-
-            // ===/===/===/===/ Outros ===/===/===/===/
-
-            
-        public:
-
-            // ===/===/===/===/ Obrigatórios ===/===/===/===/
-
-            // Construtor (FALTA)
-            Gerenciador_Grafico();
-
-                // Destrutor (FALTA)
-            ~Gerenciador_Grafico();
-
-            static Gerenciador_Grafico* getInstancia();
-
-            // ===/===/===/===/ Outros ===/===/===/===/
-
-
+        // Sobrecarga de operador (futuro uso)
+        void operator+(int val);
     };
-}
 
-// Inicializacao membro estatico
-Gerenciador_Grafico* Gerenciador_Grafico::grafico = nullptr;
+}
 
 #endif
