@@ -2,7 +2,7 @@
 
 Checklist para o Trabalho de Técnicas de Programação
 
-##Contexto e Planejamento
+## Contexto e Planejamento
 
 ( ) Escolher o jogo de plataforma a ser desenvolvido.
 
@@ -10,7 +10,7 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Planejar as fases, obstáculos, inimigos e funcionalidades.
 
-##Requisitos Funcionais do Jogo
+## Requisitos Funcionais do Jogo
 
 ( ) Criar menu gráfico com:
 
@@ -56,7 +56,7 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Gerar ranking.
 
-##Modelagem e Projeto
+## Modelagem e Projeto
 
 ( ) Elaborar diagrama de classes em UML:
 
@@ -66,7 +66,7 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Validar o diagrama com o professor.
 
-##Implementação
+## Implementação
 
 ( ) Desenvolver o jogo em C++.
 
@@ -84,7 +84,7 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Implementar funcionalidades gráficas e interativas.
 
-##Documentação
+## Documentação
 
 ( ) Seguir o modelo de formatação fornecido.
 
@@ -130,7 +130,7 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Revisar o documento para evitar erros de português e formatação.
 
-##Reuniões e Interações
+## Reuniões e Interações
 
 ( ) Realizar pelo menos duas reuniões com o professor.
 
@@ -138,13 +138,13 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Registrar e enviar resumos das reuniões por e-mail.
 
-##Apresentação
+## Apresentação
 
 ( ) Preparar os slides (.ppt ou .pdf).
 
 ( ) Ensaiar a apresentação do trabalho.
 
-##Entrega
+## Entrega
 
 ( ) Enviar:
 
@@ -158,7 +158,7 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Utilizar plataformas seguras para envio (preferencialmente Google Drive institucional).
 
-##Padrões de Software Aplicados
+## Padrões de Software Aplicados
 
 (Adapter: Coordenadas)
 
