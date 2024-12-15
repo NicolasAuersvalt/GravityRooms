@@ -1,8 +1,11 @@
 #ifndef GERENCIADOR_GRAFICO_H
 #define GERENCIADOR_GRAFICO_H
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <string>
 
-#include "stdafx.h"
+using namespace std;
 
 class Ente;
 
@@ -59,6 +62,6 @@ namespace Gerenciadores {
         void operator+(int val);
     };
 
-}
+} using namespace Gerenciadores;
 
 #endif

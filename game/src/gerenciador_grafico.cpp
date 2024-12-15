@@ -1,5 +1,6 @@
-#include "gerenciador_grafico.h"
 #include <iostream>
+#include "gerenciador_grafico.h"
+
 
 namespace Gerenciadores {
 
@@ -55,27 +56,6 @@ namespace Gerenciadores {
         }
     }
 
-    void Gerenciador_Grafico::executar(const sf::Vector2f& posAlvo) {
-    sf::Event event;
-
-    while (window.isOpen()) {
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                shutdown();
-            }
-        }
-
-        // Atualizar o comportamento de todos os objetos
-        for (auto& objeto : objetos) {
-            objeto->executar(posAlvo); // Atualiza cada objeto, supondo que todos suportem o método executar
-        }
-
-        // Desenha os objetos
-        desenhar();
-    }
-}
-
-
 
 
     // Fechar a janela
@@ -114,22 +94,12 @@ namespace Gerenciadores {
 
     // Atualizar a janela (captura eventos)
     void Gerenciador_Grafico::atualizar() {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                shutdown();
-            }
-        }
+        
     }
 
     // Verificar se a janela está aberta
     const bool Gerenciador_Grafico::estaAberta() {
         return window.isOpen();
-    }
-
-    // Sobrecarga de operador (futuro uso)
-    void Gerenciador_Grafico::operator+(int val) {
-        // Implementar lógica quando necessário
     }
 
 }

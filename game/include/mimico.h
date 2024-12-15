@@ -1,6 +1,7 @@
 #include <iostream>
 
 class Jogador; // Declaração antecipada para Jogador (não definida ainda)
+class Gerenciador_Grafico;
 
 class Mimico {
 private:
@@ -30,16 +31,5 @@ public:
     // Métodos getters para possíveis acessos externos
     bool isTransformado() const { return transformado; }
     float getRaio() const { return raio; }
-};
-
-// Classe GeradorGráfico para desenhar entidades
-class Ente; // Declaração antecipada para Ente
-
-class GeradorGrafico {
-public:
-    // Método para desenhar uma entidade
-    void desenharEnte(Ente* pE) {
-        // Código de renderização para a entidade
-        std::cout << "Desenhando entidade no gerador gráfico..." << std::endl;
-    }
+    void Mimico::desenhar(Gerenciador_Grafico* gerador);
 };
