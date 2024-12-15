@@ -21,7 +21,7 @@ Ente::Ente()
 }
 
 // Destrutor
-~Ente::Ente(){
+~Ente::~Ente(){
     pFig = NULL;
 
 }
