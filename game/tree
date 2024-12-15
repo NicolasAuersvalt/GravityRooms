@@ -1,0 +1,223 @@
+.
+├── build
+│   ├── CMakeCache.txt
+│   ├── CMakeFiles
+│   │   ├── 3.25.1
+│   │   │   ├── CMakeCCompiler.cmake
+│   │   │   ├── CMakeCXXCompiler.cmake
+│   │   │   ├── CMakeDetermineCompilerABI_C.bin
+│   │   │   ├── CMakeDetermineCompilerABI_CXX.bin
+│   │   │   ├── CMakeSystem.cmake
+│   │   │   ├── CompilerIdC
+│   │   │   │   ├── a.out
+│   │   │   │   └── CMakeCCompilerId.c
+│   │   │   └── CompilerIdCXX
+│   │   │       ├── a.out
+│   │   │       └── CMakeCXXCompilerId.cpp
+│   │   ├── cmake.check_cache
+│   │   └── CMakeOutput.log
+│   └── CMakeLists.txt
+├── GravityRooms
+├── include
+│   ├── elemento.h
+│   ├── ente.h
+│   ├── gerenciador_colisoes.h
+│   ├── gerenciador_grafico.h
+│   ├── jogo.h
+│   ├── lists.h
+│   └── stdafx.h
+├── libs
+│   ├── openal32.dll
+│   ├── sfml-audio-2.dll
+│   ├── sfml-audio-d-2.dll
+│   ├── sfml-graphics-2.dll
+│   ├── sfml-graphics-d-2.dll
+│   ├── sfml-network-2.dll
+│   ├── sfml-network-d-2.dll
+│   ├── sfml-system-2.dll
+│   ├── sfml-system-d-2.dll
+│   ├── sfml-window-2.dll
+│   └── sfml-window-d-2.dll
+├── Makefile
+├── openal32.dll
+├── sfml-audio-2.dll
+├── sfml-audio-d-2.dll
+├── sfml-graphics-2.dll
+├── sfml-graphics-d-2.dll
+├── sfml-network-2.dll
+├── sfml-network-d-2.dll
+├── sfml-system-2.dll
+├── sfml-system-d-2.dll
+├── sfml-window-2.dll
+├── sfml-window-d-2.dll
+├── src
+│   ├── ente.cpp
+│   ├── gerenciador_colisoes.cpp
+│   ├── gerenciador_grafico.cpp
+│   ├── main.cpp
+│   └── old
+│       ├── ARQUIVOMODELO_CPP
+│       ├── ARQUIVOMODELO_H
+│       ├── Estados
+│       │   └── jogo.cpp
+│       ├── include
+│       │   └── SFML
+│       │       ├── Audio
+│       │       │   ├── AlResource.hpp
+│       │       │   ├── Export.hpp
+│       │       │   ├── InputSoundFile.hpp
+│       │       │   ├── Listener.hpp
+│       │       │   ├── Music.hpp
+│       │       │   ├── OutputSoundFile.hpp
+│       │       │   ├── SoundBuffer.hpp
+│       │       │   ├── SoundBufferRecorder.hpp
+│       │       │   ├── SoundFileFactory.hpp
+│       │       │   ├── SoundFileFactory.inl
+│       │       │   ├── SoundFileReader.hpp
+│       │       │   ├── SoundFileWriter.hpp
+│       │       │   ├── Sound.hpp
+│       │       │   ├── SoundRecorder.hpp
+│       │       │   ├── SoundSource.hpp
+│       │       │   └── SoundStream.hpp
+│       │       ├── Audio.hpp
+│       │       ├── Config.hpp
+│       │       ├── GpuPreference.hpp
+│       │       ├── Graphics
+│       │       │   ├── BlendMode.hpp
+│       │       │   ├── CircleShape.hpp
+│       │       │   ├── Color.hpp
+│       │       │   ├── ConvexShape.hpp
+│       │       │   ├── Drawable.hpp
+│       │       │   ├── Export.hpp
+│       │       │   ├── Font.hpp
+│       │       │   ├── Glsl.hpp
+│       │       │   ├── Glsl.inl
+│       │       │   ├── Glyph.hpp
+│       │       │   ├── Image.hpp
+│       │       │   ├── PrimitiveType.hpp
+│       │       │   ├── RectangleShape.hpp
+│       │       │   ├── Rect.hpp
+│       │       │   ├── Rect.inl
+│       │       │   ├── RenderStates.hpp
+│       │       │   ├── RenderTarget.hpp
+│       │       │   ├── RenderTexture.hpp
+│       │       │   ├── RenderWindow.hpp
+│       │       │   ├── Shader.hpp
+│       │       │   ├── Shape.hpp
+│       │       │   ├── Sprite.hpp
+│       │       │   ├── Text.hpp
+│       │       │   ├── Texture.hpp
+│       │       │   ├── Transformable.hpp
+│       │       │   ├── Transform.hpp
+│       │       │   ├── VertexArray.hpp
+│       │       │   ├── VertexBuffer.hpp
+│       │       │   ├── Vertex.hpp
+│       │       │   └── View.hpp
+│       │       ├── Graphics.hpp
+│       │       ├── Main.hpp
+│       │       ├── Network
+│       │       │   ├── Export.hpp
+│       │       │   ├── Ftp.hpp
+│       │       │   ├── Http.hpp
+│       │       │   ├── IpAddress.hpp
+│       │       │   ├── Packet.hpp
+│       │       │   ├── SocketHandle.hpp
+│       │       │   ├── Socket.hpp
+│       │       │   ├── SocketSelector.hpp
+│       │       │   ├── TcpListener.hpp
+│       │       │   ├── TcpSocket.hpp
+│       │       │   └── UdpSocket.hpp
+│       │       ├── Network.hpp
+│       │       ├── OpenGL.hpp
+│       │       ├── System
+│       │       │   ├── Clock.hpp
+│       │       │   ├── Err.hpp
+│       │       │   ├── Export.hpp
+│       │       │   ├── FileInputStream.hpp
+│       │       │   ├── InputStream.hpp
+│       │       │   ├── Lock.hpp
+│       │       │   ├── MemoryInputStream.hpp
+│       │       │   ├── Mutex.hpp
+│       │       │   ├── NativeActivity.hpp
+│       │       │   ├── NonCopyable.hpp
+│       │       │   ├── Sleep.hpp
+│       │       │   ├── String.hpp
+│       │       │   ├── String.inl
+│       │       │   ├── Thread.hpp
+│       │       │   ├── Thread.inl
+│       │       │   ├── ThreadLocal.hpp
+│       │       │   ├── ThreadLocalPtr.hpp
+│       │       │   ├── ThreadLocalPtr.inl
+│       │       │   ├── Time.hpp
+│       │       │   ├── Utf.hpp
+│       │       │   ├── Utf.inl
+│       │       │   ├── Vector2.hpp
+│       │       │   ├── Vector2.inl
+│       │       │   ├── Vector3.hpp
+│       │       │   └── Vector3.inl
+│       │       ├── System.hpp
+│       │       ├── Window
+│       │       │   ├── Clipboard.hpp
+│       │       │   ├── Context.hpp
+│       │       │   ├── ContextSettings.hpp
+│       │       │   ├── Cursor.hpp
+│       │       │   ├── Event.hpp
+│       │       │   ├── Export.hpp
+│       │       │   ├── GlResource.hpp
+│       │       │   ├── Joystick.hpp
+│       │       │   ├── Keyboard.hpp
+│       │       │   ├── Mouse.hpp
+│       │       │   ├── Sensor.hpp
+│       │       │   ├── Touch.hpp
+│       │       │   ├── VideoMode.hpp
+│       │       │   ├── Vulkan.hpp
+│       │       │   ├── WindowBase.hpp
+│       │       │   ├── WindowHandle.hpp
+│       │       │   ├── Window.hpp
+│       │       │   └── WindowStyle.hpp
+│       │       └── Window.hpp
+│       ├── lib
+│       │   ├── cmake
+│       │   │   └── SFML
+│       │   │       ├── SFMLConfig.cmake
+│       │   │       ├── SFMLConfigDependencies.cmake
+│       │   │       ├── SFMLConfigVersion.cmake
+│       │   │       ├── SFMLSharedTargets.cmake
+│       │   │       ├── SFMLSharedTargets-debug.cmake
+│       │   │       ├── SFMLSharedTargets-release.cmake
+│       │   │       ├── SFMLStaticTargets.cmake
+│       │   │       ├── SFMLStaticTargets-debug.cmake
+│       │   │       └── SFMLStaticTargets-release.cmake
+│       │   ├── libFLAC.a
+│       │   ├── libfreetype.a
+│       │   ├── libogg.a
+│       │   ├── libopenal32.a
+│       │   ├── libsfml-audio.a
+│       │   ├── libsfml-audio-d.a
+│       │   ├── libsfml-audio-s.a
+│       │   ├── libsfml-audio-s-d.a
+│       │   ├── libsfml-graphics.a
+│       │   ├── libsfml-graphics-d.a
+│       │   ├── libsfml-graphics-s.a
+│       │   ├── libsfml-graphics-s-d.a
+│       │   ├── libsfml-main.a
+│       │   ├── libsfml-main-d.a
+│       │   ├── libsfml-network.a
+│       │   ├── libsfml-network-d.a
+│       │   ├── libsfml-network-s.a
+│       │   ├── libsfml-network-s-d.a
+│       │   ├── libsfml-system.a
+│       │   ├── libsfml-system-d.a
+│       │   ├── libsfml-system-s.a
+│       │   ├── libsfml-system-s-d.a
+│       │   ├── libsfml-window.a
+│       │   ├── libsfml-window-d.a
+│       │   ├── libsfml-window-s.a
+│       │   ├── libsfml-window-s-d.a
+│       │   ├── libvorbis.a
+│       │   ├── libvorbisenc.a
+│       │   └── libvorbisfile.a
+│       └── main.cpp
+└── tree
+
+21 directories, 200 files

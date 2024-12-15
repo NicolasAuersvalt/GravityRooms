@@ -55,6 +55,29 @@ namespace Gerenciadores {
         }
     }
 
+    void Gerenciador_Grafico::executar(const sf::Vector2f& posAlvo) {
+    sf::Event event;
+
+    while (window.isOpen()) {
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                shutdown();
+            }
+        }
+
+        // Atualizar o comportamento de todos os objetos
+        for (auto& objeto : objetos) {
+            objeto->executar(posAlvo); // Atualiza cada objeto, supondo que todos suportem o método executar
+        }
+
+        // Desenha os objetos
+        desenhar();
+    }
+}
+
+
+
+
     // Fechar a janela
     void Gerenciador_Grafico::shutdown() {
         window.close();
@@ -62,25 +85,32 @@ namespace Gerenciadores {
 
     // Desenhar um ente (entidade)
     void Gerenciador_Grafico::desenharEnte(Ente* pE) {
-        if (pE) {
-            // Lógica para desenhar o ente, implementar conforme necessário
-            // Exemplo: pE->desenharNaTela(window);
-
-            
-        }
+    if (pE) {
+        pE->desenharNaTela(window); // Desenha qualquer ente, incluindo o mimico
     }
+}
 
-    // Adicionar objetos (vazio por enquanto)
-    void Gerenciador_Grafico::adicionarObjetos(/*Alguma coisa*/) {
-        // Lógica para adicionar objetos ao gerenciamento gráfico
+
+    void Gerenciador_Grafico::adicionarObjetos(Ente* objeto) {
+    if (objeto) {
+        objetos.push_back(objeto);
     }
+}
 
-    // Desenhar todos os objetos na tela
+
+
     void Gerenciador_Grafico::desenhar() {
-        window.clear(sf::Color::Black);  // Limpa a tela com a cor preta
-        // Lógica para desenhar objetos na tela
-        window.display();  // Exibe o conteúdo na tela
+    window.clear(sf::Color::Black);
+
+    for (auto& objeto : objetos) {
+        objeto->desenharNaTela(window); // Cada objeto sabe como se desenhar
     }
+
+    window.display();
+}
+
+
+
 
     // Atualizar a janela (captura eventos)
     void Gerenciador_Grafico::atualizar() {

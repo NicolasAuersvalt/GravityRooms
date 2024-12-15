@@ -1,16 +1,8 @@
-#include "stdafx.h"
-//#include "jogo.h"
 #include "gerenciador_grafico.h"
+#include "mimico.h"
 
-int main(){
-
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-    //Jogo GravityRooms;
-
-    // ===/===/===/===/ Outros ===/===/===/===/
-
-    Gerenciadores::Gerenciador_Grafico graficos;
+int main() {
+    Gerenciadores::Gerenciador_Grafico* gerenciador = Gerenciadores::Gerenciador_Grafico::getInstancia();
 
     return 0;
 }

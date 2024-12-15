@@ -1,7 +1,8 @@
 #ifndef GERENCIADOR_COLISOES_H
 #define GERENCIADOR_COLISOES_H
 
-#include "stdafx.h"
+//#include "stdafx.h"
+
 
 class Inimigo;
 class Entidade;
@@ -63,5 +64,7 @@ namespace Gerenciadores{
 
     };
 }
+using namespace Gerenciadores;
+
 
 #endif
