@@ -5,6 +5,8 @@
 #include <SFML/Window.hpp>
 #include <string>
 
+#include "ente.h"
+
 using namespace std;
 
 class Ente;
@@ -12,6 +14,7 @@ class Ente;
 namespace Gerenciadores {
 
     class Gerenciador_Grafico {
+        
     private:
         static Gerenciador_Grafico* grafico;  // Instância única
 
@@ -46,20 +49,11 @@ namespace Gerenciadores {
         // Desenhar um ente OBRIGATÓRIO
         void desenharEnte(Ente* pE);
 
-        // Adicionar objetos
-        void adicionarObjetos(/*Alguma coisa*/);
-
-        // Desenhar todos os objetos
-        void desenhar();
-
         // Atualizar a janela
         void atualizar();
 
         // Verificar se a janela está aberta
         const bool estaAberta();
-
-        // Sobrecarga de operador (futuro uso)
-        void operator+(int val);
     };
 
 } using namespace Gerenciadores;

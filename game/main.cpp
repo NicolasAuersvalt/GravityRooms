@@ -1,8 +1,7 @@
-#include "gerenciador_grafico.h"
-#include "mimico.h"
+#include "jogo.h"
 
 int main() {
-    Gerenciadores::Gerenciador_Grafico* gerenciador = Gerenciadores::Gerenciador_Grafico::getInstancia();
+    Jogo GravityRooms;
 
     return 0;
 }

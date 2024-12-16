@@ -1,9 +1,10 @@
+#include <iostream>
 #include "ente.h"
 #include "gerenciador_grafico.h"
 
-#include <iostream>
 
 using namespace std;
+using namespace Gerenciadores;
 
  
 // ===/===/===/===/ Obrigatório ===/===/===/===/
@@ -27,9 +28,12 @@ Ente::~Ente(){
 }
 
 void Ente::desenhar(){
-    Gerenciadores::Gerenciador_Grafico::desenharEnte(&this);
+    Gerenciador_Grafico::desenharEnte(&this);
 
 }
 
+sf::Sprite getFig(){
 
+
+}
     // ===/===/===/===/ Outros  ===/===/===/===/

@@ -64,33 +64,23 @@ namespace Gerenciadores {
     }
 
     // Desenhar um ente (entidade)
-    void Gerenciador_Grafico::desenharEnte(Ente* pE) {
-    if (pE) {
-        pE->desenharNaTela(window); // Desenha qualquer ente, incluindo o mimico
-    }
-}
-
-
-    void Gerenciador_Grafico::adicionarObjetos(Ente* objeto) {
-    if (objeto) {
-        objetos.push_back(objeto);
-    }
-}
-
-
-
-    void Gerenciador_Grafico::desenhar() {
-    window.clear(sf::Color::Black);
-
-    for (auto& objeto : objetos) {
-        objeto->desenharNaTela(window); // Cada objeto sabe como se desenhar
+    void GerenciadorGrafico::desenharEnte(Ente* pE) {
+    // Verifica se o ponteiro para o ente é válido
+    if (pE == nullptr) {
+        return; // Evita erros de segmentação
     }
 
-    window.display();
+    // Obtém o sprite do ente
+    sf::Sprite* sprite = pE->pFig;
+
+    // Verifica se o sprite é válido
+    if (sprite == nullptr) {
+        return; // Evita erros de segmentação
+    }
+
+    // Desenha o sprite na janela (assumindo que você tem uma janela SFML chamada window)
+    window.draw(*sprite);
 }
-
-
-
 
     // Atualizar a janela (captura eventos)
     void Gerenciador_Grafico::atualizar() {
