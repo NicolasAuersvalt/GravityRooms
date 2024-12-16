@@ -14,11 +14,7 @@ using namespace Gerenciadores;
 Ente::Ente() 
 : pFig(), id(-1) // id (-1) pois não fará sentido id negativo no jogo
 {
-    
-    if(pFig){
-        // Desenha a entidade na tela;
-        desenhar();
-    }
+
 }
 
 // Destrutor
@@ -27,13 +23,8 @@ Ente::~Ente(){
 
 }
 
-void Ente::desenhar(){
-    Gerenciador_Grafico::desenharEnte(&this);
-
-}
 
 sf::Sprite getFig(){
-
 
 }
     // ===/===/===/===/ Outros  ===/===/===/===/

@@ -2,12 +2,13 @@
 
 
 Jogo::Jogo()
-    : GG()
+    :GG(NULL)
 {
     // Cria um Gerenciador Grafico;
+    GG = new Gerenciador_Grafico();
 
     // Chama o executar
-    Jogo::executar();
+    executar();
 }
 
 
@@ -18,7 +19,7 @@ Jogo::~Jogo(){
 }
 
 
-void executar(){
+void Jogo::executar(){
 
     // Deve desenhar o mimico criado
     // Criando um objeto Mimico e carregando a textura

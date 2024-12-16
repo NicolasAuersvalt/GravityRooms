@@ -4,18 +4,11 @@
 #include "gerenciador_grafico.h"
 #include "mimico.h"
 
-using namespace Gerenciadores;
-
-
-class Gerenciador_Grafico;
-class Mimico;
-
-
 class Jogo{
 
     private:
         // Tripulante pJog1;
-        Gerenciador_Grafico GG;
+        Gerenciadores::Gerenciador_Grafico* GG;
        
         // Temporario
         Mimico inimigo;

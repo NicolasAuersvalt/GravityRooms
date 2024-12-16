@@ -64,7 +64,7 @@ namespace Gerenciadores {
     }
 
     // Desenhar um ente (entidade)
-    void GerenciadorGrafico::desenharEnte(Ente* pE) {
+    void Gerenciador_Grafico::desenharEnte(Ente* pE) {
     // Verifica se o ponteiro para o ente é válido
     if (pE == nullptr) {
         return; // Evita erros de segmentação

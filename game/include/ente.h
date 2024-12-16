@@ -1,8 +1,10 @@
 #ifndef ENTE_H
 #define ENTE_H
 
+#include <SFML/Graphics.hpp>
+#include "gerenciador_grafico.h"
 
-class GerenciadorGrafico;
+class Gerenciador_Grafico;
 
 class Ente{
 
@@ -18,8 +20,8 @@ class Ente{
 
         // ===/===/===/===/ Obrigatório ===/===/===/===/
         int id;
-        static GerenciadorGrafico *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
-        sf::Sprite *pFig;
+        static Gerenciadores::Gerenciador_Grafico *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
+        
                 
 
         // ===/===/===/===/ Outros  ===/===/===/===/
@@ -28,11 +30,13 @@ class Ente{
       public:
 
          // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+        sf::Sprite *pFig;
         Ente();
         ~Ente();
+
         virtual void executar() = 0; // Pois é abstrata
-        void desenhar();
+        virtual void desenhar() = 0;
+
         sf::Sprite getFig();
 
         // ===/===/===/===/ Outros  ===/===/===/===/

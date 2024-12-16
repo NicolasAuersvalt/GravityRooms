@@ -1,17 +1,10 @@
 #include <iostream>
-#include "Mimico.h" // Arquivo de cabeçalho da classe Mimico
+#include "mimico.h" // Arquivo de cabeçalho da classe Mimico
 
 // Construtor padrão
 Mimico::Mimico() : transformado(false), raio(0.0f) {
     // Associa um sprite
-    pFig = new sf::Sprite(texture);
-
-
-}
-
-// Construtor com inicialização
-Mimico::Mimico(bool t, float r) : transformado(t), raio(r) {
-    setSprite();
+    pFig = new sf::Sprite(); // or other initialization logic
 
 }
 
@@ -44,7 +37,7 @@ void setSprite(const sf::Texture& texture) {
 }
 
 // Método para desenhar o sprite do mímico no GeradorGrafico
-void Mimico::desenhar(Gerenciador_Grafico* pGG) {
+void Mimico::desenhar(Gerenciador_Grafico* pGG){
     // Aqui é chamado o sprite do mímico para ser renderizado
     if (gerador) {
         std::cout << "Desenhando sprite do mímico..." << std::endl;
