@@ -1,7 +1,9 @@
 # GravityRooms
 
-Developed by
+Developed by:
+
 Nícolas Auersvalt Marques
+
 Isabela Bella Bortoleto
 
 Checklist para o Trabalho de Técnicas de Programação
