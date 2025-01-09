@@ -4,11 +4,11 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ## Contexto e Planejamento
 
-( ) Escolher o jogo de plataforma a ser desenvolvido.
+(V) Escolher o jogo de plataforma a ser desenvolvido.
 
-( ) Validar a escolha do jogo com o professor.
+(V) Validar a escolha do jogo com o professor.
 
-( ) Planejar as fases, obstáculos, inimigos e funcionalidades.
+(V) Planejar as fases, obstáculos, inimigos e funcionalidades.
 
 ## Requisitos Funcionais do Jogo
 
@@ -58,23 +58,23 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ## Modelagem e Projeto
 
-( ) Elaborar diagrama de classes em UML:
+(V) Elaborar diagrama de classes em UML:
 
-( ) Baseado no modelo fornecido.
+(V) Baseado no modelo fornecido.
 
-( ) Melhorar e expandir conforme necessário.
+(V) Melhorar e expandir conforme necessário.
 
 ( ) Validar o diagrama com o professor.
 
 ## Implementação
 
-( ) Desenvolver o jogo em C++.
+(V) Desenvolver o jogo em C++.
 
-( ) Utilizar uma biblioteca gráfica (preferencialmente SFML).
+(V) Utilizar uma biblioteca gráfica (preferencialmente SFML).
 
 ( ) Aplicar conceitos de orientação a objetos:
 
-( ) Classes e objetos.
+(V) Classes e objetos.
 
 ( ) Herança e polimorfismo. (Template Method: Hierarquia de Ente, Entidade, Personagem)
 
@@ -132,7 +132,7 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ## Reuniões e Interações
 
-( ) Realizar pelo menos duas reuniões com o professor.
+(V) Realizar pelo menos duas reuniões com o professor.
 
 ( ) Realizar quatro reuniões com o monitor.
 
@@ -160,18 +160,18 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ## Padrões de Software Aplicados
 
-(Adapter: Coordenadas)
+( ) (Adapter: Coordenadas)
 
-(Observer: Notificações, Gerenciador de Eventos, Menu)
+( ) (Observer: Notificações, Gerenciador de Eventos, Menu)
 
-(Mediator: Gerenciador de Colisões)
+( ) (Mediator: Gerenciador de Colisões)
 
-(Template Method: Hierarquia de Ente, Entidade, Personagem)
+( ) (Template Method: Hierarquia de Ente, Entidade, Personagem)
 
-(Builder: Construção de entidades na fase)
+( ) (Builder: Construção de entidades na fase)
 
-(Bridge: Relação entre Ente e Interface Gráfica)
+( ) (Bridge: Relação entre Ente e Interface Gráfica)
 
-(Singleton: Instância única compartilhada)
+(V) (Singleton: Instância única compartilhada)
 
 

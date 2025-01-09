@@ -1,0 +1,3 @@
+/home/nicolas/Documents/Estudos/GravityRooms/build/CMakeFiles/GravityRooms.dir
+/home/nicolas/Documents/Estudos/GravityRooms/build/CMakeFiles/edit_cache.dir
+/home/nicolas/Documents/Estudos/GravityRooms/build/CMakeFiles/rebuild_cache.dir
