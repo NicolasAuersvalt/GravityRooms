@@ -12,6 +12,40 @@ Nícolas Auersvalt Marques
 
 Isabela Bella Bortoleto
 
+Antes de instalar o jogo, certifique-se de ter as seguintes ferramentas instaladas no seu sistema:
+
+CMake: Ferramenta de automação de compilação.
+Make: Sistema de compilação (normalmente já instalado em sistemas Unix).
+Compilador C++: Recomendado o g++ ou clang++.
+
+# Instação
+
+No Ubuntu ou outras distribuições baseadas no Debian, você pode instalar esses pacotes com:
+
+``` sudo apt update ```
+``` sudo apt install build-essential cmake ```
+
+Se ainda não tiver o repositório, clone-o usando:
+
+``` git clone https://github.com/NicolasAuersvalt/GravityRooms.git ```
+``` cd GravityRooms ```
+
+Crie e entre no diretório de build, onde a compilação do projeto será feita:
+
+``` mkdir build && cd build ```
+
+Use o CMake para gerar os arquivos necessários para a construção do projeto, em seguida, compile com o Make:
+
+``` cmake .. ```
+``` make ```
+
+Depois de compilado, execute o jogo com o comando:
+
+``` ./GravityRooms ```
+
+
+
+
 Checklist para o Trabalho de Técnicas de Programação
 
 ## Contexto e Planejamento
