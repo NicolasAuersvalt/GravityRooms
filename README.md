@@ -4,11 +4,17 @@
 
 Federal University of Technology - Paraná (2024-2025)
 
+---
+
+
 Developed by:
 
 Nícolas Auersvalt Marques
 
 Isabela Bella Bortoleto
+
+---
+
 
 Antes de instalar o jogo, certifique-se de ter as seguintes ferramentas instaladas no seu sistema:
 
