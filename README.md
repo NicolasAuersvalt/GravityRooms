@@ -15,8 +15,11 @@ Isabela Bella Bortoleto
 Antes de instalar o jogo, certifique-se de ter as seguintes ferramentas instaladas no seu sistema:
 
 CMake: Ferramenta de automação de compilação (3.22.1).
+
 Make: Sistema de compilação (GNU Make 4.3).
+
 Compilador C++: Recomendado o g++ ou clang++ (g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0).
+
 SFML 2.5.1 (Audio, Graphics, Network, System, Window)
 
 # Instação
