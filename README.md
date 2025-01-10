@@ -184,19 +184,19 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ## Conceitos
 
-( ) - Classes, objetos. & - Atributos (privados), variáveis e constantes - Métodos (com e sem retorno).
+(V) - Classes, objetos. & - Atributos (privados), variáveis e constantes - Métodos (com e sem retorno).
 
 ( ) Métodos (com retorno const e parâmetro const) & Construtores (sem/com parâmetros) e destrutores
 
 ( ) Classe Principal.
 
-( ) Divisão em .h e .cpp.
+(V) Divisão em .h e .cpp.
 
 ( ) Associação direcional. & - Associação bidirecional.
 
 ( ) Agregação via associação. & - Agregação propriamente dita.
 
-( ) Herança elementar. & - Herança em vários níveis.
+(V) Herança elementar. & - Herança em vários níveis.
 
 ( ) Herança múltipla.
 
@@ -204,11 +204,11 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Alocação de memória (new & delete).
 
-( ) Gabaritos/Templates criada/adaptados pelos autores para Listas.
+(V) Gabaritos/Templates criada/adaptados pelos autores para Listas.
 
 ( ) Uso de Tratamento de Exceções (try catch).
 
-( ) Construtoras e Métodos.
+(V) Construtoras e Métodos.
 
 ( ) Operadores (2 tipos de operadores pelo menos)
 
@@ -216,15 +216,15 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Persistência de Relacionamento de Objetos.
 
-( ) Métodos Virtuais Usuais.
+(V) Métodos Virtuais Usuais.
 
-( ) Polimorfismo.
+(V) Polimorfismo.
 
-( ) Métodos Virtuais Puros / Classes Abstratas.
+(V) Métodos Virtuais Puros / Classes Abstratas.
 
 ( ) Coesão/Desacoplamento efetiva e intensa com o apoio de padrões de projeto (mais de 5 padrões). 
 
-( ) Espaço de Nomes (Namespace) criada pelos autores.
+(V) Espaço de Nomes (Namespace) criada pelos autores.
 
 ( ) Classes aninhadas (Nested) criada pelos autores.
 
@@ -254,12 +254,12 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) Uso efetivo e intensivo de padrões de projeto GOF, i.e., + de 5 padrões.
 
-( ) Testes à luz da Tabela de Requisitos e do Diagrama de Classes.
+(V) Testes à luz da Tabela de Requisitos e do Diagrama de Classes.
 
-( ) Controle de versão de modelos e códigos automatizado (via github) e uso de alguma forma de cópia de segurança (i.e., backup).
+(V) Controle de versão de modelos e códigos automatizado (via github) e uso de alguma forma de cópia de segurança (i.e., backup).
 
-( ) Reuniões com o professor para acompanhamento do andamento do projeto. [ITEM OBRIGATÓRIO A ENTREGA DO TRABALHO]
+(V) Reuniões com o professor para acompanhamento do andamento do projeto. [ITEM OBRIGATÓRIO A ENTREGA DO TRABALHO]
 
-( ) Reuniões com monitor da disciplina para acompanhamento do andamento do projeto. [ITEM OBRIGATÓRIO PARA A ENTREGA]
+(V) Reuniões com monitor da disciplina para acompanhamento do andamento do projeto. [ITEM OBRIGATÓRIO PARA A ENTREGA]
 
 ( )Escrita do trabalho e feitura da apresentação & Revisão do trabalho escrito de outra equipe e vice-versa.
