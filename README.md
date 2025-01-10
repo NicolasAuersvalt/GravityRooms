@@ -182,8 +182,84 @@ Checklist para o Trabalho de Técnicas de Programação
 
 ( ) (Builder: Construção de entidades na fase)
 
-( ) (Bridge: Relação entre Ente e Interface Gráfica)
+## Conceitos
 
-(V) (Singleton: Instância única compartilhada)
+(V) - Classes, objetos. & - Atributos (privados), variáveis e constantes - Métodos (com e sem retorno).
 
+( ) Métodos (com retorno const e parâmetro const) & Construtores (sem/com parâmetros) e destrutores
 
+( ) Classe Principal.
+
+(V) Divisão em .h e .cpp.
+
+( ) Associação direcional. & - Associação bidirecional.
+
+( ) Agregação via associação. & - Agregação propriamente dita.
+
+(V) Herança elementar. & - Herança em vários níveis.
+
+( ) Herança múltipla.
+
+( ) Operador this para fins de relacionamento bidirecional.
+
+( ) Alocação de memória (new & delete).
+
+(V) Gabaritos/Templates criada/adaptados pelos autores para Listas.
+
+( ) Uso de Tratamento de Exceções (try catch).
+
+(V) Construtoras e Métodos.
+
+( ) Operadores (2 tipos de operadores pelo menos)
+
+( ) Persistência de Objetos. 
+
+( ) Persistência de Relacionamento de Objetos.
+
+(V) Métodos Virtuais Usuais.
+
+(V) Polimorfismo.
+
+(V) Métodos Virtuais Puros / Classes Abstratas.
+
+( ) Coesão/Desacoplamento efetiva e intensa com o apoio de padrões de projeto (mais de 5 padrões). 
+
+(V) Espaço de Nomes (Namespace) criada pelos autores.
+
+( ) Classes aninhadas (Nested) criada pelos autores.
+
+( ) Atributos estáticos e métodos estáticos.
+
+( ) Uso extensivo de constante (const) parâmetro, retorno, método...
+
+( ) A classe Pré-definida  String ou equivalente. & - Vector e/ou List da STL (p/ objetos ou ponteiros de objetos de classes definidos pelos autores)
+
+( ) Pilha, Fila, Bifila, Fila de Prioridade, Conjunto, Multi-Conjunto, Mapa OU Multi-Mapa.
+
+( ) Threads (Linhas de Execução) no âmbito da Orientação a Objetos, utilizando Posix, C-Run-Time OU Win32API ou afins.
+
+( ) Threads (Linhas de Execução) no âmbito da Orientação a Objetos com uso de Mutex, Semáforos, OU Troca de mensagens.
+
+( ) Funcionalidades Elementares. & Funcionalidades Avançadas como: tratamento de colisões e duplo buffer
+
+( ) Programação orientada e evento efetiva (com gerenciador apropriado de eventos inclusive, via padrão de projeto Observer) em algum ambiente gráfico. OU - RAD – Rapid Application Development (Objetos gráficos como formulários, botões etc).
+
+( ) Ensino Médio Efetivamente.
+
+( ) Ensino Superior Efetivamente.
+
+( ) Compreensão, melhoria e rastreabilidade de cumprimento de requisitos.
+
+( ) Diagrama de Classes em UML.
+
+( ) Uso efetivo e intensivo de padrões de projeto GOF, i.e., + de 5 padrões.
+
+(V) Testes à luz da Tabela de Requisitos e do Diagrama de Classes.
+
+(V) Controle de versão de modelos e códigos automatizado (via github) e uso de alguma forma de cópia de segurança (i.e., backup).
+
+(V) Reuniões com o professor para acompanhamento do andamento do projeto. [ITEM OBRIGATÓRIO A ENTREGA DO TRABALHO]
+
+(V) Reuniões com monitor da disciplina para acompanhamento do andamento do projeto. [ITEM OBRIGATÓRIO PARA A ENTREGA]
+
+( )Escrita do trabalho e feitura da apresentação & Revisão do trabalho escrito de outra equipe e vice-versa.
