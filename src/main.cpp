@@ -1,5 +1,5 @@
 //#include "jogo.h"
-#include "Engine/gerenciador_grafico.h"
+#include "Gerenciadores/gerenciador_grafico.h"
 
 int main(){
 

@@ -1,4 +1,4 @@
-#include "Game/ente.h"
+#include "ente.h"
 //#include "gerenciador_grafico.h"
 
 #include <iostream>
