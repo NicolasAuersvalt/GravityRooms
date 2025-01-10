@@ -1,6 +1,6 @@
 # GravityRooms
 
-![GravityRooms](assets/Logo.jpg)
+![GravityRooms](assets/Logo.png)
 
 Federal University of Technology - Paraná (2024-2025)
 
