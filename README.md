@@ -37,13 +37,11 @@ Crie e entre no diretório de build, onde a compilação do projeto será feita:
 Use o CMake para gerar os arquivos necessários para a construção do projeto, em seguida, compile com o Make:
 
     cmake ..
-
     make
 
 Depois de compilado, execute o jogo com o comando:
 
     ./GravityRooms
-
 
 
 Checklist para o Trabalho de Técnicas de Programação
