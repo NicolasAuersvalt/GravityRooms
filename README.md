@@ -28,9 +28,8 @@ No Ubuntu ou outras distribuições baseadas no Debian, você pode instalar esse
 
 Se ainda não tiver o repositório, clone-o usando:
 
-``` git clone https://github.com/NicolasAuersvalt/GravityRooms.git ```
-
-``` cd GravityRooms ```
+    git clone https://github.com/NicolasAuersvalt/GravityRooms.git
+    cd GravityRooms 
 
 Crie e entre no diretório de build, onde a compilação do projeto será feita:
 
