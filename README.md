@@ -304,3 +304,6 @@ Depois de compilado, execute o jogo com o comando:
 (V) Reuniões com monitor da disciplina para acompanhamento do andamento do projeto. [ITEM OBRIGATÓRIO PARA A ENTREGA]
 
 ( )Escrita do trabalho e feitura da apresentação & Revisão do trabalho escrito de outra equipe e vice-versa.
+
+
+![cloneG](assets/cloneG_tiro.png)
