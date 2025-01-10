@@ -306,4 +306,4 @@ Depois de compilado, execute o jogo com o comando:
 ( )Escrita do trabalho e feitura da apresentação & Revisão do trabalho escrito de outra equipe e vice-versa.
 
 
-![cloneG](assets/cloneG_tiro.png)
+![Andoid](assets/androidG.png)
