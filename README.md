@@ -26,6 +26,8 @@ Compilador C++: Recomendado o g++ ou clang++ (g++ (Ubuntu 11.4.0-1ubuntu1~22.04)
 
 SFML 2.5.1 (Audio, Graphics, Network, System, Window)
 
+![Tripulante](assets/tripulante.png)
+
 # Instação
 
 No Ubuntu ou outras distribuições baseadas no Debian, você pode instalar esses pacotes com:
@@ -51,6 +53,7 @@ Depois de compilado, execute o jogo com o comando:
 
     ./GravityRooms
 
+![Lab](assets/lab1.png)
 
 ## Contexto e Planejamento
 
