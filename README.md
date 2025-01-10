@@ -53,7 +53,11 @@ Depois de compilado, execute o jogo com o comando:
 
     ./GravityRooms
 
+---
+
 ![Lab](assets/lab1.jpg)
+
+---
 
 ## Contexto e Planejamento
 
