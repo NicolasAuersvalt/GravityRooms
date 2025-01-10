@@ -44,8 +44,6 @@ Depois de compilado, execute o jogo com o comando:
     ./GravityRooms
 
 
-Checklist para o Trabalho de Técnicas de Programação
-
 ## Contexto e Planejamento
 
 (V) Escolher o jogo de plataforma a ser desenvolvido.
