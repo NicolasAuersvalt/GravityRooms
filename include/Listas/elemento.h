@@ -1,29 +1,47 @@
-#ifndef NOME
-#define NOME
+#ifndef ELEMENTO_H
+#define ELEMENTO_H
 
-class NOME{
+#include "Listas/lista.h"
 
-    private:
+namespace Listas {  // Mantendo dentro do namespace Listas
 
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
-        Elemento<TL>* pPrimeiro;
-        TE* pinfo;
-            
+    template <typename TE>
 
-    public:
+    class Elemento {
 
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
-    
-        Elemento();
-        ~Elemento();
-        void incluir(TE* incluir);
-        void setProx(Elemento<TE>* pE);
-        Elemento<TE>* getProximo()
-            
+        private:
 
-    // ===/===/===/===/ Outros  ===/===/===/===/
+            // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-};
+            Elemento<TE>* pProx;  // Ponteiro para o próximo elemento
+            TE* pinfo;  // Ponteiro para o tipo de dado
 
+            // ===/===/===/===/ Outros  ===/===/===/===/
+
+        protected:
+
+            // ===/===/===/===/ Obrigatório ===/===/===/===/
+
+        
+
+            // ===/===/===/===/ Outros  ===/===/===/===/
+
+
+        public:
+
+            // ===/===/===/===/ Obrigatório ===/===/===/===/
+
+            Elemento();  // Construtor
+            ~Elemento();  // Destruidor
+
+            void incluir(TE* p);
+            void setProx(Elemento<TE>* pE);
+            const Elemento<TE>* getProximo() const;
+
+            // ===/===/===/===/ Outros  ===/===/===/===/
+
+    };
+
+}
 
 #endif

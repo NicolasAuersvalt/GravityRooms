@@ -1,23 +1,26 @@
-#ifndef JOGO_H
-#define JOGO_H
+#ifndef LISTA_H
+#define LISTA_H
 
-class Jogador;
-class GerenciadorGrafico;
+#include "Listas/elemento.h"
+
+class Elemento;
 
 namespace Listas{
 
-    class Jogo{
+    template <typename TL>
 
-        public:
+    class Lista{
+
+        private:
+
+            // Elemento<TL>* pPrimeiro;
+            // Elemento<TL>* pUltimo;
 
         // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            Jogo();
-            ~Jogo();
-            void executar();
+            
 
         // ===/===/===/===/ Outros  ===/===/===/===/
-        
 
         protected:
 
@@ -27,17 +30,18 @@ namespace Listas{
 
         // ===/===/===/===/ Outros  ===/===/===/===/
 
-        private:
+        public:
 
         // ===/===/===/===/ Obrigatório ===/===/===/===/
+            Lista();
+            ~Lista();
 
-        Jogador pJog1;
-        GerenciadorGrafico GG;
-                
+            void incluir(TL *p);
+            void limpar();                
 
         // ===/===/===/===/ Outros  ===/===/===/===/
 
     };
-}
 
+}
 #endif
