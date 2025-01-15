@@ -26,35 +26,29 @@ namespace Gerenciadores {
         return grafico;
     }
 
-   void Gerenciador_Grafico::inicializador() {
+    void Gerenciador_Grafico::inicializador() {
     // Cria a janela corretamente
     window.create(sf::VideoMode(width, height), nomeJanela);
     // Define o framerate para 60fps
     window.setFramerateLimit(fps);
-    }
-
-
+}
 
     void Gerenciador_Grafico::executar() {
     sf::Event event;
-    // Loop principal de renderização
     while (window.isOpen()) {
-        // Processa todos os eventos enquanto a janela estiver aberta
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
-                shutdown();  // Fecha a janela se o evento for de fechamento
+                shutdown();
             }
         }
-
+        
         window.clear(sf::Color::Black);  // Limpa a tela
 
-        // Desenha o jogador (ou outros objetos) aqui
-        // Você pode chamar Gerenciador_Grafico::desenharEnte(pJog1) ou outros
-        // Exemplificando:
-        window.display();  // Exibe a tela com o conteúdo desenhado
+        // Chame a função de desenho para desenhar os entes
+        // Aqui você pode desenhar o jogador ou outros objetos
+        window.display();  // Exibe a tela atualizada
     }
 }
-
 
 
     // Fechar a janela

@@ -4,6 +4,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+
+#include <thread>  // Para usar std::thread
+#include <mutex>   // Para usar std::mutex, se necessário
+
 #include <iostream>
 #include <string>
 
@@ -28,6 +32,11 @@ namespace Gerenciadores {
         // Impedir cópia SINGLETON
         Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
         Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
+
+        sf::Event event;
+
+        // Adicionar o mutex para proteger acesso a recursos compartilhados entre as threads, se necessário
+        std::mutex mtx;
 
     public:
 
@@ -59,6 +68,8 @@ namespace Gerenciadores {
 
         // Atualizar a janela
         void atualizar();
+
+        void atualizarEventos();
 
         // Verificar se a janela está aberta
         const bool estaAberta();
