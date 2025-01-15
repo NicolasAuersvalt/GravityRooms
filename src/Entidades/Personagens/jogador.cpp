@@ -11,7 +11,7 @@ namespace Entidades::Personagens{
 
 
     Jogador::Jogador():
-    Personagem()
+    Personagem(make_pair(-1, -1), make_pair(-1, -1))
     {
         
     }

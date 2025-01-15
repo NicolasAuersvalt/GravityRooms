@@ -6,6 +6,7 @@
 #include"Gerenciadores/gerenciador_grafico.h"
 
 using Entidades::Personagens::Jogador;
+using Gerenciadores::Gerenciador_Grafico;
 
 
 class Gravity_Rooms{

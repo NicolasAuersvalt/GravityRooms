@@ -30,7 +30,7 @@ namespace Entidades::Personagens{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            Personagem();
+            Personagem(pair<int,int>p, pair<int, int>d);
             ~Personagem();
             void salvar();
 

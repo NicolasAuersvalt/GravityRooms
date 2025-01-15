@@ -9,7 +9,8 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens{
 
 
-    Inimigo::Inimigo()
+    Inimigo::Inimigo():
+    Personagem(make_pair(-1, -1), make_pair(-1, -1))
     {
         
     }

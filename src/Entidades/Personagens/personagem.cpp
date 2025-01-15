@@ -11,8 +11,8 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens{
 
-    Personagem::Personagem():
-    Entidade(make_pair(0, 0), make_pair(0, 0))
+    Personagem::Personagem(pair<int,int>p, pair<int, int>d):
+    Entidade(p, d)
     {
         
     }

@@ -8,6 +8,8 @@
  
 #include <sstream> // Para o ostringstream
 
+class Gerenciador_Grafico;
+
 namespace Entidades{
 
     class Entidade : public Ente{

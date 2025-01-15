@@ -2,12 +2,14 @@
 
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
+Gerenciadores::Gerenciador_Grafico* Ente::pGG = nullptr;
+
 
 // Construtor
 Ente::Ente() :
 pFig(nullptr), id(-1)
 {
-
+    cout << "CONSTRUTOR" << endl;
 }
 
 // Destrutor
@@ -18,7 +20,9 @@ Ente::~Ente(){
 }
 void Ente::desenhar(){
 
-
+    cout << "Desenhar" << endl;
+    pGG->desenharEnte(this);
+    
 }
 
 void Ente::setSprite(std::string local, int posX, int posY, int width, int height) {
@@ -32,6 +36,9 @@ void Ente::setSprite(std::string local, int posX, int posY, int width, int heigh
 
 sf::Texture* Ente::getFig() {
         return pFig;
+}
+void Ente::setGerenciador(Gerenciadores::Gerenciador_Grafico* gg) {
+    pGG = gg;
 }
 
 

@@ -6,8 +6,9 @@
 #include "Gerenciadores/gerenciador_grafico.h"
 
 using namespace std;
+using Gerenciadores::Gerenciador_Grafico;
 
-class GerenciadorGrafico;
+class Gerenciador_Grafico;
 
 class Ente{
 
@@ -23,7 +24,7 @@ class Ente{
 
         // ===/===/===/===/ Obrigatório ===/===/===/===/
         int id;
-        static GerenciadorGrafico *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
+        static Gerenciador_Grafico *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
         
 
         // ===/===/===/===/ Outros  ===/===/===/===/
@@ -46,6 +47,7 @@ class Ente{
 
         void setSprite(std::string local, int posX, int posY, int width, int height);
         sf::Texture* getFig(); // retorna o endereço da textura do protected sf::Texture *pFig
+        static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
         
 
 };
