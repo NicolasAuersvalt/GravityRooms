@@ -7,7 +7,7 @@ Gerenciadores::Gerenciador_Grafico* Ente::pGG = nullptr;
 
 // Construtor
 Ente::Ente() :
-pFig(nullptr), id(-1)
+texture(nullptr), id(-1)
 {
     cout << "CONSTRUTOR" << endl;
 }
@@ -15,7 +15,7 @@ pFig(nullptr), id(-1)
 // Destrutor
 Ente::~Ente(){
 
-    pFig = nullptr;
+    texture = nullptr;
 
 }
 void Ente::desenhar(){
@@ -26,17 +26,26 @@ void Ente::desenhar(){
 }
 
 void Ente::setSprite(std::string local, int posX, int posY, int width, int height) {
-        if (!pFig) {
-            pFig = new sf::Texture(); // Aloca memória para o ponteiro, se necessário
+        if (!texture) {
+            texture = new sf::Texture();
         }
-        if (!pFig->loadFromFile(local, sf::IntRect(posX, posY, width, height))) {
+        if (!texture->loadFromFile(local, sf::IntRect(posX, posY, width, height))) {
             std::cerr << "Erro ao carregar a textura: " << local << std::endl;
+        } else {
+            sprite.setTexture(*texture);  // Associa a textura ao sprite
         }
     }
 
-sf::Texture* Ente::getFig() {
-        return pFig;
-}
+  // Retorna o ponteiro da textura
+sf::Texture* Ente::getTexture() {
+        return texture;
+    }
+
+    // Retorna uma cópia do sprite
+sf::Sprite Ente::getSprite() {
+        return sprite;
+    }
+
 void Ente::setGerenciador(Gerenciadores::Gerenciador_Grafico* gg) {
     pGG = gg;
 }

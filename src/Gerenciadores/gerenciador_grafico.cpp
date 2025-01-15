@@ -1,4 +1,5 @@
 #include "Gerenciadores/gerenciador_grafico.h"
+#include "Ente.h" // Substitua pelo caminho correto, se necessário
 
 namespace Gerenciadores {
 
@@ -25,46 +26,55 @@ namespace Gerenciadores {
         return grafico;
     }
 
-    // Inicializador de janela
-    void Gerenciador_Grafico::inicializador() {
-        // Corrigido para criar a janela corretamente
-        window.create(sf::VideoMode(width, height), nomeJanela);
-
-        // Definir framerate para 60fps
-        window.setFramerateLimit(fps);
-
-        sf::Event event; // Declarar evento fora do loop
-
-        // Loop principal de renderização
-        while (window.isOpen()) {
-            while (window.pollEvent(event)) {
-                // "close requested" event: fecha a janela
-                if (event.type == sf::Event::Closed) {
-                    shutdown();
-                }
-            }
-            
-            // Desenha o jogador na tela
-            window.clear(sf::Color::Black);  // Limpa a tela com a cor preta
-            // window.draw(jogador);  // Desenha o objeto jogador
-            window.display();  // Exibe o que foi desenhado
-        }
+   void Gerenciador_Grafico::inicializador() {
+    // Cria a janela corretamente
+    window.create(sf::VideoMode(width, height), nomeJanela);
+    // Define o framerate para 60fps
+    window.setFramerateLimit(fps);
     }
+
+
+
+    void Gerenciador_Grafico::executar() {
+    sf::Event event;
+    // Loop principal de renderização
+    while (window.isOpen()) {
+        // Processa todos os eventos enquanto a janela estiver aberta
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                shutdown();  // Fecha a janela se o evento for de fechamento
+            }
+        }
+
+        window.clear(sf::Color::Black);  // Limpa a tela
+
+        // Desenha o jogador (ou outros objetos) aqui
+        // Você pode chamar Gerenciador_Grafico::desenharEnte(pJog1) ou outros
+        // Exemplificando:
+        window.display();  // Exibe a tela com o conteúdo desenhado
+    }
+}
+
+
 
     // Fechar a janela
     void Gerenciador_Grafico::shutdown() {
         window.close();
     }
 
-    // Desenhar um ente (entidade)
     void Gerenciador_Grafico::desenharEnte(Ente* pE) {
-        if (pE) {
-            // Lógica para desenhar o ente, implementar conforme necessário
-            // Exemplo: pE->desenharNaTela(window);
+    if (pE && window.isOpen()) {  // Verifica se o ente e a janela são válidos
+        // Obtém uma cópia do sprite do ente
+        sf::Sprite sprite = pE->getSprite();
 
-            
-        }
+        // Agora você pode desenhar o sprite usando o método draw da janela
+        window.draw(sprite);
+    } else {
+        throw std::runtime_error("Erro: Ente ou janela inválida!");
     }
+    }
+
+
 
     // Adicionar objetos (vazio por enquanto)
     void Gerenciador_Grafico::adicionarObjetos(/*Alguma coisa*/) {

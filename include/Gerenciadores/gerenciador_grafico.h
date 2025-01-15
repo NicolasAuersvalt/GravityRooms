@@ -55,6 +55,8 @@ namespace Gerenciadores {
         // Desenhar todos os objetos
         void desenhar();
 
+        void executar();
+
         // Atualizar a janela
         void atualizar();
 

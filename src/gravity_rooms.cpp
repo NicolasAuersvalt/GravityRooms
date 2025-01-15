@@ -24,8 +24,14 @@ Gravity_Rooms::~Gravity_Rooms(){
 }
 
 void Gravity_Rooms::executar(){
-    pJog1.setSprite("assets/tripulanteG.png", 0, 0, 0, 0);
-    pJog1.desenhar();
+
+    pJog1.setSprite("assets/tripulanteG.png", 50, 50, 20, 20);
+
+    while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
+        GG.executar();  // Atualiza a janela e lida com os eventos
+        pJog1.desenhar();
+    }
+
 }
 
 
