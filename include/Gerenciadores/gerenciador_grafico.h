@@ -15,6 +15,7 @@ namespace Gerenciadores {
 
     class Gerenciador_Grafico {
     private:
+    
         static Gerenciador_Grafico* grafico;  // Instância única
 
         string nomeJanela = "GravityRooms"; // Nome da janela

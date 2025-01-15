@@ -33,9 +33,6 @@ namespace Gerenciadores {
         // Definir framerate para 60fps
         window.setFramerateLimit(fps);
 
-        // Define o Jogador
-        sf::RectangleShape jogador(sf::Vector2f(50.0f, 50.0f));  // Jogador com tamanho 50x50
-
         sf::Event event; // Declarar evento fora do loop
 
         // Loop principal de renderização
@@ -49,7 +46,7 @@ namespace Gerenciadores {
             
             // Desenha o jogador na tela
             window.clear(sf::Color::Black);  // Limpa a tela com a cor preta
-            window.draw(jogador);  // Desenha o objeto jogador
+            // window.draw(jogador);  // Desenha o objeto jogador
             window.display();  // Exibe o que foi desenhado
         }
     }

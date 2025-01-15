@@ -32,7 +32,7 @@ SFML 2.5.1 (Audio, Graphics, Network, System, Window)
 
 No Ubuntu ou outras distribuições baseadas no Debian, você pode instalar esses pacotes com:
 
-    sudo apt update 
+    sudo apt update && sudo apt install -y libsfml-dev
     sudo apt install build-essential cmake
 
 Se ainda não tiver o repositório, clone-o usando:

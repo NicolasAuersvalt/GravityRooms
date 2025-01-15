@@ -1,35 +1,33 @@
 #include "ente.h"
-//#include "gerenciador_grafico.h"
-
-#include <iostream>
-
-using namespace std;
-
 
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 
 // Construtor
 Ente::Ente() 
-: pFig(), id(-1) // id (-1) pois não fará sentido id negativo no jogo
+: pFig(nullptr), id(-1) // id (-1) pois não fará sentido id negativo no jogo
 {
-    
-    if(pFig){
-        // Desenha a entidade na tela;
-        desenhar();
-    }
+
 }
 
 // Destrutor
 Ente::~Ente(){
+
     pFig = NULL;
 
 }
 
-void Ente::desenhar(){
-    //Gerenciadores::Gerenciador_Grafico::desenharEnte(this);
-
+void Ente::setSprite(std::string local) {
+    if (!pFig) {
+        pFig = new sf::Texture(); // Aloca memória para o ponteiro, se necessário
+    }
+    if (!pFig->loadFromFile(local)) {
+        std::cerr << "Erro ao carregar a textura: " << local << std::endl;
+    }
 }
 
+sf::Texture* Ente::getFig() {
+        return pFig;
+}
 
     // ===/===/===/===/ Outros  ===/===/===/===/
