@@ -10,7 +10,8 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens{
 
 
-    Jogador::Jogador()
+    Jogador::Jogador():
+    Personagem()
     {
         
     }
@@ -22,7 +23,5 @@ namespace Entidades::Personagens{
     void Jogador::executar(){
 
     }
-    void Jogador::mover(){
-        
-    }
+    
 }  

@@ -5,9 +5,7 @@
 #include"Entidades/Personagens/jogador.h"
 #include"Gerenciadores/gerenciador_grafico.h"
 
-class Lista;
-class Jogador;
-class Gerenciador_Grafico;
+using Entidades::Personagens::Jogador;
 
 
 class Gravity_Rooms{
@@ -16,11 +14,13 @@ class Gravity_Rooms{
 
         // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        //Jogador pJog1;
-        //Gerenciador_Grafico GG;
+        Jogador pJog1;
+        Gerenciador_Grafico GG;
+
                 
 
         // ===/===/===/===/ Outros  ===/===/===/===/
+
 
     protected:
 

@@ -10,9 +10,10 @@ using namespace std;
 
 
 // Construtor
-Gravity_Rooms::Gravity_Rooms() 
+Gravity_Rooms::Gravity_Rooms():
+GG(), pJog1()
 {
-
+    executar();
 }
 
 // Destrutor
@@ -21,7 +22,8 @@ Gravity_Rooms::~Gravity_Rooms(){
 }
 
 void Gravity_Rooms::executar(){
-
+    pJog1.setSprite("assets\tripulanteG.png", 0, 0, 0, 0);
+    pJog1.desenhar();
 }
 
 

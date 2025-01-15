@@ -21,9 +21,7 @@ namespace Entidades::Personagens{
     void Clone::executar(){
 
     }
-    void Clone::mover(){
-        
-    }
+    
     void Clone::danificar(Jogador* p){
 
     }

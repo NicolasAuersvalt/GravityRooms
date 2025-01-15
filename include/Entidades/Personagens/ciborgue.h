@@ -32,7 +32,6 @@ namespace Entidades::Personagens{
             Ciborgue();
             ~Ciborgue();
             void executar() override;
-            void mover() override;
             void danificar(Jogador* p);
             
 

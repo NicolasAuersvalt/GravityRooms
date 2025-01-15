@@ -11,7 +11,8 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens{
 
-    Personagem::Personagem()
+    Personagem::Personagem():
+    Entidade(make_pair(0, 0), make_pair(0, 0))
     {
         
     }
@@ -20,7 +21,8 @@ namespace Entidades::Personagens{
 
 
     }
-    void Personagem::salvarDataBuffer(){
+    void Personagem::salvar(){
+
 
     }
 }

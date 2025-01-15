@@ -21,9 +21,7 @@ namespace Entidades::Personagens{
     void Androide::executar(){
 
     }
-    void Androide::mover(){
-        
-    }
+    
     void Androide::danificar(Jogador* p){
 
     }

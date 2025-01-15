@@ -9,7 +9,8 @@ using namespace Entidades;
 namespace Entidades{
 
 
-    Projetil::Projetil()
+    Projetil::Projetil() :
+    Entidade(make_pair(0, 0), make_pair(0, 0))
     {
         
     }

@@ -21,9 +21,6 @@ namespace Entidades::Personagens{
     void Inimigo::executar(){
 
     }
-    void Inimigo::mover(){
-        
-    }
     void Inimigo::salvarDataBuffer(){
 
 

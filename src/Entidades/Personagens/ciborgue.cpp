@@ -22,9 +22,7 @@ namespace Entidades::Personagens{
     void Ciborgue::executar(){
 
     }
-    void Ciborgue::mover(){
-        
-    }
+   
     
     void Ciborgue::danificar(Jogador* p){
         

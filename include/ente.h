@@ -38,12 +38,14 @@ class Ente{
 
         Ente();
         ~Ente();
-        virtual void executar() = 0; // Pois é abstrata
 
-        virtual void desenhar() = 0; // Possui o endereço do gerenciador gráfico em protected, mas só UTILIZA o gerenciador
-        sf::Texture* getFig(); // retorna o endereço da textura do protected sf::Texture *pFig
-        void setSprite(std::string local);
+        virtual void executar() = 0; // Pois é abstrata
+        void desenhar(); // Possui o endereço do gerenciador gráfico em protected, mas só UTILIZA o gerenciador
+
         // ===/===/===/===/ Outros  ===/===/===/===/
+
+        void setSprite(std::string local, int posX, int posY, int width, int height);
+        sf::Texture* getFig(); // retorna o endereço da textura do protected sf::Texture *pFig
         
 
 };

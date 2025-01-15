@@ -5,7 +5,7 @@
 
 namespace Entidades::Personagens{
 
-    class Jogador : protected Personagem{
+    class Jogador : public Personagem{
 
         private:
 
@@ -31,9 +31,8 @@ namespace Entidades::Personagens{
 
             Jogador();
             ~Jogador();
-            void executar() override;
-            void mover() override;
-            
+            void executar() override;  
+  
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

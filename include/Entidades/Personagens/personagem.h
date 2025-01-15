@@ -1,9 +1,11 @@
 #ifndef PERSONAGEM_H
 #define PERSONAGEM_H
 
+#include "Entidades/entidade.h"
+
 namespace Entidades::Personagens{
 
-    class Personagem{
+    class Personagem : public Entidade{
 
         private:
 
@@ -30,9 +32,14 @@ namespace Entidades::Personagens{
 
             Personagem();
             ~Personagem();
-            void salvarDataBuffer();
-            virtual void mover() = 0;
+            void salvar();
+
+            // Métodos Virtuais
             virtual void executar() = 0;
+            virtual void salvarDataBuffer(){
+
+
+            }
             
 
             // ===/===/===/===/ Outros  ===/===/===/===/

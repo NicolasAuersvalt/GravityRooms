@@ -7,7 +7,7 @@ class Jogador;
 
 namespace Entidades::Personagens{
 
-    class Inimigo : protected Personagem{
+    class Inimigo : public Personagem{
 
         private:
 
@@ -37,7 +37,6 @@ namespace Entidades::Personagens{
             virtual void danificar(Jogador* p) = 0;
 
             virtual void executar() override;
-            virtual void mover() override;
             
 
             // ===/===/===/===/ Outros  ===/===/===/===/

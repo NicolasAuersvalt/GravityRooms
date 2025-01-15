@@ -1,5 +1,5 @@
 //#include "jogo.h"
-#include "Gerenciadores/gerenciador_grafico.h"
+#include "gravity_rooms.h"
 
 int main(){
 
@@ -8,8 +8,9 @@ int main(){
     //Jogo GravityRooms;
 
     // ===/===/===/===/ Outros ===/===/===/===/
+    Gravity_Rooms gravityrooms;
 
-    Gerenciador_Grafico graficos;
+    // Gerenciador_Grafico graficos;
 
     return 0;
 }
