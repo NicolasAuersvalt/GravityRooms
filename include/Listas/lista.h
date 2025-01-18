@@ -19,7 +19,7 @@ namespace Listas{
                     // ===/===/===/===/ Obrigatório ===/===/===/===/
 
                     Elemento<TE>* pProx;  // Ponteiro para o próximo elemento
-                    TE* pinfo;  // Ponteiro para o tipo de dado
+                    TE* pInfo;  // Ponteiro para o tipo de dado
 
                     // ===/===/===/===/ Outros  ===/===/===/===/
 

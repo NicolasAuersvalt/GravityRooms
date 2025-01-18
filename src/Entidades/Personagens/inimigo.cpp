@@ -1,4 +1,4 @@
-#include "Entidades/Personagens/Inimigo.h"
+#include "Entidades/Personagens/inimigo.h"
 
 #include <iostream>
 

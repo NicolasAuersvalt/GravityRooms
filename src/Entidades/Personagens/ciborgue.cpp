@@ -1,4 +1,4 @@
-#include "Entidades/Personagens/Ciborgue.h"
+#include "Entidades/Personagens/ciborgue.h"
 //#include "gerenciador_grafico.h"
 
 #include <iostream>

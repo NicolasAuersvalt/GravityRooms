@@ -1,4 +1,4 @@
-#include "Entidades/Personagens/Clone.h"
+#include "Entidades/Personagens/clone.h"
 
 #include <iostream>
 

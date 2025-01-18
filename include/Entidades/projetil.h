@@ -1,7 +1,7 @@
 #ifndef PROJETIL_H
 #define PROJETIL_H
 
-#include "Entidades/Entidade.h"
+#include "Entidades/entidade.h"
 
 namespace Entidades{
 
