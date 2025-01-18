@@ -15,7 +15,7 @@ namespace Listas{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // Lista<Entidade> LEs;
+            Lista<Entidade> LEs;
                     
 
             // ===/===/===/===/ Outros  ===/===/===/===/

@@ -1,4 +1,4 @@
-#ifndef ELEMENTO_H
+/*#ifndef ELEMENTO_H
 #define ELEMENTO_H
 
 #include "Listas/lista.h"
@@ -45,3 +45,4 @@ namespace Listas {  // Mantendo dentro do namespace Listas
 }
 
 #endif
+*/

@@ -1,4 +1,4 @@
-#include "Listas/lista.h"
+/*#include "Listas/lista.h"
 
 #include <iostream>
 
@@ -86,3 +86,4 @@ const typename Lista<TL>::template Elemento<TE>* Lista<TL>::Elemento<TE>::getPro
 }
 
 } // namespace Listas
+*/

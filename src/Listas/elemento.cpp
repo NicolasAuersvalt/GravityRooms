@@ -1,4 +1,4 @@
-// elemento.cpp
+/*// elemento.cpp
 #include "Listas/elemento.h"
 #include <iostream>
 
@@ -31,3 +31,4 @@ namespace Listas {
 
 } 
 
+*/
