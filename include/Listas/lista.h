@@ -1,9 +1,6 @@
 #ifndef LISTA_H
 #define LISTA_H
 
-#include "Listas/elemento.h"
-
-class Elemento;
 
 namespace Listas{
 
@@ -13,26 +10,40 @@ namespace Listas{
 
         private:
 
-            // Elemento<TL>* pPrimeiro;
-            // Elemento<TL>* pUltimo;
+            template <typename TE>
 
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
+            class Elemento { // Classe aninhada
 
-            
+                private:
 
-        // ===/===/===/===/ Outros  ===/===/===/===/
+                    // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        protected:
+                    Elemento<TE>* pProx;  // Ponteiro para o próximo elemento
+                    TE* pinfo;  // Ponteiro para o tipo de dado
 
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
+                    // ===/===/===/===/ Outros  ===/===/===/===/
 
-                
 
-        // ===/===/===/===/ Outros  ===/===/===/===/
+                public:
+
+                    // ===/===/===/===/ Obrigatório ===/===/===/===/
+
+                    Elemento();  // Construtor
+                    ~Elemento();  // Destruidor
+
+                    void incluir(TE* p);
+                    void setProx(Elemento<TE>* pE);
+                    const Elemento<TE>* getProximo() const;
+
+
+            };
+
+            Elemento<TL>* pPrimeiro;
+            Elemento<TL>* pUltimo;
+
 
         public:
 
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
             Lista();
             ~Lista();
 
