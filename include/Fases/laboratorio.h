@@ -1,7 +1,7 @@
 #ifndef LABORATORIO_H
 #define LABORATORIO_H
 
-#include "Fases/fase.h"
+#include "Fases/Fase.h"
 
 class Fase;
 

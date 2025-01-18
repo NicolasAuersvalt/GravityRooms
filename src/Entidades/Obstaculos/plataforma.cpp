@@ -1,4 +1,4 @@
-#include "Entidades/Obstaculos/plataforma.h"
+#include "Entidades/Obstaculos/Plataforma.h"
 
 #include <iostream>
 

@@ -1,4 +1,4 @@
-#include "Entidades/Obstaculos/obstaculo.h"
+#include "Entidades/Obstaculos/Obstaculo.h"
 //#include "gerenciador_grafico.h"
 
 #include <iostream>

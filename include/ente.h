@@ -3,7 +3,7 @@
 
 #include<iostream>
 #include <SFML/Graphics.hpp>
-#include "Gerenciadores/gerenciador_grafico.h"
+#include "Gerenciadores/Gerenciador_grafico.h"
 
 using namespace std;
 using Gerenciadores::Gerenciador_Grafico;

@@ -1,7 +1,7 @@
 /*#ifndef ELEMENTO_H
 #define ELEMENTO_H
 
-#include "Listas/lista.h"
+#include "Listas/Lista.h"
 
 namespace Listas {  // Mantendo dentro do namespace Listas
 

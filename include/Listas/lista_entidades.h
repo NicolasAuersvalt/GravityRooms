@@ -1,8 +1,8 @@
 #ifndef LISTA_ENTIDADES_H
 #define LISTA_ENTIDADES_H
 
-#include"Listas/lista.h"
-#include"Entidades/entidade.h"
+#include"Listas/Lista.h"
+#include"Entidades/Entidade.h"
 
 class Lista;
 class Entidade;
