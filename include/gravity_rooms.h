@@ -21,7 +21,8 @@ class Gravity_Rooms{
                 
 
         // ===/===/===/===/ Outros  ===/===/===/===/
-        // Lista_Entidades LJog1;
+        Lista_Entidades LJog1;
+        sf::Sprite backgroundSprite;
 
 
     protected:

@@ -31,23 +31,25 @@ namespace Gerenciadores {
     window.create(sf::VideoMode(width, height), nomeJanela);
     // Define o framerate para 60fps
     window.setFramerateLimit(fps);
+
+    
 }
 
     void Gerenciador_Grafico::executar() {
-    sf::Event event;
-    
-    while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                shutdown();
-        }
+        sf::Event event;
         
-        
-        window.clear(sf::Color::Black);  // Limpa a tela
+        while (window.pollEvent(event)) {
+                if (event.type == sf::Event::Closed) {
+                    shutdown();
+            }
+            
+            
+            window.clear(sf::Color::Black);  // Limpa a tela
 
-        // Chame a função de desenho para desenhar os entes
-        // Aqui você pode desenhar o jogador ou outros objetos
-        window.display();  // Exibe a tela atualizada
-    }
+            // Chame a função de desenho para desenhar os entes
+            // Aqui você pode desenhar o jogador ou outros objetos
+            window.display();  // Exibe a tela atualizada
+        }
 }
 
 
@@ -57,48 +59,58 @@ namespace Gerenciadores {
     }
 
     void Gerenciador_Grafico::desenharEnte(Ente* pE) {
-    if (!pE) {
-        std::cerr << "Erro: Ponteiro para Ente é nulo!" << std::endl;
-        return;
-    }
-
-    if (!window.isOpen()) {
-        std::cerr << "Erro: A janela não está aberta!" << std::endl;
-        return;
-    }
-
-    // Obtém o sprite do Ente
-    sf::Sprite sprite = pE->getSprite();
-
-    // Obtém a textura associada ao sprite
-    const sf::Texture* texture = pE->getTexture();
-    if (!texture) {
-        std::cerr << "Erro: Ente não possui uma textura carregada!" << std::endl;
-
-        // Teste: Tenta carregar uma textura padrão
-        static sf::Texture texturaPadrao;
-        if (!texturaPadrao.loadFromFile("textura_padrao.png")) {
-            std::cerr << "Erro: Não foi possível carregar a textura padrão!" << std::endl;
+        if (!pE) {
+            std::cerr << "Erro: Ponteiro para Ente é nulo!" << std::endl;
             return;
         }
 
-        // Associa a textura padrão ao sprite
-        sprite.setTexture(texturaPadrao);
-        std::cerr << "A textura padrão foi aplicada ao sprite do Ente." << std::endl;
+        if (!window.isOpen()) {
+            std::cerr << "Erro: A janela não está aberta!" << std::endl;
+            return;
+        }
+
+        // Obtém o sprite do Ente
+        sf::Sprite sprite = pE->getSprite();
+
+        // Obtém a textura associada ao sprite
+        const sf::Texture* texture = pE->getTexture();
+        if (!texture) {
+            std::cerr << "Erro: Ente não possui uma textura carregada!" << std::endl;
+
+            // Teste: Tenta carregar uma textura padrão
+            static sf::Texture texturaPadrao;
+            if (!texturaPadrao.loadFromFile("textura_padrao.png")) {
+                std::cerr << "Erro: Não foi possível carregar a textura padrão!" << std::endl;
+                return;
+            }
+
+            // Associa a textura padrão ao sprite
+            sprite.setTexture(texturaPadrao);
+            std::cerr << "A textura padrão foi aplicada ao sprite do Ente." << std::endl;
+        }
+
+        // Desenha o sprite do Ente na janela
+        try {
+            window.draw(sprite);
+            //std::cout << "Sprite do Ente desenhado com sucesso!" << std::endl;
+        } catch (const std::exception& e) {
+            std::cerr << "Erro ao desenhar o sprite do Ente: " << e.what() << std::endl;
+        }
     }
 
-    // Desenha o sprite do Ente na janela
-    try {
-        window.draw(sprite);
-        std::cout << "Sprite do Ente desenhado com sucesso!" << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << "Erro ao desenhar o sprite do Ente: " << e.what() << std::endl;
+    
+
+    void Gerenciador_Grafico::fechar(){
+        window.close();
     }
-}
 
+    void Gerenciador_Grafico::limpar(){
+        window.clear();
+    }
 
-
-
+    void Gerenciador_Grafico::exibir(){
+        window.display();
+    }
 
 
     // Adicionar objetos (vazio por enquanto)
@@ -107,11 +119,18 @@ namespace Gerenciadores {
     }
 
     // Desenhar todos os objetos na tela
-    void Gerenciador_Grafico::desenhar() {
-        window.clear(sf::Color::Black);  // Limpa a tela com a cor preta
-        // Lógica para desenhar objetos na tela
-        window.display();  // Exibe o conteúdo na tela
-    }
+    void Gerenciador_Grafico::desenhar(sf::Sprite& sprite) {
+            window.clear();  // Limpa a tela
+
+            // Desenha o fundo (ou qualquer sprite que seja passado)
+            window.draw(sprite);
+
+            // Aqui você pode adicionar outros objetos a serem desenhados
+            // Como o jogador, inimigos, etc.
+            // window.draw(jogadorSprite);  // Exemplo de adicionar outro sprite
+
+            window.display();  // Exibe os objetos na tela
+        }
 
     // Atualizar a janela (captura eventos)
     void Gerenciador_Grafico::atualizar() {

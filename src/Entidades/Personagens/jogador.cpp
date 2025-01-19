@@ -23,5 +23,8 @@ namespace Entidades::Personagens{
     void Jogador::executar(){
 
     }
+
+    
+
     
 }  

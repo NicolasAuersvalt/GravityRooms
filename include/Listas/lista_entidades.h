@@ -4,45 +4,51 @@
 #include"Listas/Lista.h"
 #include"Entidades/Entidade.h"
 
-class Lista;
-class Entidade;
+#include <iostream>
+using namespace std;
 
-namespace Listas{
+using namespace Entidades;
 
-    class Lista_Entidades{
+namespace Listas {
 
-        private:
+    class Lista_Entidades {
+    private:
+        Lista<Entidade>* LEs;  // Lista de Entidades
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+    public:
+        // Construtor
+        Lista_Entidades() {
+            //cout << "Construtor de Lista_Entidades" << endl;
+            LEs = new Lista<Entidade>();
+        }
 
-            Lista<Entidade> LEs;
-                    
+        // Destruidor
+        ~Lista_Entidades() {
+            delete LEs;
+        }
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+        // Incluir uma Entidade na lista
+        void incluir(Entidade* pE) {
+            LEs->incluir(pE);
+        }
 
-        protected:
+        // Percorrer todos os elementos da lista e desenhar cada um
+        void desenharTodos() {
+            //cout << "Desenhando todos os elementos..." << endl;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
+            LEs->percorrerLista([](Entidade* entidade) {
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-
-        public:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-            Lista_Entidades();
-            ~Lista_Entidades();
-            void incluir(Entidade* pE);
-            void percorrer();
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
-
+                entidade->desenhar();  // Chama o método desenhar() de cada Entidade
+                
+            });
+        }
+        void atualizarTodas() {
+            LEs->percorrerLista([](Entidade* entidade) {
+                entidade->atualizar();  // Chama o método atualizar() de cada Entidade
+        });
+}
     };
 
 }
 
-#endif
+#endif // LISTA_ENTIDADES_H

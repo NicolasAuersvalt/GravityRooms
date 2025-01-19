@@ -2,6 +2,7 @@
 #define JOGADOR_H
 
 #include "Entidades/Personagens/personagem.h"
+#include "ente.h"
 
 namespace Entidades::Personagens{
 
@@ -32,6 +33,7 @@ namespace Entidades::Personagens{
             Jogador();
             ~Jogador();
             void executar() override;  
+            
   
 
             // ===/===/===/===/ Outros  ===/===/===/===/

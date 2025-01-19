@@ -3,64 +3,112 @@
 #include <SFML/System.hpp>
 #include <vector>
 
-class Platform {
+class Entidade {
 public:
-    sf::RectangleShape shape;
-    
-    Platform(float x, float y, float width, float height) {
-        shape.setPosition(x, y);
-        shape.setSize(sf::Vector2f(width, height));
-        shape.setFillColor(sf::Color::Green);
+    virtual void atualizar(float deltaTempo) = 0;
+    virtual void desenhar(sf::RenderWindow& janela) = 0;
+};
+
+class Plataforma : public Entidade {
+public:
+    sf::RectangleShape forma;
+
+    Plataforma(float x, float y, float largura, float altura) {
+        forma.setPosition(x, y);
+        forma.setSize(sf::Vector2f(largura, altura));
+        forma.setFillColor(sf::Color::Green);
+    }
+
+    void atualizar(float deltaTempo) override {}
+
+    void desenhar(sf::RenderWindow& janela) override {
+        janela.draw(forma);
     }
 };
 
-class Player {
+class Jogador : public Entidade {
 public:
-    sf::RectangleShape shape;
-    float velocityY;
-    bool onGround;
+    sf::RectangleShape forma;
+    float velocidadeY;
+    bool noChao;
 
-    Player() {
-        shape.setSize(sf::Vector2f(50.f, 50.f));
-        shape.setFillColor(sf::Color::Red);
-        shape.setPosition(200.f, 200.f);
-        velocityY = 0.f;
-        onGround = false;
+    Jogador() {
+        forma.setSize(sf::Vector2f(50.f, 50.f));
+        forma.setFillColor(sf::Color::Red);
+        forma.setPosition(200.f, 200.f);
+        velocidadeY = 0.f;
+        noChao = false;
     }
 
-    void update(std::vector<Platform>& platforms, float deltaTime) {
+    void atualizar(float deltaTempo) override {
         // Gravidade
-        if (!onGround) {
-            velocityY += 9.8f * deltaTime;
+        if (!noChao) {
+            velocidadeY += 9.8f * deltaTempo;
         } else {
-            velocityY = 0.f;
+            velocidadeY = 0.f;
         }
 
         // Movimentação
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            shape.move(-200.f * deltaTime, 0.f);
+            forma.move(-200.f * deltaTempo, 0.f);
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            shape.move(200.f * deltaTime, 0.f);
+            forma.move(200.f * deltaTempo, 0.f);
         }
 
         // Pulo
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && onGround) {
-            velocityY = -500.f;  // Força do pulo
-            onGround = false;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && noChao) {
+            velocidadeY = -500.f;
+            noChao = false;
         }
 
         // Atualizar a posição com base na gravidade
-        shape.move(0.f, velocityY * deltaTime);
+        forma.move(0.f, velocidadeY * deltaTempo);
+    }
 
-        // Verificar colisões com plataformas
-        onGround = false;
-        for (auto& platform : platforms) {
-            if (shape.getGlobalBounds().intersects(platform.shape.getGlobalBounds())) {
+    void desenhar(sf::RenderWindow& janela) override {
+        janela.draw(forma);
+    }
+};
+
+class GerenciadorEntidades {
+public:
+    std::vector<Entidade*> entidades;
+
+    ~GerenciadorEntidades() {
+        for (auto* entidade : entidades) {
+            delete entidade;
+        }
+    }
+
+    void adicionarEntidade(Entidade* entidade) {
+        entidades.push_back(entidade);
+    }
+
+    void atualizarTodas(float deltaTempo) {
+        for (auto* entidade : entidades) {
+            entidade->atualizar(deltaTempo);
+        }
+    }
+
+    void desenharTodas(sf::RenderWindow& janela) {
+        for (auto* entidade : entidades) {
+            entidade->desenhar(janela);
+        }
+    }
+};
+
+class GerenciadorColisoes {
+public:
+    void verificarColisoes(Jogador& jogador, const std::vector<Entidade*>& entidades) {
+        jogador.noChao = false;
+        for (auto* entidade : entidades) {
+            Plataforma* plataforma = dynamic_cast<Plataforma*>(entidade);
+            if (plataforma && jogador.forma.getGlobalBounds().intersects(plataforma->forma.getGlobalBounds())) {
                 // Colisão detectada
-                if (velocityY > 0) {  // Apenas se o jogador está caindo
-                    shape.setPosition(shape.getPosition().x, platform.shape.getPosition().y - shape.getSize().y);
-                    onGround = true;
+                if (jogador.velocidadeY > 0) { // Apenas se o jogador está caindo
+                    jogador.forma.setPosition(jogador.forma.getPosition().x, plataforma->forma.getPosition().y - jogador.forma.getSize().y);
+                    jogador.noChao = true;
                     break;
                 }
             }
@@ -68,43 +116,65 @@ public:
     }
 };
 
+class GerenciadorGraficos {
+public:
+    sf::RenderWindow janela;
+
+    GerenciadorGraficos() : janela(sf::VideoMode(800, 600), "Jogo de Quadrado que Pula") {
+        janela.setFramerateLimit(60);
+    }
+
+    void limpar() {
+        janela.clear(sf::Color::Cyan);
+    }
+
+    void exibir() {
+        janela.display();
+    }
+
+    bool estaAberta() const {
+        return janela.isOpen();
+    }
+
+    bool processarEvento(sf::Event& evento) {
+        return janela.pollEvent(evento);
+    }
+
+    void fechar() {
+        janela.close();
+    }
+};
+
 int main() {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Jogo de Quadrado que Pula");
-    window.setFramerateLimit(60);
+    GerenciadorGraficos gerenciadorGraficos;
+    GerenciadorEntidades gerenciadorEntidades;
+    GerenciadorColisoes gerenciadorColisoes;
 
-    Player player;
-    std::vector<Platform> platforms;
-    platforms.push_back(Platform(100.f, 500.f, 600.f, 20.f));  // Plataforma base
-    platforms.push_back(Platform(200.f, 350.f, 200.f, 20.f));  // Plataforma no meio
-    platforms.push_back(Platform(500.f, 250.f, 200.f, 20.f));  // Plataforma superior
+    Jogador* jogador = new Jogador();
+    gerenciadorEntidades.adicionarEntidade(jogador);
 
-    sf::Clock clock;
+    gerenciadorEntidades.adicionarEntidade(new Plataforma(100.f, 500.f, 600.f, 20.f));
+    gerenciadorEntidades.adicionarEntidade(new Plataforma(200.f, 350.f, 200.f, 20.f));
+    gerenciadorEntidades.adicionarEntidade(new Plataforma(500.f, 250.f, 200.f, 20.f));
 
-    while (window.isOpen()) {
-        sf::Time deltaTime = clock.restart();
+    sf::Clock relogio;
 
-        // Processar eventos
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window.close();
+    while (gerenciadorGraficos.estaAberta()) {
+        sf::Time deltaTempo = relogio.restart();
+
+        sf::Event evento;
+        while (gerenciadorGraficos.processarEvento(evento)) {
+            if (evento.type == sf::Event::Closed) {
+                gerenciadorGraficos.fechar();
             }
         }
 
-        // Atualizar o jogador
-        player.update(platforms, deltaTime.asSeconds());
+        gerenciadorEntidades.atualizarTodas(deltaTempo.asSeconds());
+        gerenciadorColisoes.verificarColisoes(*jogador, gerenciadorEntidades.entidades);
 
-        // Limpar a tela
-        window.clear(sf::Color::Cyan);
-
-        // Desenhar plataformas e jogador
-        for (auto& platform : platforms) {
-            window.draw(platform.shape);
-        }
-        window.draw(player.shape);
-
-        // Exibir tudo
-        window.display();
+        gerenciadorGraficos.limpar();
+        gerenciadorEntidades.desenharTodas(gerenciadorGraficos.janela);
+        gerenciadorGraficos.exibir();
     }
 
     return 0;

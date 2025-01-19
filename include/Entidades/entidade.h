@@ -46,6 +46,7 @@ namespace Entidades{
             virtual void executar() = 0;
             virtual void salvar() = 0;
             virtual void salvarDataBuffer(); // PODE SOBRESCREVER SE QUISER
+            void atualizar();
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

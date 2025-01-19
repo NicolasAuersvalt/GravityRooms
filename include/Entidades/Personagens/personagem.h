@@ -19,7 +19,8 @@ namespace Entidades::Personagens{
         protected:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+            float velocidadeY = 0.f;
+            float velocidadeX = 0.f;
             int num_vidas;
                     
 

@@ -46,9 +46,9 @@ class Ente{
 
         // ===/===/===/===/ Outros  ===/===/===/===/
 
-        void setSprite(std::string local, int posX, int posY, int width, int height);
+        void setSprite(std::string local, int posX, int posY);
         sf::Texture* getTexture(); // retorna o endereço da textura do protected sf::Texture *pFig
-        sf::Sprite getSprite(); // retorna o endereço da textura do protected sf::Texture *pFig
+        sf::Sprite& getSprite(); // retorna o endereço da textura do protected sf::Texture *pFig
         
         static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
         
