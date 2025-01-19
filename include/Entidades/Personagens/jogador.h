@@ -1,8 +1,7 @@
 #ifndef JOGADOR_H
 #define JOGADOR_H
 
-#include "Entidades/Personagens/personagem.h"
-#include "ente.h"
+#include "Entidades/Personagens/Personagem.h"
 
 namespace Entidades::Personagens{
 
@@ -33,11 +32,11 @@ namespace Entidades::Personagens{
             Jogador();
             ~Jogador();
             void executar() override;  
-            
   
 
             // ===/===/===/===/ Outros  ===/===/===/===/
-            
+
+            void mover() const;
 
     };
 

@@ -1,4 +1,4 @@
-#include "Fases/fase.h"
+#include "Fases/Fase.h"
 
 #include <iostream>
 

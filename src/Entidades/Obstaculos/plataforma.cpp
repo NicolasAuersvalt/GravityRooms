@@ -1,30 +1,45 @@
 #include "Entidades/Obstaculos/Plataforma.h"
 
-#include <iostream>
 
-using namespace std;
-using namespace Entidades::Obstaculos;
+namespace Entidades::Obstaculos
+{
 
-
-namespace Entidades::Obstaculos{
-
-
-    Plataforma::Plataforma()
+    Plataforma::Plataforma():Obstaculo(make_pair(-1, -1), make_pair(-1, -1))
     {
-        
     }
 
-    Plataforma::~Plataforma(){
-
-
+    Plataforma::~Plataforma()
+    {
     }
-    void Plataforma::executar(){
 
+    void Plataforma::executar()
+    {
+        // Implementation
+        mover();
+        desenhar();
     }
-    void Plataforma::mover(){
-        
-    }
-    void Plataforma::danificar(Jogador* p){
 
+    void Plataforma::mover() const
+    {
+        // Implementation
     }
-}  
+
+    // void Plataforma::mover()
+    // {
+    //     position.first += velocity.first;
+    //     position.second += velocity.second;
+    // }
+
+    // void Plataforma::desenhar(Gerenciador_Grafico pGG)
+    // {
+    // }
+    // void Plataforma::atualizar()
+    // {
+    //     // Add update implementation
+    // }
+
+    // void Plataforma::colisao(Entidade *outra)
+    // {
+    //     // Add collision implementation
+    // }
+}

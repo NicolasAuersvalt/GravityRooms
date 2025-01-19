@@ -32,8 +32,7 @@ namespace Entidades::Obstaculos{
             Espinho();
             ~Espinho();
             void executar() override;
-            void mover() override;
-            void danificar(Jogador* p);
+            void mover() const;
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

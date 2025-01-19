@@ -1,4 +1,4 @@
-#include "Entidades/entidade.h"
+#include "Entidades/Entidade.h"
 
 #include <iostream>
 
@@ -46,4 +46,12 @@ namespace Entidades{
         }
     }
 
+    }
+    
+    pair<int, int>  Entidade::getPosition(){
+        return pos;
+    }
+    pair<int, int>  Entidade::getDirection(){
+        return dim;
+    } 
 }  

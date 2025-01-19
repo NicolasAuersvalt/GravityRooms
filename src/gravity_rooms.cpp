@@ -4,6 +4,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 //#include "Listas/lista_entidades.cpp"
+#include "Gravity_rooms.h"
+#include "Ente.h"
 //#include "gerenciador_grafico.h"
 
 #include <iostream>
@@ -16,7 +18,7 @@ using namespace std;
 
 // Construtor
 Gravity_Rooms::Gravity_Rooms():
-GG(), pJog1(), LJog1()
+GG(), pJog1(), LJog1(), plataforma()
 {
     Ente::setGerenciador(&GG);
     
@@ -29,9 +31,12 @@ GG(), pJog1(), LJog1()
     backgroundSprite.setTexture(backgroundTexture);
     //backgroundSprite.setPosition(25, 25);
 
-    pJog1.setSprite("assets/tripulanteG.png", 25, 25);
+    pJog1.setSprite("assets/tripulanteG.png", 0, 0, 150, 150);
 
     LJog1.incluir(static_cast<Entidade*>(&pJog1));
+
+
+    plataforma.setSprite("assets/plataformaG.png", 0, 0, 499, 150);
 
     executar();
 }
@@ -45,6 +50,9 @@ void Gravity_Rooms::executar() {
     
     // setSprite(sstring local, int posX, int posY)
 
+void Gravity_Rooms::executar(){
+    
+    GG.executar(); 
     while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
         sf::Event evento;
         
@@ -72,6 +80,9 @@ void Gravity_Rooms::executar() {
     }
 }
 
+    }
+
+}
 
 
     // ===/===/===/===/ Outros  ===/===/===/===/

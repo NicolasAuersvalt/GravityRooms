@@ -1,5 +1,6 @@
 #include "Gerenciadores/Gerenciador_grafico.h"
 #include "Ente.h" // Substitua pelo caminho correto, se necessário
+#include "Entidades/Personagens/Jogador.h"
 
 namespace Gerenciadores {
 
@@ -23,11 +24,13 @@ namespace Gerenciadores {
         if (grafico == nullptr) {
             grafico = new Gerenciador_Grafico();
         }
+        
         return grafico;
     }
 
     void Gerenciador_Grafico::inicializador() {
     // Cria a janela corretamente
+    
     window.create(sf::VideoMode(width, height), nomeJanela);
     // Define o framerate para 60fps
     window.setFramerateLimit(fps);
@@ -38,7 +41,7 @@ namespace Gerenciadores {
     void Gerenciador_Grafico::executar() {
         sf::Event event;
         
-        while (window.pollEvent(event)) {
+        if (window.pollEvent(event)) {
                 if (event.type == sf::Event::Closed) {
                     shutdown();
             }

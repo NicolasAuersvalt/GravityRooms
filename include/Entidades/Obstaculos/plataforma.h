@@ -1,45 +1,37 @@
 #ifndef PLATAFORMA_H
 #define PLATAFORMA_H
 
-#include "Entidades/Obstaculos/obstaculo.h"
+#include "Entidades/Obstaculos/Obstaculo.h"
 
-namespace Entidades::Obstaculos{
+namespace Entidades::Obstaculos {
 
-    class Plataforma : protected Obstaculo{
-
+    class Plataforma : public Obstaculo {
         private:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
             int altura;
+             
 
-                    
+        // ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
 
-        protected:
+    protected:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
+        
+                
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+        // ===/===/===/===/ Outros  ===/===/===/===/
 
 
         public:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
             Plataforma();
             ~Plataforma();
-            void executar() override;
-            void mover() override;
-            void danificar(Jogador* p);
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
             
+            void executar() override;
+            void mover() const; 
 
+            // void desenhar(Gerenciador_Grafico pGG) override;
+            // void atualizar() override;
+            // void colisao(Entidade* outra) override;
     };
-
 }
-
 #endif
