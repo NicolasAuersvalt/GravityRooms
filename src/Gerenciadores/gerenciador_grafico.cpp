@@ -1,5 +1,6 @@
 #include "Gerenciadores/Gerenciador_grafico.h"
 #include "Ente.h" // Substitua pelo caminho correto, se necessário
+#include "Entidades/Personagens/Jogador.h"
 
 namespace Gerenciadores {
 
@@ -23,11 +24,13 @@ namespace Gerenciadores {
         if (grafico == nullptr) {
             grafico = new Gerenciador_Grafico();
         }
+        
         return grafico;
     }
 
     void Gerenciador_Grafico::inicializador() {
     // Cria a janela corretamente
+    
     window.create(sf::VideoMode(width, height), nomeJanela);
     // Define o framerate para 60fps
     window.setFramerateLimit(fps);
@@ -35,9 +38,10 @@ namespace Gerenciadores {
 
     void Gerenciador_Grafico::executar() {
     sf::Event event;
-    while (window.isOpen()) {
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+    if (window.isOpen()) {
+         if (window.pollEvent(event)) {
+            
+            if (event.type == sf::Event::Closed) {                
                 shutdown();
             }
         }
@@ -59,10 +63,16 @@ namespace Gerenciadores {
     void Gerenciador_Grafico::desenharEnte(Ente* pE) {
     if (pE && window.isOpen()) {  // Verifica se o ente e a janela são válidos
         // Obtém uma cópia do sprite do ente
+        
         sf::Sprite sprite = pE->getSprite();
-
         // Agora você pode desenhar o sprite usando o método draw da janela
+        
+        window.clear(sf::Color::Black);  // Limpa a tela
+
         window.draw(sprite);
+        // Chame a função de desenho para desenhar os entes
+        // Aqui você pode desenhar o jogador ou outros objetos
+        window.display();
     } else {
         throw std::runtime_error("Erro: Ente ou janela inválida!");
     }

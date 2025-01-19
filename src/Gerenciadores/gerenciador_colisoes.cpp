@@ -1,4 +1,4 @@
-#include "Gerenciadores/gerenciador_colisoes.h"
+#include "Gerenciadores/Gerenciador_colisoes.h"
 
 // Construtor (FALTA)
 Gerenciador_Colisoes::Gerenciador_Colisoes()

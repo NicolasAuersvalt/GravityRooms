@@ -1,11 +1,10 @@
 #ifndef ENTIDADE_H
 #define ENTIDADE_H
 
-#include "ente.h"
 #include <SFML/Graphics.hpp>
 
+#include "Ente.h"
 #include <utility> // Para usar pair
- 
 #include <sstream> // Para o ostringstream
 
 class Gerenciador_Grafico;
@@ -46,6 +45,9 @@ namespace Entidades{
             virtual void executar() = 0;
             virtual void salvar() = 0;
             virtual void salvarDataBuffer(); // PODE SOBRESCREVER SE QUISER
+            
+            pair<int, int>  getPosition(); 
+            pair<int, int>  getDirection(); 
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

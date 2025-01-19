@@ -1,9 +1,10 @@
 #ifndef PROJETIL_H
 #define PROJETIL_H
 
-#include "Entidades/entidade.h"
+#include "Entidades/Entidade.h"
 
 namespace Entidades{
+    class Personagem;
 
     class Projetil : protected Entidade{
 
@@ -14,6 +15,9 @@ namespace Entidades{
 
 
             // ===/===/===/===/ Outros  ===/===/===/===/
+            bool colidiu;
+            Entidade* atirador;
+            int dano;
 
         protected:
 
@@ -36,7 +40,11 @@ namespace Entidades{
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             
-
+            void atualizar();
+            void setAtirador(Entidade* a); 
+            void colisao(Entidade* e);
+            bool getColidir(Entidade* e);
+            void danificar(Personagem* p);
     };
 
 }

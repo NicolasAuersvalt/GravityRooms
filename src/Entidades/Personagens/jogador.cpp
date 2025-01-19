@@ -1,4 +1,4 @@
-#include "Entidades/Personagens/jogador.h"
+#include "Entidades/Personagens/Jogador.h"
 //#include "gerenciador_grafico.h"
 
 #include <iostream>
@@ -24,4 +24,7 @@ namespace Entidades::Personagens{
 
     }
     
-}  
+    void Jogador::mover() const
+    {
+    }
+}   

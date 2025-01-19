@@ -1,11 +1,14 @@
 #ifndef GRAVITY_ROOMS_H
 #define GRAVITY_ROOMS_H
 
-#include"Listas/lista.h"
-#include"Entidades/Personagens/jogador.h"
-#include"Gerenciadores/gerenciador_grafico.h"
+#include"Listas/Lista.h"
+#include"Entidades/Personagens/Jogador.h"
+
+#include"Entidades/Obstaculos/Plataforma.h"
+#include"Gerenciadores/Gerenciador_grafico.h"
 
 using Entidades::Personagens::Jogador;
+using Entidades::Obstaculos::Plataforma;
 using Gerenciadores::Gerenciador_Grafico;
 
 
@@ -16,7 +19,9 @@ class Gravity_Rooms{
         // ===/===/===/===/ Obrigatório ===/===/===/===/
 
         Jogador pJog1;
-        Gerenciador_Grafico GG;
+        Plataforma plataforma;
+        Gerenciador_Grafico GG; 
+        
 
                 
 

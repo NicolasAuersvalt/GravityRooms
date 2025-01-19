@@ -1,11 +1,11 @@
 #ifndef OBSTACULO_H
 #define OBSTACULO_H
 
-class Jogador;
+#include "Entidades/Entidade.h"
 
 namespace Entidades::Obstaculos{
 
-    class Obstaculo{
+    class Obstaculo:public Entidade{
 
         private:
 
@@ -30,13 +30,12 @@ namespace Entidades::Obstaculos{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            Obstaculo();
+            Obstaculo(pair<int,int>p, pair<int, int>d);
             ~Obstaculo();
 
             virtual void mover() = 0;
             virtual void executar() = 0;
             
-            virtual void obstacular(Jogador* p) = 0;
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

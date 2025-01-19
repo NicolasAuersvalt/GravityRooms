@@ -11,7 +11,7 @@ using namespace Entidades::Obstaculos;
 
 namespace Entidades::Obstaculos{
 
-    Obstaculo::Obstaculo()
+    Obstaculo::Obstaculo(pair<int, int> p, pair<int, int> d) :  Entidade(p, d)
     {
         
     }

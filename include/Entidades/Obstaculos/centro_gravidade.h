@@ -33,7 +33,6 @@ namespace Entidades::Obstaculos{
             ~Centro_Gravidade();
             void executar() override;
             void mover() override;
-            void danificar(Jogador* p);
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

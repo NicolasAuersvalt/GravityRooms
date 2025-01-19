@@ -1,4 +1,4 @@
-#include "ente.h"
+#include "Ente.h"
 
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
@@ -20,7 +20,6 @@ Ente::~Ente(){
 }
 void Ente::desenhar(){
 
-    cout << "Desenhar" << endl;
     pGG->desenharEnte(this);
     
 }
