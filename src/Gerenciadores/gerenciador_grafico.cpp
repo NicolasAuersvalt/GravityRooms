@@ -35,12 +35,12 @@ namespace Gerenciadores {
 
     void Gerenciador_Grafico::executar() {
     sf::Event event;
-    while (window.isOpen()) {
-        while (window.pollEvent(event)) {
+    
+    while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 shutdown();
-            }
         }
+        
         
         window.clear(sf::Color::Black);  // Limpa a tela
 
@@ -57,16 +57,47 @@ namespace Gerenciadores {
     }
 
     void Gerenciador_Grafico::desenharEnte(Ente* pE) {
-    if (pE && window.isOpen()) {  // Verifica se o ente e a janela são válidos
-        // Obtém uma cópia do sprite do ente
-        sf::Sprite sprite = pE->getSprite();
+    if (!pE) {
+        std::cerr << "Erro: Ponteiro para Ente é nulo!" << std::endl;
+        return;
+    }
 
-        // Agora você pode desenhar o sprite usando o método draw da janela
+    if (!window.isOpen()) {
+        std::cerr << "Erro: A janela não está aberta!" << std::endl;
+        return;
+    }
+
+    // Obtém o sprite do Ente
+    sf::Sprite sprite = pE->getSprite();
+
+    // Obtém a textura associada ao sprite
+    const sf::Texture* texture = pE->getTexture();
+    if (!texture) {
+        std::cerr << "Erro: Ente não possui uma textura carregada!" << std::endl;
+
+        // Teste: Tenta carregar uma textura padrão
+        static sf::Texture texturaPadrao;
+        if (!texturaPadrao.loadFromFile("textura_padrao.png")) {
+            std::cerr << "Erro: Não foi possível carregar a textura padrão!" << std::endl;
+            return;
+        }
+
+        // Associa a textura padrão ao sprite
+        sprite.setTexture(texturaPadrao);
+        std::cerr << "A textura padrão foi aplicada ao sprite do Ente." << std::endl;
+    }
+
+    // Desenha o sprite do Ente na janela
+    try {
         window.draw(sprite);
-    } else {
-        throw std::runtime_error("Erro: Ente ou janela inválida!");
+        std::cout << "Sprite do Ente desenhado com sucesso!" << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << "Erro ao desenhar o sprite do Ente: " << e.what() << std::endl;
     }
-    }
+}
+
+
+
 
 
 

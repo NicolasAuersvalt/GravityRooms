@@ -1,13 +1,13 @@
 #ifndef GRAVITY_ROOMS_H
 #define GRAVITY_ROOMS_H
 
-#include"Listas/lista.h"
+#include"Listas/lista_entidades.h"
 #include"Entidades/Personagens/jogador.h"
 #include"Gerenciadores/gerenciador_grafico.h"
 
 using Entidades::Personagens::Jogador;
 using Gerenciadores::Gerenciador_Grafico;
-
+using Listas::Lista_Entidades;
 
 class Gravity_Rooms{
 
@@ -21,6 +21,7 @@ class Gravity_Rooms{
                 
 
         // ===/===/===/===/ Outros  ===/===/===/===/
+        // Lista_Entidades LJog1;
 
 
     protected:
