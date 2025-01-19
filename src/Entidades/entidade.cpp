@@ -11,14 +11,13 @@ namespace Entidades{
 
     Entidade::Entidade(pair<int,int>p, pair<int,int>d):
     Ente(),
-    pos(p), dim(d)
+    pos(p)
     {
         
     }
     Entidade::~Entidade()
     {
         pos = make_pair(-1, -1);
-        dim = make_pair(-1, -1);
         
     }
 

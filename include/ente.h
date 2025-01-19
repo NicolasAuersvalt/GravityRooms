@@ -33,7 +33,6 @@ class Ente{
         sf::Texture *texture; // Substituido
         sf::Sprite sprite;
 
-
       public:
 
          // ===/===/===/===/ Obrigatório ===/===/===/===/

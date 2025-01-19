@@ -20,7 +20,6 @@ GG(), pJog1(), LJog1()
 {
     Ente::setGerenciador(&GG);
     
-
     sf::Texture backgroundTexture;
     if (!backgroundTexture.loadFromFile("assets/nave1.jpg")) {
         std::cerr << "Erro ao carregar o background!" << std::endl;
@@ -28,9 +27,10 @@ GG(), pJog1(), LJog1()
     }
     
     backgroundSprite.setTexture(backgroundTexture);
-    backgroundSprite.setPosition(25, 25);
+    //backgroundSprite.setPosition(25, 25);
 
     pJog1.setSprite("assets/tripulanteG.png", 25, 25);
+
     LJog1.incluir(static_cast<Entidade*>(&pJog1));
 
     executar();
@@ -46,29 +46,28 @@ void Gravity_Rooms::executar() {
     // setSprite(sstring local, int posX, int posY)
 
     while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
-        
-        GG.limpar();
-
         sf::Event evento;
-        bool teclaPressionada = false;  // Variável para controlar se uma tecla foi pressionada
         
         while(GG.processarEvento(evento)){
             if (evento.type == sf::Event::Closed) {
                 GG.fechar();
             }
 
-            // Verifica se uma tecla foi pressionada
-            if (evento.type == sf::Event::KeyPressed) {
-                teclaPressionada = true;
-            }
         }
-        
-        // Só prossegue se uma tecla foi pressionada
 
-        GG.desenhar(backgroundSprite);  // Desenha o fundo
-        LJog1.desenharTodos();
-        LJog1.atualizarTodas();
-        GG.exibir();
+        GG.limpar();  // Limpa a tela antes de desenhar qualquer coisa
+
+        // Desenha os objetos na ordem correta
+        GG.desenhar(backgroundSprite);  // Desenha o fundo primeiro
+
+        //GG.desenharEnte(&pJog1);  // Desenha o jogador 1 (ou qualquer outro ente)
+        
+        LJog1.desenharTodos();  // Desenha os outros sprites da lista
+
+        GG.exibir();  // Exibe a tela com todos os objetos desenhados
+
+        // Atualiza os objetos, caso necessário (atualização de movimentos, animações, etc.)
+        LJog1.atualizarTodas();  
 
     }
 }

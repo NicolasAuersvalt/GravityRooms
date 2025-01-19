@@ -20,7 +20,6 @@ Ente::~Ente(){
 }
 void Ente::desenhar(){
 
-    //cout << "Hora de Desenhar" << endl;
     pGG->desenharEnte(this);
     
 }

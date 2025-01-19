@@ -24,7 +24,7 @@ namespace Gerenciadores {
 
         string nomeJanela = "GravityRooms"; // Nome da janela
         sf::RenderWindow window;  // Janela de renderização
-        const int fps = 30;  // Limite de frames por segundo
+        const int fps = 60;  // Limite de frames por segundo
 
         const int width;
         const int height;
