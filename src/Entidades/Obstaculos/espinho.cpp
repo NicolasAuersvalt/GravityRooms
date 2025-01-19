@@ -1,7 +1,6 @@
 #include "Entidades/Obstaculos/Espinho.h"
 
 #include <iostream>
-
 using namespace std;
 using namespace Entidades::Obstaculos;
 
@@ -22,7 +21,8 @@ namespace Entidades::Obstaculos{
     void Espinho::executar(){
 
     }
-    void Espinho::mover(){
-        
+    void Espinho::mover() const
+    {
     }
+
 }  

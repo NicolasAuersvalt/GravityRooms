@@ -15,6 +15,10 @@ Gravity_Rooms::Gravity_Rooms():
 GG(), pJog1(), plataforma()
 {
     Ente::setGerenciador(&GG);
+
+    pJog1.setSprite("assets/tripulanteG.png", 0, 0, 150, 150);
+    plataforma.setSprite("assets/plataformaG.png", 0, 0, 499, 150);
+
     executar();
 }
 
@@ -24,9 +28,7 @@ Gravity_Rooms::~Gravity_Rooms(){
 }
 
 void Gravity_Rooms::executar(){
-
-    pJog1.setSprite("assets/tripulanteG.png", 50, 50, 20, 20);
-    plataforma.setSprite("assets/plataforma.png", 100, 100, 20, 20);
+    
     GG.executar(); 
     while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
          // Atualiza a janela e lida com os eventos

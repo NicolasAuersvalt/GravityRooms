@@ -8,15 +8,26 @@ namespace Entidades::Obstaculos {
     class Plataforma : public Obstaculo {
         private:
             int altura;
+             
+
+        // ===/===/===/===/ Outros  ===/===/===/===/
+
+
+    protected:
+
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
+        
+                
+
+        // ===/===/===/===/ Outros  ===/===/===/===/
+
 
         public:
-            Plataforma(std::pair<int,int> p = std::make_pair(0,0), 
-                      std::pair<int,int> d = std::make_pair(0,0));
+            Plataforma();
             ~Plataforma();
             
             void executar() override;
-            void mover() override; // Removed const to match base class
-
+            void mover() const; 
 
             // void desenhar(Gerenciador_Grafico pGG) override;
             // void atualizar() override;

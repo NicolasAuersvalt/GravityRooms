@@ -32,9 +32,13 @@ namespace Entidades::Obstaculos{
 
             Obstaculo(pair<int,int>p, pair<int, int>d);
             ~Obstaculo();
+            void salvar();
 
-            virtual void mover() = 0;
+            // virtual void mover() = 0;
             virtual void executar() = 0;
+            virtual void salvarDataBuffer() {
+                
+            }
             
 
             // ===/===/===/===/ Outros  ===/===/===/===/

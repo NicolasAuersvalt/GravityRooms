@@ -32,7 +32,7 @@ namespace Entidades::Obstaculos{
             Centro_Gravidade();
             ~Centro_Gravidade();
             void executar() override;
-            void mover() override;
+            void mover() const;
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

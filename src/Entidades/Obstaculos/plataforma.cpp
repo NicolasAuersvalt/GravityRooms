@@ -1,9 +1,10 @@
 #include "Entidades/Obstaculos/Plataforma.h"
 
+
 namespace Entidades::Obstaculos
 {
 
-    Plataforma::Plataforma(std::pair<int, int> p, std::pair<int, int> d) : Obstaculo(p, d), altura(0)
+    Plataforma::Plataforma():Obstaculo(make_pair(-1, -1), make_pair(-1, -1))
     {
     }
 
@@ -18,13 +19,10 @@ namespace Entidades::Obstaculos
         desenhar();
     }
 
-    void Plataforma::mover()
+    void Plataforma::mover() const
     {
         // Implementation
-        
     }
-
-  
 
     // void Plataforma::mover()
     // {

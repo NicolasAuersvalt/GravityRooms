@@ -32,7 +32,7 @@ namespace Entidades::Obstaculos{
             Espinho();
             ~Espinho();
             void executar() override;
-            void mover() override;
+            void mover() const;
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             
