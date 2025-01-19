@@ -47,7 +47,7 @@ namespace Gerenciadores {
             }
             
             
-            window.clear(sf::Color::Black);  // Limpa a tela
+             // indow.clear(sf::Color::Black); Limpa a tela
 
             // Chame a função de desenho para desenhar os entes
             // Aqui você pode desenhar o jogador ou outros objetos

@@ -26,6 +26,7 @@ namespace Entidades{
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
             pair<int, int> pos; // Posição (x,y)
+            pair<int, int> dim;
 
             std::ostringstream buffer;
                     

@@ -4,6 +4,8 @@
 #include"Listas/Lista.h"
 #include"Entidades/Entidade.h"
 
+#include"Entidades/Personagens/Jogador.h"
+
 #include <iostream>
 using namespace std;
 
@@ -44,7 +46,10 @@ namespace Listas {
         }
         void atualizarTodas() {
             LEs->percorrerLista([](Entidade* entidade) {
-                entidade->atualizar();  // Chama o método atualizar() de cada Entidade
+               if (Entidades::Personagens::Jogador* jogador = 
+                    dynamic_cast<Entidades::Personagens::Jogador*>(entidade)) {
+                    jogador->mover();
+                }
         });
 }
     };

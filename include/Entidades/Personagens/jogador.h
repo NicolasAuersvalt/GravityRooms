@@ -36,7 +36,7 @@ namespace Entidades::Personagens{
 
             // ===/===/===/===/ Outros  ===/===/===/===/
 
-            void mover() const;
+            void mover();
 
     };
 

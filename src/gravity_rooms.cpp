@@ -3,86 +3,77 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
-//#include "Listas/lista_entidades.cpp"
+// #include "Listas/lista_entidades.cpp"
 #include "Gravity_rooms.h"
 #include "Ente.h"
-//#include "gerenciador_grafico.h"
+// #include "gerenciador_grafico.h"
 
 #include <iostream>
 
 using namespace std;
 
-
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-
 // Construtor
-Gravity_Rooms::Gravity_Rooms():
-GG(), pJog1(), LJog1(), plataforma()
+Gravity_Rooms::Gravity_Rooms() : GG(), pJog1(), LJog1(), plataforma()
 {
     Ente::setGerenciador(&GG);
-    
+
     sf::Texture backgroundTexture;
-    if (!backgroundTexture.loadFromFile("assets/nave1.jpg")) {
+    if (!backgroundTexture.loadFromFile("assets/nave1.jpg"))
+    {
         std::cerr << "Erro ao carregar o background!" << std::endl;
         return;
     }
-    
+
     backgroundSprite.setTexture(backgroundTexture);
-    //backgroundSprite.setPosition(25, 25);
+    // backgroundSprite.setPosition(25, 25);
 
-    pJog1.setSprite("assets/tripulanteG.png", 0, 0, 150, 150);
+    pJog1.setSprite("assets/tripulanteG.png", 0, 0);
 
-    LJog1.incluir(static_cast<Entidade*>(&pJog1));
+    LJog1.incluir(static_cast<Entidade *>(&pJog1));
 
-
-    plataforma.setSprite("assets/plataformaG.png", 0, 0, 499, 150);
-
+    plataforma.setSprite("assets/plataformaG.png", 0, 0);
+    LJog1.incluir(static_cast<Entidade *>(&plataforma));
     executar();
 }
 
 // Destrutor
-Gravity_Rooms::~Gravity_Rooms(){
-
+Gravity_Rooms::~Gravity_Rooms()
+{
 }
 
-void Gravity_Rooms::executar() {
-    
-    // setSprite(sstring local, int posX, int posY)
+void Gravity_Rooms::executar()
+{
 
-void Gravity_Rooms::executar(){
-    
-    GG.executar(); 
-    while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
+    GG.executar();
+    while (GG.estaAberta())
+    { // Enquanto a janela estiver aberta
         sf::Event evento;
-        
-        while(GG.processarEvento(evento)){
-            if (evento.type == sf::Event::Closed) {
+
+        while (GG.processarEvento(evento))
+        {
+            if (evento.type == sf::Event::Closed)
+            {
                 GG.fechar();
             }
-
         }
 
-        GG.limpar();  // Limpa a tela antes de desenhar qualquer coisa
+        GG.limpar(); // Limpa a tela antes de desenhar qualquer coisa
 
         // Desenha os objetos na ordem correta
-        GG.desenhar(backgroundSprite);  // Desenha o fundo primeiro
+        //GG.desenhar(backgroundSprite); // Desenha o fundo primeiro
 
-        //GG.desenharEnte(&pJog1);  // Desenha o jogador 1 (ou qualquer outro ente)
-        
-        LJog1.desenharTodos();  // Desenha os outros sprites da lista
+        // GG.desenharEnte(&pJog1);  // Desenha o jogador 1 (ou qualquer outro ente)
 
-        GG.exibir();  // Exibe a tela com todos os objetos desenhados
+        LJog1.desenharTodos(); // Desenha os outros sprites da lista
+
+        GG.exibir(); // Exibe a tela com todos os objetos desenhados
 
         // Atualiza os objetos, caso necessário (atualização de movimentos, animações, etc.)
-        LJog1.atualizarTodas();  
-
+        LJog1.atualizarTodas();
     }
 }
 
-    }
 
-}
-
-
-    // ===/===/===/===/ Outros  ===/===/===/===/
+// ===/===/===/===/ Outros  ===/===/===/===/

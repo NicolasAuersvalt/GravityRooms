@@ -1,7 +1,7 @@
 #ifndef GRAVITY_ROOMS_H
 #define GRAVITY_ROOMS_H
 
-#include"Listas/Lista.h"
+#include"Listas/Lista_entidades.h"
 #include"Entidades/Personagens/Jogador.h"
 
 #include"Entidades/Obstaculos/Plataforma.h"
