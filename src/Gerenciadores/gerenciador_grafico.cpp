@@ -1,5 +1,5 @@
-#include "Gerenciadores/gerenciador_grafico.h"
-#include "ente.h" // Substitua pelo caminho correto, se necessário
+#include "Gerenciadores/Gerenciador_grafico.h"
+#include "Ente.h" // Substitua pelo caminho correto, se necessário
 
 namespace Gerenciadores {
 

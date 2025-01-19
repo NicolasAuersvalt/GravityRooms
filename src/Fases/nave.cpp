@@ -1,4 +1,4 @@
-#include "Fases/nave.h"
+#include "Fases/Nave.h"
 
 #include <iostream>
 

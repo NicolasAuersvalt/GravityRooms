@@ -1,7 +1,7 @@
 #ifndef NAVE_H
 #define NAVE_H
 
-#include "Fases/fase.h"
+#include "Fases/Fase.h"
 
 class Fase;
 
