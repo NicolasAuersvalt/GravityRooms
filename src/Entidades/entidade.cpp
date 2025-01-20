@@ -20,10 +20,6 @@ namespace Entidades
     void Entidade::salvarDataBuffer()
     {
     }
-    void Entidade::atualizar()
-    {
-       
-    }
 
     pair<int, int> Entidade::getPosition()
     {

@@ -3,56 +3,44 @@
 
 #include"Listas/Lista_entidades.h"
 #include"Entidades/Personagens/Jogador.h"
+#include "Entidades/Personagens/Androide.h"
+#include "Entidades/Obstaculos/Plataforma.h"
+#include "Gerenciadores/Gerenciador_grafico.h"
 
-#include"Entidades/Obstaculos/Plataforma.h"
-#include"Gerenciadores/Gerenciador_grafico.h"
-
-using Entidades::Personagens::Jogador;
 using Entidades::Obstaculos::Plataforma;
 using Gerenciadores::Gerenciador_Grafico;
 using Listas::Lista_Entidades;
 
-class Gravity_Rooms{
+class Gravity_Rooms
+{
 
-    private:
+private:
+    // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
+    Entidades::Personagens::Jogador pJog1;
+    Entidades::Personagens::Androide pAnd1;
+    Entidades::Personagens::Androide pAnd2;
+    Plataforma plataforma;
+    Gerenciador_Grafico GG;
 
-        Jogador pJog1;
-        Plataforma plataforma;
-        Gerenciador_Grafico GG; 
-        
+    // ===/===/===/===/ Outros  ===/===/===/===/
+    Lista_Entidades LJog1;
+    sf::Sprite backgroundSprite;
 
-                
+protected:
+    // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        // ===/===/===/===/ Outros  ===/===/===/===/
-        Lista_Entidades LJog1;
-        sf::Sprite backgroundSprite;
+    // ===/===/===/===/ Outros  ===/===/===/===/
 
+public:
+    // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    protected:
+    Gravity_Rooms();
+    ~Gravity_Rooms();
 
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
-        
-                
+    void executar();
 
-        // ===/===/===/===/ Outros  ===/===/===/===/
-
-
-    public:
-
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-        Gravity_Rooms();
-        ~Gravity_Rooms();
-
-        void executar();
-
-        // ===/===/===/===/ Outros  ===/===/===/===/
-        
-
+    // ===/===/===/===/ Outros  ===/===/===/===/
 };
-
-
 
 #endif

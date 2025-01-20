@@ -19,9 +19,12 @@ namespace Entidades::Obstaculos
         desenhar();
     }
 
-    void Plataforma::mover() const
+    void Plataforma::mover() 
     {
         // Implementation
+    }
+        void Plataforma::salvar() {
+        // Implementation for saving state
     }
 
     // void Plataforma::mover()

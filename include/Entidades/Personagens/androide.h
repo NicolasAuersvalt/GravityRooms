@@ -1,17 +1,18 @@
 #ifndef ANDROIDE_H
 #define ANDROIDE_H
 
-#include "Entidades/Personagens/inimigo.h"
+#include "Entidades/Personagens/Inimigo.h"
 
 namespace Entidades::Personagens{
 
-    class Androide : protected Inimigo{
+    class Androide : public Inimigo{
 
         private:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
             float raio;
 
+            bool movingRight;
                     
 
             // ===/===/===/===/ Outros  ===/===/===/===/
@@ -28,14 +29,15 @@ namespace Entidades::Personagens{
         public:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+            using Ente::setSprite;
             Androide();
             ~Androide();
             void executar() override;
             void danificar(Jogador* p);
+            void mover();
 
             // ===/===/===/===/ Outros  ===/===/===/===/
-            
+         void colidir(Entidade* outro, string  direction); 
 
     };
 

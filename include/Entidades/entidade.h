@@ -26,7 +26,7 @@ namespace Entidades{
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
             pair<int, int> pos; // Posição (x,y)
-            pair<int, int> dim;
+            pair<int, int> dim; // Dimensão (x,y)
 
             std::ostringstream buffer;
                     
@@ -45,10 +45,10 @@ namespace Entidades{
             virtual void executar() = 0;
             virtual void salvar() = 0;
             virtual void salvarDataBuffer(); // PODE SOBRESCREVER SE QUISER
+            virtual void mover() = 0;   
             
             pair<int, int>  getPosition(); 
             pair<int, int>  getDirection(); 
-            void atualizar();
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

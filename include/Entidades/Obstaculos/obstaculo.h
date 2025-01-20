@@ -34,12 +34,11 @@ namespace Entidades::Obstaculos{
             ~Obstaculo();
             void salvar();
 
-            // virtual void mover() = 0;
+        
             virtual void executar() = 0;
             virtual void salvarDataBuffer() {
                 
             }
-            
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

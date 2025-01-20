@@ -27,8 +27,8 @@ namespace Entidades::Obstaculos {
             ~Plataforma();
             
             void executar() override;
-            void mover() const; 
-
+            void mover() override; 
+            void salvar() override;
             // void desenhar(Gerenciador_Grafico pGG) override;
             // void atualizar() override;
             // void colisao(Entidade* outra) override;

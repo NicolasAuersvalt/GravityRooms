@@ -46,10 +46,8 @@ namespace Listas {
         }
         void atualizarTodas() {
             LEs->percorrerLista([](Entidade* entidade) {
-               if (Entidades::Personagens::Jogador* jogador = 
-                    dynamic_cast<Entidades::Personagens::Jogador*>(entidade)) {
-                    jogador->mover();
-                }
+                    entidade->mover();
+                
         });
 }
     };

@@ -15,7 +15,12 @@ using namespace std;
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 // Construtor
-Gravity_Rooms::Gravity_Rooms() : GG(), pJog1(), LJog1(), plataforma()
+Gravity_Rooms::Gravity_Rooms() : GG(),
+        pJog1(),
+        pAnd1(),
+        pAnd2(),
+        plataforma(),
+        LJog1() 
 {
     Ente::setGerenciador(&GG);
 
@@ -35,6 +40,10 @@ Gravity_Rooms::Gravity_Rooms() : GG(), pJog1(), LJog1(), plataforma()
 
     plataforma.setSprite("assets/plataformaG.png", 0, 0);
     LJog1.incluir(static_cast<Entidade *>(&plataforma));
+
+    pAnd1.setSprite("assets/androidG.png", 0, 0);
+    LJog1.incluir(static_cast<Entidade *>(&pAnd1));
+
     executar();
 }
 

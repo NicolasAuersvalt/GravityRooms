@@ -35,13 +35,13 @@ namespace Entidades::Personagens{
             ~Inimigo();
             void salvarDataBuffer();
             virtual void danificar(Jogador* p) = 0;
-
-            virtual void executar() override;
+            
+            virtual void executar()= 0;
             
 
             // ===/===/===/===/ Outros  ===/===/===/===/
-            
-
+            virtual void mover() = 0;
+            virtual void colidir(Entidade* outro, string  direction = "") = 0; 
     };
 
 }
