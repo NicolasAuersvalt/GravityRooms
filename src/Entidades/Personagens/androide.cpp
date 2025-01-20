@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 using namespace Entidades::Personagens;
-
+using namespace Entidades;
 namespace Entidades::Personagens
 {
 
@@ -16,6 +16,7 @@ namespace Entidades::Personagens
     }
     void Androide::executar()
     {
+        mover();
     }
 
     void Androide::danificar(Jogador *p)
@@ -23,10 +24,10 @@ namespace Entidades::Personagens
     }
 
     void Androide::mover()
-    { 
-        
-
+    {
+        Inimigo::mover();
     }
+
     void Androide::colidir(Entidade *outro, string direction)
     {
         // int index = other->get_id();

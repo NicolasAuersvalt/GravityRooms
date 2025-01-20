@@ -22,15 +22,17 @@ namespace Entidades::Personagens
     {
         float currentX = getSprite().getPosition().x;
 
-        // Check boundaries and change direction
+        // Checa o fim da tela e gira o sprite
         if (currentX <= 0)
         {
             movingRight = true;
+            
             getSprite().setScale(1.0f, 1.0f);
         }
         else if (currentX >= 1280 - getSprite().getGlobalBounds().width)
         {
             movingRight = false;
+            
             getSprite().setScale(-1.0f, 1.0f);
         }
 
