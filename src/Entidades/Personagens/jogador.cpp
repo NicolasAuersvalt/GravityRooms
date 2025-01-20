@@ -19,14 +19,37 @@ namespace Entidades::Personagens
     void Jogador::executar()
     {
     }
+
+    void Jogador::salvarDataBuffer()
+    {
+    }
+
     // void Jogador::atualizar()
     // {
-    
+    // }
+    // void Jogador::setListaEntidades(Listas::Lista_Entidades *lista)
+    // {
+    //     listaEntidades = lista;
     // }
 
-    void Jogador::mover() 
+    void Jogador::atirar()
     {
-            // Movimentação (sem física, apenas mover pela tela)
+        Projetil *tiro = new Projetil();
+        tiro->setSprite("assets/projetilG.png", 0, 0);
+
+        // Get position directly from sprite
+        sf::Vector2f pos = getSprite().getPosition();
+        tiro->atirar(pos);
+
+        // if (listaEntidades)
+        // {
+        //     listaEntidades->incluir(static_cast<Entidade *>(tiro));
+        // }
+    }
+    void Jogador::mover()
+
+    {
+        // Movimentação (sem física, apenas mover pela tela)
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
         {
             getSprite().move(-5.f, 0.f); // Move para a esquerda
@@ -43,5 +66,14 @@ namespace Entidades::Personagens
         {
             getSprite().move(0.f, 5.f); // Move para baixo
         }
+
+        // Jogador atira
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        {
+            atirar();
+        }
+    }
+    void Jogador::colidir(Entidades::Entidade *e)
+    {
     }
 }

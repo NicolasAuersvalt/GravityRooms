@@ -1,4 +1,4 @@
-#include "Fases/laboratorio.h"
+#include "Fases/Laboratorio.h"
 
 #include <iostream>
 

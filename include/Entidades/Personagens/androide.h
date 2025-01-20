@@ -3,42 +3,36 @@
 
 #include "Entidades/Personagens/Inimigo.h"
 
-namespace Entidades::Personagens{
+namespace Entidades::Personagens
+{
 
-    class Androide : public Inimigo{
+    class Androide : public Inimigo
+    {
 
-        private:
+    private:
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
+        float raio;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            float raio;
+        // ===/===/===/===/ Outros  ===/===/===/===/
+        const float MOVE_SPEED = 5.0f;
 
-            bool movingRight;
-                    
+    protected:
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+        // ===/===/===/===/ Outros  ===/===/===/===/
 
-        protected:
+    public:
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
+        using Ente::setSprite;
+        Androide();
+        ~Androide();
+        void executar() override;
+        void danificar(Jogador* p) override;
+        void mover() override;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-
-        public:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            using Ente::setSprite;
-            Androide();
-            ~Androide();
-            void executar() override;
-            void danificar(Jogador* p);
-            void mover();
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-         void colidir(Entidade* outro, string  direction); 
-
+        // ===/===/===/===/ Outros  ===/===/===/===/
+        void colidir(Entidade *outro, string direction);
+        void salvar() override;
     };
 
 }

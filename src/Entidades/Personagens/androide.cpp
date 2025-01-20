@@ -1,4 +1,5 @@
 #include "Entidades/Personagens/Androide.h"
+#include "Entidades/Personagens/Inimigo.h"
 
 #include <iostream>
 using namespace std;
@@ -50,5 +51,8 @@ namespace Entidades::Personagens
         // default:
         //     break;
         // }
+    }
+    void Androide::salvar()
+    {
     }
 }

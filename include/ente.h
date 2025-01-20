@@ -1,7 +1,7 @@
 #ifndef ENTE_H
 #define ENTE_H
 
-#include<iostream>
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Gerenciadores/Gerenciador_grafico.h"
 
@@ -10,48 +10,43 @@ using Gerenciadores::Gerenciador_Grafico;
 
 class Gerenciador_Grafico;
 
-class Ente{
+class Ente
+{
 
-    private:
+private:
+    // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
+    // ===/===/===/===/ Outros  ===/===/===/===/
 
-                
+protected:
+    // ===/===/===/===/ Obrigatório ===/===/===/===/
+    int id;
+    static Gerenciador_Grafico *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
 
-        // ===/===/===/===/ Outros  ===/===/===/===/
+    // ===/===/===/===/ Outros  ===/===/===/===/
 
-    protected:
+    // Figura *pFig;
+    sf::Texture *texture; // Substituido
+    sf::Sprite sprite;
+    sf::Vector2f position; // Change from pair to Vector2f
+    sf::Vector2f velocity; // For movement
 
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
-        int id;
-        static Gerenciador_Grafico *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
-        
+public:
+    // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        // ===/===/===/===/ Outros  ===/===/===/===/
-        
-        // Figura *pFig;
-        sf::Texture *texture; // Substituido
-        sf::Sprite sprite;
+    Ente();
+    ~Ente();
 
-      public:
+    virtual void executar() = 0; // Pois é abstrata
+    void desenhar();             // Possui o endereço do gerenciador gráfico em protected, mas só UTILIZA o gerenciador
 
-         // ===/===/===/===/ Obrigatório ===/===/===/===/
+    // ===/===/===/===/ Outros  ===/===/===/===/
 
-        Ente();
-        ~Ente();
+    void setSprite(std::string local, int posX, int posY);
+    sf::Texture *getTexture(); // retorna o endereço da textura do protected sf::Texture *pFig
+    sf::Sprite &getSprite();   // retorna o endereço da textura do protected sf::Texture *pFig
 
-        virtual void executar() = 0; // Pois é abstrata
-        void desenhar(); // Possui o endereço do gerenciador gráfico em protected, mas só UTILIZA o gerenciador
-
-        // ===/===/===/===/ Outros  ===/===/===/===/
-
-        void setSprite(std::string local, int posX, int posY);
-        sf::Texture* getTexture(); // retorna o endereço da textura do protected sf::Texture *pFig
-        sf::Sprite& getSprite(); // retorna o endereço da textura do protected sf::Texture *pFig
-        
-        static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
-        
-
+    static void setGerenciador(Gerenciadores::Gerenciador_Grafico *gg);
 };
 
 #endif

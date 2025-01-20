@@ -2,42 +2,40 @@
 #define JOGADOR_H
 
 #include "Entidades/Personagens/Personagem.h"
+#include "Listas/Lista_Entidades.h"
+#include "Entidades/Projetil.h"
 
-namespace Entidades::Personagens{
+namespace Entidades::Personagens
+{
 
-    class Jogador : public Personagem{
+    class Jogador : public Personagem
+    {
 
-        private:
+    private:
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
+        int pontos;
+        // Listas::Lista_Entidades* listaEntidades;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            int pontos;
+        // ===/===/===/===/ Outros  ===/===/===/===/
 
-                    
+    protected:
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+        // ===/===/===/===/ Outros  ===/===/===/===/
 
-        protected:
+    public:
+        // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
+        Jogador();
+        ~Jogador();
+        void executar() override;
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-
-        public:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-            Jogador();
-            ~Jogador();
-            void executar() override;  
-  
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-            void mover();
-
+        // ===/===/===/===/ Outros  ===/===/===/===/
+        // void setListaEntidades(Listas::Lista_Entidades* lista);
+        void salvarDataBuffer();
+        void colidir(Entidades::Entidade *e);
+        void atirar();
+        void mover();
     };
 
 }

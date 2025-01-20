@@ -6,7 +6,7 @@
 namespace Entidades{
     class Personagem;
 
-    class Projetil : protected Entidade{
+    class Projetil : public Entidade{
 
         private:
 
@@ -18,6 +18,8 @@ namespace Entidades{
             bool colidiu;
             Entidade* atirador;
             int dano;
+            const float vel_bala = 10.0f;
+            sf::Vector2f direcao;
 
         protected:
 
@@ -35,12 +37,15 @@ namespace Entidades{
             Projetil();
             virtual ~Projetil();
 
-            // Métodos Virtuais
             void executar() override;
 
             // ===/===/===/===/ Outros  ===/===/===/===/
-            
+            void mover() override;  
+            void salvar() override;
             void atualizar();
+            // void atirar();
+            void setDirecao(const sf::Vector2f& dir);
+            void atirar(const sf::Vector2f& posicao);
             void setAtirador(Entidade* a); 
             void colisao(Entidade* e);
             bool getColidir(Entidade* e);

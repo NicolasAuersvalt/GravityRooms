@@ -1,7 +1,7 @@
 #ifndef INIMIGO_H
 #define INIMIGO_H
 
-#include "Entidades/Personagens/personagem.h"
+#include "Entidades/Personagens/Personagem.h"
 
 class Jogador;
 

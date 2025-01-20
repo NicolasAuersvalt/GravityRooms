@@ -44,6 +44,8 @@ Gravity_Rooms::Gravity_Rooms() : GG(),
     pAnd1.setSprite("assets/androidG.png", 0, 0);
     LJog1.incluir(static_cast<Entidade *>(&pAnd1));
 
+    pJog1.setListaEntidades(&LJog1);
+
     executar();
 }
 

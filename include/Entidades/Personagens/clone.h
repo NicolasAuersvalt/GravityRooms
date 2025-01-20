@@ -1,7 +1,7 @@
 #ifndef CLONE_H
 #define CLONE_H
 
-#include "Entidades/Personagens/inimigo.h"
+#include "Entidades/Personagens/Inimigo.h"
 
 namespace Entidades::Personagens{
 
