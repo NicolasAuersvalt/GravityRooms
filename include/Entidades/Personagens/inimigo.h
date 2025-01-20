@@ -40,7 +40,7 @@ namespace Entidades::Personagens{
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             void mover();
-            virtual void colidir(Entidade* outro, string  direction = "") = 0; 
+            virtual void colidir(Entidade* e) = 0; 
     };
 
 }
