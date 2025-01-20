@@ -31,8 +31,10 @@ namespace Entidades::Personagens
         void mover() override;
 
         // ===/===/===/===/ Outros  ===/===/===/===/
-        void colidir(Entidade *outro, string direction);
+        void colidir(Entidades::Entidade *e);
         void salvar() override;
+        void salvarDataBuffer();
+        void atirar();
     };
 
 }
