@@ -25,23 +25,7 @@ namespace Entidades::Personagens
     void Androide::mover()
     { 
         
-    float currentX = getSprite().getPosition().x;
-    
-    // Check boundaries and change direction
-    if (currentX <= 0) {
-        movingRight = true;
-    }
-    else if (currentX >= 1280 - getSprite().getGlobalBounds().width) {
-        movingRight = false;
-    }
-    
-    // Move based on direction
-    if (movingRight) {
-        getSprite().move(5.0f, 0.f);
-    }
-    else {
-        getSprite().move(-5.0f, 0.f);
-    }
+
     }
     void Androide::colidir(Entidade *outro, string direction)
     {

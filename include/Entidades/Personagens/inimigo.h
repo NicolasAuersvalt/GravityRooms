@@ -13,8 +13,7 @@ namespace Entidades::Personagens{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
             int nivel_maldade;
-
-                    
+            bool movingRight;
 
             // ===/===/===/===/ Outros  ===/===/===/===/
 
@@ -40,7 +39,7 @@ namespace Entidades::Personagens{
             
 
             // ===/===/===/===/ Outros  ===/===/===/===/
-            virtual void mover() = 0;
+            void mover();
             virtual void colidir(Entidade* outro, string  direction = "") = 0; 
     };
 

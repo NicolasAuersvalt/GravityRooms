@@ -1,7 +1,7 @@
 #ifndef CIBORGUE_H
 #define CIBORGUE_H
 
-#include "Entidades/Personagens/inimigo.h"
+#include "Entidades/Personagens/Inimigo.h"
 
 namespace Entidades::Personagens{
 
