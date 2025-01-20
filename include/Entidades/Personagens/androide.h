@@ -27,14 +27,15 @@ namespace Entidades::Personagens
         Androide();
         ~Androide();
         void executar() override;
-        void danificar(Jogador* p) override;
+        void danificar(Jogador *p) override;
         void mover() override;
 
         // ===/===/===/===/ Outros  ===/===/===/===/
-        void colidir(Entidades::Entidade *e);
+        void colidir(Entidade *e) override;
         void salvar() override;
-        void salvarDataBuffer();
+        void atualizar();
         void atirar();
+        void salvarDataBuffer() override;
     };
 
 }

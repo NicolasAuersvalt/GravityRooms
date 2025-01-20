@@ -12,7 +12,9 @@
 
                 "${workspaceFolder}/include",
 
-                "D:/Bella/GravityRooms/include"
+                "D:/Bella/GravityRooms/include",
+
+                "C:/SFML-2.6.2/include" 
 
             ],
 

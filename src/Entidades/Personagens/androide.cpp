@@ -18,6 +18,7 @@ namespace Entidades::Personagens
     void Androide::executar()
     {
         mover();
+        atualizar();
     }
 
     void Androide::danificar(Jogador *p)
@@ -52,16 +53,21 @@ namespace Entidades::Personagens
     //     //     break;
     //     // }
     // }
+
     void Androide::salvar()
     {
     }
-    void Androide::colidir(Entidades::Entidade *e)
+    void Androide::colidir(Entidade *e)
     {
     }
-    void Entidades::Personagens::Androide::salvarDataBuffer()
+    void Androide::atualizar()
     {
     }
     void Androide::atirar()
     {
+    }
+    void Androide::salvarDataBuffer()
+    {
+        // Implementation
     }
 }

@@ -5,24 +5,34 @@
 using namespace std;
 using namespace Listas;
 
-
-namespace Listas{
-
+namespace Listas
+{
 
     Lista_Entidades::Lista_Entidades()
     {
-        
+        LEs = new Lista<Entidade>();
     }
 
-    Lista_Entidades::~Lista_Entidades(){
-
-
+    Lista_Entidades::~Lista_Entidades()
+    {
+        delete LEs;
     }
-    void Lista_Entidades::incluir(Entidade* pE){
-
+    void Lista_Entidades::incluir(Entidade *pE)
+    {
+        LEs->incluir(pE);
     }
-    void percorrer(){
+    void Lista_Entidades::desenharTodos()
+    {
+        LEs->percorrerLista([](Entidade *entidade)
+                            {
+                                // cout << "Desenhando todos os elementos..." << endl;
 
-        
+                                entidade->desenhar(); // Chama o método desenhar() de cada Entidade
+                            });
     }
-}  
+    void Lista_Entidades::atualizarTodas()
+    {
+        LEs->percorrerLista([](Entidade *entidade)
+                            { entidade->mover(); });
+    }
+}

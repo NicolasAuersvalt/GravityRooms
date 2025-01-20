@@ -19,37 +19,19 @@ namespace Listas {
 
     public:
         // Construtor
-        Lista_Entidades() {
-            //cout << "Construtor de Lista_Entidades" << endl;
-            LEs = new Lista<Entidade>();
-        }
+        Lista_Entidades();
 
         // Destruidor
-        ~Lista_Entidades() {
-            delete LEs;
-        }
+        ~Lista_Entidades();
 
         // Incluir uma Entidade na lista
-        void incluir(Entidade* pE) {
-            LEs->incluir(pE);
-        }
+        void incluir(Entidade* pE);
 
         // Percorrer todos os elementos da lista e desenhar cada um
-        void desenharTodos() {
-            //cout << "Desenhando todos os elementos..." << endl;
+        void desenharTodos();
 
-            LEs->percorrerLista([](Entidade* entidade) {
+        void atualizarTodas();
 
-                entidade->desenhar();  // Chama o método desenhar() de cada Entidade
-                
-            });
-        }
-        void atualizarTodas() {
-            LEs->percorrerLista([](Entidade* entidade) {
-                    entidade->mover();
-                
-        });
-}
     };
 
 }
