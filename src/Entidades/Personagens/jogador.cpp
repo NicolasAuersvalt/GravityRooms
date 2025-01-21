@@ -32,19 +32,26 @@ namespace Entidades::Personagens
     //     listaEntidades = lista;
     // }
 
-    void Jogador::atirar()
+    Projetil* Jogador::atirar() 
     {
-        Projetil *tiro = new Projetil();
-        tiro->setSprite("assets/projetilG.png", 0, 0);
+        // Projetil *tiro = new Projetil();
+        // tiro->setSprite("assets/projetilG.png", 0, 0);
 
-        // Get position directly from sprite
-        sf::Vector2f pos = getSprite().getPosition();
-        tiro->atirar(pos);
+        // // Get position directly from sprite
+        // sf::Vector2f pos = getSprite().getPosition();
+        // tiro->atirar(pos);
 
         // if (listaEntidades)
         // {
         //     listaEntidades->incluir(static_cast<Entidade *>(tiro));
         // }
+        Projetil* tiro = new Projetil();
+        tiro->setSprite("assets/projetilG.png", 0, 0);
+        
+        sf::Vector2f pos = getSprite().getPosition();
+        tiro->atirar(pos);
+        
+        return tiro;
     }
     void Jogador::mover()
 
@@ -68,9 +75,11 @@ namespace Entidades::Personagens
         }
 
         // Jogador atira
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        {
-            atirar();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            if (listaEntidades) {
+                Projetil* tiro = atirar();
+                listaEntidades->incluir(static_cast<Entidade*>(tiro));
+            }
         }
     }
     void Jogador::colidir(Entidades::Entidade *e)

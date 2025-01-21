@@ -14,7 +14,7 @@ namespace Entidades::Personagens
     private:
         // ===/===/===/===/ Obrigatório ===/===/===/===/
         int pontos;
-        // Listas::Lista_Entidades* listaEntidades;
+        Listas::Lista_Entidades* listaEntidades;
 
         // ===/===/===/===/ Outros  ===/===/===/===/
 
@@ -31,11 +31,11 @@ namespace Entidades::Personagens
         void executar() override;
 
         // ===/===/===/===/ Outros  ===/===/===/===/
-        // void setListaEntidades(Listas::Lista_Entidades* lista);
+        //void setListaEntidades(Listas::Lista_Entidades* lista);
         void salvarDataBuffer();
         void colidir(Entidades::Entidade *e);
-        void atirar();
         void mover();
+        Projetil* atirar();
     };
 
 }
