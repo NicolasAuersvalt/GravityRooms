@@ -7948,7 +7948,7 @@
 											"top": 857,
 											"width": 152,
 											"height": 11,
-											"text": "«Obstaculo 1»"
+											"text": "«Obstaculo_Fácil»"
 										},
 										{
 											"_type": "LabelView",
@@ -8288,9 +8288,9 @@
 											"parentStyle": true,
 											"left": 797,
 											"top": 1025,
-											"width": 90,
+											"width": 98.83984375,
 											"height": 11,
-											"text": "«Obstaculo 2»"
+											"text": "«Obstaculo_Médio»"
 										},
 										{
 											"_type": "LabelView",
@@ -8304,7 +8304,7 @@
 											"parentStyle": true,
 											"left": 797,
 											"top": 1038,
-											"width": 90,
+											"width": 98.83984375,
 											"height": 11,
 											"text": "Espinho"
 										},
@@ -8343,7 +8343,7 @@
 									"parentStyle": true,
 									"left": 792,
 									"top": 1020,
-									"width": 100,
+									"width": 108.83984375,
 									"height": 34,
 									"stereotypeLabel": {
 										"$ref": "0C21m4qti029qkyZagEg3QAA"
@@ -8383,7 +8383,7 @@
 											"parentStyle": true,
 											"left": 797,
 											"top": 1059,
-											"width": 90,
+											"width": 98.83984375,
 											"height": 11,
 											"text": "-...",
 											"horizontalAlignment": 0
@@ -8403,7 +8403,7 @@
 											"parentStyle": true,
 											"left": 797,
 											"top": 1072,
-											"width": 90,
+											"width": 98.83984375,
 											"height": 11,
 											"text": "+largura: float",
 											"horizontalAlignment": 0
@@ -8415,7 +8415,7 @@
 									"parentStyle": true,
 									"left": 792,
 									"top": 1054,
-									"width": 100,
+									"width": 108.83984375,
 									"height": 34
 								},
 								{
@@ -8443,7 +8443,7 @@
 											"parentStyle": true,
 											"left": 797,
 											"top": 1093,
-											"width": 90,
+											"width": 98.83984375,
 											"height": 11,
 											"text": "+executar()",
 											"horizontalAlignment": 0
@@ -8463,7 +8463,7 @@
 											"parentStyle": true,
 											"left": 797,
 											"top": 1106,
-											"width": 90,
+											"width": 98.83984375,
 											"height": 11,
 											"text": "+...()",
 											"horizontalAlignment": 0
@@ -8475,7 +8475,7 @@
 									"parentStyle": true,
 									"left": 792,
 									"top": 1088,
-									"width": 100,
+									"width": 108.83984375,
 									"height": 34
 								},
 								{
@@ -8502,7 +8502,7 @@
 							"parentStyle": false,
 							"left": 792,
 							"top": 1020,
-							"width": 99,
+							"width": 107.83984375,
 							"height": 108,
 							"showProperty": false,
 							"nameCompartment": {
@@ -15149,7 +15149,6 @@
 									"font": "Arial;11;0",
 									"parentStyle": true,
 									"left": 48,
-									"top": -16,
 									"width": 10,
 									"height": 10
 								},
@@ -15174,7 +15173,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 77,
+											"top": 93,
 											"width": 328,
 											"height": 11,
 											"text": "«Mediador - STL»"
@@ -15190,7 +15189,7 @@
 											"font": "Arial;11;1",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 90,
+											"top": 106,
 											"width": 328,
 											"height": 11,
 											"text": "Gerenciador_Colisões"
@@ -15207,7 +15206,6 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 96,
-											"top": -32,
 											"width": 106.3583984375,
 											"height": 11,
 											"text": "(from Analysis Model)"
@@ -15224,7 +15222,6 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 96,
-											"top": -32,
 											"height": 11
 										}
 									],
@@ -15233,7 +15230,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": true,
 									"left": 1216,
-									"top": 72,
+									"top": 88,
 									"width": 338,
 									"height": 34,
 									"stereotypeLabel": {
@@ -15273,7 +15270,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 111,
+											"top": 127,
 											"width": 328,
 											"height": 11,
 											"text": "-LIs: vector<*Inimigo>",
@@ -15293,7 +15290,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 124,
+											"top": 140,
 											"width": 328,
 											"height": 11,
 											"text": "-LOs: list<*Obstaculo>",
@@ -15313,7 +15310,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 137,
+											"top": 153,
 											"width": 328,
 											"height": 11,
 											"text": "-LPs: set<*Projetil>",
@@ -15333,7 +15330,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 150,
+											"top": 166,
 											"width": 328,
 											"height": 11,
 											"text": "-pJog1: Tripulante",
@@ -15353,7 +15350,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 163,
+											"top": 179,
 											"width": 328,
 											"height": 11,
 											"text": "-...",
@@ -15365,7 +15362,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": true,
 									"left": 1216,
-									"top": 106,
+									"top": 122,
 									"width": 338,
 									"height": 73
 								},
@@ -15393,7 +15390,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 184,
+											"top": 200,
 											"width": 328,
 											"height": 11,
 											"text": "+const verificarColisao(pe1: *Entidade, pe2: *Entidade): const bool",
@@ -15413,7 +15410,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 197,
+											"top": 213,
 											"width": 328,
 											"height": 11,
 											"text": "+tratarColisoesJogsObstacs(): void",
@@ -15433,7 +15430,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 210,
+											"top": 226,
 											"width": 328,
 											"height": 11,
 											"text": "+tratarColisoesJogsInimgs(): void",
@@ -15453,7 +15450,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 223,
+											"top": 239,
 											"width": 328,
 											"height": 11,
 											"text": "+tratarColisoesJogsProjeteis(): void",
@@ -15473,7 +15470,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 236,
+											"top": 252,
 											"width": 328,
 											"height": 11,
 											"text": "+incluirInimigo(pi: *Inimigo)",
@@ -15493,7 +15490,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 249,
+											"top": 265,
 											"width": 328,
 											"height": 11,
 											"text": "+incluirObstcaulo(po: *Obstaculo)",
@@ -15513,7 +15510,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 262,
+											"top": 278,
 											"width": 328,
 											"height": 11,
 											"text": "+incluirProjetil(pj: *Projetil)",
@@ -15533,7 +15530,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 275,
+											"top": 291,
 											"width": 328,
 											"height": 11,
 											"text": "+executar(): void",
@@ -15553,7 +15550,7 @@
 											"font": "Arial;11;0",
 											"parentStyle": true,
 											"left": 1221,
-											"top": 288,
+											"top": 304,
 											"width": 328,
 											"height": 11,
 											"text": "+...()",
@@ -15565,7 +15562,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": true,
 									"left": 1216,
-									"top": 179,
+									"top": 195,
 									"width": 338,
 									"height": 125
 								},
@@ -15584,7 +15581,6 @@
 									"font": "Arial;11;0",
 									"parentStyle": true,
 									"left": 48,
-									"top": -16,
 									"width": 10,
 									"height": 10
 								}
@@ -15594,7 +15590,7 @@
 							"font": "Arial;11;0",
 							"parentStyle": false,
 							"left": 1216,
-							"top": 72,
+							"top": 88,
 							"width": 337,
 							"height": 238,
 							"showProperty": false,
@@ -15992,7 +15988,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1344,
-									"top": 37,
+									"top": 53,
 									"height": 11,
 									"alpha": 0,
 									"distance": 30,
@@ -16031,7 +16027,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1328,
-									"top": 58,
+									"top": 74,
 									"width": 6.11767578125,
 									"height": 11,
 									"alpha": 1,
@@ -16072,7 +16068,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1344,
-									"top": 27,
+									"top": 43,
 									"height": 11,
 									"alpha": 0,
 									"distance": 40,
@@ -16127,7 +16123,7 @@
 							"tail": {
 								"$ref": "NoBGuxZjMUKdUCOF2WpoWgAA"
 							},
-							"points": "1344:72;1344:8;32:8;32:780;68:780",
+							"points": "1344:88;1344:8;32:8;32:780;68:780",
 							"showVisibility": true,
 							"showProperty": false,
 							"nameLabel": {
@@ -16820,7 +16816,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1220,
-									"top": 335,
+									"top": 351,
 									"height": 11,
 									"alpha": 0,
 									"distance": 30,
@@ -16859,7 +16855,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1217,
-									"top": 317,
+									"top": 333,
 									"width": 6.11767578125,
 									"height": 11,
 									"alpha": 0,
@@ -16900,7 +16896,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1220,
-									"top": 345,
+									"top": 361,
 									"height": 11,
 									"alpha": 0,
 									"distance": 40,
@@ -16955,7 +16951,7 @@
 							"tail": {
 								"$ref": "NoBGuxZjMUKdUCOF2WpoWgAA"
 							},
-							"points": "1220:310;1220:656;1284:656;1284:684",
+							"points": "1220:326;1220:656;1284:656;1284:684",
 							"showVisibility": true,
 							"showProperty": false,
 							"nameLabel": {
@@ -17016,6 +17012,7 @@
 									"fillColor": "#FFA3FF",
 									"font": "Arial;11;0",
 									"parentStyle": true,
+									"left": -12,
 									"width": 10,
 									"height": 10
 								},
@@ -17039,11 +17036,11 @@
 											"fillColor": "#FFA3FF",
 											"font": "Arial;11;0",
 											"parentStyle": true,
-											"left": 825,
+											"left": 813,
 											"top": 877,
 											"width": 113.48681640625,
 											"height": 11,
-											"text": "«Obstaculo 3»"
+											"text": "«Obstaculo_Difícil»"
 										},
 										{
 											"_type": "LabelView",
@@ -17055,7 +17052,7 @@
 											"fillColor": "#FFA3FF",
 											"font": "Arial;11;1",
 											"parentStyle": true,
-											"left": 825,
+											"left": 813,
 											"top": 890,
 											"width": 113.48681640625,
 											"height": 11,
@@ -17072,6 +17069,7 @@
 											"fillColor": "#FFA3FF",
 											"font": "Arial;11;0",
 											"parentStyle": true,
+											"left": -24,
 											"width": 99.63916015625,
 											"height": 11,
 											"text": "(from Design Model)"
@@ -17087,6 +17085,7 @@
 											"fillColor": "#FFA3FF",
 											"font": "Arial;11;0",
 											"parentStyle": true,
+											"left": -24,
 											"height": 11
 										}
 									],
@@ -17094,7 +17093,7 @@
 									"fillColor": "#FFA3FF",
 									"font": "Arial;11;0",
 									"parentStyle": true,
-									"left": 820,
+									"left": 808,
 									"top": 872,
 									"width": 123.48681640625,
 									"height": 34,
@@ -17134,7 +17133,7 @@
 											"fillColor": "#FFA3FF",
 											"font": "Arial;11;0",
 											"parentStyle": true,
-											"left": 825,
+											"left": 813,
 											"top": 911,
 											"width": 113.48681640625,
 											"height": 11,
@@ -17154,7 +17153,7 @@
 											"fillColor": "#FFA3FF",
 											"font": "Arial;11;0",
 											"parentStyle": true,
-											"left": 825,
+											"left": 813,
 											"top": 924,
 											"width": 113.48681640625,
 											"height": 11,
@@ -17166,7 +17165,7 @@
 									"fillColor": "#FFA3FF",
 									"font": "Arial;11;0",
 									"parentStyle": true,
-									"left": 820,
+									"left": 808,
 									"top": 906,
 									"width": 123.48681640625,
 									"height": 34
@@ -17194,7 +17193,7 @@
 											"fillColor": "#FFA3FF",
 											"font": "Arial;11;0",
 											"parentStyle": true,
-											"left": 825,
+											"left": 813,
 											"top": 945,
 											"width": 113.48681640625,
 											"height": 11,
@@ -17206,7 +17205,7 @@
 									"fillColor": "#FFA3FF",
 									"font": "Arial;11;0",
 									"parentStyle": true,
-									"left": 820,
+									"left": 808,
 									"top": 940,
 									"width": 123.48681640625,
 									"height": 21
@@ -17225,6 +17224,7 @@
 									"fillColor": "#FFA3FF",
 									"font": "Arial;11;0",
 									"parentStyle": true,
+									"left": -12,
 									"width": 10,
 									"height": 10
 								}
@@ -17233,7 +17233,7 @@
 							"fillColor": "#FFA3FF",
 							"font": "Arial;11;0",
 							"parentStyle": false,
-							"left": 820,
+							"left": 808,
 							"top": 872,
 							"width": 122.48681640625,
 							"height": 89,
@@ -17371,7 +17371,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1349,
-									"top": 374,
+									"top": 382,
 									"height": 11,
 									"alpha": 1,
 									"distance": 30,
@@ -17390,7 +17390,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1323,
-									"top": 374,
+									"top": 382,
 									"width": 52.2822265625,
 									"height": 11,
 									"alpha": 1,
@@ -17412,7 +17412,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1311,
-									"top": 366,
+									"top": 374,
 									"height": 11,
 									"alpha": -1,
 									"distance": 15,
@@ -17451,7 +17451,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1324,
-									"top": 335,
+									"top": 350,
 									"height": 11,
 									"alpha": 0,
 									"distance": 30,
@@ -17490,7 +17490,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1305,
-									"top": 314,
+									"top": 330,
 									"width": 6.11767578125,
 									"height": 11,
 									"alpha": -1,
@@ -17531,7 +17531,7 @@
 									"font": "Arial;11;0",
 									"parentStyle": false,
 									"left": 1324,
-									"top": 345,
+									"top": 360,
 									"height": 11,
 									"alpha": 0,
 									"distance": 40,
@@ -17586,7 +17586,7 @@
 							"tail": {
 								"$ref": "NoBGuxZjMUKdUCOF2WpoWgAA"
 							},
-							"points": "1324:310;1324:416",
+							"points": "1324:326;1324:416",
 							"showVisibility": true,
 							"showProperty": false,
 							"nameLabel": {
@@ -20699,7 +20699,7 @@
 						"$ref": "IoH8RzmxEE6xOc9zvj2jawAA"
 					},
 					"name": "Plataforma",
-					"stereotype": "Obstaculo 1",
+					"stereotype": "Obstaculo_Fácil",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -20805,7 +20805,7 @@
 						"$ref": "IoH8RzmxEE6xOc9zvj2jawAA"
 					},
 					"name": "Espinho",
-					"stereotype": "Obstaculo 2",
+					"stereotype": "Obstaculo_Médio",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -21907,7 +21907,7 @@
 						"$ref": "IoH8RzmxEE6xOc9zvj2jawAA"
 					},
 					"name": "Centro_Gravidade",
-					"stereotype": "Obstaculo 3",
+					"stereotype": "Obstaculo_Difícil",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",

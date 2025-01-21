@@ -32,7 +32,7 @@ Gravity_Rooms::Gravity_Rooms() : GG(),
     }
 
     backgroundSprite.setTexture(backgroundTexture);
-    // backgroundSprite.setPosition(25, 25);
+    backgroundSprite.setPosition(25, 25);
 
     pJog1.setSprite("assets/tripulanteG.png", 0, 0);
 

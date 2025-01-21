@@ -53,7 +53,7 @@ namespace Gerenciadores {
             // Aqui você pode desenhar o jogador ou outros objetos
             window.display();  // Exibe a tela atualizada
         }
-}
+    }
 
 
     // Fechar a janela
