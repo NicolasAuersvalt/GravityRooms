@@ -1,6 +1,6 @@
-#include "Gerenciadores/Gerenciador_grafico.h"
-#include "Ente.h" // Substitua pelo caminho correto, se necessário
-#include "Entidades/Personagens/Jogador.h"
+#include "Gerenciadores/gerenciador_grafico.h"
+#include "ente.h" // Substitua pelo caminho correto, se necessário
+#include "Entidades/Personagens/jogador.h"
 
 namespace Gerenciadores {
 

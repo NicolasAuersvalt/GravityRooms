@@ -1,8 +1,8 @@
 #ifndef FASE_H
 #define FASE_H
 
-#include "Ente.h"
-#include "Gerenciadores/Gerenciador_colisoes.h"
+#include "ente.h"
+#include "Gerenciadores/gerenciador_colisoes.h"
 
 class Jogo;
 class Gerenciador_Colisoes;

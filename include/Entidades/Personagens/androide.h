@@ -1,7 +1,7 @@
 #ifndef ANDROIDE_H
 #define ANDROIDE_H
 
-#include "Entidades/Personagens/Inimigo.h"
+#include "Entidades/Personagens/inimigo.h"
 
 namespace Entidades::Personagens{
 

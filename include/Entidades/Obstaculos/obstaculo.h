@@ -1,7 +1,7 @@
 #ifndef OBSTACULO_H
 #define OBSTACULO_H
 
-#include "Entidades/Entidade.h"
+#include "Entidades/entidade.h"
 
 namespace Entidades::Obstaculos{
 

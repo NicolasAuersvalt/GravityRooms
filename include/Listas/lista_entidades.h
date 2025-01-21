@@ -1,10 +1,10 @@
 #ifndef LISTA_ENTIDADES_H
 #define LISTA_ENTIDADES_H
 
-#include"Listas/Lista.h"
-#include"Entidades/Entidade.h"
+#include"Listas/lista.h"
+#include"Entidades/entidade.h"
 
-#include"Entidades/Personagens/Jogador.h"
+#include"Entidades/Personagens/jogador.h"
 
 #include <iostream>
 using namespace std;

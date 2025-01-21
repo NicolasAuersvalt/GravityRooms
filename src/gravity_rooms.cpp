@@ -4,8 +4,8 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 // #include "Listas/lista_entidades.cpp"
-#include "Gravity_rooms.h"
-#include "Ente.h"
+#include "gravity_rooms.h"
+#include "ente.h"
 // #include "gerenciador_grafico.h"
 
 #include <iostream>

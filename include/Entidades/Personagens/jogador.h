@@ -1,7 +1,7 @@
 #ifndef JOGADOR_H
 #define JOGADOR_H
 
-#include "Entidades/Personagens/Personagem.h"
+#include "Entidades/Personagens/personagem.h"
 
 namespace Entidades::Personagens{
 

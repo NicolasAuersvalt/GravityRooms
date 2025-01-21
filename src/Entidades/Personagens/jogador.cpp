@@ -1,4 +1,4 @@
-#include "Entidades/Personagens/Jogador.h"
+#include "Entidades/Personagens/jogador.h"
 // #include "gerenciador_grafico.h"
 
 #include <iostream>
