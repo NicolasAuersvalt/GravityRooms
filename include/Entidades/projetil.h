@@ -6,11 +6,13 @@
 namespace Entidades{
     class Personagem;
 
-    class Projetil : protected Entidade{
+    class Projetil : public Entidade{
 
         private:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
+            
+            static int danoProjetil;
             bool ativo;
 
 
@@ -45,6 +47,7 @@ namespace Entidades{
             void colisao(Entidade* e);
             bool getColidir(Entidade* e);
             void danificar(Personagem* p);
+            int getDano(){return danoProjetil;}
     };
 
 }

@@ -20,7 +20,8 @@ Gravity_Rooms::Gravity_Rooms() : GG(),
         pAnd1(),
         pAnd2(),
         plataforma(),
-        LJog1() 
+        LJog1(),
+        GC()
 {
     Ente::setGerenciador(&GG);
 
@@ -56,6 +57,9 @@ void Gravity_Rooms::executar()
 {
 
     GG.executar();
+    GC.incluirJogador(pJog1);
+    GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
+    
     while (GG.estaAberta())
     { // Enquanto a janela estiver aberta
         sf::Event evento;
@@ -76,6 +80,7 @@ void Gravity_Rooms::executar()
         // GG.desenharEnte(&pJog1);  // Desenha o jogador 1 (ou qualquer outro ente)
 
         LJog1.desenharTodos(); // Desenha os outros sprites da lista
+        GC.executar();
 
         GG.exibir(); // Exibe a tela com todos os objetos desenhados
 

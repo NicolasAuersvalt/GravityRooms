@@ -11,8 +11,9 @@ namespace Entidades::Personagens{
         private:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
+            
             int nivel_maldade;
-
+            int dano = 10;
                     
 
             // ===/===/===/===/ Outros  ===/===/===/===/
@@ -41,6 +42,13 @@ namespace Entidades::Personagens{
             // ===/===/===/===/ Outros  ===/===/===/===/
             virtual void mover() = 0;
             virtual void colidir(Entidade* outro, string  direction = "") = 0; 
+
+
+            // Pode reescrever se quiser (com algum multiplicador, por exemplo)
+            virtual int getDano() {
+            // Por exemplo, retornar o dano base multiplicado pelo nível de maldade
+                return dano;
+            }
     };
 
 }

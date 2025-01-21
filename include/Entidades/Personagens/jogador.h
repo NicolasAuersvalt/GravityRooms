@@ -10,7 +10,6 @@ namespace Entidades::Personagens{
         private:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
-            int pontos;
 
                     
 
@@ -37,7 +36,7 @@ namespace Entidades::Personagens{
             // ===/===/===/===/ Outros  ===/===/===/===/
 
             void mover();
-
+            
     };
 
 }

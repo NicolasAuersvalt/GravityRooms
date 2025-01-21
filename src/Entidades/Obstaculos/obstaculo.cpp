@@ -21,4 +21,5 @@ namespace Entidades::Obstaculos
     void Obstaculo::salvar()
     {
     }
+
 }

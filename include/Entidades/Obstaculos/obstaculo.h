@@ -21,6 +21,7 @@ namespace Entidades::Obstaculos{
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
             bool danoso;
+            bool colidindo;
                     
 
             // ===/===/===/===/ Outros  ===/===/===/===/
@@ -41,7 +42,16 @@ namespace Entidades::Obstaculos{
             }
 
             // ===/===/===/===/ Outros  ===/===/===/===/
-            
+
+            bool getColidindo(){
+                return colidindo;
+            }
+
+            void setColidindo(bool colide){
+                colidindo = colide;
+
+            }
+                
 
     };
 

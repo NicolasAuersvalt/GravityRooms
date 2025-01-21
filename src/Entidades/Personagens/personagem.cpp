@@ -12,7 +12,7 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens{
 
     Personagem::Personagem(pair<int,int>p, pair<int, int>d):
-    Entidade(p, d)
+    Entidade(p, d), noChao(false), pontosVida(100)
     {
         
     }

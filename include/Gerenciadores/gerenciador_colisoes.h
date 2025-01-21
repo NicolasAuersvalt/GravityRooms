@@ -8,6 +8,9 @@
 #include"Entidades/Obstaculos/obstaculo.h"
 #include"Gerenciadores/gerenciador_grafico.h"
 
+// Precisa conhecer entidade
+#include"Entidades/entidade.h"
+
 #include <iostream>
 #include <list>
 #include <set>
@@ -19,7 +22,8 @@ using Entidades::Personagens::Jogador;
 using Entidades::Projetil;
 using Gerenciadores::Gerenciador_Grafico;
 
-class Entidade;
+using namespace Entidades;
+
 class Obstaculo;
 
 namespace Gerenciadores{
@@ -33,7 +37,7 @@ namespace Gerenciadores{
             vector<Inimigo*> LIs;  
             list<Obstaculo*> LOs;   
             set<Projetil*> LPs;     
-            Jogador pJog1;
+            Jogador *pJog1;
 
             // ===/===/===/===/ Outros ===/===/===/===/
 
@@ -47,19 +51,22 @@ namespace Gerenciadores{
             // Destrutor (FALTA)
             ~Gerenciador_Colisoes();
 
-           
 
             const bool verificarColisao(Entidade *pe1, Entidade *pe2);
             void tratarColisoesJogsObstacs();
             void tratarColisoesJogsInimgs();
             void ColisoewsJogsProjeteis();
             void incluirInimigo(Inimigo *pi);
-            void incluirObstcaulo(Inimigo *po);
+            void incluirObstaculo(Obstaculo *po);
             void incluirProjetil(Projetil *pj);
             void executar();
 
 
             // ===/===/===/===/ Outros  ===/===/===/===/
+
+            void incluirJogador(Jogador &jogador){
+                pJog1 = &jogador;
+            }
 
 
         protected:

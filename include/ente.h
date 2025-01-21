@@ -50,6 +50,10 @@ class Ente{
         sf::Sprite& getSprite(); // retorna o endereço da textura do protected sf::Texture *pFig
         
         static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
+
+        sf::FloatRect getHitBox() const {
+            return sprite.getGlobalBounds();
+        }
         
 
 };

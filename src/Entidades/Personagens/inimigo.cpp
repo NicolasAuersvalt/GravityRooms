@@ -26,4 +26,6 @@ namespace Entidades::Personagens{
 
 
     }
+    // Pode sobrescrever se quiser (com algum multiplicador)
+    
 }  

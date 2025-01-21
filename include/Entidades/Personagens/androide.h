@@ -30,8 +30,10 @@ namespace Entidades::Personagens{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
             using Ente::setSprite;
+            
             Androide();
             ~Androide();
+
             void executar() override;
             void danificar(Jogador* p);
             void mover();

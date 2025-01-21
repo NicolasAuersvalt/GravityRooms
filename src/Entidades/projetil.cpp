@@ -1,11 +1,14 @@
-#include "Entidades/Projetil.h"
-#include "Entidades/Personagens/Personagem.h"
+#include "Entidades/projetil.h"
+#include "Entidades/Personagens/personagem.h"
 #include <iostream>
 
 class Personagem;  // Forward declaration if needed
 
 using namespace std;
 using namespace Entidades;
+
+// Definição da Variável Estática Dano
+int Projetil::danoProjetil = 10;  
 
 namespace Entidades
 {

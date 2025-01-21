@@ -2,6 +2,7 @@
 #define PERSONAGEM_H
 
 #include "Entidades/entidade.h"
+#include <iostream>
 
 namespace Entidades::Personagens{
 
@@ -21,7 +22,8 @@ namespace Entidades::Personagens{
             // ===/===/===/===/ Obrigatório ===/===/===/===/
             float velocidadeY = 0.f;
             float velocidadeX = 0.f;
-            int num_vidas;
+            int pontosVida;
+            bool noChao;
                     
 
             // ===/===/===/===/ Outros  ===/===/===/===/
@@ -41,6 +43,30 @@ namespace Entidades::Personagens{
 
 
             }
+            void setPisando(bool pisa){
+                noChao = pisa;
+            }
+            bool getPisando(){
+                return noChao;
+
+            }
+            void recebeDano(int dano){
+                pontosVida -= dano;
+                if(!verificarVivo()){
+                    morrer();
+                }
+            }
+
+            bool verificarVivo(){
+                return (pontosVida>0);
+            }
+            void morrer(){
+                std::cout << "FUlano Morreu" << std::endl;
+                // REMOVER DA LISTA DE ENTIDADES SEI LÁ
+            }
+
+            
+            
             
 
             // ===/===/===/===/ Outros  ===/===/===/===/
