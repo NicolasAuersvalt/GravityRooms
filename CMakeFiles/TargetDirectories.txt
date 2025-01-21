@@ -1,0 +1,3 @@
+/mnt/c/Users/nicol/Documents/GitHub/GravityRooms/CMakeFiles/GravityRooms.dir
+/mnt/c/Users/nicol/Documents/GitHub/GravityRooms/CMakeFiles/edit_cache.dir
+/mnt/c/Users/nicol/Documents/GitHub/GravityRooms/CMakeFiles/rebuild_cache.dir

@@ -2,8 +2,7 @@
 #define INIMIGO_H
 
 #include "Entidades/Personagens/personagem.h"
-
-class Jogador;
+#include "Entidades/Personagens/jogador.h"
 
 namespace Entidades::Personagens{
 

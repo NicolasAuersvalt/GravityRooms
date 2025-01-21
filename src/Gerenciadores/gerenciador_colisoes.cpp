@@ -13,7 +13,7 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes()
 
 }
 
-/*
+
 const bool Gerenciador_Colisoes::verificarColisao(Entidade *pe1, Entidade *pe2)
 {
 
@@ -46,4 +46,3 @@ void Gerenciador_Colisoes::executar()
 {
 
 }
-*/

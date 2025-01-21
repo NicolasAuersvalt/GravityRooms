@@ -100,15 +100,23 @@ public:
 
 class GerenciadorColisoes {
 public:
+
     void verificarColisoes(Jogador& jogador, const std::vector<Entidade*>& entidades) {
+
         jogador.noChao = false;
+
         for (auto* entidade : entidades) {
+
             Plataforma* plataforma = dynamic_cast<Plataforma*>(entidade);
+
             if (plataforma && jogador.forma.getGlobalBounds().intersects(plataforma->forma.getGlobalBounds())) {
+
                 // Colisão detectada
                 if (jogador.velocidadeY > 0) { // Apenas se o jogador está caindo
+
                     jogador.forma.setPosition(jogador.forma.getPosition().x, plataforma->forma.getPosition().y - jogador.forma.getSize().y);
                     jogador.noChao = true;
+                    
                     break;
                 }
             }
