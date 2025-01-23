@@ -1,7 +1,8 @@
-#include "Entidades/Personagens/jogador.h"
+#include "Entidades/Personagens/Tripulante.h"
 // #include "gerenciador_grafico.h"
 
 #include <iostream>
+
 
 using namespace std;
 using namespace Entidades::Personagens;
@@ -9,22 +10,22 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens
 {
 
-    Jogador::Jogador() : Personagem(make_pair(-1, -1), make_pair(-1, -1))
+    Tripulante::Tripulante() : Personagem(make_pair(-1, -1), make_pair(-1, -1))
     {
     }
 
-    Jogador::~Jogador()
+    Tripulante::~Tripulante()
     {
     }
-    void Jogador::executar()
+    void Tripulante::executar()
     {
     }
-    // void Jogador::atualizar()
+    // void Tripulante::atualizar()
     // {
     
     // }
 
-    void Jogador::mover() 
+    void Tripulante::mover() 
     {
             // Movimentação (sem física, apenas mover pela tela)
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))

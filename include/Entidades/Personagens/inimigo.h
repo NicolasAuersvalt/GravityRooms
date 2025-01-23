@@ -2,7 +2,7 @@
 #define INIMIGO_H
 
 #include "Entidades/Personagens/personagem.h"
-#include "Entidades/Personagens/jogador.h"
+#include "Entidades/Personagens/tripulante.h"
 
 namespace Entidades::Personagens{
 
@@ -34,7 +34,7 @@ namespace Entidades::Personagens{
             Inimigo();
             ~Inimigo();
             void salvarDataBuffer();
-            virtual void danificar(Jogador* p) = 0;
+            virtual void danificar(Tripulante* p) = 0;
             
             virtual void executar()= 0;
             

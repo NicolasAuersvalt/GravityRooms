@@ -33,7 +33,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
     
     for (auto obstaculo : LOs) {
         if (verificarColisao(pJog1, obstaculo)) {
-            // Lógica para quando o jogador colide com o obstáculo
+            // Lógica para quando o Tripulante colide com o obstáculo
             pJog1->setPisando(true);
             obstaculo->setColidindo(true);
         }
@@ -41,7 +41,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
 }
 void Gerenciador_Colisoes::tratarColisoesJogsInimgs() {
     for (auto inimigo : LIs) {
-        // Verifica se há colisão entre o jogador e o inimigo
+        // Verifica se há colisão entre o Tripulante e o inimigo
         if (verificarColisao(pJog1, inimigo)) {
             pJog1->recebeDano(inimigo->getDano());
         }
@@ -80,9 +80,9 @@ void Gerenciador_Colisoes::executar()
 {
     tratarColisoesJogsObstacs();
 
-    // Verificar colisões entre o Jogador e os Inimigos
+    // Verificar colisões entre o Tripulante e os Inimigos
     tratarColisoesJogsInimgs();
 
-    // Verificar colisões entre o Jogador e os Projetis
+    // Verificar colisões entre o Tripulante e os Projetis
     ColisoewsJogsProjeteis();
 }

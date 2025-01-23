@@ -4,7 +4,7 @@
 #include"Listas/lista.h"
 #include"Entidades/entidade.h"
 
-#include"Entidades/Personagens/jogador.h"
+#include"Entidades/Personagens/tripulante.h"
 
 #include <iostream>
 using namespace std;

@@ -2,19 +2,19 @@
 #define GRAVITY_ROOMS_H
 
 #include"Listas/lista_entidades.h"
-#include"Entidades/Personagens/jogador.h"
+#include"Entidades/Personagens/tripulante.h"
 #include "Entidades/Personagens/androide.h"
 #include "Entidades/Obstaculos/plataforma.h"
 #include "Gerenciadores/gerenciador_grafico.h"
 
 // Temporário
-#include "Gerenciadores/Gerenciador_colisoes.h"
+#include "Gerenciadores/gerenciador_colisoes.h"
 using Gerenciadores::Gerenciador_Colisoes;
 // Temporário
 
 using Entidades::Obstaculos::Plataforma;
 
-using Entidades::Personagens::Jogador;
+using Entidades::Personagens::Tripulante;
 using Entidades::Personagens::Androide;
 
 using Gerenciadores::Gerenciador_Grafico;
@@ -28,7 +28,7 @@ class Gravity_Rooms
 private:
     // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    Jogador pJog1;
+    Tripulante pJog1;
     Androide pAnd1;
     Androide pAnd2;
     Plataforma plataforma;

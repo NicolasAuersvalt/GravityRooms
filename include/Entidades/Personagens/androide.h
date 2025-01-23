@@ -35,7 +35,7 @@ namespace Entidades::Personagens{
             ~Androide();
 
             void executar() override;
-            void danificar(Jogador* p);
+            void danificar(Tripulante* p);
             void mover();
 
             // ===/===/===/===/ Outros  ===/===/===/===/

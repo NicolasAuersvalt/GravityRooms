@@ -22,7 +22,7 @@ namespace Entidades::Personagens{
 
     }
     
-    void Clone::danificar(Jogador* p){
+    void Clone::danificar(Tripulante* p){
 
     }
 }  

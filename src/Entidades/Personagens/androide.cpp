@@ -18,7 +18,7 @@ namespace Entidades::Personagens
     {
     }
 
-    void Androide::danificar(Jogador *p)
+    void Androide::danificar(Tripulante *p)
     {
     }
 

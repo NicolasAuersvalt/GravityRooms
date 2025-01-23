@@ -1,6 +1,6 @@
 #include "Gerenciadores/gerenciador_grafico.h"
 #include "ente.h" // Substitua pelo caminho correto, se necessário
-#include "Entidades/Personagens/jogador.h"
+#include "Entidades/Personagens/tripulante.h"
 
 namespace Gerenciadores {
 
@@ -50,7 +50,7 @@ namespace Gerenciadores {
              // indow.clear(sf::Color::Black); Limpa a tela
 
             // Chame a função de desenho para desenhar os entes
-            // Aqui você pode desenhar o jogador ou outros objetos
+            // Aqui você pode desenhar o Tripulante ou outros objetos
             window.display();  // Exibe a tela atualizada
         }
     }
@@ -129,8 +129,8 @@ namespace Gerenciadores {
             window.draw(sprite);
 
             // Aqui você pode adicionar outros objetos a serem desenhados
-            // Como o jogador, inimigos, etc.
-            // window.draw(jogadorSprite);  // Exemplo de adicionar outro sprite
+            // Como o Tripulante, inimigos, etc.
+            // window.draw(TripulanteSprite);  // Exemplo de adicionar outro sprite
 
             window.display();  // Exibe os objetos na tela
         }

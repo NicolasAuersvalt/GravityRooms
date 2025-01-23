@@ -3,7 +3,7 @@
 
 #include"Gerenciadores/gerenciador_grafico.h"
 #include"Entidades/Personagens/inimigo.h"
-#include"Entidades/Personagens/jogador.h"
+#include"Entidades/Personagens/tripulante.h"
 #include"Entidades/projetil.h"
 #include"Entidades/Obstaculos/obstaculo.h"
 #include"Gerenciadores/gerenciador_grafico.h"
@@ -18,7 +18,7 @@
 
 using Entidades::Obstaculos::Obstaculo;
 using Entidades::Personagens::Inimigo;
-using Entidades::Personagens::Jogador;
+using Entidades::Personagens::Tripulante;
 using Entidades::Projetil;
 using Gerenciadores::Gerenciador_Grafico;
 
@@ -37,7 +37,7 @@ namespace Gerenciadores{
             vector<Inimigo*> LIs;  
             list<Obstaculo*> LOs;   
             set<Projetil*> LPs;     
-            Jogador *pJog1;
+            Tripulante *pJog1;
 
             // ===/===/===/===/ Outros ===/===/===/===/
 
@@ -64,8 +64,8 @@ namespace Gerenciadores{
 
             // ===/===/===/===/ Outros  ===/===/===/===/
 
-            void incluirJogador(Jogador &jogador){
-                pJog1 = &jogador;
+            void incluirTripulante(Tripulante &Tripulante){
+                pJog1 = &Tripulante;
             }
 
 

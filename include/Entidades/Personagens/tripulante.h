@@ -1,11 +1,12 @@
-#ifndef JOGADOR_H
-#define JOGADOR_H
+#ifndef TRIPULANTE_H
+#define TRIPULANTE_H
 
 #include "Entidades/Personagens/personagem.h"
+#include "json.hpp"
 
 namespace Entidades::Personagens{
 
-    class Jogador : public Personagem{
+    class Tripulante : public Personagem{
 
         private:
 
@@ -28,10 +29,23 @@ namespace Entidades::Personagens{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            Jogador();
-            ~Jogador();
+            Tripulante();
+            ~Tripulante();
             void executar() override;  
-  
+
+            /*
+            void salvar(nlohmann::ordered_json& json) {
+
+                // json[chave] = {info}
+
+                json["posicao"] = { {"x", posicao[0]}, {"y", posicao[1]}};
+
+                json["tamanho"] = { {"x", tamanho[0]}, {"y", tamanho[1]}};
+
+                json["vida"] = vida;
+
+             }
+            */
 
             // ===/===/===/===/ Outros  ===/===/===/===/
 
