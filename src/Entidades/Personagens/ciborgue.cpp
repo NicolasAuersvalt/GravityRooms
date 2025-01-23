@@ -24,7 +24,7 @@ namespace Entidades::Personagens{
     }
    
     
-    void Ciborgue::danificar(Jogador* p){
+    void Ciborgue::danificar(Tripulante* p){
         
     }
 }  

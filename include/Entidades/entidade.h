@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Ente.h"
+#include "ente.h"
 #include <utility> // Para usar pair
 #include <sstream> // Para o ostringstream
 

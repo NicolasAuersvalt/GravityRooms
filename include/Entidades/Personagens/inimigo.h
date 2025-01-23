@@ -1,48 +1,46 @@
 #ifndef INIMIGO_H
 #define INIMIGO_H
 
-#include "Entidades/Personagens/Personagem.h"
+#include "Entidades/Personagens/personagem.h"
+#include "Entidades/Personagens/tripulante.h"
 
-class Jogador;
+namespace Entidades::Personagens {
 
-namespace Entidades::Personagens{
+class Inimigo : public Personagem {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    class Inimigo : public Personagem{
+  int nivel_maldade;
+  int dano = 10;
 
-        private:
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            int nivel_maldade;
-            bool movingRight;
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-        protected:
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
+  Inimigo();
+  ~Inimigo();
+  void salvarDataBuffer();
+  virtual void danificar(Tripulante* p) = 0;
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  virtual void executar() = 0;
 
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  virtual void mover() = 0;
+  virtual void colidir(Entidade* outro, string direction = "") = 0;
 
-        public:
+  // Pode reescrever se quiser (com algum multiplicador, por exemplo)
+  virtual int getDano() {
+    // Por exemplo, retornar o dano base multiplicado pelo nível de maldade
+    return dano;
+  }
+};
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-            Inimigo();
-            ~Inimigo();
-            void salvarDataBuffer();
-            virtual void danificar(Jogador* p) = 0;
-            
-            virtual void executar()= 0;
-            
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            void mover();
-            virtual void colidir(Entidade* e) = 0; 
-    };
-
-}
+}  // namespace Entidades::Personagens
 
 #endif

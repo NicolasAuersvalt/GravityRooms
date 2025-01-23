@@ -1,7 +1,7 @@
 #ifndef OBSTACULO_H
 #define OBSTACULO_H
 
-#include "Entidades/Entidade.h"
+#include "Entidades/entidade.h"
 
 namespace Entidades::Obstaculos{
 
@@ -21,6 +21,7 @@ namespace Entidades::Obstaculos{
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
             bool danoso;
+            bool colidindo;
                     
 
             // ===/===/===/===/ Outros  ===/===/===/===/
@@ -41,7 +42,16 @@ namespace Entidades::Obstaculos{
             }
 
             // ===/===/===/===/ Outros  ===/===/===/===/
-            
+
+            bool getColidindo(){
+                return colidindo;
+            }
+
+            void setColidindo(bool colide){
+                colidindo = colide;
+
+            }
+                
 
     };
 

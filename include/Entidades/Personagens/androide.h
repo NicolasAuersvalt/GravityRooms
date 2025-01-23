@@ -1,43 +1,40 @@
 #ifndef ANDROIDE_H
 #define ANDROIDE_H
 
-#include "Entidades/Personagens/Inimigo.h"
+#include "Entidades/Personagens/inimigo.h"
 
-namespace Entidades::Personagens
-{
+namespace Entidades::Personagens {
 
-    class Androide : public Inimigo
-    {
+class Androide : public Inimigo {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  float raio;
 
-    private:
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
-        float raio;
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  const float MOVE_SPEED = 5.0f;
 
-        // ===/===/===/===/ Outros  ===/===/===/===/
-        const float MOVE_SPEED = 5.0f;
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    protected:
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-        // ===/===/===/===/ Outros  ===/===/===/===/
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  using Ente::setSprite;
+  Androide();
+  ~Androide();
+  void executar() override;
+  void danificar(Jogador* p);
+  void mover();
 
-    public:
-        // ===/===/===/===/ Obrigatório ===/===/===/===/
-        using Ente::setSprite;
-        Androide();
-        ~Androide();
-        void executar() override;
-        void danificar(Jogador *p) override;
-        void mover() override;
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  void colidir(Entidade* e) override;
+  void salvar() override;
+  void atualizar();
+  void atirar();
+  void salvarDataBuffer() override;
+};
 
-        // ===/===/===/===/ Outros  ===/===/===/===/
-        void colidir(Entidade *e) override;
-        void salvar() override;
-        void atualizar();
-        void atirar();
-        void salvarDataBuffer() override;
-    };
-
-}
+}  // namespace Entidades::Personagens
 
 #endif

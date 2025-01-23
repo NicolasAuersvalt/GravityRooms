@@ -6,6 +6,5 @@ echo "Construindo..."
 cmake ..
 echo "Compilando..."
 make
-echo "Executando..."
-./GravityRooms
+
 

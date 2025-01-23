@@ -1,7 +1,7 @@
 #ifndef PLATAFORMA_H
 #define PLATAFORMA_H
 
-#include "Entidades/Obstaculos/Obstaculo.h"
+#include "Entidades/Obstaculos/obstaculo.h"
 
 namespace Entidades::Obstaculos {
 

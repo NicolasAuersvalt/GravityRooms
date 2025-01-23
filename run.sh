@@ -1,0 +1,2 @@
+echo "Executando..."
+./build/GravityRooms

@@ -1,11 +1,11 @@
 #include "gravity_rooms.h"
 #include "ente.h"
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+
 // #include "Listas/lista_entidades.cpp"
-#include "Gravity_rooms.h"
-#include "Ente.h"
 // #include "gerenciador_grafico.h"
 
 #include <iostream>
@@ -20,7 +20,8 @@ Gravity_Rooms::Gravity_Rooms() : GG(),
         pAnd1(),
         pAnd2(),
         plataforma(),
-        LJog1() 
+        LJog1(),
+        GC()
 {
     Ente::setGerenciador(&GG);
 
@@ -32,7 +33,7 @@ Gravity_Rooms::Gravity_Rooms() : GG(),
     }
 
     backgroundSprite.setTexture(backgroundTexture);
-    // backgroundSprite.setPosition(25, 25);
+    backgroundSprite.setPosition(25, 25);
 
     pJog1.setSprite("assets/tripulanteG.png", 0, 0);
 
@@ -58,6 +59,9 @@ void Gravity_Rooms::executar()
 {
 
     GG.executar();
+    GC.incluirTripulante(pJog1);
+    GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
+    
     while (GG.estaAberta())
     { // Enquanto a janela estiver aberta
         sf::Event evento;
@@ -75,9 +79,10 @@ void Gravity_Rooms::executar()
         // Desenha os objetos na ordem correta
         //GG.desenhar(backgroundSprite); // Desenha o fundo primeiro
 
-        // GG.desenharEnte(&pJog1);  // Desenha o jogador 1 (ou qualquer outro ente)
+        // GG.desenharEnte(&pJog1);  // Desenha o Tripulante 1 (ou qualquer outro ente)
 
         LJog1.desenharTodos(); // Desenha os outros sprites da lista
+        GC.executar();
 
         GG.exibir(); // Exibe a tela com todos os objetos desenhados
 

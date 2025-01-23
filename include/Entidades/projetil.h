@@ -1,7 +1,7 @@
 #ifndef PROJETIL_H
 #define PROJETIL_H
 
-#include "Entidades/Entidade.h"
+#include "Entidades/entidade.h"
 
 namespace Entidades{
     class Personagem;
@@ -11,6 +11,8 @@ namespace Entidades{
         private:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
+            
+            static int danoProjetil;
             bool ativo;
 
 
@@ -50,6 +52,7 @@ namespace Entidades{
             void colisao(Entidade* e);
             bool getColidir(Entidade* e);
             void danificar(Personagem* p);
+            int getDano(){return danoProjetil;}
     };
 
 }

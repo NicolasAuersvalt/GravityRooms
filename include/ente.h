@@ -1,52 +1,57 @@
 #ifndef ENTE_H
 #define ENTE_H
 
-#include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Gerenciadores/Gerenciador_grafico.h"
+#include <iostream>
+
+#include "Gerenciadores/gerenciador_grafico.h"
 
 using namespace std;
 using Gerenciadores::Gerenciador_Grafico;
 
 class Gerenciador_Grafico;
 
-class Ente
-{
+class Ente {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-private:
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-    // ===/===/===/===/ Outros  ===/===/===/===/
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  int id;
+  static Gerenciador_Grafico*
+      pGG;  // Ente utiliza Gerenciador Gráfico (Bidirecional)
 
-protected:
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
-    int id;
-    static Gerenciador_Grafico *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-    // ===/===/===/===/ Outros  ===/===/===/===/
+  // Figura *pFig;
+  sf::Texture* texture;  // Substituido
+  sf::Sprite sprite;
+  sf::Vector2f position;  // Change from pair to Vector2f
+  sf::Vector2f velocity;  // For movement
 
-    // Figura *pFig;
-    sf::Texture *texture; // Substituido
-    sf::Sprite sprite;
-    sf::Vector2f position; // Change from pair to Vector2f
-    sf::Vector2f velocity; // For movement
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-public:
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
+  Ente();
+  ~Ente();
 
-    Ente();
-    ~Ente();
+  virtual void executar() = 0;  // Pois é abstrata
+  void desenhar();  // Possui o endereço do gerenciador gráfico em protected,
+                    // mas só UTILIZA o gerenciador
 
-    virtual void executar() = 0; // Pois é abstrata
-    void desenhar();             // Possui o endereço do gerenciador gráfico em protected, mas só UTILIZA o gerenciador
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-    // ===/===/===/===/ Outros  ===/===/===/===/
+  void setSprite(std::string local, int posX, int posY);
+  sf::Texture*
+  getTexture();  // retorna o endereço da textura do protected sf::Texture *pFig
+  sf::Sprite&
+  getSprite();  // retorna o endereço da textura do protected sf::Texture *pFig
 
-    void setSprite(std::string local, int posX, int posY);
-    sf::Texture *getTexture(); // retorna o endereço da textura do protected sf::Texture *pFig
-    sf::Sprite &getSprite();   // retorna o endereço da textura do protected sf::Texture *pFig
+  static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
 
-    static void setGerenciador(Gerenciadores::Gerenciador_Grafico *gg);
+  sf::FloatRect getHitBox() const { return sprite.getGlobalBounds(); }
 };
 
 #endif

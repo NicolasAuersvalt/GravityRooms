@@ -1,62 +1,72 @@
 #ifndef GERENCIADOR_COLISOES_H
 #define GERENCIADOR_COLISOES_H
 
-class Inimigo;
-class Entidade;
-class Projetil;
-class Obstaculo;
-class Jogador;
+#include "Entidades/Obstaculos/obstaculo.h"
+#include "Entidades/Personagens/inimigo.h"
+#include "Entidades/Personagens/tripulante.h"
+#include "Entidades/projetil.h"
+#include "Gerenciadores/gerenciador_grafico.h"
 
+// Precisa conhecer entidade
 #include <iostream>
+#include <list>
+#include <set>
 #include <vector>
 
-namespace Gerenciadores{
+#include "Entidades/entidade.h"
 
-    class Gerenciador_Colisoes{
+using Entidades::Projetil;
+using Entidades::Obstaculos::Obstaculo;
+using Entidades::Personagens::Inimigo;
+using Entidades::Personagens::Tripulante;
+using Gerenciadores::Gerenciador_Grafico;
 
-        public:
+using namespace Entidades;
 
-            // ===/===/===/===/ Obrigatórios ===/===/===/===/
+class Obstaculo;
 
-            // Construtor (FALTA)
-            Gerenciador_Colisoes();
-            
-            // Destrutor (FALTA)
-            ~Gerenciador_Colisoes();
-            /*
-            const bool verificarColisao(Entidade *pe1, Entidade *pe2);
-            void tratarColisoesJogsObstacs();
-            void tratarColisoesJogsInimgs();
-            void ColisoewsJogsProjeteis();
-            void incluirInimigo(Inimigo *pi);
-            void incluirObstcaulo(Inimigo *po);
-            void incluirProjetil(Projetil *pj);
-            void executar();
-            */
-            // ===/===/===/===/ Outros  ===/===/===/===/
+namespace Gerenciadores {
 
+class Gerenciador_Colisoes {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        protected:
+  vector<Inimigo *> LIs;
+  list<Obstaculo *> LOs;
+  set<Projetil *> LPs;
+  Tripulante *pJog1;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+  // ===/===/===/===/ Outros ===/===/===/===/
 
+ public:
+  // ===/===/===/===/ Obrigatórios ===/===/===/===/
 
-            // ===/===/===/===/ Outros ===/===/===/===/
+  // Construtor (FALTA)
+  Gerenciador_Colisoes();
 
-        private:
+  // Destrutor (FALTA)
+  ~Gerenciador_Colisoes();
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            //vector<Inimigo*> LIs;  
-            //list<Obstaculo*> LOs;   
-            //set<Projetil*> LPs;     
-            //Jogador pJog1;
+  const bool verificarColisao(Entidade *pe1, Entidade *pe2);
+  void tratarColisoesJogsObstacs();
+  void tratarColisoesJogsInimgs();
+  void ColisoewsJogsProjeteis();
+  void incluirInimigo(Inimigo *pi);
+  void incluirObstaculo(Obstaculo *po);
+  void incluirProjetil(Projetil *pj);
+  void executar();
 
-            
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Outros ===/===/===/===/
+  void incluirTripulante(Tripulante &Tripulante) { pJog1 = &Tripulante; }
 
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    };
-} using namespace Gerenciadores;
+  // ===/===/===/===/ Outros ===/===/===/===/
+};
+
+}  // namespace Gerenciadores
+using namespace Gerenciadores;
 
 #endif
