@@ -48,7 +48,14 @@ namespace Entidades{
             virtual void mover() = 0;   
             
             pair<int, int>  getPosition(); 
-            pair<int, int>  getDirection(); 
+            pair<int, int>  getDirection();
+
+            void setPosition(pair<int,int>p){
+                
+                pos.first = p.first;
+                pos.second = p.second;
+
+            }
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

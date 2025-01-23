@@ -6,6 +6,7 @@
 #include "Entidades/Personagens/androide.h"
 #include "Entidades/Obstaculos/plataforma.h"
 #include "Gerenciadores/gerenciador_grafico.h"
+#include <fstream>
 
 // Temporário
 #include "Gerenciadores/gerenciador_colisoes.h"

@@ -35,7 +35,22 @@ Gravity_Rooms::Gravity_Rooms() : GG(),
     backgroundSprite.setTexture(backgroundTexture);
     backgroundSprite.setPosition(25, 25);
 
-    pJog1.setSprite("assets/tripulanteG.png", 0, 0);
+    
+    std::ifstream arquivo("dados_salvos.json");
+            if (arquivo.is_open()) {
+                nlohmann::ordered_json buffer;
+                arquivo >> buffer;
+                arquivo.close();
+                pJog1.carregarDataBuffer(buffer);
+                std::cout << "Dados carregados de 'dados_salvos.json'.\n";
+            } else {
+                std::cerr << "Erro ao abrir o arquivo para carregar os dados.\n";
+            }
+
+
+    pair pos = pJog1.getPosition();
+
+    pJog1.setSprite("assets/tripulanteG.png", pos.first, pos.second);
 
     LJog1.incluir(static_cast<Entidade *>(&pJog1));
 
@@ -70,6 +85,26 @@ void Gravity_Rooms::executar()
             {
                 GG.fechar();
             }
+
+            if (evento.type == sf::Event::KeyPressed) {
+        // Verifica se a tecla pressionada foi 'Y'
+        if (evento.key.code == sf::Keyboard::Y) {
+            // Chama o método de salvar buffer do objeto PJog1
+            nlohmann::ordered_json buffer;
+            pJog1.salvarDataBuffer(buffer);
+            // Exemplo: Salvar o buffer em um arquivo
+            std::ofstream arquivo("dados_salvos.json");
+            if (arquivo.is_open()) {
+                arquivo << buffer.dump(4); // Salva com indentação de 4 espaços
+                arquivo.close();
+                std::cout << "Dados salvos em 'dados_salvos.json'.\n";
+            } else {
+                std::cerr << "Erro ao abrir o arquivo para salvar os dados.\n";
+            }
+        }
+        
+    }
+            
         }
 
         GG.limpar(); // Limpa a tela antes de desenhar qualquer coisa

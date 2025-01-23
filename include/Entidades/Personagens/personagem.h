@@ -51,15 +51,23 @@ namespace Entidades::Personagens{
 
             }
             void recebeDano(int dano){
-                pontosVida -= dano;
+                setVida(getVida() - dano);
                 if(!verificarVivo()){
                     morrer();
                 }
             }
 
             bool verificarVivo(){
-                return (pontosVida>0);
+                return (getVida() > 0);
             }
+
+            int getVida(){
+                return pontosVida;
+            }
+            void setVida(int vida){
+                pontosVida = vida;
+            }
+
             void morrer(){
                 std::cout << "FUlano Morreu" << std::endl;
                 // REMOVER DA LISTA DE ENTIDADES SEI LÁ

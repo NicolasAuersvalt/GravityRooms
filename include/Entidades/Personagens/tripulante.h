@@ -11,7 +11,7 @@ namespace Entidades::Personagens{
         private:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+            int pontos;
                     
 
             // ===/===/===/===/ Outros  ===/===/===/===/
@@ -33,19 +33,47 @@ namespace Entidades::Personagens{
             ~Tripulante();
             void executar() override;  
 
-            /*
-            void salvar(nlohmann::ordered_json& json) {
+            
+            void salvarDataBuffer(nlohmann::ordered_json& json) {
+                
+                auto [x, y] = getPosition(); // Desempacota a posição
 
-                // json[chave] = {info}
+                json = {
 
-                json["posicao"] = { {"x", posicao[0]}, {"y", posicao[1]}};
+                    {"posicao", { {"x", x}, {"y", y} }},
 
-                json["tamanho"] = { {"x", tamanho[0]}, {"y", tamanho[1]}};
+                    {"vida", getVida()},
 
-                json["vida"] = vida;
+                    {"pontos", getPontos()}
 
-             }
-            */
+
+                };
+
+            }
+
+            void carregarDataBuffer(const nlohmann::ordered_json& json) {
+                if (json.contains("posicao")) {
+                    int posicaoX = json["posicao"]["x"].get<int>();
+                    int posicaoY = json["posicao"]["y"].get<int>();
+                    setPosition(make_pair(posicaoX, posicaoY));
+                }
+
+                if (json.contains("vida")) {
+                    setVida(json["vida"].get<int>());
+                }
+                if (json.contains("pontos")) {
+                    setPontos(json["pontos"].get<int>());
+                }
+            }
+
+            int getPontos(){
+                return pontos;
+            }
+
+            void setPontos(int ponto){
+                pontos = pontos;
+            }
+            
 
             // ===/===/===/===/ Outros  ===/===/===/===/
 

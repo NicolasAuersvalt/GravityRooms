@@ -10,7 +10,8 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens
 {
 
-    Tripulante::Tripulante() : Personagem(make_pair(-1, -1), make_pair(-1, -1))
+    Tripulante::Tripulante() : Personagem(make_pair(-1, -1), make_pair(-1, -1)),
+    pontos(0)
     {
     }
 
@@ -44,5 +45,6 @@ namespace Entidades::Personagens
         {
             getSprite().move(0.f, 5.f); // Move para baixo
         }
+        
     }
 }
