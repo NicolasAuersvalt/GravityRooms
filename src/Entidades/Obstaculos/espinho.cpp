@@ -1,4 +1,4 @@
-#include "Entidades/Obstaculos/Espinho.h"
+#include "Entidades/Obstaculos/espinho.h"
 
 #include <iostream>
 using namespace std;
@@ -8,8 +8,8 @@ using namespace Entidades::Obstaculos;
 namespace Entidades::Obstaculos{
 
 
-    Espinho::Espinho():
-    Obstaculo(make_pair(-1, -1), make_pair(-1, -1))
+    Espinho::Espinho(const sf::Vector2f pos, const sf::Vector2f tam):
+    Obstaculo(pos, tam)
     {
         
     }

@@ -38,7 +38,7 @@ namespace Entidades{
             virtual ~Projetil();
 
             // Métodos Virtuais
-            void executar() override;
+           // void executar() override;
 
             // ===/===/===/===/ Outros  ===/===/===/===/
             

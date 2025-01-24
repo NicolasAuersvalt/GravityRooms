@@ -3,57 +3,72 @@
 #include <iostream>
 
 using namespace std;
-using namespace Entidades::Personagens;
+using namespace sf;
+
+using Entidades::Personagens::Inimigo;
 
 namespace Entidades::Personagens {
 
-// Inimigo::Inimigo() : Personagem(make_pair(-1, -1), make_pair(-1, -1)) {}
-Inimigo::Inimigo(cosnt sf::Vector2f pos, const sf::Vector2f tam,
-                 Jogador::Jogador* pJog)
-    : personagem(pos, tam), relogio(), jogador(pJog) {
+
+Inimigo::Inimigo(const Vector2f pos, const Vector2f tam,
+                 Tripulante* tripulante)
+    : Personagem(pos, tam), tripulante(tripulante), relogio() {
   inicializar();
   // Inicializa a semente do gerador de numeros aleatorios
   srand(time(NULL));
   // Gera uma direcao aleatoria inicial (0-3) para o movimento
   moverAleatorio = rand() % 4;
 }
-Inimigo::~Inimigo() {}
+Inimigo::~Inimigo() {
 
-void Inimigo::executar() {}
+
+}
+
+void Inimigo::inicializar() {
+
+
+}
+
+void Inimigo::executar() {
+
+
+}
 
 void Inimigo::mover() {
-  // Obtém as posicoes do jogador e do inimigo
-  sf::Vector2f posJogador = pJog->getCorpo().getPosition();
-  sf::Vector2f posInimigo = corpo.getPosition();
+  // Obtem as posicoes do Tripulante e do inimigo
+  Vector2f posJogador = tripulante->getCorpo().getPosition();
+  Vector2f posInimigo = corpo.getPosition();
 
-  // Verifica se o jogador esta dentro do raio de perseguicao
+  // Verifica se o Tripulante esta dentro do raio de perseguicao
   if (fabs(posJogador.x - posInimigo.x) <= RAIO_PERSEGUIR_X &&
       fabs(posJogador.y - posInimigo.y) <= RAIO_PERSEGUIR_Y) {
-    // Se estiver dentro do raio, persegue o jogador
-    perseguirJogador(posJogador, posInimigo);
+    // Se estiver dentro do raio, persegue o Tripulante
+    perseguirTripulante(posJogador, posInimigo);
   } else {
     // Se estiver fora do raio, move-se aleatoriamente
     movimentarAleatorio();
   }
 }
-void Inimigo::salvarDataBuffer() {}
+void Inimigo::salvarDataBuffer(nlohmann::ordered_json& json) {
+    cout << "BLZ" << endl;
+}
 // Pode sobrescrever se quiser (com algum multiplicador)
 
-void Inimigo::perseguirJogador(sf::Vector2f posJogador,
-                               const sf::Vector2f posInimigo) {
-  // Se o jogador estiver a direita do inimigo, move para direita
+void Inimigo::perseguirTripulante(Vector2f posJogador,
+                               const Vector2f posInimigo) {
+  // Se o Tripulante estiver a direita do inimigo, move para direita
   if (posJogador.x - posInimigo.x > 0.0f) {
     corpo.move(vel.x, 0.0f);
   }
-  // Se o jogador estiver a esquerda do inimigo, move para esquerda
+  // Se o Tripulante estiver a esquerda do inimigo, move para esquerda
   else {
     corpo.move(-vel.x, 0.0f);
   }
-  // Se o jogador estiver abaixo do inimigo, move para baixo
+  // Se o Tripulante estiver abaixo do inimigo, move para baixo
   if (posJogador.y - posInimigo.y > 0.0f) {
     corpo.move(0.0f, vel.y);
   }
-  // Se o jogador estiver acima do inimigo, move para cima
+  // Se o Tripulante estiver acima do inimigo, move para cima
   else {
     corpo.move(0.0f, -vel.y);
   }
@@ -77,7 +92,7 @@ void Inimigo::movimentarAleatorio() {
     corpo.move(vel.x, 0.0f);
   }
 
-  // Obtém o tempo decorrido desde o ultimo reinicio do relogio
+  // Obtem o tempo decorrido desde o ultimo reinicio do relogio
   float dt = relogio.getElapsedTime().asSeconds();
   // A cada 1 segundo, gera uma nova direcao aleatoria
   if (dt >= 1.0f) {

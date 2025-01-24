@@ -1,26 +1,32 @@
 #ifndef GRAVITY_ROOMS_H
 #define GRAVITY_ROOMS_H
 
-#include"Listas/lista_entidades.h"
-#include"Entidades/Personagens/tripulante.h"
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
+
+#include "Listas/lista_entidades.h"
+#include "Entidades/Personagens/tripulante.h"
 #include "Entidades/Personagens/androide.h"
 #include "Entidades/Obstaculos/plataforma.h"
 #include "Gerenciadores/gerenciador_grafico.h"
+#include "ente.h"
 #include <fstream>
+
+#include <iostream>
+
+using namespace std;
+using namespace sf;
 
 // Temporário
 #include "Gerenciadores/gerenciador_colisoes.h"
+
 using Gerenciadores::Gerenciador_Colisoes;
-// Temporário
-
 using Entidades::Obstaculos::Plataforma;
-
 using Entidades::Personagens::Tripulante;
 using Entidades::Personagens::Androide;
-
 using Gerenciadores::Gerenciador_Grafico;
 using Listas::Lista_Entidades;
-
 
 
 class Gravity_Rooms
@@ -37,8 +43,9 @@ private:
     Gerenciador_Colisoes GC;
 
     // ===/===/===/===/ Outros  ===/===/===/===/
+
     Lista_Entidades LJog1;
-    sf::Sprite backgroundSprite;
+    Sprite backgroundSprite;
 
 protected:
     // ===/===/===/===/ Obrigatório ===/===/===/===/

@@ -1,6 +1,9 @@
 #ifndef PLATAFORMA_H
 #define PLATAFORMA_H
 
+
+#define TAMANHO_PLATAFORMA_X 350.0f
+#define TAMANHO_PLATAFORMA_Y 50.0f
 #include "Entidades/Obstaculos/obstaculo.h"
 
 namespace Entidades::Obstaculos {
@@ -23,7 +26,7 @@ namespace Entidades::Obstaculos {
 
 
         public:
-            Plataforma();
+            Plataforma(const sf::Vector2f pos, const sf::Vector2f tam);
             ~Plataforma();
             
             void executar() override;

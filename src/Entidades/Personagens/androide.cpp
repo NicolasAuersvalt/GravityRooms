@@ -1,15 +1,14 @@
-#include "Entidades/Personagens/Androide.h"
+#include "Entidades/Personagens/androide.h"
 
 #include <iostream>
-using namespace std;
-using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens
 {
 
-    Androide::Androide()
-    {
-    }
+    Androide::Androide(const Vector2f pos, Tripulante* tripulante)
+    : Inimigo(pos, Vector2f(80.0f, 100.0f), tripulante) {
+    
+}
 
     Androide::~Androide()
     {
@@ -66,4 +65,10 @@ namespace Entidades::Personagens
         //     break;
         // }
     }
+
+    void Androide::salvarDataBuffer(nlohmann::ordered_json& json){
+
+        cout << "BLZ" << endl;
+
+    } 
 }

@@ -2,6 +2,8 @@
 #define CLONE_H
 
 #include "Entidades/Personagens/inimigo.h"
+#include "Entidades/Personagens/tripulante.h"
+#include <SFML/Graphics.hpp>
 
 namespace Entidades::Personagens{
 
@@ -29,7 +31,7 @@ namespace Entidades::Personagens{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            Clone();
+            Clone(const sf::Vector2f pos, Tripulante* tripulante);
             ~Clone();
             void executar() override;
             void danificar(Tripulante* p);

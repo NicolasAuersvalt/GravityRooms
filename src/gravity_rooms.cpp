@@ -1,25 +1,11 @@
 #include "gravity_rooms.h"
-#include "ente.h"
-
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/System.hpp>
-
-// #include "Listas/lista_entidades.cpp"
-// #include "gerenciador_grafico.h"
-
-#include <iostream>
-
-using namespace std;
-
-// ===/===/===/===/ Obrigatório ===/===/===/===/
 
 // Construtor
 Gravity_Rooms::Gravity_Rooms() : GG(),
-        pJog1(),
-        pAnd1(),
-        pAnd2(),
-        plataforma(),
+        pJog1(Vector2f(100.0f, 80.0f), Vector2f(100.0f, 80.0f)),
+        pAnd1(Vector2f(100.0f, 80.0f), nullptr),
+        pAnd2(Vector2f(100.0f, 80.0f), nullptr),
+        plataforma(Vector2f(100.0f, 80.0f), Vector2f(100.0f, 80.0f)),
         LJog1(),
         GC()
 {
@@ -48,9 +34,9 @@ Gravity_Rooms::Gravity_Rooms() : GG(),
             }
 
 
-    pair pos = pJog1.getPosition();
+    Vector2f pos = pJog1.getPosicao();
 
-    pJog1.setSprite("assets/tripulanteG.png", pos.first, pos.second);
+    pJog1.setSprite("assets/tripulanteG.png", pos.x, pos.y);
 
     LJog1.incluir(static_cast<Entidade *>(&pJog1));
 
@@ -87,6 +73,7 @@ void Gravity_Rooms::executar()
             }
 
             if (evento.type == sf::Event::KeyPressed) {
+
         // Verifica se a tecla pressionada foi 'Y'
         if (evento.key.code == sf::Keyboard::Y) {
             // Chama o método de salvar buffer do objeto PJog1
@@ -122,6 +109,8 @@ void Gravity_Rooms::executar()
         // Atualiza os objetos, caso necessário (atualização de movimentos, animações, etc.)
         LJog1.atualizarTodas();
     }
+
+    
 }
 
 

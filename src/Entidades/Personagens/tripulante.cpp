@@ -1,16 +1,13 @@
-#include "Entidades/Personagens/Tripulante.h"
-// #include "gerenciador_grafico.h"
+#include "Entidades/Personagens/tripulante.h"
+#include "json.hpp"
 
-#include <iostream>
-
-
-using namespace std;
 using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens
 {
 
-    Tripulante::Tripulante() : Personagem(make_pair(-1, -1), make_pair(-1, -1)),
+    Tripulante::Tripulante(const Vector2f pos, const Vector2f tam) : 
+    Personagem(pos, tam),
     pontos(0)
     {
     }
@@ -18,13 +15,13 @@ namespace Entidades::Personagens
     Tripulante::~Tripulante()
     {
     }
-    void Tripulante::executar()
-    {
+
+    // Implementação da função executar()
+    /*
+    void Tripulante::executar() {
+        // Implementação do comportamento da função
     }
-    // void Tripulante::atualizar()
-    // {
-    
-    // }
+    */
 
     void Tripulante::mover() 
     {
@@ -46,5 +43,47 @@ namespace Entidades::Personagens
             getSprite().move(0.f, 5.f); // Move para baixo
         }
         
+    }
+
+    void Tripulante::salvarDataBuffer(nlohmann::ordered_json& json)
+    {
+                
+            Vector2f pos = getPosicao(); // Desempacota a posição
+
+            json = {
+
+                {"posicao", { {"x", pos.x}, {"y", pos.y} }},
+
+                {"vida", getVida()},
+
+                {"pontos", getPontos()}
+
+
+            };        
+    }
+
+    void Tripulante::carregarDataBuffer(const nlohmann::ordered_json& json) {
+        if (json.contains("posicao")) {
+
+            int posicaoX = json["posicao"]["x"].get<int>();
+            int posicaoY = json["posicao"]["y"].get<int>();
+
+            setPosicao(posicaoX, posicaoY);
+        }
+
+        if (json.contains("vida")) {
+            setVida(json["vida"].get<int>());
+        }
+        if (json.contains("pontos")) {
+            setPontos(json["pontos"].get<int>());
+        }
+    }
+
+    int Tripulante::getPontos(){
+        return pontos;
+    }
+
+    void Tripulante::setPontos(int ponto){
+        pontos = ponto;
     }
 }

@@ -9,9 +9,11 @@ namespace Listas {
     template <typename TL>
     class Lista {
     public:
+
         // Definição da classe aninhada Elemento
         template <typename TE>
         class Elemento {
+            
         public:
             TE* pInfo;             // Dados do elemento
             Elemento<TE>* pProx;   // Ponteiro para o próximo elemento

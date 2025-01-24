@@ -28,58 +28,58 @@ class Obstaculo;
 
 namespace Gerenciadores{
 
-    class Gerenciador_Colisoes{
+	class Gerenciador_Colisoes{
 
-        private:
+		private:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            vector<Inimigo*> LIs;  
-            list<Obstaculo*> LOs;   
-            set<Projetil*> LPs;     
-            Tripulante *pJog1;
+			vector<Inimigo*> LIs;  
+			list<Obstaculo*> LOs;   
+			set<Projetil*> LPs;     
+			Tripulante *pJog1;
 
-            // ===/===/===/===/ Outros ===/===/===/===/
+			// ===/===/===/===/ Outros ===/===/===/===/
 
-        public:
+		public:
 
-            // ===/===/===/===/ Obrigatórios ===/===/===/===/
+			// ===/===/===/===/ Obrigatórios ===/===/===/===/
 
-            // Construtor (FALTA)
-            Gerenciador_Colisoes();
-            
-            // Destrutor (FALTA)
-            ~Gerenciador_Colisoes();
+			// Construtor (FALTA)
+			Gerenciador_Colisoes();
 
-
-            const bool verificarColisao(Entidade *pe1, Entidade *pe2);
-            void tratarColisoesJogsObstacs();
-            void tratarColisoesJogsInimgs();
-            void ColisoewsJogsProjeteis();
-            void incluirInimigo(Inimigo *pi);
-            void incluirObstaculo(Obstaculo *po);
-            void incluirProjetil(Projetil *pj);
-            void executar();
+			// Destrutor (FALTA)
+			~Gerenciador_Colisoes();
 
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-            void incluirTripulante(Tripulante &Tripulante){
-                pJog1 = &Tripulante;
-            }
-
-
-        protected:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+			const bool verificarColisao(Entidade *pe1, Entidade *pe2);
+			void tratarColisoesJogsObstacs();
+			void tratarColisoesJogsInimgs();
+			void ColisoewsJogsProjeteis();
+			void incluirInimigo(Inimigo *pi);
+			void incluirObstaculo(Obstaculo *po);
+			void incluirProjetil(Projetil *pj);
+			void executar();
 
 
-            // ===/===/===/===/ Outros ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-        
+			void incluirTripulante(Tripulante &Tripulante){
+				pJog1 = &Tripulante;
+			}
 
 
-    };
+		protected:
+
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+
+
+			// ===/===/===/===/ Outros ===/===/===/===/
+
+
+
+
+	};
 
 } using namespace Gerenciadores;
 
