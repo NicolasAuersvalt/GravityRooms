@@ -37,7 +37,7 @@ namespace Entidades{
 
 
 			// ===/===/===/===/ Outros  ===/===/===/===/
-            RectangleShape corpo;
+			RectangleShape corpo;
 
 		public:
 

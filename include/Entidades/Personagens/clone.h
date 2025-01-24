@@ -7,39 +7,39 @@
 
 namespace Entidades::Personagens{
 
-    class Clone : protected Inimigo{
+	class Clone : protected Inimigo{
 
-        private:
+		private:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            float raio;
-
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-        protected:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+			float raio;
 
 
-        public:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-            Clone(const sf::Vector2f pos, Tripulante* tripulante);
-            ~Clone();
-            void executar() override;
-            void danificar(Tripulante* p);
+		protected:
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    };
+
+
+			// ===/===/===/===/ Outros  ===/===/===/===/
+
+
+		public:
+
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+
+			Clone(const sf::Vector2f pos, Tripulante* tripulante);
+			~Clone();
+			void executar() override;
+			void danificar(Tripulante* p);
+
+			// ===/===/===/===/ Outros  ===/===/===/===/
+
+
+	};
 
 }
 

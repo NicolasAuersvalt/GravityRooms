@@ -48,6 +48,7 @@ namespace Entidades::Personagens{
 
             // ===/===/===/===/ Outros  ===/===/===/===/
          void colidir(Entidade* outro, string  direction= "")override; 
+         
 
     };
 

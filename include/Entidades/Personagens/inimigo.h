@@ -13,50 +13,51 @@
 
 //using Entidades::Personagens; 
 using namespace sf;
+using namespace std;
 
 namespace Entidades::Personagens {
 
-class Inimigo : public Personagem {
- private:
- 
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+	class Inimigo : public Personagem {
+		private:
 
-  int dano = 10;
-  
-  // ===/===/===/===/ Outros  ===/===/===/===/
- 
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
- protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-    int nivel_maldade;
+			int dano = 10;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-    Entidades::Personagens::Tripulante* tripulante;
-    sf::Clock relogio;
-    short moverAleatorio;
-    void inicializar();
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante);
-  ~Inimigo();
+		protected:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+			int nivel_maldade;
 
-  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
-  virtual void danificar(Tripulante* p) = 0;
-  virtual void executar() = 0;
-  virtual void colidir(Entidade* outro, string direction = "") = 0;
-  virtual void mover();  // n virtual puro por enquanto
+			// ===/===/===/===/ Outros  ===/===/===/===/
+			Tripulante* tripulante;
+			Clock relogio;
+			short moverAleatorio;
+			void inicializar();
 
-  virtual int getDano() {
+		public:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    // Por exemplo, retornar o dano base multiplicado pelo nivel de maldade
-    return dano;
-  }
+			Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante);
+			~Inimigo();
 
-  void perseguirTripulante(sf::Vector2f posTripulante, const sf::Vector2f posInimigo);
-  void movimentarAleatorio();
-};
+			virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+			virtual void danificar(Tripulante* p) = 0;
+			virtual void executar() = 0;
+			virtual void colidir(Entidade* outro, string direction = "") = 0;
+			virtual void mover();  // n virtual puro por enquanto
+
+			virtual int getDano() {
+
+				// Por exemplo, retornar o dano base multiplicado pelo nivel de maldade
+				return dano;
+			}
+
+			void perseguirTripulante(sf::Vector2f posTripulante, const sf::Vector2f posInimigo);
+			void movimentarAleatorio();
+	};
 
 }  // namespace Entidades::Personagens
 

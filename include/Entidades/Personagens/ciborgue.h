@@ -7,40 +7,40 @@
 
 namespace Entidades::Personagens{
 
-    class Ciborgue : public Inimigo{
+	class Ciborgue : public Inimigo{
 
-        private:
+		private:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            int tamanho;
-
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-        protected:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+			int tamanho;
 
 
-        public:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-            Ciborgue(const sf::Vector2f pos, Tripulante* tripulante);
-            ~Ciborgue();
-            void executar() override;
-            void danificar(Tripulante* p);
-            
+		protected:
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    };
+
+
+			// ===/===/===/===/ Outros  ===/===/===/===/
+
+
+		public:
+
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+
+			Ciborgue(const sf::Vector2f pos, Tripulante* tripulante);
+			~Ciborgue();
+			void executar() override;
+			void danificar(Tripulante* p);
+
+
+			// ===/===/===/===/ Outros  ===/===/===/===/
+
+
+	};
 
 }
 
