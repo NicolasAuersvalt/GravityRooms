@@ -1,87 +1,62 @@
 #ifndef PERSONAGEM_H
 #define PERSONAGEM_H
 
-#include "Entidades/entidade.h"
 #include <iostream>
 
-namespace Entidades::Personagens{
+#include "Entidades/entidade.h"
 
-    class Personagem : public Entidade{
+namespace Entidades::Personagens {
 
-        private:
+class Personagem : public Entidade {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-                    
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  sf::RectangleShape corpo;
+  sf::Vector2f vel;
+  int pontosVida;
+  bool noChao;
+  int num_vidas;
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-        protected:
+  int vel;
+  bool vivo;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            float velocidadeY = 0.f;
-            float velocidadeX = 0.f;
-            int pontosVida;
-            bool noChao;
-                    
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  // Personagem(pair<int, int> p, pair<int, int> d); //verificar
+  Personagem(const sf::Vector2f pos, const sf::Vector2f tam);
+  ~Personagem();
+  void salvar();
 
+  // Métodos Virtuais
+  virtual void executar() = 0;
+  virtual void salvarDataBuffer() {}
+  void setPisando(bool pisa) { noChao = pisa; }
+  bool getPisando() { return noChao; }
+  void recebeDano(int dano) {
+    pontosVida -= dano;
+    if (!verificarVivo()) {
+      morrer();
+    }
+  }
 
-        public:
+  bool verificarVivo() { return (pontosVida > 0); }
+  void morrer() {
+    std::cout << "FUlano Morreu" << std::endl;
+    // REMOVER DA LISTA DE ENTIDADES SEI LÁ
+  }
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  const sf::RectangleShape getCorpo();
+  virtual void move() = 0;
+};
 
-            Personagem(pair<int,int>p, pair<int, int>d);
-            ~Personagem();
-            void salvar();
-
-            // Métodos Virtuais
-            virtual void executar() = 0;
-            virtual void salvarDataBuffer(){
-
-
-            }
-            void setPisando(bool pisa){
-                noChao = pisa;
-            }
-            bool getPisando(){
-                return noChao;
-
-            }
-            void recebeDano(int dano){
-                setVida(getVida() - dano);
-                if(!verificarVivo()){
-                    morrer();
-                }
-            }
-
-            bool verificarVivo(){
-                return (getVida() > 0);
-            }
-
-            int getVida(){
-                return pontosVida;
-            }
-            void setVida(int vida){
-                pontosVida = vida;
-            }
-
-            void morrer(){
-                std::cout << "FUlano Morreu" << std::endl;
-                // REMOVER DA LISTA DE ENTIDADES SEI LÁ
-            }
-
-            
-            
-            
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
-
-    };
-
-}
+}  // namespace Entidades::Personagens
 
 #endif
