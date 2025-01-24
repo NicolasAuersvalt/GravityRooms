@@ -22,7 +22,7 @@ Inimigo::~Inimigo() {}
 void Inimigo::executar() {}
 
 void Inimigo::mover() {
-  // Obtém as posicoes do jogador e do inimigo
+  // Obtem as posicoes do jogador e do inimigo
   sf::Vector2f posJogador = pJog->getCorpo().getPosition();
   sf::Vector2f posInimigo = corpo.getPosition();
 
@@ -39,7 +39,7 @@ void Inimigo::mover() {
 void Inimigo::salvarDataBuffer() {}
 // Pode sobrescrever se quiser (com algum multiplicador)
 
-// Função responsável por fazer o inimigo perseguir o jogador
+// Função responsavel por fazer o inimigo perseguir o jogador
 void Inimigo::perseguirJogador(sf::Vector2f posJogador,
                                const sf::Vector2f posInimigo) {
   // Se o jogador estiver a direita do inimigo, move para direita
@@ -78,7 +78,7 @@ void Inimigo::movimentarAleatorio() {
     corpo.move(vel.x, 0.0f);
   }
 
-  // Obtém o tempo decorrido desde o ultimo reinicio do relogio
+  // Obtem o tempo decorrido desde o ultimo reinicio do relogio
   float dt = relogio.getElapsedTime().asSeconds();
   // A cada 1 segundo, gera uma nova direcao aleatoria
   if (dt >= 1.0f) {
