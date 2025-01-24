@@ -6,60 +6,61 @@
 #include "ente.h"
 #include <utility> // Para usar pair
 #include <sstream> // Para o ostringstream
+#include <iostream>
+#include "json.hpp"
+
+using namespace sf;
+using namespace std;
 
 class Gerenciador_Grafico;
 
 namespace Entidades{
 
-    class Entidade : public Ente{
+	class Entidade : public Ente{
 
-        private:
+		private:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-        protected:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-            pair<int, int> pos; // Posição (x,y)
-            pair<int, int> dim; // Dimensão (x,y)
-
-            std::ostringstream buffer;
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
 
-        public:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-            Entidade(pair<int,int>p, pair<int,int>d); // COM PARAMETRO
-            virtual ~Entidade();
+		protected:
 
-            // Métodos Virtuais
-            virtual void executar() = 0;
-            virtual void salvar() = 0;
-            virtual void salvarDataBuffer(); // PODE SOBRESCREVER SE QUISER
-            virtual void mover() = 0;   
-            
-            pair<int, int>  getPosition(); 
-            pair<int, int>  getDirection();
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            void setPosition(pair<int,int>p){
-                
-                pos.first = p.first;
-                pos.second = p.second;
+			Vector2f pos; // Posição (x,y)
+			Vector2f tam; // Dimensão (x,y)
 
-            }
+			ostringstream buffer;
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
-    };
+
+			// ===/===/===/===/ Outros  ===/===/===/===/
+			RectangleShape corpo;
+
+		public:
+
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+
+			Entidade(const Vector2f pos, const Vector2f tam); // COM PARAMETRO
+			virtual ~Entidade();
+
+			// Métodos Virtuais
+			//virtual void executar() = 0;
+			virtual void salvar() = 0;
+			virtual void mover() = 0;   
+
+
+			void setPosicao(int x, int y);
+			void setTamanho(const Vector2f tam);
+
+			const Vector2f getPosicao() const;
+			const Vector2f getTamanho() const;
+
+			// ===/===/===/===/ Outros  ===/===/===/===/
+
+	};
 
 }
 

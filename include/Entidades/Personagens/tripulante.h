@@ -4,82 +4,53 @@
 #include "Entidades/Personagens/personagem.h"
 #include "json.hpp"
 
+#include <iostream>
+
+using namespace sf;
+using namespace std;
+
+
 namespace Entidades::Personagens{
 
-    class Tripulante : public Personagem{
+	class Tripulante : public Personagem{
 
-        private:
+		private:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            int pontos;
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-        protected:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+			int pontos;
 
 
-        public:
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+		protected:
 
-            Tripulante();
-            ~Tripulante();
-            void executar() override;  
-
-            
-            void salvarDataBuffer(nlohmann::ordered_json& json) {
-                
-                auto [x, y] = getPosition(); // Desempacota a posição
-
-                json = {
-
-                    {"posicao", { {"x", x}, {"y", y} }},
-
-                    {"vida", getVida()},
-
-                    {"pontos", getPontos()}
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
 
-                };
 
-            }
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-            void carregarDataBuffer(const nlohmann::ordered_json& json) {
-                if (json.contains("posicao")) {
-                    int posicaoX = json["posicao"]["x"].get<int>();
-                    int posicaoY = json["posicao"]["y"].get<int>();
-                    setPosition(make_pair(posicaoX, posicaoY));
-                }
 
-                if (json.contains("vida")) {
-                    setVida(json["vida"].get<int>());
-                }
-                if (json.contains("pontos")) {
-                    setPontos(json["pontos"].get<int>());
-                }
-            }
+		public:
 
-            int getPontos(){
-                return pontos;
-            }
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            void setPontos(int ponto){
-                pontos = pontos;
-            }
-            
+			Tripulante(const Vector2f pos, const Vector2f tam);
+			~Tripulante();
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+			void carregarDataBuffer(const nlohmann::ordered_json& json); 
 
-            void mover();
-            
-    };
+			// virtual void executar() override;
+			virtual void salvarDataBuffer(nlohmann::ordered_json& json) override; 
+			virtual void mover() override; 
+
+			int getPontos();	
+			void setPontos(int ponto);
+
+			// ===/===/===/===/ Outros  ===/===/===/===/
+
+
+	};
 
 }
 

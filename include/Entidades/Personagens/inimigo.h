@@ -1,6 +1,8 @@
 #ifndef INIMIGO_H
 #define INIMIGO_H
 
+#include <cmath>
+#include <time.h>
 #define RAIO_PERSEGUIR_X 200.0f
 #define RAIO_PERSEGUIR_Y 200.0f
 #define VELOCIDADE_INIMIGO_X 0.025f
@@ -9,51 +11,53 @@
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/Personagens/tripulante.h"
 
+//using Entidades::Personagens; 
+using namespace sf;
+using namespace std;
+
 namespace Entidades::Personagens {
 
-class Inimigo : public Personagem {
- private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+	class Inimigo : public Personagem {
+		private:
 
-  int nivel_maldade;
-  int dano = 10;
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-  Jogador::Jogador* jogador;
-  sf::Clock relogio;
-  short moverAleatorio;
-  void inicializar();
+			int dano = 10;
 
- protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		protected:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+			int nivel_maldade;
 
-  Inimigo(cosnt sf::Vector2f pos, const sf::Vector2f tam,
-          Jogador::Jogador* pJog);
-  ~Inimigo();
+			// ===/===/===/===/ Outros  ===/===/===/===/
+			Tripulante* tripulante;
+			Clock relogio;
+			short moverAleatorio;
+			void inicializar();
 
-  virtual void mover();  // n virtual puro por enquanto
-  void salvarDataBuffer();
-  virtual void danificar(Tripulante* p) = 0;
+		public:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  virtual void executar() = 0;
+			Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante);
+			~Inimigo();
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+			virtual void danificar(Tripulante* p) = 0;
+			virtual void executar() = 0;
+			virtual void colidir(Entidade* outro, string direction = "") = 0;
+			virtual void mover();  // n virtual puro por enquanto
 
-  virtual void colidir(Entidade* outro, string direction = "") = 0;
+			virtual int getDano() {
 
-  // Pode reescrever se quiser (com algum multiplicador, por exemplo)
-  virtual int getDano() {
-    // Por exemplo, retornar o dano base multiplicado pelo nivel de maldade
-    return dano;
-  }
-  void perseguirJogador(sf::Vector2f posJogador, const sf::Vector2f posInimigo);
-  void movimentarAleatorio();
-};
+				// Por exemplo, retornar o dano base multiplicado pelo nivel de maldade
+				return dano;
+			}
+
+			void perseguirTripulante(sf::Vector2f posTripulante, const sf::Vector2f posInimigo);
+			void movimentarAleatorio();
+	};
 
 }  // namespace Entidades::Personagens
 

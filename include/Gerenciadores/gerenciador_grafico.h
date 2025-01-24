@@ -12,6 +12,7 @@
 #include <string>
 
 using namespace std; 
+using namespace sf;
 
 class Ente;
 
@@ -23,20 +24,18 @@ namespace Gerenciadores {
         static Gerenciador_Grafico* grafico;  // Instância única
 
         string nomeJanela = "GravityRooms"; // Nome da janela
-        sf::RenderWindow window;  // Janela de renderização
+        RenderWindow window;  // Janela de renderização
         const int fps = 60;  // Limite de frames por segundo
 
-        const int width;
-        const int height;
+        const int largura = 1280;
+        const int altura = 920;
+
+        // Adicionar o mutex para proteger acesso a recursos compartilhados entre as threads, se necessário
+        mutex mtx;
 
         // Impedir cópia SINGLETON
         Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
         Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
-
-        sf::Event event;
-
-        // Adicionar o mutex para proteger acesso a recursos compartilhados entre as threads, se necessário
-        std::mutex mtx;
 
     public:
 
@@ -49,21 +48,18 @@ namespace Gerenciadores {
         // Método para obter a instância única
         static Gerenciador_Grafico* getInstancia();
 
-        // Inicializador de janela
-        void inicializador();
-
-        // Encerrar a janela
-        void shutdown();
-
         // Desenhar um ente OBRIGATÓRIO
         void desenharEnte(Ente* pE);
 
-        // Adicionar objetos
-        void adicionarObjetos(/*Alguma coisa*/);
+        void desenhar(Sprite& sprite);
 
-        void desenhar(sf::Sprite& sprite);
+        bool processarEvento(Event& event);
 
-        void executar();
+        // Verificar se a janela está aberta
+        const bool estaAberta();
+
+        // Inicializador de janela
+        void inicializador();
 
         void fechar();
 
@@ -71,20 +67,10 @@ namespace Gerenciadores {
 
         void exibir();
 
-        // Atualizar a janela
         void atualizar();
 
-        bool processarEvento(sf::Event& event) {
-            return window.pollEvent(event);
-        }
+        void executar();
 
-        void atualizarEventos();
-
-        // Verificar se a janela está aberta
-        const bool estaAberta();
-
-        // Sobrecarga de operador (futuro uso)
-        void operator+(int val);
     };
 
 } using namespace Gerenciadores;

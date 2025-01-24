@@ -1,10 +1,10 @@
-#include "Entidades/Obstaculos/Plataforma.h"
+#include "Entidades/Obstaculos/plataforma.h"
 
 
 namespace Entidades::Obstaculos
 {
 
-    Plataforma::Plataforma():Obstaculo(make_pair(-1, -1), make_pair(-1, -1))
+    Plataforma::Plataforma(sf::Vector2f pos, const sf::Vector2f tam):Obstaculo(pos, tam)
     {
     }
 

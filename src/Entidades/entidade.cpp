@@ -1,32 +1,35 @@
-#include "Entidades/Entidade.h"
-
-#include <iostream>
-
-using namespace std;
-using namespace Entidades;
+#include "Entidades/entidade.h"
 
 namespace Entidades
 {
 
-    Entidade::Entidade(pair<int, int> p, pair<int, int> d) : Ente(),
-                                                             pos(p)
-    {
-    }
-    Entidade::~Entidade()
-    {
-        pos = make_pair(-1, -1);
-    }
+	Entidade::Entidade(const Vector2f pos, const Vector2f tam) :
+		Ente(), pos(pos), tam(tam)
+	{
+         corpo.setPosition(pos);
+	}
+	Entidade::~Entidade()
+	{
+	
+	}
 
-    void Entidade::salvarDataBuffer()
-    {
-    }
+	void Entidade::setTamanho(const Vector2f tam){
+		corpo.setSize(tam);
+		this->tam = tam;
+	}
+	
+	const Vector2f Entidade::getPosicao() const{
+		return pos;
+	}
 
-    pair<int, int> Entidade::getPosition()
-    {
-        return pos;
-    }
-    pair<int, int> Entidade::getDirection()
-    {
-        return dim;
-    }
+	const Vector2f Entidade::getTamanho() const{
+		return tam;
+	}
+
+	void Entidade::setPosicao(int x, int y){
+		pos.x = x;
+		pos.y = y;
+
+	}
+
 }

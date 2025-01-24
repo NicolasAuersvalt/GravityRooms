@@ -29,7 +29,7 @@ namespace Entidades::Obstaculos{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            Espinho();
+            Espinho(const sf::Vector2f pos, const sf::Vector2f tam);
             ~Espinho();
             void executar() override;
             void mover() const;

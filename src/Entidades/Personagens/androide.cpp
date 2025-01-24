@@ -1,69 +1,68 @@
-#include "Entidades/Personagens/Androide.h"
+#include "Entidades/Personagens/androide.h"
+#include "Entidades/Personagens/inimigo.h"
 
 #include <iostream>
-using namespace std;
-using namespace Entidades::Personagens;
 
-namespace Entidades::Personagens
-{
+namespace Entidades::Personagens {
 
-    Androide::Androide()
-    {
+Androide::Androide(const Vector2f pos, Tripulante* tripulante)
+    : Inimigo(pos, Vector2f(80.0f, 100.0f), tripulante){
+        nivel_maldade = 2;
+
     }
 
-    Androide::~Androide()
-    {
-    }
-    void Androide::executar()
-    {
-    }
-
-    void Androide::danificar(Tripulante *p)
-    {
-    }
-
-    void Androide::mover()
-    { 
-        
-    float currentX = getSprite().getPosition().x;
+Androide::~Androide() {}
+void Androide::executar() { 
+   cout << "executar" << endl;
+    if(vivo)
     
-    // Check boundaries and change direction
-    if (currentX <= 0) {
-        movingRight = true;
-    }
-    else if (currentX >= 1280 - getSprite().getGlobalBounds().width) {
-        movingRight = false;
-    }
-    
-    // Move based on direction
-    if (movingRight) {
-        getSprite().move(5.0f, 0.f);
-    }
-    else {
-        getSprite().move(-5.0f, 0.f);
-    }
-    }
-    void Androide::colidir(Entidade *outro, string direction)
-    {
-        // int index = other->get_id();
-        // switch (index)
-        // {
-        // case 1:
-        //     other->inflict_damage(damage);
-        //     break;
-        // case 11:
-        //     if (direction == "Right" || direction == "Left")
-        //     {
-        //         vel = sf::Vector2f(-CR * vel.x, vel.y);
-        //     }
-        //     else
-        //     {
-        //         vel = sf::Vector2f(vel.x, -CR * vel.y);
-        //     }
-        //     break;
+        mover(); }
 
-        // default:
-        //     break;
-        // }
-    }
+void Androide::danificar(Tripulante* p) {}
+
+void Androide::mover() {
+    cout << "mover" << endl;
+
+     if(!vivo|| !tripulante){
+            return;
+        cout << "morto" << endl;
+
+     }
+          
+     else
+     {
+        cout << "vivo" << endl;
+  sf::Vector2f posTripulante = tripulante->getPosicao();
+  sf::Vector2f posInimigo = getPosicao();
+
+  Inimigo::movimentarAleatorio();
+  Inimigo::perseguirTripulante(posTripulante, posInimigo);
 }
+}
+void Androide::colidir(Entidade* outro, string direction) {
+  // int index = other->get_id();
+  // switch (index)
+  // {
+  // case 1:
+  //     other->inflict_damage(damage);
+  //     break;
+  // case 11:
+  //     if (direction == "Right" || direction == "Left")
+  //     {
+  //         vel = sf::Vector2f(-CR * vel.x, vel.y);
+  //     }
+  //     else
+  //     {
+  //         vel = sf::Vector2f(vel.x, -CR * vel.y);
+  //     }
+  //     break;
+
+  // default:
+  //     break;
+  // }
+}
+
+void Androide::salvarDataBuffer(nlohmann::ordered_json& json) {
+  cout << "BLZ" << endl;
+}
+}  // namespace Entidades::Personagens

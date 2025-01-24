@@ -1,4 +1,4 @@
-#include "Entidades/Obstaculos/Obstaculo.h"
+#include "Entidades/Obstaculos/obstaculo.h"
 // #include "gerenciador_grafico.h"
 
 #include <iostream>
@@ -11,15 +11,22 @@ using namespace Entidades::Obstaculos;
 namespace Entidades::Obstaculos
 {
 
-    Obstaculo::Obstaculo(pair<int, int> p, pair<int, int> d) : Entidade(p, d)
-    {
-    }
+	Obstaculo::Obstaculo(const sf::Vector2f pos, const sf::Vector2f tam) : Entidade(pos, tam)
+	{
+	}
 
-    Obstaculo::~Obstaculo()
-    {
-    }
-    void Obstaculo::salvar()
-    {
-    }
+	Obstaculo::~Obstaculo()
+	{
+	}
+	void Obstaculo::salvar()
+	{
+	}
+	bool Obstaculo::getColidindo(){
+		return colidindo;
+	}
 
+	void Obstaculo::setColidindo(bool colide){
+		colidindo = colide;
+
+	}
 }

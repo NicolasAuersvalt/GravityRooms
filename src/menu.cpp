@@ -19,9 +19,11 @@ Menu::~Menu(){
 
 }
 
+/*
 void Menu::executar(){
 
 }
+*/
 
 
 // ===/===/===/===/ Outros  ===/===/===/===/

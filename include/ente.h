@@ -40,7 +40,8 @@ class Ente{
         Ente();
         ~Ente();
 
-        virtual void executar() = 0; // Pois é abstrata
+        //virtual void executar() = 0; // Pois é abstrata
+
         void desenhar(); // Possui o endereço do gerenciador gráfico em protected, mas só UTILIZA o gerenciador
 
         // ===/===/===/===/ Outros  ===/===/===/===/

@@ -2,6 +2,11 @@
 #define ANDROIDE_H
 
 #include "Entidades/Personagens/inimigo.h"
+#include "Entidades/Personagens/tripulante.h"
+#include <SFML/Graphics.hpp>
+using namespace std;
+using namespace sf;
+using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens{
 
@@ -10,7 +15,7 @@ namespace Entidades::Personagens{
         private:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
-            float raio;
+            //float raio;
 
             bool movingRight;
                     
@@ -29,17 +34,21 @@ namespace Entidades::Personagens{
         public:
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
-            using Ente::setSprite;
             
-            Androide();
+            Androide(const sf::Vector2f pos, Tripulante* tripulante);
             ~Androide();
 
-            void executar() override;
-            void danificar(Tripulante* p);
-            void mover();
+            using Ente::setSprite;
+
+            void danificar(Tripulante* p)override;
+
+            virtual void executar() override; 
+			virtual void salvarDataBuffer(nlohmann::ordered_json& json) override; 
+			virtual void mover() override; 
 
             // ===/===/===/===/ Outros  ===/===/===/===/
-         void colidir(Entidade* outro, string  direction); 
+         void colidir(Entidade* outro, string  direction= "")override; 
+         
 
     };
 

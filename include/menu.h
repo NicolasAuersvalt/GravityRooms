@@ -32,7 +32,7 @@ class Menu : protected Ente{
         Menu();
         ~Menu();
 
-        void executar() override;
+        //void executar() override;
 
         // ===/===/===/===/ Outros  ===/===/===/===/
         

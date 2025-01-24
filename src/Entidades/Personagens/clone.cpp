@@ -9,20 +9,21 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens{
 
 
-    Clone::Clone()
-    {
-        
-    }
+	Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante):
+		Inimigo(pos, Vector2f(0.0f, 0.0f), tripulante)
+	{
 
-    Clone::~Clone(){
+	}
+
+	Clone::~Clone(){
 
 
-    }
-    void Clone::executar(){
+	}
+	void Clone::executar(){
 
-    }
-    
-    void Clone::danificar(Tripulante* p){
+	}
 
-    }
+	void Clone::danificar(Tripulante* p){
+
+	}
 }  

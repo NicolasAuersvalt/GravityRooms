@@ -3,18 +3,11 @@
 
 #include "Entidades/entidade.h"
 
+using namespace sf;
+
 namespace Entidades::Obstaculos{
 
     class Obstaculo:public Entidade{
-
-        private:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
 
         protected:
 
@@ -31,7 +24,7 @@ namespace Entidades::Obstaculos{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            Obstaculo(pair<int,int>p, pair<int, int>d);
+            Obstaculo(const Vector2f pos, const Vector2f tam);
             ~Obstaculo();
             void salvar();
 
@@ -43,14 +36,8 @@ namespace Entidades::Obstaculos{
 
             // ===/===/===/===/ Outros  ===/===/===/===/
 
-            bool getColidindo(){
-                return colidindo;
-            }
-
-            void setColidindo(bool colide){
-                colidindo = colide;
-
-            }
+            bool getColidindo();
+            void setColidindo(bool colide);
                 
 
     };

@@ -4,59 +4,57 @@
 #include <iostream>
 
 #include "Entidades/entidade.h"
+#include "json.hpp"
+
+using namespace sf;
+using namespace std;
 
 namespace Entidades::Personagens {
 
-class Personagem : public Entidade {
- private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+	class Personagem : public Entidade {
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+		protected:
 
- protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-  sf::RectangleShape corpo;
-  sf::Vector2f vel;
-  int pontosVida;
-  bool noChao;
-  int num_vidas;
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			Vector2f vel;
 
-  int vel;
-  bool vivo;
+			int pontosVida = 100;
+			bool noChao;
 
- public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-  // Personagem(pair<int, int> p, pair<int, int> d); //verificar
-  Personagem(const sf::Vector2f pos, const sf::Vector2f tam);
-  ~Personagem();
-  void salvar();
+			bool vivo;
 
-  // Métodos Virtuais
-  virtual void executar() = 0;
-  virtual void salvarDataBuffer() {}
-  void setPisando(bool pisa) { noChao = pisa; }
-  bool getPisando() { return noChao; }
-  void recebeDano(int dano) {
-    pontosVida -= dano;
-    if (!verificarVivo()) {
-      morrer();
-    }
-  }
+		public:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  bool verificarVivo() { return (pontosVida > 0); }
-  void morrer() {
-    std::cout << "FUlano Morreu" << std::endl;
-    // REMOVER DA LISTA DE ENTIDADES SEI LÁ
-  }
+			// Personagem(pair<int, int> p, pair<int, int> d); //verificar
+			Personagem(const Vector2f pos, const Vector2f tam);
+			~Personagem();
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-  const sf::RectangleShape getCorpo();
-  virtual void move() = 0;
-};
+			//virtual void executar() = 0;
+			virtual void salvarDataBuffer(nlohmann::ordered_json& json) = 0; 
+			virtual void mover() = 0; 
 
-}  // namespace Entidades::Personagens
+			// Método para obter o corpo (RectangleShape)
+			const RectangleShape& getCorpo() const;
+
+			// Métodos para manipulação de vida
+			void setVida(int life);
+			int getVida();
+			void recebeDano(int dano);
+			void setPisando(bool pisa);
+			bool getPisando(); 
+			void salvar();
+			bool verificarVivo();
+			void morrer();
+			
+			
+
+			
+	};
+
+} 
 
 #endif
