@@ -1,20 +1,13 @@
 #include "Entidades/projetil.h"
-#include "Entidades/Personagens/personagem.h"
-#include <iostream>
-
-class Personagem;  // Forward declaration if needed
-
-using namespace std;
-using namespace Entidades;
 
 // Definição da Variável Estática Dano
-int Projetil::danoProjetil = 10;  
+int Projetil::danoProjetil = 10;
 
 namespace Entidades
 {
 
     Projetil::Projetil() : 
-    Entidade(pos, tam)
+    Entidade(pos, tam), dano(10)//, danoProjetil(10)
     {
     }
     Projetil::~Projetil()
@@ -29,11 +22,11 @@ namespace Entidades
     {
     }
 
-    void Entidades::Projetil::setAtirador(Entidade *a)
+    void Projetil::setAtirador(Entidade *a)
     {
     }
 
-    void Entidades::Projetil::colisao(Entidade *e)
+    void Projetil::colisao(Entidade *e)
     {
     }
     /*
@@ -48,8 +41,21 @@ namespace Entidades
     }
     */
 
-    void Entidades::Projetil::danificar(Personagem *p)
+    void Projetil::danificar(Personagem *p)
     {
+    }
+
+/*
+    void Projetil::executar(){
+        cout << "OK" << endl;
+
+    }
+    void Projetil::mover(){
+        cout << "OK" << endl;
+    }
+*/
+    int Projetil::getDano(){
+        return danoProjetil;
     }
 
 }

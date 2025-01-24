@@ -13,7 +13,9 @@ namespace Entidades::Personagens {
 Inimigo::Inimigo(const Vector2f pos, const Vector2f tam,
                  Tripulante* tripulante)
     : Personagem(pos, tam), tripulante(tripulante), relogio() {
+
   inicializar();
+  
   // Inicializa a semente do gerador de numeros aleatorios
   srand(time(NULL));
   // Gera uma direcao aleatoria inicial (0-3) para o movimento
@@ -35,6 +37,7 @@ void Inimigo::executar() {
 }
 
 void Inimigo::mover() {
+  cout << "Inimigo Movendo" << endl;
   // Obtem as posicoes do Tripulante e do inimigo
   Vector2f posJogador = tripulante->getCorpo().getPosition();
   Vector2f posInimigo = corpo.getPosition();
@@ -56,6 +59,7 @@ void Inimigo::salvarDataBuffer(nlohmann::ordered_json& json) {
 
 void Inimigo::perseguirTripulante(Vector2f posJogador,
                                const Vector2f posInimigo) {
+  cout << "Inimigo Perseguinto Tripulante" << endl;
   // Se o Tripulante estiver a direita do inimigo, move para direita
   if (posJogador.x - posInimigo.x > 0.0f) {
     corpo.move(vel.x, 0.0f);
@@ -75,6 +79,7 @@ void Inimigo::perseguirTripulante(Vector2f posJogador,
 }
 
 void Inimigo::movimentarAleatorio() {
+  cout << "Inimigo Movimentando Aleatóriamente" << endl;
   // Move para cima quando moverAleatorio = 0
   if (moverAleatorio == 0) {
     corpo.move(0.0f, -vel.y);

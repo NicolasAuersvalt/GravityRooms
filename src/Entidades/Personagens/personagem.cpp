@@ -33,10 +33,10 @@ const RectangleShape& Personagem::getCorpo() const
 }
 
 /*
-const RectangleShape& Personagem::getCorpo() {
-	return corpo;
-}
-*/
+   const RectangleShape& Personagem::getCorpo() {
+   return corpo;
+   }
+   */
 
 
 int Personagem::getVida() {
@@ -61,7 +61,6 @@ bool Personagem::verificarVivo() {
 }
 
 void Personagem::morrer() {
-	cout << "Fulano Morreu" << endl;
 	// Aqui você pode adicionar lógica para remover da lista de entidades, se necessário.
 }
 
