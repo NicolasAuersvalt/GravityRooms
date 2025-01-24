@@ -1,6 +1,11 @@
 #ifndef INIMIGO_H
 #define INIMIGO_H
 
+#define RAIO_PERSEGUIR_X 200.0f
+#define RAIO_PERSEGUIR_Y 200.0f
+#define VELOCIDADE_INIMIGO_X 0.025f
+#define VELOCIDADE_INIMIGO_Y 0.025f
+
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/Personagens/tripulante.h"
 
