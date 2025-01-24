@@ -1,43 +1,30 @@
 #include "Entidades/Personagens/androide.h"
-#include "Entidades/Personagens/inimigo.h"
 
 #include <iostream>
+
+#include "Entidades/Personagens/inimigo.h"
 
 namespace Entidades::Personagens {
 
 Androide::Androide(const Vector2f pos, Tripulante* tripulante)
-    : Inimigo(pos, Vector2f(80.0f, 100.0f), tripulante){
-        nivel_maldade = 2;
-
-    }
+    : Inimigo(pos, Vector2f(80.0f, 100.0f), tripulante) {
+  nivel_maldade = 2;
+}
 
 Androide::~Androide() {}
-void Androide::executar() { 
-   cout << "executar" << endl;
-    if(vivo)
-    
-        mover(); }
+void Androide::executar() {
+  cout << "executar" << endl;
+  if (vivo) mover();
+}
 
 void Androide::danificar(Tripulante* p) {}
 
 void Androide::mover() {
-    cout << "mover" << endl;
+  cout << "mover" << endl;
 
-     if(!vivo|| !tripulante){
-            return;
-        cout << "morto" << endl;
-
-     }
-          
-     else
-     {
-        cout << "vivo" << endl;
-  sf::Vector2f posTripulante = tripulante->getPosicao();
-  sf::Vector2f posInimigo = getPosicao();
-
-  Inimigo::movimentarAleatorio();
-  Inimigo::perseguirTripulante(posTripulante, posInimigo);
-}
+  if (vivo) {
+    Inimigo::mover();
+  }
 }
 void Androide::colidir(Entidade* outro, string direction) {
   // int index = other->get_id();

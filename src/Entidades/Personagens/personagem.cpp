@@ -10,27 +10,15 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-	Personagem::Personagem(const Vector2f pos, const Vector2f tam)
-		: Entidade(pos, tam), noChao(false) {
+Personagem::Personagem(const Vector2f pos, const Vector2f tam)
+    : Entidade(pos, tam), noChao(false) {}
 
+Personagem::~Personagem() {}
+void Personagem::salvar() {}
 
-		}
+}  // namespace Entidades::Personagens
 
-	Personagem::~Personagem() 
-	{
-
-	}
-	void Personagem::salvar() 
-	{
-
-	}
-
-}
-
-const RectangleShape& Personagem::getCorpo() const
-{
-	return RectangleShape();
-}
+const RectangleShape& Personagem::getCorpo() const { return RectangleShape(); }
 
 /*
    const RectangleShape& Personagem::getCorpo() {
@@ -38,36 +26,28 @@ const RectangleShape& Personagem::getCorpo() const
    }
    */
 
-
-int Personagem::getVida() {
-	return pontosVida;
-}
+int Personagem::getVida() { return pontosVida; }
 
 void Personagem::setVida(int life) {
-	pontosVida = life;
+  pontosVida = life;
+  vivo = true;
 }
 
 void Personagem::recebeDano(int dano) {
+  pontosVida -= dano;
 
-	pontosVida -= dano;
-
-	if (!verificarVivo()) {
-		morrer();
-	}
+  if (!verificarVivo()) {
+    morrer();
+  }
 }
 
-bool Personagem::verificarVivo() { 
-	return (pontosVida > 0); 
-}
+bool Personagem::verificarVivo() { return (pontosVida > 0); }
 
 void Personagem::morrer() {
-	// Aqui você pode adicionar lógica para remover da lista de entidades, se necessário.
+  // Aqui você pode adicionar lógica para remover da lista de entidades, se
+  // necessário.
 }
 
-void Personagem::setPisando(bool pisa) {
-	noChao = pisa;
-}
+void Personagem::setPisando(bool pisa) { noChao = pisa; }
 
-bool Personagem::getPisando() {
-	return noChao;
-}
+bool Personagem::getPisando() { return noChao; }
