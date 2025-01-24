@@ -13,7 +13,7 @@ namespace Entidades::Personagens {
 Inimigo::Inimigo(cosnt sf::Vector2f pos, const sf::Vector2f tam,
                  Jogador::Jogador* pJog)
     : personagem(pos, tam), relogio(), jogador(pJog) {
-  inicializa();
+  inicializar();
   // Inicializa a semente do gerador de números aleatórios
   srand(time(NULL));
   // Gera uma direção aleatória inicial (0-3) para o movimento
@@ -60,23 +60,32 @@ void Inimigo::perseguirJogador(sf::Vector2f posJogador,
   else {
     corpo.move(0.0f, -vel.y);
   }
+}
 
-  void Inimigo::movimentarAleatorio() {
-    // Move para cima
-    if (moverAleatorio == 0) {
-      corpo.move(0.0f, -vel.y);
-    }
-    // Move para baixo
-    else if (moverAleatorio == 1) {
-      corpo.move(0.0f, vel.y);
-    }
-    // Move para esquerda
-    else if (moverAleatorio == 2) {
-      corpo.move(-vel.x, 0.0f);
-    }
-    // Move para direita
-    else {
-      corpo.move(vel.x, 0.0f);
-    }
+void Inimigo::movimentarAleatorio() {
+  // Move para cima quando moverAleatorio = 0
+  if (moverAleatorio == 0) {
+    corpo.move(0.0f, -vel.y);
   }
+  // Move para baixo quando moverAleatorio = 1
+  else if (moverAleatorio == 1) {
+    corpo.move(0.0f, vel.y);
+  }
+  // Move para esquerda quando moverAleatorio = 2
+  else if (moverAleatorio == 2) {
+    corpo.move(-vel.x, 0.0f);
+  }
+  // Move para direita quando moverAleatorio = 3
+  else {
+    corpo.move(vel.x, 0.0f);
+  }
+
+  // Obtém o tempo decorrido desde o último reinício do relógio
+  float dt = relogio.getElapsedTime().asSeconds();
+  // A cada 1 segundo, gera uma nova direção aleatória
+  if (dt >= 1.0f) {
+    moverAleatorio = rand() % 4;
+    relogio.restart();
+  }
+}
 }  // namespace Entidades::Personagens

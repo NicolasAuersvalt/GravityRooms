@@ -35,8 +35,7 @@ class Inimigo : public Personagem {
   Inimigo(cosnt sf::Vector2f pos, const sf::Vector2f tam,
           Jogador::Jogador* pJog);
   ~Inimigo();
-  void perseguirJogador(sf::Vector2f posJogador, const sf::Vector2f posInimigo);
-  void movimentarAleatorio();
+
   virtual void mover();  // n virtual puro por enquanto
   void salvarDataBuffer();
   virtual void danificar(Tripulante* p) = 0;
@@ -52,6 +51,8 @@ class Inimigo : public Personagem {
     // Por exemplo, retornar o dano base multiplicado pelo nível de maldade
     return dano;
   }
+  void perseguirJogador(sf::Vector2f posJogador, const sf::Vector2f posInimigo);
+  void movimentarAleatorio();
 };
 
 }  // namespace Entidades::Personagens
