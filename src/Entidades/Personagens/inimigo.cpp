@@ -25,7 +25,6 @@ void Inimigo::inicializar() { vel = {2.f, 2.f}; }
 void Inimigo::executar() {}
 
 void Inimigo::mover() {
-  cout << "Inimigo Movendo" << endl;
   // Obtem as posicoes do Tripulante e do inimigo
   Vector2f posJogador = tripulante->getSprite().getPosition();
   Vector2f posInimigo = getSprite().getPosition();
@@ -41,13 +40,11 @@ void Inimigo::mover() {
   }
 }
 void Inimigo::salvarDataBuffer(nlohmann::ordered_json& json) {
-  cout << "BLZ" << endl;
 }
 // Pode sobrescrever se quiser (com algum multiplicador)
 
 void Inimigo::perseguirTripulante(Vector2f posJogador,
                                   const Vector2f posInimigo) {
-  cout << "Inimigo Perseguinto Tripulante" << endl;
   // Se o Tripulante estiver a direita do inimigo, move para direita
   if (posJogador.x - posInimigo.x > 0.0f) {
     getSprite().move(vel.x, 0.0f);
@@ -67,7 +64,6 @@ void Inimigo::perseguirTripulante(Vector2f posJogador,
 }
 
 void Inimigo::movimentarAleatorio() {
-  cout << "Inimigo Movimentando Aleatóriamente" << endl;
   // Move para cima quando moverAleatorio = 0
   if (moverAleatorio == 0) {
     getSprite().move(0.0f, -vel.y);
