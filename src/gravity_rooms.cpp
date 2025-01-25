@@ -47,7 +47,7 @@ Gravity_Rooms::Gravity_Rooms()
 
   LJog1.incluir(static_cast<Entidade *>(&pAnd1));
 
-  criarFase();
+  criarFases();
   executar();
 }
 
@@ -122,15 +122,16 @@ void Gravity_Rooms::executar() {
     // animações, etc.)
     LJog1.atualizarTodas();
   }
-  void Gravity_Rooms::criarFase() {
-    Fase::laboratorio *aux = new Fase::laboratorio();
-    if (aux = nullptr) {
-      exit(1);
-    }
-    fase = static_cast<Fase::Fase *> aux;
-    fase->criarFundo();
-    fase->criarMapa();
+}
+
+void Gravity_Rooms::criarFases() {
+  Fases::Laboratorio *aux = new Fases::laboratorio();
+  if (aux = nullptr) {
+    exit(1);
   }
+  fase = static_cast<Fases::Fase *> aux;
+  fase->criarFundo();
+  fase->criarMapa();
 }
 
 // ===/===/===/===/ Outros  ===/===/===/===/

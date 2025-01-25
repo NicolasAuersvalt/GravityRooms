@@ -2,35 +2,21 @@
 
 #include <iostream>
 
-using namespace std;
-using namespace Fases;
-
-
+#include "Fases/fase.h"
 // ===/===/===/===/ Obrigatório ===/===/===/===/
-namespace Fases{
+namespace Fases {
 
-    // Construtor
-    Laboratorio::Laboratorio() 
-    {
+// Construtor
+Laboratorio::Laboratorio() {}
 
-    }
+// Destrutor
+Laboratorio::~Laboratorio() {}
 
-    // Destrutor
-    Laboratorio::~Laboratorio(){
+void Laboratorio::criarChefoes() {}
 
-    }
+void Laboratorio::criarObstMedios() {}
 
-    void Laboratorio::criarChefoes(){
+void Laboratorio::criarProjeteis() {}
 
-    }
-
-    void Laboratorio::criarObstMedios()
-    {
-
-    }
-
-    void Laboratorio::criarProjeteis()
-    {
-
-    }
-}
+void Laboratorio::criarFundo() {}
+}  // namespace Fases

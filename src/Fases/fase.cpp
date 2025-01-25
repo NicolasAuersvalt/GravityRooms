@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "Entidades/Obstaculos/plataforma.h"
+
 using namespace std;
 using namespace Fases;
 
@@ -30,6 +32,18 @@ Fase::~Fase() {
   }
   listaObstaculos->limparLista();
   listaPersonagens->limparLista();
+}
+
+void Fase::criarPlataforma(const Vector2f pos) {
+  Entidades::Obstaculos::Plataforma* plataforma =
+      new Entidades::Obstaculos::Plataforma(pos, sf::Vector2f(300.0f, 50.0f));
+  if (plataforma == nullptr) {
+    std::cout << "Fase::nao foi possivel criar plataforma" << std::endl;
+    exit(1);
+  }
+
+  // plataforma->setTamanho(escala);
+  listaObstaculos->incluir(static_cast<Entidade*>(plataforma));
 }
 
 void Fase::executar() {}

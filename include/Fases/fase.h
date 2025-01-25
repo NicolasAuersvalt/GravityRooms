@@ -6,7 +6,6 @@
 #include "ente.h"
 
 class Jogo;
-class Gerenciador_Colisoes;
 using namespace sf;
 
 namespace Fases {
@@ -41,12 +40,12 @@ class Fase : protected Ente {
 
   // virtual void criarInimigos(const Vector2f pos);
   // virtual void criarJogador(const Vector2f pos);
-  // virtual void criarObstaculo(const Vector2f pos); //plataforma
+  virtual void criarPlataforma(const Vector2f pos);
   // virtual void criarCaixa(const Vector2f pos);
   // virtual void criarEntidades(char letra, const Vector2f pos);
 
-  // virtual void criarCenario() =0; //fundo
-  // virtual void criarMapa() =0;
+  virtual void criarFundo() = 0;  // fundo
+  virtual void criarMapa() = 0;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 };

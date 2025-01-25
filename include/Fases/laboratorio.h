@@ -3,49 +3,39 @@
 
 #include "Fases/fase.h"
 
-class Fase;
+using namespace std;
 
-namespace Fases{
+using namespace Fases;
+namespace Fases {
 
-    class Laboratorio : protected Fase{
+class Laboratorio : public Fase {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        private:
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            
-                    
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        protected:
+  const int maxChefoes = 1;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
+  Laboratorio();
+  ~Laboratorio();
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  void criarChefoes();
+  void criarObstMedios();
+  void criarProjeteis();
 
+  void criarFundo() override;
+  void criarMapa() override;
 
-        public:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-            const int maxChefoes = 1;
-
-            Laboratorio();
-            ~Laboratorio();
-
-            void criarChefoes();
-            void criarObstMedios();
-            void criarProjeteis();
-
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
-
-    };
-}
-
+  // ===/===/===/===/ Outros  ===/===/===/===/
+};
+}  // namespace Fases
 
 #endif
