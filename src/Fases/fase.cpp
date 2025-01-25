@@ -10,11 +10,10 @@ namespace Fases {
 // Construtor
 Fase::Fase()
     : Ente(),
-      fundo(),
-      listaPersonagens(new Lista::ListaEntidade()),
-      listaObstaculos(new Lista::ListaEntidade()),
-      pColisao(new Gerenciador::Gerenciador_Colisoes(&listaPersonagens,
-                                                     &listaObstaculos)) {
+      // fundo(),
+      listaPersonagens(new Listas::Lista_Entidades()),
+      listaObstaculos(new Listas::Lista_Entidades()),
+      pColisao(new Gerenciadores::Gerenciador_Colisoes()) {
   if (pColisao == nullptr) {
     std::cout
         << "Jungle::Fase::nao foi possivel criar um Gerenciador de Colisao"
@@ -24,7 +23,14 @@ Fase::Fase()
 }
 
 // Destrutor
-Fase::~Fase() {}
+Fase::~Fase() {
+  if (pColisao) {
+    delete (pColisao);
+    pColisao = nullptr;
+  }
+  listaObstaculos->limparLista();
+  listaPersonagens->limparLista();
+}
 
 void Fase::executar() {}
 

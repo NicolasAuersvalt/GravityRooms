@@ -2,7 +2,7 @@
 #define FASE_H
 
 #include "Gerenciadores/gerenciador_colisoes.h"
-#include "Lista/lista_entidades.h"
+#include "Listas/lista_entidades.h"
 #include "ente.h"
 
 class Jogo;
@@ -21,9 +21,10 @@ class Fase : protected Ente {
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
-  Gerenciadores::Gerenciador_colisoes GC;
-  Lista::Lista_entidades listaPersonagens;
-  Lista::Lista_entidades listaObstaculos;
+  Gerenciadores::Gerenciador_Colisoes GC;
+  Listas::Lista_Entidades* listaPersonagens;
+  Listas::Lista_Entidades* listaObstaculos;
+  Gerenciadores::Gerenciador_Colisoes* pColisao;
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
