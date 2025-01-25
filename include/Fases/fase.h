@@ -1,56 +1,54 @@
 #ifndef FASE_H
 #define FASE_H
 
-#include "ente.h"
 #include "Gerenciadores/gerenciador_colisoes.h"
+#include "Lista/lista_entidades.h"
+#include "ente.h"
 
 class Jogo;
 class Gerenciador_Colisoes;
+using namespace sf;
 
-namespace Fases{
+namespace Fases {
 
-    class Fase : protected Ente{
+class Fase : protected Ente {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        private:
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // Gerenciador_Colisoes GC;
-                    
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  Gerenciadores::Gerenciador_colisoes GC;
+  Lista::Lista_entidades listaPersonagens;
+  Lista::Lista_entidades listaObstaculos;
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        protected:
+  // Fase(const IDs IDs_Fase,const IDs IDs_Fundo);
+  Fase();
+  ~Fase();
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
+  void executar();
+  void desenhar();
+  // void gerenciar_colisoes();
+  // void cirarInimFaceis();
+  // void criarPlataformas();
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  // virtual void criarInimigos(const Vector2f pos);
+  // virtual void criarJogador(const Vector2f pos);
+  // virtual void criarObstaculo(const Vector2f pos); //plataforma
+  // virtual void criarCaixa(const Vector2f pos);
+  // virtual void criarEntidades(char letra, const Vector2f pos);
 
+  // virtual void criarCenario() =0; //fundo
+  // virtual void criarMapa() =0;
 
-        public:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-            Fase();
-            ~Fase();
-
-            virtual void executar() = 0;
-            void gerenciar_colisoes();
-            void cirarInimFaceis();
-            void criarPlataformas();
-
-            virtual void criarInimigos() = 0;
-            virtual void criarObstaculo() = 0;
-            void criarCenario();
-
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
-
-    };
-}
-
+  // ===/===/===/===/ Outros  ===/===/===/===/
+};
+}  // namespace Fases
 
 #endif

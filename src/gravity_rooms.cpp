@@ -8,8 +8,9 @@ Gravity_Rooms::Gravity_Rooms()
       pAnd2(Vector2f(100.0f, 80.0f), nullptr),
       plataforma(Vector2f(100.0f, 80.0f), Vector2f(100.0f, 80.0f)),
       LJog1(),
-      GC(), menuGeral()
-      {
+      GC(),
+      menuGeral(),
+      fase(nullptr) {
   Ente::setGerenciador(&GG);
 
   sf::Texture backgroundTexture;
@@ -46,39 +47,32 @@ Gravity_Rooms::Gravity_Rooms()
 
   LJog1.incluir(static_cast<Entidade *>(&pAnd1));
 
+  criarFase();
   executar();
 }
 
 // Destrutor
 Gravity_Rooms::~Gravity_Rooms() {}
 
-
-
 void Gravity_Rooms::executar() {
-
   bool primeiraVez = false;
 
   GG.executar();
 
-  while(GG.estaAberta()){
-
+  while (GG.estaAberta()) {
     sf::Event eventao;
 
-    //cout << "Evento instanciado" << endl;
+    // cout << "Evento instanciado" << endl;
 
     while (GG.getJanela().pollEvent(eventao)) {
-
       cout << "ProcessandoEvento" << endl;
-
 
       int selecao = menuGeral.obterSelecao(eventao);
       primeiraVez = true;
-                  
-        
     }
-      GG.limpar();
-      menuGeral.desenhar(GG);
-      GG.exibir();
+    GG.limpar();
+    menuGeral.desenhar(GG);
+    GG.exibir();
   }
 
   GC.incluirTripulante(pJog1);
@@ -127,6 +121,15 @@ void Gravity_Rooms::executar() {
     // Atualiza os objetos, caso necessário (atualização de movimentos,
     // animações, etc.)
     LJog1.atualizarTodas();
+  }
+  void Gravity_Rooms::criarFase() {
+    Fase::laboratorio *aux = new Fase::laboratorio();
+    if (aux = nullptr) {
+      exit(1);
+    }
+    fase = static_cast<Fase::Fase *> aux;
+    fase->criarFundo();
+    fase->criarMapa();
   }
 }
 
