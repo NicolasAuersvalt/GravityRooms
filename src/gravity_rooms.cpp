@@ -85,15 +85,13 @@ void Gravity_Rooms::executar() {
     sf::Event evento;
 
     while (GG.processarEvento(evento)) {
-      cout << "while1 " << endl;
       if (evento.type == sf::Event::Closed) {
         GG.fechar();
       }
-      cout << "while2 " << endl;
 
       if (evento.type == sf::Event::KeyPressed) {
         // Verifica se a tecla pressionada foi 'Y'
-        cout << "while3 " << endl;
+
         if (evento.key.code == sf::Keyboard::Y) {
           cout << "while4 " << endl;
           // Chama o método de salvar buffer do objeto PJog1
@@ -110,11 +108,9 @@ void Gravity_Rooms::executar() {
             cout << "while6 " << endl;
             std::cerr << "Erro ao abrir o arquivo para salvar os dados.\n";
           }
-          cout << "while7 " << endl;
         }
       }
     }
-    cout << "out1 " << endl;
 
     GG.limpar();  // Limpa a tela antes de desenhar qualquer coisa
 
@@ -123,14 +119,9 @@ void Gravity_Rooms::executar() {
 
     // GG.desenharEnte(&pJog1);  // Desenha o Tripulante 1 (ou qualquer outro
     // ente)
-    cout << "out2" << endl;
 
-    LJog1.desenharTodos();
-
-    cout << "out3 " << endl;  // Desenha os outros sprites da lista
+    LJog1.desenharTodos();  // Desenha os outros sprites da lista
     GC.executar();
-
-    cout << "out4 " << endl;
 
     GG.exibir();  // Exibe a tela com todos os objetos desenhados
 
