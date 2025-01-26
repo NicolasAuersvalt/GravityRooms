@@ -40,7 +40,7 @@ class Fase : protected Ente {
 
   // virtual void criarInimigos(const Vector2f pos);
   // virtual void criarJogador(const Vector2f pos);
-  virtual void criarPlataforma(const Vector2f pos);
+  void criarPlataforma(const Vector2f pos);
   // virtual void criarCaixa(const Vector2f pos);
   // virtual void criarEntidades(char letra, const Vector2f pos);
 
