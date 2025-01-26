@@ -1,5 +1,7 @@
 #include "gravity_rooms.h"
 
+#include <Fases/laboratorio.h>
+
 // Construtor
 Gravity_Rooms::Gravity_Rooms()
     : GG(),
@@ -125,11 +127,11 @@ void Gravity_Rooms::executar() {
 }
 
 void Gravity_Rooms::criarFases() {
-  Fases::Laboratorio *aux = new Fases::laboratorio();
+  Fases::Laboratorio *aux = new Fases::Laboratorio();
   if (aux = nullptr) {
     exit(1);
   }
-  fase = static_cast<Fases::Fase *> aux;
+  fase = static_cast<Fases::Fase *>(aux);
   fase->criarFundo();
   fase->criarMapa();
 }
