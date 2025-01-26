@@ -74,6 +74,9 @@ void Gravity_Rooms::executar() {
       cout << "ProcessandoEvento" << endl;
 
       int selecao = menuGeral.obterSelecao(eventao);
+      if (selecao == 1) {
+        break;
+      }
       primeiraVez = true;
     }
     GG.limpar();
