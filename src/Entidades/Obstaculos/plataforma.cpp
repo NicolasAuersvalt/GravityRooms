@@ -3,7 +3,9 @@
 namespace Entidades::Obstaculos {
 
 Plataforma::Plataforma(sf::Vector2f pos, const sf::Vector2f tam)
-    : Obstaculo(pos, tam) {}
+    : Obstaculo(pos, tam) {
+  setSprite("assets/plataformaP.png", pos.x, pos.y);
+}
 
 Plataforma::~Plataforma() {}
 

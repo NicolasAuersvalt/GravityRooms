@@ -83,7 +83,15 @@ void Fase::criarJogador(const Vector2f pos) {
   }
   listaPersonagens->incluir(static_cast<Entidade*>(tripulante));
 }
-void Fase::executar() {}
+void Fase::desenhar() {
+  listaObstaculos->desenharTodos();
+  listaPersonagens->desenharTodos();
+}
+void Fase::executar() {
+  // fundo.executar();
+  desenhar();
+  pColisao->executar();
+}
 
 // void Fase::gerenciar_colisoes() {}
 

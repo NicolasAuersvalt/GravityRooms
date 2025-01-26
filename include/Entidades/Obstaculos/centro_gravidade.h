@@ -19,7 +19,7 @@ class Centro_Gravidade : public Obstaculo {
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+  using Ente::setSprite;
   Centro_Gravidade(const sf::Vector2f pos, const sf::Vector2f tam);
   ~Centro_Gravidade();
   void executar() override;

@@ -19,7 +19,7 @@ class Espinho : public Obstaculo {
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+  using Ente::setSprite;
   Espinho(const sf::Vector2f pos, const sf::Vector2f tam);
   ~Espinho();
   void executar() override;

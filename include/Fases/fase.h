@@ -22,12 +22,12 @@ class Fase : public Ente {
   // ===/===/===/===/ Outros  ===/===/===/===/
   Gerenciadores::Gerenciador_Colisoes GC;
   Listas::Lista_Entidades* listaPersonagens;
-  Listas::Lista_Entidades* listaObstaculos;
   Gerenciadores::Gerenciador_Colisoes* pColisao;
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
+  Listas::Lista_Entidades* listaObstaculos;
   // Fase(const IDs IDs_Fase,const IDs IDs_Fundo);
   Fase();
   ~Fase();

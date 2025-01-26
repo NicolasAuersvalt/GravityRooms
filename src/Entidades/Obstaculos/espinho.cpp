@@ -7,7 +7,9 @@ using namespace Entidades::Obstaculos;
 namespace Entidades::Obstaculos {
 
 Espinho::Espinho(const sf::Vector2f pos, const sf::Vector2f tam)
-    : Obstaculo(pos, tam) {}
+    : Obstaculo(pos, tam) {
+  setSprite("assets/espinhoG.png", pos.x, pos.y);
+}
 
 Espinho::~Espinho() {}
 void Espinho::executar() {

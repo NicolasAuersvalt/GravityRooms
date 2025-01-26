@@ -37,7 +37,6 @@ class Gravity_Rooms {
   Tripulante pJog1;
   Androide pAnd1;
   Androide pAnd2;
-  Plataforma plataforma;
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
   Fases::Fase* fase;

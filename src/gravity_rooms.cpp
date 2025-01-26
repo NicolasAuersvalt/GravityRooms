@@ -8,7 +8,6 @@ Gravity_Rooms::Gravity_Rooms()
       pJog1(Vector2f(100.0f, 80.0f), Vector2f(100.0f, 80.0f)),
       pAnd1(Vector2f(100.0f, 80.0f), &pJog1),
       pAnd2(Vector2f(100.0f, 80.0f), nullptr),
-      plataforma(Vector2f(100.0f, 80.0f), Vector2f(100.0f, 80.0f)),
       LJog1(),
       GC(),
       menuGeral(),
@@ -42,16 +41,12 @@ Gravity_Rooms::Gravity_Rooms()
   std::cout << "bli\n";
   LJog1.incluir(static_cast<Entidade *>(&pJog1));
 
-  plataforma.setSprite("assets/plataformaG.png", 0, 0);
-  LJog1.incluir(static_cast<Entidade *>(&plataforma));
-
   pAnd1.setSprite("assets/androidG.png", 0, 0);
   pAnd1.setVida(10);
 
   LJog1.incluir(static_cast<Entidade *>(&pAnd1));
 
   std::cout << "bl1i\n";
-  criarFases();
 
   std::cout << "bli2\n";
   executar();
@@ -71,10 +66,9 @@ void Gravity_Rooms::executar() {
     // cout << "Evento instanciado" << endl;
 
     if (GG.getJanela().pollEvent(eventao)) {
-      cout << "ProcessandoEvento" << endl;
-
       int selecao = menuGeral.obterSelecao(eventao);
       if (selecao == 1) {
+        criarFases();
         break;
       }
       primeiraVez = true;
@@ -84,35 +78,43 @@ void Gravity_Rooms::executar() {
     GG.exibir();
   }
 
-  GC.incluirTripulante(pJog1);
   GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
 
+  cout << "bloia1 " << endl;
   while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
     sf::Event evento;
 
     while (GG.processarEvento(evento)) {
+      cout << "while1 " << endl;
       if (evento.type == sf::Event::Closed) {
         GG.fechar();
       }
+      cout << "while2 " << endl;
 
       if (evento.type == sf::Event::KeyPressed) {
         // Verifica se a tecla pressionada foi 'Y'
+        cout << "while3 " << endl;
         if (evento.key.code == sf::Keyboard::Y) {
+          cout << "while4 " << endl;
           // Chama o método de salvar buffer do objeto PJog1
           nlohmann::ordered_json buffer;
           pJog1.salvarDataBuffer(buffer);
           // Exemplo: Salvar o buffer em um arquivo
           std::ofstream arquivo("dados_salvos.json");
           if (arquivo.is_open()) {
+            cout << "while5 " << endl;
             arquivo << buffer.dump(4);  // Salva com indentação de 4 espaços
             arquivo.close();
             std::cout << "Dados salvos em 'dados_salvos.json'.\n";
           } else {
+            cout << "while6 " << endl;
             std::cerr << "Erro ao abrir o arquivo para salvar os dados.\n";
           }
+          cout << "while7 " << endl;
         }
       }
     }
+    cout << "out1 " << endl;
 
     GG.limpar();  // Limpa a tela antes de desenhar qualquer coisa
 
@@ -121,9 +123,14 @@ void Gravity_Rooms::executar() {
 
     // GG.desenharEnte(&pJog1);  // Desenha o Tripulante 1 (ou qualquer outro
     // ente)
+    cout << "out2" << endl;
 
-    LJog1.desenharTodos();  // Desenha os outros sprites da lista
+    LJog1.desenharTodos();
+
+    cout << "out3 " << endl;  // Desenha os outros sprites da lista
     GC.executar();
+
+    cout << "out4 " << endl;
 
     GG.exibir();  // Exibe a tela com todos os objetos desenhados
 
@@ -134,23 +141,23 @@ void Gravity_Rooms::executar() {
 }
 
 void Gravity_Rooms::criarFases() {
-  std::cout << "blo\n";
   Fases::Laboratorio *aux = new Fases::Laboratorio();
 
-  std::cout << "blo1\n";
   if (aux == nullptr) {
-    std::cout << "blo2\n";
     exit(1);
+    cout << "nao foi possivel criar a fase " << endl;
   }
 
-  std::cout << "blo3\n";
   fase = static_cast<Fases::Fase *>(aux);
-
-  std::cout << "blo4\n";
 
   fase->criarMapa();
 
-  std::cout << "blo5\n";
+  auto atual = fase->listaObstaculos->LEs->getPrimeiro();
+  while (atual != nullptr) {
+    LJog1.incluir(atual->pInfo);  // Add entity to LJog1
+    atual = atual->getProximo();
+  }
+  cout << "bloia " << endl;
 }
 
 // ===/===/===/===/ Outros  ===/===/===/===/
