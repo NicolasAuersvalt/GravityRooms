@@ -3,42 +3,31 @@
 
 #include "Entidades/Obstaculos/obstaculo.h"
 
-namespace Entidades::Obstaculos{
+namespace Entidades::Obstaculos {
 
-    class Espinho : protected Obstaculo{
+class Espinho : public Obstaculo {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  float largura;
 
-        private:
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            float largura;
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-                    
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        protected:
+  Espinho(const sf::Vector2f pos, const sf::Vector2f tam);
+  ~Espinho();
+  void executar() override;
+  void mover() override;
+  void salvar() override;
+  // ===/===/===/===/ Outros  ===/===/===/===/
+};
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-
-        public:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-            Espinho(const sf::Vector2f pos, const sf::Vector2f tam);
-            ~Espinho();
-            void executar() override;
-            void mover() const;
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
-
-    };
-
-}
+}  // namespace Entidades::Obstaculos
 
 #endif

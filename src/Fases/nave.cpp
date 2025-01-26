@@ -6,25 +6,17 @@ using namespace std;
 using namespace Fases;
 
 // ===/===/===/===/ Obrigatório ===/===/===/===/
-namespace Fases{
+namespace Fases {
 
-    // Construtor
-    Nave::Nave() 
-    {
+// Construtor
+Nave::Nave() {}
 
-    }
+// Destrutor
+Nave::~Nave() {}
 
-    // Destrutor
-    Nave::~Nave(){
+void Nave::criarInimMedios() {}
 
-    }
-
-    void Nave::criarInimMedios(){
-
-    }
-
-    void Nave::criarObstMedios()
-    {
-
-    }
-}
+void Nave::criarObstMedios() {}
+void Nave::criarFundo() {}
+void Nave::criarMapa() {}
+}  // namespace Fases

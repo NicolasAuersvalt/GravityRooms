@@ -10,7 +10,7 @@ using namespace sf;
 
 namespace Fases {
 
-class Fase : protected Ente {
+class Fase : public Ente {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
@@ -35,12 +35,15 @@ class Fase : protected Ente {
   void executar();
   void desenhar();
   // void gerenciar_colisoes();
-  // void cirarInimFaceis();
+  void criarInimFaceis();
   // void criarPlataformas();
 
   // virtual void criarInimigos(const Vector2f pos);
-  // virtual void criarJogador(const Vector2f pos);
+  void criarJogador(const Vector2f pos);
   void criarPlataforma(const Vector2f pos);
+  void criarEspinho(const Vector2f pos);
+  void criarCentroGravidade(const Vector2f pos);
+
   // virtual void criarCaixa(const Vector2f pos);
   // virtual void criarEntidades(char letra, const Vector2f pos);
 

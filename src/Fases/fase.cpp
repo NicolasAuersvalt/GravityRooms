@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "Entidades/Obstaculos/centro_gravidade.h"
+#include "Entidades/Obstaculos/espinho.h"
 #include "Entidades/Obstaculos/plataforma.h"
 
 using namespace std;
@@ -46,11 +48,46 @@ void Fase::criarPlataforma(const Vector2f pos) {
   listaObstaculos->incluir(static_cast<Entidade*>(plataforma));
 }
 
+void Fase::criarEspinho(const Vector2f pos) {
+  Entidades::Obstaculos::Espinho* espinho =
+      new Entidades::Obstaculos::Espinho(pos, sf::Vector2f(50.0f, 50.0f));
+  if (espinho == nullptr) {
+    std::cout << "Fase::nao foi possivel criar espinho" << std::endl;
+    exit(1);
+  }
+
+  // plataforma->setTamanho(escala);
+  listaObstaculos->incluir(static_cast<Entidade*>(espinho));
+}
+
+void Fase::criarCentroGravidade(const Vector2f pos) {
+  Entidades::Obstaculos::Centro_Gravidade* centro_gravidade =
+      new Entidades::Obstaculos::Centro_Gravidade(pos,
+                                                  sf::Vector2f(100.0f, 50.0f));
+  if (centro_gravidade == nullptr) {
+    std::cout << "Fase::nao foi possivel criar centro de gravidade"
+              << std::endl;
+    exit(1);
+  }
+
+  // plataforma->setTamanho(escala);
+  listaObstaculos->incluir(static_cast<Entidade*>(centro_gravidade));
+}
+
+void Fase::criarJogador(const Vector2f pos) {
+  Entidades::Personagens::Tripulante* tripulante =
+      new Entidades::Personagens::Tripulante(pos, sf::Vector2f(50.0f, 50.0f));
+  if (tripulante == nullptr) {
+    std::cout << "Fase::nao foi possivel criar jogador" << std::endl;
+    exit(1);
+  }
+  listaPersonagens->incluir(static_cast<Entidade*>(tripulante));
+}
 void Fase::executar() {}
 
 // void Fase::gerenciar_colisoes() {}
 
-// void Fase::cirarInimFaceis() {}
+void Fase::criarInimFaceis() {}
 
 // void Fase::criarCenario() {}
 
