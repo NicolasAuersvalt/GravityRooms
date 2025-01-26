@@ -5,6 +5,9 @@
 #include "Entidades/Obstaculos/centro_gravidade.h"
 #include "Entidades/Obstaculos/espinho.h"
 #include "Entidades/Obstaculos/plataforma.h"
+#include "Entidades/Personagens/androide.h"
+#include "Entidades/Personagens/ciborgue.h"
+#include "Entidades/Personagens/clone.h"
 
 using namespace std;
 using namespace sf;
@@ -76,11 +79,14 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 }
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
+  Entidades::Personagens::Tripulante* tripulante =
+      new Entidades::Personagens::Tripulante(
+          Vector2f(pos.x * 50.0f, pos.y * 50.0f), Vector2f(150.0f, 150.0f));
   switch (letra) {
-    // case ('i'): {
-    //   criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+    case ('i'): {
+      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
 
-    // } break;
+    } break;
     case ('c'): {
       criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 
@@ -89,8 +95,12 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
       criarPlataforma(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 
     } break;
+    case ('g'): {
+      criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+
+    } break;
     case ('j'): {
-      criarJogador(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+      listaPersonagens->incluir(static_cast<Entidade*>(tripulante));
     }
   }
 }
@@ -108,6 +118,38 @@ void Fase::desenhar() {
   listaObstaculos->desenharTodos();
   listaPersonagens->desenharTodos();
 }
+
+// void Fase::criarInimFaceis(const Vector2f pos) {
+//   Entidades::Personagens::Ciborgue* ciborgue =
+//       new Entidades::Personagens::Ciborgue(pos, sf::Vector2f(50.0f, 50.0f));
+//   if (ciborgue == nullptr) {
+//     cout << "Fase::nao foi possivel criar ciborgue" << endl;
+//     exit(1);
+//   }
+//   listaPersonagens->incluir(static_cast<Entidade*>(ciborgue));
+// }
+
+void Fase::criarInimMedios(const Vector2f pos,
+                           Entidades::Personagens::Tripulante* tripulante) {
+  Entidades::Personagens::Androide* androide =
+      new Entidades::Personagens::Androide(pos, tripulante);
+  if (androide == nullptr) {
+    std::cout << "Fase::nao foi possivel criar androide" << std::endl;
+    exit(1);
+  }
+  listaPersonagens->incluir(static_cast<Entidade*>(androide));
+}
+
+// void Fase::criarInimDificeis(const Vector2f pos) {
+//   Entidades::Personagens::Inimigo::Clone* clone =
+//       new Entidades::Personagens::Inimigo::Clone(pos,
+//                                                  sf::Vector2f(50.0f, 50.0f));
+//   if (clone == nullptr) {
+//     std::cout << "Fase::nao foi possivel criar clone" << std::endl;
+//     exit(1);
+//   }
+//   listaPersonagens->incluir(static_cast<Entidade*>(clone));
+// }
 void Fase::executar() {
   // fundo.executar();
   desenhar();
@@ -115,8 +157,6 @@ void Fase::executar() {
 }
 
 // void Fase::gerenciar_colisoes() {}
-
-void Fase::criarInimFaceis() {}
 
 // void Fase::criarCenario() {}
 

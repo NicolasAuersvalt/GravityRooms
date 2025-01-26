@@ -29,8 +29,8 @@ class Nave : protected Fase {
   void criarInimMedios();
   void criarObstMedios();
 
-  void criarFundo();
-  void criarMapa();
+  void criarFundo() override;
+  void criarMapa() override;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 };

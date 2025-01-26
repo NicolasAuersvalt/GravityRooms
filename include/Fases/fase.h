@@ -21,13 +21,14 @@ class Fase : public Ente {
 
   // ===/===/===/===/ Outros  ===/===/===/===/
   Gerenciadores::Gerenciador_Colisoes GC;
-  Listas::Lista_Entidades* listaPersonagens;
   Gerenciadores::Gerenciador_Colisoes* pColisao;
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Listas::Lista_Entidades* listaObstaculos;
+
+  Listas::Lista_Entidades* listaPersonagens;
   // Fase(const IDs IDs_Fase,const IDs IDs_Fundo);
   Fase();
   ~Fase();
@@ -35,10 +36,13 @@ class Fase : public Ente {
   void executar();
   void desenhar();
   // void gerenciar_colisoes();
-  void criarInimFaceis();
+  void criarInimFaceis(const Vector2f pos);
   // void criarPlataformas();
 
-  // virtual void criarInimigos(const Vector2f pos);
+  void criarInimDificeis(const Vector2f pos);
+  void criarInimMedios(const Vector2f pos,
+                       Entidades::Personagens::Tripulante* tripulante);
+
   void criarJogador(const Vector2f pos);
   void criarPlataforma(const Vector2f pos);
   void criarEspinho(const Vector2f pos);

@@ -34,7 +34,6 @@ class Gravity_Rooms {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Tripulante pJog1;
   Androide pAnd1;
   Androide pAnd2;
   Gerenciador_Grafico GG;
