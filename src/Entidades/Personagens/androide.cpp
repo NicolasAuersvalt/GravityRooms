@@ -13,15 +13,12 @@ Androide::Androide(const Vector2f pos, Tripulante* tripulante)
 
 Androide::~Androide() {}
 void Androide::executar() {
-  cout << "executar" << endl;
   if (vivo) mover();
 }
 
 void Androide::danificar(Tripulante* p) {}
 
 void Androide::mover() {
-  cout << "mover" << endl;
-
   if (vivo) {
     Inimigo::mover();
   }
@@ -50,6 +47,5 @@ void Androide::colidir(Entidade* outro, string direction) {
 }
 
 void Androide::salvarDataBuffer(nlohmann::ordered_json& json) {
-  cout << "BLZ" << endl;
 }
 }  // namespace Entidades::Personagens

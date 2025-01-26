@@ -81,6 +81,7 @@ namespace Gerenciadores{
 
 	};
 
-} using namespace Gerenciadores;
+
+}
 
 #endif

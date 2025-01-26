@@ -10,6 +10,7 @@
 #include "Entidades/Personagens/androide.h"
 #include "Entidades/Obstaculos/plataforma.h"
 #include "Gerenciadores/gerenciador_grafico.h"
+#include "Menus/menu.h"
 #include "ente.h"
 #include <fstream>
 
@@ -27,6 +28,7 @@ using Entidades::Personagens::Tripulante;
 using Entidades::Personagens::Androide;
 using Gerenciadores::Gerenciador_Grafico;
 using Listas::Lista_Entidades;
+using Menus::Menu;
 
 
 class Gravity_Rooms
@@ -41,11 +43,13 @@ private:
     Plataforma plataforma;
     Gerenciador_Grafico GG;
     Gerenciador_Colisoes GC;
-
+    Menu menuGeral;
+    
     // ===/===/===/===/ Outros  ===/===/===/===/
 
     Lista_Entidades LJog1;
     Sprite backgroundSprite;
+    
 
 protected:
     // ===/===/===/===/ Obrigatório ===/===/===/===/

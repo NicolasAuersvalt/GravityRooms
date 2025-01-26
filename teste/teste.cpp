@@ -1,189 +1,308 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include <iostream>
 #include <vector>
 
-class Entidade {
+// Gerenciador gráfico responsável pela renderização
+class GerenciadorGrafico {
 public:
-    virtual void atualizar(float deltaTempo) = 0;
-    virtual void desenhar(sf::RenderWindow& janela) = 0;
-};
-
-class Plataforma : public Entidade {
-public:
-    sf::RectangleShape forma;
-
-    Plataforma(float x, float y, float largura, float altura) {
-        forma.setPosition(x, y);
-        forma.setSize(sf::Vector2f(largura, altura));
-        forma.setFillColor(sf::Color::Green);
+    GerenciadorGrafico() {
+        janela.create(sf::VideoMode(800, 600), "Jogo de Pular");
+        janela.setFramerateLimit(60);
     }
 
-    void atualizar(float deltaTempo) override {}
-
-    void desenhar(sf::RenderWindow& janela) override {
-        janela.draw(forma);
+    void desenhar(const sf::Drawable& drawable) {
+        janela.draw(drawable);
     }
+
+    void limparTela() {
+        janela.clear(sf::Color::Cyan); // Cor de fundo
+    }
+
+    void mostrarTela() {
+        janela.display();
+    }
+
+    sf::RenderWindow& getJanela() {
+        return janela;
+    }
+
+private:
+    sf::RenderWindow janela;
 };
 
-class Jogador : public Entidade {
+// Classe para o quadrado, responsável pelo movimento e física
+class Quadrado {
 public:
-    sf::RectangleShape forma;
-    float velocidadeY;
-    bool noChao;
-
-    Jogador() {
-        forma.setSize(sf::Vector2f(50.f, 50.f));
-        forma.setFillColor(sf::Color::Red);
-        forma.setPosition(200.f, 200.f);
-        velocidadeY = 0.f;
+    Quadrado() {
+        quadrado.setSize(sf::Vector2f(50, 50));
+        quadrado.setFillColor(sf::Color::Green);
+        velocidadeY = 0;
         noChao = false;
     }
 
-    void atualizar(float deltaTempo) override {
-        // Gravidade
+    void atualizar() {
         if (!noChao) {
-            velocidadeY += 9.8f * deltaTempo;
-        } else {
-            velocidadeY = 0.f;
+            velocidadeY += 0.5f; // gravidade
         }
 
-        // Movimentação
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            forma.move(-200.f * deltaTempo, 0.f);
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            forma.move(200.f * deltaTempo, 0.f);
-        }
+        quadrado.move(0, velocidadeY);
+    }
 
-        // Pulo
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && noChao) {
-            velocidadeY = -500.f;
+    void pular() {
+        if (noChao) {
+            velocidadeY = -10;
             noChao = false;
         }
-
-        // Atualizar a posição com base na gravidade
-        forma.move(0.f, velocidadeY * deltaTempo);
     }
 
-    void desenhar(sf::RenderWindow& janela) override {
-        janela.draw(forma);
-    }
-};
-
-class GerenciadorEntidades {
-public:
-    std::vector<Entidade*> entidades;
-
-    ~GerenciadorEntidades() {
-        for (auto* entidade : entidades) {
-            delete entidade;
-        }
-    }
-
-    void adicionarEntidade(Entidade* entidade) {
-        entidades.push_back(entidade);
-    }
-
-    void atualizarTodas(float deltaTempo) {
-        for (auto* entidade : entidades) {
-            entidade->atualizar(deltaTempo);
-        }
-    }
-
-    void desenharTodas(sf::RenderWindow& janela) {
-        for (auto* entidade : entidades) {
-            entidade->desenhar(janela);
-        }
-    }
-};
-
-class GerenciadorColisoes {
-public:
-
-    void verificarColisoes(Jogador& jogador, const std::vector<Entidade*>& entidades) {
-
-        jogador.noChao = false;
-
-        for (auto* entidade : entidades) {
-
-            Plataforma* plataforma = dynamic_cast<Plataforma*>(entidade);
-
-            if (plataforma && jogador.forma.getGlobalBounds().intersects(plataforma->forma.getGlobalBounds())) {
-
-                // Colisão detectada
-                if (jogador.velocidadeY > 0) { // Apenas se o jogador está caindo
-
-                    jogador.forma.setPosition(jogador.forma.getPosition().x, plataforma->forma.getPosition().y - jogador.forma.getSize().y);
-                    jogador.noChao = true;
-                    
-                    break;
+    void verificarColisaoComPlataforma(std::vector<sf::RectangleShape>& plataformas) {
+        for (auto& plataforma : plataformas) {
+            if (quadrado.getGlobalBounds().intersects(plataforma.getGlobalBounds())) {
+                if (velocidadeY > 0 && quadrado.getPosition().y + quadrado.getSize().y <= plataforma.getPosition().y) {
+                    noChao = true;
+                    velocidadeY = 0;
+                    quadrado.setPosition(quadrado.getPosition().x, plataforma.getPosition().y - quadrado.getSize().y);
                 }
             }
         }
     }
+
+    sf::RectangleShape& getQuadrado() {
+        return quadrado;
+    }
+
+    bool isNoChao() {
+        return noChao;
+    }
+
+    void setNoChao(bool status) {
+        noChao = status;
+    }
+
+    void setPosicao(float x, float y) {
+        quadrado.setPosition(x, y);
+    }
+
+private:
+    sf::RectangleShape quadrado;
+    float velocidadeY;
+    bool noChao;
 };
 
-class GerenciadorGraficos {
+// Classe base para as fases, será herdada pelas fases específicas
+class Fase {
 public:
-    sf::RenderWindow janela;
+    virtual void desenhar(GerenciadorGrafico& gerenciador) = 0;
+    virtual void atualizar(Quadrado& quadrado) = 0;
+    virtual void adicionarPlataformas() = 0;
+    virtual std::vector<sf::RectangleShape>& getPlataformas() = 0;
+};
 
-    GerenciadorGraficos() : janela(sf::VideoMode(800, 600), "Jogo de Quadrado que Pula") {
-        janela.setFramerateLimit(60);
+// Fase 1
+class Fase1 : public Fase {
+public:
+    Fase1() {
+        adicionarPlataformas();
     }
 
-    void limpar() {
-        janela.clear(sf::Color::Cyan);
+    void desenhar(GerenciadorGrafico& gerenciador) override {
+        for (auto& plataforma : plataformas) {
+            gerenciador.desenhar(plataforma);
+        }
     }
 
-    void exibir() {
-        janela.display();
+    void atualizar(Quadrado& quadrado) override {
+        quadrado.atualizar();
+        quadrado.verificarColisaoComPlataforma(plataformas);
     }
 
-    bool estaAberta() const {
-        return janela.isOpen();
+    void adicionarPlataformas() override {
+        sf::RectangleShape plataforma1(sf::Vector2f(200, 20));
+        plataforma1.setFillColor(sf::Color::Blue);
+        plataforma1.setPosition(150, 400);
+        plataformas.push_back(plataforma1);
+
+        sf::RectangleShape plataforma2(sf::Vector2f(200, 20));
+        plataforma2.setFillColor(sf::Color::Blue);
+        plataforma2.setPosition(450, 300);
+        plataformas.push_back(plataforma2);
     }
 
-    bool processarEvento(sf::Event& evento) {
-        return janela.pollEvent(evento);
+    std::vector<sf::RectangleShape>& getPlataformas() override {
+        return plataformas;
     }
 
-    void fechar() {
-        janela.close();
+private:
+    std::vector<sf::RectangleShape> plataformas;
+};
+
+// Fase 2
+class Fase2 : public Fase {
+public:
+    Fase2() {
+        adicionarPlataformas();
     }
+
+    void desenhar(GerenciadorGrafico& gerenciador) override {
+        for (auto& plataforma : plataformas) {
+            gerenciador.desenhar(plataforma);
+        }
+    }
+
+    void atualizar(Quadrado& quadrado) override {
+        quadrado.atualizar();
+        quadrado.verificarColisaoComPlataforma(plataformas);
+    }
+
+    void adicionarPlataformas() override {
+        sf::RectangleShape plataforma1(sf::Vector2f(200, 20));
+        plataforma1.setFillColor(sf::Color::Green);
+        plataforma1.setPosition(100, 500);
+        plataformas.push_back(plataforma1);
+
+        sf::RectangleShape plataforma2(sf::Vector2f(200, 20));
+        plataforma2.setFillColor(sf::Color::Green);
+        plataforma2.setPosition(400, 400);
+        plataformas.push_back(plataforma2);
+    }
+
+    std::vector<sf::RectangleShape>& getPlataformas() override {
+        return plataformas;
+    }
+
+private:
+    std::vector<sf::RectangleShape> plataformas;
+};
+
+// Classe Menu
+class Menu {
+public:
+    Menu() {
+        
+        font.loadFromFile("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf");  // Fonte padrão no Linux
+
+        // Inicializando as opções do menu
+        fases.push_back("Fase 1");
+        fases.push_back("Fase 2");
+
+        // Criando os textos para as fases
+        for (size_t i = 0; i < fases.size(); ++i) {
+            sf::Text texto;
+            texto.setFont(font);
+            texto.setString(fases[i]);
+            texto.setCharacterSize(30);
+            texto.setFillColor(sf::Color::White); // Inicialmente todas as fases são brancas
+            texto.setPosition(200, 200 + (i * 40));
+            textos.push_back(texto);
+        }
+
+        // Cor da fase selecionada (verde)
+        textos[0].setFillColor(sf::Color::Green);
+        selecionada = 0;
+    }
+
+    void desenhar(GerenciadorGrafico& gerenciador) {
+        for (auto& texto : textos) {
+            gerenciador.desenhar(texto);
+        }
+    }
+
+    bool estaAtivo(sf::RenderWindow& janela) {
+        return janela.hasFocus();
+    }
+
+    void moverSelecaoParaCima() {
+        if (selecionada > 0) {
+            textos[selecionada].setFillColor(sf::Color::White); // Desmarca a opção
+            selecionada--;
+            textos[selecionada].setFillColor(sf::Color::Green); // Marca a nova opção
+        }
+    }
+
+    void moverSelecaoParaBaixo() {
+        if (selecionada < fases.size() - 1) {
+            textos[selecionada].setFillColor(sf::Color::White); // Desmarca a opção
+            selecionada++;
+            textos[selecionada].setFillColor(sf::Color::Green); // Marca a nova opção
+        }
+    }
+
+    int obterSelecao(sf::Event& evento) {
+        if (evento.type == sf::Event::KeyPressed) {
+            if (evento.key.code == sf::Keyboard::Up) {
+                moverSelecaoParaCima();
+            } else if (evento.key.code == sf::Keyboard::Down) {
+                moverSelecaoParaBaixo();
+            } else if (evento.key.code == sf::Keyboard::Enter) {
+                return selecionada + 1; // Retorna o número da fase selecionada
+            }
+        }
+        return 0;
+    }
+
+private:
+    std::vector<std::string> fases;
+    std::vector<sf::Text> textos;
+    int selecionada;
+    sf::Font font;
 };
 
 int main() {
-    GerenciadorGraficos gerenciadorGraficos;
-    GerenciadorEntidades gerenciadorEntidades;
-    GerenciadorColisoes gerenciadorColisoes;
 
-    Jogador* jogador = new Jogador();
-    gerenciadorEntidades.adicionarEntidade(jogador);
+    GerenciadorGrafico gerenciadorGrafico;
+    Quadrado quadrado;
+    // ESTOU AQUI
+    Menu menu;
 
-    gerenciadorEntidades.adicionarEntidade(new Plataforma(100.f, 500.f, 600.f, 20.f));
-    gerenciadorEntidades.adicionarEntidade(new Plataforma(200.f, 350.f, 200.f, 20.f));
-    gerenciadorEntidades.adicionarEntidade(new Plataforma(500.f, 250.f, 200.f, 20.f));
+    Fase* faseAtual = nullptr;
 
-    sf::Clock relogio;
+    bool jogoAtivo = false;
+    sf::Clock clock;
 
-    while (gerenciadorGraficos.estaAberta()) {
-        sf::Time deltaTempo = relogio.restart();
+    while (gerenciadorGrafico.getJanela().isOpen()) {
 
         sf::Event evento;
-        while (gerenciadorGraficos.processarEvento(evento)) {
+
+        while (gerenciadorGrafico.getJanela().pollEvent(evento)) {
+
             if (evento.type == sf::Event::Closed) {
-                gerenciadorGraficos.fechar();
+
+                gerenciadorGrafico.getJanela().close();
+            }
+
+            if (faseAtual == nullptr) {
+                int selecao = menu.obterSelecao(evento);
+                if (selecao == 1) {
+                    faseAtual = new Fase1();
+                    quadrado.setPosicao(400, 100); // Inicia o quadrado mais alto
+                    jogoAtivo = true;
+                } else if (selecao == 2) {
+                    faseAtual = new Fase2();
+                    quadrado.setPosicao(400, 100); // Inicia o quadrado mais alto
+                    jogoAtivo = true;
+                }
+            } else {
+                if (evento.type == sf::Event::KeyPressed && evento.key.code == sf::Keyboard::Space) {
+                    quadrado.pular();
+                }
             }
         }
 
-        gerenciadorEntidades.atualizarTodas(deltaTempo.asSeconds());
-        gerenciadorColisoes.verificarColisoes(*jogador, gerenciadorEntidades.entidades);
+        gerenciadorGrafico.limparTela();
 
-        gerenciadorGraficos.limpar();
-        gerenciadorEntidades.desenharTodas(gerenciadorGraficos.janela);
-        gerenciadorGraficos.exibir();
+        if (faseAtual == nullptr) {
+            menu.desenhar(gerenciadorGrafico);
+        } else {
+            faseAtual->atualizar(quadrado);
+            faseAtual->desenhar(gerenciadorGrafico);
+        }
+
+        gerenciadorGrafico.desenhar(quadrado.getQuadrado());
+        gerenciadorGrafico.mostrarTela();
     }
 
+    delete faseAtual;
     return 0;
 }

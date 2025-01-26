@@ -48,6 +48,8 @@ namespace Gerenciadores {
         // Método para obter a instância única
         static Gerenciador_Grafico* getInstancia();
 
+        void desenharTexto(const Drawable& Texto);
+
         // Desenhar um ente OBRIGATÓRIO
         void desenharEnte(Ente* pE);
 
@@ -71,8 +73,11 @@ namespace Gerenciadores {
 
         void executar();
 
+        // Remover depois
+        RenderWindow& getJanela();
+
     };
 
-} using namespace Gerenciadores;
+}
 
 #endif

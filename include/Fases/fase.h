@@ -1,6 +1,11 @@
 #ifndef FASE_H
 #define FASE_H
 
+<<<<<<< HEAD
+#include "Gerenciadores/gerenciador_colisoes.h"
+#include "Listas/lista_entidades.h"
+=======
+>>>>>>> parent of 05a9e64 (fase de inicio)
 #include "ente.h"
 #include "Gerenciadores/gerenciador_colisoes.h"
 
@@ -15,8 +20,16 @@ namespace Fases{
 
             // ===/===/===/===/ Obrigatório ===/===/===/===/
 
+<<<<<<< HEAD
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  Gerenciadores::Gerenciador_Colisoes GC;
+  Listas::Lista_Entidades* listaPersonagens;
+  Listas::Lista_Entidades* listaObstaculos;
+  Gerenciadores::Gerenciador_Colisoes* pColisao;
+=======
             // Gerenciador_Colisoes GC;
                     
+>>>>>>> parent of 05a9e64 (fase de inicio)
 
             // ===/===/===/===/ Outros  ===/===/===/===/
 

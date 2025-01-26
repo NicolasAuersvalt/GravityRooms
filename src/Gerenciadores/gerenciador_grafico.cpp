@@ -102,6 +102,15 @@ namespace Gerenciadores {
             window.display();  // Exibe os objetos na tela
         }
 
+        
+    
+    void Gerenciador_Grafico::desenharTexto(const Drawable& Texto) {
+
+            // Desenha o fundo (ou qualquer sprite que seja passado)
+            window.draw(Texto);
+
+        }
+
     // Atualizar a janela (captura eventos)
     void Gerenciador_Grafico::atualizar() {
         Event event;
@@ -119,6 +128,10 @@ namespace Gerenciadores {
 
     bool Gerenciador_Grafico::processarEvento(Event& event) {
             return window.pollEvent(event);
+    }
+
+    RenderWindow& Gerenciador_Grafico::getJanela() {
+        return window;
     }
 
     void Gerenciador_Grafico::executar() {
