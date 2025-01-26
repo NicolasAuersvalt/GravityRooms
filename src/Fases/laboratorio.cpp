@@ -18,5 +18,7 @@ void Laboratorio::criarObstMedios() {}
 
 void Laboratorio::criarProjeteis() {}
 
-void Laboratorio::criarFundo() {}
+void Laboratorio::criarMapa() { criarPlataforma(Vector2f(100.0f, 80.0f)); }
+
+void Laboratorio::criarFundo() { std::cout << "bloo\n"; }
 }  // namespace Fases

@@ -52,8 +52,6 @@ void Fase::executar() {}
 
 // void Fase::cirarInimFaceis() {}
 
-// void Fase::criarPlataformas() {}
-
 // void Fase::criarCenario() {}
 
 // ===/===/===/===/ Outros  ===/===/===/===/

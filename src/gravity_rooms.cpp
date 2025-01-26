@@ -39,6 +39,7 @@ Gravity_Rooms::Gravity_Rooms()
 
   pJog1.setSprite("assets/tripulanteG.png", pos.x, pos.y);
 
+  std::cout << "bli\n";
   LJog1.incluir(static_cast<Entidade *>(&pJog1));
 
   plataforma.setSprite("assets/plataformaG.png", 0, 0);
@@ -49,7 +50,10 @@ Gravity_Rooms::Gravity_Rooms()
 
   LJog1.incluir(static_cast<Entidade *>(&pAnd1));
 
+  std::cout << "bl1i\n";
   criarFases();
+
+  std::cout << "bli2\n";
   executar();
 }
 
@@ -66,7 +70,7 @@ void Gravity_Rooms::executar() {
 
     // cout << "Evento instanciado" << endl;
 
-    while (GG.getJanela().pollEvent(eventao)) {
+    if (GG.getJanela().pollEvent(eventao)) {
       cout << "ProcessandoEvento" << endl;
 
       int selecao = menuGeral.obterSelecao(eventao);
@@ -127,13 +131,23 @@ void Gravity_Rooms::executar() {
 }
 
 void Gravity_Rooms::criarFases() {
+  std::cout << "blo\n";
   Fases::Laboratorio *aux = new Fases::Laboratorio();
-  if (aux = nullptr) {
+
+  std::cout << "blo1\n";
+  if (aux == nullptr) {
+    std::cout << "blo2\n";
     exit(1);
   }
+
+  std::cout << "blo3\n";
   fase = static_cast<Fases::Fase *>(aux);
-  fase->criarFundo();
+
+  std::cout << "blo4\n";
+
   fase->criarMapa();
+
+  std::cout << "blo5\n";
 }
 
 // ===/===/===/===/ Outros  ===/===/===/===/
