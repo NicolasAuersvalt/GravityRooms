@@ -45,7 +45,7 @@ class Fase : public Ente {
   void criarCentroGravidade(const Vector2f pos);
 
   // virtual void criarCaixa(const Vector2f pos);
-  // virtual void criarEntidades(char letra, const Vector2f pos);
+  virtual void criarEntidades(char letra, const Vector2f pos);
 
   virtual void criarFundo() = 0;  // fundo
   virtual void criarMapa() = 0;

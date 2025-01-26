@@ -7,6 +7,7 @@
 #include "Entidades/Obstaculos/plataforma.h"
 
 using namespace std;
+using namespace sf;
 using namespace Fases;
 
 // ===/===/===/===/ Obrigatório ===/===/===/===/
@@ -72,6 +73,26 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 
   // plataforma->setTamanho(escala);
   listaObstaculos->incluir(static_cast<Entidade*>(centro_gravidade));
+}
+
+void Fase::criarEntidades(char letra, const Vector2f pos) {
+  switch (letra) {
+    // case ('i'): {
+    //   criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+
+    // } break;
+    case ('c'): {
+      criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+
+    } break;
+    case ('#'): {
+      criarPlataforma(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+
+    } break;
+    case ('j'): {
+      criarJogador(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+    }
+  }
 }
 
 void Fase::criarJogador(const Vector2f pos) {
