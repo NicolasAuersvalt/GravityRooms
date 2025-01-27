@@ -150,16 +150,16 @@ void Fase::criarInimMedios(const Vector2f pos,
   listaPersonagens->incluir(static_cast<Entidade*>(androide));
 }
 
-// void Fase::criarInimDificeis(const Vector2f pos) {
-//   Entidades::Personagens::Inimigo::Clone* clone =
-//       new Entidades::Personagens::Inimigo::Clone(pos,
-//                                                  sf::Vector2f(50.0f, 50.0f));
-//   if (clone == nullptr) {
-//     std::cout << "Fase::nao foi possivel criar clone" << std::endl;
-//     exit(1);
-//   }
-//   listaPersonagens->incluir(static_cast<Entidade*>(clone));
-// }
+void Fase::criarInimDificeis(const Vector2f pos,
+                             Entidades::Personagens::Tripulante* tripulante) {
+  Entidades::Personagens::Clone* clone =
+      new Entidades::Personagens::Clone(pos, tripulante);
+  if (clone == nullptr) {
+    cout << "Fase::nao foi possivel criar clone" << endl;
+    exit(1);
+  }
+  listaPersonagens->incluir(static_cast<Entidade*>(clone));
+}
 void Fase::executar() {
   // fundo.executar();
   desenhar();

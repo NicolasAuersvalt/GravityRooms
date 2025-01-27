@@ -1,54 +1,39 @@
-/*
+
 #include "Menus/Botoes/textoAnimado.h"
 
+namespace Menus {
 
+namespace Botoes {
 
-    namespace Menus {
+TextoAnimado::TextoAnimado(const sf::Font fonte, const std::string info)
+    : Texto(info), clareando(true), transparente(255) {}
 
-        namespace Botoes {
+TextoAnimado::~TextoAnimado() {}
 
-            TextoAnimado::TextoAnimado(const sf::Font fonte, const std::string
-info): Texto(fonte, info), clareando(true), transparente(255)
-            {
+void TextoAnimado::mudarClareando() { clareando = (clareando) ? false : true; }
 
-            }
+const bool TextoAnimado::getClareando() const { return clareando; }
 
-            TextoAnimado::~TextoAnimado(){
+const int TextoAnimado::getTransparente() const { return transparente; }
 
-            }
+void TextoAnimado::setTransparente(const int transparente) {
+  this->transparente = transparente;
+  atualizar();
+}
 
-            void TextoAnimado::mudarClareando(){
-                clareando = (clareando) ? false : true;
-            }
+void TextoAnimado::resetar() {
+  transparente = 255;
+  atualizar();
+}
 
-            const bool TextoAnimado::getClareando() const {
-                return clareando;
-            }
+void TextoAnimado::atualizar() {
+  corBorda = sf::Color{0, 0, 0, (sf::Uint8)this->transparente};
+  corTexto = sf::Color{corTexto.r, corTexto.g, corTexto.b,
+                       (sf::Uint8)this->transparente};
+  texto.setOutlineColor(corBorda);
+  texto.setFillColor(corTexto);
+}
 
-            const int TextoAnimado::getTransparente() const{
-                return transparente;
-            }
+}  // namespace Botoes
 
-            void TextoAnimado::setTransparente(const int transparente){
-                this->transparente = transparente;
-                atualizar();
-            }
-
-            void TextoAnimado::resetar(){
-                transparente = 255;
-                atualizar();
-            }
-
-            void TextoAnimado::atualizar(){
-                corBorda = sf::Color{0, 0, 0, (sf::Uint8)this->transparente};
-                corTexto = sf::Color{corTexto.r, corTexto.g, corTexto.b,
-(sf::Uint8)this->transparente}; texto.setOutlineColor(corBorda);
-                texto.setFillColor(corTexto);
-            }
-
-        }// namespace Botoes
-
-    }// namespace Menus
-
-
-*/
+}  // namespace Menus

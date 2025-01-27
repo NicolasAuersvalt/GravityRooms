@@ -1,16 +1,12 @@
-/*
 #include "Menus/Botoes/botao.h"
-
-
 
 namespace Menus {
 
 namespace Botoes {
 
-Botao::Botao(const sf::Vector2f tam, const sf::Vector2f pos, const IDs::IDs ID,
+Botao::Botao(const sf::Vector2f tam, const sf::Vector2f pos, const int ID,
              const float tempoTroca, const sf::Vector2f tamMax)
-    : Ente(ID),
-      pos(pos),
+    : pos(pos),
       tam(tam),
       textura(new sf::Texture()),
       tamMax(tamMax == sf::Vector2f(0.0f, 0.0f) ? tam : tamMax),
@@ -20,6 +16,7 @@ Botao::Botao(const sf::Vector2f tam, const sf::Vector2f pos, const IDs::IDs ID,
       aumentando(true) {
   caixa.setPosition(pos);
   caixa.setSize(tam);
+  setID(ID);
 }
 
 Botao::~Botao() {
@@ -41,27 +38,10 @@ void Botao::setTextura(sf::Texture* textura) {
   caixa.setTexture(textura);
 }
 
-void Botao::desenhar() { pGrafico->desenhaElemento(caixa); }
+void Botao::desenhar() {}
 
-void Botao::atualizarAnimacao() {
-  this->tempo += pGrafico->getTempo();
-  if (this->tempo < tempoTroca) {
-    const float acres = tempo * (aumentando ? 1 : -1);
-    tam = sf::Vector2f(tam.x + acres, tam.y + acres);
-    if (tam.x > tamMax.x || tam.x < tamInicial.x) {
-      aumentando = !aumentando;
-    } else {
-      caixa.setSize(tam);
-    }
-  } else {
-    this->tempo = 0.0f;
-  }
-}
+void Botao::atualizarAnimacao() {}
 
 }  // namespace Botoes
 
 }  // namespace Menus
-
-
-
-*/

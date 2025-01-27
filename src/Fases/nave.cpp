@@ -40,4 +40,11 @@ void Nave::criarMapa() {
   }
   arquivo.close();
 }
+void Nave::desenhar() {
+  // if (pGG) {
+  //     pGG->desenharSprite(backgroundSprite);
+  // }
+  // Fase::listaObstaculos->desenharTodos();
+  // Fase::listaPersonagens->desenharTodos();
+}
 }  // namespace Fases

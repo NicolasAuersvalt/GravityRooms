@@ -12,7 +12,8 @@
 #include "Entidades/Personagens/tripulante.h"
 #include "Fases/fase.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Menus/menu.h"
+#include "Listas/lista_entidades.h"
+#include "Menus/MenuPrincipal.h"
 #include "ente.h"
 
 using namespace std;
@@ -27,7 +28,7 @@ using Entidades::Personagens::Tripulante;
 using Gerenciadores::Gerenciador_Colisoes;
 using Gerenciadores::Gerenciador_Grafico;
 using Listas::Lista_Entidades;
-using Menus::Menu;
+using Menus::MenuPrincipal;
 
 class Gravity_Rooms {
  private:
@@ -38,7 +39,7 @@ class Gravity_Rooms {
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
   Fases::Fase* fase;
-  Menu menuGeral;
+  MenuPrincipal menuGeral;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 

@@ -13,6 +13,8 @@ class Laboratorio : public Fase {
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
+  sf::Sprite backgroundSprite;
+  sf::Texture bgTexture;
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
@@ -27,11 +29,10 @@ class Laboratorio : public Fase {
   Laboratorio();
   ~Laboratorio();
 
-  void criarChefoes();
-  void criarObstMedios();
   void criarProjeteis();
 
   void criarFundo() override;
+  void desenhar() override;
   void criarMapa() override;
 
   // ===/===/===/===/ Outros  ===/===/===/===/

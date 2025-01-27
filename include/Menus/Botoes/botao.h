@@ -1,4 +1,4 @@
-/*
+
 #ifndef BOTAO_H
 #define BOTAO_H
 
@@ -7,41 +7,39 @@
 using namespace sf;
 using namespace std;
 
+namespace Menus {
 
+namespace Botoes {
 
-    namespace Menus {
+class Botao : public Ente {
+ private:
+  const Vector2f tamMax;
+  const Vector2f tamInicial;
+  bool aumentando;
 
-        namespace Botoes {
+ protected:
+  RectangleShape caixa;
+  Texture* textura;
+  Vector2f pos;
+  Vector2f tam;
 
-            class Botao : public Ente {
-                private:
-                    const Vector2f tamMax;
-                    const Vector2f tamInicial;
-                    bool aumentando;
+  const float tempoTroca;
+  float tempo;
 
-                protected:
-                    RectangleShape caixa;
-                    Texture* textura;
-                    Vector2f pos;
-                    Vector2f tam;
+ public:
+  Botao(const Vector2f tam, const Vector2f pos, const int ID,
+        const float tempoTroca = 0.0f,
+        const Vector2f tamMax = Vector2f(0.0f, 0.0f));
+  virtual ~Botao();
+  virtual void desenhar();
+  virtual void atualizarAnimacao();
+  virtual void atualizarPosicaoCaixa(const Vector2f pos);
+  void setTextura(Texture* textura);
+  const Vector2f getPos() const;
+};
 
-                    const float tempoTroca;
-                    float tempo;
-                public:
-                    Botao(const Vector2f tam, const Vector2f pos, const IDs::IDs ID, const float tempoTroca = 0.0f, const Vector2f tamMax = Vector2f(0.0f, 0.0f));
-                    virtual ~Botao();
-                    virtual void desenhar();
-                    virtual void atualizarAnimacao();
-                    virtual void atualizarPosicaoCaixa(const Vector2f pos);
-                    void setTextura(Texture* textura);
-                    const Vector2f getPos() const;
-            };
+}  // namespace Botoes
 
-        }
-
-    }
-
-
+}  // namespace Menus
 
 #endif
-*/
