@@ -3,93 +3,90 @@
 
 #include "ente.h"
 // #include "Menus/Botoes/botao.h"
-#include "Gerenciadores/gerenciador_grafico.h"
-#include <iostream>
-#include <string>
-#include <list>
-#include <vector>
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <iostream>
+#include <list>
+#include <string>
+#include <vector>
+
+#include "Gerenciadores/gerenciador_grafico.h"
 
 using namespace std;
 using namespace sf;
 
 class Gravity_Rooms;
 
-//using Menus::Botao::BotaoTexto;
+// using Menus::Botao::BotaoTexto;
 
-namespace Menus{
+namespace Menus {
 
-     class Menu : public Ente {
+class Menu : public Ente {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-          private:
-          // ===/===/===/===/ Obrigatório ===/===/===/===/
+  Gravity_Rooms* pJogo;
 
-               Gravity_Rooms* pJogo;
+  vector<string> fases;
+  vector<Text> textos;
+  int selecionada;
+  Font font;
 
-               vector<string> fases;
-               vector<Text> textos;
-               int selecionada;
-               Font font;
-          
-          // ===/===/===/===/ Outros  ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-          protected:
+ protected:
+  const Vector2f tamBotao;
+  const Vector2f tamJanela;
 
-               const Vector2f tamBotao;
-               const Vector2f tamJanela;
+  bool mouseSelecionado;
 
-               bool mouseSelecionado;
+  // list<BotaoTexto*> listaBotaoTexto;
+  // list<BotaoTexto*>::iterator it;  // n sei se vai funcionar
 
-               
+  // Texto titulo;
 
-               // list<BotaoTexto*> listaBotaoTexto;
-               // list<BotaoTexto*>::iterator it;  // n sei se vai funcionar
+  // Vector2f posFundo;  // efeito parallax (ver)
 
-               // Texto titulo;
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-               // Vector2f posFundo;  // efeito parallax (ver)
+  /*
+  Menu(const ID, const Vector2f tamBotao, const string nome,
+       const unsigned int tamFonte);
+  */
 
-          public:
-               // ===/===/===/===/ Obrigatório ===/===/===/===/
+  Menu();
 
-               /*
-               Menu(const ID, const Vector2f tamBotao, const string nome,
-                    const unsigned int tamFonte);
-               */
+  ~Menu();
 
-               Menu();
+  // aaaaaaaaaaa void executar() override;
 
-               ~Menu();
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-               // aaaaaaaaaaa void executar() override;
+  int obterSelecao(Event& evento);
 
-               // ===/===/===/===/ Outros  ===/===/===/===/
+  void selecionaCima();
 
-               int obterSelecao(Event& evento);
+  void selecionaBaixo();
 
-               void selecionaCima();
+  void addBotao(const string info, const Vector2f pos, /* const
+   ID,*/
+                const Color corSelecionado);
 
-               void selecionaBaixo();
+  void desenhar(Gerenciador_Grafico& gerenciador);
 
-               void addBotao(const string info, const Vector2f pos,/* const ID,*/
-                              const Color corSelecionado);
+  void atualizarPosicaoFundo();
 
-               void desenhar(Gerenciador_Grafico& gerenciador);
+  void moverSelecaoParaCima();
 
-               void atualizarPosicaoFundo();
+  void moverSelecaoParaBaixo();
 
-               void moverSelecaoParaCima();
+  // virtual void executar() = 0;
 
-               void moverSelecaoParaBaixo();
+  // aaaaaaaaaaa const IDs::IDs getIDBotaoSelecionado() const;
+};
 
-               // virtual void executar() = 0;
-
-               // aaaaaaaaaaa const IDs::IDs getIDBotaoSelecionado() const;
-               
-     };
-
-}
+}  // namespace Menus
 
 #endif

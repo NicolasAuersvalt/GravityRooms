@@ -20,7 +20,8 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes() {
 
 const bool Gerenciador_Colisoes::verificarColisao(Entidade *pe1,
                                                   Entidade *pe2) {
-  if (pe1 && pe2) {  // Verifica se os ponteiros não são nulos
+    if (pe1 && pe2) {  // Verifica se os ponteiros não são nulos
+
     return pe1->getHitBox().intersects(pe2->getHitBox());
   }
   return false;
@@ -28,7 +29,6 @@ const bool Gerenciador_Colisoes::verificarColisao(Entidade *pe1,
 
 void Gerenciador_Colisoes::tratarColisoesJogsObstacs() {
   pJog1->setPisando(false);
-
   for (auto obstaculo : LOs) {
     if (verificarColisao(pJog1, obstaculo)) {
       // Lógica para quando o Tripulante colide com o obstáculo
@@ -46,7 +46,7 @@ void Gerenciador_Colisoes::tratarColisoesJogsInimgs() {
   }
 }
 
-void Gerenciador_Colisoes::ColisoewsJogsProjeteis() {
+void Gerenciador_Colisoes::ColisoesJogsProjeteis() {
   for (auto projetil : LPs) {
     if (verificarColisao(pJog1, projetil)) {
       pJog1->recebeDano(projetil->getDano());
@@ -69,12 +69,12 @@ void Gerenciador_Colisoes::incluirProjetil(Projetil *pj) {
 }
 
 void Gerenciador_Colisoes::executar() {
-  // tratarColisoesJogsObstacs();
+  tratarColisoesJogsObstacs();
 
   // // Verificar colisões entre o Tripulante e os Inimigos
-  // tratarColisoesJogsInimgs();
+  tratarColisoesJogsInimgs();
 
   // // Verificar colisões entre o Tripulante e os Projetis
-  // ColisoesJogsProjeteis();
+  ColisoesJogsProjeteis();
 }
 }  // namespace Gerenciadores

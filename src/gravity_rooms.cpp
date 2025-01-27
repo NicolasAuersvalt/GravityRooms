@@ -1,6 +1,7 @@
 #include "gravity_rooms.h"
 
 #include <Fases/laboratorio.h>
+#include <Fases/nave.h>
 
 // Construtor
 Gravity_Rooms::Gravity_Rooms()
@@ -65,8 +66,8 @@ void Gravity_Rooms::executar() {
 
     if (GG.getJanela().pollEvent(eventao)) {
       int selecao = menuGeral.obterSelecao(eventao);
-      if (selecao == 1) {
-        criarFases();
+      if (selecao > 0) {
+        criarFases(selecao);
         break;
       }
       primeiraVez = true;
@@ -76,8 +77,7 @@ void Gravity_Rooms::executar() {
     GG.exibir();
   }
 
-  GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
-
+  // GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
   cout << "bloia1 " << endl;
   while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
     sf::Event evento;
@@ -128,15 +128,28 @@ void Gravity_Rooms::executar() {
   }
 }
 
-void Gravity_Rooms::criarFases() {
-  Fases::Laboratorio *aux = new Fases::Laboratorio();
+void Gravity_Rooms::criarFases(int faseSelecionada) {
+  cout << " qual faseeee " << faseSelecionada << endl;
+  if (faseSelecionada == 1) {
+    Fases::Laboratorio *aux = new Fases::Laboratorio();
 
-  if (aux == nullptr) {
-    exit(1);
-    cout << "nao foi possivel criar a fase " << endl;
+    if (aux == nullptr) {
+      exit(1);
+      cout << "nao foi possivel criar o laboratorio " << endl;
+    }
+    cout << " laboratorio " << endl;
+
+    fase = static_cast<Fases::Fase *>(aux);
+  } else if (faseSelecionada == 2) {
+    Fases::Nave *pNave = new Fases::Nave();
+    if (pNave == nullptr) {
+      exit(1);
+      cout << "nao foi possivel criar a nave " << endl;
+    }
+
+    cout << " nave " << endl;
+    fase = static_cast<Fases::Fase *>(pNave);
   }
-
-  fase = static_cast<Fases::Fase *>(aux);
 
   fase->criarMapa();
 
@@ -147,10 +160,16 @@ void Gravity_Rooms::criarFases() {
   }
   auto atualPersonagens = fase->listaPersonagens->LEs->getPrimeiro();
   while (atualPersonagens != nullptr) {
+    if (dynamic_cast<Entidades::Personagens::Tripulante *>(
+            atualPersonagens->pInfo)) {
+      Tripulante *tripPtr = dynamic_cast<Tripulante *>(atualPersonagens->pInfo);
+      GC.incluirTripulante(*tripPtr);
+    } else {
+      GC.incluirInimigo(static_cast<Inimigo *>(atualPersonagens->pInfo));
+    }
     LJog1.incluir(atualPersonagens->pInfo);  // Add entity to LJog1
     atualPersonagens = atualPersonagens->getProximo();
   }
-  cout << "bloia " << endl;
 }
 
 // ===/===/===/===/ Outros  ===/===/===/===/

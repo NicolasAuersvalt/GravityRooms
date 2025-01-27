@@ -59,7 +59,7 @@ class Gravity_Rooms {
   void executar();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
-  void criarFases();
+  void criarFases(int faseSelecionada);
 };
 
 #endif

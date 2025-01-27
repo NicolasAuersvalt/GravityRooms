@@ -18,7 +18,7 @@ class Fase : public Ente {
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+  Entidades::Personagens::Tripulante* tripulante;
   // ===/===/===/===/ Outros  ===/===/===/===/
   Gerenciadores::Gerenciador_Colisoes GC;
   Gerenciadores::Gerenciador_Colisoes* pColisao;
@@ -36,7 +36,8 @@ class Fase : public Ente {
   void executar();
   void desenhar();
   // void gerenciar_colisoes();
-  void criarInimFaceis(const Vector2f pos);
+  void criarInimFaceis(const Vector2f pos,
+                       Entidades::Personagens::Tripulante* tripulante);
   // void criarPlataformas();
 
   void criarInimDificeis(const Vector2f pos);

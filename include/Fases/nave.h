@@ -7,7 +7,7 @@ class Fase;
 
 namespace Fases {
 
-class Nave : protected Fase {
+class Nave : public Fase {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 

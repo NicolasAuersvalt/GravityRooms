@@ -19,6 +19,7 @@ namespace Fases {
 Fase::Fase()
     : Ente(),
       // fundo(),
+      tripulante(nullptr),
       listaPersonagens(new Listas::Lista_Entidades()),
       listaObstaculos(new Listas::Lista_Entidades()),
       pColisao(new Gerenciadores::Gerenciador_Colisoes()) {
@@ -79,12 +80,21 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 }
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
-  Entidades::Personagens::Tripulante* tripulante =
-      new Entidades::Personagens::Tripulante(
-          Vector2f(pos.x * 50.0f, pos.y * 50.0f), Vector2f(150.0f, 150.0f));
+  if (tripulante == nullptr) {
+    criarJogador(Vector2f(100.0f, 800.0f));
+  }
   switch (letra) {
     case ('i'): {
       criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+
+    } break;
+    case ('f'): {
+      criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+
+      // } break;
+      // case ('d'): {
+      //   criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
+      //   tripulante);
 
     } break;
     case ('c'): {
@@ -106,7 +116,7 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 }
 
 void Fase::criarJogador(const Vector2f pos) {
-  Entidades::Personagens::Tripulante* tripulante =
+  tripulante =
       new Entidades::Personagens::Tripulante(pos, sf::Vector2f(50.0f, 50.0f));
   if (tripulante == nullptr) {
     std::cout << "Fase::nao foi possivel criar jogador" << std::endl;
@@ -119,15 +129,16 @@ void Fase::desenhar() {
   listaPersonagens->desenharTodos();
 }
 
-// void Fase::criarInimFaceis(const Vector2f pos) {
-//   Entidades::Personagens::Ciborgue* ciborgue =
-//       new Entidades::Personagens::Ciborgue(pos, sf::Vector2f(50.0f, 50.0f));
-//   if (ciborgue == nullptr) {
-//     cout << "Fase::nao foi possivel criar ciborgue" << endl;
-//     exit(1);
-//   }
-//   listaPersonagens->incluir(static_cast<Entidade*>(ciborgue));
-// }
+void Fase::criarInimFaceis(const Vector2f pos,
+                           Entidades::Personagens::Tripulante* tripulante) {
+  Entidades::Personagens::Ciborgue* ciborgue =
+      new Entidades::Personagens::Ciborgue(pos, tripulante);
+  if (ciborgue == nullptr) {
+    cout << "Fase::nao foi possivel criar ciborgue" << endl;
+    exit(1);
+  }
+  listaPersonagens->incluir(static_cast<Entidade*>(ciborgue));
+}
 
 void Fase::criarInimMedios(const Vector2f pos,
                            Entidades::Personagens::Tripulante* tripulante) {

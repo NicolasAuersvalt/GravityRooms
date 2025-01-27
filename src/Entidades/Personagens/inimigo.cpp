@@ -26,11 +26,17 @@ void Inimigo::executar() {}
 
 void Inimigo::mover() {
   // Obtem as posicoes do Tripulante e do inimigo
-
+  // Debug print current positions
   Vector2f posJogador = tripulante->getSprite().getPosition();
   Vector2f posInimigo = getSprite().getPosition();
-  cout << "jogador: " << posJogador.x << " " << posJogador.y << endl;
-  cout << "inimigo: " << posInimigo.x << " " << posInimigo.y << endl;
+
+  // std::cout << "=== Enemy Movement Debug ===" << std::endl;
+  // std::cout << "Player pos: " << posJogador.x << "," << posJogador.y
+  //           << std::endl;
+  // std::cout << "Enemy pos: " << posInimigo.x << "," << posInimigo.y
+  //           << std::endl;
+  // std::cout << "Enemy velocity: " << vel.x << "," << vel.y << std::endl;
+
   // Verifica se o Tripulante esta dentro do raio de perseguicao
   if (fabs(posJogador.x - posInimigo.x) <= RAIO_PERSEGUIR_X &&
       fabs(posJogador.y - posInimigo.y) <= RAIO_PERSEGUIR_Y) {
@@ -46,7 +52,6 @@ void Inimigo::salvarDataBuffer(nlohmann::ordered_json& json) {}
 
 void Inimigo::perseguirTripulante(Vector2f posJogador,
                                   const Vector2f posInimigo) {
-  cout << "perseguir aleatorio" << endl;
   // Se o Tripulante estiver a direita do inimigo, move para direita
   if (posJogador.x - posInimigo.x > 0.0f) {
     getSprite().move(vel.x, 0.0f);
@@ -66,7 +71,6 @@ void Inimigo::perseguirTripulante(Vector2f posJogador,
 }
 
 void Inimigo::movimentarAleatorio() {
-  cout << "movimentar aleatorio" << endl;
   // Move para cima quando moverAleatorio = 0
   if (moverAleatorio == 0) {
     getSprite().move(0.0f, -vel.y);

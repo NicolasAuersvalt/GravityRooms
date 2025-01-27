@@ -63,22 +63,24 @@ int Menu::obterSelecao(Event& evento) {
       moverSelecaoParaBaixo();
 
     } else if (evento.key.code == Keyboard::Enter) {
-      return +1;  // Retorna o número da fase selecionada
+      return selecionada;  // Retorna o número da fase selecionada
     }
   }
   return 0;
 }
 
 void Menu::moverSelecaoParaCima() {
-  cout << "moverSelecaoParaBaixo" << endl;
+  cout << "moverSelecaoParaCima" << endl;
 
   if (selecionada > 0) {
     textos[selecionada].setFillColor(Color::White);  // Desmarca a opção
 
-    selecionada--;
+    selecionada = 0;
 
     textos[selecionada].setFillColor(Color::Green);  // Marca a nova opção
   }
+
+  cout << "moverSelecaoParaCima " << selecionada << endl;
 }
 
 void Menu::desenhar(Gerenciador_Grafico& gerenciador) {
@@ -92,9 +94,10 @@ void Menu::moverSelecaoParaBaixo() {
   cout << "moverSelecaoParaBaixo" << endl;
   if (selecionada < fases.size() - 1) {
     textos[selecionada].setFillColor(sf::Color::White);  // Desmarca a opção
-    selecionada++;
+    selecionada = 1;
     textos[selecionada].setFillColor(sf::Color::Green);  // Marca a nova opção
   }
+  cout << "moverSelecaoParaBaixo " << selecionada << endl;
 }
 
 void Menu::selecionaCima() { cout << "Menu: Selecionado para Cima" << endl; }
