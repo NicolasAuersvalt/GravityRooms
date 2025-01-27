@@ -23,7 +23,7 @@ void Lista_Entidades::desenharTodos() {
   // cout << "Desenhando todos os elementos..." << endl;
 
   LEs->percorrerLista([](Entidade* entidade) {
-    entidade->desenhar();  // Chama o método desenhar() de cada Entidade
+    entidade->desenhar();  // Chama o método desenhar() de cada Entidadep
   });
 }
 void Lista_Entidades::atualizarTodas() {
