@@ -29,8 +29,8 @@ class MenuPause : public Menu {
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   MenuPausa(Fase::Fase* fase = nullptr);
-  MenuPausa(const IDs::IDs ID, const string nome, Fase::Fase* fase = nullptr); // dois construtores
-  ~Menu();
+  MenuPausa(const IDs::IDs ID, const string nome, Fase::Fase* fase = nullptr);
+// dois construtores ~Menu();
 
   // void executar() override;
 

@@ -12,7 +12,6 @@
 #include "Entidades/Personagens/tripulante.h"
 #include "Fases/fase.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Listas/lista_entidades.h"
 #include "Menus/menu.h"
 #include "ente.h"
 
@@ -34,19 +33,19 @@ class Gravity_Rooms {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Tripulante pJog1;
-  Androide pAnd1;
-  Androide pAnd2;
-  Plataforma plataforma;
-  Gerenciador_Grafico GG;
-  Gerenciador_Colisoes GC;
-  Fases::Fase* fase;
-  Menu menuGeral;
+    Tripulante pJog1;
+    Androide pAnd1;
+    Androide pAnd2;
+    Plataforma plataforma;
+    Gerenciador_Grafico GG;
+    Gerenciador_Colisoes GC;
+    Menu menuGeral;
+    
+    // ===/===/===/===/ Outros  ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-  Lista_Entidades LJog1;
-  Sprite backgroundSprite;
+    Lista_Entidades LJog1;
+    Sprite backgroundSprite;
+    
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/

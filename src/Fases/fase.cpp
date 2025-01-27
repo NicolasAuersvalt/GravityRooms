@@ -6,6 +6,7 @@ using namespace std;
 using namespace Fases;
 
 // ===/===/===/===/ Obrigatório ===/===/===/===/
+
 namespace Fases {
 // Construtor
 Fase::Fase()
@@ -31,17 +32,32 @@ Fase::~Fase() {
   listaObstaculos->limparLista();
   listaPersonagens->limparLista();
 }
+namespace Fases {
+  // Construtor
+  Fase::Fase(){
 
-void Fase::executar() {}
+  }
 
-// void Fase::gerenciar_colisoes() {}
+  // Destrutor
+  Fase::~Fase() {
+    if (pColisao) {
+      delete (pColisao);
+      pColisao = nullptr;
+    }
+    listaObstaculos->limparLista();
+    listaPersonagens->limparLista();
+  }
 
-// void Fase::cirarInimFaceis() {}
+  void Fase::executar() {}
 
-// void Fase::criarPlataformas() {}
+  // void Fase::gerenciar_colisoes() {}
 
-// void Fase::criarCenario() {}
+  // void Fase::cirarInimFaceis() {}
 
-// ===/===/===/===/ Outros  ===/===/===/===/
+  // void Fase::criarPlataformas() {}
+
+  // void Fase::criarCenario() {}
+
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
 }  // namespace Fases

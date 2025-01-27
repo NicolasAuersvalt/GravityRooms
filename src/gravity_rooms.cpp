@@ -8,9 +8,8 @@ Gravity_Rooms::Gravity_Rooms()
       pAnd2(Vector2f(100.0f, 80.0f), nullptr),
       plataforma(Vector2f(100.0f, 80.0f), Vector2f(100.0f, 80.0f)),
       LJog1(),
-      GC(),
-      menuGeral(),
-      fase(nullptr) {
+      GC(), menuGeral()
+      {
   Ente::setGerenciador(&GG);
 
   sf::Texture backgroundTexture;
@@ -54,25 +53,33 @@ Gravity_Rooms::Gravity_Rooms()
 // Destrutor
 Gravity_Rooms::~Gravity_Rooms() {}
 
+
+
 void Gravity_Rooms::executar() {
+
   bool primeiraVez = false;
 
   GG.executar();
 
-  while (GG.estaAberta()) {
+  while(GG.estaAberta()){
+
     sf::Event eventao;
 
-    // cout << "Evento instanciado" << endl;
+    //cout << "Evento instanciado" << endl;
 
     while (GG.getJanela().pollEvent(eventao)) {
+
       cout << "ProcessandoEvento" << endl;
+
 
       int selecao = menuGeral.obterSelecao(eventao);
       primeiraVez = true;
+                  
+        
     }
-    GG.limpar();
-    menuGeral.desenhar(GG);
-    GG.exibir();
+      GG.limpar();
+      menuGeral.desenhar(GG);
+      GG.exibir();
   }
 
   GC.incluirTripulante(pJog1);

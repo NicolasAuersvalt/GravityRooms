@@ -7,8 +7,8 @@
 
         namespace Botoes {
 
-            TextoAnimado::TextoAnimado(const sf::Font fonte, const std::string info):
-                Texto(fonte, info), clareando(true), transparente(255)
+            TextoAnimado::TextoAnimado(const sf::Font fonte, const std::string
+info): Texto(fonte, info), clareando(true), transparente(255)
             {
 
             }
@@ -41,8 +41,8 @@
 
             void TextoAnimado::atualizar(){
                 corBorda = sf::Color{0, 0, 0, (sf::Uint8)this->transparente};
-                corTexto = sf::Color{corTexto.r, corTexto.g, corTexto.b, (sf::Uint8)this->transparente};
-                texto.setOutlineColor(corBorda);
+                corTexto = sf::Color{corTexto.r, corTexto.g, corTexto.b,
+(sf::Uint8)this->transparente}; texto.setOutlineColor(corBorda);
                 texto.setFillColor(corTexto);
             }
 

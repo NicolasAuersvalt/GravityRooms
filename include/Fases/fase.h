@@ -1,6 +1,7 @@
 #ifndef FASE_H
 #define FASE_H
 
+#include "ente.h"
 #include "Gerenciadores/gerenciador_colisoes.h"
 #include "Listas/lista_entidades.h"
 #include "ente.h"
@@ -15,7 +16,10 @@ class Fase : protected Ente {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+            // Gerenciador_Colisoes GC;
+                    
+
+            // ===/===/===/===/ Outros  ===/===/===/===/
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
