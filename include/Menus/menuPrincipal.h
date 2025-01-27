@@ -1,31 +1,44 @@
-/*
-#pragma once
+// #pragma once
+// #include "Menus/menu.h"
 
-#include "menu.h"
-#include "../Parallax/Fundo.hpp"
+// namespace Menus {
 
-#define CAMINHO_TEXTURA_MENU_PRINCIPAL "Jungle++/img/Menu/menuPrincipal.png"
+// class MenuPrincipal : public Menu {
+//  public:
+//   MenuPrincipal();
+//   ~MenuPrincipal() = default;
+// };
 
-namespace Jungle {
+// }  // namespace Menus
 
-    namespace Menu {
+// #pragma once
 
-        class MenuPrincipal: public Menu {
-        protected:
-            //Parallax::Fundo fundo;
+// #include "Menus/menu.h"
+// #include "States/State.h"
 
-        private:
-            //void criarFundo();
-            
-        public:
-            MenuPrincipal();
-            MenuPrincipal(const IDs::IDs ID, std::string nome, const unsigned int tamFonte = 180);
-            virtual ~MenuPrincipal();
-            virtual void criarBotoes();
-            virtual void executar();
-        };
+// namespace States {
+//     class Game;
+// }
 
-    } 
+// namespace Menus {
 
-}
-*/
+//     class MainMenuState : public Menu, public States::State {
+//     private:
+//         States::Game* pGame;
+//         GraphicalElements::Text title;
+
+//     public:
+//         MainMenuState(States::Game* pG = nullptr);
+
+//         ~MainMenuState();
+
+//         void update(const float dt);
+
+//         void render();
+
+//         void resetState();
+
+//         void exec();
+//     };
+
+// }

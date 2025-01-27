@@ -2,19 +2,19 @@
 #define GRAVITY_ROOMS_H
 
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include <SFML/Window.hpp>
+#include <fstream>
+#include <iostream>
 
-#include "Listas/lista_entidades.h"
-#include "Entidades/Personagens/tripulante.h"
-#include "Entidades/Personagens/androide.h"
 #include "Entidades/Obstaculos/plataforma.h"
+#include "Entidades/Personagens/androide.h"
+#include "Entidades/Personagens/tripulante.h"
+#include "Fases/fase.h"
 #include "Gerenciadores/gerenciador_grafico.h"
+#include "Listas/lista_entidades.h"
 #include "Menus/menu.h"
 #include "ente.h"
-#include <fstream>
-
-#include <iostream>
 
 using namespace std;
 using namespace sf;
@@ -22,49 +22,44 @@ using namespace sf;
 // Temporário
 #include "Gerenciadores/gerenciador_colisoes.h"
 
-using Gerenciadores::Gerenciador_Colisoes;
 using Entidades::Obstaculos::Plataforma;
-using Entidades::Personagens::Tripulante;
 using Entidades::Personagens::Androide;
+using Entidades::Personagens::Tripulante;
+using Gerenciadores::Gerenciador_Colisoes;
 using Gerenciadores::Gerenciador_Grafico;
 using Listas::Lista_Entidades;
 using Menus::Menu;
 
+class Gravity_Rooms {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-class Gravity_Rooms
-{
+  Androide pAnd1;
+  Androide pAnd2;
+  Gerenciador_Grafico GG;
+  Gerenciador_Colisoes GC;
+  Fases::Fase* fase;
+  Menu menuGeral;
 
-private:
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-    Tripulante pJog1;
-    Androide pAnd1;
-    Androide pAnd2;
-    Plataforma plataforma;
-    Gerenciador_Grafico GG;
-    Gerenciador_Colisoes GC;
-    Menu menuGeral;
-    
-    // ===/===/===/===/ Outros  ===/===/===/===/
+  Lista_Entidades LJog1;
+  Sprite backgroundSprite;
 
-    Lista_Entidades LJog1;
-    Sprite backgroundSprite;
-    
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-protected:
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    // ===/===/===/===/ Outros  ===/===/===/===/
+  Gravity_Rooms();
+  ~Gravity_Rooms();
 
-public:
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
+  void executar();
 
-    Gravity_Rooms();
-    ~Gravity_Rooms();
-
-    void executar();
-
-    // ===/===/===/===/ Outros  ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  void criarFases(int faseSelecionada);
 };
 
 #endif

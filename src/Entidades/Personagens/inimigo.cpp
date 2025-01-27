@@ -26,8 +26,16 @@ void Inimigo::executar() {}
 
 void Inimigo::mover() {
   // Obtem as posicoes do Tripulante e do inimigo
+  // Debug print current positions
   Vector2f posJogador = tripulante->getSprite().getPosition();
   Vector2f posInimigo = getSprite().getPosition();
+
+  // std::cout << "=== Enemy Movement Debug ===" << std::endl;
+  // std::cout << "Player pos: " << posJogador.x << "," << posJogador.y
+  //           << std::endl;
+  // std::cout << "Enemy pos: " << posInimigo.x << "," << posInimigo.y
+  //           << std::endl;
+  // std::cout << "Enemy velocity: " << vel.x << "," << vel.y << std::endl;
 
   // Verifica se o Tripulante esta dentro do raio de perseguicao
   if (fabs(posJogador.x - posInimigo.x) <= RAIO_PERSEGUIR_X &&
@@ -39,8 +47,7 @@ void Inimigo::mover() {
     movimentarAleatorio();
   }
 }
-void Inimigo::salvarDataBuffer(nlohmann::ordered_json& json) {
-}
+void Inimigo::salvarDataBuffer(nlohmann::ordered_json& json) {}
 // Pode sobrescrever se quiser (com algum multiplicador)
 
 void Inimigo::perseguirTripulante(Vector2f posJogador,

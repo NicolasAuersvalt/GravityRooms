@@ -5,44 +5,35 @@
 
 class Fase;
 
-namespace Fases{
+namespace Fases {
 
-    class Nave : protected Fase{
+class Nave : public Fase {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        private:
+  const int maxInimMedios = 2;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            const int maxInimMedios = 2;
-                    
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-        protected:
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
+  Nave();
+  ~Nave();
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  void criarInimMedios();
+  void criarObstMedios();
 
+  void criarFundo() override;
+  void criarMapa() override;
 
-        public:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-            Nave();
-            ~Nave();
-
-            void criarInimMedios();
-            void criarObstMedios();
-
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
-
-    };
-}
-
+  // ===/===/===/===/ Outros  ===/===/===/===/
+};
+}  // namespace Fases
 
 #endif

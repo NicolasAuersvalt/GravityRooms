@@ -1,24 +1,18 @@
 #ifndef FASE_H
 #define FASE_H
 
-<<<<<<< HEAD
 #include "Gerenciadores/gerenciador_colisoes.h"
 #include "Listas/lista_entidades.h"
-=======
->>>>>>> parent of 05a9e64 (fase de inicio)
 #include "ente.h"
-#include "Gerenciadores/gerenciador_colisoes.h"
 
 class Jogo;
-class Gerenciador_Colisoes;
+using namespace sf;
 
-namespace Fases{
+namespace Fases {
 
-    class Fase : protected Ente{
-
-        private:
-
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+class Fase : public Ente {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 <<<<<<< HEAD
   // ===/===/===/===/ Outros  ===/===/===/===/
@@ -26,44 +20,55 @@ namespace Fases{
   Listas::Lista_Entidades* listaPersonagens;
   Listas::Lista_Entidades* listaObstaculos;
   Gerenciadores::Gerenciador_Colisoes* pColisao;
-=======
-            // Gerenciador_Colisoes GC;
+  == == == =
+               // Gerenciador_Colisoes GC;
                     
 >>>>>>> parent of 05a9e64 (fase de inicio)
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+      // ===/===/===/===/ Outros  ===/===/===/===/
 
-        protected:
+      protected :
+      // ===/===/===/===/ Obrigatório ===/===/===/===/
+      Entidades::Personagens::Tripulante *
+      tripulante;
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  Gerenciadores::Gerenciador_Colisoes GC;
+  Gerenciadores::Gerenciador_Colisoes* pColisao;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  Listas::Lista_Entidades* listaObstaculos;
 
+  Listas::Lista_Entidades* listaPersonagens;
+  // Fase(const IDs IDs_Fase,const IDs IDs_Fundo);
+  Fase();
+  ~Fase();
 
-        public:
+  void executar();
+  void desenhar();
+  // void gerenciar_colisoes();
+  void criarInimFaceis(const Vector2f pos,
+                       Entidades::Personagens::Tripulante* tripulante);
+  // void criarPlataformas();
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+  void criarInimDificeis(const Vector2f pos);
+  void criarInimMedios(const Vector2f pos,
+                       Entidades::Personagens::Tripulante* tripulante);
 
-            Fase();
-            ~Fase();
+  void criarJogador(const Vector2f pos);
+  void criarPlataforma(const Vector2f pos);
+  void criarEspinho(const Vector2f pos);
+  void criarCentroGravidade(const Vector2f pos);
 
-            virtual void executar() = 0;
-            void gerenciar_colisoes();
-            void cirarInimFaceis();
-            void criarPlataformas();
+  // virtual void criarCaixa(const Vector2f pos);
+  virtual void criarEntidades(char letra, const Vector2f pos);
 
-            virtual void criarInimigos() = 0;
-            virtual void criarObstaculo() = 0;
-            void criarCenario();
+  virtual void criarFundo() = 0;  // fundo
+  virtual void criarMapa() = 0;
 
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            
-
-    };
-}
-
+  // ===/===/===/===/ Outros  ===/===/===/===/
+};
+}  // namespace Fases
 
 #endif

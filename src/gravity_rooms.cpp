@@ -1,15 +1,17 @@
 #include "gravity_rooms.h"
 
+#include <Fases/laboratorio.h>
+#include <Fases/nave.h>
+
 // Construtor
 Gravity_Rooms::Gravity_Rooms()
     : GG(),
-      pJog1(Vector2f(100.0f, 80.0f), Vector2f(100.0f, 80.0f)),
-      pAnd1(Vector2f(100.0f, 80.0f), &pJog1),
+      pAnd1(Vector2f(100.0f, 80.0f), nullptr),
       pAnd2(Vector2f(100.0f, 80.0f), nullptr),
-      plataforma(Vector2f(100.0f, 80.0f), Vector2f(100.0f, 80.0f)),
       LJog1(),
-      GC(), menuGeral()
-      {
+      GC(),
+      menuGeral(),
+      fase(nullptr) {
   Ente::setGerenciador(&GG);
 
   sf::Texture backgroundTexture;
@@ -26,64 +28,57 @@ Gravity_Rooms::Gravity_Rooms()
     nlohmann::ordered_json buffer;
     arquivo >> buffer;
     arquivo.close();
-    pJog1.carregarDataBuffer(buffer);
     std::cout << "Dados carregados de 'dados_salvos.json'.\n";
   } else {
     std::cerr << "Erro ao abrir o arquivo para carregar os dados.\n";
   }
 
-  Vector2f pos = pJog1.getPosicao();
+  // Vector2f pos = pJog1.getPosicao();
 
-  pJog1.setSprite("assets/tripulanteG.png", pos.x, pos.y);
+  // pJog1.setSprite("assets/tripulanteG.png", pos.x, pos.y);
 
-  LJog1.incluir(static_cast<Entidade *>(&pJog1));
+  // std::cout << "bli\n";
+  // LJog1.incluir(static_cast<Entidade *>(&pJog1));
 
-  plataforma.setSprite("assets/plataformaG.png", 0, 0);
-  LJog1.incluir(static_cast<Entidade *>(&plataforma));
+  // pAnd1.setSprite("assets/androidG.png", 0, 0);
+  // pAnd1.setVida(10);
 
-  pAnd1.setSprite("assets/androidG.png", 0, 0);
-  pAnd1.setVida(10);
+  // LJog1.incluir(static_cast<Entidade *>(&pAnd1));
 
-  LJog1.incluir(static_cast<Entidade *>(&pAnd1));
+  std::cout << "bl1i\n";
 
+  std::cout << "bli2\n";
   executar();
 }
 
 // Destrutor
 Gravity_Rooms::~Gravity_Rooms() {}
 
-
-
 void Gravity_Rooms::executar() {
-
   bool primeiraVez = false;
 
   GG.executar();
 
-  while(GG.estaAberta()){
-
+  while (GG.estaAberta()) {
     sf::Event eventao;
 
-    //cout << "Evento instanciado" << endl;
+    // cout << "Evento instanciado" << endl;
 
-    while (GG.getJanela().pollEvent(eventao)) {
-
-      cout << "ProcessandoEvento" << endl;
-
-
+    if (GG.getJanela().pollEvent(eventao)) {
       int selecao = menuGeral.obterSelecao(eventao);
+      if (selecao > 0) {
+        criarFases(selecao);
+        break;
+      }
       primeiraVez = true;
-                  
-        
     }
-      GG.limpar();
-      menuGeral.desenhar(GG);
-      GG.exibir();
+    GG.limpar();
+    menuGeral.desenhar(GG);
+    GG.exibir();
   }
 
-  GC.incluirTripulante(pJog1);
-  GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
-
+  // GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
+  cout << "bloia1 " << endl;
   while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
     sf::Event evento;
 
@@ -94,17 +89,20 @@ void Gravity_Rooms::executar() {
 
       if (evento.type == sf::Event::KeyPressed) {
         // Verifica se a tecla pressionada foi 'Y'
+
         if (evento.key.code == sf::Keyboard::Y) {
+          cout << "while4 " << endl;
           // Chama o método de salvar buffer do objeto PJog1
           nlohmann::ordered_json buffer;
-          pJog1.salvarDataBuffer(buffer);
           // Exemplo: Salvar o buffer em um arquivo
           std::ofstream arquivo("dados_salvos.json");
           if (arquivo.is_open()) {
+            cout << "while5 " << endl;
             arquivo << buffer.dump(4);  // Salva com indentação de 4 espaços
             arquivo.close();
             std::cout << "Dados salvos em 'dados_salvos.json'.\n";
           } else {
+            cout << "while6 " << endl;
             std::cerr << "Erro ao abrir o arquivo para salvar os dados.\n";
           }
         }
@@ -127,6 +125,50 @@ void Gravity_Rooms::executar() {
     // Atualiza os objetos, caso necessário (atualização de movimentos,
     // animações, etc.)
     LJog1.atualizarTodas();
+  }
+}
+
+void Gravity_Rooms::criarFases(int faseSelecionada) {
+  cout << " qual faseeee " << faseSelecionada << endl;
+  if (faseSelecionada == 1) {
+    Fases::Laboratorio *aux = new Fases::Laboratorio();
+
+    if (aux == nullptr) {
+      exit(1);
+      cout << "nao foi possivel criar o laboratorio " << endl;
+    }
+    cout << " laboratorio " << endl;
+
+    fase = static_cast<Fases::Fase *>(aux);
+  } else if (faseSelecionada == 2) {
+    Fases::Nave *pNave = new Fases::Nave();
+    if (pNave == nullptr) {
+      exit(1);
+      cout << "nao foi possivel criar a nave " << endl;
+    }
+
+    cout << " nave " << endl;
+    fase = static_cast<Fases::Fase *>(pNave);
+  }
+
+  fase->criarMapa();
+
+  auto atualObstaculos = fase->listaObstaculos->LEs->getPrimeiro();
+  while (atualObstaculos != nullptr) {
+    LJog1.incluir(atualObstaculos->pInfo);  // Add entity to LJog1
+    atualObstaculos = atualObstaculos->getProximo();
+  }
+  auto atualPersonagens = fase->listaPersonagens->LEs->getPrimeiro();
+  while (atualPersonagens != nullptr) {
+    if (dynamic_cast<Entidades::Personagens::Tripulante *>(
+            atualPersonagens->pInfo)) {
+      Tripulante *tripPtr = dynamic_cast<Tripulante *>(atualPersonagens->pInfo);
+      GC.incluirTripulante(*tripPtr);
+    } else {
+      GC.incluirInimigo(static_cast<Inimigo *>(atualPersonagens->pInfo));
+    }
+    LJog1.incluir(atualPersonagens->pInfo);  // Add entity to LJog1
+    atualPersonagens = atualPersonagens->getProximo();
   }
 }
 
