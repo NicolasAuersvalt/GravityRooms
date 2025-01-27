@@ -1,46 +1,45 @@
 #ifndef CLONE_H
 #define CLONE_H
 
-#include "Entidades/Personagens/inimigo.h"
-#include "Entidades/Personagens/tripulante.h"
 #include <SFML/Graphics.hpp>
 
-namespace Entidades::Personagens{
+#include "Entidades/Personagens/inimigo.h"
+#include "Entidades/Personagens/tripulante.h"
+using namespace std;
+using namespace sf;
+using namespace Entidades::Personagens;
 
-	class Clone : protected Inimigo{
+namespace Entidades::Personagens {
 
-		private:
+class Clone : public Inimigo {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  //   float raio;
 
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
-			float raio;
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-			// ===/===/===/===/ Outros  ===/===/===/===/
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-		protected:
+  Clone(const sf::Vector2f pos, Tripulante* tripulante);
+  ~Clone();
+  using Ente::setSprite;
 
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
+  void danificar(Tripulante* p) override;
 
+  virtual void executar() override;
+  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+  void mover() override;
 
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  void colidir(Entidade* outro, string direction = "") override;
+};
 
-			// ===/===/===/===/ Outros  ===/===/===/===/
-
-
-		public:
-
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
-
-			Clone(const sf::Vector2f pos, Tripulante* tripulante);
-			~Clone();
-			void executar() override;
-			void danificar(Tripulante* p);
-
-			// ===/===/===/===/ Outros  ===/===/===/===/
-
-
-	};
-
-}
+}  // namespace Entidades::Personagens
 
 #endif

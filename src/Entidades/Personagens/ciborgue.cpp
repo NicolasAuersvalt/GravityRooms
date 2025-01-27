@@ -39,9 +39,7 @@ void Ciborgue::executar() {
 void Ciborgue::danificar(Tripulante* p) {}
 
 void Entidades::Personagens::Ciborgue::mover() {
-  cout << "ciborgue tas vivo talbez" << endl;
   if (vivo) {
-    cout << "ciborgue movendo" << endl;
     Inimigo::mover();
   }
 }

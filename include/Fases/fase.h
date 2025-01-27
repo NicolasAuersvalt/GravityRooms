@@ -40,7 +40,8 @@ class Fase : public Ente {
                        Entidades::Personagens::Tripulante* tripulante);
   // void criarPlataformas();
 
-  void criarInimDificeis(const Vector2f pos);
+  void criarInimDificeis(const Vector2f pos,
+                         Entidades::Personagens::Tripulante* tripulante);
   void criarInimMedios(const Vector2f pos,
                        Entidades::Personagens::Tripulante* tripulante);
 
