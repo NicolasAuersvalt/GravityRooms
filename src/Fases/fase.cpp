@@ -91,10 +91,9 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
     case ('f'): {
       criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
 
-      // } break;
-      // case ('d'): {
-      //   criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-      //   tripulante);
+    } break;
+    case ('d'): {
+      criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
 
     } break;
     case ('c'): {
