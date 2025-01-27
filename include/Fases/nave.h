@@ -32,6 +32,8 @@ class Nave : public Fase {
   void criarFundo() override;
   void criarMapa() override;
 
+  void desenhar() override;
+
   // ===/===/===/===/ Outros  ===/===/===/===/
 };
 }  // namespace Fases

@@ -37,4 +37,6 @@ sf::Sprite& Ente::getSprite() { return sprite; }
 
 void Ente::setGerenciador(Gerenciadores::Gerenciador_Grafico* gg) { pGG = gg; }
 
+int Ente::getID() { return id; }
+void Ente::setID(int current_ID) { id = current_ID; }
 // ===/===/===/===/ Outros  ===/===/===/===/

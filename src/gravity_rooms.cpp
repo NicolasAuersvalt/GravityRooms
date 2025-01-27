@@ -46,7 +46,7 @@ Gravity_Rooms::Gravity_Rooms()
   // LJog1.incluir(static_cast<Entidade *>(&pAnd1));
 
   std::cout << "bl1i\n";
-
+  menuGeral.criarBotoes();
   std::cout << "bli2\n";
   executar();
 }
@@ -59,24 +59,30 @@ void Gravity_Rooms::executar() {
 
   GG.executar();
 
+  cout << "bloia1 " << endl;
   while (GG.estaAberta()) {
     sf::Event eventao;
 
-    // cout << "Evento instanciado" << endl;
-
     if (GG.getJanela().pollEvent(eventao)) {
-      int selecao = menuGeral.obterSelecao(eventao);
-      if (selecao > 0) {
+      if (eventao.type == sf::Event::KeyPressed) {
+        menuGeral.eventoTeclado(eventao.key.code);
+      }
+      int selecao = menuGeral.getSelecionado();
+      cout << selecao << endl;
+      if (selecao == 1) {
         criarFases(selecao);
         break;
       }
+      if (selecao == 10) {
+        exit(1);
+      }
       primeiraVez = true;
     }
+
     GG.limpar();
-    menuGeral.desenhar(GG);
+    menuGeral.desenhar(&GG);
     GG.exibir();
   }
-
   // GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
   cout << "bloia1 " << endl;
   while (GG.estaAberta()) {  // Enquanto a janela estiver aberta

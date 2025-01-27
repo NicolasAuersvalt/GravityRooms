@@ -5,20 +5,17 @@
 #include <string>
 
 #include "Fases/fase.h"
+#include "Gerenciadores/gerenciador_grafico.h"
 using namespace sf;
 using namespace std;
 
 namespace Fases {
 
 // Construtor
-Laboratorio::Laboratorio() {}
+Laboratorio::Laboratorio() { criarFundo(); }
 
 // Destrutor
 Laboratorio::~Laboratorio() {}
-
-void Laboratorio::criarChefoes() {}
-
-void Laboratorio::criarObstMedios() {}
 
 void Laboratorio::criarProjeteis() {}
 
@@ -62,5 +59,20 @@ void Laboratorio::criarMapa() {
   arquivo.close();
 }
 
-void Laboratorio::criarFundo() { std::cout << "bloo\n"; }
+void Laboratorio::criarFundo() {
+  std::cout << "Loading background texture..." << std::endl;
+
+  if (!bgTexture.loadFromFile("assets/lab1.png")) {
+    std::cerr << "Failed to load background texture!" << std::endl;
+    return;
+  }
+
+  std::cout << "Texture loaded successfully" << std::endl;
+  backgroundSprite.setTexture(bgTexture);
+  backgroundSprite.setPosition(0.0f, 0.0f);
+}
+void Laboratorio::desenhar() {
+  pGG->desenhar(backgroundSprite);
+  Fase::desenhar();  // Call parent's draw method
+}
 }  // namespace Fases

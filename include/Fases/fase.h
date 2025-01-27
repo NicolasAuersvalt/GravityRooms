@@ -34,7 +34,7 @@ class Fase : public Ente {
   ~Fase();
 
   void executar();
-  void desenhar();
+
   // void gerenciar_colisoes();
   void criarInimFaceis(const Vector2f pos,
                        Entidades::Personagens::Tripulante* tripulante);
@@ -55,6 +55,7 @@ class Fase : public Ente {
 
   virtual void criarFundo() = 0;  // fundo
   virtual void criarMapa() = 0;
+  virtual void desenhar() = 0;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 };

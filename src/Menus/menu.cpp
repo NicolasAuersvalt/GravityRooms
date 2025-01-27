@@ -3,113 +3,115 @@
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 namespace Menus {
+Menu::Menu(const int ID, const sf::Vector2f tamBotao, const std::string nome,
+           const unsigned int tamFonte)
+    : listaBotaoTexto(),
+      it(),
+      tamBotao(tamBotao),
+      botaoSelecionado(0),
+      titulo(nome, tamFonte) {}
 
-// Construtor
-/*
-Menu::Menu(const ID,  const Vector2f tamBotao, const string nome,
-                const unsigned int tamFonte)
-{
-    cout << "Construtor Menu" << endl;
-
-}
-*/
-Menu::Menu() {
-#ifdef _WIN32
-  // Caminho para Windows
-  if (!font.loadFromFile("assets/Fontes/DejaVuSans-Bold.ttf")) {
-    std::cerr << "Erro: Não foi possível carregar a fonte no Windows!"
-              << std::endl;
-  }
-#elif __linux__
-  // Caminho para Linux
-  if (!font.loadFromFile(
-          "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")) {
-    std::cerr << "Erro: Não foi possível carregar a fonte no Linux!"
-              << std::endl;
-  }
-#endif
-  // font.loadFromFile("assets/Fontes/DejaVuSans-Bold.ttf");
-
-  // Inicializando as opções do menu
-  fases.push_back("Nave");
-  fases.push_back("Laboratorio");
-
-  // Criando os textos para as fases
-  for (size_t i = 0; i < fases.size(); ++i) {
-    Text texto;
-    texto.setFont(font);
-    texto.setString(fases[i]);
-    texto.setCharacterSize(30);
-    texto.setFillColor(
-        Color::White);  // Inicialmente todas as fases são brancas
-    texto.setPosition(500, 300 + (i * 40));
-    textos.push_back(texto);
-  }
-
-  // Cor da fase selecionada (verde)
-  textos[0].setFillColor(Color::Green);
-  selecionada = 0;
-}
-
-// Destrutor
-Menu::~Menu() {}
-
-int Menu::obterSelecao(Event& evento) {
-  if (evento.type == Event::KeyPressed) {
-    if (evento.key.code == Keyboard::Up) {
-      moverSelecaoParaCima();
-
-    } else if (evento.key.code == Keyboard::Down) {
-      moverSelecaoParaBaixo();
-
-    } else if (evento.key.code == Keyboard::Enter) {
-      return selecionada;  // Retorna o número da fase selecionada
+Menu::~Menu() {
+  if (!listaBotaoTexto.empty()) {
+    for (it = listaBotaoTexto.begin(); it != listaBotaoTexto.end(); it++) {
+      delete (*it);
+      *it = nullptr;
     }
-  }
-  return 0;
-}
-
-void Menu::moverSelecaoParaCima() {
-  cout << "moverSelecaoParaCima" << endl;
-
-  if (selecionada > 0) {
-    textos[selecionada].setFillColor(Color::White);  // Desmarca a opção
-
-    selecionada = 0;
-
-    textos[selecionada].setFillColor(Color::Green);  // Marca a nova opção
-  }
-
-  cout << "moverSelecaoParaCima " << selecionada << endl;
-}
-
-void Menu::desenhar(Gerenciador_Grafico& gerenciador) {
-  // cout << "Desenhando Texto no Gerenciador Grafico" << endl;
-  for (auto& texto : textos) {
-    gerenciador.desenharTexto(texto);
+    listaBotaoTexto.clear();
   }
 }
 
-void Menu::moverSelecaoParaBaixo() {
-  cout << "moverSelecaoParaBaixo" << endl;
-  if (selecionada < fases.size() - 1) {
-    textos[selecionada].setFillColor(sf::Color::White);  // Desmarca a opção
-    selecionada = 1;
-    textos[selecionada].setFillColor(sf::Color::Green);  // Marca a nova opção
+void Menu::mudarEstadoObservador() {}
+
+void Menu::addBotao(const std::string info, const sf::Vector2f pos,
+                    const int ID, const sf::Color corSelecionado) {
+  Botoes::BotaoTexto* botao =
+      new Botoes::BotaoTexto(info, tamBotao, pos, ID, corSelecionado);
+  if (botao == nullptr) {
+    cout << "ERROR::Jungle::Menu::nao foi possivel criar um botao" << endl;
   }
-  cout << "moverSelecaoParaBaixo " << selecionada << endl;
+  listaBotaoTexto.push_back(botao);
 }
 
-void Menu::selecionaCima() { cout << "Menu: Selecionado para Cima" << endl; }
+void Menu::atualizarPosicaoFundo() {}
 
-void Menu::selecionaBaixo() { cout << "Menu: Selecionado para Baixo" << endl; }
-
-void Menu::addBotao(const string info, const Vector2f pos, /* const ID,*/
-                    const Color corSelecionado) {
-  cout << "Menu: Add Botao" << endl;
+void Menu::inicializarIterator() {
+  try {
+    it = listaBotaoTexto.begin();
+    (*it)->setSelecionado(true);
+  } catch (const std::exception& e) {
+    std::cerr << e.what() << std::endl;
+    exit(1);
+  }
 }
 
-void Menu::atualizarPosicaoFundo() { cout << "Menu: Atualizar Fundo" << endl; }
+void Menu::selecionaCima() {
+  Botoes::BotaoTexto* botao = *it;
+  botao->setSelecionado(false);
+  if (it == listaBotaoTexto.begin()) {
+    it = listaBotaoTexto.end();
+  }
+  it--;
+  botao = *it;
+  botao->setSelecionado(true);
+}
 
+void Menu::selecionaBaixo() {
+  Botoes::BotaoTexto* botao = *it;
+  botao->setSelecionado(false);
+  it++;
+  if (it == listaBotaoTexto.end()) {
+    it = listaBotaoTexto.begin();
+  }
+  botao = *it;
+  botao->setSelecionado(true);
+}
+
+const int Menu::getIDBotaoSelecionado() const { return (*it)->getID(); }
+void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
+  if (!listaBotaoTexto.empty()) {
+    // Desmarcar o botão atual
+    (*it)->setSelecionado(false);
+
+    if (tecla == sf::Keyboard::Down) {
+      // Mover para o próximo botão
+      it++;
+      if (it == listaBotaoTexto.end()) {
+        it = listaBotaoTexto.begin();  // Volta ao primeiro botão
+      }
+      std::cout << "Botão com ID: " << (*it)->getID() << std::endl;
+
+    } else if (tecla == sf::Keyboard::Up) {
+      // Mover para o botão anterior
+      if (it == listaBotaoTexto.begin()) {
+        it = listaBotaoTexto.end();  // Define como o "fim"
+      }
+      it--;
+      std::cout << "Botão com ID: " << (*it)->getID() << std::endl;
+
+    } else if (tecla == sf::Keyboard::Enter) {
+      // Seleciona o botão atual e atualiza a variável
+
+      botaoSelecionado = (*it)->getID();
+    }
+
+    // Marcar o botão selecionado
+    (*it)->setSelecionado(true);
+  }
+}
+
+int Menu::getSelecionado() { return botaoSelecionado; }
+
+void Menu::desenhar(Gerenciador_Grafico* GG) {
+  // desenha todos os botões na janela
+  std::list<Botoes::BotaoTexto*>::iterator aux;
+  for (aux = listaBotaoTexto.begin(); aux != listaBotaoTexto.end(); aux++) {
+    Botoes::BotaoTexto* botao = *aux;
+    botao->desenhar(*GG);
+    botao = nullptr;
+  }
+}
+
+// namespace Menu
 // ===/===/===/===/ Outros  ===/===/===/===/
 }  // namespace Menus
