@@ -16,11 +16,11 @@ Plataforma::~Plataforma() {}
 
 void Plataforma::executar() {
   // Implementation
-  mover();
+  // mover(); NICOLAS REMOVEU PARA COMPILAR
   desenhar();
 }
 
-void Plataforma::mover() {
+void Plataforma::mover(const Vector2f& deslocamento) {
   // Implementation
 }
 void Plataforma::salvar() {

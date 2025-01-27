@@ -42,7 +42,7 @@ namespace Entidades::Personagens{
 
 			// virtual void executar() override;
 			virtual void salvarDataBuffer(nlohmann::ordered_json& json) override; 
-			virtual void mover() override; 
+			virtual void mover(const Vector2f& deslocamento) override; 
 
 			int getPontos();	
 			void setPontos(int ponto);

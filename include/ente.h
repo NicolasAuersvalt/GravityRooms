@@ -6,6 +6,7 @@
 #include "Gerenciadores/gerenciador_grafico.h"
 
 using namespace std;
+using namespace sf;
 using Gerenciadores::Gerenciador_Grafico;
 
 class Gerenciador_Grafico;
@@ -30,8 +31,8 @@ class Ente{
         // ===/===/===/===/ Outros  ===/===/===/===/
         
         // Figura *pFig;
-        sf::Texture *texture; // Substituido
-        sf::Sprite sprite;
+        Texture *texture; // Substituido
+        Sprite sprite;
 
       public:
 
@@ -47,12 +48,12 @@ class Ente{
         // ===/===/===/===/ Outros  ===/===/===/===/
 
         void setSprite(std::string local, int posX, int posY);
-        sf::Texture* getTexture(); // retorna o endereço da textura do protected sf::Texture *pFig
-        sf::Sprite& getSprite(); // retorna o endereço da textura do protected sf::Texture *pFig
+        Texture* getTexture(); // retorna o endereço da textura do protected Texture *pFig
+        Sprite& getSprite(); // retorna o endereço da textura do protected Texture *pFig
         
         static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
 
-        sf::FloatRect getHitBox() const {
+        FloatRect getHitBox() const {
             return sprite.getGlobalBounds();
         }
         

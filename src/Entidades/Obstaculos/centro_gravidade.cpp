@@ -21,10 +21,10 @@ Centro_Gravidade::Centro_Gravidade(const sf::Vector2f pos,
 
 Centro_Gravidade::~Centro_Gravidade() {}
 void Centro_Gravidade::executar() {
-  mover();
+  // mover(); NICOLAS COMENTOU PARA PODER COMPILAR
   desenhar();
 }
 
-void Centro_Gravidade::mover() {}
+void Centro_Gravidade::mover(const Vector2f& deslocamento) {}
 void Centro_Gravidade::salvar() {}
 }  // namespace Entidades::Obstaculos

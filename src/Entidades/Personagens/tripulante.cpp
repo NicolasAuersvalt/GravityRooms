@@ -27,20 +27,10 @@ void Tripulante::executar() {
 }
 */
 
-void Tripulante::mover() {
+void Tripulante::mover(const Vector2f& deslocamento) {
   // Movimentação (sem física, apenas mover pela tela)
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-    getSprite().move(-5.f, 0.f);  // Move para a esquerda
-  }
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-    getSprite().move(5.f, 0.f);  // Move para a direita
-  }
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-    getSprite().move(0.f, -5.f);  // Move para cima
-  }
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-    getSprite().move(0.f, 5.f);  // Move para baixo
-  }
+  getSprite().move(deslocamento);  // Move para a esquerda
+  
 }
 
 void Tripulante::salvarDataBuffer(nlohmann::ordered_json& json) {

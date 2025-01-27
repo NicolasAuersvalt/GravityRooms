@@ -23,7 +23,7 @@ class Espinho : public Obstaculo {
   Espinho(const sf::Vector2f pos, const sf::Vector2f tam);
   ~Espinho();
   void executar() override;
-  void mover() override;
+  void mover(const Vector2f& deslocamento) override;
   void salvar() override;
   // ===/===/===/===/ Outros  ===/===/===/===/
 };

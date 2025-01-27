@@ -42,7 +42,7 @@ class Entidade : public Ente {
   // Métodos Virtuais
   // virtual void executar() = 0;
   virtual void salvar() = 0;
-  virtual void mover() = 0;
+  virtual void mover(const Vector2f& deslocamento) = 0;
 
   void setPosicao(int x, int y);
   void setTamanho(const Vector2f tam);

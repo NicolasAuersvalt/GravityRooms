@@ -30,7 +30,7 @@ namespace Entidades::Obstaculos {
             ~Plataforma();
             
             void executar() override;
-            void mover() override; 
+            void mover(const Vector2f& deslocamento) override; 
             void salvar() override;
             // void desenhar(Gerenciador_Grafico pGG) override;
             // void atualizar() override;

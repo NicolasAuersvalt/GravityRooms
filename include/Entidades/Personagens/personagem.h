@@ -35,7 +35,7 @@ namespace Entidades::Personagens {
 
 			//virtual void executar() = 0;
 			virtual void salvarDataBuffer(nlohmann::ordered_json& json) = 0; 
-			virtual void mover() = 0; 
+			virtual void mover(const Vector2f& deslocamento) = 0; 
 
 			// Método para obter o corpo (RectangleShape)
 			const RectangleShape& getCorpo() const;

@@ -19,10 +19,14 @@ Espinho::Espinho(const sf::Vector2f pos, const sf::Vector2f tam)
 
 Espinho::~Espinho() {}
 void Espinho::executar() {
-  mover();
+  // mover(const Vector2f& deslocamento); NICOLAS COMENTOU PARA COMPILAR
   desenhar();
 }
-void Espinho::mover() {}
+
+void Espinho::mover(const Vector2f& deslocamento) {
+
+}
+
 void Espinho::salvar() {
   // Add implementation
 }
