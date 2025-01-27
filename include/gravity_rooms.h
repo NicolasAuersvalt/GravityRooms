@@ -12,7 +12,6 @@
 #include "Entidades/Personagens/tripulante.h"
 #include "Fases/fase.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Listas/lista_entidades.h"
 #include "Menus/menu.h"
 #include "ente.h"
 

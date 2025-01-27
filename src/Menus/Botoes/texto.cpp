@@ -7,9 +7,9 @@
 
         namespace Botoes {
 
-            Texto::Texto(const sf::Font fonte, const std::string info, const unsigned int tamFonte):
-                fonte(fonte), texto(), info(info), corTexto(sf::Color::White),
-                corBorda(sf::Color::Black), tamFonte(tamFonte)
+            Texto::Texto(const sf::Font fonte, const std::string info, const
+unsigned int tamFonte): fonte(fonte), texto(), info(info),
+corTexto(sf::Color::White), corBorda(sf::Color::Black), tamFonte(tamFonte)
             {
                 inicializa();
             }
@@ -25,7 +25,8 @@
                 texto.setOutlineThickness(5.0f);
                 texto.setOutlineColor(corBorda);
                 texto.setFillColor(corTexto);
-                tam = sf::Vector2f(texto.getGlobalBounds().width, texto.getGlobalBounds().height);
+                tam = sf::Vector2f(texto.getGlobalBounds().width,
+texto.getGlobalBounds().height);
             }
 
             void Texto::setCorTexto(const sf::Color corTexto){
@@ -52,26 +53,30 @@
 
             void Texto::setTamanhoBorda(const float tamBorda){
                 texto.setOutlineThickness(tamBorda);
-                tam = sf::Vector2f(texto.getGlobalBounds().width, texto.getGlobalBounds().height);
+                tam = sf::Vector2f(texto.getGlobalBounds().width,
+texto.getGlobalBounds().height);
             }
 
             void Texto::setEspacamento(const float tamEspaco){
                 texto.setLetterSpacing(tamEspaco);
-                tam = sf::Vector2f(texto.getGlobalBounds().width, texto.getGlobalBounds().height);
+                tam = sf::Vector2f(texto.getGlobalBounds().width,
+texto.getGlobalBounds().height);
             }
 
             void Texto::setString(std::string nome){
                 texto.setString(nome);
-                tam = sf::Vector2f(texto.getGlobalBounds().width, texto.getGlobalBounds().height);
+                tam = sf::Vector2f(texto.getGlobalBounds().width,
+texto.getGlobalBounds().height);
             }
 
             const std::string Texto::getString() const {
                 return texto.getString();
             }
-            
+
             void Texto::setTamFonte(const unsigned int tamFonte){
                 texto.setCharacterSize(tamFonte);
-                tam = sf::Vector2f(texto.getGlobalBounds().width, texto.getGlobalBounds().height);
+                tam = sf::Vector2f(texto.getGlobalBounds().width,
+texto.getGlobalBounds().height);
             }
 
         }// namespace Botoes

@@ -14,7 +14,13 @@ class Fase : public Ente {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-<<<<<<< HEAD
+  // Gerenciador_Colisoes GC;
+
+  // ===/===/===/===/ Outros  ===/===/===/===/
+
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+
   // ===/===/===/===/ Outros  ===/===/===/===/
   Gerenciadores::Gerenciador_Colisoes GC;
   Listas::Lista_Entidades* listaPersonagens;
