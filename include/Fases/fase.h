@@ -23,23 +23,8 @@ class Fase : public Ente {
 
   // ===/===/===/===/ Outros  ===/===/===/===/
   Gerenciadores::Gerenciador_Colisoes GC;
-  Listas::Lista_Entidades* listaPersonagens;
-  Listas::Lista_Entidades* listaObstaculos;
   Gerenciadores::Gerenciador_Colisoes* pColisao;
-  == == == =
-               // Gerenciador_Colisoes GC;
-                    
->>>>>>> parent of 05a9e64 (fase de inicio)
-
-      // ===/===/===/===/ Outros  ===/===/===/===/
-
-      protected :
-      // ===/===/===/===/ Obrigatório ===/===/===/===/
-      Entidades::Personagens::Tripulante *
-      tripulante;
-  // ===/===/===/===/ Outros  ===/===/===/===/
-  Gerenciadores::Gerenciador_Colisoes GC;
-  Gerenciadores::Gerenciador_Colisoes* pColisao;
+  Entidades::Personagens::Tripulante* tripulante;
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
