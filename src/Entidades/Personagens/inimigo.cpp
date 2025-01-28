@@ -17,7 +17,7 @@ Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante,
   // Inicializa a semente do gerador de numeros aleatorios
   srand(time(NULL));
   // Gera uma direcao aleatoria inicial (0-3) para o movimento
-  moverAleatorio = rand() % 4;
+  moverAleatorio = rand() % 2;
 }
 Inimigo::~Inimigo() {}
 
@@ -25,7 +25,7 @@ void Inimigo::inicializar() { vel = {2.f, 2.f}; }
 
 void Inimigo::executar() {}
 void Inimigo::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
-    switch (outraEntidade->getID()) {
+  switch (outraEntidade->getID()) {
     case (IDs::IDs::tripulante): {
       std::cout << "Bate jogador e jogador pode bater no inimigo" << std::endl;
     } break;
@@ -74,11 +74,11 @@ void Inimigo::perseguirTripulante(Vector2f posJogador,
     getSprite().move(vel.x, 0.0f);
   }
   // Se o Tripulante estiver a esquerda do inimigo, move para esquerda
-  else {
+  else if (posJogador.x - posInimigo.x < 0.0f) {
     getSprite().move(-vel.x, 0.0f);
   }
   // Se o Tripulante estiver abaixo do inimigo, move para baixo
-  if (posJogador.y - posInimigo.y > 0.0f) {
+  else if (posJogador.y - posInimigo.y > 0.0f) {
     getSprite().move(0.0f, vel.y);
   }
   // Se o Tripulante estiver acima do inimigo, move para cima
@@ -88,16 +88,16 @@ void Inimigo::perseguirTripulante(Vector2f posJogador,
 }
 
 void Inimigo::movimentarAleatorio() {
-  // Move para cima quando moverAleatorio = 0
-  if (moverAleatorio == 0) {
-    getSprite().move(0.0f, -vel.y);
-  }
-  // Move para baixo quando moverAleatorio = 1
-  else if (moverAleatorio == 1) {
-    getSprite().move(0.0f, vel.y);
-  }
+  // // Move para cima quando moverAleatorio = 0
+  // if (moverAleatorio == 0) {
+  //   getSprite().move(0.0f, -vel.y);
+  // }
+  // // Move para baixo quando moverAleatorio = 1
+  // else if (moverAleatorio == 1) {
+  //   getSprite().move(0.0f, vel.y);
+  // }
   // Move para esquerda quando moverAleatorio = 2
-  else if (moverAleatorio == 2) {
+  if (moverAleatorio == 2) {
     getSprite().move(-vel.x, 0.0f);
   }
   // Move para direita quando moverAleatorio = 3

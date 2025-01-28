@@ -1,6 +1,6 @@
 #ifndef TRIPULANTE_H
 #define TRIPULANTE_H
-
+#define TAMANHO_PULO 120.0f
 #include <iostream>
 
 #include "Entidades/Personagens/personagem.h"
@@ -15,6 +15,7 @@ class Tripulante : public Personagem {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   int pontos;
+  bool noChao;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
@@ -39,6 +40,10 @@ class Tripulante : public Personagem {
   void setPontos(int ponto);
 
   // ===/===/===/===/ Outros  ===/===/===/===/
+
+  void setChao(bool chao);
+
+  bool getChao();
   void atualizar();
   void podePular();
   void colisao(Entidade* outraEntidade,

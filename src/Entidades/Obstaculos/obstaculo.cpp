@@ -44,6 +44,7 @@ void Obstaculo::colisaoObstaculo(
         if (pPersonagem->getID() == IDs::IDs::tripulante) {
           using namespace Entidades::Personagens;
           Tripulante* pTripulante = static_cast<Tripulante*>(pPersonagem);
+          pTripulante->podePular();
           // pTripulante->podePular();
           //;
         }

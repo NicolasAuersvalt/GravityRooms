@@ -106,14 +106,10 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
                                     Lista_Entidades* listaObs) {
   if (listaPer == nullptr) {
     cout << "Lista de personagens  é nula" << endl;
-  } else {
-    cout << listaPer->getTamanho() << endl;
   }
 
   if (listaObs == nullptr) {
     cout << "Lista de obstáculos é nula" << endl;
-  } else {
-    cout << listaObs->getTamanho() << endl;
   }
   // verifica colisao entre Personagens e Personagens e Obstáculos
   for (int i = 0; i < listaPer->getTamanho() - 1; i++) {
@@ -136,8 +132,8 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
       sf::Vector2f ds = calculaColisao(ent1, ent2);
 
       if (ds.x < 0.0f && ds.y < 0.0f) {
-        std::cout << "Character " << i << " collided with obstacle " << j
-                  << " with ds(" << ds.x << "," << ds.y << ")\n";
+        // std::cout << "Character " << i << " collided with obstacle " << j
+        //         << " with ds(" << ds.x << "," << ds.y << ")\n";
         ent2->colisao(ent1, ds);
       }
     }

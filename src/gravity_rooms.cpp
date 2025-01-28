@@ -122,7 +122,7 @@ void Gravity_Rooms::executar() {
     // Desenha os outros sprites da lista
     GC.setLista_Entidades(&listaPersonagem, &listaObstaculo);
     GC.executar(&listaPersonagem, &listaObstaculo);
-    cout << "bloia4 " << endl;
+
     GG.exibir();  // Exibe a tela com todos os objetos desenhados
     // Atualiza os objetos, caso necessário (atualização de movimentos,
     // animações, etc.)

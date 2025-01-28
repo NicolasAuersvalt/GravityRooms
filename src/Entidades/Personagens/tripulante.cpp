@@ -10,7 +10,7 @@ namespace Entidades::Personagens {
 
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
-    : Personagem(pos, tam, ID), pontos(0) {
+    : Personagem(pos, tam, ID), pontos(0), noChao(false) {
   setSprite("assets/tripulanteG.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(150.0f, 150.0f));
   setPosicao(pos.x, pos.y);
@@ -39,7 +39,7 @@ void Tripulante::mover() {
   if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
     getSprite().move(0.f, -5.f);  // Move para cima
   }
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+  if (!noChao) {
     getSprite().move(0.f, 5.f);  // Move para baixo
   }
 }
@@ -76,13 +76,16 @@ void Tripulante::carregarDataBuffer(const nlohmann::ordered_json& json) {
 
 int Tripulante::getPontos() { return pontos; }
 
+void Tripulante::setChao(bool chao) { noChao = chao; }
+
+bool Tripulante::getChao() { return noChao; }
 void Tripulante::setPontos(int ponto) { pontos = ponto; }
 void Tripulante::podePular() {
-  //   if (noChao) {
-  //     velocidade.y = -sqrt(2.0f * GRAVIDADE * TAMANHO_PULO_JOGADOR);
-  //     noChao = false;
-  //     caindo = false;
-  //   }
+  // if (noChao) {
+  //   velFinal.y = -sqrt(2.0f * GRAVIDADE * TAMANHO_PULO);
+  //   noChao = false;
+  //   atacando = false;
+  // }
 }
 void Tripulante::atualizar() {
   if (podeAndar) {
@@ -92,11 +95,32 @@ void Tripulante::atualizar() {
 }
 
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
+  std::cout << "\n=== Tripulante Collision Debug ===" << std::endl;
   switch (outraEntidade->getID()) {
-    case (IDs::IDs::inimigo): {
-    } break;
-    case (IDs::IDs::plataforma): {
-    } break;
+    // case (IDs::IDs::inimigo): {
+    // } break;
+    case IDs::IDs::plataforma: {
+      Vector2f myPos = getSprite().getPosition();
+      Vector2f platPos = outraEntidade->getPosicao();
+      Vector2f mySize = getTamanho();
+      Vector2f platSize = outraEntidade->getTamanho();
+
+      // Platform collision from above
+      if (ds.x < 0 && ds.y < 0) {
+        float myBottom = myPos.y + mySize.y;
+        float platTop = platPos.y;
+
+        if (myBottom > platTop) {
+          noChao = true;
+          velFinal.y = 0;
+          myPos.y = platTop - mySize.y;
+          getSprite().setPosition(myPos);
+          setPosicao(myPos.x, myPos.y);
+          std::cout << "Landing on platform at y=" << myPos.y << std::endl;
+        }
+      }
+      break;
+    }
 
       /*--------------------------------------------*/
       // switch (outraEntidade->getID()) {
