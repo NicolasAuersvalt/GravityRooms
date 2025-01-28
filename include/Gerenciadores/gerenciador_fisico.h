@@ -13,6 +13,15 @@ class Fisica {
 
 private:
 
+    const double G = 6.674e-11;  // Constante gravitacional
+    const double massaPersonagem = 70.0;  // Massa do personagem (kg)
+    const double massaBuracoNegro = 1e12;  // Massa do buraco negro pequeno (kg)
+    const double distanciaInicial = 1.0;  // Distância inicial (m)
+    const double distanciaFinal = 10.0;   // Distância final (m)
+    const int passos = 1000;             // Número de divisões
+
+    const int passos = 1000;  // Número de divisões
+
     Vector2f velocidade; // Velocidade do personagem
     Vector2f posicao;   // Posição do personagem
     
@@ -58,6 +67,27 @@ public:
     // Setter para a posição (se necessário)
     void setPosicao(const Vector2f& novaPosicao) {
         posicao = novaPosicao;
+    }
+
+    // Método para gravidade aproximada do personagem e do buraco negro
+    double gravidadePersonagemBuracoNegro(int casasDecimais) {   
+
+        double deltaR = (distanciaFinal - distanciaInicial) / passos;  // Largura dos subintervalos
+        double soma = 0.0;
+
+        for (int i = 0; i < passos; i++) {
+            
+            double r = distanciaInicial + i * deltaR;  // Ponto do intervalo
+            if (r == 0) continue;  // Evita divisão por zero
+            soma += (G * m1 * m2 / (r * r)) * deltaR;  // Soma de Riemann
+
+        }
+
+        // Retorna o valor arredondado para o número de casas decimais especificado
+        double fator = std::pow(10, casasDecimais);
+
+        return std::round(soma * fator) / fator;
+
     }
 
 
