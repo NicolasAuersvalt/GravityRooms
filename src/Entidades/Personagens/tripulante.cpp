@@ -28,17 +28,29 @@ void Tripulante::executar() {
 }
 */
 
+void Tripulante::setGerenciadorEvento(Gerenciador_Eventos *GE) {
+    if (GE) {
+        this->GE = GE;  // Atribui o ponteiro GE à variável membro this->GE
+    }
+}
+
 void Tripulante::mover() {
   // Movimentação (sem física, apenas mover pela tela)
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-    getSprite().move(-5.f, 0.f);  // Move para a esquerda
+  string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
+  if (tecla == "Left Arrow") {
+      getSprite().move(-5.f, 0.f);  // Move para a esquerda
   }
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-    getSprite().move(5.f, 0.f);  // Move para a direita
+
+  tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
+  if (tecla == "Right Arrow") {
+      getSprite().move(5.f, 0.f);  // Move para a direita
   }
-  if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-    getSprite().move(0.f, -5.f);  // Move para cima
+
+  tecla = GE->isTeclaPressionada(sf::Keyboard::Up);
+  if (tecla == "Up Arrow") {
+      getSprite().move(0.f, -5.f);  // Move para cima
   }
+
   if (!noChao) {
     getSprite().move(0.f, 5.f);  // Move para baixo
   }

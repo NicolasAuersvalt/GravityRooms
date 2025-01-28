@@ -4,10 +4,13 @@
 #include <iostream>
 
 #include "Entidades/Personagens/personagem.h"
+#include "Gerenciadores/gerenciador_eventos.h"
 #include "json.hpp"
 
 using namespace sf;
 using namespace std;
+
+using Gerenciadores::Gerenciador_Eventos;
 
 namespace Entidades::Personagens {
 
@@ -16,6 +19,7 @@ class Tripulante : public Personagem {
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   int pontos;
   bool noChao;
+  Gerenciador_Eventos *GE;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
@@ -42,6 +46,7 @@ class Tripulante : public Personagem {
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   void setChao(bool chao);
+  void setGerenciadorEvento(Gerenciador_Eventos *GE);
 
   bool getChao();
   void atualizar();

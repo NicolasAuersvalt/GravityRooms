@@ -9,34 +9,35 @@ Gravity_Rooms::Gravity_Rooms()
       listaPersonagem(),
       listaObstaculo(),
       GC(&listaPersonagem, &listaObstaculo),
+      GE(),
       menuGeral(),
       fase(nullptr) {
   Ente::setGerenciador(&GG);
 
-  sf::Texture backgroundTexture;
+  Texture backgroundTexture;
   if (!backgroundTexture.loadFromFile("assets/nave1.jpg")) {
-    std::cerr << "Erro ao carregar o background!" << std::endl;
+    cerr << "Erro ao carregar o background!" << endl;
     return;
   }
 
   backgroundSprite.setTexture(backgroundTexture);
   backgroundSprite.setPosition(25, 25);
 
-  std::ifstream arquivo("dados_salvos.json");
+  ifstream arquivo("dados_salvos.json");
   if (arquivo.is_open()) {
     nlohmann::ordered_json buffer;
     arquivo >> buffer;
     arquivo.close();
-    std::cout << "Dados carregados de 'dados_salvos.json'.\n";
+    cout << "Dados carregados de 'dados_salvos.json'.\n";
   } else {
-    std::cerr << "Erro ao abrir o arquivo para carregar os dados.\n";
+    cerr << "Erro ao abrir o arquivo para carregar os dados.\n";
   }
 
   // Vector2f pos = pJog1.getPosicao();
 
   // pJog1.setSprite("assets/tripulanteG.png", pos.x, pos.y);
 
-  // std::cout << "bli\n";
+  // cout << "bli\n";
   // listaPersonagem.incluir(static_cast<Entidade *>(&pJog1));
 
   // pAnd1.setSprite("assets/androidG.png", 0, 0);
@@ -57,23 +58,35 @@ void Gravity_Rooms::executar() {
   GG.executar();
 
   while (GG.estaAberta()) {
-    sf::Event eventao;
+    Event eventao;
 
     if (GG.getJanela().pollEvent(eventao)) {
-      if (eventao.type == sf::Event::KeyPressed) {
+
+      if (eventao.type == Event::KeyPressed) {
+
         menuGeral.eventoTeclado(eventao.key.code);
+
       }
+
       if (menuGeral.getSelecionado()) {
+
         IDs::IDs selecao = menuGeral.getIDBotaoSelecionado();
+
         if (selecao == IDs::IDs::botao_novoJogo) {
+
           criarFases(IDs::IDs::fase_laboratorio);
           break;
+
         }
+
         if (selecao == IDs::IDs::botao_sair) {
           exit(1);
         }
+
       }
+
       primeiraVez = true;
+      
     }
 
     GG.limpar();
@@ -83,27 +96,27 @@ void Gravity_Rooms::executar() {
   // GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
 
   while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
-    sf::Event evento;
+    Event evento;
 
     while (GG.processarEvento(evento)) {
-      if (evento.type == sf::Event::Closed) {
+      if (evento.type == Event::Closed) {
         GG.fechar();
       }
 
-      if (evento.type == sf::Event::KeyPressed) {
+      if (evento.type == Event::KeyPressed) {
         // Verifica se a tecla pressionada foi 'Y'
 
-        if (evento.key.code == sf::Keyboard::Y) {
+        if (evento.key.code == Keyboard::Y) {
           // Chama o método de salvar buffer do objeto PJog1
           nlohmann::ordered_json buffer;
           // Exemplo: Salvar o buffer em um arquivo
-          std::ofstream arquivo("dados_salvos.json");
+          ofstream arquivo("dados_salvos.json");
           if (arquivo.is_open()) {
             arquivo << buffer.dump(4);  // Salva com indentação de 4 espaços
             arquivo.close();
-            std::cout << "Dados salvos em 'dados_salvos.json'.\n";
+            cout << "Dados salvos em 'dados_salvos.json'.\n";
           } else {
-            std::cerr << "Erro ao abrir o arquivo para salvar os dados.\n";
+            cerr << "Erro ao abrir o arquivo para salvar os dados.\n";
           }
         }
       }

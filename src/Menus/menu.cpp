@@ -10,7 +10,9 @@ Menu::Menu(const IDs::IDs ID, const sf::Vector2f tamBotao,
       it(),
       tamBotao(tamBotao),
       botaoSelecionado(false),
-      titulo(nome, tamFonte) {}
+      titulo(nome, tamFonte) {
+
+      }
 
 Menu::~Menu() {
   if (!listaBotaoTexto.empty()) {
@@ -22,7 +24,9 @@ Menu::~Menu() {
   }
 }
 
-void Menu::mudarEstadoObservador() {}
+void Menu::mudarEstadoObservador() {
+
+}
 
 void Menu::addBotao(const std::string info, const sf::Vector2f pos,
                     const IDs::IDs ID, const sf::Color corSelecionado) {
@@ -68,7 +72,10 @@ void Menu::selecionaBaixo() {
   botao->setSelecionado(true);
 }
 
-const IDs::IDs Menu::getIDBotaoSelecionado() const { return (*it)->getID(); }
+const IDs::IDs Menu::getIDBotaoSelecionado() const {
+   return (*it)->getID(); 
+}
+
 void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
   if (!listaBotaoTexto.empty()) {
     // Desmarcar o botão atual

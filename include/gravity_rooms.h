@@ -12,6 +12,7 @@
 #include "Entidades/Personagens/tripulante.h"
 #include "Fases/fase.h"
 #include "Gerenciadores/gerenciador_grafico.h"
+#include "Gerenciadores/gerenciador_eventos.h"
 #include "Listas/lista_entidades.h"
 #include "Menus/MenuPrincipal.h"
 #include "ente.h"
@@ -27,6 +28,7 @@ using Entidades::Personagens::Androide;
 using Entidades::Personagens::Tripulante;
 using Gerenciadores::Gerenciador_Colisoes;
 using Gerenciadores::Gerenciador_Grafico;
+using Gerenciadores::Gerenciador_Eventos;
 using Listas::Lista_Entidades;
 using Menus::MenuPrincipal;
 
@@ -36,6 +38,7 @@ class Gravity_Rooms {
 
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
+  Gerenciador_Eventos GE;
   Fases::Fase* fase;
   MenuPrincipal menuGeral;
 
