@@ -11,7 +11,9 @@ using namespace Fases;
 namespace Fases {
 
 // Construtor
-Nave::Nave() {}
+Nave::Nave(const IDs::IDs IDs) : Fase(ID, IDs::IDs::fundo_nave) {
+  criarFundo();
+}
 
 // Destrutor
 Nave::~Nave() {}

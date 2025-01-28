@@ -27,7 +27,7 @@ class Botao : public Ente {
   float tempo;
 
  public:
-  Botao(const Vector2f tam, const Vector2f pos, const int ID,
+  Botao(const Vector2f tam, const Vector2f pos, const IDs::IDs ID,
         const float tempoTroca = 0.0f,
         const Vector2f tamMax = Vector2f(0.0f, 0.0f));
   virtual ~Botao();

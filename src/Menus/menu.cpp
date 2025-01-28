@@ -3,12 +3,13 @@
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 namespace Menus {
-Menu::Menu(const int ID, const sf::Vector2f tamBotao, const std::string nome,
-           const unsigned int tamFonte)
-    : listaBotaoTexto(),
+Menu::Menu(const IDs::IDs ID, const sf::Vector2f tamBotao,
+           const std::string nome, const unsigned int tamFonte)
+    : Ente(ID),
+      listaBotaoTexto(),
       it(),
       tamBotao(tamBotao),
-      botaoSelecionado(0),
+      botaoSelecionado(false),
       titulo(nome, tamFonte) {}
 
 Menu::~Menu() {
@@ -24,7 +25,7 @@ Menu::~Menu() {
 void Menu::mudarEstadoObservador() {}
 
 void Menu::addBotao(const std::string info, const sf::Vector2f pos,
-                    const int ID, const sf::Color corSelecionado) {
+                    const IDs::IDs ID, const sf::Color corSelecionado) {
   Botoes::BotaoTexto* botao =
       new Botoes::BotaoTexto(info, tamBotao, pos, ID, corSelecionado);
   if (botao == nullptr) {
@@ -67,7 +68,7 @@ void Menu::selecionaBaixo() {
   botao->setSelecionado(true);
 }
 
-const int Menu::getIDBotaoSelecionado() const { return (*it)->getID(); }
+const IDs::IDs Menu::getIDBotaoSelecionado() const { return (*it)->getID(); }
 void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
   if (!listaBotaoTexto.empty()) {
     // Desmarcar o botão atual
@@ -79,7 +80,6 @@ void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
       if (it == listaBotaoTexto.end()) {
         it = listaBotaoTexto.begin();  // Volta ao primeiro botão
       }
-      std::cout << "Botão com ID: " << (*it)->getID() << std::endl;
 
     } else if (tecla == sf::Keyboard::Up) {
       // Mover para o botão anterior
@@ -87,20 +87,18 @@ void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
         it = listaBotaoTexto.end();  // Define como o "fim"
       }
       it--;
-      std::cout << "Botão com ID: " << (*it)->getID() << std::endl;
 
     } else if (tecla == sf::Keyboard::Enter) {
       // Seleciona o botão atual e atualiza a variável
 
-      botaoSelecionado = (*it)->getID();
+      botaoSelecionado = true;
     }
 
     // Marcar o botão selecionado
     (*it)->setSelecionado(true);
   }
 }
-
-int Menu::getSelecionado() { return botaoSelecionado; }
+bool Menu::getSelecionado() { return botaoSelecionado; }
 
 void Menu::desenhar(Gerenciador_Grafico* GG) {
   // desenha todos os botões na janela

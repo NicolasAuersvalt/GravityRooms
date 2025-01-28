@@ -1,57 +1,50 @@
 #ifndef TRIPULANTE_H
 #define TRIPULANTE_H
 
+#include <iostream>
+
 #include "Entidades/Personagens/personagem.h"
 #include "json.hpp"
-
-#include <iostream>
 
 using namespace sf;
 using namespace std;
 
+namespace Entidades::Personagens {
 
-namespace Entidades::Personagens{
+class Tripulante : public Personagem {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  int pontos;
 
-	class Tripulante : public Personagem{
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-		private:
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
-			int pontos;
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-			// ===/===/===/===/ Outros  ===/===/===/===/
+  Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
+  ~Tripulante();
 
-		protected:
+  void carregarDataBuffer(const nlohmann::ordered_json& json);
 
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
+  // virtual void executar() override;
+  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+  virtual void mover() override;
 
+  int getPontos();
+  void setPontos(int ponto);
 
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  void atualizar();
+  void podePular();
+  void colisao(Entidade* outraEntidade,
+               sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+};
 
-			// ===/===/===/===/ Outros  ===/===/===/===/
-
-
-		public:
-
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
-
-			Tripulante(const Vector2f pos, const Vector2f tam);
-			~Tripulante();
-
-			void carregarDataBuffer(const nlohmann::ordered_json& json); 
-
-			// virtual void executar() override;
-			virtual void salvarDataBuffer(nlohmann::ordered_json& json) override; 
-			virtual void mover() override; 
-
-			int getPontos();	
-			void setPontos(int ponto);
-
-			// ===/===/===/===/ Outros  ===/===/===/===/
-
-
-	};
-
-}
+}  // namespace Entidades::Personagens
 
 #endif

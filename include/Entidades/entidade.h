@@ -11,6 +11,7 @@
 
 using namespace sf;
 using namespace std;
+using namespace IDs;
 
 class Gerenciador_Grafico;
 
@@ -36,7 +37,8 @@ class Entidade : public Ente {
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Entidade(const Vector2f pos, const Vector2f tam);  // COM PARAMETRO
+  Entidade(const Vector2f pos, const Vector2f tam,
+           const IDs::IDs ID);  // COM PARAMETRO
   virtual ~Entidade();
 
   // Métodos Virtuais
@@ -51,6 +53,8 @@ class Entidade : public Ente {
   const Vector2f getTamanho() const;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
+  virtual void colisao(Entidade* outraEntidade,
+                       sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f)) = 0;
 };
 
 }  // namespace Entidades

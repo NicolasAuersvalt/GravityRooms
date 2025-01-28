@@ -34,7 +34,7 @@ class Menu : public Ente {
   const sf::Vector2f tamJanela;
   sf::Vector2f posFundo;
   Menus::Botoes::Texto titulo;
-  int botaoSelecionado;
+  bool botaoSelecionado;
 
   void atualizarPosicaoFundo();
   virtual void criarFundo() {};
@@ -42,19 +42,19 @@ class Menu : public Ente {
   void inicializarIterator();
 
  public:
-  Menu(const int ID, const sf::Vector2f tamBotao, const std::string nome,
+  Menu(const IDs::IDs ID, const sf::Vector2f tamBotao, const std::string nome,
        const unsigned int tamFonte);
   ~Menu();
-  void addBotao(const std::string info, const sf::Vector2f pos, const int ID,
-                const sf::Color corSelecionado);
+  void addBotao(const std::string info, const sf::Vector2f pos,
+                const IDs::IDs ID, const sf::Color corSelecionado);
   void mudarEstadoObservador();
   void selecionaCima();
   void selecionaBaixo();
   virtual void selecionaEsquerda() {}
   virtual void selecionaDireita() {}
-  const int getIDBotaoSelecionado() const;
+  const IDs::IDs getIDBotaoSelecionado() const;
   void eventoTeclado(const sf::Keyboard::Key tecla);
-  int getSelecionado();
+  bool getSelecionado();
   virtual void executar() = 0;
   void desenhar(Gerenciador_Grafico* GG);
 };

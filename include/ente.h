@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "Gerenciadores/gerenciador_grafico.h"
+#include "IDs/IDs.h"
 
 using namespace std;
 using Gerenciadores::Gerenciador_Grafico;
@@ -19,7 +20,7 @@ class Ente {
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
-  int id;
+  const IDs::IDs ID;
   static Gerenciador_Grafico*
       pGG;  // Ente utiliza Gerenciador Gráfico (Bidirecional)
 
@@ -32,7 +33,7 @@ class Ente {
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Ente();
+  Ente(const IDs::IDs ID);
   ~Ente();
 
   // virtual void executar() = 0; // Pois é abstrata
@@ -51,8 +52,7 @@ class Ente {
   static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
 
   sf::FloatRect getHitBox() const { return sprite.getGlobalBounds(); }
-  int getID();
-  void setID(int current_ID);
+  const IDs::IDs getID() const;
 };
 
 #endif

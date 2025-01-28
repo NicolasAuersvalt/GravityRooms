@@ -8,14 +8,15 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-Tripulante::Tripulante(const Vector2f pos, const Vector2f tam)
-    : Personagem(pos, tam), pontos(0) {
+Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
+                       const IDs::IDs ID)
+    : Personagem(pos, tam, ID), pontos(0) {
   setSprite("assets/tripulanteG.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(150.0f, 150.0f));
   setPosicao(pos.x, pos.y);
 
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "Position: " << pos.x << " " << pos.y << std::endl;
+  std::cout << "TripulantePosition: " << pos.x << " " << pos.y << std::endl;
 }
 
 Tripulante::~Tripulante() {}
@@ -76,4 +77,70 @@ void Tripulante::carregarDataBuffer(const nlohmann::ordered_json& json) {
 int Tripulante::getPontos() { return pontos; }
 
 void Tripulante::setPontos(int ponto) { pontos = ponto; }
+void Tripulante::podePular() {
+  //   if (noChao) {
+  //     velocidade.y = -sqrt(2.0f * GRAVIDADE * TAMANHO_PULO_JOGADOR);
+  //     noChao = false;
+  //     caindo = false;
+  //   }
+}
+void Tripulante::atualizar() {
+  if (podeAndar) {
+    atualizarPosicao();
+  }
+  relogio.restart();
+}
+
+void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
+  switch (outraEntidade->getID()) {
+    case (IDs::IDs::inimigo): {
+    } break;
+    case (IDs::IDs::plataforma): {
+    } break;
+
+      /*--------------------------------------------*/
+      // switch (outraEntidade->getID()) {
+      //   case (IDs::IDs::plataforma): {
+      //   } break;
+      //   case (IDs::IDs::inimigo): {
+      //     // empura inimigo
+      //     sf::Vector2f posInimigo = outraEntidade->getPos();
+      //     Inimigo::Inimigo* inimigo =
+      //         dynamic_cast<Inimigo::Inimigo*>(outraEntidade);
+      //     if (pos.x < posInimigo.x) {
+      //       ds.x *= -1;
+      //     }
+      //     // bate no jogador
+      //     inimigo->parar();
+      //     inimigo->atacar(true);
+      //   } break;
+      //   case (IDs::IDs::vida): {
+      //     Item::Vida* vida = dynamic_cast<Item::Vida*>(outraEntidade);
+      //     setVida(vida->getVida());
+      //     vida->remover();
+      //   } break;
+      //   case (IDs::IDs::projetil_inimigo): {
+      //     Item::Projetil* projetil =
+      //     dynamic_cast<Item::Projetil*>(outraEntidade);
+      //     tomarDano(projetil->getDano());
+      //     projetil->setColidiu(true);
+      //   } break;
+      //   case (IDs::IDs::espinho): {
+      //     Obstaculo::Espinho* espinho =
+      //         dynamic_cast<Obstaculo::Espinho*>(outraEntidade);
+      //     tomarDano(espinho->getDano());
+      //     if (!morrendo) {
+      //       velFinal.y = -sqrt(2.0f * GRAVIDADE * TAMANHO_PULO);
+      //     }
+      //   } break;
+      //   case (IDs::IDs::centro_gravidade): {
+      //     Obstaculo::Centro_gravidade* centro_gravidade =
+      //         dynamic_cast<Obstaculo::Centro_gravidade*>(outraEntidade);
+      //     tomarDano(centro_gravidade->getDano());
+      //     if (!morrendo) {
+      //       velFinal.y = -sqrt(2.0f * GRAVIDADE * TAMANHO_PULO);
+      //     }
+      //   } break;
+  }
+}
 }  // namespace Entidades::Personagens

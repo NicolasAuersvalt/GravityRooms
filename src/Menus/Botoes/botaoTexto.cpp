@@ -4,8 +4,8 @@ namespace Menus {
 
 namespace Botoes {
 
-BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f tam,
-                       const sf::Vector2f pos, const int ID,
+BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f pos,
+                       const sf::Vector2f tam, const IDs::IDs ID,
                        const sf::Color corSelecionado)
     : Botao(tam, pos, ID, 0.01f),
       corSelecionado(corSelecionado),
@@ -34,11 +34,6 @@ BotaoTexto::~BotaoTexto() {}
 const sf::Vector2f BotaoTexto::getTamTexto() const {
   return sf::Vector2f(texto.getGlobalBounds().width,
                       texto.getGlobalBounds().height);
-}
-
-void BotaoTexto::desenhar(Gerenciador_Grafico& pGrafico) {
-  atualizarAnimacao();
-  pGrafico.desenharTexto(texto);
 }
 
 void BotaoTexto::atualizarAnimacao() {
@@ -75,7 +70,10 @@ void BotaoTexto::setSelecionado(bool selecionado) {
 }
 
 const bool BotaoTexto::getSelecionado() const { return selecionado; }
-
+void BotaoTexto::desenhar(Gerenciador_Grafico& pGrafico) {
+  atualizarAnimacao();
+  pGrafico.desenharTexto(texto);
+}
 }  // namespace Botoes
 
 }  // namespace Menus

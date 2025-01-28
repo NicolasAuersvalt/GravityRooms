@@ -1,10 +1,14 @@
 #include "Entidades/Obstaculos/plataforma.h"
 
 #include <SFML/Graphics.hpp>
+
+#include "Entidades/Personagens/personagem.h"
+
 namespace Entidades::Obstaculos {
 
-Plataforma::Plataforma(sf::Vector2f pos, const sf::Vector2f tam)
-    : Obstaculo(pos, tam) {
+Plataforma::Plataforma(sf::Vector2f pos, const sf::Vector2f tam,
+                       const IDs::IDs ID)
+    : Obstaculo(pos, tam, ID) {
   setSprite("assets/plataformaG.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(500.0f, 150.0f));
   setPosicao(pos.x, pos.y);
@@ -27,22 +31,19 @@ void Plataforma::salvar() {
   // Implementation for saving state
 }
 
-// void Plataforma::mover()
-// {
-//     position.first += velocity.first;
-//     position.second += velocity.second;
-// }
+void Plataforma::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
+  if (outraEntidade->getID() == IDs::IDs::clone ||
+      outraEntidade->getID() == IDs::IDs::ciborgue ||
+      outraEntidade->getID() == IDs::IDs::androide ||
+      outraEntidade->getID() == IDs::IDs::tripulante) {
+    colisaoObstaculo(
+        ds, static_cast<Entidades::Personagens::Personagem*>(outraEntidade));
+    // } else if (outraEntidade->getID() == IDs::IDs::projetil_inimigo) {
+    //   Entidades::Projetil* projetil =
+    //       dynamic_cast<Item::Projetil*>(outraEntidade);
+    //   projetil->setColidiu(true);
+    //   projetil->setVelocidade(sf::Vector2f(0.0f, 0.0f));
+  }
+}
 
-// void Plataforma::desenhar(Gerenciador_Grafico pGG)
-// {
-// }
-// void Plataforma::atualizar()
-// {
-//     // Add update implementation
-// }
-
-// void Plataforma::colisao(Entidade *outra)
-// {
-//     // Add collision implementation
-// }
 }  // namespace Entidades::Obstaculos

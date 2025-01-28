@@ -9,8 +9,9 @@ using Entidades::Personagens::Inimigo;
 
 namespace Entidades::Personagens {
 
-Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante)
-    : Personagem(pos, tam), tripulante(tripulante), relogio() {
+Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante,
+                 const IDs::IDs ID)
+    : Personagem(pos, tam, ID), tripulante(tripulante), relogio() {
   inicializar();
 
   // Inicializa a semente do gerador de numeros aleatorios
@@ -23,7 +24,23 @@ Inimigo::~Inimigo() {}
 void Inimigo::inicializar() { vel = {2.f, 2.f}; }
 
 void Inimigo::executar() {}
-
+void Inimigo::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
+    switch (outraEntidade->getID()) {
+    case (IDs::IDs::tripulante): {
+      std::cout << "Bate jogador e jogador pode bater no inimigo" << std::endl;
+    } break;
+    case (IDs::IDs::clone): {
+      // std::cout << "Empurra inimigo" << std::endl;
+    } break;
+    case (IDs::IDs::ciborgue): {
+    } break;
+    case (IDs::IDs::androide): {
+    } break;
+    case (IDs::IDs::projetil_inimigo): {
+      std::cout << "Colidiu com o inimigo" << std::endl;
+    } break;
+  }
+}
 void Inimigo::mover() {
   // Obtem as posicoes do Tripulante e do inimigo
   // Debug print current positions
@@ -96,4 +113,5 @@ void Inimigo::movimentarAleatorio() {
     relogio.restart();
   }
 }
+
 }  // namespace Entidades::Personagens

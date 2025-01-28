@@ -10,13 +10,12 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-Personagem::Personagem(const Vector2f pos, const Vector2f tam)
-    : Entidade(pos, tam), noChao(false) {}
+Personagem::Personagem(const Vector2f pos, const Vector2f tam,
+                       const IDs::IDs ID)
+    : Entidade(pos, tam, ID), noChao(false) {}
 
 Personagem::~Personagem() {}
 void Personagem::salvar() {}
-
-}  // namespace Entidades::Personagens
 
 const RectangleShape& Personagem::getCorpo() const { return RectangleShape(); }
 
@@ -51,3 +50,25 @@ void Personagem::morrer() {
 void Personagem::setPisando(bool pisa) { noChao = pisa; }
 
 bool Personagem::getPisando() { return noChao; }
+
+void Entidades::Personagens::Personagem::atualizarPosicao() {
+  // Utiliza o conceito de MRU
+  dt = relogio.getElapsedTime().asSeconds();
+  float ds = velFinal.x * dt;
+  if (paraEsquerda) {
+    ds *= -1;
+  }
+  corpo.move(ds, 0.0f);
+}
+
+void Personagem::parar() { podeAndar = false; }
+void Personagem::andar(const bool paraEsquerda) {
+  podeAndar = true;
+  this->paraEsquerda = paraEsquerda;
+}
+
+void Personagem::setVelFinal(const sf::Vector2f velFinal) {
+  this->velFinal = velFinal;
+}
+const sf::Vector2f Personagem::getVelFinal() const { return velFinal; }
+}  // namespace Entidades::Personagens

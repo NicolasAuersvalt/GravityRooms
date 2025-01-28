@@ -26,7 +26,7 @@ class Laboratorio : public Fase {
 
   const int maxChefoes = 1;
 
-  Laboratorio();
+  Laboratorio(const IDs::IDs ID);
   ~Laboratorio();
 
   void criarProjeteis();

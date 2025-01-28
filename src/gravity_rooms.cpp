@@ -6,10 +6,9 @@
 // Construtor
 Gravity_Rooms::Gravity_Rooms()
     : GG(),
-      pAnd1(Vector2f(100.0f, 80.0f), nullptr),
-      pAnd2(Vector2f(100.0f, 80.0f), nullptr),
-      LJog1(),
-      GC(),
+      listaPersonagem(),
+      listaObstaculo(),
+      GC(&listaPersonagem, &listaObstaculo),
       menuGeral(),
       fase(nullptr) {
   Ente::setGerenciador(&GG);
@@ -38,16 +37,14 @@ Gravity_Rooms::Gravity_Rooms()
   // pJog1.setSprite("assets/tripulanteG.png", pos.x, pos.y);
 
   // std::cout << "bli\n";
-  // LJog1.incluir(static_cast<Entidade *>(&pJog1));
+  // listaPersonagem.incluir(static_cast<Entidade *>(&pJog1));
 
   // pAnd1.setSprite("assets/androidG.png", 0, 0);
   // pAnd1.setVida(10);
 
-  // LJog1.incluir(static_cast<Entidade *>(&pAnd1));
+  // listaPersonagem.incluir(static_cast<Entidade *>(&pAnd1));
 
-  std::cout << "bl1i\n";
   menuGeral.criarBotoes();
-  std::cout << "bli2\n";
   executar();
 }
 
@@ -59,7 +56,6 @@ void Gravity_Rooms::executar() {
 
   GG.executar();
 
-  cout << "bloia1 " << endl;
   while (GG.estaAberta()) {
     sf::Event eventao;
 
@@ -67,14 +63,15 @@ void Gravity_Rooms::executar() {
       if (eventao.type == sf::Event::KeyPressed) {
         menuGeral.eventoTeclado(eventao.key.code);
       }
-      int selecao = menuGeral.getSelecionado();
-      cout << selecao << endl;
-      if (selecao == 1) {
-        criarFases(selecao);
-        break;
-      }
-      if (selecao == 10) {
-        exit(1);
+      if (menuGeral.getSelecionado()) {
+        IDs::IDs selecao = menuGeral.getIDBotaoSelecionado();
+        if (selecao == IDs::IDs::botao_novoJogo) {
+          criarFases(IDs::IDs::fase_laboratorio);
+          break;
+        }
+        if (selecao == IDs::IDs::botao_sair) {
+          exit(1);
+        }
       }
       primeiraVez = true;
     }
@@ -84,7 +81,7 @@ void Gravity_Rooms::executar() {
     GG.exibir();
   }
   // GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
-  cout << "bloia1 " << endl;
+
   while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
     sf::Event evento;
 
@@ -97,18 +94,15 @@ void Gravity_Rooms::executar() {
         // Verifica se a tecla pressionada foi 'Y'
 
         if (evento.key.code == sf::Keyboard::Y) {
-          cout << "while4 " << endl;
           // Chama o método de salvar buffer do objeto PJog1
           nlohmann::ordered_json buffer;
           // Exemplo: Salvar o buffer em um arquivo
           std::ofstream arquivo("dados_salvos.json");
           if (arquivo.is_open()) {
-            cout << "while5 " << endl;
             arquivo << buffer.dump(4);  // Salva com indentação de 4 espaços
             arquivo.close();
             std::cout << "Dados salvos em 'dados_salvos.json'.\n";
           } else {
-            cout << "while6 " << endl;
             std::cerr << "Erro ao abrir o arquivo para salvar os dados.\n";
           }
         }
@@ -122,22 +116,25 @@ void Gravity_Rooms::executar() {
 
     // GG.desenharEnte(&pJog1);  // Desenha o Tripulante 1 (ou qualquer outro
     // ente)
+    listaObstaculo.desenharTodos();
 
-    LJog1.desenharTodos();  // Desenha os outros sprites da lista
-    GC.executar();
-
+    listaPersonagem.desenharTodos();
+    // Desenha os outros sprites da lista
+    GC.setLista_Entidades(&listaPersonagem, &listaObstaculo);
+    GC.executar(&listaPersonagem, &listaObstaculo);
+    cout << "bloia4 " << endl;
     GG.exibir();  // Exibe a tela com todos os objetos desenhados
-
     // Atualiza os objetos, caso necessário (atualização de movimentos,
     // animações, etc.)
-    LJog1.atualizarTodas();
+    listaPersonagem.atualizarTodas();
+    listaObstaculo.atualizarTodas();
   }
 }
 
-void Gravity_Rooms::criarFases(int faseSelecionada) {
-  cout << " qual faseeee " << faseSelecionada << endl;
-  if (faseSelecionada == 1) {
-    Fases::Laboratorio *aux = new Fases::Laboratorio();
+void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
+  if (faseSelecionada == IDs::IDs::fase_laboratorio) {
+    Fases::Laboratorio *aux =
+        new Fases::Laboratorio(IDs::IDs::fase_laboratorio);
 
     if (aux == nullptr) {
       exit(1);
@@ -146,8 +143,8 @@ void Gravity_Rooms::criarFases(int faseSelecionada) {
     cout << " laboratorio " << endl;
 
     fase = static_cast<Fases::Fase *>(aux);
-  } else if (faseSelecionada == 2) {
-    Fases::Nave *pNave = new Fases::Nave();
+  } else if (faseSelecionada == IDs::IDs::fase_nave) {
+    Fases::Nave *pNave = new Fases::Nave(IDs::IDs::fase_nave);
     if (pNave == nullptr) {
       exit(1);
       cout << "nao foi possivel criar a nave " << endl;
@@ -161,7 +158,8 @@ void Gravity_Rooms::criarFases(int faseSelecionada) {
 
   auto atualObstaculos = fase->listaObstaculos->LEs->getPrimeiro();
   while (atualObstaculos != nullptr) {
-    LJog1.incluir(atualObstaculos->pInfo);  // Add entity to LJog1
+    listaObstaculo.incluir(
+        atualObstaculos->pInfo);  // Add entity to listaPersonagem
     atualObstaculos = atualObstaculos->getProximo();
   }
   auto atualPersonagens = fase->listaPersonagens->LEs->getPrimeiro();
@@ -169,11 +167,12 @@ void Gravity_Rooms::criarFases(int faseSelecionada) {
     if (dynamic_cast<Entidades::Personagens::Tripulante *>(
             atualPersonagens->pInfo)) {
       Tripulante *tripPtr = dynamic_cast<Tripulante *>(atualPersonagens->pInfo);
-      GC.incluirTripulante(*tripPtr);
+      // GC.incluirTripulante(*tripPtr);
     } else {
-      GC.incluirInimigo(static_cast<Inimigo *>(atualPersonagens->pInfo));
+      // GC.incluirInimigo(static_cast<Inimigo *>(atualPersonagens->pInfo));
     }
-    LJog1.incluir(atualPersonagens->pInfo);  // Add entity to LJog1
+    listaPersonagem.incluir(
+        atualPersonagens->pInfo);  // Add entity to listaPersonagem
     atualPersonagens = atualPersonagens->getProximo();
   }
 }

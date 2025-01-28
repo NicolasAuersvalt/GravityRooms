@@ -25,6 +25,8 @@ class Lista_Entidades {
   void desenharTodos();
   void atualizarTodas();
   void limparLista();
+  const int getTamanho();
+  Entidades::Entidade* operator[](int pos);
 };
 }  // namespace Listas
 

@@ -26,7 +26,7 @@ class Ciborgue : public Inimigo {
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Ciborgue(const sf::Vector2f pos, Tripulante* tripulante);
+  Ciborgue(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID);
   ~Ciborgue();
 
   using Ente::setSprite;
@@ -35,7 +35,7 @@ class Ciborgue : public Inimigo {
   void mover() override;
   virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
 
-  void colidir(Entidade* outro, string direction = "") override;
+  // void colidir(Entidade* outro, string direction = "") override;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 };
