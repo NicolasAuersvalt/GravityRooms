@@ -15,6 +15,7 @@ class Obstaculo : public Entidade {
 
   bool danoso;
   bool colidindo;
+  int dano;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
@@ -34,6 +35,7 @@ class Obstaculo : public Entidade {
   void setColidindo(bool colide);
   virtual void colisao(Entidade* outraEntidade, sf::Vector2f ds) = 0;
   virtual void colisaoObstaculo(Vector2f ds, Personagem* pPersonagem);
+  virtual int getDano() = 0;
 };
 
 }  // namespace Entidades::Obstaculos

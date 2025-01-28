@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Entidades/Obstaculos/espinho.h"
 #include "json.hpp"
 
 using namespace Entidades::Personagens;
@@ -10,11 +11,11 @@ namespace Entidades::Personagens {
 
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
-    : Personagem(pos, tam, ID), pontos(0), noChao(false) {
+    : Personagem(pos, tam, ID), pontos(0), noChao(false), GF(pos) {
   setSprite("assets/tripulanteG.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(150.0f, 150.0f));
   setPosicao(pos.x, pos.y);
-
+  vivo = true;
   sprite.setPosition(pos.x, pos.y);
   std::cout << "TripulantePosition: " << pos.x << " " << pos.y << std::endl;
 }
@@ -52,9 +53,15 @@ void Tripulante::mover() {
   }
 
   if (!noChao) {
-    getSprite().move(0.f, 5.f);  // Move para baixo
+    // Apply gravity
+    float dt = 1.0f;  // Assuming 60fps, adjust if using different time step
+    velFinal.y += GF.aplicarGravidade() * dt;
   }
+
+  // Apply movement
+  getSprite().move(velFinal.x, velFinal.y);
 }
+}  // namespace Entidades::Personagens
 
 void Tripulante::salvarDataBuffer(nlohmann::ordered_json& json) {
   Vector2f pos = getPosicao();  // Desempacota a posição
@@ -107,7 +114,6 @@ void Tripulante::atualizar() {
 }
 
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
-  std::cout << "\n=== Tripulante Collision Debug ===" << std::endl;
   switch (outraEntidade->getID()) {
     // case (IDs::IDs::inimigo): {
     // } break;
@@ -133,16 +139,33 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
       }
     } break;
     case (IDs::IDs::espinho): {
+      std::cout << "\n=== Tripulante Collision Debug ===" << std::endl;
+
       Entidades::Obstaculos::Espinho* espinho =
           dynamic_cast<Entidades::Obstaculos::Espinho*>(outraEntidade);
-      tomarDano(espinho->getDano());
-      if (!morrendo) {
-        velFinal.y = -sqrt(2.0f * aplicargravidade() * TAMANHO_PULO);
+      std::cout << "CRIOU " << std::endl;
+      recebeDano(espinho->getDano());
+      std::cout << "\n=== ANTES DO IF ===" << std::endl;
+      std::cout << vivo << std::endl;
+
+      if (vivo) {
+        // Apply initial bounce velocity with reduced height
+        float bounceForce = 0.7f;  // Reduce bounce height to 70%
+        float gravity = GF.aplicarGravidade();
+        velFinal.y = -sqrt(2.0f * gravity * TAMANHO_PULO * bounceForce);
+
+        // Ensure the player doesn't get stuck in continuous collision
+
+        noChao = false;  // Player is no longer on ground after bounce
+        std::cout << "\n=== DENTRO DO IF ===" << std::endl;
+        std::cout << "\nvel em y" << velFinal.y << std::endl;
+        std::cout << "\nvel em x" << velFinal.x << std::endl;
       }
     } break;
-    default: {
-      noChao = false;
-    }
+
+      // default: {
+      //   noChao = false;
+      // }
 
       /*--------------------------------------------*/
       // switch (outraEntidade->getID()) {
@@ -188,5 +211,5 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
       //     }
       //   } break;
   }
-}
+
 }  // namespace Entidades::Personagens

@@ -12,7 +12,7 @@ namespace Entidades::Personagens {
 
 Personagem::Personagem(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
-    : Entidade(pos, tam, ID), noChao(false) {}
+    : Entidade(pos, tam, ID), noChao(false), vivo(true) {}
 
 Personagem::~Personagem() {}
 void Personagem::salvar() {}
@@ -43,8 +43,7 @@ void Personagem::recebeDano(int dano) {
 bool Personagem::verificarVivo() { return (pontosVida > 0); }
 
 void Personagem::morrer() {
-  // Aqui você pode adicionar lógica para remover da lista de entidades, se
-  // necessário.
+  vivo = true;  // TESTE
 }
 
 void Personagem::setPisando(bool pisa) { noChao = pisa; }

@@ -1,10 +1,12 @@
 #ifndef TRIPULANTE_H
 #define TRIPULANTE_H
-#define TAMANHO_PULO 120.0f
+#define TAMANHO_PULO 100.0f
+#include <cmath>
 #include <iostream>
 
 #include "Entidades/Personagens/personagem.h"
 #include "Gerenciadores/gerenciador_eventos.h"
+#include "Gerenciadores/gerenciador_fisico.h"
 #include "json.hpp"
 
 using namespace sf;
@@ -19,8 +21,8 @@ class Tripulante : public Personagem {
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   int pontos;
   bool noChao;
-  Gerenciador_Eventos *GE;
-
+  Gerenciador_Eventos* GE;
+  Fisica GF;
   // ===/===/===/===/ Outros  ===/===/===/===/
 
  protected:
@@ -46,7 +48,7 @@ class Tripulante : public Personagem {
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   void setChao(bool chao);
-  void setGerenciadorEvento(Gerenciador_Eventos *GE);
+  void setGerenciadorEvento(Gerenciador_Eventos* GE);
 
   bool getChao();
   void atualizar();

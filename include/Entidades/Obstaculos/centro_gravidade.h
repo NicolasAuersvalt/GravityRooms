@@ -29,6 +29,7 @@ class Centro_Gravidade : public Obstaculo {
   // ===/===/===/===/ Outros  ===/===/===/===/
   void colisao(Entidade* outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+  int getDano();
 };
 
 }  // namespace Entidades::Obstaculos

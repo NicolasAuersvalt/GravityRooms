@@ -9,6 +9,7 @@ namespace Entidades::Obstaculos {
 Plataforma::Plataforma(sf::Vector2f pos, const sf::Vector2f tam,
                        const IDs::IDs ID)
     : Obstaculo(pos, tam, ID) {
+  this->dano = 0;
   setSprite("assets/plataformaG.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(500.0f, 150.0f));
   setPosicao(pos.x, pos.y);
@@ -45,5 +46,6 @@ void Plataforma::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
     //   projetil->setVelocidade(sf::Vector2f(0.0f, 0.0f));
   }
 }
+int Plataforma::getDano() { return dano; }
 
 }  // namespace Entidades::Obstaculos
