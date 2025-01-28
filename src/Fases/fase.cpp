@@ -77,7 +77,7 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
   if (tripulante == nullptr) {
-    criarJogador(Vector2f(100.0f, 800.0f));
+    criarJogador(Vector2f(100.0f, 100.0f));
   }
   switch (letra) {
     case ('i'): {

@@ -77,14 +77,14 @@ void Inimigo::perseguirTripulante(Vector2f posJogador,
   else if (posJogador.x - posInimigo.x < 0.0f) {
     getSprite().move(-vel.x, 0.0f);
   }
-  // Se o Tripulante estiver abaixo do inimigo, move para baixo
-  else if (posJogador.y - posInimigo.y > 0.0f) {
-    getSprite().move(0.0f, vel.y);
-  }
-  // Se o Tripulante estiver acima do inimigo, move para cima
-  else {
-    getSprite().move(0.0f, -vel.y);
-  }
+  // // Se o Tripulante estiver abaixo do inimigo, move para baixo
+  // else if (posJogador.y - posInimigo.y > 0.0f) {
+  //   getSprite().move(0.0f, vel.y);
+  // }
+  // // Se o Tripulante estiver acima do inimigo, move para cima
+  // else {
+  //   getSprite().move(0.0f, -vel.y);
+  // }
 }
 
 void Inimigo::movimentarAleatorio() {

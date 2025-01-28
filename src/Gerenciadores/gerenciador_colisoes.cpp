@@ -134,7 +134,7 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
       if (ds.x < 0.0f && ds.y < 0.0f) {
         // std::cout << "Character " << i << " collided with obstacle " << j
         //         << " with ds(" << ds.x << "," << ds.y << ")\n";
-        ent2->colisao(ent1, ds);
+        ent1->colisao(ent2, ds);
       }
     }
   }

@@ -28,27 +28,27 @@ void Tripulante::executar() {
 }
 */
 
-void Tripulante::setGerenciadorEvento(Gerenciador_Eventos *GE) {
-    if (GE) {
-        this->GE = GE;  // Atribui o ponteiro GE à variável membro this->GE
-    }
+void Tripulante::setGerenciadorEvento(Gerenciador_Eventos* GE) {
+  if (GE) {
+    this->GE = GE;  // Atribui o ponteiro GE à variável membro this->GE
+  }
 }
 
 void Tripulante::mover() {
   // Movimentação (sem física, apenas mover pela tela)
   string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
   if (tecla == "Left Arrow") {
-      getSprite().move(-5.f, 0.f);  // Move para a esquerda
+    getSprite().move(-5.f, 0.f);  // Move para a esquerda
   }
 
   tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
   if (tecla == "Right Arrow") {
-      getSprite().move(5.f, 0.f);  // Move para a direita
+    getSprite().move(5.f, 0.f);  // Move para a direita
   }
 
   tecla = GE->isTeclaPressionada(sf::Keyboard::Up);
   if (tecla == "Up Arrow") {
-      getSprite().move(0.f, -5.f);  // Move para cima
+    getSprite().move(0.f, -5.f);  // Move para cima
   }
 
   if (!noChao) {
@@ -131,7 +131,17 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
           std::cout << "Landing on platform at y=" << myPos.y << std::endl;
         }
       }
-      break;
+    } break;
+    case (IDs::IDs::espinho): {
+      Entidades::Obstaculos::Espinho* espinho =
+          dynamic_cast<Entidades::Obstaculos::Espinho*>(outraEntidade);
+      tomarDano(espinho->getDano());
+      if (!morrendo) {
+        velFinal.y = -sqrt(2.0f * aplicargravidade() * TAMANHO_PULO);
+      }
+    } break;
+    default: {
+      noChao = false;
     }
 
       /*--------------------------------------------*/
