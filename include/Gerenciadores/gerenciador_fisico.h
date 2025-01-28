@@ -76,7 +76,7 @@ public:
         double soma = 0.0;
 
         for (int i = 0; i < passos; i++) {
-            
+
             double r = distanciaInicial + i * deltaR;  // Ponto do intervalo
             if (r == 0) continue;  // Evita divisão por zero
             soma += (G * m1 * m2 / (r * r)) * deltaR;  // Soma de Riemann
