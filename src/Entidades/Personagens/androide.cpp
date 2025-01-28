@@ -7,14 +7,15 @@
 
 namespace Entidades::Personagens {
 
-Androide::Androide(const Vector2f pos, Tripulante* tripulante)
-    : Inimigo(pos, sf::Vector2f(150.0f, 150.0f), tripulante) {
+Androide::Androide(const Vector2f pos, Tripulante* tripulante,
+                   const IDs::IDs ID)
+    : Inimigo(pos, sf::Vector2f(150.0f, 150.0f), tripulante, ID) {
   nivel_maldade = 2;
   setSprite("assets/androidG.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "here Position: " << pos.x << " " << pos.y << std::endl;
+  std::cout << "Androide Position: " << pos.x << " " << pos.y << std::endl;
 }
 
 Androide::~Androide() {}
@@ -29,28 +30,9 @@ void Androide::mover() {
     Inimigo::mover();
   }
 }
-void Androide::colidir(Entidade* outro, string direction) {
-  // int index = other->get_id();
-  // switch (index)
-  // {
-  // case 1:
-  //     other->inflict_damage(damage);
-  //     break;
-  // case 11:
-  //     if (direction == "Right" || direction == "Left")
-  //     {
-  //         vel = sf::Vector2f(-CR * vel.x, vel.y);
-  //     }
-  //     else
-  //     {
-  //         vel = sf::Vector2f(vel.x, -CR * vel.y);
-  //     }
-  //     break;
+// void Androide::colidir(Entidade* outro, string direction) {
 
-  // default:
-  //     break;
-  // }
-}
+// }
 
 void Androide::salvarDataBuffer(nlohmann::ordered_json& json) {}
 }  // namespace Entidades::Personagens

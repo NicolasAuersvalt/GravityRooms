@@ -9,8 +9,9 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante)
-    : Inimigo(pos, Vector2f(100.0f, 80.0f), tripulante) {
+Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante,
+                   const IDs::IDs ID)
+    : Inimigo(pos, Vector2f(100.0f, 80.0f), tripulante, ID) {
   std::cout << "Creating Ciborgue at position: " << pos.x << "," << pos.y
             << std::endl;
   nivel_maldade = 1;
@@ -18,7 +19,7 @@ Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante)
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "here Position: " << pos.x << " " << pos.y << std::endl;
+  std::cout << "ciborgueG Position: " << pos.x << " " << pos.y << std::endl;
   // Debug output
   std::cout << "Ciborgue sprite position: " << sprite.getPosition().x << ","
             << sprite.getPosition().y << std::endl;
@@ -45,6 +46,6 @@ void Entidades::Personagens::Ciborgue::mover() {
 }
 void Ciborgue::salvarDataBuffer(nlohmann::ordered_json& json) {}
 
-void Ciborgue::colidir(Entidade* outro, string direction) {}
+// void Ciborgue::colidir(Entidade* outro, string direction) {}
 
 }  // namespace Entidades::Personagens

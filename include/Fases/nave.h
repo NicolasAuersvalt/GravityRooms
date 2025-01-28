@@ -23,7 +23,7 @@ class Nave : public Fase {
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Nave();
+  Nave(const IDs::IDs ID);
   ~Nave();
 
   void criarInimMedios();

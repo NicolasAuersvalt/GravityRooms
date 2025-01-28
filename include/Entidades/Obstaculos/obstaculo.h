@@ -1,47 +1,41 @@
 #ifndef OBSTACULO_H
 #define OBSTACULO_H
 
+#include "Entidades/Personagens/personagem.h"
 #include "Entidades/entidade.h"
 
 using namespace sf;
+using Entidades::Personagens::Personagem;
 
-namespace Entidades::Obstaculos{
+namespace Entidades::Obstaculos {
 
-    class Obstaculo:public Entidade{
+class Obstaculo : public Entidade {
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-        protected:
+  bool danoso;
+  bool colidindo;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            bool danoso;
-            bool colidindo;
-                    
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+  Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
+  ~Obstaculo();
+  void salvar();
 
+  virtual void executar() = 0;
+  virtual void salvarDataBuffer() {}
 
-        public:
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+  bool getColidindo();
+  void setColidindo(bool colide);
+  virtual void colisao(Entidade* outraEntidade, sf::Vector2f ds) = 0;
+  virtual void colisaoObstaculo(Vector2f ds, Personagem* pPersonagem);
+};
 
-            Obstaculo(const Vector2f pos, const Vector2f tam);
-            ~Obstaculo();
-            void salvar();
-
-        
-            virtual void executar() = 0;
-            virtual void salvarDataBuffer() {
-                
-            }
-
-            // ===/===/===/===/ Outros  ===/===/===/===/
-
-            bool getColidindo();
-            void setColidindo(bool colide);
-                
-
-    };
-
-}
+}  // namespace Entidades::Obstaculos
 
 #endif

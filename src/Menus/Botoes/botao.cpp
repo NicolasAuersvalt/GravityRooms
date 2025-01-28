@@ -4,9 +4,10 @@ namespace Menus {
 
 namespace Botoes {
 
-Botao::Botao(const sf::Vector2f tam, const sf::Vector2f pos, const int ID,
+Botao::Botao(const sf::Vector2f tam, const sf::Vector2f pos, const IDs::IDs ID,
              const float tempoTroca, const sf::Vector2f tamMax)
-    : pos(pos),
+    : Ente(ID),
+      pos(pos),
       tam(tam),
       textura(new sf::Texture()),
       tamMax(tamMax == sf::Vector2f(0.0f, 0.0f) ? tam : tamMax),
@@ -16,7 +17,6 @@ Botao::Botao(const sf::Vector2f tam, const sf::Vector2f pos, const int ID,
       aumentando(true) {
   caixa.setPosition(pos);
   caixa.setSize(tam);
-  setID(ID);
 }
 
 Botao::~Botao() {

@@ -1,6 +1,8 @@
 #ifndef PERSONAGEM_H
 #define PERSONAGEM_H
 
+#include <time.h>
+
 #include <iostream>
 
 #include "Entidades/entidade.h"
@@ -11,50 +13,56 @@ using namespace std;
 
 namespace Entidades::Personagens {
 
-	class Personagem : public Entidade {
+class Personagem : public Entidade {
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-		protected:
+  Vector2f vel;
 
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
+  int pontosVida = 100;
+  bool noChao;
 
-			Vector2f vel;
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-			int pontosVida = 100;
-			bool noChao;
+  bool vivo;
+  bool podeAndar;
+  bool paraEsquerda;
+  Clock relogio;
+  float dt;
+  Vector2f velFinal;
 
-			// ===/===/===/===/ Outros  ===/===/===/===/
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-			bool vivo;
+  // Personagem(pair<int, int> p, pair<int, int> d); //verificar
+  Personagem(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
+  ~Personagem();
 
-		public:
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
+  // virtual void executar() = 0;
+  virtual void salvarDataBuffer(nlohmann::ordered_json& json) = 0;
+  virtual void mover() = 0;
 
-			// Personagem(pair<int, int> p, pair<int, int> d); //verificar
-			Personagem(const Vector2f pos, const Vector2f tam);
-			~Personagem();
+  // Método para obter o corpo (RectangleShape)
+  const RectangleShape& getCorpo() const;
 
-			//virtual void executar() = 0;
-			virtual void salvarDataBuffer(nlohmann::ordered_json& json) = 0; 
-			virtual void mover() = 0; 
+  // Métodos para manipulação de vida
+  void setVida(int life);
+  int getVida();
+  void recebeDano(int dano);
+  void setPisando(bool pisa);
+  bool getPisando();
+  void salvar();
+  bool verificarVivo();
+  void morrer();
+  void atualizarPosicao();
+  void parar();
+  void andar(const bool paraEsquerda);
+  virtual void colisao(Entidade* outraEntidade,
+                       sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f)) = 0;
+  void setVelFinal(const sf::Vector2f velFinal);
+  const sf::Vector2f getVelFinal() const;
+};
 
-			// Método para obter o corpo (RectangleShape)
-			const RectangleShape& getCorpo() const;
-
-			// Métodos para manipulação de vida
-			void setVida(int life);
-			int getVida();
-			void recebeDano(int dano);
-			void setPisando(bool pisa);
-			bool getPisando(); 
-			void salvar();
-			bool verificarVivo();
-			void morrer();
-			
-			
-
-			
-	};
-
-} 
+}  // namespace Entidades::Personagens
 
 #endif

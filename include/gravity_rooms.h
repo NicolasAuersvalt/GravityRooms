@@ -34,8 +34,6 @@ class Gravity_Rooms {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Androide pAnd1;
-  Androide pAnd2;
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
   Fases::Fase* fase;
@@ -43,7 +41,8 @@ class Gravity_Rooms {
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
-  Lista_Entidades LJog1;
+  Lista_Entidades listaPersonagem;
+  Lista_Entidades listaObstaculo;
   Sprite backgroundSprite;
 
  protected:
@@ -59,7 +58,7 @@ class Gravity_Rooms {
   void executar();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
-  void criarFases(int faseSelecionada);
+  void criarFases(IDs::IDs faseSelecionada);
 };
 
 #endif

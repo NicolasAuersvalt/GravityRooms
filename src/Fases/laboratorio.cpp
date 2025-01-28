@@ -12,7 +12,10 @@ using namespace std;
 namespace Fases {
 
 // Construtor
-Laboratorio::Laboratorio() { criarFundo(); }
+Laboratorio::Laboratorio(const IDs::IDs IDs)
+    : Fase(ID, IDs::IDs::fundo_laboratorio) {
+  criarFundo();
+}
 
 // Destrutor
 Laboratorio::~Laboratorio() {}
@@ -62,7 +65,7 @@ void Laboratorio::criarMapa() {
 void Laboratorio::criarFundo() {
   std::cout << "Loading background texture..." << std::endl;
 
-  if (!bgTexture.loadFromFile("assets/lab1.png")) {
+  if (!bgTexture.loadFromFile("assets/lab1.jpg")) {
     std::cerr << "Failed to load background texture!" << std::endl;
     return;
   }

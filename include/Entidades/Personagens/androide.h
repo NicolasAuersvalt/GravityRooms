@@ -28,7 +28,7 @@ class Androide : public Inimigo {
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Androide(const sf::Vector2f pos, Tripulante* tripulante);
+  Androide(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID);
   ~Androide();
 
   using Ente::setSprite;
@@ -40,7 +40,7 @@ class Androide : public Inimigo {
   void mover() override;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
-  void colidir(Entidade* outro, string direction = "") override;
+  // void colidir(Entidade* outro, string direction = "") override;
 };
 
 }  // namespace Entidades::Personagens

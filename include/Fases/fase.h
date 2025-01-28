@@ -2,6 +2,7 @@
 #define FASE_H
 
 #include "Gerenciadores/gerenciador_colisoes.h"
+#include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
 #include "ente.h"
 
@@ -14,26 +15,22 @@ class Fase : public Ente {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // Gerenciador_Colisoes GC;
-
   // ===/===/===/===/ Outros  ===/===/===/===/
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-  Gerenciadores::Gerenciador_Colisoes GC;
-  Gerenciadores::Gerenciador_Colisoes* pColisao;
-  Entidades::Personagens::Tripulante* tripulante;
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Listas::Lista_Entidades* listaObstaculos;
 
+  Entidades::Personagens::Tripulante* tripulante;
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  Gerenciadores::Gerenciador_Colisoes* pColisao;
   Listas::Lista_Entidades* listaPersonagens;
   // Fase(const IDs IDs_Fase,const IDs IDs_Fundo);
-  Fase();
+  Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo);
   ~Fase();
 
   void executar();

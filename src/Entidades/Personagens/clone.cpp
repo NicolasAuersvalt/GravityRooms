@@ -7,14 +7,14 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante)
-    : Inimigo(pos, sf::Vector2f(150.0f, 150.0f), tripulante) {
+Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID)
+    : Inimigo(pos, sf::Vector2f(150.0f, 150.0f), tripulante, ID) {
   nivel_maldade = 3;
   setSprite("assets/cloneG.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "here Position: " << pos.x << " " << pos.y << std::endl;
+  std::cout << "cloneG Position: " << pos.x << " " << pos.y << std::endl;
 }
 
 Clone::~Clone() {}
@@ -28,6 +28,6 @@ void Clone::mover() {
     Inimigo::mover();
   }
 }
-void Clone::colidir(Entidade* outro, string direction) {}
+
 void Clone::danificar(Tripulante* p) {}
 }  // namespace Entidades::Personagens

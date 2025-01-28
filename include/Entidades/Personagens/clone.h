@@ -26,7 +26,7 @@ class Clone : public Inimigo {
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Clone(const sf::Vector2f pos, Tripulante* tripulante);
+  Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID);
   ~Clone();
   using Ente::setSprite;
 
@@ -37,7 +37,7 @@ class Clone : public Inimigo {
   void mover() override;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
-  void colidir(Entidade* outro, string direction = "") override;
+  //   void colidir(Entidade* outro, string direction = "") override;
 };
 
 }  // namespace Entidades::Personagens

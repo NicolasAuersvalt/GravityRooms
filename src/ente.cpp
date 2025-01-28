@@ -1,12 +1,14 @@
 #include "ente.h"
 
 #include <iostream>
+
+#include "IDs/IDs.h"
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 Gerenciadores::Gerenciador_Grafico* Ente::pGG = nullptr;
 
 // Construtor
-Ente::Ente() : texture(nullptr), id(-1) {
+Ente::Ente(const IDs::IDs ID) : ID(ID), texture(nullptr) {
   // cout << "CONSTRUTOR" << endl;
 }
 
@@ -37,6 +39,5 @@ sf::Sprite& Ente::getSprite() { return sprite; }
 
 void Ente::setGerenciador(Gerenciadores::Gerenciador_Grafico* gg) { pGG = gg; }
 
-int Ente::getID() { return id; }
-void Ente::setID(int current_ID) { id = current_ID; }
+const IDs::IDs Ente::getID() const { return ID; }
 // ===/===/===/===/ Outros  ===/===/===/===/

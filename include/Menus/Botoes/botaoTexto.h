@@ -21,14 +21,15 @@ class BotaoTexto : public Botao {
 
  public:
   BotaoTexto(const std::string info, const sf::Vector2f pos,
-             const sf::Vector2f tam, const int ID,
+             const sf::Vector2f tam, const IDs::IDs ID,
              const sf::Color corSelecionado);
-  virtual ~BotaoTexto();
+  ~BotaoTexto();
+
   void atualizarAnimacao();
   void atualizarPosicaoCaixa(const sf::Vector2f pos);
   void setSelecionado(bool selecionado);
   const bool getSelecionado() const;
-  virtual void desenhar(Gerenciador_Grafico& pGrafico);
+  void desenhar(Gerenciador_Grafico& pGrafico);
 };
 
 }  // namespace Botoes
