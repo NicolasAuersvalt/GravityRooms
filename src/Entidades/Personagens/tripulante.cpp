@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "Entidades/Obstaculos/centro_gravidade.h"
 #include "Entidades/Obstaculos/espinho.h"
 #include "json.hpp"
 
@@ -46,7 +47,9 @@ void Tripulante::mover() {
   tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
   if (tecla == "Q" && noChao) {
     // Jump only if on ground
-    atirar();
+    atirar();  // o correto
+
+    cout << "Shooting projectile" << endl;
   }
   tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
   if (tecla == "Right Arrow") {
@@ -60,10 +63,14 @@ void Tripulante::mover() {
     float jumpForce = -30.0f;  // Adjust this value to control jump height
     velFinal.y = jumpForce;
     noChao = false;
+
+    cout << "Jumping" << endl;
   }
 
   if (!noChao) {
     // Apply gravity
+
+    cout << "Falling" << endl;
     float dt = 0.016f;  // Assuming 60fps, adjust if using different time step
     velFinal.y += GF.aplicarGravidade() * dt;
   }
@@ -152,13 +159,13 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
       float myLeft = myPos.x;
       float platRight = platPos.x + platSize.x;
       // Platform collision from above
-      if (myBottom >= platTop) {
+      if (myBottom >= platTop && ds.y <= 5.f) {
         velFinal.y = 0;
         myPos.y = platTop - mySize.y;
         getSprite().setPosition(myPos);
         setPosicao(myPos.x, myPos.y);
+        onPlatform = true;
       }
-      onPlatform = true;
 
       // Check if the Tripulante is landing on top of the platform
 
@@ -171,6 +178,17 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
 
       recebeDano(espinho->getDano());
 
+    } break;
+    case (IDs::IDs::centro_gravidade): {
+      // std::cout << "\n=== Tripulante Collision Debug ===" << std::endl;
+
+      Entidades::Obstaculos::Centro_Gravidade* centro_gravidade =
+          dynamic_cast<Entidades::Obstaculos::Centro_Gravidade*>(outraEntidade);
+
+      recebeDano(centro_gravidade->getDano());
+    } break;
+    default: {
+      onPlatform = false;
     } break;
   }
   noChao = onPlatform;

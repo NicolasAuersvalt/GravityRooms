@@ -71,8 +71,7 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
     exit(1);
   }
 
-  // plataforma->setTamanho(escala);
-  listaObstaculos->incluir(static_cast<Entidade*>(centro_gravidade));
+   listaObstaculos->incluir(static_cast<Entidade*>(centro_gravidade));
 }
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {

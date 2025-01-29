@@ -11,54 +11,56 @@
 
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/Personagens/tripulante.h"
+#include "Gerenciadores/gerenciador_fisico.h"
 
 // using Entidades::Personagens;
 using namespace sf;
 using namespace std;
-
+using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
 
-	class Inimigo : public Personagem {
-		private:
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
+class Inimigo : public Personagem {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-			// ===/===/===/===/ Outros  ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-		protected:
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
-			int nivel_maldade;
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  int nivel_maldade;
 
-			int dano;
-			// ===/===/===/===/ Outros  ===/===/===/===/
-			Tripulante* tripulante;
-			Clock relogio;
-			short moverAleatorio;
-			void inicializar();
+  int dano;
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  Tripulante* tripulante;
+  Clock relogio;
+  short moverAleatorio;
+  void inicializar();
+  Gerenciador_Fisica GF;
 
-		public:
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-			Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante,
-					const IDs::IDs ID);
-			~Inimigo();
+  Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante,
+          const IDs::IDs ID);
+  ~Inimigo();
 
-			virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
-			virtual void danificar(Tripulante* p) = 0;
-			virtual void executar() = 0;
-			// virtual void colidir(Entidade* outro, string direction = "") = 0;
-			void colisao(Entidade* outraEntidade,
-					sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
-			virtual void mover();  // n virtual puro por enquanto
+  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+  virtual void danificar(Tripulante* p) = 0;
+  virtual void executar() = 0;
+  // virtual void colidir(Entidade* outro, string direction = "") = 0;
+  void colisao(Entidade* outraEntidade,
+               sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+  virtual void mover();  // n virtual puro por enquanto
 
-			virtual int getDano() {
-				// Por exemplo, retornar o dano base multiplicado pelo nivel de maldade
-				return dano;
-			}
+  virtual int getDano() {
+    // Por exemplo, retornar o dano base multiplicado pelo nivel de maldade
+    return dano;
+  }
 
-			void perseguirTripulante(sf::Vector2f posTripulante,
-					const sf::Vector2f posInimigo);
-			void movimentarAleatorio();
-	};
+  void perseguirTripulante(sf::Vector2f posTripulante,
+                           const sf::Vector2f posInimigo);
+  void movimentarAleatorio();
+};
 
 }  // namespace Entidades::Personagens
 

@@ -57,7 +57,11 @@ bool Projetil::getAtivo() { return ativo; }
 void Projetil::salvar() {}
 void Projetil::mover() {
   if (ativo) {
-    getSprite().move(5.0f, 0.0f);
+    getSprite().move(20.0f, 0.0f);
+    if (getSprite().getPosition().x > 1280 || getSprite().getPosition().x < 0 ||
+        getSprite().getPosition().y > 920 || getSprite().getPosition().y < 0) {
+      setAtivo(false, {-150.f, -150.f});
+    }
   }
 }
 
