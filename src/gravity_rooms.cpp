@@ -116,7 +116,6 @@ void Gravity_Rooms::executar() {
           }
         }
       }
-      cout << "bli\n";
       GG.limpar();  // Limpa a tela antes de desenhar qualquer coisa
       listaObstaculo.desenharTodos();
       listaPersonagem.desenharTodos();
@@ -178,14 +177,12 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
 
   fase->criarMapa();
 
-  cout << "nblu " << endl;
   auto atualObstaculos = fase->listaObstaculos->LEs->getPrimeiro();
   while (atualObstaculos != nullptr) {
     listaObstaculo.incluir(
         atualObstaculos->pInfo);  // Add entity to listaPersonagem
     atualObstaculos = atualObstaculos->getProximo();
   }
-  cout << "abkla " << endl;
   auto atualPersonagens = fase->listaPersonagens->LEs->getPrimeiro();
   while (atualPersonagens != nullptr) {
     if (dynamic_cast<Entidades::Personagens::Tripulante *>(
@@ -196,7 +193,6 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
       // GC.incluirInimigo(static_cast<Inimigo *>(atualPersonagens->pInfo));
     }
 
-    cout << "todo " << endl;
     listaPersonagem.incluir(
         atualPersonagens->pInfo);  // Add entity to listaPersonagem
     atualPersonagens = atualPersonagens->getProximo();

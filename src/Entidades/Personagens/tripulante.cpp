@@ -48,19 +48,23 @@ void Tripulante::mover() {
     getSprite().move(5.f, 0.f);  // Move para a direita
   }
 
-  tecla = GE->isTeclaPressionada(sf::Keyboard::Up);
-  if (tecla == "Up Arrow") {
-    getSprite().move(0.f, -5.f);  // Move para cima
+  tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
+
+  if (tecla == "Space" && noChao) {
+    // Jump only if on ground
+    float jumpForce = -30.0f;  // Adjust this value to control jump height
+    velFinal.y = jumpForce;
+    noChao = false;
   }
 
   if (!noChao) {
     // Apply gravity
-    float dt = 1.0f;  // Assuming 60fps, adjust if using different time step
+    float dt = 0.016f;  // Assuming 60fps, adjust if using different time step
     velFinal.y += GF.aplicarGravidade() * dt;
   }
+  getSprite().move(velFinal.x, velFinal.y);
 
   // Apply movement
-  getSprite().move(velFinal.x, velFinal.y);
 }
 }  // namespace Entidades::Personagens
 
@@ -168,9 +172,9 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
       // }
     } break;
 
-      // default: {
-      //   noChao = false;
-      // }
+    default: {
+      noChao = false;
+    }
 
       /*--------------------------------------------*/
       // switch (outraEntidade->getID()) {

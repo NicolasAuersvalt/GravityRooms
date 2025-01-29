@@ -70,6 +70,7 @@ class Gerenciador_Eventos {
                                              {Keyboard::Left, "Left Arrow"},
                                              {Keyboard::Right, "Right Arrow"},
                                              {Keyboard::Enter, "Enter"},
+                                             {Keyboard::Space, "Space"},
                                              {Keyboard::Escape, "Escape"}};
 
     // Retorna a tecla em formato string, ou "Desconhecida" se a tecla não

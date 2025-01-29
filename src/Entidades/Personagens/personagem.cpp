@@ -36,7 +36,6 @@ void Personagem::recebeDano(int dano) {
   pontosVida -= dano;
 
   if (!verificarVivo()) {
-    cout << "bli" << endl;
     morrer();
   }
 }
