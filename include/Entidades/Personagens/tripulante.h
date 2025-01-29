@@ -59,6 +59,7 @@ class Tripulante : public Personagem {
   void colisao(Entidade* outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   void setProjetil(Projetil* new_projetil) { projetil = new_projetil; };
+  void atirar();
 };
 
 }  // namespace Entidades::Personagens

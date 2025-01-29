@@ -9,7 +9,8 @@ namespace Entidades::Personagens {
 
 Androide::Androide(const Vector2f pos, Tripulante* tripulante,
                    const IDs::IDs ID)
-    : Inimigo(pos, sf::Vector2f(150.0f, 150.0f), tripulante, ID) {
+    : Inimigo(pos, sf::Vector2f(150.0f, 150.0f), tripulante,
+              IDs::IDs::inimigo) {
   this->dano = 2;
 
   this->pontosVida = 2;

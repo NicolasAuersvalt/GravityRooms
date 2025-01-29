@@ -46,6 +46,8 @@ class Projetil : public Entidade {
   void salvar();
   void mover();
   void atualizar();
+  void setAtivo(bool i, sf::Vector2f pos);
+  bool getAtivo();
   void setAtirador(Entidade* a);
   bool getColidir(Entidade* e);
   void danificar(Personagem* p);

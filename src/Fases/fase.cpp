@@ -118,7 +118,6 @@ void Fase::criarJogador(const Vector2f pos) {
     std::cout << "Fase::nao foi possivel criar jogador" << std::endl;
     exit(1);
   }
-  listaPersonagens->incluir(static_cast<Entidade*>(tripulante));
 }
 void Fase::desenhar() {
   listaObstaculos->desenharTodos();

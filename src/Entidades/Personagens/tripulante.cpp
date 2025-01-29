@@ -43,7 +43,11 @@ void Tripulante::mover() {
   if (tecla == "Left Arrow") {
     getSprite().move(-5.f, 0.f);  // Move para a esquerda
   }
-
+  tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
+  if (tecla == "Q" && noChao) {
+    // Jump only if on ground
+    atirar();
+  }
   tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
   if (tecla == "Right Arrow") {
     getSprite().move(5.f, 0.f);  // Move para a direita
@@ -67,7 +71,6 @@ void Tripulante::mover() {
 
   // Apply movement
 }
-}  // namespace Entidades::Personagens
 
 void Tripulante::salvarDataBuffer(nlohmann::ordered_json& json) {
   Vector2f pos = getPosicao();  // Desempacota a posição
@@ -124,6 +127,11 @@ void Tripulante::atualizar() {
   }
 }
 
+void Tripulante::atirar() {
+  if (!projetil->getAtivo()) {
+    projetil->setAtivo(true, getSprite().getPosition());
+  }
+}
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
   bool onPlatform = false;
   switch (outraEntidade->getID()) {
@@ -143,10 +151,6 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
 
       float myLeft = myPos.x;
       float platRight = platPos.x + platSize.x;
-      std::cout << "Tripulante Pos: " << myBottom << " | VelY: " << velFinal.y
-                << " | PlatTop: " << platTop << " | noChao: " << noChao
-                << std::endl;
-
       // Platform collision from above
       if (myBottom >= platTop) {
         velFinal.y = 0;
@@ -170,5 +174,5 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
     } break;
   }
   noChao = onPlatform;
-
+}
 }  // namespace Entidades::Personagens

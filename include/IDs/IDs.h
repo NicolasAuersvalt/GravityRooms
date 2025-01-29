@@ -8,7 +8,8 @@ enum class IDs {
   vazio = 0,
   tripulante,
   inimigo,                     // 1
-  projetil_inimigo,            // 4
+  projetil_inimigo,            // 1
+  projetil_tripulante,         // 4
   clone,                       // 5
   androide,                    // 6
   ciborgue,                    // 7

@@ -7,8 +7,16 @@ namespace Entidades {
 
 Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
     : Entidade(pos, tam, ID),
-      dano(10)  //, danoProjetil(10)
-{}
+      dano(10),
+      ativo(false)  //, danoProjetil(10)
+{
+  setSprite("assets/projetilG.png", pos.x, pos.y);
+  //   // setSprite("assets/projetilP.png", pos.x, pos.y);
+  setTamanho(sf::Vector2f(150.0f, 150.0f));
+  setPosicao(-130.f, -130.f);
+  sprite.setPosition(-130.f, -130.f);
+  std::cout << "Projetil Position: " << pos.x << " " << pos.y << std::endl;
+}
 Projetil::~Projetil() {}
 /*void Projetil::executar()
 {
@@ -44,9 +52,37 @@ void Projetil::danificar(Personagem *p) {}
 */
 int Projetil::getDano() { return danoProjetil; }
 
-void Projetil::salvar() {}
-void Projetil::mover() {}
+bool Projetil::getAtivo() { return ativo; }
 
-void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
+void Projetil::salvar() {}
+void Projetil::mover() {
+  if (ativo) {
+    getSprite().move(5.0f, 0.0f);
+  }
+}
+
+void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
+  switch (outraEntidade->getID()) {
+    case (IDs::IDs::inimigo): {
+      if (ID == IDs::IDs::projetil_tripulante) {
+        getSprite().setPosition(-130.f, -130.f);
+        ativo = false;
+      }
+    } break;
+    case (IDs::IDs::tripulante): {
+      if (ID == IDs::IDs::projetil_inimigo) {
+        getSprite().setPosition(-130.f, -130.f);
+        ativo = false;
+      }
+    } break;
+  }
+}
+void Projetil::setAtivo(bool i, const Vector2f pos) {
+  cout << "herreeeeeee" << endl;
+  ativo = i;
+  setSprite("assets/projetilG.png", pos.x, pos.y);
+  setPosicao(pos.x, pos.y);
+  sprite.setPosition(pos.x, pos.y);
+}
 
 }  // namespace Entidades
