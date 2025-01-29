@@ -11,7 +11,7 @@ namespace Entidades::Personagens {
 
 Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante,
                  const IDs::IDs ID)
-    : Personagem(pos, tam, ID), tripulante(tripulante), relogio() {
+    : Personagem(pos, tam, ID), tripulante(tripulante), relogio(), dano(-1) {
   inicializar();
 
   // Inicializa a semente do gerador de numeros aleatorios

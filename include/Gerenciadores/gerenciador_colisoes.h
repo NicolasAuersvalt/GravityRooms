@@ -66,7 +66,7 @@ class Gerenciador_Colisoes {
 
   // // ===/===/===/===/ Outros  ===/===/===/===/
 
-  // void incluirTripulante(Tripulante &Tripulante) { pJog1 = &Tripulante; }
+  void incluirTripulante(Tripulante& Tripulante) { pJog1 = &Tripulante; }
   /*------------------------------------------------------------------------------------------------*/
   Gerenciador_Colisoes(Lista_Entidades* listaPersonagem,
                        Lista_Entidades* listaObstaculo);

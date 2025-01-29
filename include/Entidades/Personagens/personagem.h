@@ -19,7 +19,7 @@ class Personagem : public Entidade {
 
   Vector2f vel;
 
-  int pontosVida = 100;
+  int pontosVida;
   bool noChao;
 
   // ===/===/===/===/ Outros  ===/===/===/===/

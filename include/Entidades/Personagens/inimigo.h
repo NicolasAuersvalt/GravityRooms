@@ -22,14 +22,13 @@ class Inimigo : public Personagem {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  int dano = 10;
-
   // ===/===/===/===/ Outros  ===/===/===/===/
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   int nivel_maldade;
 
+  int dano;
   // ===/===/===/===/ Outros  ===/===/===/===/
   Tripulante* tripulante;
   Clock relogio;

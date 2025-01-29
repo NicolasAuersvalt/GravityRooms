@@ -12,7 +12,7 @@ namespace Entidades::Personagens {
 
 Personagem::Personagem(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
-    : Entidade(pos, tam, ID), noChao(false), vivo(true) {}
+    : Entidade(pos, tam, ID), noChao(false), vivo(true), pontosVida(10) {}
 
 Personagem::~Personagem() {}
 void Personagem::salvar() {}
@@ -36,15 +36,14 @@ void Personagem::recebeDano(int dano) {
   pontosVida -= dano;
 
   if (!verificarVivo()) {
+    cout << "bli" << endl;
     morrer();
   }
 }
 
 bool Personagem::verificarVivo() { return (pontosVida > 0); }
 
-void Personagem::morrer() {
-  vivo = true;  // TESTE
-}
+void Personagem::morrer() { vivo = false; }
 
 void Personagem::setPisando(bool pisa) { noChao = pisa; }
 

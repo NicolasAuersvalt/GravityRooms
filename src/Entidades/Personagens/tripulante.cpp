@@ -17,7 +17,8 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "TripulantePosition: " << pos.x << " " << pos.y << std::endl;
+  std::cout << "TripulantePosition: " << pos.x << " " << pos.y << "vivo "
+            << vivo << std::endl;
 }
 
 Tripulante::~Tripulante() {}
@@ -111,6 +112,11 @@ void Tripulante::atualizar() {
     atualizarPosicao();
   }
   relogio.restart();
+  if (pontosVida <= 0) {
+    cout << vivo << endl;
+    morrer();
+    cout << vivo << endl;
+  }
 }
 
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
@@ -134,33 +140,32 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
           myPos.y = platTop - mySize.y;
           getSprite().setPosition(myPos);
           setPosicao(myPos.x, myPos.y);
-          std::cout << "Landing on platform at y=" << myPos.y << std::endl;
         }
       }
     } break;
     case (IDs::IDs::espinho): {
-      std::cout << "\n=== Tripulante Collision Debug ===" << std::endl;
+      // std::cout << "\n=== Tripulante Collision Debug ===" << std::endl;
 
       Entidades::Obstaculos::Espinho* espinho =
           dynamic_cast<Entidades::Obstaculos::Espinho*>(outraEntidade);
-      std::cout << "CRIOU " << std::endl;
+
       recebeDano(espinho->getDano());
-      std::cout << "\n=== ANTES DO IF ===" << std::endl;
-      std::cout << vivo << std::endl;
+      // std::cout << "\n=== ANTES DO IF ===" << std::endl;
+      // std::cout << vivo << std::endl;
 
-      if (vivo) {
-        // Apply initial bounce velocity with reduced height
-        float bounceForce = 0.7f;  // Reduce bounce height to 70%
-        float gravity = GF.aplicarGravidade();
-        velFinal.y = -sqrt(2.0f * gravity * TAMANHO_PULO * bounceForce);
+      // if (vivo) {
+      //   // Apply initial bounce velocity with reduced height
+      //   float bounceForce = 0.7f;  // Reduce bounce height to 70%
+      //   float gravity = GF.aplicarGravidade();
+      //   velFinal.y = -sqrt(2.0f * gravity * TAMANHO_PULO * bounceForce);
 
-        // Ensure the player doesn't get stuck in continuous collision
+      //   // Ensure the player doesn't get stuck in continuous collision
 
-        noChao = false;  // Player is no longer on ground after bounce
-        std::cout << "\n=== DENTRO DO IF ===" << std::endl;
-        std::cout << "\nvel em y" << velFinal.y << std::endl;
-        std::cout << "\nvel em x" << velFinal.x << std::endl;
-      }
+      //   noChao = false;  // Player is no longer on ground after bounce
+      //   std::cout << "\n=== DENTRO DO IF ===" << std::endl;
+      //   std::cout << "\nvel em y" << velFinal.y << std::endl;
+      //   std::cout << "\nvel em x" << velFinal.x << std::endl;
+      // }
     } break;
 
       // default: {

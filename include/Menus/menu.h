@@ -57,6 +57,7 @@ class Menu : public Ente {
   bool getSelecionado();
   virtual void executar() = 0;
   void desenhar(Gerenciador_Grafico* GG);
+  void setSelecionado(bool status);
 };
 
 }  // namespace Menus
