@@ -5,31 +5,31 @@
 
 namespace Entidades::Obstaculos {
 
-class Espinho : public Obstaculo {
- private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-  float largura;
+	class Espinho : public Obstaculo {
+		private:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+			float largura;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
- protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		protected:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-  using Ente::setSprite;
-  Espinho(const sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID);
-  ~Espinho();
-  void executar() override;
-  void mover() override;
-  void salvar() override;
-  // ===/===/===/===/ Outros  ===/===/===/===/
-  void colisao(Entidade* outraEntidade,
-               sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
-  int getDano();
-};
+		public:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+			using Ente::setSprite;
+			Espinho(const sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID);
+			~Espinho();
+			void executar() override;
+			void mover() override;
+			void salvar() override;
+			// ===/===/===/===/ Outros  ===/===/===/===/
+			void colisao(Entidade* outraEntidade,
+					sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+			int getDano();
+	};
 
 }  // namespace Entidades::Obstaculos
 

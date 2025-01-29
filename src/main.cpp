@@ -5,18 +5,18 @@
 
 int main(){
 
-    char buf[1024];
-    getcwd(buf, sizeof(buf));
-    std::cout << "Diretório atual: " << buf << std::endl;
+	char buf[1024];
+	getcwd(buf, sizeof(buf));
+	std::cout << "Diretório atual: " << buf << std::endl;
 
-    // ===/===/===/===/ Obrigatório ===/===/===/===/
+	// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-    //Jogo GravityRooms;
+	//Jogo GravityRooms;
 
-    // ===/===/===/===/ Outros ===/===/===/===/
-    Gravity_Rooms gravityrooms;
+	// ===/===/===/===/ Outros ===/===/===/===/
+	Gravity_Rooms gravityrooms;
 
-    // Gerenciador_Grafico graficos;
+	// Gerenciador_Grafico graficos;
 
-    return 0;
+	return 0;
 }

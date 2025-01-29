@@ -18,65 +18,65 @@ class Ente;
 
 namespace Gerenciadores {
 
-    class Gerenciador_Grafico {
-    private:
-    
-        static Gerenciador_Grafico* grafico;  // Instância única
+	class Gerenciador_Grafico {
+		private:
 
-        string nomeJanela = "GravityRooms"; // Nome da janela
-        RenderWindow window;  // Janela de renderização
-        const int fps = 60;  // Limite de frames por segundo
+			static Gerenciador_Grafico* grafico;  // Instância única
 
-        const int largura = 1280;
-        const int altura = 920;
+			string nomeJanela = "GravityRooms"; // Nome da janela
+			RenderWindow window;  // Janela de renderização
+			const int fps = 60;  // Limite de frames por segundo
 
-        // Adicionar o mutex para proteger acesso a recursos compartilhados entre as threads, se necessário
-        mutex mtx;
+			const int largura = 1280;
+			const int altura = 920;
 
-        // Impedir cópia SINGLETON
-        Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
-        Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
+			// Adicionar o mutex para proteger acesso a recursos compartilhados entre as threads, se necessário
+			mutex mtx;
 
-    public:
+			// Impedir cópia SINGLETON
+			Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
+			Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
 
-        // Construtor 
-        Gerenciador_Grafico();
+		public:
 
-        // Destrutor
-        ~Gerenciador_Grafico();
+			// Construtor 
+			Gerenciador_Grafico();
 
-        // Método para obter a instância única
-        static Gerenciador_Grafico* getInstancia();
+			// Destrutor
+			~Gerenciador_Grafico();
 
-        void desenharTexto(const Drawable& Texto);
+			// Método para obter a instância única
+			static Gerenciador_Grafico* getInstancia();
 
-        // Desenhar um ente OBRIGATÓRIO
-        void desenharEnte(Ente* pE);
+			void desenharTexto(const Drawable& Texto);
 
-        void desenhar(Sprite& sprite);
+			// Desenhar um ente OBRIGATÓRIO
+			void desenharEnte(Ente* pE);
 
-        bool processarEvento(Event& event);
+			void desenhar(Sprite& sprite);
 
-        // Verificar se a janela está aberta
-        const bool estaAberta();
+			bool processarEvento(Event& event);
 
-        // Inicializador de janela
-        void inicializador();
+			// Verificar se a janela está aberta
+			const bool estaAberta();
 
-        void fechar();
+			// Inicializador de janela
+			void inicializador();
 
-        void limpar();
+			void fechar();
 
-        void exibir();
+			void limpar();
 
-        void atualizar();
+			void exibir();
 
-        void executar();
+			void atualizar();
 
-        // Remover depois
-        RenderWindow& getJanela();
+			void executar();
 
-    };
+			// Remover depois
+			RenderWindow& getJanela();
+
+	};
 
 }
 

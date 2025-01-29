@@ -13,49 +13,50 @@ using namespace sf;
 using namespace std;
 
 using Gerenciadores::Gerenciador_Eventos;
+using Gerenciadores::Gerenciador_Fisica;
 
 namespace Entidades::Personagens {
 
-class Tripulante : public Personagem {
- private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-  int pontos;
-  bool noChao;
-  Gerenciador_Eventos* GE;
-  Fisica GF;
-  // ===/===/===/===/ Outros  ===/===/===/===/
+	class Tripulante : public Personagem {
+		private:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
+			int pontos;
+			bool noChao;
+			Gerenciador_Eventos* GE;
+			Gerenciador_Fisica GF;
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
- protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		protected:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		public:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
-  ~Tripulante();
+			Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
+			~Tripulante();
 
-  void carregarDataBuffer(const nlohmann::ordered_json& json);
+			void carregarDataBuffer(const nlohmann::ordered_json& json);
 
-  // virtual void executar() override;
-  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
-  virtual void mover() override;
+			// virtual void executar() override;
+			virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+			virtual void mover() override;
 
-  int getPontos();
-  void setPontos(int ponto);
+			int getPontos();
+			void setPontos(int ponto);
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-  void setChao(bool chao);
-  void setGerenciadorEvento(Gerenciador_Eventos* GE);
+			void setChao(bool chao);
+			void setGerenciadorEvento(Gerenciador_Eventos* GE);
 
-  bool getChao();
-  void atualizar();
-  void podePular();
-  void colisao(Entidade* outraEntidade,
-               sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
-};
+			bool getChao();
+			void atualizar();
+			void podePular();
+			void colisao(Entidade* outraEntidade,
+					sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+	};
 
 }  // namespace Entidades::Personagens
 

@@ -9,46 +9,46 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante,
-                   const IDs::IDs ID)
-    : Inimigo(pos, Vector2f(100.0f, 80.0f), tripulante, ID) {
-  this->pontosVida = 1;
-  this->dano = 1;
+	Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante,
+			const IDs::IDs ID)
+		: Inimigo(pos, Vector2f(100.0f, 80.0f), tripulante, ID) {
+			this->pontosVida = 1;
+			this->dano = 1;
 
-  std::cout << "Creating Ciborgue at position: " << pos.x << "," << pos.y
-            << std::endl;
-  nivel_maldade = 1;
-  setSprite("assets/ciborgueG.png", pos.x, pos.y);
-  setPosicao(pos.x, pos.y);
-  vivo = true;
-  sprite.setPosition(pos.x, pos.y);
-  std::cout << "ciborgueG Position: " << pos.x << " " << pos.y << std::endl;
-  // Debug output
-  std::cout << "Ciborgue sprite position: " << sprite.getPosition().x << ","
-            << sprite.getPosition().y << std::endl;
-  std::cout << "Ciborgue corpo position: " << corpo.getPosition().x << ","
-            << corpo.getPosition().y << std::endl;
-}
+			std::cout << "Creating Ciborgue at position: " << pos.x << "," << pos.y
+				<< std::endl;
+			nivel_maldade = 1;
+			setSprite("assets/ciborgueG.png", pos.x, pos.y);
+			setPosicao(pos.x, pos.y);
+			vivo = true;
+			sprite.setPosition(pos.x, pos.y);
+			std::cout << "ciborgueG Position: " << pos.x << " " << pos.y << std::endl;
+			// Debug output
+			std::cout << "Ciborgue sprite position: " << sprite.getPosition().x << ","
+				<< sprite.getPosition().y << std::endl;
+			std::cout << "Ciborgue corpo position: " << corpo.getPosition().x << ","
+				<< corpo.getPosition().y << std::endl;
+		}
 
-Ciborgue::~Ciborgue() {}
-void Ciborgue::executar() {
-  if (vivo) {
-    std::cout << "Ciborgue executing at: " << corpo.getPosition().x << ","
-              << corpo.getPosition().y << std::endl;
-    mover();
-    desenhar();
-  }
-}
+	Ciborgue::~Ciborgue() {}
+	void Ciborgue::executar() {
+		if (vivo) {
+			std::cout << "Ciborgue executing at: " << corpo.getPosition().x << ","
+				<< corpo.getPosition().y << std::endl;
+			mover();
+			desenhar();
+		}
+	}
 
-void Ciborgue::danificar(Tripulante* p) {}
+	void Ciborgue::danificar(Tripulante* p) {}
 
-void Entidades::Personagens::Ciborgue::mover() {
-  if (vivo) {
-    Inimigo::mover();
-  }
-}
-void Ciborgue::salvarDataBuffer(nlohmann::ordered_json& json) {}
+	void Entidades::Personagens::Ciborgue::mover() {
+		if (vivo) {
+			Inimigo::mover();
+		}
+	}
+	void Ciborgue::salvarDataBuffer(nlohmann::ordered_json& json) {}
 
-// void Ciborgue::colidir(Entidade* outro, string direction) {}
+	// void Ciborgue::colidir(Entidade* outro, string direction) {}
 
 }  // namespace Entidades::Personagens

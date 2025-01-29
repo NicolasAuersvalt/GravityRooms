@@ -7,35 +7,35 @@ class Fase;
 
 namespace Fases {
 
-class Nave : public Fase {
- private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+	class Nave : public Fase {
+		private:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  const int maxInimMedios = 2;
+			const int maxInimMedios = 2;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
- protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		protected:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		public:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Nave(const IDs::IDs ID);
-  ~Nave();
+			Nave(const IDs::IDs ID);
+			~Nave();
 
-  void criarInimMedios();
-  void criarObstMedios();
+			void criarInimMedios();
+			void criarObstMedios();
 
-  void criarFundo() override;
-  void criarMapa() override;
+			void criarFundo() override;
+			void criarMapa() override;
 
-  void desenhar() override;
+			void desenhar() override;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-};
+			// ===/===/===/===/ Outros  ===/===/===/===/
+	};
 }  // namespace Fases
 
 #endif

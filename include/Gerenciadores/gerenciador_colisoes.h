@@ -30,56 +30,56 @@ class Obstaculo;
 
 namespace Gerenciadores {
 
-class Gerenciador_Colisoes {
- private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+	class Gerenciador_Colisoes {
+		private:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  vector<Inimigo*> LIs;
-  list<Obstaculo*> LOs;
-  set<Projetil*> LPs;
-  Lista_Entidades* listaPersonagem;
-  Lista_Entidades* listaObstaculo;
-  // ===/===/===/===/ Outros ===/===/===/===/
+			vector<Inimigo*> LIs;
+			list<Obstaculo*> LOs;
+			set<Projetil*> LPs;
+			Lista_Entidades* listaPersonagem;
+			Lista_Entidades* listaObstaculo;
+			// ===/===/===/===/ Outros ===/===/===/===/
 
- public:
-  // ===/===/===/===/ Obrigatórios ===/===/===/===/
+		public:
+			// ===/===/===/===/ Obrigatórios ===/===/===/===/
 
-  Tripulante* pJog1;
-  // // Construtor (FALTA)
-  // Gerenciador_Colisoes();
+			Tripulante* pJog1;
+			// // Construtor (FALTA)
+			// Gerenciador_Colisoes();
 
-  // // Destrutor (FALTA)
-  // ~Gerenciador_Colisoes();
-  void setLista_Entidades(Lista_Entidades* listaPersonagem,
-                          Lista_Entidades* listaObstaculo) {
-    this->listaPersonagem = listaPersonagem;
-    this->listaObstaculo = listaObstaculo;
-  }
-  // const bool verificarColisao(Entidade *pe1, Entidade *pe2);
-  // void tratarColisoesJogsObstacs();
-  // void tratarColisoesJogsInimgs();
-  // void ColisoesJogsProjeteis();
-  // void incluirInimigo(Inimigo *pi);
-  // void incluirObstaculo(Obstaculo *po);
-  // void incluirProjetil(Projetil *pj);
-  // void executar();
+			// // Destrutor (FALTA)
+			// ~Gerenciador_Colisoes();
+			void setLista_Entidades(Lista_Entidades* listaPersonagem,
+					Lista_Entidades* listaObstaculo) {
+				this->listaPersonagem = listaPersonagem;
+				this->listaObstaculo = listaObstaculo;
+			}
+			// const bool verificarColisao(Entidade *pe1, Entidade *pe2);
+			// void tratarColisoesJogsObstacs();
+			// void tratarColisoesJogsInimgs();
+			// void ColisoesJogsProjeteis();
+			// void incluirInimigo(Inimigo *pi);
+			// void incluirObstaculo(Obstaculo *po);
+			// void incluirProjetil(Projetil *pj);
+			// void executar();
 
-  // // ===/===/===/===/ Outros  ===/===/===/===/
+			// // ===/===/===/===/ Outros  ===/===/===/===/
 
-  void incluirTripulante(Tripulante& Tripulante) { pJog1 = &Tripulante; }
-  /*------------------------------------------------------------------------------------------------*/
-  Gerenciador_Colisoes(Lista_Entidades* listaPersonagem,
-                       Lista_Entidades* listaObstaculo);
-  ~Gerenciador_Colisoes();
-  const sf::Vector2f calculaColisao(Entidades::Entidade* ent1,
-                                    Entidades::Entidade* ent2);
-  void executar(Lista_Entidades* listaPer, Lista_Entidades* listaObs);
+			void incluirTripulante(Tripulante& Tripulante) { pJog1 = &Tripulante; }
+			/*------------------------------------------------------------------------------------------------*/
+			Gerenciador_Colisoes(Lista_Entidades* listaPersonagem,
+					Lista_Entidades* listaObstaculo);
+			~Gerenciador_Colisoes();
+			const sf::Vector2f calculaColisao(Entidades::Entidade* ent1,
+					Entidades::Entidade* ent2);
+			void executar(Lista_Entidades* listaPer, Lista_Entidades* listaObs);
 
- protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		protected:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // ===/===/===/===/ Outros ===/===/===/===/
-};
+			// ===/===/===/===/ Outros ===/===/===/===/
+	};
 
 }  // namespace Gerenciadores
 

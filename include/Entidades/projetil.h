@@ -9,53 +9,53 @@ using namespace std;
 using namespace Entidades;
 
 namespace Entidades{
-    class Personagem;
+	class Personagem;
 
-    class Projetil : public Entidade{
+	class Projetil : public Entidade{
 
-        private:
+		private:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-            static int danoProjetil;
-            bool ativo;
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
-            bool colidiu;
-            Entidade* atirador;
-            int dano;
+			static int danoProjetil;
+			bool ativo;
 
-        protected:
+			// ===/===/===/===/ Outros  ===/===/===/===/
+			bool colidiu;
+			Entidade* atirador;
+			int dano;
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
-            
-                    
+		protected:
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
 
-        public:
 
-            // ===/===/===/===/ Obrigatório ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-            Projetil();
-            virtual ~Projetil();
 
-            // Métodos Virtuais
-           // void executar() override;
+		public:
 
-            // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-            //virtual void executar() override;
-            //virtual void mover() override; 
-            
-            void atualizar();
-            void setAtirador(Entidade* a); 
-            void colisao(Entidade* e);
-            bool getColidir(Entidade* e);
-            void danificar(Personagem* p);
-            int getDano();
-    };
+			Projetil();
+			virtual ~Projetil();
+
+			// Métodos Virtuais
+			// void executar() override;
+
+			// ===/===/===/===/ Outros  ===/===/===/===/
+
+			//virtual void executar() override;
+			//virtual void mover() override; 
+
+			void atualizar();
+			void setAtirador(Entidade* a); 
+			void colisao(Entidade* e);
+			bool getColidir(Entidade* e);
+			void danificar(Personagem* p);
+			int getDano();
+	};
 
 }
 

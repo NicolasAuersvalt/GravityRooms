@@ -9,34 +9,34 @@ using Entidades::Personagens::Personagem;
 
 namespace Entidades::Obstaculos {
 
-class Obstaculo : public Entidade {
- protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+	class Obstaculo : public Entidade {
+		protected:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  bool danoso;
-  bool colidindo;
-  int dano;
+			bool danoso;
+			bool colidindo;
+			int dano;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		public:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
-  ~Obstaculo();
-  void salvar();
+			Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
+			~Obstaculo();
+			void salvar();
 
-  virtual void executar() = 0;
-  virtual void salvarDataBuffer() {}
+			virtual void executar() = 0;
+			virtual void salvarDataBuffer() {}
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
-  bool getColidindo();
-  void setColidindo(bool colide);
-  virtual void colisao(Entidade* outraEntidade, sf::Vector2f ds) = 0;
-  virtual void colisaoObstaculo(Vector2f ds, Personagem* pPersonagem);
-  virtual int getDano() = 0;
-};
+			bool getColidindo();
+			void setColidindo(bool colide);
+			virtual void colisao(Entidade* outraEntidade, sf::Vector2f ds) = 0;
+			virtual void colisaoObstaculo(Vector2f ds, Personagem* pPersonagem);
+			virtual int getDano() = 0;
+	};
 
 }  // namespace Entidades::Obstaculos
 

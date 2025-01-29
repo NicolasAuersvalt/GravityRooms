@@ -8,35 +8,35 @@ using namespace std;
 using namespace Fases;
 namespace Fases {
 
-class Laboratorio : public Fase {
- private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+	class Laboratorio : public Fase {
+		private:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-  sf::Sprite backgroundSprite;
-  sf::Texture bgTexture;
+			// ===/===/===/===/ Outros  ===/===/===/===/
+			sf::Sprite backgroundSprite;
+			sf::Texture bgTexture;
 
- protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		protected:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+			// ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+		public:
+			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  const int maxChefoes = 1;
+			const int maxChefoes = 1;
 
-  Laboratorio(const IDs::IDs ID);
-  ~Laboratorio();
+			Laboratorio(const IDs::IDs ID);
+			~Laboratorio();
 
-  void criarProjeteis();
+			void criarProjeteis();
 
-  void criarFundo() override;
-  void desenhar() override;
-  void criarMapa() override;
+			void criarFundo() override;
+			void desenhar() override;
+			void criarMapa() override;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-};
+			// ===/===/===/===/ Outros  ===/===/===/===/
+	};
 }  // namespace Fases
 
 #endif

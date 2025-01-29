@@ -10,35 +10,35 @@ using namespace sf;
 class Jogo;
 
 class MenuPause : public Menu {
- private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+private:
+// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Jogo* pJog;
-  RectangleShape fundoPainel;
+Jogo* pJog;
+RectangleShape fundoPainel;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
+// ===/===/===/===/ Outros  ===/===/===/===/
 
- protected:
-  Fase::Fase* fase;
-     RectangleShape fundoEscuro;
-     float posBotaoY;
+protected:
+Fase::Fase* fase;
+RectangleShape fundoEscuro;
+float posBotaoY;
 
-  void atualizarBotoes();
+void atualizarBotoes();
 
- public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+public:
+// ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  MenuPausa(Fase::Fase* fase = nullptr);
-  MenuPausa(const IDs::IDs ID, const string nome, Fase::Fase* fase = nullptr); // dois construtores
-  ~Menu();
+MenuPausa(Fase::Fase* fase = nullptr);
+MenuPausa(const IDs::IDs ID, const string nome, Fase::Fase* fase = nullptr); // dois construtores
+~Menu();
 
-  // void executar() override;
+// void executar() override;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-  virtual void criarBotoes();
-     void setFase(Fase::Fase* fase);
-     Fase::Fase* getFase();
-     virtual void executar();
+// ===/===/===/===/ Outros  ===/===/===/===/
+virtual void criarBotoes();
+void setFase(Fase::Fase* fase);
+Fase::Fase* getFase();
+virtual void executar();
 };
 
 #endif
