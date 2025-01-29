@@ -12,8 +12,10 @@ Espinho::Espinho(const sf::Vector2f pos, const sf::Vector2f tam,
                  const IDs::IDs ID)
     : Obstaculo(pos, tam, ID) {
   this->dano = 2;
+  // setSprite("assets/espinhoP.png", pos.x, pos.y);
   setSprite("assets/espinhoG.png", pos.x, pos.y);
-  setTamanho(sf::Vector2f(90.0f, 90.0f));
+
+  setTamanho(sf::Vector2f(50.0f, 50.0f));
   setPosicao(pos.x, pos.y);
 
   sprite.setPosition(pos.x, pos.y);
