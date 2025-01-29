@@ -14,7 +14,7 @@
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_grafico.h"
 #include "Listas/lista_entidades.h"
-#include "Menus/MenuPrincipal.h"
+#include "Menus/menuPrincipal.h"
 #include "ente.h"
 
 using namespace std;
@@ -33,6 +33,7 @@ using Listas::Lista_Entidades;
 using Menus::MenuPrincipal;
 
 class Gravity_Rooms {
+  
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 

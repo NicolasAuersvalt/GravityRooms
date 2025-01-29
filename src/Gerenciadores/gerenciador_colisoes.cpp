@@ -1,6 +1,7 @@
 #include "Gerenciadores/gerenciador_colisoes.h"
 
 namespace Gerenciadores {
+
 // Construtor
 Gerenciador_Colisoes::Gerenciador_Colisoes(
     Listas::Lista_Entidades* listaPersonagem,
@@ -14,15 +15,18 @@ Gerenciador_Colisoes::Gerenciador_Colisoes(
   LIs.clear();
   LOs.clear();
   LPs.clear();
+
 }
 
 // Destrutor
 Gerenciador_Colisoes::~Gerenciador_Colisoes() {
+  
   // Limpar listas e recursos, se necessário
   LIs.clear();
   LOs.clear();
   LPs.clear();
   pJog1 = nullptr;
+  
 }
 
 // const bool Gerenciador_Colisoes::verificarColisao(Entidade *pe1,
@@ -60,6 +64,7 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes() {
 //     }
 //   }
 // }
+
 // void Gerenciador_Colisoes::incluirInimigo(Inimigo *pi) {
 //   // Adiciona o inimigo à lista de inimigos
 //   LIs.push_back(pi);
@@ -71,11 +76,14 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes() {
 // }
 
 // void Gerenciador_Colisoes::incluirProjetil(Projetil *pj) {
+
 //   // Adiciona o projetil ao conjunto de projetis
 //   LPs.insert(pj);
+
 // }
 
 // void Gerenciador_Colisoes::executar() {
+
 //   tratarColisoesJogsObstacs();
 
 //   // // Verificar colisões entre o Tripulante e os Inimigos
@@ -83,6 +91,7 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes() {
 
 //   // // Verificar colisões entre o Tripulante e os Projetis
 //   ColisoesJogsProjeteis();
+
 // }
 /*---------------------------------------------------------------------------------------------------*/
 const sf::Vector2f Gerenciador_Colisoes::calculaColisao(

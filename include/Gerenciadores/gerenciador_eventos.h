@@ -8,7 +8,7 @@
 #include <string>
 
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Menus/MenuPrincipal.h"
+#include "Menus/menuPrincipal.h"
 
 using namespace std;
 using namespace sf;
