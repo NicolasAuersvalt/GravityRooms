@@ -34,7 +34,8 @@ class Obstaculo : public Entidade {
   bool getColidindo();
   void setColidindo(bool colide);
   virtual void colisao(Entidade* outraEntidade, sf::Vector2f ds) = 0;
-  virtual void colisaoObstaculo(Vector2f ds, Personagem* pPersonagem);
+  virtual void colisaoObstaculo(
+      Vector2f ds, Entidades::Personagens::Personagem* pPersonagem);
   virtual int getDano() = 0;
 };
 

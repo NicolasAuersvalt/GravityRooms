@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "Entidades/entidade.h"
+#include "Entidades/projetil.h"
 #include "json.hpp"
 
 using namespace sf;
@@ -21,10 +22,9 @@ class Personagem : public Entidade {
 
   int pontosVida;
   bool noChao;
-  
 
   // ===/===/===/===/ Outros  ===/===/===/===/
-  
+
   bool vivo;
   bool podeAndar;
   bool paraEsquerda;
@@ -62,6 +62,7 @@ class Personagem : public Entidade {
                        sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f)) = 0;
   void setVelFinal(const sf::Vector2f velFinal);
   const sf::Vector2f getVelFinal() const;
+  // void setProjetil(int life);
 };
 
 }  // namespace Entidades::Personagens

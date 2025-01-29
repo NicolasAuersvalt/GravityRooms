@@ -1,6 +1,8 @@
 #ifndef CLONE_H
 #define CLONE_H
 
+#include <time.h>
+
 #include <SFML/Graphics.hpp>
 
 #include "Entidades/Personagens/inimigo.h"
