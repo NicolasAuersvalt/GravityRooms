@@ -145,8 +145,9 @@ void Gravity_Rooms::executar() {
         menuGeral.setSelecionado(false);
       }
       primeiraVez = false;
-      if (ligarMenu()) {
-        break;
+      while (GG.estaAberta()) {
+        primeiraVez = ligarMenu();
+        if (primeiraVez) break;
       }
     }
   }
@@ -200,7 +201,6 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
         atualPersonagens->pInfo);  // Add entity to listaPersonagem
     atualPersonagens = atualPersonagens->getProximo();
   }
-  cout << "todaa " << endl;
 }
 
 // ===/===/===/===/ Outros  ===/===/===/===/

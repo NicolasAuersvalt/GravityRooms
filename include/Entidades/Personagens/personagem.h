@@ -21,9 +21,10 @@ class Personagem : public Entidade {
 
   int pontosVida;
   bool noChao;
+  
 
   // ===/===/===/===/ Outros  ===/===/===/===/
-
+  
   bool vivo;
   bool podeAndar;
   bool paraEsquerda;
