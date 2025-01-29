@@ -116,11 +116,9 @@ void Gravity_Rooms::executar() {
           }
         }
       }
-
+      cout << "bli\n";
       GG.limpar();  // Limpa a tela antes de desenhar qualquer coisa
-
       listaObstaculo.desenharTodos();
-
       listaPersonagem.desenharTodos();
       // Desenha os outros sprites da lista
       GC.setLista_Entidades(&listaPersonagem, &listaObstaculo);
@@ -134,6 +132,10 @@ void Gravity_Rooms::executar() {
       listaPersonagem.atualizarTodas();
       listaObstaculo.atualizarTodas();
     } else {
+      if (fase != nullptr) {
+        delete fase;
+        fase = nullptr;
+      }
       if (&listaPersonagem != nullptr) {
         listaPersonagem.limparLista();  // Use limparLista() instead of limpar()
         GC.pJog1 = nullptr;             // Reset player pointer
@@ -141,10 +143,6 @@ void Gravity_Rooms::executar() {
       if (&listaObstaculo != nullptr) listaObstaculo.limparLista();
       if (menuGeral.getSelecionado()) {
         menuGeral.setSelecionado(false);
-      }
-      if (fase != nullptr) {
-        delete fase;
-        fase = nullptr;
       }
       primeiraVez = false;
       if (ligarMenu()) {
@@ -202,6 +200,7 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
         atualPersonagens->pInfo);  // Add entity to listaPersonagem
     atualPersonagens = atualPersonagens->getProximo();
   }
+  cout << "todaa " << endl;
 }
 
 // ===/===/===/===/ Outros  ===/===/===/===/
