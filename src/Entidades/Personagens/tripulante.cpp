@@ -12,12 +12,14 @@ namespace Entidades::Personagens {
 
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
-    : Personagem(pos, tam, ID), pontos(0), noChao(false), GF(pos) {
+    : Personagem(pos, tam, ID), pontos(0), GF(pos) {
   setSprite("assets/tripulanteG.png", pos.x, pos.y);
   // setSprite("assets/tripulanteP.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(150.0f, 150.0f));
   setPosicao(pos.x, pos.y);
   vivo = true;
+  tempoSemColisao = 0.0f;
+  noChao = false;
   sprite.setPosition(pos.x, pos.y);
   std::cout << "TripulantePosition: " << pos.x << " " << pos.y << "vivo "
             << vivo << std::endl;
@@ -39,10 +41,12 @@ void Tripulante::setGerenciadorEvento(Gerenciador_Eventos* GE) {
 }
 
 void Tripulante::mover() {
-  tempoSemColisao += 0.016f;  // Assuming 60fps
-  if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
-    noChao = false;  // No recent collision, we're in air
-  }
+  // tempoSemColisao += 0.016f;  // Assuming 60fps
+  // if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
+  //   noChao = false;  // No recent collision, we're in air
+  // }
+
+  cair();
   // Movimentação (sem física, apenas mover pela tela)
   string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
   if (tecla == "Left Arrow") {
@@ -145,11 +149,11 @@ void Tripulante::atirar() {
 }
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
   bool onPlatform = false;
-  tempoSemColisao = 0.0f;
   switch (outraEntidade->getID()) {
     // case (IDs::IDs::inimigo): {
     // } break;
     case IDs::IDs::plataforma: {
+      tempoSemColisao = 0.0f;
       Vector2f myPos = getSprite().getPosition();
       Vector2f platPos = outraEntidade->getSprite().getPosition();
       Vector2f mySize = getTamanho();

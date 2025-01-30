@@ -17,7 +17,7 @@ Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante,
       GF(pos),
       dano(-1) {
   inicializar();
-
+  tempoSemColisao = 0.0f;
   // Inicializa a semente do gerador de numeros aleatorios
   srand(time(NULL));
   // Gera uma direcao aleatoria inicial (0-3) para o movimento
@@ -40,6 +40,7 @@ void Inimigo::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
     // case (IDs::IDs::inimigo): {
     // } break;
     case IDs::IDs::plataforma: {
+      tempoSemColisao = 0.0f;
       Vector2f myPos = getSprite().getPosition();
       Vector2f platPos = outraEntidade->getSprite().getPosition();
       Vector2f mySize = getTamanho();
@@ -66,6 +67,7 @@ void Inimigo::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
 
     } break;
     default: {
+      tempoSemColisao = 0.0f;
       onPlatform = false;
     } break;
   }
@@ -76,6 +78,7 @@ void Inimigo::mover() {
   Vector2f posJogador = tripulante->getSprite().getPosition();
   Vector2f posInimigo = getSprite().getPosition();
 
+  cair();
   if (verificarVivo()) {
     if (!noChao) {
       float dt = 0.016f;
@@ -93,6 +96,7 @@ void Inimigo::mover() {
     cout << "esta morto" << endl;
     morrer();
   }
+  getSprite().move(velFinal.x, velFinal.y);
   // std::cout << "=== Enemy Movement Debug ===" << std::endl;
   // std::cout << "Player pos: " << posJogador.x << "," << posJogador.y
   //           << std::endl;

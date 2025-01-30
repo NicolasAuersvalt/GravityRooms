@@ -67,7 +67,7 @@ string Gerenciador_Eventos::isTeclaPressionada(const Keyboard::Key tecla) {
   if (Keyboard::isKeyPressed(tecla)) {
     // Chama processarTecla quando a tecla está pressionada
     string teclaPressionada = processarTecla(tecla);
-    cout << "Tecla pressionada: " << teclaPressionada << endl;
+
     return teclaPressionada;  // Retorna o nome da tecla processada
   }
   return "";  // Retorna string vazia caso a tecla não esteja pressionada

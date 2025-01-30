@@ -68,4 +68,11 @@ void Personagem::setVelFinal(const sf::Vector2f velFinal) {
   this->velFinal = velFinal;
 }
 const sf::Vector2f Personagem::getVelFinal() const { return velFinal; }
+void Personagem::cair() {
+  tempoSemColisao += 0.016f;  // Assuming 60fps
+  if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
+    noChao = false;  // No recent collision, we're in air
+  }
+}
+
 }  // namespace Entidades::Personagens
