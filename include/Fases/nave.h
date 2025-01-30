@@ -3,11 +3,15 @@
 
 #include "Fases/fase.h"
 
-class Fase;
+using namespace std;
+using namespace sf;
+
+//class Fase;
 
 namespace Fases {
 
 	class Nave : public Fase {
+
 		private:
 			// ===/===/===/===/ Obrigatório ===/===/===/===/
 

@@ -8,6 +8,8 @@
 #include "IDs/IDs.h"
 
 using namespace std;
+using namespace sf;
+
 using Gerenciadores::Gerenciador_Grafico;
 
 class Gerenciador_Grafico;
@@ -27,8 +29,8 @@ class Ente {
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   // Figura *pFig;
-  sf::Texture* texture;  // Substituido
-  sf::Sprite sprite;
+  Texture* texture;  // Substituido
+  Sprite sprite;
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
@@ -43,15 +45,15 @@ class Ente {
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
-  void setSprite(std::string local, int posX, int posY);
-  sf::Texture*
-  getTexture();  // retorna o endereço da textura do protected sf::Texture *pFig
-  sf::Sprite&
-  getSprite();  // retorna o endereço da textura do protected sf::Texture *pFig
+  void setSprite(string local, int posX, int posY);
+  Texture*
+  getTexture();  // retorna o endereço da textura do protected Texture *pFig
+  Sprite&
+  getSprite();  // retorna o endereço da textura do protected Texture *pFig
 
   static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
 
-  sf::FloatRect getHitBox() const { return sprite.getGlobalBounds(); }
+  FloatRect getHitBox() const { return sprite.getGlobalBounds(); }
   const IDs::IDs getID() const;
 };
 

@@ -1,8 +1,5 @@
 #include "ente.h"
 
-#include <iostream>
-
-#include "IDs/IDs.h"
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 Gerenciadores::Gerenciador_Grafico* Ente::pGG = nullptr;

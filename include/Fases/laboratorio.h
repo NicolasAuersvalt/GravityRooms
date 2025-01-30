@@ -4,8 +4,8 @@
 #include "Fases/fase.h"
 
 using namespace std;
+using namespace sf;
 
-using namespace Fases;
 namespace Fases {
 
 	class Laboratorio : public Fase {
@@ -13,8 +13,8 @@ namespace Fases {
 			// ===/===/===/===/ Obrigatório ===/===/===/===/
 
 			// ===/===/===/===/ Outros  ===/===/===/===/
-			sf::Sprite backgroundSprite;
-			sf::Texture bgTexture;
+			Sprite backgroundSprite;
+			Texture bgTexture;
 
 		protected:
 			// ===/===/===/===/ Obrigatório ===/===/===/===/

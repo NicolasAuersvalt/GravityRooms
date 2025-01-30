@@ -26,13 +26,18 @@ class Gravity_Rooms;
 // using Menus::Botao::BotaoTexto;
 
 namespace Menus {
+
 	class Menu : public Ente {
+
 		protected:
-			std::list<Menus::Botoes::BotaoTexto*> listaBotaoTexto;
-			std::list<Menus::Botoes::BotaoTexto*>::iterator it;
-			const sf::Vector2f tamBotao;
-			const sf::Vector2f tamJanela;
-			sf::Vector2f posFundo;
+			list<Menus::Botoes::BotaoTexto*> listaBotaoTexto;
+			list<Menus::Botoes::BotaoTexto*>::iterator it;
+
+			const Vector2f tamBotao;
+			const Vector2f tamJanela;
+
+			Vector2f posFundo;
+
 			Menus::Botoes::Texto titulo;
 			bool botaoSelecionado;
 
@@ -42,22 +47,24 @@ namespace Menus {
 			void inicializarIterator();
 
 		public:
-			Menu(const IDs::IDs ID, const sf::Vector2f tamBotao, const std::string nome,
+
+			Menu(const IDs::IDs ID, const Vector2f tamBotao, const string nome,
 					const unsigned int tamFonte);
 			~Menu();
-			void addBotao(const std::string info, const sf::Vector2f pos,
-					const IDs::IDs ID, const sf::Color corSelecionado);
+			void addBotao(const string info, const Vector2f pos,
+					const IDs::IDs ID, const Color corSelecionado);
 			void mudarEstadoObservador();
 			void selecionaCima();
 			void selecionaBaixo();
 			virtual void selecionaEsquerda() {}
 			virtual void selecionaDireita() {}
 			const IDs::IDs getIDBotaoSelecionado() const;
-			void eventoTeclado(const sf::Keyboard::Key tecla);
+			void eventoTeclado(const Keyboard::Key tecla);
 			bool getSelecionado();
 			virtual void executar() = 0;
 			void desenhar(Gerenciador_Grafico* GG);
 			void setSelecionado(bool status);
+			
 	};
 
 }  // namespace Menus

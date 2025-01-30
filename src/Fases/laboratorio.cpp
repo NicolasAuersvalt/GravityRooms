@@ -6,8 +6,7 @@
 
 #include "Fases/fase.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-using namespace sf;
-using namespace std;
+
 
 namespace Fases {
 
@@ -45,16 +44,24 @@ namespace Fases {
 		std::ifstream arquivo;
 		string linha;
 		arquivo.open("assets/mapa.txt");
+
 		if (!arquivo.is_open()) {
+
 			cout << "Erro ao abrir o arquivo" << endl;
 			exit(1);
+
 		}
 		int j = 0;
+
 		while (getline(arquivo, linha)) {
+
 			for (int i = 0; i < linha.size(); i++) {
+
 				if (linha[i] != ' ') {
+
 					criarEntidades(linha[i],
 							Vector2(static_cast<float>(i), static_cast<float>(j)));
+
 				}
 			}
 			j++;

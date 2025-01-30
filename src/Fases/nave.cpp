@@ -4,8 +4,7 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
-using namespace Fases;
+
 
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 namespace Fases {

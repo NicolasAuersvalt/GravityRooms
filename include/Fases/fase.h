@@ -7,7 +7,13 @@
 #include "ente.h"
 
 class Jogo;
+
+using namespace std;
 using namespace sf;
+
+using Listas::Lista_Entidades;
+using Entidades::Personagens::Tripulante;
+using Gerenciadores::Gerenciador_Colisoes;
 
 namespace Fases {
 
@@ -23,12 +29,15 @@ class Fase : public Ente {
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Listas::Lista_Entidades* listaObstaculos;
+  Lista_Entidades* listaObstaculos;
 
-  Entidades::Personagens::Tripulante* tripulante;
+  Tripulante* tripulante;
+
   // ===/===/===/===/ Outros  ===/===/===/===/
-  Gerenciadores::Gerenciador_Colisoes* pColisao;
-  Listas::Lista_Entidades* listaPersonagens;
+
+  Gerenciador_Colisoes* pColisao;
+  Lista_Entidades* listaPersonagens;
+
   // Fase(const IDs IDs_Fase,const IDs IDs_Fundo);
   Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo);
   ~Fase();

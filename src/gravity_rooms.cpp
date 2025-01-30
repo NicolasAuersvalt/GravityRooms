@@ -154,8 +154,8 @@ void Gravity_Rooms::executar() {
 
 void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
 	if (faseSelecionada == IDs::IDs::fase_laboratorio) {
-		Fases::Laboratorio *aux =
-			new Fases::Laboratorio(IDs::IDs::fase_laboratorio);
+		Laboratorio *aux =
+			new Laboratorio(IDs::IDs::fase_laboratorio);
 
 		if (aux == nullptr) {
 			exit(1);
@@ -163,16 +163,16 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
 		}
 		cout << " laboratorio " << endl;
 
-		fase = static_cast<Fases::Fase *>(aux);
+		fase = static_cast<Fase *>(aux);
 	} else if (faseSelecionada == IDs::IDs::fase_nave) {
-		Fases::Nave *pNave = new Fases::Nave(IDs::IDs::fase_nave);
+		Nave *pNave = new Nave(IDs::IDs::fase_nave);
 		if (pNave == nullptr) {
 			exit(1);
 			cout << "nao foi possivel criar a nave " << endl;
 		}
 
 		cout << " nave " << endl;
-		fase = static_cast<Fases::Fase *>(pNave);
+		fase = static_cast<Fase *>(pNave);
 	}
 
 	fase->criarMapa();

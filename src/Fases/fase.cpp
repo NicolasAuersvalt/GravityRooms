@@ -10,12 +10,10 @@
 #include "Entidades/Personagens/clone.h"
 #include "Gerenciadores/gerenciador_colisoes.h"
 
-using namespace std;
-using namespace sf;
-using namespace Fases;
 
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 namespace Fases {
+
 // Construtor
 Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
     : Ente(ID_Fase),
@@ -23,7 +21,8 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
       listaObstaculos(new Listas::Lista_Entidades()),
       tripulante(nullptr),
       pColisao(new Gerenciadores::Gerenciador_Colisoes(listaPersonagens,
-                                                       listaObstaculos)) {
+                                                       listaObstaculos)) 
+                                                       {
   // ...existing code...
 }
 // Destrutor
