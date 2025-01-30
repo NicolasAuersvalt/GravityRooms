@@ -71,7 +71,7 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
     exit(1);
   }
 
-   listaObstaculos->incluir(static_cast<Entidade*>(centro_gravidade));
+  listaObstaculos->incluir(static_cast<Entidade*>(centro_gravidade));
 }
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
@@ -166,6 +166,7 @@ void Fase::executar() {
 }
 
 void Fase::criarProjetil(const Vector2f pos) {
+  cout << "criacao do projetil " << endl;
   Entidades::Projetil* projetil = new Entidades::Projetil(
       pos, sf::Vector2f(50.0f, 50.0f), IDs::IDs::projetil_tripulante);
   if (projetil == nullptr) {
@@ -174,6 +175,7 @@ void Fase::criarProjetil(const Vector2f pos) {
   }
   listaPersonagens->incluir(static_cast<Entidade*>(projetil));
   tripulante->setProjetil(projetil);
+  cout << "criacao do projetil2 " << endl;
 }
 // void Fase::setLimiteCamera(sf::IntRect limiteCamera) {
 //   this->limiteCamera = limiteCamera;

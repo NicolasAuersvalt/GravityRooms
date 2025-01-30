@@ -45,4 +45,9 @@ Entidades::Entidade* Listas::Lista_Entidades::operator[](int pos) {
   return LEs->operator[](pos);
 }
 
+void Lista_Entidades::removerEntidade(Entidade* entidade, const bool deletar) {
+  if (entidade && LEs) {
+    LEs->removerElemento(entidade, deletar);
+  }
+}
 }  // namespace Listas

@@ -39,6 +39,10 @@ void Tripulante::setGerenciadorEvento(Gerenciador_Eventos* GE) {
 }
 
 void Tripulante::mover() {
+  tempoSemColisao += 0.016f;  // Assuming 60fps
+  if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
+    noChao = false;  // No recent collision, we're in air
+  }
   // Movimentação (sem física, apenas mover pela tela)
   string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
   if (tecla == "Left Arrow") {
@@ -141,6 +145,7 @@ void Tripulante::atirar() {
 }
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
   bool onPlatform = false;
+  tempoSemColisao = 0.0f;
   switch (outraEntidade->getID()) {
     // case (IDs::IDs::inimigo): {
     // } break;

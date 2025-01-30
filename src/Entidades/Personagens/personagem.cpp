@@ -42,10 +42,7 @@ void Personagem::recebeDano(int dano) {
 
 bool Personagem::verificarVivo() { return (pontosVida > 0); }
 
-void Personagem::morrer() {
-  vivo = false;
-  delete this;
-}
+void Personagem::morrer() { vivo = false; }
 
 void Personagem::setPisando(bool pisa) { noChao = pisa; }
 

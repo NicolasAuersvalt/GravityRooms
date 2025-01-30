@@ -25,6 +25,8 @@ class Tripulante : public Personagem {
   bool noChao;
   Gerenciador_Eventos* GE;
   Gerenciador_Fisica GF;
+  float tempoSemColisao;
+  const float TEMPO_MAX_SEM_COLISAO = 0.1f;
   // ===/===/===/===/ Outros  ===/===/===/===/
 
  protected:

@@ -110,13 +110,23 @@ const sf::Vector2f Gerenciador_Colisoes::calculaColisao(
 
 void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
                                     Lista_Entidades* listaObs) {
-  if (listaPer == nullptr) {
-    cout << "Lista de personagens  é nula" << endl;
+  if (!listaPer || !listaObs) {
+    cout << "Lista nula encontrada" << endl;
+    return;
+  }
+  for (int i = 0; i < listaPer->getTamanho(); i++) {
+    Entidades::Personagens::Personagem* personagem =
+        dynamic_cast<Entidades::Personagens::Personagem*>(
+            listaPer->operator[](i));
+
+    if (personagem && !personagem->verificarVivo()) {
+      listaPer->removerEntidade(static_cast<Entidades::Entidade*>(personagem),
+                                true);
+      i--;  // Adjust index after removal
+      continue;
+    }
   }
 
-  if (listaObs == nullptr) {
-    cout << "Lista de obstáculos é nula" << endl;
-  }
   // verifica colisao entre Personagens e Personagens e Obstáculos
   for (int i = 0; i < listaPer->getTamanho() - 1; i++) {
     Entidades::Entidade* ent1 = listaPer->operator[](i);

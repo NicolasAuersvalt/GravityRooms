@@ -35,15 +35,38 @@ void Inimigo::inicializar() {
 
 void Inimigo::executar() {}
 void Inimigo::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
+  bool onPlatform = false;
   switch (outraEntidade->getID()) {
-    case (IDs::IDs::projetil_tripulante): {
-      cout << verificarVivo() << endl;
-      Entidades::Projetil* projetil =
-          dynamic_cast<Entidades::Projetil*>(outraEntidade);
+    // case (IDs::IDs::inimigo): {
+    // } break;
+    case IDs::IDs::plataforma: {
+      Vector2f myPos = getSprite().getPosition();
+      Vector2f platPos = outraEntidade->getSprite().getPosition();
+      Vector2f mySize = getTamanho();
+      Vector2f platSize = outraEntidade->getTamanho();
 
-      recebeDano(projetil->getDano());
-      cout << verificarVivo() << endl;
-      std::cout << "inimigo recebe dano do projetil " << std::endl;
+      float myBottom = myPos.y + mySize.y;
+      float platTop = platPos.y;
+
+      float myRight = myPos.x + mySize.x;
+      float platLeft = platPos.x;
+
+      float myLeft = myPos.x;
+      float platRight = platPos.x + platSize.x;
+      // Platform collision from above
+      if (myBottom >= platTop && ds.y <= 5.f) {
+        velFinal.y = 0;
+        myPos.y = platTop - mySize.y;
+        getSprite().setPosition(myPos);
+        setPosicao(myPos.x, myPos.y);
+        onPlatform = true;
+      }
+
+      // Check if the Tripulante is landing on top of the platform
+
+    } break;
+    default: {
+      onPlatform = false;
     } break;
   }
 }
@@ -54,9 +77,7 @@ void Inimigo::mover() {
   Vector2f posInimigo = getSprite().getPosition();
 
   if (verificarVivo()) {
-    cout << verificarVivo() << endl;
     if (!noChao) {
-      cout << "n esta no chao " << endl;
       float dt = 0.016f;
       velFinal.y += GF.aplicarGravidade() * dt;
     }
@@ -70,7 +91,6 @@ void Inimigo::mover() {
     }
   } else {
     cout << "esta morto" << endl;
-    cout << verificarVivo() << endl;
     morrer();
   }
   // std::cout << "=== Enemy Movement Debug ===" << std::endl;
