@@ -3,8 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
 #include "Gerenciadores/gerenciador_grafico.h"
+
 #include "IDs/IDs.h"
 
 using namespace std;
