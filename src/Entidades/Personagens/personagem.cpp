@@ -34,7 +34,7 @@ void Personagem::setVida(int life) {
 
 void Personagem::recebeDano(int dano) {
   pontosVida -= dano;
-
+  cout << "recebeu dano vida total = " << pontosVida << endl;
   if (!verificarVivo()) {
     morrer();
   }

@@ -9,7 +9,7 @@ namespace Entidades::Personagens {
 
 Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID)
     : Inimigo(pos, sf::Vector2f(150.0f, 150.0f), tripulante, ID) {
-  this->pontosVida = 3;
+  this->pontosVida = 20;
   this->dano = 3;
   nivel_maldade = 3;
   // setSprite("assets/cloneP.png", pos.x, pos.y);

@@ -12,7 +12,7 @@ namespace Entidades::Personagens {
 Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante,
                    const IDs::IDs ID)
     : Inimigo(pos, Vector2f(100.0f, 80.0f), tripulante, IDs::IDs::inimigo) {
-  this->pontosVida = 1;
+  this->pontosVida = 5;
   this->dano = 1;
 
   std::cout << "Creating Ciborgue at position: " << pos.x << "," << pos.y

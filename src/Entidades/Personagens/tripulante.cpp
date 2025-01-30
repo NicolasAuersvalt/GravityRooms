@@ -77,8 +77,6 @@ void Tripulante::mover() {
 
   if (!noChao) {
     // Apply gravity
-
-    cout << "Falling" << endl;
     float dt = 0.016f;  // Assuming 60fps, adjust if using different time step
     velFinal.y += GF.aplicarGravidade() * dt;
   }

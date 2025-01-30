@@ -72,8 +72,10 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
       if (ID == IDs::IDs::projetil_tripulante) {
         Entidades::Personagens::Inimigo *inimigo =
             dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
-
+        cout << "colisao" << endl;
         inimigo->recebeDano(dano);
+        cout << "recebeu dano na colisao" << dano << endl;
+
         getSprite().setPosition(-130.f, -130.f);
         ativo = false;
       }
