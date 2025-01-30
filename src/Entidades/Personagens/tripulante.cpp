@@ -71,7 +71,7 @@ void Tripulante::mover() {
 
   if (tecla == "Space" && noChao) {
     // Jump only if on ground
-    float jumpForce = -30.0f;  // Adjust this value to control jump height
+    float jumpForce = -20.0f;  // controle do pulo
     velFinal.y = jumpForce;
     noChao = false;
   }
@@ -205,6 +205,7 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
     case IDs::IDs::projetil_inimigo: {
       Entidades::Projetil* projetil =
           dynamic_cast<Entidades::Projetil*>(outraEntidade);
+
       recebeDano(projetil->getDano());
       projetil->setAtivo(false, {-130.f, -130.f});
 

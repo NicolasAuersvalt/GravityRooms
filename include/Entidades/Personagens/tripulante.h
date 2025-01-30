@@ -1,6 +1,6 @@
 #ifndef TRIPULANTE_H
 #define TRIPULANTE_H
-#define TAMANHO_PULO 5.0f
+
 #include <cmath>
 #include <iostream>
 

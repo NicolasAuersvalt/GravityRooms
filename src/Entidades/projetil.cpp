@@ -7,7 +7,7 @@ int Projetil::danoProjetil = 10;
 namespace Entidades {
 
 Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
-    : Entidade(pos, tam, ID), dano(1), ativo(false) {
+    : Entidade(pos, tam, ID), dano(3), ativo(false) {
   setSprite("assets/projetil.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(50.0f, 25.0f));
   setPosicao(-12000.f, -12000.f);

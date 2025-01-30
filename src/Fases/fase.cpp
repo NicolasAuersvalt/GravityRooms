@@ -196,6 +196,7 @@ Entidades::Projetil* Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
     std::cout << "Fase::nao foi possivel criar projetil" << std::endl;
     exit(1);
   }
+
   listaPersonagens->incluir(static_cast<Entidade*>(projetil));
   return projetil;
 }
