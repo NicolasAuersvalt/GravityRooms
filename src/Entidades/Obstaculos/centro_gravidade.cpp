@@ -12,6 +12,7 @@ Centro_Gravidade::Centro_Gravidade(const sf::Vector2f pos,
                                    const sf::Vector2f tam, const IDs::IDs ID)
     : Obstaculo(pos, tam, ID) {
   this->dano = 10;
+  
   setSprite("assets/regiao_gravitacional.png", pos.x, pos.y);
   // Adjust size to match the actual sprite dimensions
   setTamanho(sf::Vector2f(90.0f, 90.0f));

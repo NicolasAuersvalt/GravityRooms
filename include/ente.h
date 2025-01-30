@@ -46,10 +46,8 @@ class Ente {
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   void setSprite(string local, int posX, int posY);
-  Texture*
-  getTexture();  // retorna o endereço da textura do protected Texture *pFig
-  Sprite&
-  getSprite();  // retorna o endereço da textura do protected Texture *pFig
+  Texture* getTexture();  // retorna o endereço da textura do protected Texture *pFig
+  Sprite& getSprite();  // retorna o endereço da textura do protected Texture *pFig
 
   static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
 

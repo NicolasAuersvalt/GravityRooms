@@ -3,6 +3,7 @@
 
 #define TAMANHO_PLATAFORMA_X 350.0f
 #define TAMANHO_PLATAFORMA_Y 50.0f
+
 #include "Entidades/Obstaculos/obstaculo.h"
 
 namespace Entidades::Obstaculos {

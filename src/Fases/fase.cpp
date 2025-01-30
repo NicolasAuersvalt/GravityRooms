@@ -10,9 +10,11 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
     : Ente(ID_Fase),
       listaPersonagens(new Lista_Entidades()),
       listaObstaculos(new Lista_Entidades()),
+      listaBackground(new Lista_Entidades()),
       tripulante(nullptr),
       pColisao(new Gerenciador_Colisoes(listaPersonagens,
-                                                       listaObstaculos)) 
+                                                       listaObstaculos)),
+                                                       bg()
                                                        {
                                                         
     
@@ -69,6 +71,7 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
   if (tripulante == nullptr) {
     criarJogador(Vector2f(100.0f, 100.0f));
     criarProjetil(Vector2f(100.0f, 100.0f));
+    
   }
   switch (letra) {
     case ('i'): {
@@ -97,6 +100,9 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
     } break;
     case ('j'): {
       listaPersonagens->incluir(static_cast<Entidade*>(tripulante));
+    } break;
+    case ('b'): {
+      criarBackground();
     }
   }
 }
@@ -114,7 +120,7 @@ void Fase::criarJogador(const Vector2f pos) {
 }
 void Fase::desenhar() 
 {
-
+  listaBackground->desenharTodos();
   listaObstaculos->desenharTodos();
   listaPersonagens->desenharTodos();
 

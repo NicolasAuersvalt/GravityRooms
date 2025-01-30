@@ -13,6 +13,7 @@
 #include "Entidades/Personagens/ciborgue.h"
 #include "Entidades/Personagens/clone.h"
 #include "Gerenciadores/gerenciador_grafico.h"
+#include "Entidades/background.h"
 
 class Jogo;
 
@@ -30,6 +31,7 @@ using Entidades::Personagens::Ciborgue;
 using Entidades::Personagens::Androide;
 using Entidades::Personagens::Clone;
 using Entidades::Projetil;
+using Entidades::Background;
 
 using namespace sf;
 using namespace std;
@@ -57,11 +59,27 @@ class Fase : public Ente {
   Gerenciador_Colisoes* pColisao;
   Lista_Entidades* listaPersonagens;
 
+  Background* bg;
+  Lista_Entidades* listaBackground;
+
   // Fase(const IDs IDs_Fase,const IDs IDs_Fundo);
   Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo);
   ~Fase();
 
   void executar();
+
+    void criarBackground() {
+
+      bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), IDs::IDs::background);
+
+      if (bg == nullptr) {
+        cout << "Fase::nao foi possivel criar jogador" << endl;
+        exit(1);
+      }
+      
+      listaBackground->incluir(static_cast<Entidade*>(bg));
+
+  }
 
   // void gerenciar_colisoes();
   void criarInimFaceis(const Vector2f pos,

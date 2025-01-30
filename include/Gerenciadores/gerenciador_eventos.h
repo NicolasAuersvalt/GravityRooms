@@ -1,5 +1,5 @@
-#ifndef GERENCIADOR_EVENTOS
-#define GERENCIADOR_EVENTOS
+#ifndef GERENCIADOR_EVENTOS_H
+#define GERENCIADOR_EVENTOS_H
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
