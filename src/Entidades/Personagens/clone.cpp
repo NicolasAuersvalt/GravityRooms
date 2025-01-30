@@ -25,29 +25,24 @@ Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID)
 Clone::~Clone() {}
 void Clone::executar() {
   if (vivo) mover();
-
-  // Try to shoot if enough time has passed (every 2 seconds)
-  if (timerTiro.getElapsedTime().asSeconds() >= 2.0f) {
-    atirar();
-    timerTiro.restart();
-  }
-
-  if (projetil) {
-    projetil->executar();
-  }
 }
 
 void Clone::salvarDataBuffer(nlohmann::ordered_json& json) {}
 void Clone::mover() {
   if (vivo) {
     Inimigo::mover();
+    // Try to shoot if enough time has passed (every 2 seconds)
+    if (timerTiro.getElapsedTime().asSeconds() >= 2.0f) {
+      atirar();
+      timerTiro.restart();
+    }
   }
 }
 
 void Clone::danificar(Tripulante* p) {}
 
 void Clone::atirar() {
-  if (projetil) {
+  if (!projetil->getAtivo()) {
     Vector2f posClone = sprite.getPosition();
     Vector2f posTripulante = tripulante->getSprite().getPosition();
 

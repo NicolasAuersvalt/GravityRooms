@@ -121,7 +121,7 @@ class Fase : public Ente {
 
   void setLimiteCamera(sf::IntRect limiteCamera);
   const sf::IntRect getLimiteCamera() const;
-  void criarProjetil(const Vector2f pos);
+  Entidades::Projetil* criarProjetil(const Vector2f pos, IDs::IDs ID);
 };
 }  // namespace Fases
 

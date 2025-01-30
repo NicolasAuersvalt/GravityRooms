@@ -61,6 +61,11 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 }
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
+  if (tripulante == nullptr) {
+    criarJogador(Vector2f(100.0f, 100.0f));
+    tripulante->setProjetil(
+        criarProjetil(Vector2f(100.0f, 100.0f), IDs::IDs::projetil_tripulante));
+  }
   switch (letra) {
     case ('i'): {
       if (contadorFaceis < 3) {
@@ -121,10 +126,6 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
     } break;
     case ('j'): {
-      if (tripulante == nullptr) {
-        criarJogador(Vector2f(100.0f, 100.0f));
-        criarProjetil(Vector2f(100.0f, 100.0f));
-      }
       listaPersonagens->incluir(static_cast<Entidade*>(tripulante));
     } break;
     case ('b'): {
@@ -173,6 +174,9 @@ void Fase::criarInimDificeis(const Vector2f pos, Tripulante* tripulante) {
     exit(1);
   }
   listaPersonagens->incluir(static_cast<Entidade*>(clone));
+
+  clone->setProjetil(
+      criarProjetil(Vector2f(100.0f, 100.0f), IDs::IDs::projetil_inimigo));
 }
 void Fase::executar() {
   // fundo.executar();
@@ -184,30 +188,16 @@ void Fase::executar() {
   desenhar();
 }
 
-void Fase::criarProjetil(const Vector2f pos) {
+Entidades::Projetil* Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   cout << "criacao do projetil " << endl;
-  Projetil* projetil =
-      new Projetil(pos, Vector2f(50.0f, 50.0f), IDs::IDs::projetil_tripulante);
-
+  Entidades::Projetil* projetil =
+      new Entidades::Projetil(pos, sf::Vector2f(50.0f, 50.0f), ID);
   if (projetil == nullptr) {
-    cout << "Fase::nao foi possivel criar projetil" << endl;
+    std::cout << "Fase::nao foi possivel criar projetil" << std::endl;
     exit(1);
   }
-
   listaPersonagens->incluir(static_cast<Entidade*>(projetil));
-  tripulante->setProjetil(projetil);
-
-  for (int i = 0; i < listaPersonagens->getTamanho(); i++) {
-    Entidade* entidade = listaPersonagens->getElemento(i);
-    if (entidade && entidade->getID() == IDs::IDs::clone) {
-      Clone* clone = dynamic_cast<Clone*>(entidade);
-      if (clone) {
-        clone->setProjetil(projetil);
-      }
-    }
-  }
-
-  cout << "criacao do projetil2 " << endl;
+  return projetil;
 }
 // void Fase::setLimiteCamera(IntRect limiteCamera) {
 //   this->limiteCamera = limiteCamera;

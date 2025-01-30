@@ -149,8 +149,17 @@ void Tripulante::atirar() {
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
   bool onPlatform = false;
   switch (outraEntidade->getID()) {
-    // case (IDs::IDs::inimigo): {
-    // } break;
+    // Caso para colisão com inimigos
+    case IDs::IDs::ciborgue:  // Substitua pelo ID correto do inimigo fácil
+    case IDs::IDs::androide:  // Substitua pelo ID correto do inimigo médio
+    case IDs::IDs::clone: {   // Substitua pelo ID correto do inimigo difícil
+      Entidades::Personagens::Inimigo* inimigo =
+          dynamic_cast<Entidades::Personagens::Inimigo*>(outraEntidade);
+      if (inimigo) {
+        recebeDano(inimigo->getDano());  // Aplica o dano do inimigo
+        // Opcional: Adicione lógica de knockback ou efeitos visuais
+      }
+    } break;
     case IDs::IDs::plataforma: {
       tempoSemColisao = 0.0f;
       Vector2f myPos = getSprite().getPosition();
@@ -188,12 +197,17 @@ void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
 
     } break;
     case (IDs::IDs::centro_gravidade): {
-      // std::cout << "\n=== Tripulante Collision Debug ===" << std::endl;
-
       Entidades::Obstaculos::Centro_Gravidade* centro_gravidade =
           dynamic_cast<Entidades::Obstaculos::Centro_Gravidade*>(outraEntidade);
 
       recebeDano(centro_gravidade->getDano());
+    } break;
+    case IDs::IDs::projetil_inimigo: {
+      Entidades::Projetil* projetil =
+          dynamic_cast<Entidades::Projetil*>(outraEntidade);
+      recebeDano(projetil->getDano());
+      projetil->setAtivo(false, {-130.f, -130.f});
+
     } break;
     default: {
       onPlatform = false;

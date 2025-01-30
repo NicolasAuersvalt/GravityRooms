@@ -18,9 +18,9 @@ using namespace sf;
 using namespace std;
 using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
-
+class Tripulante;
 class Inimigo : public Personagem {
- private:
+  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/

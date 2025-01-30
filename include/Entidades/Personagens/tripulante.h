@@ -1,11 +1,12 @@
 #ifndef TRIPULANTE_H
 #define TRIPULANTE_H
-#define TAMANHO_PULO 100.0f
+#define TAMANHO_PULO 5.0f
 #include <cmath>
 #include <iostream>
 
 #include "Entidades/Obstaculos/centro_gravidade.h"
 #include "Entidades/Obstaculos/espinho.h"
+#include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/projetil.h"
 #include "Gerenciadores/gerenciador_Salvamento.h"

@@ -7,15 +7,11 @@ int Projetil::danoProjetil = 10;
 namespace Entidades {
 
 Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
-    : Entidade(pos, tam, ID),
-      dano(1),
-      ativo(false)  //, danoProjetil(10)
-{
+    : Entidade(pos, tam, ID), dano(1), ativo(false) {
   setSprite("assets/projetil.png", pos.x, pos.y);
-  //   // setSprite("assets/projetilP.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(50.0f, 25.0f));
-  setPosicao(-130.f, -130.f);
-  sprite.setPosition(-130.f, -130.f);
+  setPosicao(-12000.f, -12000.f);
+  sprite.setPosition(-12000.f, -12000.f);
   std::cout << "Projetil Position: " << pos.x << " " << pos.y << std::endl;
 }
 Projetil::~Projetil() {}
@@ -30,18 +26,6 @@ void Projetil::setVelocidade(const sf::Vector2f &vel) { velocidade = vel; }
 void Projetil::atualizar() {}
 
 void Projetil::setAtirador(Entidade *a) {}
-
-/*
-bool Entidades::Projetil::getColidir(Entidade* e)
-{
-    if (e->getPosition().first > 1280 ||
-     e->getPosition().first < 0 ||
-      e->getPosition().second > 920 ||
-       e->getPosition().second < 0)
-        colidiu = true;
-    return colidiu;
-}
-*/
 
 void Projetil::danificar(Personagem *p) {}
 
@@ -61,30 +45,37 @@ void Projetil::mover() {
 }
 
 void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
+  // cout << "colisao com entidade ID: "
+  //      << static_cast<int>(outraEntidade->getID()) << endl;
+  // cout << "colisao de " << static_cast<int>(getID())
+  //      << " com entidade ID: " << static_cast<int>(outraEntidade->getID())
+  //      << endl;
   switch (outraEntidade->getID()) {
-    case (IDs::IDs::inimigo):
-    case (IDs::IDs::clone):
-    case (IDs::IDs::androide):
-    case (IDs::IDs::ciborgue): {
+    case (IDs::IDs::clone): {
       if (ID == IDs::IDs::projetil_tripulante) {
         Entidades::Personagens::Inimigo *inimigo =
             dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
-        cout << "colisao" << endl;
         inimigo->recebeDano(dano);
-        cout << "recebeu dano na colisao" << dano << endl;
 
         getSprite().setPosition(-130.f, -130.f);
         ativo = false;
       }
-    } break;
+      break;
+    }
     case (IDs::IDs::tripulante): {
+      // cout << "colisao com entidade ID: "
+      //      << static_cast<int>(outraEntidade->getID()) << endl;
       if (ID == IDs::IDs::projetil_inimigo) {
-        //  getSprite().setPosition(-130.f, -130.f);
-        // ativo = false;
+        Entidades::Personagens::Tripulante *tripulante =
+            dynamic_cast<Entidades::Personagens::Tripulante *>(outraEntidade);
+        tripulante->recebeDano(dano);
+        getSprite().setPosition(-130.f, -130.f);
+        ativo = false;
       }
     } break;
   }
 }
+
 void Projetil::setAtivo(bool status, const Vector2f pos) {
   cout << "herreeeeeee" << endl;
   ativo = status;

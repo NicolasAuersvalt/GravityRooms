@@ -15,13 +15,13 @@ class Clone : public Inimigo {
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   //   float raio;
-  Projetil* projetil;
   Clock timerTiro;  // Timer to control shooting frequency
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
+  Projetil* projetil;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
@@ -37,7 +37,7 @@ class Clone : public Inimigo {
   virtual void executar() override;
   virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
   void mover() override;
-  void setProjetil(Projetil* proj) { projetil = proj; }
+  void setProjetil(Projetil* proj) { projetil = proj; };
   void atirar();  // New method to handle shooting
 
   // ===/===/===/===/ Outros  ===/===/===/===/

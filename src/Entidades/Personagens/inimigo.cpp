@@ -37,8 +37,6 @@ void Inimigo::executar() {}
 void Inimigo::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
   bool onPlatform = false;
   switch (outraEntidade->getID()) {
-    // case (IDs::IDs::inimigo): {
-    // } break;
     case IDs::IDs::plataforma: {
       tempoSemColisao = 0.0f;
       Vector2f myPos = getSprite().getPosition();
