@@ -1,10 +1,18 @@
 #ifndef FASE_H
 #define FASE_H
 
+#include <iostream>
 #include "Gerenciadores/gerenciador_colisoes.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
 #include "ente.h"
+#include "Entidades/Obstaculos/centro_gravidade.h"
+#include "Entidades/Obstaculos/espinho.h"
+#include "Entidades/Obstaculos/plataforma.h"
+#include "Entidades/Personagens/androide.h"
+#include "Entidades/Personagens/ciborgue.h"
+#include "Entidades/Personagens/clone.h"
+#include "Gerenciadores/gerenciador_grafico.h"
 
 class Jogo;
 
@@ -14,6 +22,17 @@ using namespace sf;
 using Listas::Lista_Entidades;
 using Entidades::Personagens::Tripulante;
 using Gerenciadores::Gerenciador_Colisoes;
+using Entidades::Obstaculos::Plataforma;
+using Gerenciadores::Gerenciador_Grafico;
+using Entidades::Obstaculos::Espinho;
+using Entidades::Obstaculos::Centro_Gravidade;
+using Entidades::Personagens::Ciborgue;
+using Entidades::Personagens::Androide;
+using Entidades::Personagens::Clone;
+using Entidades::Projetil;
+
+using namespace sf;
+using namespace std;
 
 namespace Fases {
 
@@ -30,7 +49,7 @@ class Fase : public Ente {
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Lista_Entidades* listaObstaculos;
-
+  Gerenciador_Grafico *GG;
   Tripulante* tripulante;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
@@ -46,18 +65,26 @@ class Fase : public Ente {
 
   // void gerenciar_colisoes();
   void criarInimFaceis(const Vector2f pos,
-                       Entidades::Personagens::Tripulante* tripulante);
+                       Tripulante* tripulante);
   // void criarPlataformas();
 
   void criarInimDificeis(const Vector2f pos,
-                         Entidades::Personagens::Tripulante* tripulante);
+                         Tripulante* tripulante);
   void criarInimMedios(const Vector2f pos,
-                       Entidades::Personagens::Tripulante* tripulante);
+                       Tripulante* tripulante);
 
   void criarJogador(const Vector2f pos);
   void criarPlataforma(const Vector2f pos);
   void criarEspinho(const Vector2f pos);
   void criarCentroGravidade(const Vector2f pos);
+
+  void setGerenciadorG(Gerenciador_Grafico *GG){
+    if(GG!=nullptr)
+      this->GG = GG;
+  }
+  Gerenciador_Grafico* getGerenciador(){
+    return GG;
+  }
 
   // virtual void criarCaixa(const Vector2f pos);
   virtual void criarEntidades(char letra, const Vector2f pos);

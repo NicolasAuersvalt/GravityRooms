@@ -65,6 +65,7 @@ class Gravity_Rooms {
   Lista_Entidades listaPersonagem;
   Lista_Entidades listaObstaculo;
   Sprite backgroundSprite;
+  Texture backgroundTexture;
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/

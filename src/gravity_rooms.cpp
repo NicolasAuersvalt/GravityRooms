@@ -1,8 +1,5 @@
 #include "gravity_rooms.h"
 
-#include <Fases/laboratorio.h>
-#include <Fases/nave.h>
-
 // Construtor
 Gravity_Rooms::Gravity_Rooms()
 	: GG(),
@@ -12,27 +9,19 @@ Gravity_Rooms::Gravity_Rooms()
 	GE(),
 	menuGeral(),
 	fase(nullptr) {
-		Ente::setGerenciador(&GG);
 
-		Texture backgroundTexture;
-		if (!backgroundTexture.loadFromFile("assets/nave.png")) {
+		/*
+		if (!backgroundTexture.loadFromFile("assets/tripulante.png")) {
 			cerr << "Erro ao carregar o background!" << endl;
-			return;
 		}
 
 		backgroundSprite.setTexture(backgroundTexture);
 		backgroundSprite.setPosition(25, 25);
+		*/
 
-		ifstream arquivo("dados_salvos.json");
-		if (arquivo.is_open()) {
-			nlohmann::ordered_json buffer;
-			arquivo >> buffer;
-			arquivo.close();
-			cout << "Dados carregados de 'dados_salvos.json'.\n";
-		} else {
-			cerr << "Erro ao abrir o arquivo para carregar os dados.\n";
-		}
-
+		Ente::setGerenciador(&GG);
+		// fase->setGerenciador(&GG);
+	
 		// Vector2f pos = pJog1.getPosicao();
 
 		// pJog1.setSprite("assets/tripulanteG.png", pos.x, pos.y);
@@ -53,8 +42,11 @@ Gravity_Rooms::Gravity_Rooms()
 Gravity_Rooms::~Gravity_Rooms() {}
 
 bool Gravity_Rooms::ligarMenu() {
+
 	Event eventao;
 	bool out = false;
+
+	
 
 	if (GG.getJanela().pollEvent(eventao)) {
 		if (eventao.type == Event::KeyPressed) {
@@ -74,28 +66,40 @@ bool Gravity_Rooms::ligarMenu() {
 			}
 		}
 	}
-
+	
 	GG.limpar();
 	menuGeral.desenhar(&GG);
 	GG.exibir();
 	return out;
+
 }
 void Gravity_Rooms::executar() {
+
 	bool primeiraVez = false;
 
 	GG.executar();
+
 	while (GG.estaAberta()) {
+
 		primeiraVez = ligarMenu();
 		if (primeiraVez) break;
+
 	}
 	// GC.incluirInimigo(static_cast<Inimigo *>(&pAnd1));
 
-	while (GG.estaAberta()) {  // Enquanto a janela estiver aberta
+	while (GG.estaAberta()) {
+		// Enquanto a janela estiver aberta
+
 		Event evento;
+
 		if (GC.pJog1 && GC.pJog1->verificarVivo()) {
+
 			while (GG.processarEvento(evento)) {
+
 				if (evento.type == Event::Closed) {
+
 					GG.fechar();
+					
 				}
 
 				if (evento.type == Event::KeyPressed) {
@@ -116,7 +120,9 @@ void Gravity_Rooms::executar() {
 					}
 				}
 			}
-			GG.limpar();  // Limpa a tela antes de desenhar qualquer coisa
+
+			GG.limpar();
+
 			listaObstaculo.desenharTodos();
 			listaPersonagem.desenharTodos();
 			// Desenha os outros sprites da lista

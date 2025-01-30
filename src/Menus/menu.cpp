@@ -99,10 +99,16 @@ void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
     (*it)->setSelecionado(true);
   }
 }
-bool Menu::getSelecionado() { return botaoSelecionado; }
-void Menu::setSelecionado(bool status) { botaoSelecionado = status; }
+bool Menu::getSelecionado() { 
+  return botaoSelecionado;
+   }
+
+void Menu::setSelecionado(bool status) { 
+  botaoSelecionado = status;
+   }
 
 void Menu::desenhar(Gerenciador_Grafico* GG) {
+
   // desenha todos os botões na janela
   std::list<Botoes::BotaoTexto*>::iterator aux;
   for (aux = listaBotaoTexto.begin(); aux != listaBotaoTexto.end(); aux++) {
@@ -110,6 +116,7 @@ void Menu::desenhar(Gerenciador_Grafico* GG) {
     botao->desenhar(*GG);
     botao = nullptr;
   }
+
 }
 
 // namespace Menu
