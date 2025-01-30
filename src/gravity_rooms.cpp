@@ -8,7 +8,7 @@ Gravity_Rooms::Gravity_Rooms()
 	GC(&listaPersonagem, &listaObstaculo),
 	GE(),
 	menuGeral(),
-	fase(nullptr) {
+	fase(nullptr){
 
 		/*
 		if (!backgroundTexture.loadFromFile("assets/tripulante.png")) {

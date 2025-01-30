@@ -14,7 +14,7 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
       tripulante(nullptr),
       pColisao(new Gerenciador_Colisoes(listaPersonagens,
                                                        listaObstaculos)),
-                                                       bg()
+                                                       bg(), GS()
                                                        {
                                                         
     

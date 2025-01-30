@@ -2,17 +2,22 @@
 #define FASE_H
 
 #include <iostream>
+
 #include "Gerenciadores/gerenciador_colisoes.h"
-#include "IDs/IDs.h"
-#include "Listas/lista_entidades.h"
-#include "ente.h"
+#include "Gerenciadores/gerenciador_grafico.h"
+#include "Gerenciadores/gerenciador_salvamento.h"
+
 #include "Entidades/Obstaculos/centro_gravidade.h"
 #include "Entidades/Obstaculos/espinho.h"
 #include "Entidades/Obstaculos/plataforma.h"
+
 #include "Entidades/Personagens/androide.h"
 #include "Entidades/Personagens/ciborgue.h"
 #include "Entidades/Personagens/clone.h"
-#include "Gerenciadores/gerenciador_grafico.h"
+
+#include "IDs/IDs.h"
+#include "Listas/lista_entidades.h"
+#include "ente.h"
 #include "Entidades/background.h"
 
 class Jogo;
@@ -20,18 +25,23 @@ class Jogo;
 using namespace std;
 using namespace sf;
 
-using Listas::Lista_Entidades;
-using Entidades::Personagens::Tripulante;
 using Gerenciadores::Gerenciador_Colisoes;
-using Entidades::Obstaculos::Plataforma;
 using Gerenciadores::Gerenciador_Grafico;
+using Gerenciadores::Gerenciador_Salvamento;
+
+using Entidades::Obstaculos::Plataforma;
 using Entidades::Obstaculos::Espinho;
 using Entidades::Obstaculos::Centro_Gravidade;
+
+using Entidades::Personagens::Tripulante;
 using Entidades::Personagens::Ciborgue;
 using Entidades::Personagens::Androide;
 using Entidades::Personagens::Clone;
+
+using Listas::Lista_Entidades;
 using Entidades::Projetil;
 using Entidades::Background;
+
 
 using namespace sf;
 using namespace std;
@@ -55,8 +65,9 @@ class Fase : public Ente {
   Tripulante* tripulante;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
-
+  
   Gerenciador_Colisoes* pColisao;
+  Gerenciador_Salvamento GS;
   Lista_Entidades* listaPersonagens;
 
   Background* bg;

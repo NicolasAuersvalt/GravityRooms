@@ -4,10 +4,15 @@
 #include <cmath>
 #include <iostream>
 
-#include "Entidades/Personagens/personagem.h"
-#include "Entidades/projetil.h"
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_fisico.h"
+#include "Gerenciadores/gerenciador_Salvamento.h"
+
+#include "Entidades/Obstaculos/centro_gravidade.h"
+#include "Entidades/Obstaculos/espinho.h"
+#include "Entidades/Personagens/personagem.h"
+#include "Entidades/projetil.h"
+
 #include "json.hpp"
 
 using namespace sf;
@@ -16,14 +21,48 @@ using namespace std;
 using Gerenciadores::Gerenciador_Eventos;
 using Gerenciadores::Gerenciador_Fisica;
 
+namespace Gerenciadores {
+    class Gerenciador_Salvamento;
+}
+
 namespace Entidades::Personagens {
 
 class Tripulante : public Personagem {
+
  private:
+
+  class Municao {
+
+    private:
+
+        int quantidade;
+
+    public:
+
+        Municao() : quantidade(0) {}
+
+        void setQtd(int qtd) {
+           quantidade = qtd; 
+           }
+        int getQtd() const { 
+          return quantidade; 
+          }
+        void atirou() {
+            if (quantidade > 0) {
+                quantidade--;
+            }
+            else{
+              cerr << "Não tem mais munição" << endl;
+            }
+        }
+    };
+
+  Municao municao;
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   int pontos;
   Gerenciador_Eventos* GE;
   Gerenciador_Fisica GF;
+  Gerenciadores::Gerenciador_Salvamento *GS;
   // ===/===/===/===/ Outros  ===/===/===/===/
 
  protected:
@@ -44,20 +83,25 @@ class Tripulante : public Personagem {
   virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
   virtual void mover() override;
 
-  int getPontos();
+  // Set
   void setPontos(int ponto);
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
   void setChao(bool chao);
+  void setProjetil(Projetil* new_projetil) { projetil = new_projetil; };
   void setGerenciadorEvento(Gerenciador_Eventos* GE);
+  void setMunicao(int qtd);
 
+  // Get
   bool getChao();
+  int getPontos();
+  int getMunicao();
+
+  Gerenciadores::Gerenciador_Salvamento* getGerenciadorSalvamento();
+  void tirarMunicao();
   void atualizar();
   void podePular();
   void colisao(Entidade* outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
-  void setProjetil(Projetil* new_projetil) { projetil = new_projetil; };
+  
   void atirar();
 };
 

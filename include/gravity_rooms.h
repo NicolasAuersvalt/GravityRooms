@@ -10,15 +10,20 @@
 #include "Entidades/Obstaculos/plataforma.h"
 #include "Entidades/Personagens/androide.h"
 #include "Entidades/Personagens/tripulante.h"
+
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_grafico.h"
+#include "Gerenciadores/gerenciador_colisoes.h"
+#include "Gerenciadores/gerenciador_salvamento.h"
+
 #include "Listas/lista_entidades.h"
 #include "Menus/menuPrincipal.h"
 #include "Fases/laboratorio.h"
+
 #include "Fases/fase.h"
 #include "Fases/nave.h"
 #include "ente.h"
-#include "Gerenciadores/gerenciador_colisoes.h"
+
 
 #include "IDs/IDs.h"
 

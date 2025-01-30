@@ -2,9 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Entidades/Obstaculos/centro_gravidade.h"
-#include "Entidades/Obstaculos/espinho.h"
-#include "json.hpp"
 
 using namespace Entidades::Personagens;
 
@@ -12,7 +9,12 @@ namespace Entidades::Personagens {
 
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
-    : Personagem(pos, tam, ID), pontos(0), GF(pos) {
+    : Personagem(pos, tam, ID), pontos(0), GF(pos), GS(nullptr)
+    {
+
+  GS = new Gerenciadores::Gerenciador_Salvamento();
+  GS->setJogador(this);
+
   setSprite("assets/tripulante.png", pos.x, pos.y);
   // setSprite("assets/tripulanteP.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(100.0f, 100.0f));
@@ -39,6 +41,20 @@ void Tripulante::setGerenciadorEvento(Gerenciador_Eventos* GE) {
     this->GE = GE;  // Atribui o ponteiro GE à variável membro this->GE
   }
 }
+
+Gerenciadores::Gerenciador_Salvamento* getGerenciadorSalvamento(){
+  return GS;
+}
+
+void Tripulante::tirarMunicao(){
+    municao.atirou();
+  }
+int Tripulante::getMunicao(){
+    return municao.getQtd();
+ }
+ void Tripulante::setMunicao(int qtd){
+    municao.setQtd(qtd);
+  }
 
 void Tripulante::mover() {
   // tempoSemColisao += 0.016f;  // Assuming 60fps
