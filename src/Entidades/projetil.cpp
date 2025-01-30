@@ -11,9 +11,9 @@ Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
       dano(1),
       ativo(false)  //, danoProjetil(10)
 {
-  setSprite("assets/projetilG.png", pos.x, pos.y);
+  setSprite("assets/projetil.png", pos.x, pos.y);
   //   // setSprite("assets/projetilP.png", pos.x, pos.y);
-  setTamanho(sf::Vector2f(150.0f, 150.0f));
+  setTamanho(sf::Vector2f(50.0f, 25.0f));
   setPosicao(-130.f, -130.f);
   sprite.setPosition(-130.f, -130.f);
   std::cout << "Projetil Position: " << pos.x << " " << pos.y << std::endl;

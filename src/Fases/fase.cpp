@@ -64,7 +64,7 @@ void Fase::criarEspinho(const Vector2f pos) {
 void Fase::criarCentroGravidade(const Vector2f pos) {
   Entidades::Obstaculos::Centro_Gravidade* centro_gravidade =
       new Entidades::Obstaculos::Centro_Gravidade(
-          pos, sf::Vector2f(100.0f, 50.0f), IDs::IDs::centro_gravidade);
+          pos, sf::Vector2f(90.0f, 90.0f), IDs::IDs::centro_gravidade);
   if (centro_gravidade == nullptr) {
     std::cout << "Fase::nao foi possivel criar centro de gravidade"
               << std::endl;

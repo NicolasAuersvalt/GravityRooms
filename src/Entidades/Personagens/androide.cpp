@@ -9,14 +9,14 @@ namespace Entidades::Personagens {
 
 Androide::Androide(const Vector2f pos, Tripulante* tripulante,
                    const IDs::IDs ID)
-    : Inimigo(pos, sf::Vector2f(150.0f, 150.0f), tripulante,
+    : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), tripulante,
               IDs::IDs::inimigo) {
   this->dano = 2;
 
   this->pontosVida = 10;
   nivel_maldade = 2;
   // setSprite("assets/androidP.png", pos.x, pos.y);
-  setSprite("assets/androidG.png", pos.x, pos.y);
+  setSprite("assets/androide.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);

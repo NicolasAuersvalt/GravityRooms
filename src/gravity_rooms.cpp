@@ -15,7 +15,7 @@ Gravity_Rooms::Gravity_Rooms()
 		Ente::setGerenciador(&GG);
 
 		Texture backgroundTexture;
-		if (!backgroundTexture.loadFromFile("assets/nave1.jpg")) {
+		if (!backgroundTexture.loadFromFile("assets/nave.png")) {
 			cerr << "Erro ao carregar o background!" << endl;
 			return;
 		}

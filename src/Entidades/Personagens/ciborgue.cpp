@@ -11,7 +11,7 @@ namespace Entidades::Personagens {
 
 Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante,
                    const IDs::IDs ID)
-    : Inimigo(pos, Vector2f(100.0f, 80.0f), tripulante, IDs::IDs::inimigo) {
+    : Inimigo(pos, Vector2f(100.0f, 100.0f), tripulante, IDs::IDs::inimigo) {
   this->pontosVida = 5;
   this->dano = 1;
 
@@ -19,7 +19,7 @@ Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante,
             << std::endl;
   nivel_maldade = 1;
   // setSprite("assets/ciborgueP.png", pos.x, pos.y);
-  setSprite("assets/ciborgueG.png", pos.x, pos.y);
+  setSprite("assets/ciborgue.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
