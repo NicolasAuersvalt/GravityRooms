@@ -19,10 +19,13 @@ Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
   std::cout << "Projetil Position: " << pos.x << " " << pos.y << std::endl;
 }
 Projetil::~Projetil() {}
-/*void Projetil::executar()
-{
+void Projetil::executar() {
+  if (ativo) {
+    mover();
+  }
 }
-*/
+
+void Projetil::setVelocidade(const sf::Vector2f &vel) { velocidade = vel; }
 
 void Projetil::atualizar() {}
 
@@ -42,15 +45,6 @@ bool Entidades::Projetil::getColidir(Entidade* e)
 
 void Projetil::danificar(Personagem *p) {}
 
-/*
-    void Projetil::executar(){
-        cout << "OK" << endl;
-
-    }
-    void Projetil::mover(){
-        cout << "OK" << endl;
-    }
-*/
 int Projetil::getDano() { return dano; }
 
 bool Projetil::getAtivo() { return ativo; }
@@ -69,9 +63,9 @@ void Projetil::mover() {
 void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   switch (outraEntidade->getID()) {
     case (IDs::IDs::inimigo):
-    case (IDs::IDs::clone):     
-    case (IDs::IDs::androide): 
-    case (IDs::IDs::ciborgue):  {
+    case (IDs::IDs::clone):
+    case (IDs::IDs::androide):
+    case (IDs::IDs::ciborgue): {
       if (ID == IDs::IDs::projetil_tripulante) {
         Entidades::Personagens::Inimigo *inimigo =
             dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
@@ -91,10 +85,10 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
     } break;
   }
 }
-void Projetil::setAtivo(bool i, const Vector2f pos) {
+void Projetil::setAtivo(bool status, const Vector2f pos) {
   cout << "herreeeeeee" << endl;
-  ativo = i;
-  setSprite("assets/projetilG.png", pos.x, pos.y);
+  ativo = status;
+  setSprite("assets/projetil.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);
   sprite.setPosition(pos.x, pos.y);
 }

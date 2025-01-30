@@ -28,6 +28,7 @@ class Lista_Entidades {
   const int getTamanho();
   Entidades::Entidade* operator[](int pos);
   void removerEntidade(Entidade* entidade, const bool deletar);
+  Entidade* getElemento(int pos);
 };
 }  // namespace Listas
 

@@ -61,50 +61,50 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 }
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
-  if (tripulante == nullptr) {
-    criarJogador(Vector2f(100.0f, 100.0f));
-    criarProjetil(Vector2f(100.0f, 100.0f));
-  }
-  // switch (letra) {
-  //   case ('i'): {
-  //     criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
-
-  //   } break;
   switch (letra) {
     case ('i'): {
-      // Gerar número aleatório entre 0 e 2
-      inimAleatorio = rand() % 2;
-
-      cout << "criando inim  " << inimAleatorio << endl;
-      // Verificar o valor gerado e criar inimigos conforme necessário
-      switch (inimAleatorio) {
-        case 0:
-          // Cria inimigo fácil, se o contador permitir
-          if (contadorFaceis < 7) {
-            Vector2f posicao(pos.x * 50.0f, pos.y * 50.0f);
-            cout << "criando inim facil" << endl;
-            criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
-            contadorFaceis++;  // Incrementa o contador de inimigos fáceis
-          }
-          break;
-        case 1:
-          // Cria inimigo medio, se o contador permitir
-          if (contadorMedios < 7) {
-            Vector2f posicao(pos.x * 50.0f, pos.y * 50.0f);
-            cout << "criando inim medio" << endl;
-            criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
-            contadorDificeis++;  // Incrementa o contador de inimigos difíceis
-          }
-          break;
+      if (contadorFaceis < 3) {
+        criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+        contadorFaceis++;
+      } else if (contadorMedios < 3) {
+        criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+        contadorMedios++;
+      } else {
+        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+        inimAleatorio = rand() % 2;
+        if (inimAleatorio == 0 && contadorFaceis < 7) {
+          criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+          contadorFaceis++;
+        } else if (inimAleatorio == 1 && contadorMedios < 7) {
+          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+          contadorMedios++;
+        }
       }
       break;
     }
 
-    case ('f'): {
-      criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+    case ('d'): {
+      if (contadorMedios < 3) {
+        criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+        contadorMedios++;
+      } else if (contadorDificeis < 3) {
+        criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+        contadorDificeis++;
+      } else {
+        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+        inimAleatorio = rand() % 2;
+        if (inimAleatorio == 0 && contadorMedios < 7) {
+          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+          contadorMedios++;
+        } else if (inimAleatorio == 1 && contadorDificeis < 7) {
+          criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+          contadorDificeis++;
+        }
+      }
+      break;
 
     } break;
-    case ('d'): {
+    case ('k'): {  // PARA TESTES, REMOVER DEPOIS
       criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
 
     } break;
@@ -121,6 +121,10 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
     } break;
     case ('j'): {
+      if (tripulante == nullptr) {
+        criarJogador(Vector2f(100.0f, 100.0f));
+        criarProjetil(Vector2f(100.0f, 100.0f));
+      }
       listaPersonagens->incluir(static_cast<Entidade*>(tripulante));
     } break;
     case ('b'): {
@@ -192,6 +196,17 @@ void Fase::criarProjetil(const Vector2f pos) {
 
   listaPersonagens->incluir(static_cast<Entidade*>(projetil));
   tripulante->setProjetil(projetil);
+
+  for (int i = 0; i < listaPersonagens->getTamanho(); i++) {
+    Entidade* entidade = listaPersonagens->getElemento(i);
+    if (entidade && entidade->getID() == IDs::IDs::clone) {
+      Clone* clone = dynamic_cast<Clone*>(entidade);
+      if (clone) {
+        clone->setProjetil(projetil);
+      }
+    }
+  }
+
   cout << "criacao do projetil2 " << endl;
 }
 // void Fase::setLimiteCamera(IntRect limiteCamera) {

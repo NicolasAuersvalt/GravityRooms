@@ -7,6 +7,7 @@
 #include "Entidades/entidade.h"
 
 using namespace std;
+using namespace sf;
 using namespace Entidades;
 
 namespace Entidades {
@@ -23,6 +24,7 @@ class Projetil : public Entidade {
   bool colidiu;
   Entidade* atirador;
   int dano;
+  sf::Vector2f velocidade;
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
@@ -35,14 +37,13 @@ class Projetil : public Entidade {
   Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   virtual ~Projetil();
 
-  // Métodos Virtuais
-  // void executar() override;
+  void executar();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   // virtual void executar() override;
   // virtual void mover() override;
-
+  void setVelocidade(const sf::Vector2f& vel);
   void salvar();
   void mover();
   void atualizar();

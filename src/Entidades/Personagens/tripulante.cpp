@@ -74,8 +74,6 @@ void Tripulante::mover() {
     float jumpForce = -30.0f;  // Adjust this value to control jump height
     velFinal.y = jumpForce;
     noChao = false;
-
-    cout << "Jumping" << endl;
   }
 
   if (!noChao) {

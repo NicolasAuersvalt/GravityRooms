@@ -50,4 +50,7 @@ void Lista_Entidades::removerEntidade(Entidade* entidade, const bool deletar) {
     LEs->removerElemento(entidade, deletar);
   }
 }
+Entidade* Listas::Lista_Entidades::getElemento(int pos) {
+  return objListaEntidade.operator[](pos);
+}
 }  // namespace Listas
