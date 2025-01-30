@@ -11,7 +11,7 @@ Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
       dano(1),
       ativo(false)  //, danoProjetil(10)
 {
-  setSprite("assets/projetilG.png", pos.x, pos.y);
+  setSprite("assets/projetil.png", pos.x, pos.y);
   //   // setSprite("assets/projetilP.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(150.0f, 150.0f));
   setPosicao(-130.f, -130.f);
@@ -68,13 +68,15 @@ void Projetil::mover() {
 
 void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   switch (outraEntidade->getID()) {
-    case (IDs::IDs::inimigo): {
+    case (IDs::IDs::inimigo):
+    case (IDs::IDs::clone):     // Add clone case
+    case (IDs::IDs::androide):  // Add other enemy types
+    case (IDs::IDs::ciborgue): {
       if (ID == IDs::IDs::projetil_tripulante) {
         Entidades::Personagens::Inimigo *inimigo =
             dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
-        cout << "colisao" << endl;
+
         inimigo->recebeDano(dano);
-        cout << "recebeu dano na colisao" << dano << endl;
 
         getSprite().setPosition(-130.f, -130.f);
         ativo = false;
@@ -82,6 +84,11 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
     } break;
     case (IDs::IDs::tripulante): {
       if (ID == IDs::IDs::projetil_inimigo) {
+        Entidades::Personagens::Tripulante *tripulante =
+            dynamic_cast<Entidades::Personagens::Tripulante *>(outraEntidade);
+        cout << "colisao" << endl;
+        tripulante->recebeDano(dano);
+        cout << "recebeu dano na colisao" << dano << endl;
         //  getSprite().setPosition(-130.f, -130.f);
         // ativo = false;
       }

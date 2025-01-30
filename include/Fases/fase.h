@@ -20,6 +20,10 @@ class Fase : public Ente {
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
+  short inimAleatorio;
+  int contadorFaceis = 0;    // Contador de inimigos fáceis
+  int contadorDificeis = 0;  // Contador de inimigos difíceis
+
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 

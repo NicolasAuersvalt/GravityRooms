@@ -13,7 +13,7 @@ namespace Entidades::Personagens {
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
     : Personagem(pos, tam, ID), pontos(0), GF(pos) {
-  setSprite("assets/tripulanteG.png", pos.x, pos.y);
+  setSprite("assets/tripulante.png", pos.x, pos.y);
   // setSprite("assets/tripulanteP.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(150.0f, 150.0f));
   setPosicao(pos.x, pos.y);

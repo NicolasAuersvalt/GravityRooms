@@ -11,7 +11,7 @@ Plataforma::Plataforma(sf::Vector2f pos, const sf::Vector2f tam,
     : Obstaculo(pos, tam, ID) {
   this->dano = 0;
   // setSprite("assets/plataformaP.png", pos.x, pos.y);
-  setSprite("assets/plataformaG.png", pos.x, pos.y);
+  setSprite("assets/plataforma.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(500.0f, 150.0f));
   setPosicao(pos.x, pos.y);
 

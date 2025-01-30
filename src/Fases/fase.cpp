@@ -24,7 +24,7 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
       tripulante(nullptr),
       pColisao(new Gerenciadores::Gerenciador_Colisoes(listaPersonagens,
                                                        listaObstaculos)) {
-  // ...existing code...
+  srand(time(NULL));
 }
 // Destrutor
 Fase::~Fase() {
@@ -82,6 +82,38 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
   switch (letra) {
     case ('i'): {
       criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+      /*switch (letra) {
+      case 'i': {
+            // Gerar número aleatório entre 0 e 2
+            inimAleatorio = rand() % 3;
+
+            // Verificar o valor gerado e criar inimigos conforme necessário
+            switch (inimAleatorio) {
+                case 0:
+                    // Não cria inimigo
+                    break;
+                case 1:
+                    // Cria inimigo fácil, se o contador permitir
+                    if (contadorFaceis < 7) {
+                        Vector2f posicao(pos.x * 50.0f, pos.y * 50.0f);
+                        criarInimFaceis(posicao, tripulante);
+                        contadorFaceis++; // Incrementa o contador de inimigos
+fáceis
+                    }
+                    break;
+                case 2:
+                    // Cria inimigo difícil, se o contador permitir
+                    if (contadorDificeis < 7) {
+                        Vector2f posicao(pos.x * 50.0f, pos.y * 50.0f);
+                        criarInimDificeis(posicao, tripulante);
+                        contadorDificeis++; // Incrementa o contador de inimigos
+difíceis
+                    }
+                    break;
+            }
+            break;
+}
+ */
 
     } break;
     case ('f'): {

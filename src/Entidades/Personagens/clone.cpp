@@ -13,7 +13,7 @@ Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID)
   this->dano = 3;
   nivel_maldade = 3;
   // setSprite("assets/cloneP.png", pos.x, pos.y);
-  setSprite("assets/cloneG.png", pos.x, pos.y);
+  setSprite("assets/clone.png", pos.x, pos.y);
 
   setPosicao(pos.x, pos.y);
   vivo = true;
@@ -30,8 +30,14 @@ void Clone::salvarDataBuffer(nlohmann::ordered_json& json) {}
 void Clone::mover() {
   if (vivo) {
     Inimigo::mover();
+    atirar();
   }
 }
 
 void Clone::danificar(Tripulante* p) {}
+void Clone::atirar() {
+  if (!projetil->getAtivo()) {
+    projetil->setAtivo(true, getSprite().getPosition());
+  }
+}
 }  // namespace Entidades::Personagens

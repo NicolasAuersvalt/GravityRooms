@@ -5,40 +5,43 @@
 
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/tripulante.h"
+#include "Entidades/projetil.h"
 using namespace std;
 using namespace sf;
 using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-	class Clone : public Inimigo {
-		private:
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
-			//   float raio;
+class Clone : public Inimigo {
+ private:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
+  //   float raio;
 
-			// ===/===/===/===/ Outros  ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
 
-		protected:
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
+ protected:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-			// ===/===/===/===/ Outros  ===/===/===/===/
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  Projetil* projetil;
 
-		public:
-			// ===/===/===/===/ Obrigatório ===/===/===/===/
+ public:
+  // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-			Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID);
-			~Clone();
-			using Ente::setSprite;
+  Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID);
+  ~Clone();
+  using Ente::setSprite;
 
-			void danificar(Tripulante* p) override;
+  void danificar(Tripulante* p) override;
 
-			virtual void executar() override;
-			virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
-			void mover() override;
+  virtual void executar() override;
+  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+  void mover() override;
+  void atirar();
 
-			// ===/===/===/===/ Outros  ===/===/===/===/
-			//   void colidir(Entidade* outro, string direction = "") override;
-	};
+  // ===/===/===/===/ Outros  ===/===/===/===/
+  //   void colidir(Entidade* outro, string direction = "") override;
+};
 
 }  // namespace Entidades::Personagens
 

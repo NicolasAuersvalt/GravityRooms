@@ -39,7 +39,7 @@ void Inimigo::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
   switch (outraEntidade->getID()) {
     // case (IDs::IDs::inimigo): {
     // } break;
-    case IDs::IDs::plataforma: {
+    case (IDs::IDs::plataforma): {
       tempoSemColisao = 0.0f;
       Vector2f myPos = getSprite().getPosition();
       Vector2f platPos = outraEntidade->getSprite().getPosition();
@@ -66,6 +66,14 @@ void Inimigo::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
       // Check if the Tripulante is landing on top of the platform
 
     } break;
+    // case (IDs::IDs::tripulante): {
+    //   Entidades::Personagens::Tripulante* tripulante =
+    //       dynamic_cast<Entidades::Personagens::Tripulante*>(outraEntidade);
+    //   cout << "colisao" << endl;
+    //   tripulante->recebeDano(dano);
+    //   cout << "recebeu dano na colisao" << dano << endl;
+
+    // } break;
     default: {
       tempoSemColisao = 0.0f;
       onPlatform = false;
@@ -138,11 +146,11 @@ void Inimigo::movimentarAleatorio() {
   // else if (moverAleatorio == 1) {
   //   getSprite().move(0.0f, vel.y);
   // }
-  // Move para esquerda quando moverAleatorio = 2
+  // Move para esquerda quando moverAleatorio = 0
   if (moverAleatorio == 0) {
     getSprite().move(-vel.x, 0.0f);
   }
-  // Move para direita quando moverAleatorio = 3
+  // Move para direita quando moverAleatorio = 1
   else {
     getSprite().move(vel.x, 0.0f);
   }
