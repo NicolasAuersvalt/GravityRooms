@@ -65,7 +65,7 @@ namespace Fases {
 	void Laboratorio::criarFundo() {
 		std::cout << "Loading background texture..." << std::endl;
 
-		if (!bgTexture.loadFromFile("assets/lab1.jpg")) {
+		if (!bgTexture.loadFromFile("assets/lab.png")) {
 			std::cerr << "Failed to load background texture!" << std::endl;
 			return;
 		}

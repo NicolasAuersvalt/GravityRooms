@@ -68,7 +68,10 @@ void Projetil::mover() {
 
 void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   switch (outraEntidade->getID()) {
-    case (IDs::IDs::inimigo): {
+    case (IDs::IDs::inimigo):
+    case (IDs::IDs::clone):     
+    case (IDs::IDs::androide): 
+    case (IDs::IDs::ciborgue):  {
       if (ID == IDs::IDs::projetil_tripulante) {
         Entidades::Personagens::Inimigo *inimigo =
             dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
