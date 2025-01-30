@@ -1,7 +1,5 @@
 #include "Fases/fase.h"
 
-
-
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 namespace Fases {
 
@@ -12,12 +10,10 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
       listaObstaculos(new Lista_Entidades()),
       listaBackground(new Lista_Entidades()),
       tripulante(nullptr),
-      pColisao(new Gerenciador_Colisoes(listaPersonagens,
-                                                       listaObstaculos)),
-                                                       bg(), GS()
-                                                       {
-                                                        
-    
+      pColisao(new Gerenciador_Colisoes(listaPersonagens, listaObstaculos)),
+      bg(),
+      GS() {
+  srand(time(nullptr));
 }
 // Destrutor
 Fase::~Fase() {
@@ -31,8 +27,7 @@ Fase::~Fase() {
 
 void Fase::criarPlataforma(const Vector2f pos) {
   Plataforma* plataforma =
-      new Plataforma(pos, Vector2f(300.0f, 50.0f),
-                                            IDs::IDs::plataforma);
+      new Plataforma(pos, Vector2f(300.0f, 50.0f), IDs::IDs::plataforma);
   if (plataforma == nullptr) {
     cout << "Fase::nao foi possivel criar plataforma" << endl;
     exit(1);
@@ -43,8 +38,8 @@ void Fase::criarPlataforma(const Vector2f pos) {
 }
 
 void Fase::criarEspinho(const Vector2f pos) {
-  Espinho* espinho = new Espinho(
-      pos, Vector2f(50.0f, 50.0f), IDs::IDs::espinho);
+  Espinho* espinho =
+      new Espinho(pos, Vector2f(50.0f, 50.0f), IDs::IDs::espinho);
   if (espinho == nullptr) {
     cout << "Fase::nao foi possivel criar espinho" << endl;
     exit(1);
@@ -55,12 +50,10 @@ void Fase::criarEspinho(const Vector2f pos) {
 }
 
 void Fase::criarCentroGravidade(const Vector2f pos) {
-  Centro_Gravidade* centro_gravidade =
-      new Centro_Gravidade(
-          pos, Vector2f(90.0f, 90.0f), IDs::IDs::centro_gravidade);
+  Centro_Gravidade* centro_gravidade = new Centro_Gravidade(
+      pos, Vector2f(90.0f, 90.0f), IDs::IDs::centro_gravidade);
   if (centro_gravidade == nullptr) {
-    cout << "Fase::nao foi possivel criar centro de gravidade"
-              << endl;
+    cout << "Fase::nao foi possivel criar centro de gravidade" << endl;
     exit(1);
   }
 
@@ -71,13 +64,42 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
   if (tripulante == nullptr) {
     criarJogador(Vector2f(100.0f, 100.0f));
     criarProjetil(Vector2f(100.0f, 100.0f));
-    
   }
+  // switch (letra) {
+  //   case ('i'): {
+  //     criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+
+  //   } break;
   switch (letra) {
     case ('i'): {
-      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+      // Gerar número aleatório entre 0 e 2
+      inimAleatorio = rand() % 2;
 
-    } break;
+      cout << "criando inim  " << inimAleatorio << endl;
+      // Verificar o valor gerado e criar inimigos conforme necessário
+      switch (inimAleatorio) {
+        case 0:
+          // Cria inimigo fácil, se o contador permitir
+          if (contadorFaceis < 7) {
+            Vector2f posicao(pos.x * 50.0f, pos.y * 50.0f);
+            cout << "criando inim facil" << endl;
+            criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+            contadorFaceis++;  // Incrementa o contador de inimigos fáceis
+          }
+          break;
+        case 1:
+          // Cria inimigo medio, se o contador permitir
+          if (contadorMedios < 7) {
+            Vector2f posicao(pos.x * 50.0f, pos.y * 50.0f);
+            cout << "criando inim medio" << endl;
+            criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+            contadorDificeis++;  // Incrementa o contador de inimigos difíceis
+          }
+          break;
+      }
+      break;
+    }
+
     case ('f'): {
       criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
 
@@ -108,28 +130,22 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 }
 
 void Fase::criarJogador(const Vector2f pos) {
-
-  tripulante = new Tripulante(
-      pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante);
+  tripulante =
+      new Tripulante(pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante);
 
   if (tripulante == nullptr) {
     cout << "Fase::nao foi possivel criar jogador" << endl;
     exit(1);
   }
-
 }
-void Fase::desenhar() 
-{
+void Fase::desenhar() {
   listaBackground->desenharTodos();
   listaObstaculos->desenharTodos();
   listaPersonagens->desenharTodos();
-
 }
 
-void Fase::criarInimFaceis(const Vector2f pos,
-                           Tripulante* tripulante) {
-  Ciborgue* ciborgue =
-      new Ciborgue(pos, tripulante, IDs::IDs::ciborgue);
+void Fase::criarInimFaceis(const Vector2f pos, Tripulante* tripulante) {
+  Ciborgue* ciborgue = new Ciborgue(pos, tripulante, IDs::IDs::ciborgue);
   if (ciborgue == nullptr) {
     cout << "Fase::nao foi possivel criar ciborgue" << endl;
     exit(1);
@@ -137,10 +153,8 @@ void Fase::criarInimFaceis(const Vector2f pos,
   listaPersonagens->incluir(static_cast<Entidade*>(ciborgue));
 }
 
-void Fase::criarInimMedios(const Vector2f pos,
-                           Tripulante* tripulante) {
-  Androide* androide =
-      new Androide(pos, tripulante, IDs::IDs::androide);
+void Fase::criarInimMedios(const Vector2f pos, Tripulante* tripulante) {
+  Androide* androide = new Androide(pos, tripulante, IDs::IDs::androide);
   if (androide == nullptr) {
     cout << "Fase::nao foi possivel criar androide" << endl;
     exit(1);
@@ -148,10 +162,8 @@ void Fase::criarInimMedios(const Vector2f pos,
   listaPersonagens->incluir(static_cast<Entidade*>(androide));
 }
 
-void Fase::criarInimDificeis(const Vector2f pos,
-                             Tripulante* tripulante) {
-  Clone* clone =
-      new Clone(pos, tripulante, IDs::IDs::clone);
+void Fase::criarInimDificeis(const Vector2f pos, Tripulante* tripulante) {
+  Clone* clone = new Clone(pos, tripulante, IDs::IDs::clone);
   if (clone == nullptr) {
     cout << "Fase::nao foi possivel criar clone" << endl;
     exit(1);
@@ -170,8 +182,8 @@ void Fase::executar() {
 
 void Fase::criarProjetil(const Vector2f pos) {
   cout << "criacao do projetil " << endl;
-  Projetil* projetil = new Projetil(
-      pos, Vector2f(50.0f, 50.0f), IDs::IDs::projetil_tripulante);
+  Projetil* projetil =
+      new Projetil(pos, Vector2f(50.0f, 50.0f), IDs::IDs::projetil_tripulante);
 
   if (projetil == nullptr) {
     cout << "Fase::nao foi possivel criar projetil" << endl;

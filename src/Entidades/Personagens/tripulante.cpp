@@ -2,16 +2,13 @@
 
 #include <SFML/Graphics.hpp>
 
-
 using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
-    : Personagem(pos, tam, ID), pontos(0), GF(pos), GS(nullptr)
-    {
-
+    : Personagem(pos, tam, ID), pontos(0), GF(pos), GS(nullptr) {
   GS = new Gerenciadores::Gerenciador_Salvamento();
   GS->setJogador(this);
 
@@ -42,19 +39,9 @@ void Tripulante::setGerenciadorEvento(Gerenciador_Eventos* GE) {
   }
 }
 
-Gerenciadores::Gerenciador_Salvamento* getGerenciadorSalvamento(){
-  return GS;
-}
-
-void Tripulante::tirarMunicao(){
-    municao.atirou();
-  }
-int Tripulante::getMunicao(){
-    return municao.getQtd();
- }
- void Tripulante::setMunicao(int qtd){
-    municao.setQtd(qtd);
-  }
+void Tripulante::tirarMunicao() { municao.atirou(); }
+int Tripulante::getMunicao() { return municao.getQtd(); }
+void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
 
 void Tripulante::mover() {
   // tempoSemColisao += 0.016f;  // Assuming 60fps

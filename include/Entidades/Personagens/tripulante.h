@@ -4,15 +4,13 @@
 #include <cmath>
 #include <iostream>
 
-#include "Gerenciadores/gerenciador_eventos.h"
-#include "Gerenciadores/gerenciador_fisico.h"
-#include "Gerenciadores/gerenciador_Salvamento.h"
-
 #include "Entidades/Obstaculos/centro_gravidade.h"
 #include "Entidades/Obstaculos/espinho.h"
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/projetil.h"
-
+#include "Gerenciadores/gerenciador_Salvamento.h"
+#include "Gerenciadores/gerenciador_eventos.h"
+#include "Gerenciadores/gerenciador_fisico.h"
 #include "json.hpp"
 
 using namespace sf;
@@ -22,52 +20,42 @@ using Gerenciadores::Gerenciador_Eventos;
 using Gerenciadores::Gerenciador_Fisica;
 
 namespace Gerenciadores {
-    class Gerenciador_Salvamento;
+class Gerenciador_Salvamento;
 }
 
 namespace Entidades::Personagens {
 
 class Tripulante : public Personagem {
-
  private:
-
   class Municao {
+   private:
+    int quantidade;
 
-    private:
+   public:
+    Municao() : quantidade(0) {}
 
-        int quantidade;
-
-    public:
-
-        Municao() : quantidade(0) {}
-
-        void setQtd(int qtd) {
-           quantidade = qtd; 
-           }
-        int getQtd() const { 
-          return quantidade; 
-          }
-        void atirou() {
-            if (quantidade > 0) {
-                quantidade--;
-            }
-            else{
-              cerr << "Não tem mais munição" << endl;
-            }
-        }
-    };
+    void setQtd(int qtd) { quantidade = qtd; }
+    int getQtd() const { return quantidade; }
+    void atirou() {
+      if (quantidade > 0) {
+        quantidade--;
+      } else {
+        cerr << "Não tem mais munição" << endl;
+      }
+    }
+  };
 
   Municao municao;
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   int pontos;
   Gerenciador_Eventos* GE;
   Gerenciador_Fisica GF;
-  Gerenciadores::Gerenciador_Salvamento *GS;
   // ===/===/===/===/ Outros  ===/===/===/===/
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
+  Gerenciadores::Gerenciador_Salvamento* GS;
   // ===/===/===/===/ Outros  ===/===/===/===/
   Projetil* projetil;
 
@@ -95,13 +83,15 @@ class Tripulante : public Personagem {
   int getPontos();
   int getMunicao();
 
-  Gerenciadores::Gerenciador_Salvamento* getGerenciadorSalvamento();
+  Gerenciadores::Gerenciador_Salvamento* getGerenciadorSalvamento() {
+    return GS;
+  }
   void tirarMunicao();
   void atualizar();
   void podePular();
   void colisao(Entidade* outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
-  
+
   void atirar();
 };
 

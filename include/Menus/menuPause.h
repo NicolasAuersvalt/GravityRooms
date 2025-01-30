@@ -29,8 +29,8 @@ public:
 // ===/===/===/===/ Obrigatório ===/===/===/===/
 
 MenuPausa(Fase::Fase* fase = nullptr);
-MenuPausa(const IDs::IDs ID, const string nome, Fase::Fase* fase = nullptr); // dois construtores
-~Menu();
+MenuPausa(const IDs::IDs ID, const string nome, Fase::Fase* fase = nullptr); //
+dois construtores ~Menu();
 
 // void executar() override;
 
@@ -43,3 +43,22 @@ virtual void executar();
 
 #endif
 */
+
+#pragma once
+
+#include "Menus/menu.h"
+
+namespace Menus {
+
+class MenuPause : public Menu {
+ private:
+ public:
+  MenuPause();
+  MenuPause(const IDs::IDs ID, std::string nome,
+            const unsigned int tamFonte = 180);
+  virtual ~MenuPause();
+  void criarBotoes();
+  void executar();
+};
+
+}  // namespace Menus

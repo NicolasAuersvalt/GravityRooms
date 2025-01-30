@@ -10,22 +10,17 @@
 #include "Entidades/Obstaculos/plataforma.h"
 #include "Entidades/Personagens/androide.h"
 #include "Entidades/Personagens/tripulante.h"
-
+#include "Fases/fase.h"
+#include "Fases/laboratorio.h"
+#include "Fases/nave.h"
+#include "Gerenciadores/gerenciador_colisoes.h"
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Gerenciadores/gerenciador_colisoes.h"
 #include "Gerenciadores/gerenciador_salvamento.h"
-
+#include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
 #include "Menus/menuPrincipal.h"
-#include "Fases/laboratorio.h"
-
-#include "Fases/fase.h"
-#include "Fases/nave.h"
 #include "ente.h"
-
-
-#include "IDs/IDs.h"
 
 using namespace std;
 using namespace sf;
@@ -42,20 +37,20 @@ using Gerenciadores::Gerenciador_Grafico;
 
 // Includes de Listas e Menus
 using Listas::Lista_Entidades;
+using Menus::Menu;
+// using Menus::MenuPause;
 using Menus::MenuPrincipal;
 
 // Includes de Fases
+using Fases::Fase;
 using Fases::Laboratorio;
 using Fases::Nave;
-using Fases::Fase;
 
 // Includes gerais
 using namespace std;
 using namespace sf;
 
-
 class Gravity_Rooms {
-  
  private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
@@ -63,7 +58,7 @@ class Gravity_Rooms {
   Gerenciador_Colisoes GC;
   Gerenciador_Eventos GE;
   Fase* fase;
-  MenuPrincipal menuGeral;
+  Menu* menu;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
@@ -81,8 +76,9 @@ class Gravity_Rooms {
 
   Gravity_Rooms();
   ~Gravity_Rooms();
-  bool ligarMenu();
+  bool ligarMenu(IDs::IDs pMenu);
   void executar();
+  void salvarJogo();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
   void criarFases(IDs::IDs faseSelecionada);

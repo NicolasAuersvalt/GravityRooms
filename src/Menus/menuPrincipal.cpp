@@ -3,9 +3,9 @@
 
 namespace Menus {
 
-MenuPrincipal::MenuPrincipal()
-    : Menu(IDs::IDs::menu_principal,
-           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "MenuPrin", 180) {
+MenuPrincipal::MenuPrincipal(IDs::IDs id)
+    : Menu(id, sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "MenuPrin",
+           180) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});

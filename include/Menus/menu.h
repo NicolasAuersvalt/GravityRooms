@@ -27,45 +27,42 @@ class Gravity_Rooms;
 
 namespace Menus {
 
-	class Menu : public Ente {
+class Menu : public Ente {
+ protected:
+  list<Menus::Botoes::BotaoTexto*> listaBotaoTexto;
+  list<Menus::Botoes::BotaoTexto*>::iterator it;
 
-		protected:
-			list<Menus::Botoes::BotaoTexto*> listaBotaoTexto;
-			list<Menus::Botoes::BotaoTexto*>::iterator it;
+  const Vector2f tamBotao;
+  const Vector2f tamJanela;
 
-			const Vector2f tamBotao;
-			const Vector2f tamJanela;
+  Vector2f posFundo;
 
-			Vector2f posFundo;
+  Menus::Botoes::Texto titulo;
+  bool botaoSelecionado;
 
-			Menus::Botoes::Texto titulo;
-			bool botaoSelecionado;
+  void atualizarPosicaoFundo();
+  virtual void criarFundo() {};
+  void inicializarIterator();
 
-			void atualizarPosicaoFundo();
-			virtual void criarFundo() {};
-			virtual void criarBotoes() = 0;
-			void inicializarIterator();
-
-		public:
-
-			Menu(const IDs::IDs ID, const Vector2f tamBotao, const string nome,
-					const unsigned int tamFonte);
-			~Menu();
-			void addBotao(const string info, const Vector2f pos,
-					const IDs::IDs ID, const Color corSelecionado);
-			void mudarEstadoObservador();
-			void selecionaCima();
-			void selecionaBaixo();
-			virtual void selecionaEsquerda() {}
-			virtual void selecionaDireita() {}
-			const IDs::IDs getIDBotaoSelecionado() const;
-			void eventoTeclado(const Keyboard::Key tecla);
-			bool getSelecionado();
-			virtual void executar() = 0;
-			void desenhar(Gerenciador_Grafico* GG);
-			void setSelecionado(bool status);
-			
-	};
+ public:
+  Menu(const IDs::IDs ID, const Vector2f tamBotao, const string nome,
+       const unsigned int tamFonte);
+  ~Menu();
+  void addBotao(const string info, const Vector2f pos, const IDs::IDs ID,
+                const Color corSelecionado);
+  virtual void criarBotoes() = 0;
+  void mudarEstadoObservador();
+  void selecionaCima();
+  void selecionaBaixo();
+  virtual void selecionaEsquerda() {}
+  virtual void selecionaDireita() {}
+  const IDs::IDs getIDBotaoSelecionado() const;
+  void eventoTeclado(const Keyboard::Key tecla);
+  bool getSelecionado();
+  virtual void executar() = 0;
+  void desenhar(Gerenciador_Grafico* GG);
+  void setSelecionado(bool status);
+};
 
 }  // namespace Menus
 
