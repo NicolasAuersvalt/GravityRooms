@@ -15,7 +15,7 @@ Isabela Bella Bortoleto
 
 ---
 
-![Tripulante](assets/tripulanteG.png)
+![Tripulante](assets/tripulante.png)
 
 
 Antes de instalar o jogo, certifique-se de ter as seguintes ferramentas instaladas no seu sistema:
