@@ -72,6 +72,11 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
         out = true;
       }
 
+      if (selecao == IDs::IDs::botao2) {
+        criarFases(IDs::IDs::fase_nave);
+        out = true;
+      }
+
       if (selecao == IDs::IDs::botao_sair) {
         exit(1);
       }
@@ -85,7 +90,6 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
   return out;
 }
 void Gravity_Rooms::executar() {
-  enum GameState { MAIN, PLAYING, PAUSE };
   GameState currentState = MAIN;
   bool isLaboratorioComplete = false;
 
@@ -110,21 +114,9 @@ void Gravity_Rooms::executar() {
       }
 
       case PLAYING: {
-        if (!GC.pJog1 || !GC.pJog1->verificarVivo()) {
-          // Cleanup when player dies
-          if (fase != nullptr) {
-            delete fase;
-            fase = nullptr;
-          }
-
-          listaPersonagem.limparLista();
-
-          listaObstaculo.limparLista();
-          GC.pJog1 = nullptr;
-          menu->setSelecionado(false);
-          currentState = MAIN;
-          continue;
-        }
+        int retFlag;
+        checkPlayer(currentState, retFlag);
+        if (retFlag == 3) continue;
 
         // Check if all enemies are dead
         bool enemiesExist = false;
@@ -194,6 +186,28 @@ void Gravity_Rooms::executar() {
   }
 }
 
+void Gravity_Rooms::checkPlayer(GameState &currentState, int &retFlag) {
+  retFlag = 1;
+  if (!GC.pJog1 || !GC.pJog1->verificarVivo()) {
+    // Cleanup when player dies
+    if (fase != nullptr) {
+      delete fase;
+      fase = nullptr;
+    }
+
+    listaPersonagem.limparLista();
+
+    listaObstaculo.limparLista();
+    GC.pJog1 = nullptr;
+    menu->setSelecionado(false);
+    currentState = MAIN;
+    {
+      retFlag = 3;
+      return;
+    };
+  }
+}
+
 void Gravity_Rooms::salvarJogo() {
     fase->salvarJogador();
 }
@@ -243,5 +257,3 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
     atualPersonagens = atualPersonagens->getProximo();
   }
 }
-
-// ===/===/===/===/ Outros  ===/===/===/===/
