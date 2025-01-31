@@ -31,7 +31,7 @@ SFML 2.5.1 (Audio, Graphics, Network, System, Window)
 
 ![RGravitacional](assets/regiao_gravitacional.png)
 
-# Instalação
+## Instalação
 
 Para instalar o jogo, execute o script `install.sh`:
 
@@ -40,7 +40,7 @@ Para instalar o jogo, execute o script `install.sh`:
 
 ---
 
-# Execução
+## Execução
 
 Após a instalação, para rodar o jogo, utilize:
 
@@ -49,7 +49,7 @@ Após a instalação, para rodar o jogo, utilize:
 
 ---
 
-# Debug
+## Debug
 
 Para rodar o jogo em modo de depuração, utilize:
 
