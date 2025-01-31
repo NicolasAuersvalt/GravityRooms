@@ -318,4 +318,4 @@ Para rodar o jogo em modo de depuração, utilize:
 ( )Escrita do trabalho e feitura da apresentação & Revisão do trabalho escrito de outra equipe e vice-versa.
 
 
-![Andoid](assets/androidG.png)
+![Andoid](assets/androide.png)
