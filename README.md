@@ -15,6 +15,8 @@ Isabela Bella Bortoleto
 
 ---
 
+![Tripulante](assets/tripulanteG.png)
+
 
 Antes de instalar o jogo, certifique-se de ter as seguintes ferramentas instaladas no seu sistema:
 
@@ -26,7 +28,7 @@ Compilador C++: Recomendado o g++ ou clang++ (g++ (Ubuntu 11.4.0-1ubuntu1~22.04)
 
 SFML 2.5.1 (Audio, Graphics, Network, System, Window)
 
-![Tripulante](assets/tripulanteG.png)
+![RGravitacional](assets/regiao_gravitacional.png)
 
 # Instalação
 
