@@ -38,6 +38,8 @@ void Fase::criarPlataforma(const Vector2f pos) {
 }
 
 void Fase::criarEspinho(const Vector2f pos) {
+  Vector2f adjustedPos = pos;
+  adjustedPos.y -= 45.0f;
   Espinho* espinho =
       new Espinho(pos, Vector2f(90.0f, 90.0f), IDs::IDs::espinho);
   if (espinho == nullptr) {
@@ -118,7 +120,7 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
     } break;
     case ('c'): {
-      criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+      criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
 
     } break;
     case ('#'): {
@@ -126,7 +128,7 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
     } break;
     case ('g'): {
-      criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+      criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
 
     } break;
     case ('j'): {

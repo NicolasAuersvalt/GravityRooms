@@ -174,7 +174,7 @@ void Gravity_Rooms::executar() {
         GG.exibir();
 
         listaPersonagem.atualizarTodas();
-
+        cout << "entrei na obstaulo" << endl;
         listaObstaculo.atualizarTodas();
 
         break;
