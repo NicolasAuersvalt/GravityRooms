@@ -27,7 +27,7 @@ Fase::~Fase() {
 
 void Fase::criarPlataforma(const Vector2f pos) {
   Plataforma* plataforma =
-      new Plataforma(pos, Vector2f(300.0f, 50.0f), IDs::IDs::plataforma);
+      new Plataforma(pos, Vector2f(266.0f, 80.0f), IDs::IDs::plataforma);
   if (plataforma == nullptr) {
     cout << "Fase::nao foi possivel criar plataforma" << endl;
     exit(1);
@@ -38,11 +38,8 @@ void Fase::criarPlataforma(const Vector2f pos) {
 }
 
 void Fase::criarEspinho(const Vector2f pos) {
-  // Ajuste da  posicao do espinho
-  // sf::Vector2f ajustedPos = pos;
-  // ajustedPos.y -= 300.0f;
   Espinho* espinho =
-      new Espinho(pos, Vector2f(50.0f, 50.0f), IDs::IDs::espinho);
+      new Espinho(pos, Vector2f(90.0f, 90.0f), IDs::IDs::espinho);
   if (espinho == nullptr) {
     cout << "Fase::nao foi possivel criar espinho" << endl;
     exit(1);
