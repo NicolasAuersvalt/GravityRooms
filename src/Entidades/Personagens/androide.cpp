@@ -27,8 +27,9 @@ void Androide::executar() {
 }
 
 void Androide::danificar(Tripulante* p) {}
+
 void Androide::mover() {
-  if (vivo && this != nullptr) {
+  if (vivo) {
     Inimigo::mover();
   }
 }

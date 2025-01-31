@@ -45,38 +45,41 @@ class Lista {
   Elemento<TL>* pUltimo;    // Ponteiro para o último elemento
 
   void removerElemento(TL* elemento, const bool deletar) {
-    if (elemento == nullptr) {
+    if (!elemento) {
       std::cout << "ERROR::Lista elemento eh nullptr" << std::endl;
-      exit(1);
+      return;
     }
+
     Elemento<TL>* aux = pPrimeiro;
     Elemento<TL>* aux2 = nullptr;
+
     while (aux != nullptr && aux->getElemento() != elemento) {
       aux2 = aux;
       aux = aux->getProximo();
     }
+
     if (aux && aux->getElemento() == elemento) {
       if (aux == pPrimeiro) {
         pPrimeiro = aux->getProximo();
-      } else if (aux == pUltimo) {
-        pUltimo = aux2;
       } else {
         aux2->setProx(aux->getProximo());
       }
-      if (deletar) {
-        delete aux->pInfo;     // Delete the element data
-        aux->pInfo = nullptr;  // Set to nullptr after delete
-        delete aux;            // Delete the node
-        aux = nullptr;
-        cout << "here" << "endl";
+
+      // Update pUltimo if we are removing the last element
+      if (aux == pUltimo) {
+        pUltimo = aux2;
       }
+
+      if (deletar) {
+        delete aux->pInfo;  // Free entity
+        aux->pInfo = nullptr;
+      }
+      delete aux;  // Free node
+      aux = nullptr;
+
       tamanho--;
     }
-  };
-  void removerElemento(int pos, const bool deletar) {
-    TL* elemento = operator[](pos);
-    return removerElemento(elemento, deletar);
-  };
+  }
 
   // Construtor
   Lista() : pPrimeiro(nullptr), pUltimo(nullptr), tamanho(0) {

@@ -6,22 +6,23 @@ namespace IDs {
 
 enum class IDs {
   vazio = 0,
-  tripulante,                  // 1
-  inimigo,                     // 2
-  projetil_inimigo,            // 3
-  projetil_tripulante,         // 4
-  clone,                       // 5
-  androide,                    // 6
-  ciborgue,                    // 7
-  plataforma,                  // 8
-  espinho,                     // 9
-  centro_gravidade,            // 10
-  vida,                        // 11
-  fundo_laboratorio,           // 12
-  fundo_nave,                  // 13
-  fase_laboratorio,            // 14
-  fase_nave,                   // 15
-  botao_novoJogo,              // 16
+  tripulante,           // 1
+  inimigo,              // 2
+  projetil_inimigo,     // 3
+  projetil_tripulante,  // 4
+  clone,                // 5
+  androide,             // 6
+  ciborgue,             // 7
+  plataforma,           // 8
+  espinho,              // 9
+  centro_gravidade,     // 10
+  vida,                 // 11
+  fundo_laboratorio,    // 12
+  fundo_nave,           // 13
+  fase_laboratorio,     // 14
+  fase_nave,            // 15
+  botao_novoJogo,
+  botao2,                      // 16
   botao_carregar_jogo,         // 17
   botao_colocacao,             // 18
   botao_opcao,                 // 19
@@ -48,7 +49,8 @@ enum class IDs {
   estado_menu_colocacao,       // 40
   estado_menu_game_over,       // 41
   estado_menu_salvar_jogada,   // 42
-  background                   // 43
+  background,                  // 43
+
 };
 
 }
