@@ -19,12 +19,6 @@ void Personagem::salvar() {}
 
 const RectangleShape& Personagem::getCorpo() const { return corpo; }
 
-/*
-   const RectangleShape& Personagem::getCorpo() {
-   return corpo;
-   }
-   */
-
 int Personagem::getVida() { return pontosVida; }
 
 void Personagem::setVida(int life) {
@@ -56,10 +50,10 @@ void Entidades::Personagens::Personagem::atualizarPosicao() {
     ds *= -1;
   }
   corpo.move(ds, 0.0f);
-  cout << "Posição X: " << corpo.getPosition().x << endl;
-  cout << "Posição Y: " << corpo.getPosition().y << endl;
+  cout << "Posição X: " << getSprite().getPosition().x << endl;
+  cout << "Posição Y: " << getSprite().getPosition().y << endl;
   verificarLimitesTela();
-  cout << "Após verificar limites - Posição X: " << corpo.getPosition().x
+  cout << "Após verificar limites - Posição X: " << getSprite().getPosition().x
        << endl;
 }
 

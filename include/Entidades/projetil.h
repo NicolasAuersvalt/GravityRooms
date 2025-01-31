@@ -53,6 +53,7 @@ class Projetil : public Entidade {
   bool getColidir(Entidade* e);
   void danificar(Personagem* p);
   int getDano();
+  void atualizarPosicao() {};
   void colisao(Entidade* outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
 };

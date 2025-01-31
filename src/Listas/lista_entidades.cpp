@@ -27,7 +27,10 @@ void Lista_Entidades::desenharTodos() {
   });
 }
 void Lista_Entidades::atualizarTodas() {
-  LEs->percorrerLista([](Entidade* entidade) { entidade->mover(); });
+  LEs->percorrerLista([](Entidade* entidade) {
+    entidade->mover();
+    entidade->atualizarPosicao();
+  });
 }
 // void Lista_Entidades::limparLista() { objListaEntidade.limpar(); }
 // const int Lista_Entidades::getTamanho() {

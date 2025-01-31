@@ -130,14 +130,13 @@ void Tripulante::podePular() {
   // }
 }
 void Tripulante::atualizar() {
-  if (podeAndar) {
-    atualizarPosicao();
-  }
-  relogio.restart();
-  if (pontosVida <= 0) {
+    if (pontosVida <= 0) {
     cout << vivo << endl;
     morrer();
     cout << vivo << endl;
+  }
+  if (vivo) {
+    mover();
   }
 }
 

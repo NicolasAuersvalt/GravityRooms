@@ -35,7 +35,7 @@ class Background : public Entidade {
   void mover() override {}
   void salvar() override {}
   void colisao(Entidade* outraEntidade, sf::Vector2f ds) override {}
-
+  void atualizarPosicao() {};
   // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
