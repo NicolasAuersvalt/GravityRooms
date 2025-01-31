@@ -82,6 +82,7 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
 void Gravity_Rooms::executar() {
   enum GameState { MAIN, PLAYING, PAUSE };
   GameState currentState = MAIN;
+  bool isLaboratorioComplete = false;
 
   GG.executar();
 
@@ -110,13 +111,38 @@ void Gravity_Rooms::executar() {
             delete fase;
             fase = nullptr;
           }
+
           listaPersonagem.limparLista();
+
           listaObstaculo.limparLista();
           GC.pJog1 = nullptr;
           menu->setSelecionado(false);
           currentState = MAIN;
           continue;
         }
+
+        // // Check if all enemies are dead
+        // bool enemiesExist = false;
+        // auto atual = listaPersonagem.LEs->getPrimeiro();
+        // while (atual != nullptr) {
+        //   if (dynamic_cast<Inimigo *>(atual->pInfo)) {
+        //     enemiesExist = true;
+        //     break;
+        //   }
+        //   atual = atual->getProximo();
+        // }
+
+        // // If no enemies and in laboratory, transition to nave
+        // if (!enemiesExist && !isLaboratorioComplete &&
+        //     dynamic_cast<Laboratorio *>(fase)) {
+        //   delete fase;
+        //   fase = nullptr;
+        //   listaPersonagem.limparLista();
+        //   listaObstaculo.limparLista();
+        //   criarFases(IDs::IDs::fase_nave);
+        //   isLaboratorioComplete = true;
+        //   continue;
+        // }
 
         // Handle game events
         while (GG.processarEvento(evento)) {
@@ -136,14 +162,21 @@ void Gravity_Rooms::executar() {
 
         // Update game state
         GG.limpar();
+
         listaObstaculo.desenharTodos();
+
         listaPersonagem.desenharTodos();
+
         GC.setLista_Entidades(&listaPersonagem, &listaObstaculo);
+
         GC.executar(&listaPersonagem, &listaObstaculo);
+
         GG.exibir();
 
         listaPersonagem.atualizarTodas();
+
         listaObstaculo.atualizarTodas();
+
         break;
       }
     }

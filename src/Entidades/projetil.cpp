@@ -62,6 +62,30 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
       }
       break;
     }
+    case (IDs::IDs::ciborgue): {
+      if (ID == IDs::IDs::projetil_tripulante) {
+        Entidades::Personagens::Inimigo *inimigo =
+            dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
+        inimigo->recebeDano(dano);
+
+        getSprite().setPosition(-130.f, -130.f);
+        ativo = false;
+      }
+      break;
+    }
+    case (IDs::IDs::androide): {
+      if (ID == IDs::IDs::projetil_tripulante) {
+        Entidades::Personagens::Inimigo *inimigo =
+            dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
+        inimigo->recebeDano(dano);
+
+        getSprite().setPosition(-130.f, -130.f);
+        ativo = false;
+        std::cout << "Inimigo atingido pelo projetil do tripulante"
+                  << std::endl;
+      }
+      break;
+    }
     case (IDs::IDs::tripulante): {
       // cout << "colisao com entidade ID: "
       //      << static_cast<int>(outraEntidade->getID()) << endl;

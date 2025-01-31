@@ -20,7 +20,7 @@ using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
 class Tripulante;
 class Inimigo : public Personagem {
-  private:
+ private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
@@ -52,10 +52,7 @@ class Inimigo : public Personagem {
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   virtual void mover();  // n virtual puro por enquanto
 
-  virtual int getDano() {
-    // Por exemplo, retornar o dano base multiplicado pelo nivel de maldade
-    return dano;
-  }
+  virtual int getDano() = 0;
 
   void perseguirTripulante(sf::Vector2f posTripulante,
                            const sf::Vector2f posInimigo);

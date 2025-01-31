@@ -48,13 +48,14 @@ void Tripulante::mover() {
   // if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
   //   noChao = false;  // No recent collision, we're in air
   // }
-
+  std::cout << "ERROR" << std::endl;
   cair();
   // Movimentação (sem física, apenas mover pela tela)
   string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
   if (tecla == "Left Arrow") {
     getSprite().move(-5.f, 0.f);  // Move para a esquerda
   }
+  std::cout << "ERROR1" << std::endl;
   tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
   if (tecla == "Q" && noChao) {
     // Jump only if on ground
@@ -62,27 +63,28 @@ void Tripulante::mover() {
 
     cout << "Shooting projectile" << endl;
   }
+  std::cout << "ERROR 2" << std::endl;
   tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
   if (tecla == "Right Arrow") {
     getSprite().move(5.f, 0.f);  // Move para a direita
   }
 
   tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
-
+  std::cout << "ERROR 3" << std::endl;
   if (tecla == "Space" && noChao) {
     // Jump only if on ground
     float jumpForce = -20.0f;  // controle do pulo
     velFinal.y = jumpForce;
     noChao = false;
   }
-
+  std::cout << "ERROR 4" << std::endl;
   if (!noChao) {
     // Apply gravity
     float dt = 0.016f;  // Assuming 60fps, adjust if using different time step
     velFinal.y += GF.aplicarGravidade() * dt;
   }
   getSprite().move(velFinal.x, velFinal.y);
-
+  std::cout << "ERROR 5" << std::endl;
   // Apply movement
 }
 
@@ -130,7 +132,7 @@ void Tripulante::podePular() {
   // }
 }
 void Tripulante::atualizar() {
-    if (pontosVida <= 0) {
+  if (pontosVida <= 0) {
     cout << vivo << endl;
     morrer();
     cout << vivo << endl;

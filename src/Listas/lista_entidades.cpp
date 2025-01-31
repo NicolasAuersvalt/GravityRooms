@@ -27,9 +27,20 @@ void Lista_Entidades::desenharTodos() {
   });
 }
 void Lista_Entidades::atualizarTodas() {
+  std::cout << "---------DEBUGZAO----------------" << std::endl;
+  if (!LEs) {
+    std::cout << "LE NULO" << std::endl;
+    return;
+  }
   LEs->percorrerLista([](Entidade* entidade) {
-    entidade->mover();
-    entidade->atualizarPosicao();
+    if (entidade) {
+      std::cout << "Entidade ID: " << static_cast<int>(entidade->getID())
+                << std::endl;
+      entidade->mover();
+      std::cout << "bli: " << static_cast<int>(entidade->getID()) << std::endl;
+      entidade->atualizarPosicao();
+      std::cout << "blo: " << static_cast<int>(entidade->getID()) << std::endl;
+    }
   });
 }
 // void Lista_Entidades::limparLista() { objListaEntidade.limpar(); }

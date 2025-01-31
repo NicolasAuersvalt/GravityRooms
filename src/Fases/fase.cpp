@@ -38,6 +38,9 @@ void Fase::criarPlataforma(const Vector2f pos) {
 }
 
 void Fase::criarEspinho(const Vector2f pos) {
+  // Ajuste da  posicao do espinho
+  // sf::Vector2f ajustedPos = pos;
+  // ajustedPos.y -= 300.0f;
   Espinho* espinho =
       new Espinho(pos, Vector2f(50.0f, 50.0f), IDs::IDs::espinho);
   if (espinho == nullptr) {
@@ -111,6 +114,10 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
     } break;
     case ('k'): {  // PARA TESTES, REMOVER DEPOIS
       criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+
+    } break;
+    case ('l'): {  // PARA TESTES, REMOVER DEPOIS
+      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
 
     } break;
     case ('c'): {
