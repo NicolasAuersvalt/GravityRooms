@@ -17,7 +17,7 @@ Personagem::Personagem(const Vector2f pos, const Vector2f tam,
 Personagem::~Personagem() {}
 void Personagem::salvar() {}
 
-const RectangleShape& Personagem::getCorpo() const { return RectangleShape(); }
+const RectangleShape& Personagem::getCorpo() const { return corpo; }
 
 /*
    const RectangleShape& Personagem::getCorpo() {
@@ -56,6 +56,11 @@ void Entidades::Personagens::Personagem::atualizarPosicao() {
     ds *= -1;
   }
   corpo.move(ds, 0.0f);
+  cout << "Posição X: " << corpo.getPosition().x << endl;
+  cout << "Posição Y: " << corpo.getPosition().y << endl;
+  verificarLimitesTela();
+  cout << "Após verificar limites - Posição X: " << corpo.getPosition().x
+       << endl;
 }
 
 void Personagem::parar() { podeAndar = false; }

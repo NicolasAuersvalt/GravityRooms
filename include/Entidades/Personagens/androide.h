@@ -38,6 +38,7 @@ class Androide : public Inimigo {
   virtual void executar() override;
   virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
   void mover() override;
+  int getDano();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
   // void colidir(Entidade* outro, string direction = "") override;

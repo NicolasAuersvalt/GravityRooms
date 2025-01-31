@@ -148,16 +148,44 @@ void Tripulante::atirar() {
 }
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
   bool onPlatform = false;
+  std::cout << "Collision with enemy type: "
+            << static_cast<int>(outraEntidade->getID()) << std::endl;
   switch (outraEntidade->getID()) {
     // Caso para colisão com inimigos
-    case IDs::IDs::ciborgue:  // Substitua pelo ID correto do inimigo fácil
-    case IDs::IDs::androide:  // Substitua pelo ID correto do inimigo médio
-    case IDs::IDs::clone: {   // Substitua pelo ID correto do inimigo difícil
+    case (IDs::IDs::ciborgue):  //  inimigo fácil
+    {
+      std::cout << "Collision with enemy type: "
+                << static_cast<int>(outraEntidade->getID()) << std::endl;
       Entidades::Personagens::Inimigo* inimigo =
           dynamic_cast<Entidades::Personagens::Inimigo*>(outraEntidade);
       if (inimigo) {
         recebeDano(inimigo->getDano());  // Aplica o dano do inimigo
-        // Opcional: Adicione lógica de knockback ou efeitos visuais
+        std::cout << "Enemy damage: " << inimigo->getDano() << std::endl;
+        std::cout << "Player health after damage: " << pontosVida << std::endl;
+      }
+    } break;
+    case (IDs::IDs::clone):  //  inimigo fácil
+    {
+      std::cout << "Collision with enemy type: "
+                << static_cast<int>(outraEntidade->getID()) << std::endl;
+      Entidades::Personagens::Inimigo* inimigo =
+          dynamic_cast<Entidades::Personagens::Inimigo*>(outraEntidade);
+      if (inimigo) {
+        recebeDano(inimigo->getDano());  // Aplica o dano do inimigo
+        std::cout << "Enemy damage: " << inimigo->getDano() << std::endl;
+        std::cout << "Player health after damage: " << pontosVida << std::endl;
+      }
+    } break;
+    case (IDs::IDs::androide):  //  inimigo fácil
+    {
+      std::cout << "Collision with enemy type: "
+                << static_cast<int>(outraEntidade->getID()) << std::endl;
+      Entidades::Personagens::Inimigo* inimigo =
+          dynamic_cast<Entidades::Personagens::Inimigo*>(outraEntidade);
+      if (inimigo) {
+        recebeDano(inimigo->getDano());  // Aplica o dano do inimigo
+        std::cout << "Enemy damage: " << inimigo->getDano() << std::endl;
+        std::cout << "Player health after damage: " << pontosVida << std::endl;
       }
     } break;
     case IDs::IDs::plataforma: {

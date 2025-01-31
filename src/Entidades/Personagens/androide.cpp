@@ -9,10 +9,8 @@ namespace Entidades::Personagens {
 
 Androide::Androide(const Vector2f pos, Tripulante* tripulante,
                    const IDs::IDs ID)
-    : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), tripulante,
-              IDs::IDs::inimigo) {
+    : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), tripulante, ID) {
   this->dano = 2;
-
   this->pontosVida = 10;
   nivel_maldade = 2;
   // setSprite("assets/androidP.png", pos.x, pos.y);
@@ -36,6 +34,8 @@ void Androide::mover() {
   }
 }
 // void Androide::colidir(Entidade* outro, string direction) {
+
+int Androide::getDano() { return dano; }
 
 // }
 

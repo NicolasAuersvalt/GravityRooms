@@ -12,6 +12,7 @@ Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID)
       projetil(nullptr) {
   this->pontosVida = 20;
   this->dano = 3;
+
   nivel_maldade = 3;
   // setSprite("assets/cloneP.png", pos.x, pos.y);
   setSprite("assets/clone.png", pos.x, pos.y);
@@ -19,7 +20,6 @@ Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID)
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "cloneG Position: " << pos.x << " " << pos.y << std::endl;
 }
 
 Clone::~Clone() {}
@@ -59,4 +59,6 @@ void Clone::atirar() {
     projetil->setAtivo(true, posClone);
   }
 }
+int Clone::getDano() { return dano; }
+
 }  // namespace Entidades::Personagens

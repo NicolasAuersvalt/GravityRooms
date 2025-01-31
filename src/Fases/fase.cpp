@@ -156,6 +156,7 @@ void Fase::criarInimFaceis(const Vector2f pos, Tripulante* tripulante) {
     exit(1);
   }
   listaPersonagens->incluir(static_cast<Entidade*>(ciborgue));
+  std::cout << "Fase:: foi possivel criar inim facil" << std::endl;
 }
 
 void Fase::criarInimMedios(const Vector2f pos, Tripulante* tripulante) {
@@ -165,6 +166,7 @@ void Fase::criarInimMedios(const Vector2f pos, Tripulante* tripulante) {
     exit(1);
   }
   listaPersonagens->incluir(static_cast<Entidade*>(androide));
+  std::cout << "Fase:: foi possivel criar inim medio" << std::endl;
 }
 
 void Fase::criarInimDificeis(const Vector2f pos, Tripulante* tripulante) {
@@ -177,6 +179,7 @@ void Fase::criarInimDificeis(const Vector2f pos, Tripulante* tripulante) {
 
   clone->setProjetil(
       criarProjetil(Vector2f(100.0f, 100.0f), IDs::IDs::projetil_inimigo));
+  std::cout << "Fase:: foi possivel criar inim dificil" << std::endl;
 }
 void Fase::executar() {
   // fundo.executar();

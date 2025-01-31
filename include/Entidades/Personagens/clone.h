@@ -39,6 +39,7 @@ class Clone : public Inimigo {
   void mover() override;
   void setProjetil(Projetil* proj) { projetil = proj; };
   void atirar();  // New method to handle shooting
+  int getDano();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
   //   void colidir(Entidade* outro, string direction = "") override;

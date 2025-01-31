@@ -122,20 +122,20 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
     if (personagem && !personagem->verificarVivo()) {
       listaPer->removerEntidade(static_cast<Entidades::Entidade*>(personagem),
                                 true);
-      i--;  // Adjust index after removal
+      i--;
       continue;
     }
   }
 
-  // verifica colisao entre Personagens e Personagens e Obstáculos
+  // verifica colisao entre Personagens e Personagens
   for (int i = 0; i < listaPer->getTamanho() - 1; i++) {
     Entidades::Entidade* ent1 = listaPer->operator[](i);
-
     for (int j = i + 1; j < listaPer->getTamanho(); j++) {
       Entidades::Entidade* ent2 = listaPer->operator[](j);
       sf::Vector2f ds = calculaColisao(ent1, ent2);
       if (ds.x < 0.0f && ds.y < 0.0f) {
-        ent1->colisao(ent2, ds);
+        ent1->colisao(ent2, ds);  // Original line
+        ent2->colisao(ent1, ds);  // ADICIONADA
       }
     }
   }

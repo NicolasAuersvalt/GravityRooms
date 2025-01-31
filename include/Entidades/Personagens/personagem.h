@@ -21,7 +21,7 @@ class Personagem : public Entidade {
 
   int pontosVida;
   bool noChao;
-
+  RectangleShape corpo;
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   bool vivo;
@@ -32,6 +32,51 @@ class Personagem : public Entidade {
   Vector2f velFinal;
   float tempoSemColisao;
   const float TEMPO_MAX_SEM_COLISAO = 0.1f;
+
+  void verificarLimitesTela() {
+    Vector2f pos = getSprite().getPosition();
+    Vector2f tamanho = getTamanho();
+
+    // Debug output
+    cout << "Before boundary check:" << endl;
+    cout << "Position: (" << pos.x << ", " << pos.y << ")" << endl;
+    cout << "Size: (" << tamanho.x << ", " << tamanho.y << ")" << endl;
+
+    // Horizontal boundaries (use actual window dimensions)
+    const float LARGURA_TELA = 1280.0f;
+    const float ALTURA_TELA = 920.0f;
+
+    // Left boundary
+    if (pos.x < 0.0f) {
+      pos.x = 0.0f;
+      velFinal.x = 0.0f;
+    }
+    // Right boundary
+    if (pos.x + tamanho.x > LARGURA_TELA) {
+      pos.x = LARGURA_TELA - tamanho.x;
+      velFinal.x = 0.0f;
+    }
+
+    // Top boundary
+    if (pos.y < 0.0f) {
+      pos.y = 0.0f;
+      velFinal.y = 0.0f;
+    }
+    // Bottom boundary
+    if (pos.y + tamanho.y > ALTURA_TELA) {
+      pos.y = ALTURA_TELA - tamanho.y;
+      velFinal.y = 0.0f;
+      noChao = true;
+    }
+
+    // Update both sprite and hitbox positions
+    getSprite().setPosition(pos);
+    setPosicao(pos.x, pos.y);
+
+    // Debug output
+    cout << "After boundary check:" << endl;
+    cout << "Position: (" << pos.x << ", " << pos.y << ")" << endl;
+  }
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/

@@ -11,31 +11,19 @@ namespace Entidades::Personagens {
 
 Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante,
                    const IDs::IDs ID)
-    : Inimigo(pos, Vector2f(100.0f, 100.0f), tripulante, IDs::IDs::inimigo) {
+    : Inimigo(pos, Vector2f(100.0f, 100.0f), tripulante, ID) {
   this->pontosVida = 5;
   this->dano = 1;
-
-  std::cout << "Creating Ciborgue at position: " << pos.x << "," << pos.y
-            << std::endl;
   nivel_maldade = 1;
-  // setSprite("assets/ciborgueP.png", pos.x, pos.y);
   setSprite("assets/ciborgue.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "ciborgueG Position: " << pos.x << " " << pos.y << std::endl;
-  // Debug output
-  std::cout << "Ciborgue sprite position: " << sprite.getPosition().x << ","
-            << sprite.getPosition().y << std::endl;
-  std::cout << "Ciborgue corpo position: " << corpo.getPosition().x << ","
-            << corpo.getPosition().y << std::endl;
 }
 
 Ciborgue::~Ciborgue() {}
 void Ciborgue::executar() {
   if (vivo) {
-    std::cout << "Ciborgue executing at: " << corpo.getPosition().x << ","
-              << corpo.getPosition().y << std::endl;
     mover();
     desenhar();
   }
@@ -49,7 +37,5 @@ void Entidades::Personagens::Ciborgue::mover() {
   }
 }
 void Ciborgue::salvarDataBuffer(nlohmann::ordered_json& json) {}
-
-// void Ciborgue::colidir(Entidade* outro, string direction) {}
-
+int Ciborgue::getDano() { return dano; }
 }  // namespace Entidades::Personagens
