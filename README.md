@@ -57,7 +57,7 @@ Para rodar o jogo em modo de depuração, utilize:
 
 ---
 
-![Lab](assets/lab.jpg)
+![Lab](assets/lab.png)
 
 ## Contexto e Planejamento
 
