@@ -44,8 +44,8 @@ void MenuPrincipal::criarBotoes() {
 
   addBotao("LABORATORIO", sf::Vector2f(0.f, startY), IDs::IDs::botao_novoJogo,
            sf::Color(0, 255, 0));
-  addBotao("NAVE", sf::Vector2f(0.f, startY + spacing),
-           IDs::IDs::botao_carregar_jogo, sf::Color(0, 255, 0));
+  addBotao("NAVE", sf::Vector2f(0.f, startY + spacing), IDs::IDs::botao2,
+           sf::Color(0, 255, 0));
   addBotao("RANKING", sf::Vector2f(0.f, startY + spacing * 2),
            IDs::IDs::botao_colocacao, sf::Color(0, 255, 0));
   addBotao("CARREGAR JOGO", sf::Vector2f(0.f, startY + spacing * 3),
