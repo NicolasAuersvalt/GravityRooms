@@ -66,7 +66,7 @@
     "typeinfo": "cpp",
     "valarray": "cpp",
     "variant": "cpp",
-    "filesystem": "cpp"
+    "csignal": "cpp"
   },
   "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
   "editor.formatOnSave": true,

@@ -27,7 +27,7 @@ Fase::~Fase() {
 
 void Fase::criarPlataforma(const Vector2f pos) {
   Plataforma* plataforma =
-      new Plataforma(pos, Vector2f(300.0f, 50.0f), IDs::IDs::plataforma);
+      new Plataforma(pos, Vector2f(266.0f, 80.0f), IDs::IDs::plataforma);
   if (plataforma == nullptr) {
     cout << "Fase::nao foi possivel criar plataforma" << endl;
     exit(1);
@@ -38,8 +38,10 @@ void Fase::criarPlataforma(const Vector2f pos) {
 }
 
 void Fase::criarEspinho(const Vector2f pos) {
+  Vector2f adjustedPos = pos;
+  adjustedPos.y -= 45.0f;
   Espinho* espinho =
-      new Espinho(pos, Vector2f(50.0f, 50.0f), IDs::IDs::espinho);
+      new Espinho(pos, Vector2f(90.0f, 90.0f), IDs::IDs::espinho);
   if (espinho == nullptr) {
     cout << "Fase::nao foi possivel criar espinho" << endl;
     exit(1);
@@ -113,8 +115,12 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
       criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
 
     } break;
+    case ('l'): {  // PARA TESTES, REMOVER DEPOIS
+      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+
+    } break;
     case ('c'): {
-      criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+      criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
 
     } break;
     case ('#'): {
@@ -122,7 +128,7 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
     } break;
     case ('g'): {
-      criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+      criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
 
     } break;
     case ('j'): {

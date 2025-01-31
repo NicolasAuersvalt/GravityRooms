@@ -9,8 +9,11 @@ Menu::Menu(const IDs::IDs ID, const sf::Vector2f tamBotao,
       listaBotaoTexto(),
       it(),
       tamBotao(tamBotao),
+      tamJanela(1450.0f, 2500.0f),  // Ajuste manual da tela
       botaoSelecionado(false),
-      titulo(nome, tamFonte) {}
+      titulo(nome, tamFonte) {
+  atualizarPosicaoFundo();
+}
 
 Menu::~Menu() {
   if (!listaBotaoTexto.empty()) {
@@ -26,15 +29,30 @@ void Menu::mudarEstadoObservador() {}
 
 void Menu::addBotao(const std::string info, const sf::Vector2f pos,
                     const IDs::IDs ID, const sf::Color corSelecionado) {
+  // Botoes::BotaoTexto* botao =
+  //     new Botoes::BotaoTexto(info, tamBotao, pos, ID, corSelecionado);
+  // if (botao == nullptr) {
+  //   cout << "ERROR::Jungle::Menu::nao foi possivel criar um botao" << endl;
+  // }
+  // listaBotaoTexto.push_back(botao);
+  float centerX = tamJanela.x / 2.0f - tamBotao.x / 2.0f;
+  sf::Vector2f centeredPos(centerX, pos.y);
+
   Botoes::BotaoTexto* botao =
-      new Botoes::BotaoTexto(info, tamBotao, pos, ID, corSelecionado);
-  if (botao == nullptr) {
-    cout << "ERROR::Jungle::Menu::nao foi possivel criar um botao" << endl;
+      new Botoes::BotaoTexto(info, tamBotao, centeredPos, ID, corSelecionado);
+  if (botao) {
+    listaBotaoTexto.push_back(botao);
   }
-  listaBotaoTexto.push_back(botao);
 }
 
-void Menu::atualizarPosicaoFundo() {}
+void Menu::atualizarPosicaoFundo() {
+  // Centralização correta usando o tamanho real da janela
+  posFundo = sf::Vector2f(tamJanela.x / 2.0f, tamJanela.y / 3.0f);
+
+  // Centralizar título na horizontal e posicionar 20% acima do centro
+  float titleY = tamJanela.y * 0.2f;
+  titulo.setPos(sf::Vector2f(posFundo.x, titleY));
+}
 
 void Menu::inicializarIterator() {
   try {
@@ -99,16 +117,11 @@ void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
     (*it)->setSelecionado(true);
   }
 }
-bool Menu::getSelecionado() { 
-  return botaoSelecionado;
-   }
+bool Menu::getSelecionado() { return botaoSelecionado; }
 
-void Menu::setSelecionado(bool status) { 
-  botaoSelecionado = status;
-   }
+void Menu::setSelecionado(bool status) { botaoSelecionado = status; }
 
 void Menu::desenhar(Gerenciador_Grafico* GG) {
-
   // desenha todos os botões na janela
   std::list<Botoes::BotaoTexto*>::iterator aux;
   for (aux = listaBotaoTexto.begin(); aux != listaBotaoTexto.end(); aux++) {
@@ -116,7 +129,6 @@ void Menu::desenhar(Gerenciador_Grafico* GG) {
     botao->desenhar(*GG);
     botao = nullptr;
   }
-
 }
 
 // namespace Menu

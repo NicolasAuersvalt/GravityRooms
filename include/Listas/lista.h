@@ -64,7 +64,11 @@ class Lista {
         aux2->setProx(aux->getProximo());
       }
       if (deletar) {
-        delete (aux);
+        delete aux->pInfo;     // Delete the element data
+        aux->pInfo = nullptr;  // Set to nullptr after delete
+        delete aux;            // Delete the node
+        aux = nullptr;
+        cout << "here" << "endl";
       }
       tamanho--;
     }
@@ -113,12 +117,34 @@ class Lista {
 
   // Método para percorrer a lista e aplicar uma função em cada elemento
   void percorrerLista(void (*funcao)(TL*)) {
-    // cout << "Percorrendo a Lista..." << endl;
+    // Elemento<TL>* elem = pPrimeiro;
+    // while (elem != nullptr) {
+    //   if (elem->pInfo != nullptr) {
+    //     cout << "Percorrendo a Lista... Elemento válido" << endl;
+    //     funcao(elem->pInfo);
+    //   } else {
+    //     cout << "Percorrendo a Lista... Elemento inválido" << endl;
+    //   }
+    //   elem = elem->getProximo();
+    // }
 
-    Elemento<TL>* elem = pPrimeiro;
-    while (elem != nullptr) {
-      funcao(elem->pInfo);
-      elem = elem->getProximo();
+    if (!pPrimeiro) {
+      return;
+    }
+
+    Elemento<TL>* atual = pPrimeiro;
+    while (atual != nullptr) {
+      // Store next before processing current
+      Elemento<TL>* proximo = atual->getProximo();
+
+      if (atual && atual->pInfo) {
+        try {
+          funcao(atual->pInfo);
+        } catch (const std::exception& e) {
+          std::cerr << "Error in percorrerLista: " << e.what() << std::endl;
+        }
+      }
+      atual = proximo;
     }
   }
   TL* operator[](int pos) {

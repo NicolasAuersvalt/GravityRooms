@@ -33,8 +33,17 @@ void Texto::inicializa() {
   texto.setOutlineThickness(5.0f);
   texto.setOutlineColor(corBorda);
   texto.setFillColor(corTexto);
-  tam = sf::Vector2f(texto.getGlobalBounds().width,
-                     texto.getGlobalBounds().height);
+  // tam = sf::Vector2f(texto.getGlobalBounds().width,
+  //                    texto.getGlobalBounds().height);
+  // Corrigir cálculo da origem
+  sf::FloatRect textBounds = texto.getLocalBounds();
+  texto.setOrigin(
+      textBounds.left + textBounds.width / 2.0f,  // Origem X no centro
+      textBounds.top + textBounds.height / 2.0f   // Origem Y no centro
+  );
+
+  // Atualizar tamanho após ajustes
+  tam = sf::Vector2f(textBounds.width, textBounds.height);
 }
 
 void Texto::setCorTexto(const sf::Color corTexto) {

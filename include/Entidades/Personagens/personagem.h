@@ -37,11 +37,6 @@ class Personagem : public Entidade {
     Vector2f pos = getSprite().getPosition();
     Vector2f tamanho = getTamanho();
 
-    // Debug output
-    cout << "Before boundary check:" << endl;
-    cout << "Position: (" << pos.x << ", " << pos.y << ")" << endl;
-    cout << "Size: (" << tamanho.x << ", " << tamanho.y << ")" << endl;
-
     // Horizontal boundaries (use actual window dimensions)
     const float LARGURA_TELA = 1280.0f;
     const float ALTURA_TELA = 920.0f;
@@ -72,10 +67,6 @@ class Personagem : public Entidade {
     // Update both sprite and hitbox positions
     getSprite().setPosition(pos);
     setPosicao(pos.x, pos.y);
-
-    // Debug output
-    cout << "After boundary check:" << endl;
-    cout << "Position: (" << pos.x << ", " << pos.y << ")" << endl;
   }
 
  public:
