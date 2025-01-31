@@ -34,6 +34,7 @@ SFML 2.5.1 (Audio, Graphics, Network, System, Window)
 ## Instalação
 
 Para baixar o jogo, use:
+
     mkdir GravityRooms && cd GravityRooms
     git clone https://github.com/NicolasAuersvalt/GravityRooms.git
     cd GravityRooms
