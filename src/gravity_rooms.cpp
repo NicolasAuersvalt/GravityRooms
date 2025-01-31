@@ -121,28 +121,28 @@ void Gravity_Rooms::executar() {
           continue;
         }
 
-        // // Check if all enemies are dead
-        // bool enemiesExist = false;
-        // auto atual = listaPersonagem.LEs->getPrimeiro();
-        // while (atual != nullptr) {
-        //   if (dynamic_cast<Inimigo *>(atual->pInfo)) {
-        //     enemiesExist = true;
-        //     break;
-        //   }
-        //   atual = atual->getProximo();
-        // }
+        // Check if all enemies are dead
+        bool enemiesExist = false;
+        auto atual = listaPersonagem.LEs->getPrimeiro();
+        while (atual != nullptr) {
+          if (dynamic_cast<Inimigo *>(atual->pInfo)) {
+            enemiesExist = true;
+            break;
+          }
+          atual = atual->getProximo();
+        }
 
-        // // If no enemies and in laboratory, transition to nave
-        // if (!enemiesExist && !isLaboratorioComplete &&
-        //     dynamic_cast<Laboratorio *>(fase)) {
-        //   delete fase;
-        //   fase = nullptr;
-        //   listaPersonagem.limparLista();
-        //   listaObstaculo.limparLista();
-        //   criarFases(IDs::IDs::fase_nave);
-        //   isLaboratorioComplete = true;
-        //   continue;
-        // }
+        // Transition to fase_nave if lab is cleared
+        if (!enemiesExist && !isLaboratorioComplete &&
+            dynamic_cast<Laboratorio *>(fase)) {
+          delete fase;
+          fase = nullptr;
+          listaPersonagem.limparLista();
+          listaObstaculo.limparLista();
+          criarFases(IDs::IDs::fase_nave);
+          isLaboratorioComplete = true;
+          continue;
+        }
 
         // Handle game events
         while (GG.processarEvento(evento)) {
