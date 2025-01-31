@@ -17,7 +17,7 @@ Isabela Bella Bortoleto
 
 ![Tripulante](assets/tripulante.png)
 
-# Requisitos Mínimos
+## Requisitos Mínimos
 
 Antes de instalar o jogo, certifique-se de ter as seguintes ferramentas instaladas no seu sistema:
 
