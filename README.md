@@ -35,9 +35,8 @@ SFML 2.5.1 (Audio, Graphics, Network, System, Window)
 
 Para instalar o jogo, execute o script `install.sh`:
 
-```bash
-chmod +x install.sh
-./install.sh```
+    chmod +x install.sh
+    ./install.sh
 
 ---
 
@@ -45,7 +44,7 @@ chmod +x install.sh
 
 Após a instalação, para rodar o jogo, utilize:
 
-./build.sh
+    ./build.sh
 
 
 ---
@@ -54,7 +53,7 @@ Após a instalação, para rodar o jogo, utilize:
 
 Para rodar o jogo em modo de depuração, utilize:
 
-./build.sh
+    ./debug.sh
 
 ---
 
