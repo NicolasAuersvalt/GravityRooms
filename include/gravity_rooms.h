@@ -60,6 +60,7 @@ class Gravity_Rooms {
   Fase* fase;
   Menu* menu;
 
+  enum GameState { MAIN, PLAYING, PAUSE };
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   Lista_Entidades listaPersonagem;
@@ -78,6 +79,7 @@ class Gravity_Rooms {
   ~Gravity_Rooms();
   bool ligarMenu(IDs::IDs pMenu);
   void executar();
+  void checkPlayer(GameState& currentState, int& retFlag);
   void salvarJogo();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
