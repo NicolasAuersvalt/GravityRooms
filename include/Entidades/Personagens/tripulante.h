@@ -9,7 +9,7 @@
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/projetil.h"
-#include "Gerenciadores/gerenciador_Salvamento.h"
+#include "Gerenciadores/gerenciador_salvamento.h"
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_fisico.h"
 #include "json.hpp"
@@ -21,7 +21,7 @@ using Gerenciadores::Gerenciador_Eventos;
 using Gerenciadores::Gerenciador_Fisica;
 
 namespace Gerenciadores {
-class Gerenciador_Salvamento;
+  class Gerenciador_Salvamento;
 }
 
 namespace Entidades::Personagens {

@@ -16,26 +16,28 @@ using namespace sf;
 
 class Ente;
 
-namespace Gerenciadores {
+namespace Gerenciadores 
+{
 
-	class Gerenciador_Grafico {
+	class Gerenciador_Grafico 
+	{
 		private:
 
-			static Gerenciador_Grafico* grafico;  // Instância única
+			static Gerenciador_Grafico* grafico;  // Instancia unica
 
-			string nomeJanela = "GravityRooms"; // Nome da janela
-			RenderWindow window;  // Janela de renderização
+			string nomeJanela = "GravityRooms";
+			RenderWindow window;  // Janela de renderizacaoo
+
 			const int fps = 60;  // Limite de frames por segundo
-
 			const int largura = 1280;
 			const int altura = 920;
 
-			// Adicionar o mutex para proteger acesso a recursos compartilhados entre as threads, se necessário
-			mutex mtx;
-
-			// Impedir cópia SINGLETON
+			// Impedir copia SINGLETON
 			Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
 			Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
+
+			// Adicionar o mutex para proteger acesso a recursos compartilhados entre as threads, se necessário
+			mutex mtx;
 
 		public:
 
