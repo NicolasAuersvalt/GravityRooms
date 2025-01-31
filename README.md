@@ -37,7 +37,7 @@ Para instalar o jogo, execute o script `install.sh`:
 
 ```bash
 chmod +x install.sh
-./install.sh
+./install.sh```
 
 ---
 
