@@ -40,13 +40,18 @@ Gravity_Rooms::Gravity_Rooms()
 Gravity_Rooms::~Gravity_Rooms() {}
 
 bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
+
   if (pMenu == IDs::IDs::menu_principal && menu == nullptr) {
+
     MenuPrincipal *aux = new MenuPrincipal(IDs::IDs::menu_principal);
 
     if (aux == nullptr) {
+
       exit(1);
       cout << "nao foi possivel criar o menu principal " << endl;
+
     }
+    
     cout << "  menu principal " << endl;
 
     menu = static_cast<Menu *>(aux);

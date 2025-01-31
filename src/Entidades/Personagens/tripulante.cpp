@@ -9,7 +9,7 @@ namespace Entidades::Personagens {
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
     : Personagem(pos, tam, ID), pontos(0), GF(pos), GS(nullptr) {
-  GS = new Gerenciadores::Gerenciador_Salvamento();
+  GS = new Save();
   GS->setJogador(this);
 
   setSprite("assets/tripulante.png", pos.x, pos.y);
@@ -119,12 +119,12 @@ void Tripulante::carregarDataBuffer(const nlohmann::ordered_json& json) {
 int Tripulante::getPontos() { return pontos; }
 
 void Tripulante::salvar(){
-  GS->salvar();
+  //GS->salvar();
   
 }
 
 void Tripulante::carregar(){
-  GS->carregar();
+  //GS->carregar();
 }
 
 void Tripulante::setChao(bool chao) { noChao = chao; }

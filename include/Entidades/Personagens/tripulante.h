@@ -9,7 +9,7 @@
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/projetil.h"
-#include "Gerenciadores/gerenciador_salvamento.h"
+#include "Gerenciadores/save.h"
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_fisico.h"
 #include "json.hpp"
@@ -20,9 +20,9 @@ using namespace std;
 using Gerenciadores::Gerenciador_Eventos;
 using Gerenciadores::Gerenciador_Fisica;
 
-namespace Gerenciadores {
-  class Gerenciador_Salvamento;
-}
+
+class Save;
+
 
 namespace Entidades::Personagens {
 
@@ -56,7 +56,7 @@ class Tripulante : public Personagem {
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Gerenciadores::Gerenciador_Salvamento* GS;
+  Save* GS;
   // ===/===/===/===/ Outros  ===/===/===/===/
   Projetil* projetil;
 
@@ -87,7 +87,7 @@ class Tripulante : public Personagem {
   int getPontos();
   int getMunicao();
 
-  Gerenciadores::Gerenciador_Salvamento* getGerenciadorSalvamento() {
+  Save* getGerenciadorSalvamento() {
     return GS;
   }
   void tirarMunicao();

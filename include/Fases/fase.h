@@ -14,7 +14,7 @@
 #include "Entidades/background.h"
 #include "Gerenciadores/gerenciador_colisoes.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Gerenciadores/gerenciador_salvamento.h"
+#include "Gerenciadores/Save.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
 #include "ente.h"
@@ -26,7 +26,6 @@ using namespace sf;
 
 using Gerenciadores::Gerenciador_Colisoes;
 using Gerenciadores::Gerenciador_Grafico;
-using Gerenciadores::Gerenciador_Salvamento;
 
 using Entidades::Obstaculos::Centro_Gravidade;
 using Entidades::Obstaculos::Espinho;
@@ -69,7 +68,7 @@ class Fase : public Ente {
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   Gerenciador_Colisoes* pColisao;
-  Gerenciador_Salvamento GS;
+  Save GS;
   Lista_Entidades* listaPersonagens;
 
   Background* bg;

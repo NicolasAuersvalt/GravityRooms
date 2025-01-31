@@ -25,5 +25,8 @@ find_package(SFML 2.5 COMPONENTS system window graphics REQUIRED)
 # Criar o executável
 add_executable(GravityRooms ${SOURCES})
 
+# Criar o diretório 'saves' caso não exista
+file(MAKE_DIRECTORY "${CMAKE_BINARY_DIR}/saves")
+
 # Linkar as bibliotecas do SFML
 target_link_libraries(GravityRooms sfml-system sfml-window sfml-graphics)

@@ -142,8 +142,7 @@ void Fase::criarJogador(const Vector2f pos) {
     cout << "Fase::nao foi possivel criar jogador" << endl;
     exit(1);
   }
-  // Verifica se há um save com posição
-  tripulante->carregar();
+  
 }
 void Fase::desenhar() {
   listaBackground->desenharTodos();
