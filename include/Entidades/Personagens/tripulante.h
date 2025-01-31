@@ -72,6 +72,9 @@ class Tripulante : public Personagem {
   virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
   virtual void mover() override;
 
+  void salvar();
+  void carregar();
+
   // Set
   void setPontos(int ponto);
   void setChao(bool chao);

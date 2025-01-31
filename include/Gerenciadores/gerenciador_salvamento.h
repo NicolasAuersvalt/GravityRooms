@@ -31,6 +31,9 @@ namespace Gerenciadores {
         Gerenciador_Salvamento();
         ~Gerenciador_Salvamento();
 
+        void salvar();
+        void carregar();
+
         void setJogador(Entidades::Personagens::Tripulante* jogador);
         Entidades::Personagens::Tripulante* getJogador();
 

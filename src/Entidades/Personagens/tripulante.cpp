@@ -118,6 +118,15 @@ void Tripulante::carregarDataBuffer(const nlohmann::ordered_json& json) {
 
 int Tripulante::getPontos() { return pontos; }
 
+void Tripulante::salvar(){
+  GS->salvar();
+  
+}
+
+void Tripulante::carregar(){
+  GS->carregar();
+}
+
 void Tripulante::setChao(bool chao) { noChao = chao; }
 
 bool Tripulante::getChao() { return noChao; }

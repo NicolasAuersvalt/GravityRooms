@@ -142,6 +142,8 @@ void Fase::criarJogador(const Vector2f pos) {
     cout << "Fase::nao foi possivel criar jogador" << endl;
     exit(1);
   }
+  // Verifica se há um save com posição
+  tripulante->carregar();
 }
 void Fase::desenhar() {
   listaBackground->desenharTodos();
@@ -181,6 +183,12 @@ void Fase::criarInimDificeis(const Vector2f pos, Tripulante* tripulante) {
       criarProjetil(Vector2f(100.0f, 100.0f), IDs::IDs::projetil_inimigo));
   std::cout << "Fase:: foi possivel criar inim dificil" << std::endl;
 }
+
+void Fase::salvarJogador(){
+  cout << "Salvar" << endl;
+  tripulante->salvar();
+}
+
 void Fase::executar() {
   // fundo.executar();
   // pJogador = getTripulante();

@@ -120,18 +120,24 @@ void Gravity_Rooms::executar() {
 
         // Handle game events
         while (GG.processarEvento(evento)) {
+
           if (evento.type == Event::Closed) {
             GG.fechar();
           }
+
           if (evento.type == Event::KeyPressed &&
               evento.key.code == Keyboard::Y) {
             salvarJogo();
           }
+
           if (evento.type == Event::KeyPressed &&
               evento.key.code == Keyboard::P) {
+
             salvarJogo();
             currentState = PAUSE;
+
           }
+
         }
 
         // Update game state
@@ -151,16 +157,7 @@ void Gravity_Rooms::executar() {
 }
 
 void Gravity_Rooms::salvarJogo() {
-  nlohmann::ordered_json buffer;
-  // Exemplo: Salvar o buffer em um arquivo
-  ofstream arquivo("dados_salvos.json");
-  if (arquivo.is_open()) {
-    arquivo << buffer.dump(4);  // Salva com indentação de 4 espaços
-    arquivo.close();
-    cout << "Dados salvos em 'dados_salvos.json'.\n";
-  } else {
-    cerr << "Erro ao abrir o arquivo para salvar os dados.\n";
-  }
+    fase->salvarJogador();
 }
 
 void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {

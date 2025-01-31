@@ -104,6 +104,7 @@ class Fase : public Ente {
   void criarPlataforma(const Vector2f pos);
   void criarEspinho(const Vector2f pos);
   void criarCentroGravidade(const Vector2f pos);
+  void salvarJogador();
 
   void setGerenciadorG(Gerenciador_Grafico* GG) {
     if (GG != nullptr) this->GG = GG;
