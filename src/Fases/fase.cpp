@@ -14,7 +14,6 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
       pos2(200.0f, 100.0f),
       pColisao(new Gerenciador_Colisoes(listaPersonagens, listaObstaculos)),
       bg(),
-      GS(),
       complete(false) {
   srand(time(nullptr));
 }

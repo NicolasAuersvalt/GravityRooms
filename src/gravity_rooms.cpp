@@ -135,15 +135,7 @@ void Gravity_Rooms::executar() {
         // Check for "2" key press to activate Player 2
         string tecla = pGE->isTeclaPressionada(sf::Keyboard::M);
         if (tecla == "M" && !player2Active) {
-          player2Active = true;
-          if (fase && !GC.pJog2) {  // Only create if doesn't exist
-            fase->criarJogador(Vector2f(200.0f, 100.0f), 1);
-            auto player2 = fase->tripulantes[1];
-            if (player2) {
-              GC.incluirTripulante(*player2);
-              listaPersonagem.incluir(player2);
-            }
-          }
+          criarJogadorDois();
         }
         if ((!GC.pJog1 || !GC.pJog1->verificarVivo()) &&
             (!GC.pJog2 || !GC.pJog2->verificarVivo())) {
@@ -155,6 +147,7 @@ void Gravity_Rooms::executar() {
           // Removed fase->complete = false;
           listaPersonagem.limparLista();
           listaObstaculo.limparLista();
+          player2Active = false;
           GC.pJog1 = nullptr;
           GC.pJog2 = nullptr;
           menu->setSelecionado(false);
@@ -185,6 +178,9 @@ void Gravity_Rooms::executar() {
             GC.pJog1 = nullptr;
             GC.pJog2 = nullptr;
             criarFases(IDs::IDs::fase_nave);
+            if (player2Active) {
+              criarJogadorDois();
+            }
             continue;
           } else if (dynamic_cast<Nave *>(fase)) {
             cout << "Nave completed. Returning to main menu..." << endl;
@@ -194,6 +190,7 @@ void Gravity_Rooms::executar() {
             listaObstaculo.limparLista();
             GC.pJog1 = nullptr;
             GC.pJog2 = nullptr;
+            player2Active = false;
             menu->setSelecionado(false);
             currentState = MAIN;
             continue;
@@ -237,6 +234,21 @@ void Gravity_Rooms::executar() {
   }
 }
 
+void Gravity_Rooms::criarJogadorDois() {
+  player2Active = true;
+  if (fase && !GC.pJog2) {  // Only create if doesn't exist
+    fase->criarJogador(Vector2f(200.0f, 100.0f), 1);
+    Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
+                                             IDs::IDs::projetil_tripulante);
+    fase->tripulantes[1]->setProjetil(projetil);
+    listaPersonagem.incluir(projetil);
+    Tripulante *tripPtr = dynamic_cast<Tripulante *>(fase->tripulantes[1]);
+    if (tripPtr) {
+      GC.incluirTripulante(*tripPtr);
+      listaPersonagem.incluir(tripPtr);
+    }
+  }
+}
 void Gravity_Rooms::salvarJogo() {
   nlohmann::ordered_json buffer;
   // Exemplo: Salvar o buffer em um arquivo

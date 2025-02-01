@@ -20,9 +20,9 @@ using namespace std;
 using Gerenciadores::Gerenciador_Eventos;
 using Gerenciadores::Gerenciador_Fisica;
 
-namespace Gerenciadores {
-class Gerenciador_Salvamento;
-}
+// namespace Gerenciadores {
+// // class Gerenciador_Salvamento;
+// }
 
 namespace Entidades::Personagens {
 
@@ -57,8 +57,8 @@ class Tripulante : public Personagem {
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Gerenciadores::Gerenciador_Salvamento* GS;
-  // ===/===/===/===/ Outros  ===/===/===/===/
+  // Gerenciadores::Gerenciador_Salvamento* GS;
+  //  ===/===/===/===/ Outros  ===/===/===/===/
   Projetil* projetil;
 
  public:
@@ -86,9 +86,9 @@ class Tripulante : public Personagem {
   int getPontos();
   int getMunicao();
 
-  Gerenciadores::Gerenciador_Salvamento* getGerenciadorSalvamento() {
-    return GS;
-  }
+  // Gerenciadores::Gerenciador_Salvamento* getGerenciadorSalvamento() {
+  //   return GS;
+  // }
   void tirarMunicao();
   void atualizar();
   void podePular();

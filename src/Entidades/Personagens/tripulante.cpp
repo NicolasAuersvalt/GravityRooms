@@ -8,11 +8,11 @@ namespace Entidades::Personagens {
 
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID, bool isFirstPlayer)
-    : Personagem(pos, tam, ID), pontos(0), GF(pos), GS(nullptr) {
+    : Personagem(pos, tam, ID), pontos(0), GF(pos) {
   projetil = new Projetil(Vector2f(-1000, -1000), Vector2f(50, 25),
                           IDs::IDs::projetil_tripulante);
-  GS = new Gerenciadores::Gerenciador_Salvamento();
-  GS->setJogador(this);
+  // GS = new Save();
+  // GS->setJogador(this);
 
   setSprite("assets/tripulante.png", pos.x, pos.y);
   // setSprite("assets/tripulanteP.png", pos.x, pos.y);
@@ -104,8 +104,6 @@ void Tripulante::mover() {
     if (tecla == "Q" && noChao) {
       // Jump only if on ground
       atirar();  // o correto
-
-      cout << "player 2 is Shooting projectile" << endl;
     }
   }
   // Jogador 2 (Setas + Q)

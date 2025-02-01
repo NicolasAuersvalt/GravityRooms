@@ -26,7 +26,6 @@ using namespace sf;
 
 using Gerenciadores::Gerenciador_Colisoes;
 using Gerenciadores::Gerenciador_Grafico;
-using Gerenciadores::Gerenciador_Salvamento;
 
 using Entidades::Obstaculos::Centro_Gravidade;
 using Entidades::Obstaculos::Espinho;
@@ -71,7 +70,7 @@ class Fase : public Ente {
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   Gerenciador_Colisoes* pColisao;
-  Gerenciador_Salvamento GS;
+  // Gerenciador_Salvamento GS;
   Lista_Entidades* listaPersonagens;
 
   Background* bg;

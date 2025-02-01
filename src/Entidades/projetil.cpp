@@ -8,6 +8,7 @@ namespace Entidades {
 
 Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
     : Entidade(pos, tam, ID), dano(3), ativo(false) {
+  cout << "bliii" << endl;
   setSprite("assets/projetil.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(50.0f, 25.0f));
   setPosicao(-12000.f, -12000.f);
@@ -44,11 +45,11 @@ void Projetil::mover() {
 }
 
 void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
-  // cout << "colisao com entidade ID: "
-  //      << static_cast<int>(outraEntidade->getID()) << endl;
-  // cout << "colisao de " << static_cast<int>(getID())
-  //      << " com entidade ID: " << static_cast<int>(outraEntidade->getID())
-  //      << endl;
+  cout << "colisao com entidade ID: "
+       << static_cast<int>(outraEntidade->getID()) << endl;
+  cout << "colisao de " << static_cast<int>(getID())
+       << " com entidade ID: " << static_cast<int>(outraEntidade->getID())
+       << endl;
   if (!outraEntidade) {
     std::cout << "Warning: Null entity in collision" << std::endl;
     return;
@@ -140,6 +141,9 @@ void Projetil::setAtivo(bool status, const Vector2f pos) {
   setSprite("assets/projetil.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);
   sprite.setPosition(pos.x, pos.y);
+  cout << "player 2 is Shooting projectile"
+       << " Position: " << getSprite().getPosition().x << ", "
+       << getSprite().getPosition().y << " " << endl;
 }
 
 }  // namespace Entidades
