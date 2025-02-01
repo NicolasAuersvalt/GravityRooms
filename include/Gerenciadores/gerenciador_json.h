@@ -38,10 +38,10 @@ namespace Gerenciadores {
         static json toJson(Dados &dados);
 
         // Método para carregar os dados do arquivo JSON
-        void carregarJson(Dados& dados);
+        virtual void carregarJson(Dados& dados);
 
         // Método para gerar um objeto JSON
-        json getJson(Dados &dados);
+        virtual json getJson(Dados &dados);
     };
 
 }

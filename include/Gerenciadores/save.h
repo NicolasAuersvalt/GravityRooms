@@ -39,6 +39,7 @@ class Save : public Gerenciador_Arquivos, public Gerenciador_Json
 
         void setJogador(Entidades::Personagens::Tripulante* jogador);
         Entidades::Personagens::Tripulante* getJogador();
+        
         void salvar();
         void gravarDados();
         void carregar();

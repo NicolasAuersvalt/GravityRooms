@@ -15,6 +15,11 @@
       {
         "nome": "Morgan",
         "pontos": 900
+      },
+      {
+        "nome" : "Jogador1",
+        "pontos" : 0
+
       }
     ]
   }
