@@ -24,9 +24,11 @@ namespace Entidades::Personagens {
     class Tripulante;
 }
 
-namespace Gerenciadores {
+namespace Gerenciadores 
+{
 
-    class Gerenciador_Arquivos  {
+    class Gerenciador_Arquivos  
+    {
 
     private:
         mutex mtx;
