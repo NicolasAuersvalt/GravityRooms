@@ -111,7 +111,7 @@ const sf::Vector2f Gerenciador_Colisoes::calculaColisao(
 void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
                                     Lista_Entidades* listaObs) {
   if (!listaPer || !listaObs) {
-    cout << "Lista nula encontrada" << endl;
+    // cout << "Lista nula encontrada" << endl;
     return;
   }
   // for (int i = 0; i < listaPer->getTamanho(); i++) {
@@ -137,8 +137,8 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
             listaPer->operator[](i));
     if (personagem && !personagem->verificarVivo()) {
       listaPer->removerEntidade(personagem, true);  // Delete entity and node
-      cout << "Removed dead entity. New size: " << listaPer->getTamanho()
-           << endl;
+      // cout << "Removed dead entity. New size: " << listaPer->getTamanho()
+      //<< endl;
     }
   }
 

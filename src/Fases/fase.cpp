@@ -13,9 +13,8 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
       pColisao(new Gerenciador_Colisoes(listaPersonagens, listaObstaculos)),
       bg(),
       GS(),
-      complete(false) {
-  srand(time(nullptr));
-}
+      complete(false),
+      carregar(false) {}
 // Destrutor
 Fase::~Fase() {
   if (pColisao) {
@@ -133,6 +132,10 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
     } break;
     case ('j'): {
+      if (carregar) {
+        tripulante->carregar();
+      }
+
       listaPersonagens->incluir(static_cast<Entidade*>(tripulante));
     } break;
     case ('b'): {
@@ -144,12 +147,13 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 void Fase::criarJogador(const Vector2f pos) {
   tripulante =
       new Tripulante(pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante);
-
   if (tripulante == nullptr) {
     cout << "Fase::nao foi possivel criar jogador" << endl;
     exit(1);
   }
-  
+  if (tripulante->getPosicao().x == 0.0 && tripulante->getPosicao().y == 0.0) {
+    tripulante->setPosicao(pos.x, pos.y);
+  }
 }
 void Fase::desenhar() {
   listaBackground->desenharTodos();
@@ -188,9 +192,14 @@ void Fase::criarInimDificeis(const Vector2f pos, Tripulante* tripulante) {
   std::cout << "Fase:: foi possivel criar inim dificil" << std::endl;
 }
 
-void Fase::salvarJogador(){
+void Fase::salvarJogador() {
   cout << "Salvar" << endl;
   tripulante->salvar();
+}
+
+void Fase::carregarJogador() {
+  cout << "Carregar" << endl;
+  tripulante->carregar();
 }
 
 void Fase::executar() {

@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 
+#include "dados.h"
+
 // Persistência de arquivos
 #include <iostream>
 #include <fstream>
@@ -24,8 +26,7 @@ namespace Gerenciadores {
     class Gerenciador_Json {
 
     private:
-        int x, y;
-        string nome;
+        string nomeJ;
         int pontos;
 
     public:
@@ -34,18 +35,13 @@ namespace Gerenciadores {
         ~Gerenciador_Json();
 
         // Método para converter os dados para o formato JSON
-        static json toJson(const int x, const int y, const string& nome);
+        static json toJson(Dados &dados);
 
         // Método para carregar os dados do arquivo JSON
-        void carregarJson(const std::string& local, bool carregado);
-
-        // Métodos de acesso
-        string getNome() const;
-        int getPontos() const;
-        Vector2f getPos() const;
+        virtual void carregarJson(Dados& dados);
 
         // Método para gerar um objeto JSON
-        json getJson(const std::string& local, const int x, const int y, const string& nome);
+        virtual json getJson(Dados &dados);
     };
 
 }

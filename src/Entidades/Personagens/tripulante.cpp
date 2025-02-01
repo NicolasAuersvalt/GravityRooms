@@ -20,8 +20,8 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   tempoSemColisao = 0.0f;
   noChao = false;
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "TripulantePosition: " << pos.x << " " << pos.y << "vivo "
-            << vivo << std::endl;
+  // std::cout << "TripulantePosition: " << pos.x << " " << pos.y << "vivo "
+  //  << vivo << std::endl;
 }
 
 Tripulante::~Tripulante() {}
@@ -110,13 +110,11 @@ void Tripulante::carregarDataBuffer(const nlohmann::ordered_json& json) {
 
 int Tripulante::getPontos() { return pontos; }
 
-void Tripulante::salvar(){
-  //GS->salvar();
-  
-}
+void Tripulante::salvar() { GS->salvar(); }
 
-void Tripulante::carregar(){
-  //GS->carregar();
+void Tripulante::carregar() {
+  cout << "Carregar" << endl;
+  GS->carregar();
 }
 
 void Tripulante::setChao(bool chao) { noChao = chao; }
@@ -148,7 +146,6 @@ void Tripulante::atirar() {
 }
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
   bool onPlatform = false;
-
   switch (outraEntidade->getID()) {
     // Caso para colisão com inimigos
     case (IDs::IDs::ciborgue):  //  inimigo fácil

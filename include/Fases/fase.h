@@ -64,6 +64,7 @@ class Fase : public Ente {
   Lista_Entidades* listaObstaculos;
   Gerenciador_Grafico* GG;
   Tripulante* tripulante;
+  bool carregar;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
@@ -104,6 +105,11 @@ class Fase : public Ente {
   void criarEspinho(const Vector2f pos);
   void criarCentroGravidade(const Vector2f pos);
   void salvarJogador();
+  void carregarJogador();
+
+  void setCarregar(bool carregar){
+    this->carregar = carregar;
+  }
 
   void setGerenciadorG(Gerenciador_Grafico* GG) {
     if (GG != nullptr) this->GG = GG;

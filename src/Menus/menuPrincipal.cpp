@@ -23,6 +23,7 @@ MenuPrincipal::MenuPrincipal(const IDs::IDs ID, std::string nome,
 MenuPrincipal::~MenuPrincipal() {}
 
 void MenuPrincipal::criarBotoes() {
+  
   float startY = tamJanela.y * 0.4f;  // Start 40% from top
   float spacing = tamBotao.y * 1.5f;
 

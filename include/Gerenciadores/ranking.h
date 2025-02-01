@@ -28,8 +28,7 @@ class Ranking : public Gerenciador_Arquivos, public Gerenciador_Json{
 
     private:
         Entidades::Personagens::Tripulante* pJog1;
-        string local = "Ranking.json";
-        string nome = "Jogador1";
+        Dados dados;
 
     public:
         Ranking();
@@ -37,7 +36,13 @@ class Ranking : public Gerenciador_Arquivos, public Gerenciador_Json{
 
         void setJogador(Entidades::Personagens::Tripulante* jogador);
         Entidades::Personagens::Tripulante* getJogador();
+        
+        void salvar();
+        void gravarDados();
+        void carregar();
 
+        void salvarArquivo(const Dados& dados, const json& j);
+        void carregarJson(Dados& dados) override;
 };
 
 
