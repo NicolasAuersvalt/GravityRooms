@@ -33,61 +33,82 @@ namespace Gerenciadores {
         int x, y; // As variáveis x e y, que irão armazenar a posição
 
     public:
-        Gerenciador_Arquivos () : x(0), y(0) {}
+        Gerenciador_Arquivos () : x(0), y(0) 
+        {
 
-        ~Gerenciador_Arquivos() {}
+        }
 
-        virtual void salvarArquivo(const std::string& local, const json& j) {
-            std::ofstream arquivo(local);
-            if (arquivo.is_open()) {
+        ~Gerenciador_Arquivos() 
+        {
+
+        }
+
+        virtual void salvarArquivo(const string& local, const json& j) // OK
+        { 
+
+            ofstream arquivo(local);
+
+            if (arquivo.is_open()) 
+            {
                 // Escrever o conteúdo do JSON no arquivo
                 arquivo << j.dump(4);  // O '4' especifica a indentação (4 espaços)
-                std::cout << "Salvamento concluído com sucesso em " << local << std::endl;
+                cout << "Salvamento concluído com sucesso em " << local << endl;
 
-            } else {
-                std::cerr << "Erro ao abrir o arquivo " << local << " para escrita." << std::endl;
+            }
+            else 
+            {
+                cerr << "Erro ao abrir o arquivo " << local << " para escrita." << endl;
 
             }
         }
 
         // Método para carregar os dados do arquivo
-        virtual void carregar(const string& local){
+        virtual void carregar(const string& local) // OK
+        {
             // Verifica se o arquivo existe
-            std::cout << "Caminho do arquivo: " << local << std::endl;
+            cout << "Caminho do arquivo: " << local << endl;
 
-            if (!arquivoExiste(local)) {
-                std::cerr << "Erro: O arquivo não existe." << std::endl;
+            if (!arquivoExiste(local)) 
+            {
+                cerr << "Erro: O arquivo não existe." << endl;
                 return;
             }
 
-            std::ifstream arquivoLeitura(local);
+            ifstream arquivoLeitura(local);
 
             // Verifica se o arquivo foi aberto com sucesso
-            if (arquivoLeitura.is_open()) {
+            if (arquivoLeitura.is_open()) 
+            {
                 json dadosCarregados;
-                try {
+                try 
+                {
                     // Tenta carregar os dados JSON do arquivo
                     arquivoLeitura >> dadosCarregados;
 
                     // Imprime o conteúdo lido para verificação
-                    std::cout << "Conteúdo lido do arquivo: " << dadosCarregados.dump(4) << std::endl;
+                    cout << "Conteúdo lido do arquivo: " << dadosCarregados.dump(4) << endl;
 
                     // Carrega as posições
                     x = dadosCarregados["x"];
                     y = dadosCarregados["y"];
 
-                } catch (const json::parse_error& e) {
+                } 
+                catch (const json::parse_error& e) 
+                {
                     // Captura qualquer erro de parsing do JSON
-                    std::cerr << "Erro ao parsear o arquivo JSON: " << e.what() << std::endl;
+                    cerr << "Erro ao parsear o arquivo JSON: " << e.what() << endl;
                 }
-            } else {
-                std::cerr << "Erro ao abrir o arquivo " << local << " para leitura." << std::endl;
+            } 
+            else 
+            {
+                cerr << "Erro ao abrir o arquivo " << local << " para leitura." << endl;
             }
         }
         
 
         // Função para verificar se o arquivo existe
-        bool arquivoExiste(const string& local) const {
+        bool arquivoExiste(const string& local) const 
+        {
             return filesystem::exists(local);
         }
     };

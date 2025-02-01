@@ -24,14 +24,17 @@ namespace Entidades::Personagens{
 	class Tripulante;
 }
 
-class Save : public Gerenciador_Arquivos, public Gerenciador_Json{
+class Save : public Gerenciador_Arquivos, public Gerenciador_Json
+{
 
     private:
+
         Entidades::Personagens::Tripulante* pJog1;
         string local = "save/save.json";
         string nome = "Jogador1";
 
     public:
+    
         Save();
         ~Save();
 
