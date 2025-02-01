@@ -105,7 +105,7 @@ void Tripulante::mover() {
       // Jump only if on ground
       atirar();  // o correto
 
-      cout << "Shooting projectile" << endl;
+      cout << "player 2 is Shooting projectile" << endl;
     }
   }
   // Jogador 2 (Setas + Q)
@@ -130,7 +130,7 @@ void Tripulante::mover() {
       // Jump only if on ground
       atirar();  // o correto
 
-      cout << "Shooting projectile" << endl;
+      cout << "player 1 is Shooting projectile" << endl;
     }
   }
 

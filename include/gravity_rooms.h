@@ -69,6 +69,7 @@ class Gravity_Rooms {
   Sprite backgroundSprite;
   Texture backgroundTexture;
   bool player2Active;
+  Gerenciador_Eventos* pGE;
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/

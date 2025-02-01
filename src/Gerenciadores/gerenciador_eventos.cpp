@@ -53,76 +53,64 @@ string Gerenciador_Eventos::processarTecla(Keyboard::Key tecla) {
                                            {Keyboard::Right, "Right Arrow"},
                                            {Keyboard::Enter, "Enter"},
                                            {Keyboard::Space, "Space"},
-                                           {Keyboard::Num2, "Num2"}};
+                                           {Keyboard::Num2, "Num2"},
                                            {Keyboard::Escape, "Escape"}};
 
-                                           // Retorna a tecla em formato string,
-                                           // ou "Desconhecida" se a tecla não
-                                           // estiver mapeada
-                                           if (teclas.find(tecla) !=
-                                               teclas.end()) {
-                                             return teclas[tecla];
-                                           }
-                                           return "Desconhecida";
-                                           }
+  // Retorna a tecla em formato string,
+  // ou "Desconhecida" se a tecla não
+  // estiver mapeada
+  if (teclas.find(tecla) != teclas.end()) {
+    return teclas[tecla];
+  }
+  return "Desconhecida";
+}
 
-                                           string Gerenciador_Eventos::
-                                               isTeclaPressionada(
-                                                   const Keyboard::Key tecla) {
-                                             if (Keyboard::isKeyPressed(
-                                                     tecla)) {
-                                               // Chama processarTecla quando a
-                                               // tecla está pressionada
-                                               string teclaPressionada =
-                                                   processarTecla(tecla);
+string Gerenciador_Eventos::isTeclaPressionada(const Keyboard::Key tecla) {
+  if (Keyboard::isKeyPressed(tecla)) {
+    // Chama processarTecla quando a
+    // tecla está pressionada
+    string teclaPressionada = processarTecla(tecla);
 
-                                               return teclaPressionada;  // Retorna
-                                                                         // o
-                                                                         // nome
-                                                                         // da
-                                                                         // tecla
-                                                                         // processada
-                                             }
-                                             return "";  // Retorna string vazia
-                                                         // caso a tecla não
-                                                         // esteja pressionada
-                                           }
+    return teclaPressionada;  // Retorna
+                              // o
+                              // nome
+                              // da
+                              // tecla
+                              // processada
+  }
+  return "";  // Retorna string vazia
+              // caso a tecla não
+              // esteja pressionada
+}
 
-                                           Vector2f Gerenciador_Eventos::
-                                               obterMovimento() {
-                                             // Define o vetor de movimento
-                                             // inicial como (0.f, 0.f)
-                                             Vector2f movimento(0.f, 0.f);
+Vector2f Gerenciador_Eventos::obterMovimento() {
+  // Define o vetor de movimento
+  // inicial como (0.f, 0.f)
+  Vector2f movimento(0.f, 0.f);
 
-                                             // Verificar eventos
-                                             Event event;
+  // Verificar eventos
+  Event event;
 
-                                             // Movimentação baseada nas teclas
-                                             // pressionadas
-                                             if (Keyboard::isKeyPressed(
-                                                     Keyboard::Left)) {
-                                               movimento.x =
-                                                   -5.f;  // Move para a
-                                                          // esquerda
-                                             }
+  // Movimentação baseada nas teclas
+  // pressionadas
+  if (Keyboard::isKeyPressed(Keyboard::Left)) {
+    movimento.x = -5.f;  // Move para a
+                         // esquerda
+  }
 
-                                             if (Keyboard::isKeyPressed(
-                                                     Keyboard::Right)) {
-                                               movimento.x =
-                                                   5.f;  // Move para a direita
-                                             }
+  if (Keyboard::isKeyPressed(Keyboard::Right)) {
+    movimento.x = 5.f;  // Move para a direita
+  }
 
-                                             if (Keyboard::isKeyPressed(
-                                                     Keyboard::Up)) {
-                                               movimento.y =
-                                                   -5.f;  // Move para cima
-                                             }
+  if (Keyboard::isKeyPressed(Keyboard::Up)) {
+    movimento.y = -5.f;  // Move para cima
+  }
 
-                                             // if (!noChao) {
-                                             //     movimento.y = 5.f;   // Move
-                                             //     para baixo
-                                             // }
+  // if (!noChao) {
+  //     movimento.y = 5.f;   // Move
+  //     para baixo
+  // }
 
-                                             return movimento;
-                                           }
-                                           }  // namespace Gerenciadores
+  return movimento;
+}
+}  // namespace Gerenciadores

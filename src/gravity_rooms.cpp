@@ -133,7 +133,8 @@ void Gravity_Rooms::executar() {
 
       case PLAYING: {
         // Check for "2" key press to activate Player 2
-        if (Keyboard::isKeyPressed(Keyboard::Num2) && !player2Active) {
+        string tecla = pGE->isTeclaPressionada(sf::Keyboard::M);
+        if (tecla == "M" && !player2Active) {
           player2Active = true;
           if (fase && !GC.pJog2) {  // Only create if doesn't exist
             fase->criarJogador(Vector2f(200.0f, 100.0f), 1);
