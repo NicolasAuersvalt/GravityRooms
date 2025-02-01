@@ -93,19 +93,15 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
         // ativo = false;
         // std::cout << "Inimigo atingido pelo projetil do tripulante"
         //           << std::endl;
-        std::cout << "Projectile collision with enemy type: "
-                  << static_cast<int>(outraEntidade->getID()) << std::endl;
+
+        << static_cast<int>(outraEntidade->getID()) << std::endl;
 
         Entidades::Personagens::Inimigo *inimigo =
             dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
 
         if (inimigo) {
           try {
-            std::cout << "Enemy health before damage: " << inimigo->getVida()
-                      << std::endl;
             inimigo->recebeDano(dano);
-            std::cout << "Enemy health after damage: " << inimigo->getVida()
-                      << std::endl;
 
             // Deactivate projectile first
             ativo = false;
@@ -113,10 +109,8 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
             setPosicao(-130.f, -130.f);
 
           } catch (const std::exception &e) {
-            std::cerr << "Error damaging enemy: " << e.what() << std::endl;
           }
         } else {
-          std::cout << "Failed to cast enemy" << std::endl;
         }
       }
       break;
