@@ -57,8 +57,11 @@ class Gravity_Rooms {
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
   Gerenciador_Eventos GE;
+
   Fase* fase;
   Menu* menu;
+
+  bool carregarJog;
 
   enum GameState { MAIN, PLAYING, PAUSE };
   // ===/===/===/===/ Outros  ===/===/===/===/
@@ -83,6 +86,7 @@ class Gravity_Rooms {
   void executar();
   void checkPlayer(GameState& currentState, int& retFlag);
   void salvarJogo();
+  void carregarJogo();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
   void criarFases(IDs::IDs faseSelecionada);

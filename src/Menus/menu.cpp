@@ -54,22 +54,31 @@ void Menu::atualizarPosicaoFundo() {
   titulo.setPos(sf::Vector2f(posFundo.x, titleY));
 }
 
-void Menu::inicializarIterator() {
-  try {
+void Menu::inicializarIterator() 
+{
+  try 
+  {
     it = listaBotaoTexto.begin();
     (*it)->setSelecionado(true);
-  } catch (const std::exception& e) {
+  }
+   catch 
+   (const std::exception& e) 
+   {
     std::cerr << e.what() << std::endl;
     exit(1);
   }
 }
 
 void Menu::selecionaCima() {
+
   Botoes::BotaoTexto* botao = *it;
   botao->setSelecionado(false);
-  if (it == listaBotaoTexto.begin()) {
+
+  if (it == listaBotaoTexto.begin()) 
+  {
     it = listaBotaoTexto.end();
   }
+
   it--;
   botao = *it;
   botao->setSelecionado(true);
@@ -78,6 +87,7 @@ void Menu::selecionaCima() {
 void Menu::selecionaBaixo() {
   Botoes::BotaoTexto* botao = *it;
   botao->setSelecionado(false);
+
   it++;
   if (it == listaBotaoTexto.end()) {
     it = listaBotaoTexto.begin();
@@ -86,7 +96,10 @@ void Menu::selecionaBaixo() {
   botao->setSelecionado(true);
 }
 
-const IDs::IDs Menu::getIDBotaoSelecionado() const { return (*it)->getID(); }
+const IDs::IDs Menu::getIDBotaoSelecionado() const 
+{
+   return (*it)->getID(); 
+}
 
 void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
   if (!listaBotaoTexto.empty()) {
@@ -117,9 +130,14 @@ void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
     (*it)->setSelecionado(true);
   }
 }
-bool Menu::getSelecionado() { return botaoSelecionado; }
+bool Menu::getSelecionado() 
+{
+   return botaoSelecionado; 
+}
 
-void Menu::setSelecionado(bool status) { botaoSelecionado = status; }
+void Menu::setSelecionado(bool status) { 
+  botaoSelecionado = status; 
+  }
 
 void Menu::desenhar(Gerenciador_Grafico* GG) {
   // desenha todos os botões na janela

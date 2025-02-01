@@ -39,7 +39,7 @@ void Lista_Entidades::desenharTodos() {
 
 void Lista_Entidades::atualizarTodas() {
   if (!LEs) {
-    std::cout << "LE NULO" << std::endl;
+   // std::cout << "LE NULO" << std::endl;
     return;
   }
 
@@ -48,23 +48,23 @@ void Lista_Entidades::atualizarTodas() {
 
   auto updateFunction = [](Entidade* entidade) {
     if (!entidade) {
-      std::cout << "Entidade nula encontrada!" << std::endl;
+      //std::cout << "Entidade nula encontrada!" << std::endl;
       return;
     }
-    std::cout << "Entidade  encontrada!" << std::endl;
+   // std::cout << "Entidade  encontrada!" << std::endl;
 
     if (setjmp(jumpBuffer) == 0) {
       try {
-        std::cout << "Processing entity ID: "
-                  << static_cast<int>(entidade->getID()) << std::endl;
+        //std::cout << "Processing entity ID: "
+                  //<< static_cast<int>(entidade->getID()) << std::endl;
         entidade->mover();
         entidade->atualizarPosicao();
       } catch (const std::exception& e) {
-        std::cerr << "Error updating entity: " << e.what() << std::endl;
+       // std::cerr << "Error updating entity: " << e.what() << std::endl;
       }
     } else {
-      std::cerr << "Recovered from segfault while processing entity"
-                << std::endl;
+     // std::cerr << "Recovered from segfault while processing entity"
+                //<< std::endl;
     }
   };
 

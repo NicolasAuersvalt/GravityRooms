@@ -111,7 +111,7 @@ const sf::Vector2f Gerenciador_Colisoes::calculaColisao(
 void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
                                     Lista_Entidades* listaObs) {
   if (!listaPer || !listaObs) {
-    cout << "Lista nula encontrada" << endl;
+    //cout << "Lista nula encontrada" << endl;
     return;
   }
   // for (int i = 0; i < listaPer->getTamanho(); i++) {
@@ -137,8 +137,8 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
             listaPer->operator[](i));
     if (personagem && !personagem->verificarVivo()) {
       listaPer->removerEntidade(personagem, true);  // Delete entity and node
-      cout << "Removed dead entity. New size: " << listaPer->getTamanho()
-           << endl;
+      //cout << "Removed dead entity. New size: " << listaPer->getTamanho()
+           //<< endl;
     }
   }
 
@@ -169,14 +169,14 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
       if (ds.x < 0.0f && ds.y < 0.0f) {
         ent1->colisao(ent2, ds);
         ent2->colisao(ent1, ds);  // Ensure both entities process collisions
-        cout << "Collision handled between entities" << endl;
+        //cout << "Collision handled between entities" << endl;
       }
     }
   }
 
   // verifica colisao entre Personagens e Obstáculos
   for (int i = 0; i < listaPer->getTamanho(); i++) {
-    cout << "COLISAO P VS O  " << listaPer->getTamanho() << endl;
+    //cout << "COLISAO P VS O  " << listaPer->getTamanho() << endl;
     Entidades::Entidade* ent1 = listaPer->operator[](i);
     for (int j = 0; j < listaObs->getTamanho(); j++) {
       Entidades::Entidade* ent2 = listaObs->operator[](j);
@@ -186,10 +186,10 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
         // std::cout << "Character " << i << " collided with obstacle " << j
         //         << " with ds(" << ds.x << "," << ds.y << ")\n";
         ent1->colisao(ent2, ds);
-        cout << "BLIBLO RETURNS  " << listaPer->getTamanho() << endl;
+        //cout << "BLIBLO RETURNS  " << listaPer->getTamanho() << endl;
       }
     }
   }
-  cout << "fora for eterno " << listaPer->getTamanho() << endl;
+  //cout << "fora for eterno " << listaPer->getTamanho() << endl;
 }
 }  // namespace Gerenciadores

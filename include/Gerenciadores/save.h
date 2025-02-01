@@ -30,8 +30,7 @@ class Save : public Gerenciador_Arquivos, public Gerenciador_Json
     private:
 
         Entidades::Personagens::Tripulante* pJog1;
-        string local = "saves/save.json";
-        string nome = "Jogador1";
+        Dados dados;
 
     public:
     
@@ -40,9 +39,8 @@ class Save : public Gerenciador_Arquivos, public Gerenciador_Json
 
         void setJogador(Entidades::Personagens::Tripulante* jogador);
         Entidades::Personagens::Tripulante* getJogador();
-
         void salvar();
-
+        void gravarDados();
         void carregar();
 
 };

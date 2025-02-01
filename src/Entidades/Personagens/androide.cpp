@@ -18,7 +18,7 @@ Androide::Androide(const Vector2f pos, Tripulante* tripulante,
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "Androide Position: " << pos.x << " " << pos.y << std::endl;
+  //std::cout << "Androide Position: " << pos.x << " " << pos.y << std::endl;
 }
 
 Androide::~Androide() {}
