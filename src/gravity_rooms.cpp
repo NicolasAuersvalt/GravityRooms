@@ -13,7 +13,6 @@ Gravity_Rooms::Gravity_Rooms()
   if (!backgroundTexture.loadFromFile("assets/tripulante.png")) {
           cerr << "Erro ao carregar o background!" << endl;
   }
-
   backgroundSprite.setTexture(backgroundTexture);
   backgroundSprite.setPosition(25, 25);
   */
@@ -51,6 +50,18 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
 
     menu = static_cast<Menu *>(aux);
     menu->criarBotoes();
+  } else if (pMenu == IDs::IDs::menu_pausa &&
+             menu->getID() == IDs::IDs::menu_principal) {
+    MenuPause *aux = new MenuPause(IDs::IDs::menu_pausa);
+
+    if (aux == nullptr) {
+      exit(1);
+      cout << "nao foi possivel criar o menu pausa " << endl;
+    }
+    cout << "  menu pausa " << endl;
+
+    menu = static_cast<Menu *>(aux);
+    menu->criarBotoes();
   }
   Event eventao;
   bool out = false;
@@ -66,12 +77,14 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
         criarFases(IDs::IDs::fase_laboratorio);
         out = true;
       }
-
       if (selecao == IDs::IDs::botao2) {
         criarFases(IDs::IDs::fase_nave);
         out = true;
       }
 
+      if (selecao == IDs::IDs::botao_voltar) {
+                out = true;
+      }
       if (selecao == IDs::IDs::botao_sair) {
         exit(1);
       }
@@ -85,6 +98,7 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
   return out;
 }
 void Gravity_Rooms::executar() {
+  enum GameState { MAIN, PLAYING, PAUSE };
   GameState currentState = MAIN;
   bool isLaboratorioComplete = false;
 
@@ -109,32 +123,44 @@ void Gravity_Rooms::executar() {
       }
 
       case PLAYING: {
-        int retFlag;
-        checkPlayer(currentState, retFlag);
-        if (retFlag == 3) continue;
-
-        // Check if all enemies are dead
-        bool enemiesExist = false;
-        auto atual = listaPersonagem.LEs->getPrimeiro();
-        while (atual != nullptr) {
-          if (dynamic_cast<Inimigo *>(atual->pInfo)) {
-            enemiesExist = true;
-            break;
+        if (!GC.pJog1 || !GC.pJog1->verificarVivo()) {
+          // Cleanup when player dies
+          if (fase != nullptr) {
+            delete fase;
+            fase = nullptr;
           }
-          atual = atual->getProximo();
-        }
 
-        // Transition to fase_nave if lab is cleared
-        if (!enemiesExist && !isLaboratorioComplete &&
-            dynamic_cast<Laboratorio *>(fase)) {
-          delete fase;
-          fase = nullptr;
           listaPersonagem.limparLista();
+
           listaObstaculo.limparLista();
-          criarFases(IDs::IDs::fase_nave);
-          isLaboratorioComplete = true;
+          GC.pJog1 = nullptr;
+          menu->setSelecionado(false);
+          currentState = MAIN;
           continue;
         }
+
+        // // Check if all enemies are dead
+        // bool enemiesExist = false;
+        // auto atual = listaPersonagem.LEs->getPrimeiro();
+        // while (atual != nullptr) {
+        //   if (dynamic_cast<Inimigo *>(atual->pInfo)) {
+        //     enemiesExist = true;
+        //     break;
+        //   }
+        //   atual = atual->getProximo();
+        // }
+
+        // // If no enemies and in laboratory, transition to nave
+        // if (!enemiesExist && !isLaboratorioComplete &&
+        //     dynamic_cast<Laboratorio *>(fase)) {
+        //   delete fase;
+        //   fase = nullptr;
+        //   listaPersonagem.limparLista();
+        //   listaObstaculo.limparLista();
+        //   criarFases(IDs::IDs::fase_nave);
+        //   isLaboratorioComplete = true;
+        //   continue;
+        // }
 
         // Handle game events
         while (GG.processarEvento(evento)) {
@@ -172,28 +198,6 @@ void Gravity_Rooms::executar() {
         break;
       }
     }
-  }
-}
-
-void Gravity_Rooms::checkPlayer(GameState &currentState, int &retFlag) {
-  retFlag = 1;
-  if (!GC.pJog1 || !GC.pJog1->verificarVivo()) {
-    // Cleanup when player dies
-    if (fase != nullptr) {
-      delete fase;
-      fase = nullptr;
-    }
-
-    listaPersonagem.limparLista();
-
-    listaObstaculo.limparLista();
-    GC.pJog1 = nullptr;
-    menu->setSelecionado(false);
-    currentState = MAIN;
-    {
-      retFlag = 3;
-      return;
-    };
   }
 }
 
@@ -255,3 +259,5 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
     atualPersonagens = atualPersonagens->getProximo();
   }
 }
+
+// ===/===/===/===/ Outros  ===/===/===/===/
