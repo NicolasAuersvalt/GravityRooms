@@ -12,7 +12,6 @@ Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
   setTamanho(sf::Vector2f(50.0f, 25.0f));
   setPosicao(-12000.f, -12000.f);
   sprite.setPosition(-12000.f, -12000.f);
-  std::cout << "Projetil Position: " << pos.x << " " << pos.y << std::endl;
 }
 Projetil::~Projetil() {}
 void Projetil::executar() {
@@ -68,28 +67,14 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
     }
     case (IDs::IDs::ciborgue): {
       if (ID == IDs::IDs::projetil_tripulante) {
-        // std::cout << "Projectile collision with enemy type: "
-        //                  << static_cast<int>(outraEntidade->getID()) <<
-        //                  std::endl;
-        // Entidades::Personagens::Inimigo *inimigo =
-        //     dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
-        // inimigo->recebeDano(dano);
-
-        // getSprite().setPosition(-130.f, -130.f);
-        // ativo = false;
-        std::cout << "Projectile collision with enemy type: "
-                  << static_cast<int>(outraEntidade->getID()) << std::endl;
-
         Entidades::Personagens::Inimigo *inimigo =
             dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
 
         if (inimigo) {
           try {
             inimigo->recebeDano(dano);
-            std::cout << "Enemy health after damage: " << inimigo->getVida()
-                      << std::endl;
+
           } catch (const std::exception &e) {
-            std::cerr << "Error damaging enemy: " << e.what() << std::endl;
           }
         }
 
@@ -151,7 +136,6 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
 }
 
 void Projetil::setAtivo(bool status, const Vector2f pos) {
-  cout << "herreeeeeee" << endl;
   ativo = status;
   setSprite("assets/projetil.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);

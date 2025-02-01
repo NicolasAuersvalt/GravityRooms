@@ -61,7 +61,7 @@ class Fase : public Ente {
 
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+  bool complete;
   Lista_Entidades* listaObstaculos;
   Gerenciador_Grafico* GG;
   Tripulante* tripulante;
