@@ -125,21 +125,21 @@ void Gravity_Rooms::executar() {
       }
 
       case PLAYING: {
-        if (!GC.pJog1 || !GC.pJog1->verificarVivo()) {
-          // Cleanup when player dies
-          if (fase != nullptr) {
-            delete fase;
-            fase = nullptr;
+        if (!GC.pJog1 || !GC.pJog1->verificarVivo())
+          if (!GC.pJog1 || !GC.pJog1->verificarVivo()) {
+            // Cleanup when player dies
+            if (fase != nullptr) {
+              delete fase;
+              fase = nullptr;
+            }
+            // Removed fase->complete = false;
+            listaPersonagem.limparLista();
+            listaObstaculo.limparLista();
+            GC.pJog1 = nullptr;
+            menu->setSelecionado(false);
+            currentState = MAIN;
+            continue;
           }
-          fase->complete = false;
-          listaPersonagem.limparLista();
-
-          listaObstaculo.limparLista();
-          GC.pJog1 = nullptr;
-          menu->setSelecionado(false);
-          currentState = MAIN;
-          continue;
-        }
 
         // Check if all enemies are dead
         bool enemiesExist = false;
