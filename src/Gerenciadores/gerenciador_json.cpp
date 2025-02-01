@@ -24,6 +24,9 @@ namespace Gerenciadores
         j["nome"] = nome;
         j["x"] = x;
         j["y"] = y;
+        cout << nome << endl;
+        cout << x << endl;
+        cout << y << endl;
         return j;
     }
 

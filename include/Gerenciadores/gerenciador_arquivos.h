@@ -47,11 +47,13 @@ namespace Gerenciadores
 
         virtual void salvarArquivo(const string& local, const json& j) // OK
         { 
+            cout << local << endl;
 
             ofstream arquivo(local);
 
             if (arquivo.is_open()) 
             {
+                
                 // Escrever o conteúdo do JSON no arquivo
                 arquivo << j.dump(4);  // O '4' especifica a indentação (4 espaços)
                 cout << "Salvamento concluído com sucesso em " << local << endl;
