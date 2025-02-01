@@ -28,7 +28,7 @@ void Personagem::setVida(int life) {
 
 void Personagem::recebeDano(int dano) {
   pontosVida -= dano;
-  cout << "recebeu dano vida total = " << pontosVida << endl;
+
   if (!verificarVivo()) {
     morrer();
   }
@@ -50,11 +50,6 @@ void Entidades::Personagens::Personagem::atualizarPosicao() {
     ds *= -1;
   }
   corpo.move(ds, 0.0f);
-  cout << "Posição X: " << getSprite().getPosition().x << endl;
-  cout << "Posição Y: " << getSprite().getPosition().y << endl;
-  verificarLimitesTela();
-  cout << "Após verificar limites - Posição X: " << getSprite().getPosition().x
-       << endl;
 }
 
 void Personagem::parar() { podeAndar = false; }

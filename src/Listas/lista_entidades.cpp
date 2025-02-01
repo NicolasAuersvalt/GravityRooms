@@ -51,20 +51,15 @@ void Lista_Entidades::atualizarTodas() {
       std::cout << "Entidade nula encontrada!" << std::endl;
       return;
     }
-    std::cout << "Entidade  encontrada!" << std::endl;
 
     if (setjmp(jumpBuffer) == 0) {
       try {
-        std::cout << "Processing entity ID: "
-                  << static_cast<int>(entidade->getID()) << std::endl;
         entidade->mover();
         entidade->atualizarPosicao();
       } catch (const std::exception& e) {
         std::cerr << "Error updating entity: " << e.what() << std::endl;
       }
     } else {
-      std::cerr << "Recovered from segfault while processing entity"
-                << std::endl;
     }
   };
 

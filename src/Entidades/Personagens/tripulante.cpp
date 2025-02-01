@@ -44,18 +44,12 @@ int Tripulante::getMunicao() { return municao.getQtd(); }
 void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
 
 void Tripulante::mover() {
-  // tempoSemColisao += 0.016f;  // Assuming 60fps
-  // if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
-  //   noChao = false;  // No recent collision, we're in air
-  // }
-  std::cout << "ERROR" << std::endl;
   cair();
   // Movimentação (sem física, apenas mover pela tela)
   string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
   if (tecla == "Left Arrow") {
     getSprite().move(-5.f, 0.f);  // Move para a esquerda
   }
-  std::cout << "ERROR1" << std::endl;
   tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
   if (tecla == "Q" && noChao) {
     // Jump only if on ground
@@ -63,28 +57,24 @@ void Tripulante::mover() {
 
     cout << "Shooting projectile" << endl;
   }
-  std::cout << "ERROR 2" << std::endl;
   tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
   if (tecla == "Right Arrow") {
     getSprite().move(5.f, 0.f);  // Move para a direita
   }
 
   tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
-  std::cout << "ERROR 3" << std::endl;
   if (tecla == "Space" && noChao) {
     // Jump only if on ground
     float jumpForce = -20.0f;  // controle do pulo
     velFinal.y = jumpForce;
     noChao = false;
   }
-  std::cout << "ERROR 4" << std::endl;
   if (!noChao) {
     // Apply gravity
     float dt = 0.016f;  // Assuming 60fps, adjust if using different time step
     velFinal.y += GF.aplicarGravidade() * dt;
   }
   getSprite().move(velFinal.x, velFinal.y);
-  std::cout << "ERROR 5" << std::endl;
   // Apply movement
 }
 
@@ -158,44 +148,31 @@ void Tripulante::atirar() {
 }
 void Tripulante::colisao(Entidade* outraEntidade, Vector2f ds) {
   bool onPlatform = false;
-  std::cout << "Collision with enemy type: "
-            << static_cast<int>(outraEntidade->getID()) << std::endl;
+
   switch (outraEntidade->getID()) {
     // Caso para colisão com inimigos
     case (IDs::IDs::ciborgue):  //  inimigo fácil
     {
-      std::cout << "Collision with enemy type: "
-                << static_cast<int>(outraEntidade->getID()) << std::endl;
       Entidades::Personagens::Inimigo* inimigo =
           dynamic_cast<Entidades::Personagens::Inimigo*>(outraEntidade);
       if (inimigo) {
         recebeDano(inimigo->getDano());  // Aplica o dano do inimigo
-        std::cout << "Enemy damage: " << inimigo->getDano() << std::endl;
-        std::cout << "Player health after damage: " << pontosVida << std::endl;
       }
     } break;
     case (IDs::IDs::clone):  //  inimigo fácil
     {
-      std::cout << "Collision with enemy type: "
-                << static_cast<int>(outraEntidade->getID()) << std::endl;
       Entidades::Personagens::Inimigo* inimigo =
           dynamic_cast<Entidades::Personagens::Inimigo*>(outraEntidade);
       if (inimigo) {
         recebeDano(inimigo->getDano());  // Aplica o dano do inimigo
-        std::cout << "Enemy damage: " << inimigo->getDano() << std::endl;
-        std::cout << "Player health after damage: " << pontosVida << std::endl;
       }
     } break;
     case (IDs::IDs::androide):  //  inimigo fácil
     {
-      std::cout << "Collision with enemy type: "
-                << static_cast<int>(outraEntidade->getID()) << std::endl;
       Entidades::Personagens::Inimigo* inimigo =
           dynamic_cast<Entidades::Personagens::Inimigo*>(outraEntidade);
       if (inimigo) {
         recebeDano(inimigo->getDano());  // Aplica o dano do inimigo
-        std::cout << "Enemy damage: " << inimigo->getDano() << std::endl;
-        std::cout << "Player health after damage: " << pontosVida << std::endl;
       }
     } break;
     case IDs::IDs::plataforma: {

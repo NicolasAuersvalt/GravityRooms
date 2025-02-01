@@ -12,7 +12,8 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
       tripulante(nullptr),
       pColisao(new Gerenciador_Colisoes(listaPersonagens, listaObstaculos)),
       bg(),
-      GS() {
+      GS(),
+      complete(false) {
   srand(time(nullptr));
 }
 // Destrutor
@@ -163,7 +164,6 @@ void Fase::criarInimFaceis(const Vector2f pos, Tripulante* tripulante) {
     exit(1);
   }
   listaPersonagens->incluir(static_cast<Entidade*>(ciborgue));
-  std::cout << "Fase:: foi possivel criar inim facil" << std::endl;
 }
 
 void Fase::criarInimMedios(const Vector2f pos, Tripulante* tripulante) {
@@ -173,7 +173,6 @@ void Fase::criarInimMedios(const Vector2f pos, Tripulante* tripulante) {
     exit(1);
   }
   listaPersonagens->incluir(static_cast<Entidade*>(androide));
-  std::cout << "Fase:: foi possivel criar inim medio" << std::endl;
 }
 
 void Fase::criarInimDificeis(const Vector2f pos, Tripulante* tripulante) {
@@ -205,7 +204,6 @@ void Fase::executar() {
 }
 
 Entidades::Projetil* Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
-  cout << "criacao do projetil " << endl;
   Entidades::Projetil* projetil =
       new Entidades::Projetil(pos, sf::Vector2f(50.0f, 50.0f), ID);
   if (projetil == nullptr) {
