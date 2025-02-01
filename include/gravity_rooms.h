@@ -18,6 +18,7 @@
 #include "Gerenciadores/gerenciador_grafico.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
+#include "Menus/menuPause.h"
 #include "Menus/menuPrincipal.h"
 #include "ente.h"
 
@@ -37,7 +38,7 @@ using Gerenciadores::Gerenciador_Grafico;
 // Includes de Listas e Menus
 using Listas::Lista_Entidades;
 using Menus::Menu;
-// using Menus::MenuPause;
+using Menus::MenuPause;
 using Menus::MenuPrincipal;
 
 // Includes de Fases
@@ -77,6 +78,8 @@ class Gravity_Rooms {
   Gravity_Rooms();
   ~Gravity_Rooms();
   bool ligarMenu(IDs::IDs pMenu);
+  void limparMenu();
+
   void executar();
   void checkPlayer(GameState& currentState, int& retFlag);
   void salvarJogo();
