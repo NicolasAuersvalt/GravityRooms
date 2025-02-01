@@ -7,16 +7,20 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
-                       const IDs::IDs ID)
+                       const IDs::IDs ID, bool isFirstPlayer)
     : Personagem(pos, tam, ID), pontos(0), GF(pos), GS(nullptr) {
+  projetil = new Projetil(Vector2f(-1000, -1000), Vector2f(50, 25),
+                          IDs::IDs::projetil_tripulante);
   GS = new Gerenciadores::Gerenciador_Salvamento();
   GS->setJogador(this);
 
   setSprite("assets/tripulante.png", pos.x, pos.y);
   // setSprite("assets/tripulanteP.png", pos.x, pos.y);
-  setTamanho(sf::Vector2f(100.0f, 100.0f));
-  setPosicao(pos.x, pos.y);
+  setTamanho(Vector2f(getSprite().getTexture()->getSize().x,
+                      getSprite().getTexture()->getSize().y));
+  // setPosicao(pos.x, pos.y);
   vivo = true;
+  isPlayerOne = isFirstPlayer;
   tempoSemColisao = 0.0f;
   noChao = false;
   sprite.setPosition(pos.x, pos.y);
@@ -44,38 +48,97 @@ int Tripulante::getMunicao() { return municao.getQtd(); }
 void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
 
 void Tripulante::mover() {
+  // cair();
+  // // Movimentação (sem física, apenas mover pela tela)
+  // string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
+  // if (tecla == "Left Arrow") {
+  //   getSprite().move(-5.f, 0.f);  // Move para a esquerda
+  // }
+  // tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
+  // if (tecla == "Q" && noChao) {
+  //   // Jump only if on ground
+  //   atirar();  // o correto
+
+  //   cout << "Shooting projectile" << endl;
+  // }
+  // tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
+  // if (tecla == "Right Arrow") {
+  //   getSprite().move(5.f, 0.f);  // Move para a direita
+  // }
+
+  // tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
+  // if (tecla == "Space" && noChao) {
+  //   // Jump only if on ground
+  //   float jumpForce = -20.0f;  // controle do pulo
+  //   velFinal.y = jumpForce;
+  //   noChao = false;
+  // }
+  // if (!noChao) {
+  //   // Apply gravity
+  //   float dt = 0.016f;  // Assuming 60fps, adjust if using different time
+  //   step velFinal.y += GF.aplicarGravidade() * dt;
+  // }
+  // getSprite().move(velFinal.x, velFinal.y);
+  // // Apply movement
+
+  /*----------------------------------------------------------------*/
+  // Jogador 1 (WASD + Espaço)
   cair();
-  // Movimentação (sem física, apenas mover pela tela)
-  string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
-  if (tecla == "Left Arrow") {
-    getSprite().move(-5.f, 0.f);  // Move para a esquerda
-  }
-  tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
-  if (tecla == "Q" && noChao) {
-    // Jump only if on ground
-    atirar();  // o correto
+  if (isPlayerOne) {
+    string tecla = GE->isTeclaPressionada(sf::Keyboard::A);
+    if (tecla == "A") {
+      getSprite().move(-5.f, 0.f);  // Move para a esquerda
+    }
+    tecla = GE->isTeclaPressionada(sf::Keyboard::D);
+    if (tecla == "D") {
+      getSprite().move(5.f, 0.f);  // Move para a direita
+    }
+    tecla = GE->isTeclaPressionada(sf::Keyboard::W);
+    if (tecla == "W" && noChao) {
+      // Jump only if on ground
+      float jumpForce = -20.0f;  // controle do pulo
+      velFinal.y = jumpForce;
+      noChao = false;
+    }
+    tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
+    if (tecla == "Q" && noChao) {
+      // Jump only if on ground
+      atirar();  // o correto
 
-    cout << "Shooting projectile" << endl;
+      cout << "Shooting projectile" << endl;
+    }
   }
-  tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
-  if (tecla == "Right Arrow") {
-    getSprite().move(5.f, 0.f);  // Move para a direita
+  // Jogador 2 (Setas + Q)
+  else {
+    string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
+    if (tecla == "Left Arrow") {
+      getSprite().move(-5.f, 0.f);  // Move para a esquerda
+    }
+    tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
+    if (tecla == "Right Arrow") {
+      getSprite().move(5.f, 0.f);  // Move para a direita
+    }
+    tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
+    if (tecla == "Space" && noChao) {
+      // Jump only if on ground
+      float jumpForce = -20.0f;  // controle do pulo
+      velFinal.y = jumpForce;
+      noChao = false;
+    }
+    tecla = GE->isTeclaPressionada(sf::Keyboard::Z);
+    if (tecla == "Z" && noChao) {
+      // Jump only if on ground
+      atirar();  // o correto
+
+      cout << "Shooting projectile" << endl;
+    }
   }
 
-  tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
-  if (tecla == "Space" && noChao) {
-    // Jump only if on ground
-    float jumpForce = -20.0f;  // controle do pulo
-    velFinal.y = jumpForce;
-    noChao = false;
-  }
+  // Aplicar gravidade
   if (!noChao) {
-    // Apply gravity
-    float dt = 0.016f;  // Assuming 60fps, adjust if using different time step
-    velFinal.y += GF.aplicarGravidade() * dt;
+    velFinal.y += GF.aplicarGravidade() * 0.016f;
   }
   getSprite().move(velFinal.x, velFinal.y);
-  // Apply movement
 }
 
 void Tripulante::salvarDataBuffer(nlohmann::ordered_json& json) {

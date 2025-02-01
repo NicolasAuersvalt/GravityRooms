@@ -9,7 +9,9 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
       listaPersonagens(new Lista_Entidades()),
       listaObstaculos(new Lista_Entidades()),
       listaBackground(new Lista_Entidades()),
-      tripulante(nullptr),
+      tripulantes{nullptr, nullptr},
+      pos1(100.0f, 100.0f),
+      pos2(200.0f, 100.0f),
       pColisao(new Gerenciador_Colisoes(listaPersonagens, listaObstaculos)),
       bg(),
       GS(),
@@ -64,27 +66,34 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 }
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
-  if (tripulante == nullptr) {
-    criarJogador(Vector2f(100.0f, 100.0f));
-    tripulante->setProjetil(
-        criarProjetil(Vector2f(100.0f, 100.0f), IDs::IDs::projetil_tripulante));
+  if (tripulantes[0] == nullptr) {
+    criarJogador({100.f, 100.f}, 0);  // Create player 1
+    tripulantes[0]->setProjetil(
+        criarProjetil(pos, IDs::IDs::projetil_tripulante));
   }
+  // if (tripulantes[1] == nullptr) {
+  //   criarJogador({150.f, 100.f}, 1);  // Create player 2
+  //   tripulantes[1]->setProjetil(
+  //       criarProjetil(pos, IDs::IDs::projetil_tripulante));
+  // }
   switch (letra) {
     case ('i'): {
       if (contadorFaceis < 3) {
-        criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+        criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
         contadorFaceis++;
       } else if (contadorMedios < 3) {
-        criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+        criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
         contadorMedios++;
       } else {
         // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
         inimAleatorio = rand() % 2;
         if (inimAleatorio == 0 && contadorFaceis < 7) {
-          criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+          criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
+                          tripulantes[0]);
           contadorFaceis++;
         } else if (inimAleatorio == 1 && contadorMedios < 7) {
-          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
+                          tripulantes[0]);
           contadorMedios++;
         }
       }
@@ -93,19 +102,22 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
     case ('d'): {
       if (contadorMedios < 3) {
-        criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+        criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
         contadorMedios++;
       } else if (contadorDificeis < 3) {
-        criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+        criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
+                          tripulantes[0]);
         contadorDificeis++;
       } else {
         // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
         inimAleatorio = rand() % 2;
         if (inimAleatorio == 0 && contadorMedios < 7) {
-          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
+                          tripulantes[0]);
           contadorMedios++;
         } else if (inimAleatorio == 1 && contadorDificeis < 7) {
-          criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+          criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
+                            tripulantes[0]);
           contadorDificeis++;
         }
       }
@@ -113,11 +125,11 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
     } break;
     case ('k'): {  // PARA TESTES, REMOVER DEPOIS
-      criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+      criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
 
     } break;
     case ('l'): {  // PARA TESTES, REMOVER DEPOIS
-      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulante);
+      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
 
     } break;
     case ('c'): {
@@ -133,7 +145,7 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
     } break;
     case ('j'): {
-      listaPersonagens->incluir(static_cast<Entidade*>(tripulante));
+      // listaPersonagens->incluir(static_cast<Entidade*>(tripulantes[0]));
     } break;
     case ('b'): {
       criarBackground();
@@ -141,14 +153,16 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
   }
 }
 
-void Fase::criarJogador(const Vector2f pos) {
-  tripulante =
-      new Tripulante(pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante);
-
-  if (tripulante == nullptr) {
-    cout << "Fase::nao foi possivel criar jogador" << endl;
+void Fase::criarJogador(const Vector2f pos, int index) {
+  cout << "imprimindo jogador" << endl;
+  tripulantes[index] =
+      new Tripulante(pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante, index);
+  if (tripulantes[index] == nullptr) {
+    std::cerr << "Fase::nao foi possivel criar jogador" << std::endl;
     exit(1);
   }
+
+  listaPersonagens->incluir(static_cast<Entidade*>(tripulantes[index]));
 }
 void Fase::desenhar() {
   listaBackground->desenharTodos();

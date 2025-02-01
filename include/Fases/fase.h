@@ -64,7 +64,9 @@ class Fase : public Ente {
   bool complete;
   Lista_Entidades* listaObstaculos;
   Gerenciador_Grafico* GG;
-  Tripulante* tripulante;
+  Tripulante* tripulantes[2];
+  Vector2f pos1;
+  Vector2f pos2;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
@@ -100,7 +102,7 @@ class Fase : public Ente {
   void criarInimDificeis(const Vector2f pos, Tripulante* tripulante);
   void criarInimMedios(const Vector2f pos, Tripulante* tripulante);
 
-  void criarJogador(const Vector2f pos);
+  void criarJogador(const Vector2f pos, int index);
   void criarPlataforma(const Vector2f pos);
   void criarEspinho(const Vector2f pos);
   void criarCentroGravidade(const Vector2f pos);

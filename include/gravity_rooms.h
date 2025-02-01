@@ -68,6 +68,7 @@ class Gravity_Rooms {
   Lista_Entidades listaObstaculo;
   Sprite backgroundSprite;
   Texture backgroundTexture;
+  bool player2Active;
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/

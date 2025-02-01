@@ -110,13 +110,13 @@ void Inimigo::salvarDataBuffer(nlohmann::ordered_json& json) {}
 void Inimigo::perseguirTripulante(Vector2f posJogador,
                                   const Vector2f posInimigo) {
   // Se o Tripulante estiver a direita do inimigo, move para direita
-  if (posJogador.x - posInimigo.x > 0.0f) {
-    getSprite().move(vel.x, 0.0f);
-  }
-  // Se o Tripulante estiver a esquerda do inimigo, move para esquerda
-  else if (posJogador.x - posInimigo.x < 0.0f) {
-    getSprite().move(-vel.x, 0.0f);
-  }
+  // if (posJogador.x - posInimigo.x > 0.0f) {
+  //   getSprite().move(vel.x, 0.0f);
+  // }
+  // // Se o Tripulante estiver a esquerda do inimigo, move para esquerda
+  // else if (posJogador.x - posInimigo.x < 0.0f) {
+  //   getSprite().move(-vel.x, 0.0f);
+  // }
   // // Se o Tripulante estiver abaixo do inimigo, move para baixo
   // else if (posJogador.y - posInimigo.y > 0.0f) {
   //   getSprite().move(0.0f, vel.y);
@@ -125,6 +125,18 @@ void Inimigo::perseguirTripulante(Vector2f posJogador,
   // else {
   //   getSprite().move(0.0f, -vel.y);
   // }
+  /*---------------------------------------*/
+  // Reset horizontal velocity to apply new direction
+  velFinal.x = 0.0f;
+
+  // Move right if player is to the right
+  if (posJogador.x > posInimigo.x) {
+    velFinal.x += vel.x;
+  }
+  // Move left if player is to the left
+  else if (posJogador.x < posInimigo.x) {
+    velFinal.x -= vel.x;
+  }
 }
 
 void Inimigo::movimentarAleatorio() {
@@ -136,20 +148,37 @@ void Inimigo::movimentarAleatorio() {
   // else if (moverAleatorio == 1) {
   //   getSprite().move(0.0f, vel.y);
   // }
-  // Move para esquerda quando moverAleatorio = 2
+  // // Move para esquerda quando moverAleatorio = 2
+  // if (moverAleatorio == 0) {
+  //   getSprite().move(-vel.x, 0.0f);
+  // }
+  // // Move para direita quando moverAleatorio = 3
+  // else {
+  //   getSprite().move(vel.x, 0.0f);
+  // }
+
+  // // Obtem o tempo decorrido desde o ultimo reinicio do relogio
+  // float dt = relogio.getElapsedTime().asSeconds();
+  // // A cada 1 segundo, gera uma nova direcao aleatoria
+  // if (dt >= 1.0f) {
+  //   moverAleatorio = rand() % 4;
+  //   relogio.restart();
+  // }
+  /*-------------------------------------------*/
+  // Reset horizontal velocity
+  velFinal.x = 0.0f;
+
+  // Randomly choose left or right movement
   if (moverAleatorio == 0) {
-    getSprite().move(-vel.x, 0.0f);
-  }
-  // Move para direita quando moverAleatorio = 3
-  else {
-    getSprite().move(vel.x, 0.0f);
+    velFinal.x -= vel.x;
+  } else {
+    velFinal.x += vel.x;
   }
 
-  // Obtem o tempo decorrido desde o ultimo reinicio do relogio
+  // Update direction periodically
   float dt = relogio.getElapsedTime().asSeconds();
-  // A cada 1 segundo, gera uma nova direcao aleatoria
   if (dt >= 1.0f) {
-    moverAleatorio = rand() % 4;
+    moverAleatorio = rand() % 2;  // Simplify to 0 or 1 (left/right)
     relogio.restart();
   }
 }

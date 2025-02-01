@@ -8,7 +8,8 @@ Gravity_Rooms::Gravity_Rooms()
       GC(&listaPersonagem, &listaObstaculo),
       GE(),
       menu(nullptr),
-      fase(nullptr) {
+      fase(nullptr),
+      player2Active(false) {
   /*
   if (!backgroundTexture.loadFromFile("assets/tripulante.png")) {
           cerr << "Erro ao carregar o background!" << endl;
@@ -107,6 +108,12 @@ void Gravity_Rooms::executar() {
   GG.executar();
 
   while (GG.estaAberta()) {
+    if (GC.pJog1) {
+      GC.pJog1->atualizar();
+    }
+    if (GC.pJog2 && player2Active) {
+      GC.pJog2->atualizar();
+    }
     Event evento;
 
     switch (currentState) {
@@ -125,21 +132,34 @@ void Gravity_Rooms::executar() {
       }
 
       case PLAYING: {
-        if (!GC.pJog1 || !GC.pJog1->verificarVivo())
-          if (!GC.pJog1 || !GC.pJog1->verificarVivo()) {
-            // Cleanup when player dies
-            if (fase != nullptr) {
-              delete fase;
-              fase = nullptr;
+        // Check for "2" key press to activate Player 2
+        if (Keyboard::isKeyPressed(Keyboard::Num2) && !player2Active) {
+          player2Active = true;
+          if (fase && !GC.pJog2) {  // Only create if doesn't exist
+            fase->criarJogador(Vector2f(200.0f, 100.0f), 1);
+            auto player2 = fase->tripulantes[1];
+            if (player2) {
+              GC.incluirTripulante(*player2);
+              listaPersonagem.incluir(player2);
             }
-            // Removed fase->complete = false;
-            listaPersonagem.limparLista();
-            listaObstaculo.limparLista();
-            GC.pJog1 = nullptr;
-            menu->setSelecionado(false);
-            currentState = MAIN;
-            continue;
           }
+        }
+        if ((!GC.pJog1 || !GC.pJog1->verificarVivo()) &&
+            (!GC.pJog2 || !GC.pJog2->verificarVivo())) {
+          // Cleanup when player dies
+          if (fase != nullptr) {
+            delete fase;
+            fase = nullptr;
+          }
+          // Removed fase->complete = false;
+          listaPersonagem.limparLista();
+          listaObstaculo.limparLista();
+          GC.pJog1 = nullptr;
+          GC.pJog2 = nullptr;
+          menu->setSelecionado(false);
+          currentState = MAIN;
+          continue;
+        }
 
         // Check if all enemies are dead
         bool enemiesExist = false;
@@ -148,34 +168,36 @@ void Gravity_Rooms::executar() {
         while (atual != nullptr) {
           if (dynamic_cast<Inimigo *>(atual->pInfo)) {
             enemiesExist = true;
-
             break;
           }
           atual = atual->getProximo();
         }
-        // If no enemies and in laboratory, transition to nave
-        if (!enemiesExist && fase->complete == false &&
-            dynamic_cast<Nave *>(fase)) {
-          cout << enemiesExist << " " << fase->complete << " " << endl;
-          delete fase;
-          fase = nullptr;
-          listaPersonagem.limparLista();
-          listaObstaculo.limparLista();  // Voltar pro menu principal
-          menu->setSelecionado(false);
-          currentState = MAIN;
-          continue;
-        }
-        if (!enemiesExist && fase->complete == false &&
-            dynamic_cast<Laboratorio *>(fase)) {
-          cout << enemiesExist << " " << fase->complete << " " << endl;
-          delete fase;
-          fase = nullptr;
-          listaPersonagem.limparLista();
-          listaObstaculo.limparLista();
-          criarFases(IDs::IDs::fase_nave);
-          continue;
-        }
 
+        // Transition logic
+        if (!enemiesExist && fase->complete == false) {
+          if (dynamic_cast<Laboratorio *>(fase)) {
+            cout << "Transitioning to Nave..." << endl;
+            delete fase;
+            fase = nullptr;
+            listaPersonagem.limparLista();
+            listaObstaculo.limparLista();
+            GC.pJog1 = nullptr;
+            GC.pJog2 = nullptr;
+            criarFases(IDs::IDs::fase_nave);
+            continue;
+          } else if (dynamic_cast<Nave *>(fase)) {
+            cout << "Nave completed. Returning to main menu..." << endl;
+            delete fase;
+            fase = nullptr;
+            listaPersonagem.limparLista();
+            listaObstaculo.limparLista();
+            GC.pJog1 = nullptr;
+            GC.pJog2 = nullptr;
+            menu->setSelecionado(false);
+            currentState = MAIN;
+            continue;
+          }
+        }
         // Handle game events
         while (GG.processarEvento(evento)) {
           if (evento.type == Event::Closed) {

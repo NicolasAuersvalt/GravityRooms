@@ -52,6 +52,7 @@ class Tripulante : public Personagem {
   Gerenciador_Eventos* GE;
   Gerenciador_Fisica GF;
   // ===/===/===/===/ Outros  ===/===/===/===/
+  bool isPlayerOne;
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
@@ -63,7 +64,8 @@ class Tripulante : public Personagem {
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
+  Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID,
+             bool isFirstPlayer = true);
   ~Tripulante();
 
   void carregarDataBuffer(const nlohmann::ordered_json& json);

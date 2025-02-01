@@ -42,7 +42,9 @@ void Personagem::setPisando(bool pisa) { noChao = pisa; }
 
 bool Personagem::getPisando() { return noChao; }
 
-void Entidades::Personagens::Personagem::atualizarPosicao() {
+void Personagem::atualizarPosicao() {
+  verificarLimitesTela();
+
   // Utiliza o conceito de MRU
   dt = relogio.getElapsedTime().asSeconds();
   float ds = velFinal.x * dt;

@@ -9,6 +9,8 @@ Gerenciador_Colisoes::Gerenciador_Colisoes(
     : LIs(),
       LOs(),
       LPs(),
+      pJog1(nullptr),
+      pJog2(nullptr),
       listaPersonagem(listaPersonagem),
       listaObstaculo(listaObstaculo) {
   // Inicializações necessárias
@@ -114,6 +116,8 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
     cout << "Lista nula encontrada" << endl;
     return;
   }
+  // Verificar colisões do Jogador 1
+
   // for (int i = 0; i < listaPer->getTamanho(); i++) {
   //   cout << "aio  " << listaPer->getTamanho() << endl;
   //   Entidades::Personagens::Personagem* personagem =

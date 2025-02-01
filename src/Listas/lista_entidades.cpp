@@ -89,4 +89,14 @@ Entidade* Listas::Lista_Entidades::getElemento(int pos) {
   // return objListaEntidade.operator[](pos);
   return LEs->operator[](pos);
 }
+bool Lista_Entidades::contem(Entidade* entidade) {
+  auto current = LEs->getPrimeiro();
+  while (current != nullptr) {
+    if (current->pInfo == entidade) {
+      return true;
+    }
+    current = current->getProximo();
+  }
+  return false;
+}
 }  // namespace Listas
