@@ -19,6 +19,7 @@
 #include "Gerenciadores/gerenciador_json.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
+#include "Menus/menuGameOver.h"
 #include "Menus/menuPause.h"
 #include "Menus/menuPrincipal.h"
 #include "Menus/ranking.h"

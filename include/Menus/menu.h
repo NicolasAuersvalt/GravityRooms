@@ -45,9 +45,11 @@ class Menu : public Ente {
   /**/
   void atualizarPosicaoFundo();
   virtual void criarFundo() {};
-  void inicializarIterator();
+  // void inicializarIterator();
 
  public:
+  void inicializarIterator();
+
   Menu(const IDs::IDs ID, const Vector2f tamBotao, const string nome,
        const unsigned int tamFonte);
   ~Menu();

@@ -79,16 +79,18 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
     menu->criarBotoes();
   } else if (pMenu == IDs::IDs::menu_game_over &&
              menu->getID() == IDs::IDs::menu_principal) {
-    Menus::Ranking *aux = new Menus::Ranking(IDs::IDs::menu_game_over);
+    Menus::MenuGameOver *aux =
+        new Menus::MenuGameOver(IDs::IDs::menu_game_over);
 
     if (aux == nullptr) {
       exit(1);
       cout << "nao foi possivel criar o  menu_game_over " << endl;
     }
-    cout << "   menu_game_over " << endl;
 
     menu = static_cast<Menu *>(aux);
     menu->criarBotoes();
+    menu->inicializarIterator();
+    cout << "menu_game_over criado" << endl;
   }
   Event eventao;
   bool out = false;

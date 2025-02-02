@@ -140,6 +140,5 @@ void Menu::desenhar(Gerenciador_Grafico* GG) {
     botao = nullptr;
   }
 }
-// namespace Menu
-// ===/===/===/===/ Outros  ===/===/===/===/
+
 }  // namespace Menus
