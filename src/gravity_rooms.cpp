@@ -89,12 +89,21 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
 
     menu = static_cast<Menu *>(aux);
     menu->criarBotoes();
-    menu->inicializarIterator();
+    // menu->inicializarIterator();
     cout << "menu_game_over criado" << endl;
   }
   Event eventao;
   bool out = false;
   if (GG.getJanela().pollEvent(eventao)) {
+    /*/*/
+    if ((currentState = GAMEOVER) && (eventao.type == Event::TextEntered)) {
+      // Handle regular text input
+      if (eventao.text.unicode >= 32 && eventao.text.unicode < 128) {
+        // addCaracter(static_cast<char>(eventao.text.unicode));
+        cout << "here" << endl;  // Print current input
+      }
+    }
+    /**/
     if (eventao.type == Event::KeyPressed) {
       menu->eventoTeclado(eventao.key.code);
     }

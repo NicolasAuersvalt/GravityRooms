@@ -3,9 +3,11 @@
 namespace Menus {
 
 MenuGameOver::MenuGameOver(IDs::IDs id)
-
     : Menu(IDs::IDs::menu_game_over,
-           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180) {
+           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180),
+      texto("", 30),  // Initialize texto with empty string and font size
+      nome(""),
+      pontuacao(0) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
@@ -14,7 +16,10 @@ MenuGameOver::MenuGameOver(IDs::IDs id)
 MenuGameOver::MenuGameOver(const IDs::IDs ID, std::string nome,
                            const unsigned int tamFonte)
     : Menu(IDs::IDs::menu_game_over,  // ID CORRETO
-           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte) {
+           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte),
+      texto("", 30),  // Initialize texto with empty string and font size
+      nome(""),
+      pontuacao(0) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
@@ -68,9 +73,7 @@ void MenuGameOver::salvarColocacao() {
   outFile.close();
 }
 
-void MenuGameOver::executar() {
-  // conteúdo do efeito Parallax
-}
+void MenuGameOver::executar() {}
 
 void MenuGameOver::carregarMenuGameOver() {
   std::ifstream file("saves/rank.json");
@@ -109,48 +112,13 @@ void MenuGameOver::carregarMenuGameOver() {
   }
 }
 void MenuGameOver::addCaracter(char caracter) {
-  if ((caracter >= 'a' && caracter <= 'z') ||
-      (caracter >= 'A' && caracter <= 'Z') ||
-      (caracter >= '0' && caracter <= '9')) {
-    // Limit name length to 10 characters
-    if (nome.length() < 10) {
-      nome += caracter;
-
-      // Update display text
-      Botoes::Texto novoTexto(nome, 30);
-      novoTexto.setCorTexto(sf::Color::White);
-
-      // Center text position
-      float xPos = tamJanela.x / 2.0f - novoTexto.getTam().x / 2.0f;
-      float yPos = tamJanela.y * 0.4f;  // 40% from top
-      novoTexto.setPos(sf::Vector2f(xPos, yPos));
-
-      rankingTexts.clear();
-      rankingTexts.push_back(novoTexto);
-    }
+  std::string nome = texto.getString();
+  if (nome.length() <= 10) {
+    nome += caracter;
+    texto.setString(nome);
   }
 }
 
-void MenuGameOver::removerCaracter() {
-  if (!nome.empty()) {
-    // Remove last character
-    nome = nome.substr(0, nome.length() - 1);
-
-    // Update display text
-    if (!nome.empty()) {
-      Botoes::Texto novoTexto(nome, 30);
-      novoTexto.setCorTexto(sf::Color::White);
-
-      // Center text position
-      float xPos = tamJanela.x / 2.0f - novoTexto.getTam().x / 2.0f;
-      float yPos = tamJanela.y * 0.4f;
-      novoTexto.setPos(sf::Vector2f(xPos, yPos));
-
-      rankingTexts.clear();
-      rankingTexts.push_back(novoTexto);
-    }
-  }
-}
 void MenuGameOver::exibirMenuGameOver() {
   for (auto& texto : rankingTexts) {
     // texto.desenhar(*GG);  // Assuming GG is a pointer to Gerenciador_Grafico
@@ -158,8 +126,17 @@ void MenuGameOver::exibirMenuGameOver() {
 }
 
 void MenuGameOver::criarBotoes() {
+  // Add text input prompt
+  Botoes::Texto prompt("Digite seu nome:", 30);
+  prompt.setCorTexto(sf::Color::White);
+  float yPos = tamJanela.y * 0.3f;
+  float xPos = tamJanela.x / 2.0f - prompt.getTam().x / 2.0f;
+  prompt.setPos(sf::Vector2f(xPos, yPos));
+  rankingTexts.push_back(prompt);
+  /*/*/
   addBotao("VOLTAR PARA O MENU",
            sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),
            IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
 }
+
 }  // namespace Menus

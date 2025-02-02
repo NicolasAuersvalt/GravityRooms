@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../json.hpp"
+#include "Menus/Botoes/texto.h"
 #include "Menus/menu.h"
 
 namespace Menus {
@@ -15,6 +16,7 @@ class MenuGameOver : public Menu {
   void exibirMenuGameOver();
   std::vector<Botoes::Texto> rankingTexts;
   std::string nome;
+  Botoes::Texto texto;
   int pontuacao;
 
  public:
@@ -23,7 +25,6 @@ class MenuGameOver : public Menu {
                const unsigned int tamFonte = 180);
   virtual ~MenuGameOver();
   void addCaracter(char caracter);
-  void removerCaracter();
   void criarBotoes() override;
   void executar();
   void salvarColocacao();
