@@ -12,6 +12,14 @@ Menu::Menu(const IDs::IDs ID, const sf::Vector2f tamBotao,
       tamJanela(1450.0f, 2500.0f),  // Ajuste manual da tela
       botaoSelecionado(false),
       titulo(nome, tamFonte) {
+  // --- NOVO: Carrega a textura do background ---
+  if (!texturaBackground.loadFromFile("assets/menu.png")) {
+    std::cerr << "Erro ao carregar textura do background!" << std::endl;
+    exit(1);
+  }
+  /*/*/
+  spriteBackground.setTexture(texturaBackground);
+
   atualizarPosicaoFundo();
 }
 
@@ -46,12 +54,13 @@ void Menu::addBotao(const std::string info, const sf::Vector2f pos,
 }
 
 void Menu::atualizarPosicaoFundo() {
-  // Centralização correta usando o tamanho real da janela
-  posFundo = sf::Vector2f(tamJanela.x / 2.0f, tamJanela.y / 3.0f);
+  // Centraliza o background
+  sf::FloatRect bounds = spriteBackground.getLocalBounds();
+  spriteBackground.setOrigin(bounds.width / 2, bounds.height / 2);
+  spriteBackground.setPosition(tamJanela.x / 2, tamJanela.y / 2);
 
-  // Centralizar título na horizontal e posicionar 20% acima do centro
-  float titleY = tamJanela.y * 0.2f;
-  titulo.setPos(sf::Vector2f(posFundo.x, titleY));
+  // Centraliza o título
+  titulo.setPos(sf::Vector2f(tamJanela.x / 2, tamJanela.y * 0.2f));
 }
 
 void Menu::inicializarIterator() {
@@ -122,6 +131,7 @@ bool Menu::getSelecionado() { return botaoSelecionado; }
 void Menu::setSelecionado(bool status) { botaoSelecionado = status; }
 
 void Menu::desenhar(Gerenciador_Grafico* GG) {
+  // Desenha os botões
   // desenha todos os botões na janela
   std::list<Botoes::BotaoTexto*>::iterator aux;
   for (aux = listaBotaoTexto.begin(); aux != listaBotaoTexto.end(); aux++) {
@@ -130,7 +140,6 @@ void Menu::desenhar(Gerenciador_Grafico* GG) {
     botao = nullptr;
   }
 }
-
 // namespace Menu
 // ===/===/===/===/ Outros  ===/===/===/===/
 }  // namespace Menus

@@ -35,11 +35,14 @@ class Menu : public Ente {
   const Vector2f tamBotao;
   const Vector2f tamJanela;
 
-  Vector2f posFundo;
-
   Menus::Botoes::Texto titulo;
   bool botaoSelecionado;
 
+  // --- TESTE sprite do background ---
+  sf::Texture texturaBackground;
+  sf::Sprite spriteBackground;
+  sf::Vector2f posFundo;
+  /**/
   void atualizarPosicaoFundo();
   virtual void criarFundo() {};
   void inicializarIterator();

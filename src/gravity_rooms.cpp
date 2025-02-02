@@ -9,7 +9,8 @@ Gravity_Rooms::Gravity_Rooms()
       GE(),
       menu(nullptr),
       fase(nullptr),
-      player2Active(false) {
+      player2Active(false),
+      currentState(MAIN) {
   /*
   if (!backgroundTexture.loadFromFile("assets/tripulante.png")) {
           cerr << "Erro ao carregar o background!" << endl;
@@ -64,6 +65,18 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
 
     menu = static_cast<Menu *>(aux);
     menu->criarBotoes();
+  } else if (pMenu == IDs::IDs::menu_colocacao &&
+             menu->getID() == IDs::IDs::menu_principal) {
+    Menus::Ranking *aux = new Menus::Ranking(IDs::IDs::menu_colocacao);
+
+    if (aux == nullptr) {
+      exit(1);
+      cout << "nao foi possivel criar o  menu_colocacao " << endl;
+    }
+    cout << "   menu_colocacao " << endl;
+
+    menu = static_cast<Menu *>(aux);
+    menu->criarBotoes();
   }
   Event eventao;
   bool out = false;
@@ -92,6 +105,14 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
       if (selecao == IDs::IDs::botao_sair) {
         exit(1);
       }
+      if (selecao == IDs::IDs::botao_colocacao) {
+        currentState = COLOCACAO;
+        out = true;
+      }
+      if (selecao == IDs::IDs::estado_menu_principal) {
+        currentState = MAIN;
+        out = true;
+      }
     }
   }
 
@@ -102,9 +123,6 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
   return out;
 }
 void Gravity_Rooms::executar() {
-  enum GameState { MAIN, PLAYING, PAUSE };
-  GameState currentState = MAIN;
-
   GG.executar();
 
   while (GG.estaAberta()) {
@@ -119,6 +137,7 @@ void Gravity_Rooms::executar() {
     switch (currentState) {
       case MAIN: {
         if (ligarMenu(IDs::IDs::menu_principal)) {
+          if (currentState == COLOCACAO) break;
           currentState = PLAYING;
         }
         break;
@@ -127,6 +146,13 @@ void Gravity_Rooms::executar() {
         menu->setSelecionado(false);
         if (ligarMenu(IDs::IDs::menu_pausa)) {
           currentState = PLAYING;
+        }
+        break;
+      }
+      case COLOCACAO: {
+        menu->setSelecionado(false);
+        if (ligarMenu(IDs::IDs::menu_colocacao)) {
+          currentState = MAIN;
         }
         break;
       }

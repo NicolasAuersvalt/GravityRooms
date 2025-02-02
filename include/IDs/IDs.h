@@ -6,34 +6,35 @@ namespace IDs {
 
 enum class IDs {
   vazio = 0,
-  tripulante,                  // 1
-  inimigo,                     // 2
-  projetil_inimigo,            // 3
-  projetil_tripulante,         // 4
-  clone,                       // 5
-  androide,                    // 6
-  ciborgue,                    // 7
-  plataforma,                  // 8
-  espinho,                     // 9
-  centro_gravidade,            // 10
-  vida,                        // 11
-  fundo_laboratorio,           // 12
-  fundo_nave,                  // 13
-  fase_laboratorio,            // 14
-  fase_nave,                   // 15
-  botao_novoJogo,              // 16
-  botao2,                      // 17
-  botao_carregar_jogo,         // 18
-  botao_colocacao,             // 19
-  botao_opcao,                 // 20
-  botao_sair,                  // 21
-  botao_voltar,                // 22
-  botao_esquerda,              // 23
-  botao_direita,               // 24
-  botao_salvar_colocacao,      // 25
-  botao_salvar_jogada,         // 26
-  botao_salvar,                // 27
-  botao_carregar,              // 28
+  tripulante,              // 1
+  inimigo,                 // 2
+  projetil_inimigo,        // 3
+  projetil_tripulante,     // 4
+  clone,                   // 5
+  androide,                // 6
+  ciborgue,                // 7
+  plataforma,              // 8
+  espinho,                 // 9
+  centro_gravidade,        // 10
+  vida,                    // 11
+  fundo_laboratorio,       // 12
+  fundo_nave,              // 13
+  fase_laboratorio,        // 14
+  fase_nave,               // 15
+  botao_novoJogo,          // 16
+  botao2,                  // 17
+  botao_carregar_jogo,     // 18
+  botao_colocacao,         // 19
+  botao_opcao,             // 20
+  botao_sair,              // 21
+  botao_voltar,            // 22
+  botao_esquerda,          // 23
+  botao_direita,           // 24
+  botao_salvar_colocacao,  // 25
+  botao_salvar_jogada,     // 26
+  botao_salvar,            // 27
+  botao_carregar,
+  botao_menu,                  // 28
   botao_remover,               // 29
   menu_principal,              // 30
   menu_pausa,                  // 31

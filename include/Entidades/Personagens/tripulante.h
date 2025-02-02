@@ -9,9 +9,9 @@
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/projetil.h"
-#include "Gerenciadores/gerenciador_Salvamento.h"
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_fisico.h"
+#include "Gerenciadores/gerenciador_json.h"
 #include "json.hpp"
 
 using namespace sf;

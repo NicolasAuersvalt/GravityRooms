@@ -16,11 +16,12 @@
 #include "Gerenciadores/gerenciador_colisoes.h"
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Gerenciadores/gerenciador_salvamento.h"
+#include "Gerenciadores/gerenciador_json.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
 #include "Menus/menuPause.h"
 #include "Menus/menuPrincipal.h"
+#include "Menus/ranking.h"
 #include "ente.h"
 
 using namespace std;
@@ -61,7 +62,7 @@ class Gravity_Rooms {
   Fase* fase;
   Menu* menu;
 
-  enum GameState { MAIN, PLAYING, PAUSE };
+  enum GameState { MAIN, PLAYING, PAUSE, COLOCACAO };
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   Lista_Entidades listaPersonagem;
@@ -70,6 +71,7 @@ class Gravity_Rooms {
   Texture backgroundTexture;
   bool player2Active;
   Gerenciador_Eventos* pGE;
+  GameState currentState = MAIN;
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
@@ -81,10 +83,10 @@ class Gravity_Rooms {
   Gravity_Rooms();
   ~Gravity_Rooms();
   bool ligarMenu(IDs::IDs pMenu);
-  void limparMenu();
+  // void limparMenu();
 
   void executar();
-  void checkPlayer(GameState& currentState, int& retFlag);
+  // void checkPlayer(GameState& currentState, int& retFlag);
   void salvarJogo();
   void criarJogadorDois();
   // ===/===/===/===/ Outros  ===/===/===/===/

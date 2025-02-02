@@ -14,7 +14,7 @@
 #include "Entidades/background.h"
 #include "Gerenciadores/gerenciador_colisoes.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Gerenciadores/gerenciador_salvamento.h"
+#include "Gerenciadores/gerenciador_json.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
 #include "ente.h"
