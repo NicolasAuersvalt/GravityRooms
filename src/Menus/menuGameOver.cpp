@@ -131,10 +131,14 @@ void MenuGameOver::addCaracter(char caracter) {
       addBotao(nome,
                sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
                IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
-      // texto.setString("Nome: " + nome);
-      //  texto.setPos(sf::Vector2f(tamJanela.x / 2.0f - texto.getTam().x
-      //  / 2.0f,
-      //                          tamJanela.y * 0.4f));
+
+      for (auto it = listaBotaoTexto.begin(); it != listaBotaoTexto.end();
+           ++it) {
+        if ((*it)->getID() == IDs::IDs::botao_nome) {
+          (*it)->setText(nome + "_");  // Add cursor
+          break;
+        }
+      }
     }
   }
 }
@@ -154,9 +158,18 @@ void MenuGameOver::criarBotoes() {
   // prompt.setPos(sf::Vector2f(xPos, yPos));
   // rankingTexts.push_back(prompt);
   /*/*/
+  addBotao("DIGITE SEU NOME:",
+           sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 600.0f),
+           IDs::IDs::menu_game_over, sf::Color(0, 255, 0));
+
+  // Add name input field
+  addBotao("_",  // Empty text field with cursor
+           sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
+           IDs::IDs::botao_nome, sf::Color(0, 255, 0));
   addBotao("VOLTAR PARA O MENU",
            sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),
            IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
+  inicializarIterator();
 }
 
 }  // namespace Menus

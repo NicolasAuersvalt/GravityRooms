@@ -30,6 +30,7 @@ class BotaoTexto : public Botao {
   void setSelecionado(bool selecionado);
   const bool getSelecionado() const;
   void desenhar(Gerenciador_Grafico& pGrafico);
+  void setText(const std::string& text);
 };
 
 }  // namespace Botoes

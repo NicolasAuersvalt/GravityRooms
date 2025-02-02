@@ -74,6 +74,16 @@ void BotaoTexto::desenhar(Gerenciador_Grafico& pGrafico) {
   atualizarAnimacao();
   pGrafico.desenharTexto(texto);
 }
+void BotaoTexto::setText(const std::string& text) {
+  texto.setString(text);
+
+  // Re-center the text after update
+  sf::Vector2f tamTexto = getTamTexto();
+  sf::Vector2f posTexto =
+      sf::Vector2f(pos.x + tam.x / 2.0f - tamTexto.x / 2.0f,
+                   pos.y + tam.y / 2.0f - tamTexto.y / 2.0f);
+  texto.setPosition(posTexto);
+}
 }  // namespace Botoes
 
 }  // namespace Menus

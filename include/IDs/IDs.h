@@ -50,7 +50,8 @@ enum class IDs {
   estado_menu_colocacao,       // 41
   estado_menu_game_over,       // 42
   estado_menu_salvar_jogada,   // 43
-  background,                  // 44
+  background,
+  botao_nome,  // 44
 };
 
 }
