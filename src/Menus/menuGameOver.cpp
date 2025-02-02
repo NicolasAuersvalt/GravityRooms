@@ -127,12 +127,12 @@ void MenuGameOver::exibirMenuGameOver() {
 
 void MenuGameOver::criarBotoes() {
   // Add text input prompt
-  Botoes::Texto prompt("Digite seu nome:", 30);
-  prompt.setCorTexto(sf::Color::White);
-  float yPos = tamJanela.y * 0.3f;
-  float xPos = tamJanela.x / 2.0f - prompt.getTam().x / 2.0f;
-  prompt.setPos(sf::Vector2f(xPos, yPos));
-  rankingTexts.push_back(prompt);
+  // Botoes::Texto prompt("Digite seu nome:", 30);
+  // prompt.setCorTexto(sf::Color::White);
+  // float yPos = tamJanela.y * 0.3f;
+  // float xPos = tamJanela.x / 2.0f - prompt.getTam().x / 2.0f;
+  // prompt.setPos(sf::Vector2f(xPos, yPos));
+  // rankingTexts.push_back(prompt);
   /*/*/
   addBotao("VOLTAR PARA O MENU",
            sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),

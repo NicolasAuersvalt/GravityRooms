@@ -98,32 +98,70 @@ void Menu::selecionaBaixo() {
 const IDs::IDs Menu::getIDBotaoSelecionado() const { return (*it)->getID(); }
 
 void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
-  if (!listaBotaoTexto.empty()) {
-    // Desmarcar o botão atual
-    (*it)->setSelecionado(false);
+  // if (listaBotaoTexto.empty() || it == listaBotaoTexto.end()) {
+  //   inicializarIterator();
+  //   return;
+  // }
+  // if (*it) {
+  //   // Desmarcar o botão atual
+  //   (*it)->setSelecionado(false);
 
-    if (tecla == sf::Keyboard::Down) {
-      // Mover para o próximo botão
-      it++;
-      if (it == listaBotaoTexto.end()) {
-        it = listaBotaoTexto.begin();  // Volta ao primeiro botão
+  //   if (tecla == sf::Keyboard::Down) {
+  //     // Mover para o próximo botão
+  //     it++;
+  //     if (it == listaBotaoTexto.end()) {
+  //       it = listaBotaoTexto.begin();  // Volta ao primeiro botão
+  //     }
+
+  //   } else if (tecla == sf::Keyboard::Up) {
+  //     // Mover para o botão anterior
+  //     if (it == listaBotaoTexto.begin()) {
+  //       it = listaBotaoTexto.end();  // Define como o "fim"
+  //     }
+  //     it--;
+
+  //   } else if (tecla == sf::Keyboard::Enter) {
+  //     // Seleciona o botão atual e atualiza a variável
+
+  //     botaoSelecionado = true;
+  //   }
+
+  //   // Marcar o botão selecionado
+  //   (*it)->setSelecionado(true);
+  // }
+  if (listaBotaoTexto.empty()) {
+    return;
+  }
+
+  if (it == listaBotaoTexto.end()) {
+    inicializarIterator();
+    return;
+  }
+
+  try {
+    if (*it) {
+      (*it)->setSelecionado(false);
+
+      if (tecla == sf::Keyboard::Down) {
+        it++;
+        if (it == listaBotaoTexto.end()) {
+          it = listaBotaoTexto.begin();
+        }
+      } else if (tecla == sf::Keyboard::Up) {
+        if (it == listaBotaoTexto.begin()) {
+          it = --listaBotaoTexto.end();
+        } else {
+          --it;
+        }
+      } else if (tecla == sf::Keyboard::Enter) {
+        botaoSelecionado = true;
       }
 
-    } else if (tecla == sf::Keyboard::Up) {
-      // Mover para o botão anterior
-      if (it == listaBotaoTexto.begin()) {
-        it = listaBotaoTexto.end();  // Define como o "fim"
-      }
-      it--;
-
-    } else if (tecla == sf::Keyboard::Enter) {
-      // Seleciona o botão atual e atualiza a variável
-
-      botaoSelecionado = true;
+      (*it)->setSelecionado(true);
     }
-
-    // Marcar o botão selecionado
-    (*it)->setSelecionado(true);
+  } catch (std::exception& e) {
+    std::cerr << "Error in eventoTeclado: " << e.what() << std::endl;
+    inicializarIterator();
   }
 }
 bool Menu::getSelecionado() { return botaoSelecionado; }

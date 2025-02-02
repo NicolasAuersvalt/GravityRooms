@@ -77,26 +77,32 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
 
     menu = static_cast<Menu *>(aux);
     menu->criarBotoes();
-  } else if (pMenu == IDs::IDs::menu_game_over &&
-             menu->getID() == IDs::IDs::menu_principal) {
+
+  } else if ((pMenu == IDs::IDs::menu_game_over) &&
+             (menu->getID() == IDs::IDs::menu_principal) &&
+             (currentState == GAMEOVER)) {
+    cout << "blo" << endl;
     Menus::MenuGameOver *aux =
         new Menus::MenuGameOver(IDs::IDs::menu_game_over);
-
+    cout << "ble" << endl;
     if (aux == nullptr) {
-      exit(1);
       cout << "nao foi possivel criar o  menu_game_over " << endl;
+      exit(1);
     }
-
+    cout << "bla" << endl;
     menu = static_cast<Menu *>(aux);
+    cout << "bli" << endl;
     menu->criarBotoes();
+    cout << "le bloo" << endl;
     // menu->inicializarIterator();
     cout << "menu_game_over criado" << endl;
+    menu->inicializarIterator();  // Add this line
   }
   Event eventao;
   bool out = false;
   if (GG.getJanela().pollEvent(eventao)) {
     /*/*/
-    if ((currentState = GAMEOVER) && (eventao.type == Event::TextEntered)) {
+    if ((currentState == GAMEOVER) && (eventao.type == Event::TextEntered)) {
       // Handle regular text input
       if (eventao.text.unicode >= 32 && eventao.text.unicode < 128) {
         // addCaracter(static_cast<char>(eventao.text.unicode));
