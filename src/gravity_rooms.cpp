@@ -105,8 +105,15 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
     if ((currentState == GAMEOVER) && (eventao.type == Event::TextEntered)) {
       // Handle regular text input
       if (eventao.text.unicode >= 32 && eventao.text.unicode < 128) {
-        // addCaracter(static_cast<char>(eventao.text.unicode));
-        cout << "here" << endl;  // Print current input
+        // Menus::MenuGameOver *menuGameOver = dynamic_cast<MenuGameOver
+        // *>(menu); if (menuGameOver) {
+        Menus::MenuGameOver *menuGameOver =
+            dynamic_cast<Menus::MenuGameOver *>(menu);
+        if (menuGameOver) {
+          menuGameOver->addCaracter(static_cast<char>(eventao.text.unicode));
+          std::cout << "Input character: "
+                    << static_cast<char>(eventao.text.unicode) << std::endl;
+        }
       }
     }
     /**/
@@ -369,5 +376,3 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
     atualPersonagens = atualPersonagens->getProximo();
   }
 }
-
-// ===/===/===/===/ Outros  ===/===/===/===/

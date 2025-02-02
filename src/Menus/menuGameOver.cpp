@@ -112,10 +112,30 @@ void MenuGameOver::carregarMenuGameOver() {
   }
 }
 void MenuGameOver::addCaracter(char caracter) {
-  std::string nome = texto.getString();
-  if (nome.length() <= 10) {
-    nome += caracter;
-    texto.setString(nome);
+  // std::string nome = texto.getString();
+  // if (nome.length() <= 10) {
+  //   nome += caracter;
+  //   texto.setString(nome);
+  // }
+  cout << "/-------------ADDCHARACTER---------------:" << endl;
+
+  if (nome.length() < 10) {
+    // Allow only letters and numbers
+    cout << "here:" << endl;
+
+    if ((caracter >= 'a' && caracter <= 'z') ||
+        (caracter >= 'A' && caracter <= 'Z') ||
+        (caracter >= '0' && caracter <= '9')) {
+      nome += caracter;
+      // cout << "noome:" << nome << endl;
+      addBotao(nome,
+               sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
+               IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
+      // texto.setString("Nome: " + nome);
+      //  texto.setPos(sf::Vector2f(tamJanela.x / 2.0f - texto.getTam().x
+      //  / 2.0f,
+      //                          tamJanela.y * 0.4f));
+    }
   }
 }
 
