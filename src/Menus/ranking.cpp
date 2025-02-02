@@ -23,12 +23,10 @@ Ranking::~Ranking() {}
 
 void Ranking::criarBotoes() {
   // Centralizar horizontalmente (igual ao menu principal)
-  float centerX = tamJanela.x / 2.0f - tamBotao.x / 2.0f;
-  float startY = tamJanela.y * 0.4f;  // Posição Y inicial
-  float spacing = tamBotao.y * 1.5f;
-
+  // float bottomY = tamJanela.y * 0.85f;
   // Botões em maiúsculas e centralizados
-  addBotao("VOLTAR PARA O MENU", sf::Vector2f(centerX, startY),
+  addBotao("VOLTAR PARA O MENU",
+           sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),
            IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
 
   carregarRanking();
@@ -51,27 +49,28 @@ void Ranking::carregarRanking() {
   file >> rankingData;
   file.close();
 
-  rankingTexts.clear();
-  float startY = 200.0f;
-  float spacing = 50.0f;
+  // Starting position and spacing
+  float startY = tamJanela.y * 0.3f;  // Start 30% from top
+  float spacing = tamBotao.y * 1.5f;  // 1.5x button height spacing
 
   // Access the "ranking" array
   const auto& rankingArray = rankingData["ranking"];
-
   int position = 1;
+
   for (const auto& entry : rankingArray) {
     std::string playerName = entry["nome"];
     int score = entry["pontos"];
 
+    // Format ranking text
     std::string rankText = std::to_string(position) + ". " + playerName +
                            " - " + std::to_string(score);
-    Botoes::Texto texto(rankText, 30);
 
-    float centerX = tamJanela.x / 2.0f - texto.getTam().x / 2.0f;
-    texto.setPos(sf::Vector2f(centerX, startY + spacing * position));
-    texto.setCorTexto(sf::Color::White);
-    std::cout << "Player Name: " << playerName << std::endl;
-    rankingTexts.push_back(texto);
+    // Create centered button
+    float buttonY = startY + (spacing * position);
+    addBotao(rankText, sf::Vector2f(0.f, buttonY),
+             IDs::IDs::menu_colocacao,  // Use appropriate ID
+             sf::Color(0, 255, 0));     // Green color for consistency
+
     position++;
   }
 }

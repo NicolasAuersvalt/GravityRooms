@@ -18,7 +18,7 @@ class Obstaculo : public Entidade {
  public:
   Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Obstaculo();
-
+  void salvarDataBuffer() {};
   virtual void executar() = 0;
   virtual int getDano() = 0;
   void atualizarPosicao() {};

@@ -62,7 +62,7 @@ class Gravity_Rooms {
   Fase* fase;
   Menu* menu;
 
-  enum GameState { MAIN, PLAYING, PAUSE, COLOCACAO };
+  enum GameState { MAIN, PLAYING, PAUSE, COLOCACAO, GAMEOVER };
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   Lista_Entidades listaPersonagem;

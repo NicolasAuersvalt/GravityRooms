@@ -77,6 +77,18 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
 
     menu = static_cast<Menu *>(aux);
     menu->criarBotoes();
+  } else if (pMenu == IDs::IDs::menu_game_over &&
+             menu->getID() == IDs::IDs::menu_principal) {
+    Menus::Ranking *aux = new Menus::Ranking(IDs::IDs::menu_game_over);
+
+    if (aux == nullptr) {
+      exit(1);
+      cout << "nao foi possivel criar o  menu_game_over " << endl;
+    }
+    cout << "   menu_game_over " << endl;
+
+    menu = static_cast<Menu *>(aux);
+    menu->criarBotoes();
   }
   Event eventao;
   bool out = false;
@@ -156,6 +168,13 @@ void Gravity_Rooms::executar() {
         }
         break;
       }
+      case GAMEOVER: {
+        menu->setSelecionado(false);
+        if (ligarMenu(IDs::IDs::menu_game_over)) {
+          currentState = MAIN;
+        }
+        break;
+      }
 
       case PLAYING: {
         // Check for "2" key press to activate Player 2
@@ -177,7 +196,7 @@ void Gravity_Rooms::executar() {
           GC.pJog1 = nullptr;
           GC.pJog2 = nullptr;
           menu->setSelecionado(false);
-          currentState = MAIN;
+          currentState = GAMEOVER;
           continue;
         }
 
