@@ -127,10 +127,10 @@ void MenuGameOver::addCaracter(char caracter) {
         (caracter >= 'A' && caracter <= 'Z') ||
         (caracter >= '0' && caracter <= '9')) {
       nome += caracter;
-      // cout << "noome:" << nome << endl;
-      addBotao(nome,
-               sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
-               IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
+      // // cout << "noome:" << nome << endl;
+      // addBotao(nome,
+      //          sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
+      //          IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
 
       for (auto it = listaBotaoTexto.begin(); it != listaBotaoTexto.end();
            ++it) {

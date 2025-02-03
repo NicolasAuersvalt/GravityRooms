@@ -24,8 +24,7 @@ enum class IDs {
   botao_novoJogo,          // 16
   botao2,                  // 17
   botao_carregar_jogo,     // 18
-  botao_colocacao,         // 19
-  botao_opcao,             // 20
+  botao_colocacao,         // 19         // 20
   botao_sair,              // 21
   botao_voltar,            // 22
   botao_esquerda,          // 23

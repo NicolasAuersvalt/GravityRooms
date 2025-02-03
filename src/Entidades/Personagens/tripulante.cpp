@@ -96,7 +96,7 @@ void Tripulante::mover() {
     tecla = GE->isTeclaPressionada(sf::Keyboard::W);
     if (tecla == "W" && noChao) {
       // Jump only if on ground
-      float jumpForce = -20.0f;  // controle do pulo
+      float jumpForce = -12.0f;  // controle do pulo
       velFinal.y = jumpForce;
       noChao = false;
     }
@@ -119,7 +119,7 @@ void Tripulante::mover() {
     tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
     if (tecla == "Space" && noChao) {
       // Jump only if on ground
-      float jumpForce = -20.0f;  // controle do pulo
+      float jumpForce = -12.0f;  // controle do pulo
       velFinal.y = jumpForce;
       noChao = false;
     }

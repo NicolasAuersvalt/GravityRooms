@@ -33,7 +33,7 @@ void MenuPrincipal::criarBotoes() {
   addBotao("RANKING", sf::Vector2f(0.f, startY + spacing * 2),
            IDs::IDs::botao_colocacao, sf::Color(0, 255, 0));
   addBotao("CARREGAR JOGO", sf::Vector2f(0.f, startY + spacing * 3),
-           IDs::IDs::botao_opcao, sf::Color(0, 255, 0));
+           IDs::IDs::botao_carregar, sf::Color(0, 255, 0));
   addBotao("SAIR", sf::Vector2f(0.f, startY + spacing * 4),
            IDs::IDs::botao_sair, sf::Color(0, 255, 0));
 

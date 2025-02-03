@@ -88,10 +88,12 @@ class Gravity_Rooms {
 
   void executar();
   // void checkPlayer(GameState& currentState, int& retFlag);
-  void salvarJogo();
   void criarJogadorDois();
   // ===/===/===/===/ Outros  ===/===/===/===/
   void criarFases(IDs::IDs faseSelecionada);
+  void criarFasesVazia(IDs::IDs faseSelecionada);
+  void salvarJogo();
+  bool carregarJogo();
 };
 
 #endif

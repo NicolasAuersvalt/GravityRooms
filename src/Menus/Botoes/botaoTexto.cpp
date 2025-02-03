@@ -11,7 +11,7 @@ BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f pos,
       corSelecionado(corSelecionado),
       selecionado(false) {
   // Load font for sf::Text
-  if (!font.loadFromFile("assets/Fontes/light-arial.ttf")) {
+  if (!font.loadFromFile("assets/Fontes/Gameplay.ttf")) {
     // Handle error if font loading fails
     std::cerr << "Failed to load font!" << std::endl;
   }

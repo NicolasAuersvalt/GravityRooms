@@ -41,7 +41,6 @@ class Androide : public Inimigo {
   int getDano();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
-  // void colidir(Entidade* outro, string direction = "") override;
 };
 
 }  // namespace Entidades::Personagens

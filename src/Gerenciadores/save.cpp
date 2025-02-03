@@ -19,13 +19,18 @@
 // }
 
 // void Save::salvar() {
-//   // Salva os dados do Jogador
-//   gravarDados();
+//   gravarDados();  // Save main player
 
-//   // Cria um arquivo de texto Json
+//   // Add level information
+//   dados.setLevel(dynamic_cast<Laboratorio*>(fase) ? "laboratorio" : "nave");
+
+//   // Add second player if exists
+//   if (hasPlayer2 && pJog2) {
+//     dados.setPlayer2Pos(pJog2->getPosicao());
+//     dados.setPlayer2Health(pJog2->getVida());
+//   }
+
 //   json j = getJson(dados);
-
-//   // Envia para o salvamento
 //   salvarArquivo(dados, j);
 // }
 

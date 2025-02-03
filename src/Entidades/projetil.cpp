@@ -45,11 +45,6 @@ void Projetil::mover() {
 }
 
 void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
-  cout << "colisao com entidade ID: "
-       << static_cast<int>(outraEntidade->getID()) << endl;
-  cout << "colisao de " << static_cast<int>(getID())
-       << " com entidade ID: " << static_cast<int>(outraEntidade->getID())
-       << endl;
   if (!outraEntidade) {
     std::cout << "Warning: Null entity in collision" << std::endl;
     return;

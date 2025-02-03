@@ -12,10 +12,10 @@ Texto::Texto(const std::string info, const unsigned int tamFonte)
       corTexto(sf::Color::White),
       corBorda(sf::Color::Black),
       tamFonte(tamFonte) {
-  if (!fonte.loadFromFile("assets/Fontes/light-arial.ttf")) {
+  if (!fonte.loadFromFile("assets/Fontes/Gameplay.ttf")) {
     std::cout << "Error loading font!" << std::endl;
 
-    if (!fonte.loadFromFile("assets/Fontes/light-arial.ttf")) {
+    if (!fonte.loadFromFile("assets/Fontes/Gameplay.ttf")) {
       std::cerr << "Error loading system font!" << std::endl;
       exit(1);
     }

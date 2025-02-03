@@ -211,7 +211,7 @@ void Fase::executar() {
 
 Entidades::Projetil* Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   Entidades::Projetil* projetil =
-      new Entidades::Projetil(pos, sf::Vector2f(50.0f, 50.0f), ID);
+      new Entidades::Projetil(pos, sf::Vector2f(50.0f, 54.0f), ID);
   if (projetil == nullptr) {
     std::cout << "Fase::nao foi possivel criar projetil" << std::endl;
     exit(1);

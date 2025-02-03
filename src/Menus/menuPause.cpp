@@ -30,7 +30,11 @@ void MenuPause::criarBotoes() {
   // Botões em maiúsculas e centralizados
   addBotao("CONTINUAR", sf::Vector2f(centerX, startY), IDs::IDs::botao_voltar,
            sf::Color{0, 255, 0});
-  addBotao("SAIR", sf::Vector2f(centerX, startY + spacing),
+  addBotao("SALVAR JOGADA", sf::Vector2f(centerX, startY + spacing),
+           IDs::IDs::menu_salvar_jogada, sf::Color{0, 255, 0});
+  addBotao("VOLTAR PARA O MENU", sf::Vector2f(centerX, startY + spacing * 2),
+           IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
+  addBotao("SAIR", sf::Vector2f(centerX, startY + spacing * 3),
            IDs::IDs::botao_sair, sf::Color{0, 255, 0});
 
   inicializarIterator();  // Inicializa o iterador
