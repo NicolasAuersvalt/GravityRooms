@@ -1,12 +1,16 @@
 {
     "ranking": [
         {
+            "nome": "zztset",
+            "pontos": 7
+        },
+        {
             "nome": "BORBOLETAF1",
-            "pontos": 12
+            "pontos": 5
         },
         {
             "nome": "Morgan",
-            "pontos": 9
+            "pontos": 4
         },
         {
             "nome": "NICOLAU",
@@ -18,6 +22,10 @@
         },
         {
             "nome": "zzz",
+            "pontos": 1
+        },
+        {
+            "nome": "sjff",
             "pontos": 1
         },
         {
