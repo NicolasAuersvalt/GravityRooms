@@ -65,6 +65,7 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 }
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
+  cout << "criar entidades" << endl;
   if (tripulantes[0] == nullptr) {
     criarJogador({100.f, 100.f}, 0);  // Create player 1
     tripulantes[0]->setProjetil(

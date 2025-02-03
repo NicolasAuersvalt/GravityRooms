@@ -10,7 +10,8 @@ Gravity_Rooms::Gravity_Rooms()
       menu(nullptr),
       fase(nullptr),
       player2Active(false),
-      currentState(MAIN) {
+      currentState(MAIN),
+      currentPontos(0) {
   /*
   if (!backgroundTexture.loadFromFile("assets/tripulante.png")) {
           cerr << "Erro ao carregar o background!" << endl;
@@ -20,19 +21,6 @@ Gravity_Rooms::Gravity_Rooms()
   */
 
   Ente::setGerenciador(&GG);
-  // fase->setGerenciador(&GG);
-
-  // Vector2f pos = pJog1.getPosicao();
-
-  // pJog1.setSprite("assets/tripulanteG.png", pos.x, pos.y);
-
-  // cout << "bli\n";
-  // listaPersonagem.incluir(static_cast<Entidade *>(&pJog1));
-
-  // pAnd1.setSprite("assets/androidG.png", 0, 0);
-  // pAnd1.setVida(10);
-
-  // listaPersonagem.incluir(static_cast<Entidade *>(&pAnd1));
 
   executar();
 }
@@ -49,15 +37,11 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
       exit(1);
       cout << "nao foi possivel criar o menu principal " << endl;
     }
-    cout << "  menu principal " << endl;
-
     menu = static_cast<Menu *>(aux);
     menu->criarBotoes();
   } else if (pMenu == IDs::IDs::menu_pausa &&
              menu->getID() != IDs::IDs::menu_pausa && currentState == PAUSE) {
     MenuPause *aux = new MenuPause(IDs::IDs::menu_pausa);
-
-    cout << "here" << endl;
     if (aux == nullptr) {
       exit(1);
       cout << "nao foi possivel criar o menu pausa " << endl;
@@ -158,7 +142,7 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
         Menus::MenuGameOver *menuGameOver =
             dynamic_cast<Menus::MenuGameOver *>(menu);
         if (menuGameOver) {
-          menuGameOver->salvarColocacao();
+          menuGameOver->salvarColocacao(currentPontos);
         }
         currentState = MAIN;
         out = true;
@@ -229,8 +213,9 @@ void Gravity_Rooms::executar() {
 
       case PLAYING: {
         // Check for "2" key press to activate Player 2
-        string tecla = pGE->isTeclaPressionada(sf::Keyboard::M);
-        if (tecla == "M" && !player2Active) {
+        string tecla = pGE->isTeclaPressionada(sf::Keyboard::H);
+
+        if (tecla == "H" && !player2Active) {
           criarJogadorDois();
         }
         if ((!GC.pJog1 || !GC.pJog1->verificarVivo()) &&
@@ -288,6 +273,7 @@ void Gravity_Rooms::executar() {
             GC.pJog1 = nullptr;
             GC.pJog2 = nullptr;
             player2Active = false;
+            currentPontos = GC.pJog1->getPontos();
             menu->setSelecionado(false);
             currentState = GAMEOVER;
             continue;
@@ -332,8 +318,8 @@ void Gravity_Rooms::executar() {
 }
 
 void Gravity_Rooms::criarJogadorDois() {
-  player2Active = true;
   if (fase && !GC.pJog2) {  // Only create if doesn't exist
+    cout << "criar jogador 2" << endl;
     fase->criarJogador(Vector2f(200.0f, 100.0f), 1);
     Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
                                              IDs::IDs::projetil_tripulante);
@@ -344,27 +330,30 @@ void Gravity_Rooms::criarJogadorDois() {
       GC.incluirTripulante(*tripPtr);
       listaPersonagem.incluir(tripPtr);
     }
+
+    player2Active = true;
   }
 }
 
 void Gravity_Rooms::salvarJogo() {
   nlohmann::ordered_json saveData;
 
-  // Save players
+  // Save level state
+  saveData["level"] =
+      dynamic_cast<Laboratorio *>(fase) ? "laboratorio" : "nave";
+
+  // Save player data
   if (GC.pJog1) {
     saveData["jogador1"] = {{"x", GC.pJog1->getPosicao().x},
                             {"y", GC.pJog1->getPosicao().y},
                             {"vida", GC.pJog1->getVida()}};
   }
+
   if (GC.pJog2) {
     saveData["jogador2"] = {{"x", GC.pJog2->getPosicao().x},
                             {"y", GC.pJog2->getPosicao().y},
                             {"vida", GC.pJog2->getVida()}};
   }
-
-  // Save level state
-  saveData["level"] =
-      dynamic_cast<Laboratorio *>(fase) ? "laboratorio" : "nave";
 
   // Save enemies
   nlohmann::json enemiesData;
@@ -488,17 +477,25 @@ bool Gravity_Rooms::carregarJogo() {
     cout << "bl4" << endl;
     // Load player 1
     if (saveData.contains("jogador1")) {
+      cout << "testeeee" << endl;
       auto &jog1 = saveData["jogador1"];
       Vector2f pos(jog1["x"], jog1["y"]);
       fase->criarJogador(pos, 0);
-      GC.incluirTripulante(*(fase->tripulantes[0]));
 
-      Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
-                                               IDs::IDs::projetil_tripulante);
-      fase->tripulantes[0]->setProjetil(projetil);
-      listaPersonagem.incluir(projetil);
-      if (GC.pJog1) {
-        GC.pJog1->setVida(jog1["vida"]);
+      // Fix: Dereference pointer to pass as reference
+      if (fase->tripulantes[0]) {
+        cout << "testeeee" << endl;
+        GC.incluirTripulante(*(fase->tripulantes[0]));
+
+        Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
+                                                 IDs::IDs::projetil_tripulante);
+        fase->tripulantes[0]->setProjetil(projetil);
+        listaPersonagem.incluir(projetil);
+
+        if (GC.pJog1) {
+          cout << "testeeee" << endl;
+          GC.pJog1->setVida(jog1["vida"]);
+        }
       }
     }
 
@@ -511,13 +508,13 @@ bool Gravity_Rooms::carregarJogo() {
 
         switch (enemyType) {
           case IDs::IDs::androide:
-            fase->criarInimFaceis(pos, GC.pJog1);
+            fase->criarInimMedios(pos, GC.pJog1);
             break;
           case IDs::IDs::ciborgue:
-            fase->criarInimMedios(pos, GC.pJog1);
+            fase->criarInimFaceis(pos, GC.pJog1);
             break;
           case IDs::IDs::clone:
-            fase->criarInimMedios(pos, GC.pJog1);
+            fase->criarInimDificeis(pos, GC.pJog1);
             break;
           default:
             std::cout << "Enemy type not recognized" << std::endl;
@@ -555,20 +552,23 @@ bool Gravity_Rooms::carregarJogo() {
     }
     auto atualPersonagens = fase->listaPersonagens->LEs->getPrimeiro();
     while (atualPersonagens != nullptr) {
-      if (dynamic_cast<Entidades::Personagens::Tripulante *>(
-              atualPersonagens->pInfo)) {
-        Tripulante *tripPtr =
-            dynamic_cast<Tripulante *>(atualPersonagens->pInfo);
-        GC.incluirTripulante(*tripPtr);
-      } else {
-        // GC.incluirInimigo(static_cast<Inimigo *>(atualPersonagens->pInfo));
-      }
-
       listaPersonagem.incluir(
           atualPersonagens->pInfo);  // Add entity to listaPersonagem
       atualPersonagens = atualPersonagens->getProximo();
     }
-    cout << "bl6" << endl;
+    player2Active = false;
+    // Save players
+    if (GC.pJog1) {
+      saveData["jogador1"] = {{"x", GC.pJog1->getPosicao().x},
+                              {"y", GC.pJog1->getPosicao().y},
+                              {"vida", GC.pJog1->getVida()}};
+    }
+    if (GC.pJog2) {
+      std::cout << "asdasddo!" << std::endl;
+      saveData["jogador2"] = {{"x", GC.pJog2->getPosicao().x},
+                              {"y", GC.pJog2->getPosicao().y},
+                              {"vida", GC.pJog2->getVida()}};
+    }
     std::cout << "Jogo carregado com sucesso!" << std::endl;
     return true;
 

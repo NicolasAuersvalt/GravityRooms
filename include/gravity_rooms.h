@@ -73,6 +73,7 @@ class Gravity_Rooms {
   bool player2Active;
   Gerenciador_Eventos* pGE;
   GameState currentState = MAIN;
+  int currentPontos;
 
  protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/

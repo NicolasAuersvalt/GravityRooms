@@ -30,14 +30,10 @@ void Ranking::criarBotoes() {
            IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
 
   carregarRanking();
-  exibirRanking();
   inicializarIterator();  // Inicializa o iterador
 }
 
-void Ranking::executar() {
-  exibirRanking();
-  // conteúdo do efeito Parallax
-}
+void Ranking::executar() {}
 void Ranking::carregarRanking() {
   std::ifstream file("saves/rank.json");
   if (!file.is_open()) {
@@ -49,29 +45,26 @@ void Ranking::carregarRanking() {
   file >> rankingData;
   file.close();
 
-  // Starting position and spacing
-  float startY = tamJanela.y * 0.3f;  // Start 30% from top
-  float spacing = tamBotao.y * 1.5f;  // 1.5x button height spacing
+  // Display settings
+  float startY = tamJanela.y * 0.3f;
+  float spacing = tamBotao.y * 1.5f;
 
-  // Access the "ranking" array
+  // Display top 5 only
   const auto& rankingArray = rankingData["ranking"];
-  int position = 1;
+  int maxDisplay = std::min(5, static_cast<int>(rankingArray.size()));
 
-  for (const auto& entry : rankingArray) {
+  for (int i = 0; i < maxDisplay; i++) {
+    const auto& entry = rankingArray[i];
     std::string playerName = entry["nome"];
     int score = entry["pontos"];
 
-    // Format ranking text
-    std::string rankText = std::to_string(position) + ". " + playerName +
-                           " - " + std::to_string(score);
+    std::string rankText = std::to_string(i + 1) + ". " + playerName + " - " +
+                           std::to_string(score);
 
-    // Create centered button
-    float buttonY = startY + (spacing * position);
-    addBotao(rankText, sf::Vector2f(0.f, buttonY),
-             IDs::IDs::menu_colocacao,  // Use appropriate ID
-             sf::Color(0, 255, 0));     // Green color for consistency
-
-    position++;
+    float buttonY = startY + (spacing * (i + 1));
+    addBotao(rankText,
+             sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, buttonY),
+             IDs::IDs::menu_colocacao, sf::Color(0, 255, 0));
   }
 }
 

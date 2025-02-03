@@ -1,39 +1,31 @@
 {
     "ranking": [
         {
-            "nome": "NICOLAU",
-            "pontos": 1200
-        },
-        {
             "nome": "BORBOLETAF1",
-            "pontos": 1100
-        },
-        {
-            "nome": "reiZinho",
-            "pontos": 1000
+            "pontos": 12
         },
         {
             "nome": "Morgan",
-            "pontos": 900
+            "pontos": 9
         },
         {
-            "nome": "Jogador1",
+            "nome": "NICOLAU",
+            "pontos": 1
+        },
+        {
+            "nome": "reiZinho",
+            "pontos": 1
+        },
+        {
+            "nome": "zzz",
+            "pontos": 1
+        },
+        {
+            "nome": "786",
             "pontos": 0
         },
         {
-            "nome": "askdjskjfk",
-            "pontos": 0
-        },
-        {
-            "nome": "SDLKFSLDF",
-            "pontos": 0
-        },
-        {
-            "nome": "wwq",
-            "pontos": 0
-        },
-        {
-            "nome": "mmmmm",
+            "nome": "sdjsljf",
             "pontos": 0
         }
     ]

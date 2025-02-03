@@ -27,7 +27,7 @@ class MenuGameOver : public Menu {
   void addCaracter(char caracter);
   void criarBotoes() override;
   void executar();
-  void salvarColocacao();
+  void salvarColocacao(int pontos);
   void setPlayerData(const std::string& playerName, int score) {
     nome = playerName;
     pontuacao = score;

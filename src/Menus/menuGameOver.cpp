@@ -26,7 +26,7 @@ MenuGameOver::MenuGameOver(const IDs::IDs ID, std::string nome,
 }
 
 MenuGameOver::~MenuGameOver() {}
-void MenuGameOver::salvarColocacao() {
+void MenuGameOver::salvarColocacao(int pontos) {
   // Abrir o arquivo rank.json
   std::ifstream file("saves/rank.json");
   if (!file.is_open()) {
@@ -44,7 +44,7 @@ void MenuGameOver::salvarColocacao() {
   for (auto& entry : rankingData["ranking"]) {
     if (entry["nome"] == nome) {
       // Atualizar a pontuação se o jogador já existir
-      entry["pontos"] = pontuacao;
+      entry["pontos"] = pontos;
       jogadorExiste = true;
       break;
     }
@@ -52,7 +52,7 @@ void MenuGameOver::salvarColocacao() {
 
   // Se o jogador não existir, adicionar uma nova entrada
   if (!jogadorExiste) {
-    nlohmann::json novoJogador = {{"nome", nome}, {"pontos", pontuacao}};
+    nlohmann::json novoJogador = {{"nome", nome}, {"pontos", pontos}};
     rankingData["ranking"].push_back(novoJogador);
   }
 
