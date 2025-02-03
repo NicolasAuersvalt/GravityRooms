@@ -6,8 +6,8 @@
 namespace Menus {
 
 class MenuPrincipal : public Menu {
- private:
- public:
+private:
+public:
   MenuPrincipal(IDs::IDs id);
   MenuPrincipal(const IDs::IDs ID, std::string nome,
                 const unsigned int tamFonte = 180);
@@ -16,4 +16,4 @@ class MenuPrincipal : public Menu {
   void executar();
 };
 
-}  // namespace Menus
+} // namespace Menus

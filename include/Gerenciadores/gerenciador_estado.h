@@ -8,25 +8,25 @@
 namespace Gerenciadores {
 
 class GerenciadorEstado {
- private:
-  std::stack<int*> pilhaEstados;
-  static GerenciadorEstado* pGerenciadorEstado;
+private:
+  std::stack<int *> pilhaEstados;
+  static GerenciadorEstado *pGerenciadorEstado;
   GerenciadorEstado();
 
   void desativarObservadores();
   void ativarObservadores();
 
- public:
+public:
   ~GerenciadorEstado();
-  static GerenciadorEstado* getGerenciadorEstado();
+  static GerenciadorEstado *getGerenciadorEstado();
   void executar();
-  int* getEstado(const int qtdRemove);
+  int *getEstado(const int qtdRemove);
   void addEstado(const int ID);
   void removerEstado(const int qtd);
   void removerEstado();
   int getEstadoAtual();
 };
 
-}  // namespace Gerenciadores
+} // namespace Gerenciadores
 
 #endif

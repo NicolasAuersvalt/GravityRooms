@@ -9,12 +9,12 @@
 namespace Menus {
 
 class Ranking : public Menu {
- private:
+private:
   void carregarRanking();
   void exibirRanking();
   std::vector<Botoes::Texto> rankingTexts;
 
- public:
+public:
   Ranking(const IDs::IDs id);
   Ranking(const IDs::IDs ID, std::string nome,
           const unsigned int tamFonte = 180);
@@ -23,5 +23,5 @@ class Ranking : public Menu {
   void executar();
 };
 
-}  // namespace Menus
+} // namespace Menus
 #endif

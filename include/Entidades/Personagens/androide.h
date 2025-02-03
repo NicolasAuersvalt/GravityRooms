@@ -12,7 +12,7 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Androide : public Inimigo {
- private:
+private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   // float raio;
 
@@ -20,29 +20,29 @@ class Androide : public Inimigo {
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Androide(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID);
+  Androide(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   ~Androide();
 
   using Ente::setSprite;
 
-  void danificar(Tripulante* p) override;
+  void danificar(Tripulante *p) override;
 
   virtual void executar() override;
-  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+  virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   void mover() override;
   int getDano();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

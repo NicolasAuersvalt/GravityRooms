@@ -12,7 +12,7 @@ MenuPause::MenuPause(IDs::IDs id)
 
 MenuPause::MenuPause(const IDs::IDs ID, std::string nome,
                      const unsigned int tamFonte)
-    : Menu(IDs::IDs::menu_pausa,  // ID CORRETO
+    : Menu(IDs::IDs::menu_pausa, // ID CORRETO
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
@@ -24,7 +24,7 @@ MenuPause::~MenuPause() {}
 void MenuPause::criarBotoes() {
   // Centralizar horizontalmente (igual ao menu principal)
   float centerX = tamJanela.x / 2.0f - tamBotao.x / 2.0f;
-  float startY = tamJanela.y * 0.4f;  // Posição Y inicial
+  float startY = tamJanela.y * 0.75f; // Posição Y inicial
   float spacing = tamBotao.y * 1.5f;
 
   // Botões em maiúsculas e centralizados
@@ -37,11 +37,11 @@ void MenuPause::criarBotoes() {
   addBotao("SAIR", sf::Vector2f(centerX, startY + spacing * 3),
            IDs::IDs::botao_sair, sf::Color{0, 255, 0});
 
-  inicializarIterator();  // Inicializa o iterador
+  inicializarIterator(); // Inicializa o iterador
 }
 
 void MenuPause::executar() {
   // conteúdo do efeito Parallax
 }
 
-}  // namespace Menus
+} // namespace Menus

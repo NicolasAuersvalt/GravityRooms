@@ -7,7 +7,7 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID)
+Clone::Clone(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID)
     : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), tripulante, ID),
       projetil(nullptr) {
   this->pontosVida = 20;
@@ -24,10 +24,11 @@ Clone::Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID)
 
 Clone::~Clone() {}
 void Clone::executar() {
-  if (vivo) mover();
+  if (vivo)
+    mover();
 }
 
-void Clone::salvarDataBuffer(nlohmann::ordered_json& json) {}
+void Clone::salvarDataBuffer(nlohmann::ordered_json &json) {}
 void Clone::mover() {
   if (vivo) {
     Inimigo::mover();
@@ -39,7 +40,7 @@ void Clone::mover() {
   }
 }
 
-void Clone::danificar(Tripulante* p) {}
+void Clone::danificar(Tripulante *p) {}
 
 void Clone::atirar() {
   if (!projetil->getAtivo()) {
@@ -50,15 +51,15 @@ void Clone::atirar() {
     Vector2f direcao = posTripulante - posClone;
     float magnitude = sqrt(direcao.x * direcao.x + direcao.y * direcao.y);
     if (magnitude != 0) {
-      direcao /= magnitude;  // Normalize direction vector
+      direcao /= magnitude; // Normalize direction vector
     }
 
     // Set projectile position and velocity
     projetil->setPosicao(posClone.x, posClone.y);
-    projetil->setVelocidade(direcao * 10.0f);  // Adjust speed as needed
+    projetil->setVelocidade(direcao * 10.0f); // Adjust speed as needed
     projetil->setAtivo(true, posClone);
   }
 }
 int Clone::getDano() { return dano; }
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

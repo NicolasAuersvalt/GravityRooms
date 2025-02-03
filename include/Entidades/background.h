@@ -8,12 +8,12 @@ using namespace sf;
 namespace Entidades {
 
 class Background : public Entidade {
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
@@ -34,11 +34,11 @@ class Background : public Entidade {
 
   void mover() override {}
   void salvar() override {}
-  void colisao(Entidade* outraEntidade, sf::Vector2f ds) override {}
+  void colisao(Entidade *outraEntidade, sf::Vector2f ds) override {}
   void atualizarPosicao() {};
   // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-}  // namespace Entidades
+} // namespace Entidades
 
 #endif

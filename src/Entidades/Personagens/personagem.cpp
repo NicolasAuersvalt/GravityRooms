@@ -17,7 +17,7 @@ Personagem::Personagem(const Vector2f pos, const Vector2f tam,
 Personagem::~Personagem() {}
 void Personagem::salvar() {}
 
-const RectangleShape& Personagem::getCorpo() const { return corpo; }
+const RectangleShape &Personagem::getCorpo() const { return corpo; }
 
 int Personagem::getVida() { return pontosVida; }
 
@@ -65,10 +65,10 @@ void Personagem::setVelFinal(const sf::Vector2f velFinal) {
 }
 const sf::Vector2f Personagem::getVelFinal() const { return velFinal; }
 void Personagem::cair() {
-  tempoSemColisao += 0.016f;  // Assuming 60fps
+  tempoSemColisao += 0.016f; // Assuming 60fps
   if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
-    noChao = false;  // No recent collision, we're in air
+    noChao = false; // No recent collision, we're in air
   }
 }
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

@@ -12,7 +12,7 @@ Ranking::Ranking(IDs::IDs id)
 
 Ranking::Ranking(const IDs::IDs ID, std::string nome,
                  const unsigned int tamFonte)
-    : Menu(IDs::IDs::menu_pausa,  // ID CORRETO
+    : Menu(IDs::IDs::menu_pausa, // ID CORRETO
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
@@ -30,7 +30,7 @@ void Ranking::criarBotoes() {
            IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
 
   carregarRanking();
-  inicializarIterator();  // Inicializa o iterador
+  inicializarIterator(); // Inicializa o iterador
 }
 
 void Ranking::executar() {}
@@ -50,11 +50,11 @@ void Ranking::carregarRanking() {
   float spacing = tamBotao.y * 1.5f;
 
   // Display top 5 only
-  const auto& rankingArray = rankingData["ranking"];
+  const auto &rankingArray = rankingData["ranking"];
   int maxDisplay = std::min(5, static_cast<int>(rankingArray.size()));
 
   for (int i = 0; i < maxDisplay; i++) {
-    const auto& entry = rankingArray[i];
+    const auto &entry = rankingArray[i];
     std::string playerName = entry["nome"];
     int score = entry["pontos"];
 
@@ -69,9 +69,9 @@ void Ranking::carregarRanking() {
 }
 
 void Ranking::exibirRanking() {
-  for (auto& texto : rankingTexts) {
+  for (auto &texto : rankingTexts) {
     // texto.desenhar(*GG);  // Assuming GG is a pointer to Gerenciador_Grafico
   }
 }
 
-}  // namespace Menus
+} // namespace Menus

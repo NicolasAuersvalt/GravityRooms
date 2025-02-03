@@ -9,10 +9,10 @@ namespace Menus {
 namespace Botoes {
 
 class Texto {
- private:
+private:
   std::string info;
 
- protected:
+protected:
   sf::Text texto;
   sf::Vector2f tam;
   sf::Vector2f pos;
@@ -22,7 +22,7 @@ class Texto {
   sf::Font fonte;
   void inicializa();
 
- public:
+public:
   Texto(const std::string info, const unsigned int tamFonte = 50);
   virtual ~Texto();
   const sf::Text getTexto() const;
@@ -37,7 +37,7 @@ class Texto {
   void setTamFonte(const unsigned int tamFonte);
 };
 
-}  // namespace Botoes
+} // namespace Botoes
 
-}  // namespace Menus
+} // namespace Menus
 #endif

@@ -7,8 +7,8 @@
 namespace Menus {
 
 class MenuPause : public Menu {
- private:
- public:
+private:
+public:
   MenuPause(const IDs::IDs id);
   MenuPause(const IDs::IDs ID, std::string nome,
             const unsigned int tamFonte = 180);
@@ -17,5 +17,5 @@ class MenuPause : public Menu {
   void executar();
 };
 
-}  // namespace Menus
+} // namespace Menus
 #endif

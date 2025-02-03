@@ -7,8 +7,7 @@ namespace Botoes {
 BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f pos,
                        const sf::Vector2f tam, const IDs::IDs ID,
                        const sf::Color corSelecionado)
-    : Botao(tam, pos, ID, 0.01f),
-      corSelecionado(corSelecionado),
+    : Botao(tam, pos, ID, 0.01f), corSelecionado(corSelecionado),
       selecionado(false) {
   // Load font for sf::Text
   if (!font.loadFromFile("assets/Fontes/Gameplay.ttf")) {
@@ -18,8 +17,8 @@ BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f pos,
 
   texto.setFont(font);
   texto.setString(info);
-  texto.setCharacterSize(24);            // Set font size
-  texto.setFillColor(sf::Color::White);  // Default color
+  texto.setCharacterSize(24);           // Set font size
+  texto.setFillColor(sf::Color::White); // Default color
 
   // Position the text
   sf::Vector2f tamTexto = getTamTexto();
@@ -70,11 +69,11 @@ void BotaoTexto::setSelecionado(bool selecionado) {
 }
 
 const bool BotaoTexto::getSelecionado() const { return selecionado; }
-void BotaoTexto::desenhar(Gerenciador_Grafico& pGrafico) {
+void BotaoTexto::desenhar(Gerenciador_Grafico &pGrafico) {
   atualizarAnimacao();
   pGrafico.desenharTexto(texto);
 }
-void BotaoTexto::setText(const std::string& text) {
+void BotaoTexto::setText(const std::string &text) {
   texto.setString(text);
 
   // Re-center the text after update
@@ -84,6 +83,6 @@ void BotaoTexto::setText(const std::string& text) {
                    pos.y + tam.y / 2.0f - tamTexto.y / 2.0f);
   texto.setPosition(posTexto);
 }
-}  // namespace Botoes
+} // namespace Botoes
 
-}  // namespace Menus
+} // namespace Menus

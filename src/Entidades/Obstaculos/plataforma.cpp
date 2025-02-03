@@ -34,13 +34,13 @@ void Plataforma::salvar() {
   // Implementation for saving state
 }
 
-void Plataforma::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
+void Plataforma::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   if (outraEntidade->getID() == IDs::IDs::clone ||
       outraEntidade->getID() == IDs::IDs::ciborgue ||
       outraEntidade->getID() == IDs::IDs::androide ||
       outraEntidade->getID() == IDs::IDs::tripulante) {
     colisaoObstaculo(
-        ds, static_cast<Entidades::Personagens::Personagem*>(outraEntidade));
+        ds, static_cast<Entidades::Personagens::Personagem *>(outraEntidade));
     // } else if (outraEntidade->getID() == IDs::IDs::projetil_inimigo) {
     //   Entidades::Projetil* projetil =
     //       dynamic_cast<Item::Projetil*>(outraEntidade);
@@ -50,4 +50,4 @@ void Plataforma::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
 }
 int Plataforma::getDano() { return dano; }
 
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos

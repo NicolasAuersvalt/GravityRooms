@@ -11,7 +11,7 @@ void segfaultHandler(int signal) {
   std::cerr << "Caught segmentation fault!" << std::endl;
   longjmp(jumpBuffer, 1);
 }
-}  // namespace
+} // namespace
 namespace Listas {
 
 Lista_Entidades::Lista_Entidades() {
@@ -26,14 +26,14 @@ Lista_Entidades::~Lista_Entidades() {
   LEs = nullptr;
 }
 // Incluir uma Entidade na lista
-void Lista_Entidades::incluir(Entidade* pE) { LEs->incluir(pE); }
+void Lista_Entidades::incluir(Entidade *pE) { LEs->incluir(pE); }
 
 // Percorrer todos os elementos da lista e desenhar cada um
 void Lista_Entidades::desenharTodos() {
   // cout << "Desenhando todos os elementos..." << endl;
 
-  LEs->percorrerLista([](Entidade* entidade) {
-    entidade->desenhar();  // Chama o método desenhar() de cada Entidadep
+  LEs->percorrerLista([](Entidade *entidade) {
+    entidade->desenhar(); // Chama o método desenhar() de cada Entidadep
   });
 }
 
@@ -46,7 +46,7 @@ void Lista_Entidades::atualizarTodas() {
   // Install signal handler
   signal(SIGSEGV, segfaultHandler);
 
-  auto updateFunction = [](Entidade* entidade) {
+  auto updateFunction = [](Entidade *entidade) {
     if (!entidade) {
       std::cout << "Entidade nula encontrada!" << std::endl;
       return;
@@ -56,7 +56,7 @@ void Lista_Entidades::atualizarTodas() {
       try {
         entidade->mover();
         entidade->atualizarPosicao();
-      } catch (const std::exception& e) {
+      } catch (const std::exception &e) {
         std::cerr << "Error updating entity: " << e.what() << std::endl;
       }
     } else {
@@ -76,20 +76,20 @@ void Lista_Entidades::limparLista() {
 
 const int Lista_Entidades::getTamanho() { return LEs->getTam(); }
 
-Entidades::Entidade* Listas::Lista_Entidades::operator[](int pos) {
+Entidades::Entidade *Listas::Lista_Entidades::operator[](int pos) {
   return LEs->operator[](pos);
 }
 
-void Lista_Entidades::removerEntidade(Entidade* entidade, const bool deletar) {
+void Lista_Entidades::removerEntidade(Entidade *entidade, const bool deletar) {
   if (entidade && LEs) {
     LEs->removerElemento(entidade, deletar);
   }
 }
-Entidade* Listas::Lista_Entidades::getElemento(int pos) {
+Entidade *Listas::Lista_Entidades::getElemento(int pos) {
   // return objListaEntidade.operator[](pos);
   return LEs->operator[](pos);
 }
-bool Lista_Entidades::contem(Entidade* entidade) {
+bool Lista_Entidades::contem(Entidade *entidade) {
   auto current = LEs->getPrimeiro();
   while (current != nullptr) {
     if (current->pInfo == entidade) {
@@ -99,4 +99,4 @@ bool Lista_Entidades::contem(Entidade* entidade) {
   }
   return false;
 }
-}  // namespace Listas
+} // namespace Listas

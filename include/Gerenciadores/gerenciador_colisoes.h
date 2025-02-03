@@ -31,28 +31,28 @@ class Obstaculo;
 namespace Gerenciadores {
 
 class Gerenciador_Colisoes {
- private:
+private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  vector<Inimigo*> LIs;
-  list<Obstaculo*> LOs;
-  set<Projetil*> LPs;
-  Lista_Entidades* listaPersonagem;
-  Lista_Entidades* listaObstaculo;
+  vector<Inimigo *> LIs;
+  list<Obstaculo *> LOs;
+  set<Projetil *> LPs;
+  Lista_Entidades *listaPersonagem;
+  Lista_Entidades *listaObstaculo;
   // ===/===/===/===/ Outros ===/===/===/===/
 
- public:
+public:
   // ===/===/===/===/ Obrigatórios ===/===/===/===/
 
-  Tripulante* pJog1;
-  Tripulante* pJog2;
+  Tripulante *pJog1;
+  Tripulante *pJog2;
   // // Construtor (FALTA)
   // Gerenciador_Colisoes();
 
   // // Destrutor (FALTA)
   // ~Gerenciador_Colisoes();
-  void setLista_Entidades(Lista_Entidades* listaPersonagem,
-                          Lista_Entidades* listaObstaculo) {
+  void setLista_Entidades(Lista_Entidades *listaPersonagem,
+                          Lista_Entidades *listaObstaculo) {
     this->listaPersonagem = listaPersonagem;
     this->listaObstaculo = listaObstaculo;
   }
@@ -67,7 +67,7 @@ class Gerenciador_Colisoes {
 
   // // ===/===/===/===/ Outros  ===/===/===/===/
 
-  void incluirTripulante(Tripulante& jogador) {
+  void incluirTripulante(Tripulante &jogador) {
     if (!pJog1) {
       pJog1 = &jogador;
     } else if (!pJog2) {
@@ -75,19 +75,19 @@ class Gerenciador_Colisoes {
     }
   }
   /*------------------------------------------------------------------------------------------------*/
-  Gerenciador_Colisoes(Lista_Entidades* listaPersonagem,
-                       Lista_Entidades* listaObstaculo);
+  Gerenciador_Colisoes(Lista_Entidades *listaPersonagem,
+                       Lista_Entidades *listaObstaculo);
   ~Gerenciador_Colisoes();
-  const sf::Vector2f calculaColisao(Entidades::Entidade* ent1,
-                                    Entidades::Entidade* ent2);
-  void executar(Lista_Entidades* listaPer, Lista_Entidades* listaObs);
+  const sf::Vector2f calculaColisao(Entidades::Entidade *ent1,
+                                    Entidades::Entidade *ent2);
+  void executar(Lista_Entidades *listaPer, Lista_Entidades *listaObs);
 
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros ===/===/===/===/
 };
 
-}  // namespace Gerenciadores
+} // namespace Gerenciadores
 
 #endif

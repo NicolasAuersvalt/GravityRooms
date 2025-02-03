@@ -6,17 +6,15 @@ using namespace std;
 
 namespace Listas {
 
-template <typename TL>
-class Lista {
- private:
+template <typename TL> class Lista {
+private:
   int tamanho;
 
- public:  // Definição da classe aninhada Elemento
-  template <typename TE>
-  class Elemento {
-   public:
-    TE* pInfo;            // Dados do elemento
-    Elemento<TE>* pProx;  // Ponteiro para o próximo elemento
+public: // Definição da classe aninhada Elemento
+  template <typename TE> class Elemento {
+  public:
+    TE *pInfo;           // Dados do elemento
+    Elemento<TE> *pProx; // Ponteiro para o próximo elemento
 
     // Construtor
     Elemento() : pInfo(nullptr), pProx(nullptr) {
@@ -24,34 +22,34 @@ class Lista {
     }
 
     // Método para incluir o próximo elemento
-    void incluir(TE* p) {
+    void incluir(TE *p) {
       // cout << "Incluido com Sucesso" << endl;
       pInfo = p;
       pProx = nullptr;
     }
 
     // Obter o elemento
-    TE* getElemento() const { return pInfo; }
+    TE *getElemento() const { return pInfo; }
 
     // Definir o próximo elemento
-    void setProx(Elemento<TE>* pE) { pProx = pE; }
+    void setProx(Elemento<TE> *pE) { pProx = pE; }
 
     // Obter o próximo elemento
-    Elemento<TE>* getProximo() { return pProx; }
+    Elemento<TE> *getProximo() { return pProx; }
   };
 
   // Atributos da lista
-  Elemento<TL>* pPrimeiro;  // Ponteiro para o primeiro elemento
-  Elemento<TL>* pUltimo;    // Ponteiro para o último elemento
+  Elemento<TL> *pPrimeiro; // Ponteiro para o primeiro elemento
+  Elemento<TL> *pUltimo;   // Ponteiro para o último elemento
 
-  void removerElemento(TL* elemento, const bool deletar) {
+  void removerElemento(TL *elemento, const bool deletar) {
     if (!elemento) {
       std::cout << "ERROR::Lista elemento eh nullptr" << std::endl;
       return;
     }
 
-    Elemento<TL>* aux = pPrimeiro;
-    Elemento<TL>* aux2 = nullptr;
+    Elemento<TL> *aux = pPrimeiro;
+    Elemento<TL> *aux2 = nullptr;
 
     while (aux != nullptr && aux->getElemento() != elemento) {
       aux2 = aux;
@@ -71,10 +69,10 @@ class Lista {
       }
 
       if (deletar) {
-        delete aux->pInfo;  // Free entity
+        delete aux->pInfo; // Free entity
         aux->pInfo = nullptr;
       }
-      delete aux;  // Free node
+      delete aux; // Free node
       aux = nullptr;
 
       tamanho--;
@@ -90,7 +88,7 @@ class Lista {
   // Método para limpar a lista
   void limpar() {
     // cout << "Limpando Lista..." << endl;
-    Elemento<TL>* temp;
+    Elemento<TL> *temp;
     while (pPrimeiro != nullptr) {
       temp = pPrimeiro;
       pPrimeiro = pPrimeiro->getProximo();
@@ -101,9 +99,9 @@ class Lista {
   }
 
   // Método para incluir um elemento na lista
-  void incluir(TL* p) {
+  void incluir(TL *p) {
     // cout << "Incluindo elemento na lista" << endl;
-    Elemento<TL>* novoElemento = new Elemento<TL>();
+    Elemento<TL> *novoElemento = new Elemento<TL>();
     novoElemento->incluir(p);
     if (pUltimo != nullptr) {
       pUltimo->setProx(novoElemento);
@@ -116,10 +114,10 @@ class Lista {
   }
 
   // Método para obter o primeiro elemento
-  Elemento<TL>* getPrimeiro() { return pPrimeiro; }
+  Elemento<TL> *getPrimeiro() { return pPrimeiro; }
 
   // Método para percorrer a lista e aplicar uma função em cada elemento
-  void percorrerLista(void (*funcao)(TL*)) {
+  void percorrerLista(void (*funcao)(TL *)) {
     // Elemento<TL>* elem = pPrimeiro;
     // while (elem != nullptr) {
     //   if (elem->pInfo != nullptr) {
@@ -135,25 +133,26 @@ class Lista {
       return;
     }
 
-    Elemento<TL>* atual = pPrimeiro;
+    Elemento<TL> *atual = pPrimeiro;
     while (atual != nullptr) {
       // Store next before processing current
-      Elemento<TL>* proximo = atual->getProximo();
+      Elemento<TL> *proximo = atual->getProximo();
 
       if (atual && atual->pInfo) {
         try {
           funcao(atual->pInfo);
-        } catch (const std::exception& e) {
+        } catch (const std::exception &e) {
           std::cerr << "Error in percorrerLista: " << e.what() << std::endl;
         }
       }
       atual = proximo;
     }
   }
-  TL* operator[](int pos) {
-    if (pos < 0 || !pPrimeiro) return nullptr;
+  TL *operator[](int pos) {
+    if (pos < 0 || !pPrimeiro)
+      return nullptr;
 
-    Elemento<TL>* atual = pPrimeiro;
+    Elemento<TL> *atual = pPrimeiro;
     int count = 0;
 
     while (atual && count < pos) {
@@ -177,6 +176,6 @@ class Lista {
 //   }
 //   return aux->getElemento();
 // }
-}  // namespace Listas
+} // namespace Listas
 
-#endif  // LISTA_H
+#endif // LISTA_H

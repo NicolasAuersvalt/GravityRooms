@@ -2,11 +2,11 @@
 
 namespace Gerenciadores {
 
-GerenciadorEstado* GerenciadorEstado::pGerenciadorEstado = nullptr;
+GerenciadorEstado *GerenciadorEstado::pGerenciadorEstado = nullptr;
 
 GerenciadorEstado::GerenciadorEstado() : pilhaEstados() {}
 
-GerenciadorEstado* GerenciadorEstado::getGerenciadorEstado() {
+GerenciadorEstado *GerenciadorEstado::getGerenciadorEstado() {
   if (pGerenciadorEstado == nullptr) {
     pGerenciadorEstado = new GerenciadorEstado();
   }
@@ -45,13 +45,13 @@ void GerenciadorEstado::addEstado(const int ID) {
   if (!pilhaEstados.empty()) {
     desativarObservadores();
   }
-  int* estado = new int(ID);  // Dynamically allocate memory for the integer
-  pilhaEstados.push(estado);  // Push the pointer to the stack
+  int *estado = new int(ID); // Dynamically allocate memory for the integer
+  pilhaEstados.push(estado); // Push the pointer to the stack
 }
 void GerenciadorEstado::removerEstado() {
   if (!pilhaEstados.empty()) {
-    int* estado = pilhaEstados.top();
-    delete estado;  // Free the allocated memory
+    int *estado = pilhaEstados.top();
+    delete estado; // Free the allocated memory
     pilhaEstados.pop();
   }
 }
@@ -71,8 +71,8 @@ int GerenciadorEstado::getEstadoAtual() {
   return -1;
 }
 
-int* GerenciadorEstado::getEstado(const int qtdRemove) {
-  std::stack<int*> pilhaEstadoAux = pilhaEstados;
+int *GerenciadorEstado::getEstado(const int qtdRemove) {
+  std::stack<int *> pilhaEstadoAux = pilhaEstados;
   int i = 0;
   while (i < qtdRemove && !pilhaEstadoAux.empty()) {
     pilhaEstadoAux.pop();
@@ -89,18 +89,18 @@ void GerenciadorEstado::executar() {
   if (!pilhaEstados.empty()) {
     int estado = *(pilhaEstados.top());
     switch (estado) {
-      case 1:
-        // Execute ações do menu principal
-        break;
-      case 2:
-        // Execute ações do menu de pausa
-        break;
-        // Adicione outros casos conforme necessário
-      default:
-        std::cout << "Estado desconhecido: " << estado << std::endl;
-        break;
+    case 1:
+      // Execute ações do menu principal
+      break;
+    case 2:
+      // Execute ações do menu de pausa
+      break;
+      // Adicione outros casos conforme necessário
+    default:
+      std::cout << "Estado desconhecido: " << estado << std::endl;
+      break;
     }
   }
 }
 
-}  // namespace Gerenciadores
+} // namespace Gerenciadores

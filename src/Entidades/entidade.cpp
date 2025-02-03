@@ -23,4 +23,4 @@ void Entidade::setPosicao(int x, int y) {
 
   pos.y = y;
 }
-}  // namespace Entidades
+} // namespace Entidades

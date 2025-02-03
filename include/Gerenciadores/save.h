@@ -6,38 +6,36 @@
 #include <iostream>
 #include <mutex>
 
-#include "Gerenciadores/gerenciador_colisoes.h"
 #include "Entidades/Personagens/tripulante.h"
-#include "json.hpp"
+#include "Fases/fase.h"
 #include "Fases/laboratorio.h"
 #include "Fases/nave.h"
-#include "Fases/fase.h"
+#include "Gerenciadores/gerenciador_colisoes.h"
+#include "json.hpp"
 
 using json = nlohmann::json;
 using namespace std;
 using namespace sf;
-using Gerenciadores::Gerenciador_Colisoes;
 using Fases::Fase;
 using Fases::Laboratorio;
 using Fases::Nave;
+using Gerenciadores::Gerenciador_Colisoes;
 
-
-
-class Save  {
- private:
-
- public:
+class Save {
+private:
+public:
   Save();
   ~Save();
 
-  void setJogador(Entidades::Personagens::Tripulante* jogador);
-  Entidades::Personagens::Tripulante* getJogador();
+  void setJogador(Entidades::Personagens::Tripulante *jogador);
+  Entidades::Personagens::Tripulante *getJogador();
 
-  void salvar( Gerenciador_Colisoes& GC,  Lista_Entidades& listaPersonagem,  Lista_Entidades& listaObstaculo,  Fase& fase) ;
+  void salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
+              Lista_Entidades &listaObstaculo, Fase &fase);
   void gravarDados();
-  
-bool carregar( Gerenciador_Colisoes& GC,  Lista_Entidades& listaPersonagem,  Lista_Entidades& listaObstaculo,  Fase*& fase) ;
 
+  bool carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
+                Lista_Entidades &listaObstaculo, Fase *&fase);
 };
 
 #endif

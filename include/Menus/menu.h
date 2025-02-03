@@ -28,9 +28,9 @@ class Gravity_Rooms;
 namespace Menus {
 
 class Menu : public Ente {
- protected:
-  list<Menus::Botoes::BotaoTexto*> listaBotaoTexto;
-  list<Menus::Botoes::BotaoTexto*>::iterator it;
+protected:
+  list<Menus::Botoes::BotaoTexto *> listaBotaoTexto;
+  list<Menus::Botoes::BotaoTexto *>::iterator it;
 
   const Vector2f tamBotao;
   const Vector2f tamJanela;
@@ -47,7 +47,7 @@ class Menu : public Ente {
   virtual void criarFundo() {};
   // void inicializarIterator();
 
- public:
+public:
   void inicializarIterator();
 
   Menu(const IDs::IDs ID, const Vector2f tamBotao, const string nome,
@@ -65,10 +65,10 @@ class Menu : public Ente {
   void eventoTeclado(const Keyboard::Key tecla);
   bool getSelecionado();
   virtual void executar() = 0;
-  void desenhar(Gerenciador_Grafico* GG);
+  void desenhar(Gerenciador_Grafico *GG);
   void setSelecionado(bool status);
 };
 
-}  // namespace Menus
+} // namespace Menus
 
 #endif

@@ -12,34 +12,34 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Ciborgue : public Inimigo {
- private:
+private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   int tamanho;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Ciborgue(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID);
+  Ciborgue(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   ~Ciborgue();
 
   using Ente::setSprite;
   void executar() override;
-  void danificar(Tripulante* p) override;
+  void danificar(Tripulante *p) override;
   void mover() override;
-  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+  virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   int getDano();
   // void colidir(Entidade* outro, string direction = "") override;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

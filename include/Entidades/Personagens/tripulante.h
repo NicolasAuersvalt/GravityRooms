@@ -27,12 +27,12 @@ using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
 
 class Tripulante : public Personagem {
- private:
+private:
   class Municao {
-   private:
+  private:
     int quantidade;
 
-   public:
+  public:
     Municao() : quantidade(0) {}
 
     void setQtd(int qtd) { quantidade = qtd; }
@@ -49,36 +49,36 @@ class Tripulante : public Personagem {
   Municao municao;
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   int pontos;
-  Gerenciador_Eventos* GE;
+  Gerenciador_Eventos *GE;
   Gerenciador_Fisica GF;
   // ===/===/===/===/ Outros  ===/===/===/===/
   bool isPlayerOne;
 
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // Gerenciadores::Gerenciador_Salvamento* GS;
   //  ===/===/===/===/ Outros  ===/===/===/===/
-  Projetil* projetil;
+  Projetil *projetil;
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID,
              bool isFirstPlayer = true);
   ~Tripulante();
 
-  void carregarDataBuffer(const nlohmann::ordered_json& json);
+  void carregarDataBuffer(const nlohmann::ordered_json &json);
 
   // virtual void executar() override;
-  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+  virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   virtual void mover() override;
 
   // Set
   void setPontos(int ponto);
   void setChao(bool chao);
-  void setProjetil(Projetil* new_projetil) { projetil = new_projetil; };
-  void setGerenciadorEvento(Gerenciador_Eventos* GE);
+  void setProjetil(Projetil *new_projetil) { projetil = new_projetil; };
+  void setGerenciadorEvento(Gerenciador_Eventos *GE);
   void setMunicao(int qtd);
 
   // Get
@@ -92,12 +92,12 @@ class Tripulante : public Personagem {
   void tirarMunicao();
   void atualizar();
   void podePular();
-  void colisao(Entidade* outraEntidade,
+  void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
 
   void atirar();
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

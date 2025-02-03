@@ -33,7 +33,7 @@ void Espinho::salvar() {
   // Add implementation
 }
 
-void Espinho::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
+void Espinho::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   // if (outraEntidade->getID() == IDs::IDs::tripulante) {
   //   Personagem::Tripulante::tripulante* pTripulante =
   //       dynamic_cast<Personagem::Tripulante::tripulante*>(outraEntidade);
@@ -48,4 +48,4 @@ void Espinho::colisao(Entidade* outraEntidade, sf::Vector2f ds) {
   // }
 }
 int Entidades::Obstaculos::Espinho::getDano() { return dano; }
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos

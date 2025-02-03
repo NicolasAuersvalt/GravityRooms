@@ -14,7 +14,7 @@ namespace Entidades {
 class Personagem;
 
 class Projetil : public Entidade {
- private:
+private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   static int danoProjetil;
@@ -22,16 +22,16 @@ class Projetil : public Entidade {
 
   // ===/===/===/===/ Outros  ===/===/===/===/
   bool colidiu;
-  Entidade* atirador;
+  Entidade *atirador;
   int dano;
   sf::Vector2f velocidade;
 
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
@@ -43,21 +43,21 @@ class Projetil : public Entidade {
 
   // virtual void executar() override;
   // virtual void mover() override;
-  void setVelocidade(const sf::Vector2f& vel);
+  void setVelocidade(const sf::Vector2f &vel);
   void salvar();
   void mover();
   void atualizar();
   void setAtivo(bool i, sf::Vector2f pos);
   bool getAtivo();
-  void setAtirador(Entidade* a);
-  bool getColidir(Entidade* e);
-  void danificar(Personagem* p);
+  void setAtirador(Entidade *a);
+  bool getColidir(Entidade *e);
+  void danificar(Personagem *p);
   int getDano();
   void atualizarPosicao() {};
-  void colisao(Entidade* outraEntidade,
+  void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
 };
 
-}  // namespace Entidades
+} // namespace Entidades
 
 #endif

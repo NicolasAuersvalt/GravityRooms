@@ -20,37 +20,37 @@ using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
 class Tripulante;
 class Inimigo : public Personagem {
- private:
+private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   int nivel_maldade;
 
   int dano;
   // ===/===/===/===/ Outros  ===/===/===/===/
-  Tripulante* tripulante;
+  Tripulante *tripulante;
   Clock relogio;
   short moverAleatorio;
   void inicializar();
   Gerenciador_Fisica GF;
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Inimigo(const Vector2f pos, const Vector2f tam, Tripulante* tripulante,
+  Inimigo(const Vector2f pos, const Vector2f tam, Tripulante *tripulante,
           const IDs::IDs ID);
   ~Inimigo();
 
-  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
-  virtual void danificar(Tripulante* p) = 0;
+  virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
+  virtual void danificar(Tripulante *p) = 0;
   virtual void executar() = 0;
   // virtual void colidir(Entidade* outro, string direction = "") = 0;
-  void colisao(Entidade* outraEntidade,
+  void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
-  virtual void mover();  // n virtual puro por enquanto
+  virtual void mover(); // n virtual puro por enquanto
 
   virtual int getDano() = 0;
 
@@ -60,6 +60,6 @@ class Inimigo : public Personagem {
   int getNivelMaldade() const;
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

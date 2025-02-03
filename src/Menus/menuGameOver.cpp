@@ -5,9 +5,8 @@ namespace Menus {
 MenuGameOver::MenuGameOver(IDs::IDs id)
     : Menu(IDs::IDs::menu_game_over,
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180),
-      texto("", 30),  // Initialize texto with empty string and font size
-      nome(""),
-      pontuacao(0) {
+      texto("", 30), // Initialize texto with empty string and font size
+      nome(""), pontuacao(0) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
@@ -15,11 +14,10 @@ MenuGameOver::MenuGameOver(IDs::IDs id)
 
 MenuGameOver::MenuGameOver(const IDs::IDs ID, std::string nome,
                            const unsigned int tamFonte)
-    : Menu(IDs::IDs::menu_game_over,  // ID CORRETO
+    : Menu(IDs::IDs::menu_game_over, // ID CORRETO
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte),
-      texto("", 30),  // Initialize texto with empty string and font size
-      nome(""),
-      pontuacao(0) {
+      texto("", 30), // Initialize texto with empty string and font size
+      nome(""), pontuacao(0) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
@@ -41,7 +39,7 @@ void MenuGameOver::salvarColocacao(int pontos) {
 
   // Verificar se o jogador já existe no ranking
   bool jogadorExiste = false;
-  for (auto& entry : rankingData["ranking"]) {
+  for (auto &entry : rankingData["ranking"]) {
     if (entry["nome"] == nome) {
       // Atualizar a pontuação se o jogador já existir
       entry["pontos"] = pontos;
@@ -58,7 +56,7 @@ void MenuGameOver::salvarColocacao(int pontos) {
 
   // Ordenar o ranking por pontuação (do maior para o menor)
   std::sort(rankingData["ranking"].begin(), rankingData["ranking"].end(),
-            [](const nlohmann::json& a, const nlohmann::json& b) {
+            [](const nlohmann::json &a, const nlohmann::json &b) {
               return a["pontos"] > b["pontos"];
             });
 
@@ -69,7 +67,7 @@ void MenuGameOver::salvarColocacao(int pontos) {
     return;
   }
 
-  outFile << rankingData.dump(4);  // Salvar com indentação de 4 espaços
+  outFile << rankingData.dump(4); // Salvar com indentação de 4 espaços
   outFile.close();
 }
 
@@ -87,14 +85,14 @@ void MenuGameOver::carregarMenuGameOver() {
   file.close();
 
   // Starting position and spacing
-  float startY = tamJanela.y * 0.3f;  // Start 30% from top
-  float spacing = tamBotao.y * 1.5f;  // 1.5x button height spacing
+  float startY = tamJanela.y * 0.3f; // Start 30% from top
+  float spacing = tamBotao.y * 1.5f; // 1.5x button height spacing
 
   // Access the "ranking" array
-  const auto& rankingArray = rankingData["ranking"];
+  const auto &rankingArray = rankingData["ranking"];
   int position = 1;
 
-  for (const auto& entry : rankingArray) {
+  for (const auto &entry : rankingArray) {
     std::string playerName = entry["nome"];
     int score = entry["pontos"];
 
@@ -105,8 +103,8 @@ void MenuGameOver::carregarMenuGameOver() {
     // Create centered button
     float buttonY = startY + (spacing * position);
     addBotao(rankText, sf::Vector2f(0.f, buttonY),
-             IDs::IDs::menu_game_over,  // Use appropriate ID
-             sf::Color(0, 255, 0));     // Green color for consistency
+             IDs::IDs::menu_game_over, // Use appropriate ID
+             sf::Color(0, 255, 0));    // Green color for consistency
 
     position++;
   }
@@ -135,7 +133,7 @@ void MenuGameOver::addCaracter(char caracter) {
       for (auto it = listaBotaoTexto.begin(); it != listaBotaoTexto.end();
            ++it) {
         if ((*it)->getID() == IDs::IDs::botao_nome) {
-          (*it)->setText(nome + "_");  // Add cursor
+          (*it)->setText(nome + "_"); // Add cursor
           break;
         }
       }
@@ -144,7 +142,7 @@ void MenuGameOver::addCaracter(char caracter) {
 }
 
 void MenuGameOver::exibirMenuGameOver() {
-  for (auto& texto : rankingTexts) {
+  for (auto &texto : rankingTexts) {
     // texto.desenhar(*GG);  // Assuming GG is a pointer to Gerenciador_Grafico
   }
 }
@@ -163,7 +161,7 @@ void MenuGameOver::criarBotoes() {
            IDs::IDs::menu_game_over, sf::Color(0, 255, 0));
 
   // Add name input field
-  addBotao("_",  // Empty text field with cursor
+  addBotao("_", // Empty text field with cursor
            sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
            IDs::IDs::botao_nome, sf::Color(0, 255, 0));
   addBotao("VOLTAR PARA O MENU",
@@ -172,4 +170,4 @@ void MenuGameOver::criarBotoes() {
   inicializarIterator();
 }
 
-}  // namespace Menus
+} // namespace Menus

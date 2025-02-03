@@ -11,7 +11,7 @@
 namespace Menus {
 
 class MenuGameOver : public Menu {
- private:
+private:
   void carregarMenuGameOver();
   void exibirMenuGameOver();
   std::vector<Botoes::Texto> rankingTexts;
@@ -19,7 +19,7 @@ class MenuGameOver : public Menu {
   Botoes::Texto texto;
   int pontuacao;
 
- public:
+public:
   MenuGameOver(const IDs::IDs id);
   MenuGameOver(const IDs::IDs ID, std::string nome,
                const unsigned int tamFonte = 180);
@@ -28,11 +28,11 @@ class MenuGameOver : public Menu {
   void criarBotoes() override;
   void executar();
   void salvarColocacao(int pontos);
-  void setPlayerData(const std::string& playerName, int score) {
+  void setPlayerData(const std::string &playerName, int score) {
     nome = playerName;
     pontuacao = score;
   }
 };
 
-}  // namespace Menus
+} // namespace Menus
 #endif

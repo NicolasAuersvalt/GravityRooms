@@ -55,14 +55,14 @@ using namespace std;
 using namespace sf;
 
 class Gravity_Rooms {
- private:
+private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
   Gerenciador_Eventos GE;
-  Fase* fase;
-  Menu* menu;
+  Fase *fase;
+  Menu *menu;
   Save save;
 
   enum GameState { MAIN, PLAYING, PAUSE, COLOCACAO, GAMEOVER };
@@ -73,15 +73,15 @@ class Gravity_Rooms {
   Sprite backgroundSprite;
   Texture backgroundTexture;
   bool player2Active;
-  Gerenciador_Eventos* pGE;
+  Gerenciador_Eventos *pGE;
   GameState currentState = MAIN;
   int currentPontos;
 
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Gravity_Rooms();

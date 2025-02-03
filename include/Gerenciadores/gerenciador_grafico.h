@@ -5,9 +5,9 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
-#include <mutex>  // Para usar std::mutex, se necessário
+#include <mutex> // Para usar std::mutex, se necessário
 #include <string>
-#include <thread>  // Para usar std::thread
+#include <thread> // Para usar std::thread
 
 using namespace std;
 using namespace sf;
@@ -17,12 +17,12 @@ class Ente;
 namespace Gerenciadores {
 
 class Gerenciador_Grafico {
- private:
-  static Gerenciador_Grafico* grafico;  // Instância única
+private:
+  static Gerenciador_Grafico *grafico; // Instância única
 
-  string nomeJanela = "GravityRooms";  // Nome da janela
-  RenderWindow window;                 // Janela de renderização
-  const int fps = 60;                  // Limite de frames por segundo
+  string nomeJanela = "GravityRooms"; // Nome da janela
+  RenderWindow window;                // Janela de renderização
+  const int fps = 60;                 // Limite de frames por segundo
 
   const int largura = 1280;
   const int altura = 920;
@@ -32,10 +32,10 @@ class Gerenciador_Grafico {
   mutex mtx;
 
   // Impedir cópia SINGLETON
-  Gerenciador_Grafico(const Gerenciador_Grafico&) = delete;
-  Gerenciador_Grafico& operator=(const Gerenciador_Grafico&) = delete;
+  Gerenciador_Grafico(const Gerenciador_Grafico &) = delete;
+  Gerenciador_Grafico &operator=(const Gerenciador_Grafico &) = delete;
 
- public:
+public:
   // Construtor
   Gerenciador_Grafico();
 
@@ -43,16 +43,16 @@ class Gerenciador_Grafico {
   ~Gerenciador_Grafico();
 
   // Método para obter a instância única
-  static Gerenciador_Grafico* getInstancia();
+  static Gerenciador_Grafico *getInstancia();
 
-  void desenharTexto(const Drawable& Texto);
+  void desenharTexto(const Drawable &Texto);
 
   // Desenhar um ente OBRIGATÓRIO
-  void desenharEnte(Ente* pE);
+  void desenharEnte(Ente *pE);
 
-  void desenhar(Sprite& sprite);
+  void desenhar(Sprite &sprite);
 
-  bool processarEvento(Event& event);
+  bool processarEvento(Event &event);
 
   // Verificar se a janela está aberta
   const bool estaAberta();
@@ -71,11 +71,11 @@ class Gerenciador_Grafico {
   void executar();
 
   // Remover depois
-  RenderWindow& getJanela();
+  RenderWindow &getJanela();
 
-  void desenharBackground(Sprite& sprite);
+  void desenharBackground(Sprite &sprite);
 };
 
-}  // namespace Gerenciadores
+} // namespace Gerenciadores
 
 #endif

@@ -7,7 +7,7 @@
 
 namespace Entidades::Personagens {
 
-Androide::Androide(const Vector2f pos, Tripulante* tripulante,
+Androide::Androide(const Vector2f pos, Tripulante *tripulante,
                    const IDs::IDs ID)
     : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), tripulante, ID) {
   this->dano = 2;
@@ -23,10 +23,11 @@ Androide::Androide(const Vector2f pos, Tripulante* tripulante,
 
 Androide::~Androide() {}
 void Androide::executar() {
-  if (vivo) mover();
+  if (vivo)
+    mover();
 }
 
-void Androide::danificar(Tripulante* p) {}
+void Androide::danificar(Tripulante *p) {}
 
 void Androide::mover() {
   if (vivo) {
@@ -39,5 +40,5 @@ int Androide::getDano() { return dano; }
 
 // }
 
-void Androide::salvarDataBuffer(nlohmann::ordered_json& json) {}
-}  // namespace Entidades::Personagens
+void Androide::salvarDataBuffer(nlohmann::ordered_json &json) {}
+} // namespace Entidades::Personagens

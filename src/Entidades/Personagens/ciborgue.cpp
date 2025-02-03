@@ -9,7 +9,7 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-Ciborgue::Ciborgue(const Vector2f pos, Tripulante* tripulante,
+Ciborgue::Ciborgue(const Vector2f pos, Tripulante *tripulante,
                    const IDs::IDs ID)
     : Inimigo(pos, Vector2f(100.0f, 100.0f), tripulante, ID) {
   this->pontosVida = 5;
@@ -29,13 +29,13 @@ void Ciborgue::executar() {
   }
 }
 
-void Ciborgue::danificar(Tripulante* p) {}
+void Ciborgue::danificar(Tripulante *p) {}
 
 void Entidades::Personagens::Ciborgue::mover() {
   if (vivo) {
     Inimigo::mover();
   }
 }
-void Ciborgue::salvarDataBuffer(nlohmann::ordered_json& json) {}
+void Ciborgue::salvarDataBuffer(nlohmann::ordered_json &json) {}
 int Ciborgue::getDano() { return dano; }
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

@@ -71,16 +71,16 @@ string Gerenciador_Eventos::isTeclaPressionada(const Keyboard::Key tecla) {
     // tecla está pressionada
     string teclaPressionada = processarTecla(tecla);
 
-    return teclaPressionada;  // Retorna
-                              // o
-                              // nome
-                              // da
-                              // tecla
-                              // processada
+    return teclaPressionada; // Retorna
+                             // o
+                             // nome
+                             // da
+                             // tecla
+                             // processada
   }
-  return "";  // Retorna string vazia
-              // caso a tecla não
-              // esteja pressionada
+  return ""; // Retorna string vazia
+             // caso a tecla não
+             // esteja pressionada
 }
 
 Vector2f Gerenciador_Eventos::obterMovimento() {
@@ -94,16 +94,16 @@ Vector2f Gerenciador_Eventos::obterMovimento() {
   // Movimentação baseada nas teclas
   // pressionadas
   if (Keyboard::isKeyPressed(Keyboard::Left)) {
-    movimento.x = -5.f;  // Move para a
-                         // esquerda
+    movimento.x = -5.f; // Move para a
+                        // esquerda
   }
 
   if (Keyboard::isKeyPressed(Keyboard::Right)) {
-    movimento.x = 5.f;  // Move para a direita
+    movimento.x = 5.f; // Move para a direita
   }
 
   if (Keyboard::isKeyPressed(Keyboard::Up)) {
-    movimento.y = -5.f;  // Move para cima
+    movimento.y = -5.f; // Move para cima
   }
 
   // if (!noChao) {
@@ -113,4 +113,4 @@ Vector2f Gerenciador_Eventos::obterMovimento() {
 
   return movimento;
 }
-}  // namespace Gerenciadores
+} // namespace Gerenciadores

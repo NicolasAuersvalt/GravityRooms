@@ -14,7 +14,7 @@ using namespace std;
 namespace Entidades::Personagens {
 
 class Personagem : public Entidade {
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Vector2f vel;
@@ -69,7 +69,7 @@ class Personagem : public Entidade {
     setPosicao(pos.x, pos.y);
   }
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // Personagem(pair<int, int> p, pair<int, int> d); //verificar
@@ -77,11 +77,11 @@ class Personagem : public Entidade {
   ~Personagem();
 
   // virtual void executar() = 0;
-  virtual void salvarDataBuffer(nlohmann::ordered_json& json) = 0;
+  virtual void salvarDataBuffer(nlohmann::ordered_json &json) = 0;
   virtual void mover() = 0;
 
   // Método para obter o corpo (RectangleShape)
-  const RectangleShape& getCorpo() const;
+  const RectangleShape &getCorpo() const;
 
   // Métodos para manipulação de vida
   void setVida(int life);
@@ -95,13 +95,13 @@ class Personagem : public Entidade {
   void atualizarPosicao();
   void parar();
   void andar(const bool paraEsquerda);
-  virtual void colisao(Entidade* outraEntidade,
+  virtual void colisao(Entidade *outraEntidade,
                        sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f)) = 0;
   void setVelFinal(const sf::Vector2f velFinal);
   const sf::Vector2f getVelFinal() const;
   void cair();
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

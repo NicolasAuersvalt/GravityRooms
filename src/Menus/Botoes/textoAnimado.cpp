@@ -34,6 +34,6 @@ void TextoAnimado::atualizar() {
   texto.setFillColor(corTexto);
 }
 
-}  // namespace Botoes
+} // namespace Botoes
 
-}  // namespace Menus
+} // namespace Menus

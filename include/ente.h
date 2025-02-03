@@ -1,9 +1,9 @@
 #ifndef ENTE_H
 #define ENTE_H
 
+#include "Gerenciadores/gerenciador_grafico.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Gerenciadores/gerenciador_grafico.h"
 
 #include "IDs/IDs.h"
 
@@ -15,24 +15,24 @@ using Gerenciadores::Gerenciador_Grafico;
 class Gerenciador_Grafico;
 
 class Ente {
- private:
+private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   const IDs::IDs ID;
-  static Gerenciador_Grafico*
-      pGG;  // Ente utiliza Gerenciador Gráfico (Bidirecional)
+  static Gerenciador_Grafico
+      *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   // Figura *pFig;
-  Texture* texture;  // Substituido
+  Texture *texture; // Substituido
   Sprite sprite;
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Ente(const IDs::IDs ID);
@@ -40,16 +40,18 @@ class Ente {
 
   // virtual void executar() = 0; // Pois é abstrata
 
-  void desenhar();  // Possui o endereço do gerenciador gráfico em protected,
-                    // mas só UTILIZA o gerenciador
+  void desenhar(); // Possui o endereço do gerenciador gráfico em protected,
+                   // mas só UTILIZA o gerenciador
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
   void setSprite(string local, int posX, int posY);
-  Texture* getTexture();  // retorna o endereço da textura do protected Texture *pFig
-  Sprite& getSprite();  // retorna o endereço da textura do protected Texture *pFig
+  Texture *
+  getTexture(); // retorna o endereço da textura do protected Texture *pFig
+  Sprite &
+  getSprite(); // retorna o endereço da textura do protected Texture *pFig
 
-  static void setGerenciador(Gerenciadores::Gerenciador_Grafico* gg);
+  static void setGerenciador(Gerenciadores::Gerenciador_Grafico *gg);
 
   FloatRect getHitBox() const { return sprite.getGlobalBounds(); }
   const IDs::IDs getID() const;

@@ -12,38 +12,38 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Clone : public Inimigo {
- private:
+private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   //   float raio;
-  Clock timerTiro;  // Timer to control shooting frequency
+  Clock timerTiro; // Timer to control shooting frequency
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
-  Projetil* projetil;
+  Projetil *projetil;
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Clone(const sf::Vector2f pos, Tripulante* tripulante, const IDs::IDs ID);
+  Clone(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   ~Clone();
   using Ente::setSprite;
 
-  void danificar(Tripulante* p) override;
+  void danificar(Tripulante *p) override;
 
   virtual void executar() override;
-  virtual void salvarDataBuffer(nlohmann::ordered_json& json) override;
+  virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   void mover() override;
-  void setProjetil(Projetil* proj) { projetil = proj; };
-  void atirar();  // New method to handle shooting
+  void setProjetil(Projetil *proj) { projetil = proj; };
+  void atirar(); // New method to handle shooting
   int getDano();
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

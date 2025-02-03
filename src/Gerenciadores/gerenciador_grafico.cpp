@@ -1,11 +1,11 @@
 #include "Gerenciadores/gerenciador_grafico.h"
 
 #include "Entidades/Personagens/tripulante.h"
-#include "ente.h"  // Substitua pelo caminho correto, se necessário
+#include "ente.h" // Substitua pelo caminho correto, se necessário
 namespace Gerenciadores {
 
 // Inicializar o atributo estático
-Gerenciador_Grafico* Gerenciador_Grafico::grafico = nullptr;
+Gerenciador_Grafico *Gerenciador_Grafico::grafico = nullptr;
 
 // Construtor
 Gerenciador_Grafico::Gerenciador_Grafico() { inicializador(); }
@@ -14,7 +14,7 @@ Gerenciador_Grafico::Gerenciador_Grafico() { inicializador(); }
 Gerenciador_Grafico::~Gerenciador_Grafico() { fechar(); }
 
 // Método estático para obter a instância única
-Gerenciador_Grafico* Gerenciador_Grafico::getInstancia() {
+Gerenciador_Grafico *Gerenciador_Grafico::getInstancia() {
   if (grafico == nullptr) {
     grafico = new Gerenciador_Grafico();
   }
@@ -30,7 +30,7 @@ void Gerenciador_Grafico::inicializador() {
   window.setFramerateLimit(fps);
 }
 
-void Gerenciador_Grafico::desenharEnte(Ente* pE) {
+void Gerenciador_Grafico::desenharEnte(Ente *pE) {
   if (!pE) {
     cerr << "Erro: Ponteiro para Ente é nulo!" << endl;
     return;
@@ -45,7 +45,7 @@ void Gerenciador_Grafico::desenharEnte(Ente* pE) {
   Sprite sprite = pE->getSprite();
 
   // Obtém a textura associada ao sprite
-  const Texture* texture = pE->getTexture();
+  const Texture *texture = pE->getTexture();
   if (!texture) {
     cerr << "Erro: Ente não possui uma textura carregada!" << endl;
 
@@ -65,7 +65,7 @@ void Gerenciador_Grafico::desenharEnte(Ente* pE) {
   try {
     window.draw(sprite);
     // cout << "Sprite do Ente desenhado com sucesso!" << endl;
-  } catch (const exception& e) {
+  } catch (const exception &e) {
     cerr << "Erro ao desenhar o sprite do Ente: " << e.what() << endl;
   }
 }
@@ -77,16 +77,16 @@ void Gerenciador_Grafico::limpar() { window.clear(); }
 void Gerenciador_Grafico::exibir() { window.display(); }
 
 // Desenhar todos os objetos na tela
-void Gerenciador_Grafico::desenhar(Sprite& sprite) {
-  window.clear();  // Limpa a tela
+void Gerenciador_Grafico::desenhar(Sprite &sprite) {
+  window.clear(); // Limpa a tela
 
   // Desenha o fundo (ou qualquer sprite que seja passado)
   window.draw(sprite);
 
-  window.display();  // Exibe os objetos na tela
+  window.display(); // Exibe os objetos na tela
 }
 
-void Gerenciador_Grafico::desenharTexto(const Drawable& Texto) {
+void Gerenciador_Grafico::desenharTexto(const Drawable &Texto) {
   // Desenha o fundo (ou qualquer sprite que seja passado)
   window.draw(Texto);
 }
@@ -104,11 +104,11 @@ void Gerenciador_Grafico::atualizar() {
 // Verificar se a janela está aberta
 const bool Gerenciador_Grafico::estaAberta() { return window.isOpen(); }
 
-bool Gerenciador_Grafico::processarEvento(Event& event) {
+bool Gerenciador_Grafico::processarEvento(Event &event) {
   return window.pollEvent(event);
 }
 
-RenderWindow& Gerenciador_Grafico::getJanela() { return window; }
+RenderWindow &Gerenciador_Grafico::getJanela() { return window; }
 
 void Gerenciador_Grafico::executar() {
   sf::Event event;
@@ -122,13 +122,13 @@ void Gerenciador_Grafico::executar() {
 
     // Chame a função de desenho para desenhar os entes
     // Aqui você pode desenhar o Tripulante ou outros objetos
-    window.display();  // Exibe a tela atualizada
+    window.display(); // Exibe a tela atualizada
   }
 }
 
-void Gerenciador_Grafico::desenharBackground(Sprite& sprite) {
+void Gerenciador_Grafico::desenharBackground(Sprite &sprite) {
   // Desenha o fundo (ou qualquer sprite que seja passado)
   window.draw(sprite);
 }
 
-}  // namespace Gerenciadores
+} // namespace Gerenciadores
