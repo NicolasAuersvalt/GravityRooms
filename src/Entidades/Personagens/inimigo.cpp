@@ -183,4 +183,5 @@ void Inimigo::movimentarAleatorio() {
   }
 }
 
+int Inimigo::getNivelMaldade() const { return nivel_maldade; }
 }  // namespace Entidades::Personagens

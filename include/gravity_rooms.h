@@ -17,6 +17,7 @@
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_grafico.h"
 #include "Gerenciadores/gerenciador_json.h"
+#include "Gerenciadores/save.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
 #include "Menus/menuGameOver.h"
@@ -62,6 +63,7 @@ class Gravity_Rooms {
   Gerenciador_Eventos GE;
   Fase* fase;
   Menu* menu;
+  Save save;
 
   enum GameState { MAIN, PLAYING, PAUSE, COLOCACAO, GAMEOVER };
   // ===/===/===/===/ Outros  ===/===/===/===/
@@ -92,9 +94,6 @@ class Gravity_Rooms {
   void criarJogadorDois();
   // ===/===/===/===/ Outros  ===/===/===/===/
   void criarFases(IDs::IDs faseSelecionada);
-  void criarFasesVazia(IDs::IDs faseSelecionada);
-  void salvarJogo();
-  bool carregarJogo();
 };
 
 #endif

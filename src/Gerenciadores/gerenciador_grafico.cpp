@@ -2,7 +2,6 @@
 
 #include "Entidades/Personagens/tripulante.h"
 #include "ente.h"  // Substitua pelo caminho correto, se necessário
-
 namespace Gerenciadores {
 
 // Inicializar o atributo estático
@@ -125,6 +124,11 @@ void Gerenciador_Grafico::executar() {
     // Aqui você pode desenhar o Tripulante ou outros objetos
     window.display();  // Exibe a tela atualizada
   }
+}
+
+void Gerenciador_Grafico::desenharBackground(Sprite& sprite) {
+  // Desenha o fundo (ou qualquer sprite que seja passado)
+  window.draw(sprite);
 }
 
 }  // namespace Gerenciadores

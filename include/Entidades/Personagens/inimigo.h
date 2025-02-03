@@ -57,6 +57,7 @@ class Inimigo : public Personagem {
   void perseguirTripulante(sf::Vector2f posTripulante,
                            const sf::Vector2f posInimigo);
   void movimentarAleatorio();
+  int getNivelMaldade() const;
 };
 
 }  // namespace Entidades::Personagens

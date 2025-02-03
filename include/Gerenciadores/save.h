@@ -1,42 +1,43 @@
-// #ifndef SAVE_H
-// #define SAVE_H
+#ifndef SAVE_H
+#define SAVE_H
 
-// #include <filesystem>
-// #include <fstream>
-// #include <iostream>
-// #include <mutex>
+#include <filesystem>
+#include <fstream>
+#include <iostream>
+#include <mutex>
 
-// #include "Entidades/Personagens/tripulante.h"
-// #include "Gerenciadores/gerenciador_json.h"
-// #include "json.hpp"
+#include "Gerenciadores/gerenciador_colisoes.h"
+#include "Entidades/Personagens/tripulante.h"
+#include "json.hpp"
+#include "Fases/laboratorio.h"
+#include "Fases/nave.h"
+#include "Fases/fase.h"
 
-// using json = nlohmann::json;
-// using namespace std;
-// using namespace sf;
+using json = nlohmann::json;
+using namespace std;
+using namespace sf;
+using Gerenciadores::Gerenciador_Colisoes;
+using Fases::Fase;
+using Fases::Laboratorio;
+using Fases::Nave;
 
-// using Gerenciadores::Gerenciador_Json;
 
-// namespace Entidades::Personagens {
-// class Tripulante;
-// }
 
-// class Save : public Gerenciador_Json {
-//  private:
-//   Entidades::Personagens::Tripulante* pJog1;
-//   Dados dados;
+class Save  {
+ private:
 
-//  public:
-//   Save();
-//   ~Save();
+ public:
+  Save();
+  ~Save();
 
-//   void setJogador(Entidades::Personagens::Tripulante* jogador);
-//   Entidades::Personagens::Tripulante* getJogador();
+  void setJogador(Entidades::Personagens::Tripulante* jogador);
+  Entidades::Personagens::Tripulante* getJogador();
 
-//   void salvar();
-//   void gravarDados();
-//   void carregar();
+  void salvar( Gerenciador_Colisoes& GC,  Lista_Entidades& listaPersonagem,  Lista_Entidades& listaObstaculo,  Fase& fase) ;
+  void gravarDados();
+  
+bool carregar( Gerenciador_Colisoes& GC,  Lista_Entidades& listaPersonagem,  Lista_Entidades& listaObstaculo,  Fase*& fase) ;
 
-//   const Dados& getDados() const { return dados; }
-// };
+};
 
-// #endif
+#endif

@@ -9,7 +9,7 @@ Menu::Menu(const IDs::IDs ID, const sf::Vector2f tamBotao,
       listaBotaoTexto(),
       it(),
       tamBotao(tamBotao),
-      tamJanela(1450.0f, 2500.0f),  // Ajuste manual da tela
+      tamJanela(1280.0f, 920.0f),  // Ajuste manual da tela
       botaoSelecionado(false),
       titulo(nome, tamFonte) {
   // --- NOVO: Carrega a textura do background ---
@@ -172,6 +172,8 @@ void Menu::desenhar(Gerenciador_Grafico* GG) {
   // Desenha os botões
   // desenha todos os botões na janela
   std::list<Botoes::BotaoTexto*>::iterator aux;
+
+  GG->desenharBackground(spriteBackground);
   for (aux = listaBotaoTexto.begin(); aux != listaBotaoTexto.end(); aux++) {
     Botoes::BotaoTexto* botao = *aux;
     botao->desenhar(*GG);

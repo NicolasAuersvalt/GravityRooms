@@ -46,7 +46,7 @@ void Ranking::carregarRanking() {
   file.close();
 
   // Display settings
-  float startY = tamJanela.y * 0.3f;
+  float startY = tamJanela.y * 0.75f;
   float spacing = tamBotao.y * 1.5f;
 
   // Display top 5 only

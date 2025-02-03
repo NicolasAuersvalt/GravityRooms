@@ -140,15 +140,17 @@ void Gerenciador_Colisoes::executar(Lista_Entidades* listaPer,
         dynamic_cast<Entidades::Personagens::Personagem*>(
             listaPer->operator[](i));
     if (personagem && !personagem->verificarVivo()) {
-      if (!dynamic_cast<Entidades::Personagens::Tripulante*>(personagem)) {
-        if (pJog1) {
-          pJog1->setPontos(pJog1->getPontos() + 1);
-          cout << "Player points: " << pJog1->getPontos() << endl;
-        }
+      Entidades::Personagens::Inimigo* inimigo =
+          dynamic_cast<Entidades::Personagens::Inimigo*>(personagem);
+
+      if (inimigo && pJog1) {
+        pJog1->setPontos(pJog1->getPontos() + inimigo->getNivelMaldade());
+        std::cout << "Player points: " << pJog1->getPontos() << std::endl;
       }
+
       listaPer->removerEntidade(personagem, true);  // Delete entity and node
-      cout << "Removed dead entity. New size: " << listaPer->getTamanho()
-           << endl;
+      std::cout << "Removed dead entity. New size: " << listaPer->getTamanho()
+                << std::endl;
     }
   }
 
