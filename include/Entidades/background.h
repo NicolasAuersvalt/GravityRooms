@@ -9,12 +9,12 @@ using namespace sf;
 namespace Entidades {
 
 class Background : public Entidade {
- protected:
+protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
- public:
+public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
@@ -46,6 +46,6 @@ class Background : public Entidade {
   // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-}  // namespace Entidades
+} // namespace Entidades
 
 #endif

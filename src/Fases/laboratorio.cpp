@@ -62,7 +62,7 @@ void Laboratorio::criarFundo() {
 }
 void Laboratorio::desenhar() {
   pGG->desenhar(backgroundSprite);
-  Fase::desenhar();  // Call parent's draw method
+  Fase::desenhar(); // Call parent's draw method
 
   // if (pGG) {
   //   pGG->desenhar(backgroundSprite);
@@ -72,4 +72,4 @@ void Laboratorio::desenhar() {
   //   if (listaPersonagens) listaPersonagens->desenharTodos();
   // }
 }
-}  // namespace Fases
+} // namespace Fases

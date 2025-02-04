@@ -49,4 +49,4 @@ void Nave::desenhar() {
   //   // Fase::listaObstaculos->desenharTodos();
   //   // Fase::listaPersonagens->desenharTodos();
 }
-}  // namespace Fases
+} // namespace Fases
