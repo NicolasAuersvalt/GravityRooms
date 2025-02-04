@@ -44,15 +44,10 @@ void Projetil::mover() {
 }
 
 void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
-  // cout << "colisao com entidade ID: "
-  //      << static_cast<int>(outraEntidade->getID()) << endl;
-  // cout << "colisao de " << static_cast<int>(getID())
-  //      << " com entidade ID: " << static_cast<int>(outraEntidade->getID())
-  //      << endl;
   if (!outraEntidade) {
     std::cout << "Warning: Null entity in collision" << std::endl;
     return;
-  }  // TESTE
+  }
   switch (outraEntidade->getID()) {
     case (IDs::IDs::clone): {
       if (ID == IDs::IDs::projetil_tripulante) {
@@ -78,24 +73,12 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
           }
         }
 
-        // Deactivate projectile after hit
         setAtivo(false, Vector2f(-130.f, -130.f));
       }
       break;
     }
     case (IDs::IDs::androide): {
       if (ID == IDs::IDs::projetil_tripulante) {
-        // Entidades::Personagens::Inimigo *inimigo =
-        //     dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
-        // inimigo->recebeDano(dano);
-
-        // getSprite().setPosition(-130.f, -130.f);
-        // ativo = false;
-        // std::cout << "Inimigo atingido pelo projetil do tripulante"
-        //           << std::endl;
-
-        << static_cast<int>(outraEntidade->getID()) << std::endl;
-
         Entidades::Personagens::Inimigo *inimigo =
             dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
 
