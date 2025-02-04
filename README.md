@@ -1,7 +1,8 @@
 # GravityRooms
 
 
-[![GravityRooms](assets/logo.png)](https://youtu.be/8P1LvGM78JY?si=f6wlSI8H32E8aRH6)
+[Assista ao vídeo](assets/gr.mp4)
+
 
 ---
 
