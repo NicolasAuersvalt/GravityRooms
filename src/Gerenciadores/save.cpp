@@ -107,6 +107,11 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
       if (fase->tripulantes[0]) {
         GC.incluirTripulante(*(fase->tripulantes[0]));
         GC.pJog1->setVida(jog1["vida"]);
+        /**/
+        Projetil *projetil =
+            fase->criarProjetil(pos, IDs::IDs::projetil_tripulante);
+        GC.pJog1->setProjetil(projetil);
+        listaPersonagem.incluir(projetil);
       }
     }
 
@@ -116,18 +121,18 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
         IDs::IDs enemyType = static_cast<IDs::IDs>(enemyData["id"]);
 
         switch (enemyType) {
-        case IDs::IDs::androide:
-          fase->criarInimMedios(pos, GC.pJog1);
-          break;
-        case IDs::IDs::ciborgue:
-          fase->criarInimFaceis(pos, GC.pJog1);
-          break;
-        case IDs::IDs::clone:
-          fase->criarInimDificeis(pos, GC.pJog1);
-          break;
-        default:
-          std::cerr << "Tipo de inimigo desconhecido" << std::endl;
-          break;
+          case IDs::IDs::androide:
+            fase->criarInimMedios(pos, GC.pJog1);
+            break;
+          case IDs::IDs::ciborgue:
+            fase->criarInimFaceis(pos, GC.pJog1);
+            break;
+          case IDs::IDs::clone:
+            fase->criarInimDificeis(pos, GC.pJog1);
+            break;
+          default:
+            std::cerr << "Tipo de inimigo desconhecido" << std::endl;
+            break;
         }
       }
     }
@@ -138,31 +143,31 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
         IDs::IDs obsType = static_cast<IDs::IDs>(obsData["id"].get<int>());
 
         switch (obsType) {
-        case IDs::IDs::plataforma:
-          fase->criarPlataforma(pos);
-          break;
-        case IDs::IDs::espinho:
-          fase->criarEspinho(pos);
-          break;
-        case IDs::IDs::centro_gravidade:
-          fase->criarCentroGravidade(pos);
-          break;
-        default:
-          std::cerr << "Tipo de obstáculo desconhecido" << std::endl;
-          break;
+          case IDs::IDs::plataforma:
+            fase->criarPlataforma(pos);
+            break;
+          case IDs::IDs::espinho:
+            fase->criarEspinho(pos);
+            break;
+          case IDs::IDs::centro_gravidade:
+            fase->criarCentroGravidade(pos);
+            break;
+          default:
+            std::cerr << "Tipo de obstáculo desconhecido" << std::endl;
+            break;
         }
       }
     }
     auto atualObstaculos = fase->listaObstaculos->LEs->getPrimeiro();
     while (atualObstaculos != nullptr) {
       listaObstaculo.incluir(
-          atualObstaculos->pInfo); // Add entity to listaPersonagem
+          atualObstaculos->pInfo);  // Add entity to listaPersonagem
       atualObstaculos = atualObstaculos->getProximo();
     }
     auto atualPersonagens = fase->listaPersonagens->LEs->getPrimeiro();
     while (atualPersonagens != nullptr) {
       listaPersonagem.incluir(
-          atualPersonagens->pInfo); // Add entity to listaPersonagem
+          atualPersonagens->pInfo);  // Add entity to listaPersonagem
       atualPersonagens = atualPersonagens->getProximo();
     }
     // Save players
