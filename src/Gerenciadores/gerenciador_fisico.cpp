@@ -4,7 +4,7 @@ namespace Gerenciadores {
 float Gerenciador_Fisica::aplicarGravidade() {
   // Aplica a gravidade ao objeto, alterando sua velocidade na direção Y
   return velocidade.y +=
-         gravidade * tempo; // Acelerando na direção Y devido à gravidade
+         gravidade*tempo; // Acelerando na direção Y devido à gravidade
 }
 
 void Gerenciador_Fisica::atualizarPosicao() {

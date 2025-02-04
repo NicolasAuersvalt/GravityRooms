@@ -35,14 +35,25 @@ private:
   public:
     Municao() : quantidade(0) {}
 
-    void setQtd(int qtd) { quantidade = qtd; }
-    int getQtd() const { return quantidade; }
-    void atirou() {
-      if (quantidade > 0) {
-        quantidade--;
-      } else {
-        cerr << "Não tem mais munição" << endl;
+    void setQtd(int qtd) 
+    { 
+      quantidade = qtd; 
       }
+      
+    int getQtd() const 
+    { 
+      return quantidade; 
+      }
+
+    Municao operator++(int) {
+        Municao temp = *this;  // Cria uma cópia do objeto atual
+        quantidade += 1;
+        return temp;  // Retorna a cópia antes da alteração
+    }
+    Municao operator--(int) {
+        Municao temp = *this;  
+        quantidade -= 1;
+        return temp;  
     }
   };
 

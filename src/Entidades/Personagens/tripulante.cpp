@@ -24,6 +24,7 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   tempoSemColisao = 0.0f;
   noChao = false;
   sprite.setPosition(pos.x, pos.y);
+  setMunicao(40);
   std::cout << "TripulantePosition: " << pos.x << " " << pos.y << "vivo "
             << vivo << std::endl;
 }
@@ -43,9 +44,19 @@ void Tripulante::setGerenciadorEvento(Gerenciador_Eventos *GE) {
   }
 }
 
-void Tripulante::tirarMunicao() { municao.atirou(); }
-int Tripulante::getMunicao() { return municao.getQtd(); }
-void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
+void Tripulante::tirarMunicao() { 
+
+  municao--;
+
+}
+
+int Tripulante::getMunicao() { 
+  return municao.getQtd(); 
+  }
+
+void Tripulante::setMunicao(int qtd) { 
+  municao.setQtd(qtd); 
+  }
 
 void Tripulante::mover() {
   // cair();
@@ -104,6 +115,7 @@ void Tripulante::mover() {
     if (tecla == "Q" && noChao) {
       // Jump only if on ground
       atirar(); // o correto
+      
     }
   }
   // Jogador 2 (Setas + Q)
@@ -136,6 +148,7 @@ void Tripulante::mover() {
   if (!noChao) {
     velFinal.y += GF.aplicarGravidade() * 0.016f;
   }
+  
   getSprite().move(velFinal.x, velFinal.y);
 }
 
@@ -194,8 +207,11 @@ void Tripulante::atualizar() {
 }
 
 void Tripulante::atirar() {
-  if (!projetil->getAtivo()) {
-    projetil->setAtivo(true, getSprite().getPosition());
+  if(getMunicao() > 0){
+    if (!projetil->getAtivo()) {
+      projetil->setAtivo(true, getSprite().getPosition());
+      tirarMunicao();
+    }
   }
 }
 void Tripulante::colisao(Entidade *outraEntidade, Vector2f ds) {
