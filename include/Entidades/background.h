@@ -9,23 +9,16 @@ using namespace sf;
 namespace Entidades {
 
 class Background : public Entidade {
-protected:
+ protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
-public:
+ public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
       : Entidade(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID) {
-    // sf::Texture texture;
-    // if (!texture.loadFromFile("assets/nave.png")) {
-    //   // Trate o erro (ex: log, saída do jogo)
-    //   std::cerr << "Erro ao carregar textura do background!" << std::endl;
-    //   exit(1);
-    // }
-    cout << "ID_FASE : " << static_cast<int>(ID) << endl;
     if ((ID == IDs::IDs::fase_nave)) {
       setSprite("assets/nave.png", 50.0f, 50.0f);
     } else if (ID == IDs::IDs::fase_laboratorio) {
@@ -43,9 +36,8 @@ public:
   void salvar() override {}
   void colisao(Entidade *outraEntidade, sf::Vector2f ds) override {}
   void atualizarPosicao() {};
-  // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-} // namespace Entidades
+}  // namespace Entidades
 
 #endif

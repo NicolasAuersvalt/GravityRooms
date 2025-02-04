@@ -20,7 +20,6 @@ Espinho::Espinho(const sf::Vector2f pos, const sf::Vector2f tam,
   setPosicao(pos.x, pos.y);
 
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "Espinho Position: " << pos.x << " " << pos.y << std::endl;
 }
 
 Espinho::~Espinho() {}
@@ -48,4 +47,4 @@ void Espinho::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   // }
 }
 int Entidades::Obstaculos::Espinho::getDano() { return dano; }
-} // namespace Entidades::Obstaculos
+}  // namespace Entidades::Obstaculos

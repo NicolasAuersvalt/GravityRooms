@@ -8,7 +8,6 @@ namespace Entidades {
 
 Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
     : Entidade(pos, tam, ID), dano(3), ativo(false) {
-  cout << "bliii" << endl;
   setSprite("assets/projetil.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(50.0f, 25.0f));
   setPosicao(-12000.f, -12000.f);
@@ -48,86 +47,65 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   if (!outraEntidade) {
     std::cout << "Warning: Null entity in collision" << std::endl;
     return;
-  } // TESTE
+  }  // TESTE
   switch (outraEntidade->getID()) {
-  case (IDs::IDs::clone): {
-    if (ID == IDs::IDs::projetil_tripulante) {
-      Entidades::Personagens::Inimigo *inimigo =
-          dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
-      inimigo->recebeDano(dano);
+    case (IDs::IDs::clone): {
+      if (ID == IDs::IDs::projetil_tripulante) {
+        Entidades::Personagens::Inimigo *inimigo =
+            dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
+        inimigo->recebeDano(dano);
 
-      getSprite().setPosition(-130.f, -130.f);
-      ativo = false;
-    }
-    break;
-  }
-  case (IDs::IDs::ciborgue): {
-    if (ID == IDs::IDs::projetil_tripulante) {
-      Entidades::Personagens::Inimigo *inimigo =
-          dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
-
-      if (inimigo) {
-        try {
-          inimigo->recebeDano(dano);
-
-        } catch (const std::exception &e) {
-        }
+        getSprite().setPosition(-130.f, -130.f);
+        ativo = false;
       }
-
-      // Deactivate projectile after hit
-      setAtivo(false, Vector2f(-130.f, -130.f));
+      break;
     }
-    break;
-  }
-  case (IDs::IDs::androide): {
-    if (ID == IDs::IDs::projetil_tripulante) {
-      // Entidades::Personagens::Inimigo *inimigo =
-      //     dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
-      // inimigo->recebeDano(dano);
+    case (IDs::IDs::ciborgue): {
+      if (ID == IDs::IDs::projetil_tripulante) {
+        Entidades::Personagens::Inimigo *inimigo =
+            dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
 
-      // getSprite().setPosition(-130.f, -130.f);
-      // ativo = false;
-      // std::cout << "Inimigo atingido pelo projetil do tripulante"
-      //           << std::endl;
-      std::cout << "Projectile collision with enemy type: "
-                << static_cast<int>(outraEntidade->getID()) << std::endl;
+        if (inimigo) {
+          try {
+            inimigo->recebeDano(dano);
 
-      Entidades::Personagens::Inimigo *inimigo =
-          dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
+          } catch (const std::exception &e) {
+          }
+        }
 
-      if (inimigo) {
-        try {
-          std::cout << "Enemy health before damage: " << inimigo->getVida()
-                    << std::endl;
+        // Deactivate projectile after hit
+        setAtivo(false, Vector2f(-130.f, -130.f));
+      }
+      break;
+    }
+    case (IDs::IDs::androide): {
+      if (ID == IDs::IDs::projetil_tripulante) {
+        Entidades::Personagens::Inimigo *inimigo =
+            dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
+
+        if (inimigo) {
           inimigo->recebeDano(dano);
-          std::cout << "Enemy health after damage: " << inimigo->getVida()
-                    << std::endl;
 
           // Deactivate projectile first
           ativo = false;
           sprite.setPosition(-130.f, -130.f);
           setPosicao(-130.f, -130.f);
 
-        } catch (const std::exception &e) {
-          std::cerr << "Error damaging enemy: " << e.what() << std::endl;
+        } else {
+          std::cout << "Failed to cast enemy" << std::endl;
         }
-      } else {
-        std::cout << "Failed to cast enemy" << std::endl;
       }
+      break;
     }
-    break;
-  }
-  case (IDs::IDs::tripulante): {
-    // cout << "colisao com entidade ID: "
-    //      << static_cast<int>(outraEntidade->getID()) << endl;
-    if (ID == IDs::IDs::projetil_inimigo) {
-      Entidades::Personagens::Tripulante *tripulante =
-          dynamic_cast<Entidades::Personagens::Tripulante *>(outraEntidade);
-      tripulante->recebeDano(dano);
-      getSprite().setPosition(-130.f, -130.f);
-      ativo = false;
-    }
-  } break;
+    case (IDs::IDs::tripulante): {
+          if (ID == IDs::IDs::projetil_inimigo) {
+        Entidades::Personagens::Tripulante *tripulante =
+            dynamic_cast<Entidades::Personagens::Tripulante *>(outraEntidade);
+        tripulante->recebeDano(dano);
+        getSprite().setPosition(-130.f, -130.f);
+        ativo = false;
+      }
+    } break;
   }
 }
 
@@ -136,9 +114,6 @@ void Projetil::setAtivo(bool status, const Vector2f pos) {
   setSprite("assets/projetil.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);
   sprite.setPosition(pos.x, pos.y);
-  cout << "player 2 is Shooting projectile"
-       << " Position: " << getSprite().getPosition().x << ", "
-       << getSprite().getPosition().y << " " << endl;
 }
 
-} // namespace Entidades
+}  // namespace Entidades

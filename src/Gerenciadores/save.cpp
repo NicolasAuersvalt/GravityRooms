@@ -177,7 +177,6 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
                               {"vida", GC.pJog1->getVida()}};
     }
     if (GC.pJog2) {
-      std::cout << "asdasddo!" << std::endl;
       saveData["jogador2"] = {{"x", GC.pJog2->getPosicao().x},
                               {"y", GC.pJog2->getPosicao().y},
                               {"vida", GC.pJog2->getVida()}};
