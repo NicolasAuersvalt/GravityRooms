@@ -8,8 +8,8 @@
 namespace Fases {
 
 // Construtor
-Nave::Nave(const IDs::IDs IDs) : Fase(ID, IDs::IDs::fundo_nave) {
-  criarFundo();
+Nave::Nave(const IDs::IDs ID) : Fase(ID, IDs::IDs::fundo_nave) {
+  // criarFundo();
   //   if (!texturaBackground.loadFromFile("assets/lab.png")) {
   //     std::cerr << "Erro ao carregar textura do background!" << std::endl;
   //     exit(1);

@@ -194,7 +194,6 @@ void Gravity_Rooms::executar() {
       }
       case PAUSE: {
         menu->setSelecionado(false);
-        cout << "teste" << endl;
         if (ligarMenu(IDs::IDs::menu_pausa)) {
         }
         break;
@@ -301,6 +300,7 @@ void Gravity_Rooms::executar() {
 
         // Update game state
         GG.limpar();
+        listaBackgrounds.desenharTodos();
 
         listaObstaculo.desenharTodos();
 
@@ -383,4 +383,5 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
         atualPersonagens->pInfo);  // Add entity to listaPersonagem
     atualPersonagens = atualPersonagens->getProximo();
   }
+  listaBackgrounds.incluir(fase->bg);
 }

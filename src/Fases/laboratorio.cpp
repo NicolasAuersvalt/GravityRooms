@@ -10,7 +10,7 @@
 namespace Fases {
 
 // Construtor
-Laboratorio::Laboratorio(const IDs::IDs IDs)
+Laboratorio::Laboratorio(const IDs::IDs ID)
     : Fase(ID, IDs::IDs::fundo_laboratorio) {
   criarFundo();
   // if (!texturaBackground.loadFromFile("assets/lab.png")) {

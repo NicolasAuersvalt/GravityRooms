@@ -2,18 +2,19 @@
 #define BACKGROUND_H
 
 #include "Entidades/background.h"
+#include "IDs/IDs.h"
 
 using namespace sf;
 
 namespace Entidades {
 
 class Background : public Entidade {
-protected:
+ protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // ===/===/===/===/ Outros  ===/===/===/===/
 
-public:
+ public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
@@ -24,10 +25,16 @@ public:
     //   std::cerr << "Erro ao carregar textura do background!" << std::endl;
     //   exit(1);
     // }
-    // setSprite(texture);
-    setSprite("assets/nave.png", 50.0f, 50.0f);
+    cout << "ID_FASE : " << static_cast<int>(ID) << endl;
+    if ((ID == IDs::IDs::fase_nave)) {
+      setSprite("assets/nave.png", 50.0f, 50.0f);
+    } else if (ID == IDs::IDs::fase_laboratorio) {
+      setSprite("assets/lab.png", 50.0f, 50.0f);
+    }
+
     setTamanho(sf::Vector2f(1280.0f, 920.0f));
     setPosicao(50.0f, 50.0f);
+    sprite.setPosition(0.f, 0.f);
   }
 
   ~Background() {}
@@ -39,6 +46,6 @@ public:
   // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-} // namespace Entidades
+}  // namespace Entidades
 
 #endif

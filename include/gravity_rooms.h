@@ -55,7 +55,7 @@ using namespace std;
 using namespace sf;
 
 class Gravity_Rooms {
-private:
+ private:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Gerenciador_Grafico GG;
@@ -77,11 +77,11 @@ private:
   GameState currentState = MAIN;
   int currentPontos;
 
-protected:
+ protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
   // ===/===/===/===/ Outros  ===/===/===/===/
 
-public:
+ public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Gravity_Rooms();
@@ -94,6 +94,7 @@ public:
   void criarJogadorDois();
   // ===/===/===/===/ Outros  ===/===/===/===/
   void criarFases(IDs::IDs faseSelecionada);
+  Lista_Entidades listaBackgrounds;
 };
 
 #endif
