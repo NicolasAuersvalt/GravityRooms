@@ -91,7 +91,6 @@ void Inimigo::mover() {
       movimentarAleatorio();
     }
   } else {
-    cout << "esta morto" << endl;
     morrer();
   }
   getSprite().move(velFinal.x, velFinal.y);

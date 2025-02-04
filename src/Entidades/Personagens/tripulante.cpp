@@ -25,8 +25,7 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   noChao = false;
   sprite.setPosition(pos.x, pos.y);
   setMunicao(40);
-  std::cout << "TripulantePosition: " << pos.x << " " << pos.y << "vivo "
-            << vivo << std::endl;
+  
 }
 
 Tripulante::~Tripulante() {}
@@ -70,7 +69,6 @@ void Tripulante::mover() {
   //   // Jump only if on ground
   //   atirar();  // o correto
 
-  //   cout << "Shooting projectile" << endl;
   // }
   // tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
   // if (tecla == "Right Arrow") {
@@ -140,7 +138,6 @@ void Tripulante::mover() {
       // Jump only if on ground
       atirar();  // o correto
 
-      cout << "player 1 is Shooting projectile" << endl;
     }
   }
 

@@ -20,8 +20,6 @@ Centro_Gravidade::Centro_Gravidade(const sf::Vector2f pos,
   setPosicao(pos.x, pos.y);
 
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "centro_gravidade Position: " << pos.x << " " << pos.y
-            << std::endl;
 }
 
 Centro_Gravidade::~Centro_Gravidade() {}
