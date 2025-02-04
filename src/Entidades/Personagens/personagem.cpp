@@ -67,4 +67,4 @@ void Personagem::cair() {
     noChao = false;
   }
 }
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

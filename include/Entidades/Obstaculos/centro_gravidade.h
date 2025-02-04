@@ -6,11 +6,11 @@
 namespace Entidades::Obstaculos {
 
 class Centro_Gravidade : public Obstaculo {
- private:
+private:
   float forca;
 
- protected:
- public:
+protected:
+public:
   using Ente::setSprite;
   Centro_Gravidade(const sf::Vector2f pos, const sf::Vector2f tam,
                    const IDs::IDs ID);
@@ -23,6 +23,6 @@ class Centro_Gravidade : public Obstaculo {
   int getDano();
 };
 
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos
 
 #endif

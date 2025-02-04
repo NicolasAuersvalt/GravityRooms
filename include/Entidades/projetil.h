@@ -14,7 +14,7 @@ namespace Entidades {
 class Personagem;
 
 class Projetil : public Entidade {
- private:
+private:
   static int danoProjetil;
   bool ativo;
 
@@ -23,8 +23,8 @@ class Projetil : public Entidade {
   int dano;
   Vector2f velocidade;
 
- protected:
- public:
+protected:
+public:
   Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   virtual ~Projetil();
 
@@ -45,6 +45,6 @@ class Projetil : public Entidade {
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
 };
 
-}  // namespace Entidades
+} // namespace Entidades
 
 #endif

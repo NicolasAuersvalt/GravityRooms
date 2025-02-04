@@ -6,17 +6,15 @@ using namespace std;
 
 namespace Listas {
 
-template <typename TL>
-class Lista {
- private:
+template <typename TL> class Lista {
+private:
   int tamanho;
 
- public:  // Definição da classe aninhada Elemento
-  template <typename TE>
-  class Elemento {
-   public:
-    TE *pInfo;            // Dados do elemento
-    Elemento<TE> *pProx;  // Ponteiro para o próximo elemento
+public: // Definição da classe aninhada Elemento
+  template <typename TE> class Elemento {
+  public:
+    TE *pInfo;           // Dados do elemento
+    Elemento<TE> *pProx; // Ponteiro para o próximo elemento
 
     // Construtor
     Elemento() : pInfo(nullptr), pProx(nullptr) {}
@@ -38,8 +36,8 @@ class Lista {
   };
 
   // Atributos da lista
-  Elemento<TL> *pPrimeiro;  // Ponteiro para o primeiro elemento
-  Elemento<TL> *pUltimo;    // Ponteiro para o último elemento
+  Elemento<TL> *pPrimeiro; // Ponteiro para o primeiro elemento
+  Elemento<TL> *pUltimo;   // Ponteiro para o último elemento
 
   void removerElemento(TL *elemento, const bool deletar) {
     if (!elemento) {
@@ -132,7 +130,8 @@ class Lista {
     }
   }
   TL *operator[](int pos) {
-    if (pos < 0 || !pPrimeiro) return nullptr;
+    if (pos < 0 || !pPrimeiro)
+      return nullptr;
 
     Elemento<TL> *atual = pPrimeiro;
     int count = 0;
@@ -146,6 +145,6 @@ class Lista {
   }
 };
 
-}  // namespace Listas
+} // namespace Listas
 
-#endif  // LISTA_H
+#endif // LISTA_H

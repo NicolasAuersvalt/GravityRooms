@@ -14,7 +14,7 @@ using namespace std;
 namespace Entidades::Personagens {
 
 class Personagem : public Entidade {
- protected:
+protected:
   Vector2f vel;
 
   int pontosVida;
@@ -66,7 +66,7 @@ class Personagem : public Entidade {
     setPosicao(pos.x, pos.y);
   }
 
- public:
+public:
   Personagem(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Personagem();
 
@@ -95,6 +95,6 @@ class Personagem : public Entidade {
   void cair();
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

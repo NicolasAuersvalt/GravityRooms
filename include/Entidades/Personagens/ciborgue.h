@@ -12,11 +12,11 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Ciborgue : public Inimigo {
- private:
+private:
   int tamanho;
 
- protected:
- public:
+protected:
+public:
   Ciborgue(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   ~Ciborgue();
 
@@ -28,6 +28,6 @@ class Ciborgue : public Inimigo {
   int getDano();
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

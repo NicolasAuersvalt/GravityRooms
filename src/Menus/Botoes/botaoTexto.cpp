@@ -7,8 +7,7 @@ namespace Botoes {
 BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f pos,
                        const sf::Vector2f tam, const IDs::IDs ID,
                        const sf::Color corSelecionado)
-    : Botao(tam, pos, ID, 0.01f),
-      corSelecionado(corSelecionado),
+    : Botao(tam, pos, ID, 0.01f), corSelecionado(corSelecionado),
       selecionado(false) {
   if (!font.loadFromFile("assets/Fontes/Gameplay.ttf")) {
     std::cerr << "Failed to load font!" << std::endl;
@@ -16,8 +15,8 @@ BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f pos,
 
   texto.setFont(font);
   texto.setString(info);
-  texto.setCharacterSize(24);            // Coloca o tamanho da fonte
-  texto.setFillColor(sf::Color::White);  // Define a cor da fonte
+  texto.setCharacterSize(24);           // Coloca o tamanho da fonte
+  texto.setFillColor(sf::Color::White); // Define a cor da fonte
 
   // Posiciona o texto
   sf::Vector2f tamTexto = getTamTexto();
@@ -80,6 +79,6 @@ void BotaoTexto::setText(const std::string &text) {
                    pos.y + tam.y / 2.0f - tamTexto.y / 2.0f);
   texto.setPosition(posTexto);
 }
-}  // namespace Botoes
+} // namespace Botoes
 
-}  // namespace Menus
+} // namespace Menus

@@ -1,7 +1,7 @@
 #include "Gerenciadores/gerenciador_grafico.h"
 
 #include "Entidades/Personagens/tripulante.h"
-#include "ente.h"  // Substitua pelo caminho correto, se necessário
+#include "ente.h" // Substitua pelo caminho correto, se necessário
 namespace Gerenciadores {
 
 // Inicializar o atributo estático
@@ -74,12 +74,12 @@ void Gerenciador_Grafico::exibir() { window.display(); }
 
 // Desenhar todos os objetos na tela
 void Gerenciador_Grafico::desenhar(Sprite &sprite) {
-  window.clear();  // Limpa a tela
+  window.clear(); // Limpa a tela
 
   // Desenha o fundo (ou qualquer sprite que seja passado)
   window.draw(sprite);
 
-  window.display();  // Exibe os objetos na tela
+  window.display(); // Exibe os objetos na tela
 }
 
 void Gerenciador_Grafico::desenharTexto(const Drawable &Texto) {
@@ -118,7 +118,7 @@ void Gerenciador_Grafico::executar() {
 
     // Chame a função de desenho para desenhar os entes
     // Aqui você pode desenhar o Tripulante ou outros objetos
-    window.display();  // Exibe a tela atualizada
+    window.display(); // Exibe a tela atualizada
   }
 }
 
@@ -127,4 +127,4 @@ void Gerenciador_Grafico::desenharBackground(Sprite &sprite) {
   window.draw(sprite);
 }
 
-}  // namespace Gerenciadores
+} // namespace Gerenciadores

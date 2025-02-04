@@ -52,4 +52,4 @@ void MenuPrincipal::criarFundo() {
   atualizarPosicaoFundo();
 }
 
-}  // namespace Menus
+} // namespace Menus

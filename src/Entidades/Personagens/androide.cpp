@@ -22,7 +22,8 @@ Androide::Androide(const Vector2f pos, Tripulante *tripulante,
 
 Androide::~Androide() {}
 void Androide::executar() {
-  if (vivo) mover();
+  if (vivo)
+    mover();
 }
 
 void Androide::danificar(Tripulante *p) {}
@@ -36,4 +37,4 @@ void Androide::mover() {
 int Androide::getDano() { return dano; }
 
 void Androide::salvarDataBuffer(nlohmann::ordered_json &json) {}
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

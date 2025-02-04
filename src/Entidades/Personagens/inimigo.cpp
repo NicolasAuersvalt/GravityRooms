@@ -11,10 +11,7 @@ namespace Entidades::Personagens {
 
 Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Tripulante *tripulante,
                  const IDs::IDs ID)
-    : Personagem(pos, tam, ID),
-      tripulante(tripulante),
-      relogio(),
-      GF(pos),
+    : Personagem(pos, tam, ID), tripulante(tripulante), relogio(), GF(pos),
       dano(-1) {
   inicializar();
   tempoSemColisao = 0.0f;
@@ -37,37 +34,37 @@ void Inimigo::executar() {}
 void Inimigo::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   bool onPlatform = false;
   switch (outraEntidade->getID()) {
-    case IDs::IDs::plataforma: {
-      tempoSemColisao = 0.0f;
-      Vector2f myPos = getSprite().getPosition();
-      Vector2f platPos = outraEntidade->getSprite().getPosition();
-      Vector2f mySize = getTamanho();
-      Vector2f platSize = outraEntidade->getTamanho();
+  case IDs::IDs::plataforma: {
+    tempoSemColisao = 0.0f;
+    Vector2f myPos = getSprite().getPosition();
+    Vector2f platPos = outraEntidade->getSprite().getPosition();
+    Vector2f mySize = getTamanho();
+    Vector2f platSize = outraEntidade->getTamanho();
 
-      float myBottom = myPos.y + mySize.y;
-      float platTop = platPos.y;
+    float myBottom = myPos.y + mySize.y;
+    float platTop = platPos.y;
 
-      float myRight = myPos.x + mySize.x;
-      float platLeft = platPos.x;
+    float myRight = myPos.x + mySize.x;
+    float platLeft = platPos.x;
 
-      float myLeft = myPos.x;
-      float platRight = platPos.x + platSize.x;
-      // Platform collision from above
-      if (myBottom >= platTop && ds.y <= 5.f) {
-        velFinal.y = 0;
-        myPos.y = platTop - mySize.y;
-        getSprite().setPosition(myPos);
-        setPosicao(myPos.x, myPos.y);
-        onPlatform = true;
-      }
+    float myLeft = myPos.x;
+    float platRight = platPos.x + platSize.x;
+    // Platform collision from above
+    if (myBottom >= platTop && ds.y <= 5.f) {
+      velFinal.y = 0;
+      myPos.y = platTop - mySize.y;
+      getSprite().setPosition(myPos);
+      setPosicao(myPos.x, myPos.y);
+      onPlatform = true;
+    }
 
-      // Check if the Tripulante is landing on top of the platform
+    // Check if the Tripulante is landing on top of the platform
 
-    } break;
-    default: {
-      tempoSemColisao = 0.0f;
-      onPlatform = false;
-    } break;
+  } break;
+  default: {
+    tempoSemColisao = 0.0f;
+    onPlatform = false;
+  } break;
   }
 }
 void Inimigo::mover() {
@@ -128,10 +125,10 @@ void Inimigo::movimentarAleatorio() {
   // Update direction periodically
   float dt = relogio.getElapsedTime().asSeconds();
   if (dt >= 1.0f) {
-    moverAleatorio = rand() % 2;  // Simplify to 0 or 1 (left/right)
+    moverAleatorio = rand() % 2; // Simplify to 0 or 1 (left/right)
     relogio.restart();
   }
 }
 
 int Inimigo::getNivelMaldade() const { return nivel_maldade; }
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

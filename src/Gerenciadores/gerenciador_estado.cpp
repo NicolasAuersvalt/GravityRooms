@@ -81,18 +81,18 @@ void GerenciadorEstado::executar() {
   if (!pilhaEstados.empty()) {
     int estado = *(pilhaEstados.top());
     switch (estado) {
-      case 1:
-        // Execute ações do menu principal
-        break;
-      case 2:
-        // Execute ações do menu de pausa
-        break;
-        // Adicione outros casos conforme necessário
-      default:
-        std::cout << "Estado desconhecido: " << estado << std::endl;
-        break;
+    case 1:
+      // Execute ações do menu principal
+      break;
+    case 2:
+      // Execute ações do menu de pausa
+      break;
+      // Adicione outros casos conforme necessário
+    default:
+      std::cout << "Estado desconhecido: " << estado << std::endl;
+      break;
     }
   }
 }
 
-}  // namespace Gerenciadores
+} // namespace Gerenciadores

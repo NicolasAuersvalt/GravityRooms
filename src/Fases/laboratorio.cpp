@@ -58,4 +58,4 @@ void Laboratorio::desenhar() {
   pGG->desenhar(backgroundSprite);
   Fase::desenhar();
 }
-}  // namespace Fases
+} // namespace Fases

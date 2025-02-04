@@ -9,11 +9,11 @@
 namespace Entidades::Obstaculos {
 
 class Plataforma : public Obstaculo {
- private:
+private:
   int altura;
 
- protected:
- public:
+protected:
+public:
   using Ente::setSprite;
   Plataforma(const sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID);
   ~Plataforma();
@@ -28,5 +28,5 @@ class Plataforma : public Obstaculo {
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   int getDano();
 };
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos
 #endif

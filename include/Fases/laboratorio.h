@@ -9,12 +9,12 @@ using namespace sf;
 namespace Fases {
 
 class Laboratorio : public Fase {
- private:
+private:
   Sprite backgroundSprite;
   Texture bgTexture;
 
- protected:
- public:
+protected:
+public:
   const int maxChefoes = 1;
 
   Laboratorio(const IDs::IDs ID);
@@ -26,6 +26,6 @@ class Laboratorio : public Fase {
   void desenhar() override;
   void criarMapa() override;
 };
-}  // namespace Fases
+} // namespace Fases
 
 #endif

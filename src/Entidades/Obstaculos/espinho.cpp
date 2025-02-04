@@ -34,4 +34,4 @@ void Espinho::salvar() {
 
 void Espinho::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
 int Entidades::Obstaculos::Espinho::getDano() { return dano; }
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos

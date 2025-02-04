@@ -35,25 +35,19 @@ private:
   public:
     Municao() : quantidade(0) {}
 
-    void setQtd(int qtd) 
-    { 
-      quantidade = qtd; 
-      }
-      
-    int getQtd() const 
-    { 
-      return quantidade; 
-      }
+    void setQtd(int qtd) { quantidade = qtd; }
+
+    int getQtd() const { return quantidade; }
 
     Municao operator++(int) {
-        Municao temp = *this;  // Cria uma cópia do objeto atual
-        quantidade += 1;
-        return temp;  // Retorna a cópia antes da alteração
+      Municao temp = *this; // Cria uma cópia do objeto atual
+      quantidade += 1;
+      return temp; // Retorna a cópia antes da alteração
     }
     Municao operator--(int) {
-        Municao temp = *this;  
-        quantidade -= 1;
-        return temp;  
+      Municao temp = *this;
+      quantidade -= 1;
+      return temp;
     }
   };
 

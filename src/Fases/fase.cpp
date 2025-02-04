@@ -4,16 +4,12 @@ namespace Fases {
 
 // Construtor
 Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
-    : Ente(ID_Fase),
-      listaPersonagens(new Lista_Entidades()),
+    : Ente(ID_Fase), listaPersonagens(new Lista_Entidades()),
       listaObstaculos(new Lista_Entidades()),
-      listaBackground(new Lista_Entidades()),
-      tripulantes{nullptr, nullptr},
-      pos1(100.0f, 100.0f),
-      pos2(200.0f, 100.0f),
+      listaBackground(new Lista_Entidades()), tripulantes{nullptr, nullptr},
+      pos1(100.0f, 100.0f), pos2(200.0f, 100.0f),
       pColisao(new Gerenciador_Colisoes(listaPersonagens, listaObstaculos)),
-      bg(),
-      complete(false) {
+      bg(), complete(false) {
   srand(time(nullptr));
 }
 // Destrutor
@@ -69,70 +65,66 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
   }
 
   switch (letra) {
-    case ('i'): {
-      if (contadorFaceis < 3) {
+  case ('i'): {
+    if (contadorFaceis < 3) {
+      criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
+      contadorFaceis++;
+    } else if (contadorMedios < 3) {
+      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
+      contadorMedios++;
+    } else {
+      // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+      inimAleatorio = rand() % 2;
+      if (inimAleatorio == 0 && contadorFaceis < 7) {
         criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
         contadorFaceis++;
-      } else if (contadorMedios < 3) {
+      } else if (inimAleatorio == 1 && contadorMedios < 7) {
         criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
         contadorMedios++;
-      } else {
-        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
-        inimAleatorio = rand() % 2;
-        if (inimAleatorio == 0 && contadorFaceis < 7) {
-          criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                          tripulantes[0]);
-          contadorFaceis++;
-        } else if (inimAleatorio == 1 && contadorMedios < 7) {
-          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                          tripulantes[0]);
-          contadorMedios++;
-        }
       }
-      break;
     }
+    break;
+  }
 
-    case ('d'): {
-      if (contadorMedios < 3) {
+  case ('d'): {
+    if (contadorMedios < 3) {
+      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
+      contadorMedios++;
+    } else if (contadorDificeis < 3) {
+      criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
+      contadorDificeis++;
+    } else {
+      // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+      inimAleatorio = rand() % 2;
+      if (inimAleatorio == 0 && contadorMedios < 7) {
         criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
         contadorMedios++;
-      } else if (contadorDificeis < 3) {
+      } else if (inimAleatorio == 1 && contadorDificeis < 7) {
         criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
                           tripulantes[0]);
         contadorDificeis++;
-      } else {
-        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
-        inimAleatorio = rand() % 2;
-        if (inimAleatorio == 0 && contadorMedios < 7) {
-          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                          tripulantes[0]);
-          contadorMedios++;
-        } else if (inimAleatorio == 1 && contadorDificeis < 7) {
-          criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                            tripulantes[0]);
-          contadorDificeis++;
-        }
       }
-      break;
-
-    } break;
-
-    case ('c'): {
-      criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
-
-    } break;
-    case ('#'): {
-      criarPlataforma(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
-
-    } break;
-    case ('g'): {
-      criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
-
-    } break;
-
-    case ('b'): {
-      criarBackground(getID());
     }
+    break;
+
+  } break;
+
+  case ('c'): {
+    criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+
+  } break;
+  case ('#'): {
+    criarPlataforma(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+
+  } break;
+  case ('g'): {
+    criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
+
+  } break;
+
+  case ('b'): {
+    criarBackground(getID());
+  }
   }
 }
 
@@ -196,4 +188,4 @@ Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   return projetil;
 }
 
-}  // namespace Fases
+} // namespace Fases
