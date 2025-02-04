@@ -1,6 +1,7 @@
 # GravityRooms
 
-![GravityRooms](assets/logo.png)
+
+[![GravityRooms](assets/assets/logo.png)](https://www.youtube.com/watch?v=8P1LvGM78JY)
 
 ---
 
@@ -14,10 +15,6 @@ Developed by:
 Nícolas Auersvalt Marques
 
 Isabela Bella Bortoleto
-
-[![GravityRooms](https://img.youtube.com/vi/8P1LvGM78JY/maxresdefault.jpg)](https://www.youtube.com/watch?v=8P1LvGM78JY)
-
-
 
 
 ---
