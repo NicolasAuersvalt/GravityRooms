@@ -1,6 +1,6 @@
 # GravityRooms
 
-![GravityRooms](assets/Logo.png)
+![GravityRooms](assets/logo.png)
 
 ---
 
@@ -15,7 +15,8 @@ Nícolas Auersvalt Marques
 
 Isabela Bella Bortoleto
 
-[![GravityRooms](https://www.youtube.com/watch?v=8P1LvGM78JY&ab_channel=N%C3%ADcolasAuersvalt)
+[![GravityRooms](https://img.youtube.com/vi/8P1LvGM78JY/maxresdefault.jpg)](https://www.youtube.com/watch?v=8P1LvGM78JY)
+
 
 
 ---
