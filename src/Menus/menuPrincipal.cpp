@@ -24,7 +24,7 @@ MenuPrincipal::MenuPrincipal(const IDs::IDs ID, std::string nome,
 MenuPrincipal::~MenuPrincipal() {}
 
 void MenuPrincipal::criarBotoes() {
-  float startY = tamJanela.y * 0.75f; // Start 40% from top
+  float startY = tamJanela.y * 0.9f;  // Start 40% from top
   float spacing = tamBotao.y * 1.5f;
   addBotao("LABORATORIO", sf::Vector2f(0.f, startY), IDs::IDs::botao_novoJogo,
            sf::Color(0, 255, 0));
@@ -57,4 +57,4 @@ void MenuPrincipal::criarFundo() {
   atualizarPosicaoFundo();
 }
 
-} // namespace Menus
+}  // namespace Menus
