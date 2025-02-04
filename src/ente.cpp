@@ -1,7 +1,5 @@
 #include "ente.h"
 
-// ===/===/===/===/ Obrigatório ===/===/===/===/
-
 Gerenciadores::Gerenciador_Grafico *Ente::pGG = nullptr;
 
 // Construtor
@@ -21,7 +19,7 @@ void Ente::setSprite(std::string local, int posX, int posY) {
   if (!texture->loadFromFile(local)) {
     std::cerr << "Erro ao carregar a textura: " << local << std::endl;
   } else {
-    sprite.setTexture(*texture);  // Associa a textura ao sprite
+    sprite.setTexture(*texture); // Associa a textura ao sprite
     // Se for necessário recortar a imagem para o sprite
   }
 }
@@ -35,4 +33,3 @@ sf::Sprite &Ente::getSprite() { return sprite; }
 void Ente::setGerenciador(Gerenciadores::Gerenciador_Grafico *gg) { pGG = gg; }
 
 const IDs::IDs Ente::getID() const { return ID; }
-// ===/===/===/===/ Outros  ===/===/===/===/

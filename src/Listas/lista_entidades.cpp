@@ -11,7 +11,7 @@ void segfaultHandler(int signal) {
   std::cerr << "Caught segmentation fault!" << std::endl;
   longjmp(jumpBuffer, 1);
 }
-}  // namespace
+} // namespace
 namespace Listas {
 
 Lista_Entidades::Lista_Entidades() { LEs = new Lista<Entidade>(); }
@@ -28,7 +28,7 @@ void Lista_Entidades::incluir(Entidade *pE) { LEs->incluir(pE); }
 // Percorrer todos os elementos da lista e desenhar cada um
 void Lista_Entidades::desenharTodos() {
   LEs->percorrerLista([](Entidade *entidade) {
-    entidade->desenhar();  // Chama o método desenhar() de cada Entidadep
+    entidade->desenhar(); // Chama o método desenhar() de cada Entidadep
   });
 }
 
@@ -37,7 +37,6 @@ void Lista_Entidades::atualizarTodas() {
     return;
   }
 
-  // Install signal handler
   signal(SIGSEGV, segfaultHandler);
 
   auto updateFunction = [](Entidade *entidade) {
@@ -59,7 +58,6 @@ void Lista_Entidades::atualizarTodas() {
 
   LEs->percorrerLista(updateFunction);
 
-  // Restore default signal handler
   signal(SIGSEGV, SIG_DFL);
 }
 void Lista_Entidades::limparLista() {
@@ -80,7 +78,6 @@ void Lista_Entidades::removerEntidade(Entidade *entidade, const bool deletar) {
   }
 }
 Entidade *Listas::Lista_Entidades::getElemento(int pos) {
-  // return objListaEntidade.operator[](pos);
   return LEs->operator[](pos);
 }
 bool Lista_Entidades::contem(Entidade *entidade) {
@@ -93,4 +90,4 @@ bool Lista_Entidades::contem(Entidade *entidade) {
   }
   return false;
 }
-}  // namespace Listas
+} // namespace Listas

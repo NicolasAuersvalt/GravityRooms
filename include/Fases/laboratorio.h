@@ -10,20 +10,11 @@ namespace Fases {
 
 class Laboratorio : public Fase {
 private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
   Sprite backgroundSprite;
   Texture bgTexture;
 
 protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
 public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
   const int maxChefoes = 1;
 
   Laboratorio(const IDs::IDs ID);
@@ -34,8 +25,6 @@ public:
   void criarFundo() override;
   void desenhar() override;
   void criarMapa() override;
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
 };
 } // namespace Fases
 

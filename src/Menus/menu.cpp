@@ -1,17 +1,11 @@
 #include "Menus/menu.h"
 
-// ===/===/===/===/ Obrigatório ===/===/===/===/
-
 namespace Menus {
 Menu::Menu(const IDs::IDs ID, const sf::Vector2f tamBotao,
            const std::string nome, const unsigned int tamFonte)
-    : Ente(ID),
-      listaBotaoTexto(),
-      it(),
-      tamBotao(tamBotao),
-      tamJanela(1280.0f, 920.0f),  // Ajuste manual da tela
-      botaoSelecionado(false),
-      titulo(nome, tamFonte) {
+    : Ente(ID), listaBotaoTexto(), it(), tamBotao(tamBotao),
+      tamJanela(1280.0f, 920.0f), // Ajuste manual da tela
+      botaoSelecionado(false), titulo(nome, tamFonte) {
   if (!texturaBackground.loadFromFile("assets/menu.png")) {
     std::cerr << "Erro ao carregar textura do background!" << std::endl;
     exit(1);
@@ -91,37 +85,6 @@ void Menu::selecionaBaixo() {
 const IDs::IDs Menu::getIDBotaoSelecionado() const { return (*it)->getID(); }
 
 void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
-  // if (listaBotaoTexto.empty() || it == listaBotaoTexto.end()) {
-  //   inicializarIterator();
-  //   return;
-  // }
-  // if (*it) {
-  //   // Desmarcar o botão atual
-  //   (*it)->setSelecionado(false);
-
-  //   if (tecla == sf::Keyboard::Down) {
-  //     // Mover para o próximo botão
-  //     it++;
-  //     if (it == listaBotaoTexto.end()) {
-  //       it = listaBotaoTexto.begin();  // Volta ao primeiro botão
-  //     }
-
-  //   } else if (tecla == sf::Keyboard::Up) {
-  //     // Mover para o botão anterior
-  //     if (it == listaBotaoTexto.begin()) {
-  //       it = listaBotaoTexto.end();  // Define como o "fim"
-  //     }
-  //     it--;
-
-  //   } else if (tecla == sf::Keyboard::Enter) {
-  //     // Seleciona o botão atual e atualiza a variável
-
-  //     botaoSelecionado = true;
-  //   }
-
-  //   // Marcar o botão selecionado
-  //   (*it)->setSelecionado(true);
-  // }
   if (listaBotaoTexto.empty()) {
     return;
   }
@@ -163,7 +126,6 @@ void Menu::setSelecionado(bool status) { botaoSelecionado = status; }
 
 void Menu::desenhar(Gerenciador_Grafico *GG) {
   // Desenha os botões
-  // desenha todos os botões na janela
   std::list<Botoes::BotaoTexto *>::iterator aux;
 
   GG->desenharBackground(spriteBackground);
@@ -174,4 +136,4 @@ void Menu::desenhar(Gerenciador_Grafico *GG) {
   }
 }
 
-}  // namespace Menus
+} // namespace Menus

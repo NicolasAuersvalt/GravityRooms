@@ -32,19 +32,6 @@ void Espinho::salvar() {
   // Add implementation
 }
 
-void Espinho::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
-  // if (outraEntidade->getID() == IDs::IDs::tripulante) {
-  //   Personagem::Tripulante::tripulante* pTripulante =
-  //       dynamic_cast<Personagem::Tripulante::tripulante*>(outraEntidade);
-  //   pTripulante->tomarDano(dano);
-  //   if (!pTripulante->getMorrer()) {
-  //     const float gravidade = 1200.0f;
-  //     const float tamPulo = 120.0f;
-  //     pTripulante->setVelFinal(sf::Vector2f(pTripulante->getVelFinal().x,
-  //                                           -sqrt(2.0f * gravidade *
-  //                                           tamPulo)));
-  //   }
-  // }
-}
+void Espinho::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
 int Entidades::Obstaculos::Espinho::getDano() { return dano; }
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos

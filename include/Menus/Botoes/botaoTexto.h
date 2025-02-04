@@ -11,7 +11,6 @@ namespace Botoes {
 
 class BotaoTexto : public Botao {
 private:
-  // ===/==
 protected:
   bool selecionado;
   sf::Color corSelecionado;

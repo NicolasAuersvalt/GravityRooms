@@ -15,34 +15,21 @@ class Personagem;
 
 class Projetil : public Entidade {
 private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
   static int danoProjetil;
   bool ativo;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
   bool colidiu;
   Entidade *atirador;
   int dano;
-  sf::Vector2f velocidade;
+  Vector2f velocidade;
 
 protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
 public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
   Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   virtual ~Projetil();
 
   void executar();
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-  // virtual void executar() override;
-  // virtual void mover() override;
   void setVelocidade(const sf::Vector2f &vel);
   void salvar();
   void mover();

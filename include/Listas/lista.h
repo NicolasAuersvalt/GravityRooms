@@ -6,17 +6,15 @@ using namespace std;
 
 namespace Listas {
 
-template <typename TL>
-class Lista {
- private:
+template <typename TL> class Lista {
+private:
   int tamanho;
 
- public:  // Definição da classe aninhada Elemento
-  template <typename TE>
-  class Elemento {
-   public:
-    TE *pInfo;            // Dados do elemento
-    Elemento<TE> *pProx;  // Ponteiro para o próximo elemento
+public: // Definição da classe aninhada Elemento
+  template <typename TE> class Elemento {
+  public:
+    TE *pInfo;           // Dados do elemento
+    Elemento<TE> *pProx; // Ponteiro para o próximo elemento
 
     // Construtor
     Elemento() : pInfo(nullptr), pProx(nullptr) {}
@@ -38,8 +36,8 @@ class Lista {
   };
 
   // Atributos da lista
-  Elemento<TL> *pPrimeiro;  // Ponteiro para o primeiro elemento
-  Elemento<TL> *pUltimo;    // Ponteiro para o último elemento
+  Elemento<TL> *pPrimeiro; // Ponteiro para o primeiro elemento
+  Elemento<TL> *pUltimo;   // Ponteiro para o último elemento
 
   void removerElemento(TL *elemento, const bool deletar) {
     if (!elemento) {
@@ -62,16 +60,15 @@ class Lista {
         aux2->setProx(aux->getProximo());
       }
 
-      // Update pUltimo if we are removing the last element
       if (aux == pUltimo) {
         pUltimo = aux2;
       }
 
       if (deletar) {
-        delete aux->pInfo;  // Free entity
+        delete aux->pInfo;
         aux->pInfo = nullptr;
       }
-      delete aux;  // Free node
+      delete aux;
       aux = nullptr;
 
       tamanho--;
@@ -96,7 +93,6 @@ class Lista {
 
   // Método para incluir um elemento na lista
   void incluir(TL *p) {
-    // cout << "Incluindo elemento na lista" << endl;
     Elemento<TL> *novoElemento = new Elemento<TL>();
     novoElemento->incluir(p);
     if (pUltimo != nullptr) {
@@ -114,7 +110,7 @@ class Lista {
 
   // Método para percorrer a lista e aplicar uma função em cada elemento
   void percorrerLista(void (*funcao)(TL *)) {
-        if (!pPrimeiro) {
+    if (!pPrimeiro) {
       return;
     }
 
@@ -134,7 +130,8 @@ class Lista {
     }
   }
   TL *operator[](int pos) {
-    if (pos < 0 || !pPrimeiro) return nullptr;
+    if (pos < 0 || !pPrimeiro)
+      return nullptr;
 
     Elemento<TL> *atual = pPrimeiro;
     int count = 0;
@@ -147,19 +144,7 @@ class Lista {
     return atual ? atual->pInfo : nullptr;
   }
 };
-// template <class TL>
-// TL* Lista<TL>::operator[](int pos) {
-//   if (pos >= (int)tam || pos < 0) {
-//     std::cout << "ERROR::Lista pos eh maior que o tamanho da lista"
-//               << std::endl;
-//     exit(1);
-//   }
-//   Elemento<TL>* aux = pPrimeiro;
-//   for (int i = 0; i < pos; i++) {
-//     aux = aux->getProx();
-//   }
-//   return aux->getElemento();
-// }
-}  // namespace Listas
 
-#endif  // LISTA_H
+} // namespace Listas
+
+#endif // LISTA_H

@@ -40,8 +40,6 @@ void MenuPause::criarBotoes() {
   inicializarIterator(); // Inicializa o iterador
 }
 
-void MenuPause::executar() {
-  // conteúdo do efeito Parallax
-}
+void MenuPause::executar() {}
 
 } // namespace Menus

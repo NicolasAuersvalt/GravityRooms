@@ -10,9 +10,6 @@ void Gerenciador_Eventos::processarEventoJanela(Gerenciador_Grafico &GG,
     if (evento.type == Event::KeyPressed) {
       string teclaPressionada = processarTecla(evento.key.code);
 
-      // FAZ ALGUMA COISA, COMO
-      // menuGeral.eventoTeclado(eventao.key.code);
-
     } else if (evento.type == Event::Closed) {
       GG.fechar();
     }

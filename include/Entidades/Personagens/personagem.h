@@ -15,14 +15,11 @@ namespace Entidades::Personagens {
 
 class Personagem : public Entidade {
 protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
   Vector2f vel;
 
   int pontosVida;
   bool noChao;
   RectangleShape corpo;
-  // ===/===/===/===/ Outros  ===/===/===/===/
 
   bool vivo;
   bool podeAndar;
@@ -70,13 +67,9 @@ protected:
   }
 
 public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // Personagem(pair<int, int> p, pair<int, int> d); //verificar
   Personagem(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Personagem();
 
-  // virtual void executar() = 0;
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) = 0;
   virtual void mover() = 0;
 

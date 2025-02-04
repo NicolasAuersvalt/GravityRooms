@@ -6,27 +6,14 @@
 using namespace std;
 using namespace sf;
 
-// class Fase;
-
 namespace Fases {
 
 class Nave : public Fase {
-
 private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
   const int maxInimMedios = 2;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
 protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
 public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
   Nave(const IDs::IDs ID);
   ~Nave();
 
@@ -37,8 +24,6 @@ public:
   void criarMapa() override;
 
   void desenhar() override;
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
 };
 } // namespace Fases
 

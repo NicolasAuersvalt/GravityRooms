@@ -1,12 +1,9 @@
 #include "Entidades/Personagens/personagem.h"
-// #include "gerenciador_grafico.h"
 
 #include <iostream>
 
 using namespace std;
 using namespace Entidades::Personagens;
-
-// ===/===/===/===/ Obrigatório ===/===/===/===/
 
 namespace Entidades::Personagens {
 
@@ -65,10 +62,9 @@ void Personagem::setVelFinal(const sf::Vector2f velFinal) {
 }
 const sf::Vector2f Personagem::getVelFinal() const { return velFinal; }
 void Personagem::cair() {
-  tempoSemColisao += 0.016f; // Assuming 60fps
+  tempoSemColisao += 0.016f;
   if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
-    noChao = false; // No recent collision, we're in air
+    noChao = false;
   }
 }
-
 } // namespace Entidades::Personagens

@@ -13,26 +13,26 @@ using namespace sf;
 namespace Gerenciadores {
 
 class Gerenciador_Fisica {
- private:
-  const double G = 6.674e-11;            // Constante gravitacional
-  const double massaPersonagem = 70.0;   // Massa do personagem (kg)
-  const double massaBuracoNegro = 1e12;  // Massa do buraco negro pequeno (kg)
-  const double distanciaInicial = 1.0;   // Distância inicial (m)
-  const double distanciaFinal = 10.0;    // Distância final (m)
+private:
+  const double G = 6.674e-11;           // Constante gravitacional
+  const double massaPersonagem = 70.0;  // Massa do personagem (kg)
+  const double massaBuracoNegro = 1e12; // Massa do buraco negro pequeno (kg)
+  const double distanciaInicial = 1.0;  // Distância inicial (m)
+  const double distanciaFinal = 10.0;   // Distância final (m)
   int m1 = 70;
   int m2 = 200;
 
-  const int passos = 1000;  // Número de divisões
+  const int passos = 1000; // Número de divisões
 
-  Vector2f velocidade;  // Velocidade do personagem
-  Vector2f posicao;     // Posição do personagem
+  Vector2f velocidade; // Velocidade do personagem
+  Vector2f posicao;    // Posição do personagem
 
-  float gravidade = 10.0f;  // Gravidade (m/s^2) //ALTERADO PRA TESTES
-  float tempo = 0.016f;     // Tempo de simulação (60 FPS por padrão)
+  float gravidade = 10.0f; // Gravidade (m/s^2) //ALTERADO PRA TESTES
+  float tempo = 0.016f;    // Tempo de simulação (60 FPS por padrão)
 
-  mutex mtx;  // Mutex para sincronização
+  mutex mtx; // Mutex para sincronização
 
- public:
+public:
   Gerenciador_Fisica(Vector2f posicaoInicial)
       : posicao(posicaoInicial), velocidade(0.f, 0.f) {}
 
@@ -51,6 +51,6 @@ class Gerenciador_Fisica {
   // Método para gravidade aproximada do personagem e do buraco negro
   double gravidadePersonagemBuracoNegro();
 };
-}  // namespace Gerenciadores
+} // namespace Gerenciadores
 
 #endif

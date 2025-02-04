@@ -12,13 +12,7 @@ class Plataforma : public Obstaculo {
 private:
   int altura;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
 protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
 public:
   using Ente::setSprite;
   Plataforma(const sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID);

@@ -4,17 +4,10 @@
 #include <iostream>
 #include <string>
 
-// ===/===/===/===/ Obrigatório ===/===/===/===/
 namespace Fases {
 
 // Construtor
-Nave::Nave(const IDs::IDs ID) : Fase(ID, IDs::IDs::fundo_nave) {
-  // criarFundo();
-  //   if (!texturaBackground.loadFromFile("assets/lab.png")) {
-  //     std::cerr << "Erro ao carregar textura do background!" << std::endl;
-  //     exit(1);
-  //   }
-}
+Nave::Nave(const IDs::IDs ID) : Fase(ID, IDs::IDs::fundo_nave) {}
 // Destrutor
 Nave::~Nave() {}
 
@@ -42,11 +35,5 @@ void Nave::criarMapa() {
   }
   arquivo.close();
 }
-void Nave::desenhar() {
-  //   if (pGG) {
-  //     pGG->desenharSprite(backgroundSprite);
-  //   }
-  //   // Fase::listaObstaculos->desenharTodos();
-  //   // Fase::listaPersonagens->desenharTodos();
-}
+void Nave::desenhar() {}
 } // namespace Fases

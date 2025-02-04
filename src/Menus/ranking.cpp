@@ -45,11 +45,10 @@ void Ranking::carregarRanking() {
   file >> rankingData;
   file.close();
 
-  // Display settings
   float startY = tamJanela.y * 0.75f;
   float spacing = tamBotao.y * 1.5f;
 
-  // Display top 5 only
+  // Mostre apenas o top 5
   const auto &rankingArray = rankingData["ranking"];
   int maxDisplay = std::min(5, static_cast<int>(rankingArray.size()));
 
@@ -68,10 +67,6 @@ void Ranking::carregarRanking() {
   }
 }
 
-void Ranking::exibirRanking() {
-  for (auto &texto : rankingTexts) {
-    // texto.desenhar(*GG);  // Assuming GG is a pointer to Gerenciador_Grafico
-  }
-}
+void Ranking::exibirRanking() {}
 
 } // namespace Menus

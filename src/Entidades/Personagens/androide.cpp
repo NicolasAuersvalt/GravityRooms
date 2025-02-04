@@ -13,7 +13,6 @@ Androide::Androide(const Vector2f pos, Tripulante *tripulante,
   this->dano = 2;
   this->pontosVida = 10;
   nivel_maldade = 2;
-  // setSprite("assets/androidP.png", pos.x, pos.y);
   setSprite("assets/androide.png", pos.x, pos.y);
   setPosicao(pos.x, pos.y);
   vivo = true;
@@ -33,11 +32,8 @@ void Androide::mover() {
     Inimigo::mover();
   }
 }
-// void Androide::colidir(Entidade* outro, string direction) {
 
 int Androide::getDano() { return dano; }
-
-// }
 
 void Androide::salvarDataBuffer(nlohmann::ordered_json &json) {}
 } // namespace Entidades::Personagens

@@ -13,12 +13,6 @@ namespace Fases {
 Laboratorio::Laboratorio(const IDs::IDs ID)
     : Fase(ID, IDs::IDs::fundo_laboratorio) {
   criarFundo();
-  // if (!texturaBackground.loadFromFile("assets/lab.png")) {
-  //   std::cerr << "Erro ao carregar textura do background!" << std::endl;
-  //   exit(1);
-  // }
-  // backgroundSprite.setTexture(texturaBackground);
-  // backgroundSprite.setPosition(0.0f, 0.0f);
 }
 // Destrutor
 Laboratorio::~Laboratorio() {}
@@ -62,14 +56,6 @@ void Laboratorio::criarFundo() {
 }
 void Laboratorio::desenhar() {
   pGG->desenhar(backgroundSprite);
-  Fase::desenhar(); // Call parent's draw method
-
-  // if (pGG) {
-  //   pGG->desenhar(backgroundSprite);
-  //   // Draw other entities after background
-  //   if (listaBackground) listaBackground->desenharTodos();
-  //   if (listaObstaculos) listaObstaculos->desenharTodos();
-  //   if (listaPersonagens) listaPersonagens->desenharTodos();
-  // }
+  Fase::desenhar();
 }
 } // namespace Fases
