@@ -1,7 +1,7 @@
 # GravityRooms
 
 
-[![GravityRooms](assets/assets/logo.png)](https://www.youtube.com/watch?v=8P1LvGM78JY)
+[![GravityRooms](assets/logo.png)](https://youtu.be/8P1LvGM78JY?si=f6wlSI8H32E8aRH6)
 
 ---
 
