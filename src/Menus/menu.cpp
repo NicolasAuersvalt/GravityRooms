@@ -5,9 +5,13 @@
 namespace Menus {
 Menu::Menu(const IDs::IDs ID, const sf::Vector2f tamBotao,
            const std::string nome, const unsigned int tamFonte)
-    : Ente(ID), listaBotaoTexto(), it(), tamBotao(tamBotao),
-      tamJanela(1280.0f, 920.0f), // Ajuste manual da tela
-      botaoSelecionado(false), titulo(nome, tamFonte) {
+    : Ente(ID),
+      listaBotaoTexto(),
+      it(),
+      tamBotao(tamBotao),
+      tamJanela(1280.0f, 920.0f),  // Ajuste manual da tela
+      botaoSelecionado(false),
+      titulo(nome, tamFonte) {
   if (!texturaBackground.loadFromFile("assets/menu.png")) {
     std::cerr << "Erro ao carregar textura do background!" << std::endl;
     exit(1);
@@ -32,12 +36,6 @@ void Menu::mudarEstadoObservador() {}
 
 void Menu::addBotao(const std::string info, const sf::Vector2f pos,
                     const IDs::IDs ID, const sf::Color corSelecionado) {
-  // Botoes::BotaoTexto* botao =
-  //     new Botoes::BotaoTexto(info, tamBotao, pos, ID, corSelecionado);
-  // if (botao == nullptr) {
-  //   cout << "ERROR::Jungle::Menu::nao foi possivel criar um botao" << endl;
-  // }
-  // listaBotaoTexto.push_back(botao);
   float centerX = tamJanela.x / 2.0f - tamBotao.x / 2.0f;
   sf::Vector2f centeredPos(centerX, pos.y);
 
@@ -176,4 +174,4 @@ void Menu::desenhar(Gerenciador_Grafico *GG) {
   }
 }
 
-} // namespace Menus
+}  // namespace Menus

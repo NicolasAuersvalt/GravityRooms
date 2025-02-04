@@ -11,13 +11,10 @@ void segfaultHandler(int signal) {
   std::cerr << "Caught segmentation fault!" << std::endl;
   longjmp(jumpBuffer, 1);
 }
-} // namespace
+}  // namespace
 namespace Listas {
 
-Lista_Entidades::Lista_Entidades() {
-  // cout << "Construtor de Lista_Entidades" << endl;
-  LEs = new Lista<Entidade>();
-}
+Lista_Entidades::Lista_Entidades() { LEs = new Lista<Entidade>(); }
 
 // Destrutor
 Lista_Entidades::~Lista_Entidades() {
@@ -30,16 +27,13 @@ void Lista_Entidades::incluir(Entidade *pE) { LEs->incluir(pE); }
 
 // Percorrer todos os elementos da lista e desenhar cada um
 void Lista_Entidades::desenharTodos() {
-  // cout << "Desenhando todos os elementos..." << endl;
-
   LEs->percorrerLista([](Entidade *entidade) {
-    entidade->desenhar(); // Chama o método desenhar() de cada Entidadep
+    entidade->desenhar();  // Chama o método desenhar() de cada Entidadep
   });
 }
 
 void Lista_Entidades::atualizarTodas() {
   if (!LEs) {
-    std::cout << "LE NULO" << std::endl;
     return;
   }
 
@@ -99,4 +93,4 @@ bool Lista_Entidades::contem(Entidade *entidade) {
   }
   return false;
 }
-} // namespace Listas
+}  // namespace Listas

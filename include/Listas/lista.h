@@ -6,24 +6,23 @@ using namespace std;
 
 namespace Listas {
 
-template <typename TL> class Lista {
-private:
+template <typename TL>
+class Lista {
+ private:
   int tamanho;
 
-public: // Definição da classe aninhada Elemento
-  template <typename TE> class Elemento {
-  public:
-    TE *pInfo;           // Dados do elemento
-    Elemento<TE> *pProx; // Ponteiro para o próximo elemento
+ public:  // Definição da classe aninhada Elemento
+  template <typename TE>
+  class Elemento {
+   public:
+    TE *pInfo;            // Dados do elemento
+    Elemento<TE> *pProx;  // Ponteiro para o próximo elemento
 
     // Construtor
-    Elemento() : pInfo(nullptr), pProx(nullptr) {
-      // cout << "Construtor de Elemento" << endl;
-    }
+    Elemento() : pInfo(nullptr), pProx(nullptr) {}
 
     // Método para incluir o próximo elemento
     void incluir(TE *p) {
-      // cout << "Incluido com Sucesso" << endl;
       pInfo = p;
       pProx = nullptr;
     }
@@ -39,8 +38,8 @@ public: // Definição da classe aninhada Elemento
   };
 
   // Atributos da lista
-  Elemento<TL> *pPrimeiro; // Ponteiro para o primeiro elemento
-  Elemento<TL> *pUltimo;   // Ponteiro para o último elemento
+  Elemento<TL> *pPrimeiro;  // Ponteiro para o primeiro elemento
+  Elemento<TL> *pUltimo;    // Ponteiro para o último elemento
 
   void removerElemento(TL *elemento, const bool deletar) {
     if (!elemento) {
@@ -69,10 +68,10 @@ public: // Definição da classe aninhada Elemento
       }
 
       if (deletar) {
-        delete aux->pInfo; // Free entity
+        delete aux->pInfo;  // Free entity
         aux->pInfo = nullptr;
       }
-      delete aux; // Free node
+      delete aux;  // Free node
       aux = nullptr;
 
       tamanho--;
@@ -80,14 +79,11 @@ public: // Definição da classe aninhada Elemento
   }
 
   // Construtor
-  Lista() : pPrimeiro(nullptr), pUltimo(nullptr), tamanho(0) {
-    // cout << "Construtor de Lista" << endl;
-  }
+  Lista() : pPrimeiro(nullptr), pUltimo(nullptr), tamanho(0) {}
   int getTam() const { return tamanho; }
 
   // Método para limpar a lista
   void limpar() {
-    // cout << "Limpando Lista..." << endl;
     Elemento<TL> *temp;
     while (pPrimeiro != nullptr) {
       temp = pPrimeiro;
@@ -118,18 +114,7 @@ public: // Definição da classe aninhada Elemento
 
   // Método para percorrer a lista e aplicar uma função em cada elemento
   void percorrerLista(void (*funcao)(TL *)) {
-    // Elemento<TL>* elem = pPrimeiro;
-    // while (elem != nullptr) {
-    //   if (elem->pInfo != nullptr) {
-    //     cout << "Percorrendo a Lista... Elemento válido" << endl;
-    //     funcao(elem->pInfo);
-    //   } else {
-    //     cout << "Percorrendo a Lista... Elemento inválido" << endl;
-    //   }
-    //   elem = elem->getProximo();
-    // }
-
-    if (!pPrimeiro) {
+        if (!pPrimeiro) {
       return;
     }
 
@@ -149,8 +134,7 @@ public: // Definição da classe aninhada Elemento
     }
   }
   TL *operator[](int pos) {
-    if (pos < 0 || !pPrimeiro)
-      return nullptr;
+    if (pos < 0 || !pPrimeiro) return nullptr;
 
     Elemento<TL> *atual = pPrimeiro;
     int count = 0;
@@ -176,6 +160,6 @@ public: // Definição da classe aninhada Elemento
 //   }
 //   return aux->getElemento();
 // }
-} // namespace Listas
+}  // namespace Listas
 
-#endif // LISTA_H
+#endif  // LISTA_H

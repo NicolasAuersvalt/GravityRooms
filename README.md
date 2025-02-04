@@ -2,6 +2,8 @@
 
 ![GravityRooms](assets/Logo.png)
 
+---
+
 Federal University of Technology - Paraná (2024-2025)
 
 ---
@@ -15,6 +17,9 @@ Isabela Bella Bortoleto
 
 ---
 
+![Tripulante](assets/tripulante.png)
+
+## Requisitos Mínimos
 
 Antes de instalar o jogo, certifique-se de ter as seguintes ferramentas instaladas no seu sistema:
 
@@ -26,38 +31,41 @@ Compilador C++: Recomendado o g++ ou clang++ (g++ (Ubuntu 11.4.0-1ubuntu1~22.04)
 
 SFML 2.5.1 (Audio, Graphics, Network, System, Window)
 
-![Tripulante](assets/tripulanteG.png)
+![RGravitacional](assets/regiao_gravitacional.png)
 
-# Instação
+## Instalação
 
-No Ubuntu ou outras distribuições baseadas no Debian, você pode instalar esses pacotes com:
+Para baixar o jogo, use:
 
-    sudo apt update && sudo apt install -y libsfml-dev
-    sudo apt install build-essential cmake
-
-Se ainda não tiver o repositório, clone-o usando:
-
+    mkdir GravityRooms && cd GravityRooms
     git clone https://github.com/NicolasAuersvalt/GravityRooms.git
-    cd GravityRooms 
+    cd GravityRooms
 
-Crie e entre no diretório de build, onde a compilação do projeto será feita:
+Para instalar o jogo, execute o script `install.sh`:
 
-    mkdir build && cd build
-
-Use o CMake para gerar os arquivos necessários para a construção do projeto, em seguida, compile com o Make:
-
-    cmake ..
-    make
-
-Depois de compilado, execute o jogo com o comando:
-
-    ./GravityRooms
+    chmod +x install.sh
+    ./install.sh
 
 ---
 
-![Lab](assets/lab1.jpg)
+## Execução
+
+Após a instalação, para rodar o jogo, utilize:
+
+    ./build.sh
+
 
 ---
+
+## Debug
+
+Para rodar o jogo em modo de depuração, utilize:
+
+    ./debug.sh
+
+---
+
+![Lab](assets/lab.png)
 
 ## Contexto e Planejamento
 
@@ -69,47 +77,47 @@ Depois de compilado, execute o jogo com o comando:
 
 ## Requisitos Funcionais do Jogo
 
-( ) Criar menu gráfico com:
+(V) Criar menu gráfico com:
 
-( ) Opções de seleção de fases. (Observer: Menu)
+(V) Opções de seleção de fases. (Observer: Menu)
 
 ( ) Exibição do ranking de jogadores.
 
-( ) Outras funcionalidades pertinentes.
+(V) Outras funcionalidades pertinentes.
 
 ( ) Implementar suporte para:
 
-( ) Um jogador.
+(V) Um jogador.
 
 ( ) Dois jogadores (opcional ou parcialmente realizado).
 
-( ) Desenvolver ao menos duas fases jogáveis:
+(V) Desenvolver ao menos duas fases jogáveis:
 
-( ) Fases com diferentes dificuldades.
+(V) Fases com diferentes dificuldades.
 
-( ) Fases com obstáculos e inimigos variados.
+(V) Fases com obstáculos e inimigos variados.
 
-( ) Incluir pelo menos três tipos de inimigos:
+(V) Incluir pelo menos três tipos de inimigos:
 
-( ) Um inimigo capaz de lançar projéteis.
+(V) Um inimigo capaz de lançar projéteis.
 
-( ) Um chefão.
+(V) Um chefão.
 
-( ) Adicionar no mínimo três tipos de obstáculos:
+(V) Adicionar no mínimo três tipos de obstáculos:
 
-( ) Obstáculos que causem dano ao jogador.
+(V) Obstáculos que causem dano ao jogador.
 
-( ) Implementar física básica:
+(V) Implementar física básica:
 
-( ) Efeito de gravidade.
+(V) Efeito de gravidade.
 
-( ) Detecção de colisões entre jogadores, inimigos e obstáculos. (Mediator: Gerenciador de Colisões)
+(V) Detecção de colisões entre jogadores, inimigos e obstáculos. (Mediator: Gerenciador de Colisões)
 
 ( ) Incluir persistência de dados:
 
-( ) Salvar nome do jogador e pontuação.
+(V) Salvar nome do jogador e pontuação.
 
-( ) Salvar e recuperar estado do jogo.
+(V) Salvar e recuperar estado do jogo.
 
 ( ) Gerar ranking.
 
@@ -129,21 +137,21 @@ Depois de compilado, execute o jogo com o comando:
 
 (V) Utilizar uma biblioteca gráfica (preferencialmente SFML).
 
-( ) Aplicar conceitos de orientação a objetos:
+(V) Aplicar conceitos de orientação a objetos:
 
 (V) Classes e objetos.
 
-( ) Herança e polimorfismo. (Template Method: Hierarquia de Ente, Entidade, Personagem)
+(V) Herança e polimorfismo. (Template Method: Hierarquia de Ente, Entidade, Personagem)
 
-( ) Encapsulamento e coesão.
+(V) Encapsulamento e coesão.
 
-( ) Desacoplamento. (Bridge: Relação entre Ente e Interface Gráfica)
+(V) Desacoplamento. (Bridge: Relação entre Ente e Interface Gráfica)
 
-( ) Implementar funcionalidades gráficas e interativas.
+(V) Implementar funcionalidades gráficas e interativas.
 
 ## Documentação
 
-( ) Seguir o modelo de formatação fornecido.
+(V) Seguir o modelo de formatação fornecido.
 
 ( ) Escrever as seguintes seções no documento:
 
@@ -181,7 +189,7 @@ Depois de compilado, execute o jogo com o comando:
 
 ( ) Considerações pessoais (opcional).
 
-( ) Divisão de tarefas:
+(V) Divisão de tarefas:
 
 ( ) Tabela com atividades e responsáveis.
 
@@ -193,11 +201,11 @@ Depois de compilado, execute o jogo com o comando:
 
 ( ) Realizar quatro reuniões com o monitor.
 
-( ) Registrar e enviar resumos das reuniões por e-mail.
+(V) Registrar e enviar resumos das reuniões por e-mail.
 
 ## Apresentação
 
-( ) Preparar os slides (.ppt ou .pdf).
+(V) Preparar os slides (.ppt ou .pdf).
 
 ( ) Ensaiar a apresentação do trabalho.
 
@@ -231,35 +239,35 @@ Depois de compilado, execute o jogo com o comando:
 
 (V) - Classes, objetos. & - Atributos (privados), variáveis e constantes - Métodos (com e sem retorno).
 
-( ) Métodos (com retorno const e parâmetro const) & Construtores (sem/com parâmetros) e destrutores
+(V) Métodos (com retorno const e parâmetro const) & Construtores (sem/com parâmetros) e destrutores
 
-( ) Classe Principal.
+(V) Classe Principal.
 
 (V) Divisão em .h e .cpp.
 
-( ) Associação direcional. & - Associação bidirecional.
+(V) Associação direcional. & - Associação bidirecional.
 
-( ) Agregação via associação. & - Agregação propriamente dita.
+(V) Agregação via associação. & - Agregação propriamente dita.
 
 (V) Herança elementar. & - Herança em vários níveis.
 
 ( ) Herança múltipla.
 
-( ) Operador this para fins de relacionamento bidirecional.
+(V) Operador this para fins de relacionamento bidirecional.
 
-( ) Alocação de memória (new & delete).
+(V) Alocação de memória (new & delete).
 
 (V) Gabaritos/Templates criada/adaptados pelos autores para Listas.
 
-( ) Uso de Tratamento de Exceções (try catch).
+(V) Uso de Tratamento de Exceções (try catch).
 
 (V) Construtoras e Métodos.
 
-( ) Operadores (2 tipos de operadores pelo menos)
+(V) Operadores (2 tipos de operadores pelo menos)
 
-( ) Persistência de Objetos. 
+(V) Persistência de Objetos. 
 
-( ) Persistência de Relacionamento de Objetos.
+(V) Persistência de Relacionamento de Objetos.
 
 (V) Métodos Virtuais Usuais.
 
@@ -271,31 +279,31 @@ Depois de compilado, execute o jogo com o comando:
 
 (V) Espaço de Nomes (Namespace) criada pelos autores.
 
-( ) Classes aninhadas (Nested) criada pelos autores.
+(V) Classes aninhadas (Nested) criada pelos autores.
 
-( ) Atributos estáticos e métodos estáticos.
+(V) Atributos estáticos e métodos estáticos.
 
-( ) Uso extensivo de constante (const) parâmetro, retorno, método...
+(V) Uso extensivo de constante (const) parâmetro, retorno, método...
 
-( ) A classe Pré-definida  String ou equivalente. & - Vector e/ou List da STL (p/ objetos ou ponteiros de objetos de classes definidos pelos autores)
+(V) A classe Pré-definida  String ou equivalente. & - Vector e/ou List da STL (p/ objetos ou ponteiros de objetos de classes definidos pelos autores)
 
-( ) Pilha, Fila, Bifila, Fila de Prioridade, Conjunto, Multi-Conjunto, Mapa OU Multi-Mapa.
+(V) Pilha, Fila, Bifila, Fila de Prioridade, Conjunto, Multi-Conjunto, Mapa OU Multi-Mapa.
 
-( ) Threads (Linhas de Execução) no âmbito da Orientação a Objetos, utilizando Posix, C-Run-Time OU Win32API ou afins.
+(V) Threads (Linhas de Execução) no âmbito da Orientação a Objetos, utilizando Posix, C-Run-Time OU Win32API ou afins.
 
-( ) Threads (Linhas de Execução) no âmbito da Orientação a Objetos com uso de Mutex, Semáforos, OU Troca de mensagens.
+(V) Threads (Linhas de Execução) no âmbito da Orientação a Objetos com uso de Mutex, Semáforos, OU Troca de mensagens.
 
-( ) Funcionalidades Elementares. & Funcionalidades Avançadas como: tratamento de colisões e duplo buffer
+(V) Funcionalidades Elementares. & Funcionalidades Avançadas como: tratamento de colisões e duplo buffer
 
 ( ) Programação orientada e evento efetiva (com gerenciador apropriado de eventos inclusive, via padrão de projeto Observer) em algum ambiente gráfico. OU - RAD – Rapid Application Development (Objetos gráficos como formulários, botões etc).
 
-( ) Ensino Médio Efetivamente.
+(V) Ensino Médio Efetivamente.
 
-( ) Ensino Superior Efetivamente.
+(V) Ensino Superior Efetivamente.
 
-( ) Compreensão, melhoria e rastreabilidade de cumprimento de requisitos.
+(V) Compreensão, melhoria e rastreabilidade de cumprimento de requisitos.
 
-( ) Diagrama de Classes em UML.
+(V) Diagrama de Classes em UML.
 
 ( ) Uso efetivo e intensivo de padrões de projeto GOF, i.e., + de 5 padrões.
 
@@ -310,4 +318,4 @@ Depois de compilado, execute o jogo com o comando:
 ( )Escrita do trabalho e feitura da apresentação & Revisão do trabalho escrito de outra equipe e vice-versa.
 
 
-![Andoid](assets/androidG.png)
+![Andoid](assets/androide.png)
