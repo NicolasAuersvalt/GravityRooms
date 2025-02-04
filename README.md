@@ -1,8 +1,6 @@
 # GravityRooms
 
-
-[Assista ao vídeo](assets/gr.mp4)
-
+![GravityRooms](assets/logo.png)
 
 ---
 
@@ -17,8 +15,10 @@ Nícolas Auersvalt Marques
 
 Isabela Bella Bortoleto
 
-
 ---
+
+[Assista ao vídeo](assets/gr.mp4)
+
 
 ![Tripulante](assets/tripulante.png)
 
