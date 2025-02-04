@@ -19,6 +19,7 @@ Isabela Bella Bortoleto
 
 [Video de Gameplay](https://www.youtube.com/watch?v=8P1LvGM78JY)
 
+
 ![Tripulante](assets/tripulante.png)
 
 ## Requisitos Mínimos
