@@ -17,7 +17,7 @@ Isabela Bella Bortoleto
 
 ---
 
-[Assista ao vídeo](assets/gr.mp4)
+[Assista ao vídeo](assets/GR.mp4)
 
 
 ![Tripulante](assets/tripulante.png)
