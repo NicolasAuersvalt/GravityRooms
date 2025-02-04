@@ -9,6 +9,7 @@ MenuPrincipal::MenuPrincipal(IDs::IDs id)
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
+  criarFundo();
 }
 
 MenuPrincipal::MenuPrincipal(const IDs::IDs ID, std::string nome,
@@ -23,7 +24,7 @@ MenuPrincipal::MenuPrincipal(const IDs::IDs ID, std::string nome,
 MenuPrincipal::~MenuPrincipal() {}
 
 void MenuPrincipal::criarBotoes() {
-  float startY = tamJanela.y * 0.75f; // Start 40% from top
+  float startY = tamJanela.y * 0.75f;  // Start 40% from top
   float spacing = tamBotao.y * 1.5f;
   addBotao("LABORATORIO", sf::Vector2f(0.f, startY), IDs::IDs::botao_novoJogo,
            sf::Color(0, 255, 0));
@@ -46,4 +47,14 @@ void MenuPrincipal::executar() {
   // desenhar();
 }
 
-} // namespace Menus
+void MenuPrincipal::criarFundo() {
+  if (!texturaBackground.loadFromFile("assets/logo.png")) {
+    std::cerr << "Erro ao carregar textura do background do menu principal!"
+              << std::endl;
+    exit(1);
+  }
+  spriteBackground.setTexture(texturaBackground);
+  atualizarPosicaoFundo();
+}
+
+}  // namespace Menus
