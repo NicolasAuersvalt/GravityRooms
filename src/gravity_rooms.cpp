@@ -353,8 +353,6 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
             atualPersonagens->pInfo)) {
       Tripulante *tripPtr = dynamic_cast<Tripulante *>(atualPersonagens->pInfo);
       GC.incluirTripulante(*tripPtr);
-    } else {
-      // GC.incluirInimigo(static_cast<Inimigo *>(atualPersonagens->pInfo));
     }
 
     listaPersonagem.incluir(

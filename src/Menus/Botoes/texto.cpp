@@ -7,8 +7,11 @@ namespace Menus {
 
 namespace Botoes {
 Texto::Texto(const std::string info, const unsigned int tamFonte)
-    : texto(), info(info), corTexto(sf::Color::White),
-      corBorda(sf::Color::Black), tamFonte(tamFonte) {
+    : texto(),
+      info(info),
+      corTexto(sf::Color::White),
+      corBorda(sf::Color::Black),
+      tamFonte(tamFonte) {
   if (!fonte.loadFromFile("assets/Fontes/Gameplay.ttf")) {
     std::cout << "Error loading font!" << std::endl;
 
@@ -30,13 +33,12 @@ void Texto::inicializa() {
   texto.setOutlineThickness(5.0f);
   texto.setOutlineColor(corBorda);
   texto.setFillColor(corTexto);
-  // tam = sf::Vector2f(texto.getGlobalBounds().width,
-  //                    texto.getGlobalBounds().height);
+
   // Corrigir cálculo da origem
   sf::FloatRect textBounds = texto.getLocalBounds();
   texto.setOrigin(
-      textBounds.left + textBounds.width / 2.0f, // Origem X no centro
-      textBounds.top + textBounds.height / 2.0f  // Origem Y no centro
+      textBounds.left + textBounds.width / 2.0f,  // Origem X no centro
+      textBounds.top + textBounds.height / 2.0f   // Origem Y no centro
   );
 
   // Atualizar tamanho após ajustes
@@ -85,6 +87,6 @@ void Texto::setTamFonte(const unsigned int tamFonte) {
                      texto.getGlobalBounds().height);
 }
 
-} // namespace Botoes
+}  // namespace Botoes
 
-} // namespace Menus
+}  // namespace Menus

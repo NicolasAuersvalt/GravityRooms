@@ -14,15 +14,12 @@ using namespace std;
 namespace Entidades::Personagens {
 
 class Personagem : public Entidade {
-protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+ protected:
   Vector2f vel;
 
   int pontosVida;
   bool noChao;
   RectangleShape corpo;
-  // ===/===/===/===/ Outros  ===/===/===/===/
 
   bool vivo;
   bool podeAndar;
@@ -69,14 +66,10 @@ protected:
     setPosicao(pos.x, pos.y);
   }
 
-public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // Personagem(pair<int, int> p, pair<int, int> d); //verificar
+ public:
   Personagem(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Personagem();
 
-  // virtual void executar() = 0;
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) = 0;
   virtual void mover() = 0;
 
@@ -102,6 +95,6 @@ public:
   void cair();
 };
 
-} // namespace Entidades::Personagens
+}  // namespace Entidades::Personagens
 
 #endif

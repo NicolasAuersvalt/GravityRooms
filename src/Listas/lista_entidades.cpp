@@ -37,7 +37,6 @@ void Lista_Entidades::atualizarTodas() {
     return;
   }
 
-  // Install signal handler
   signal(SIGSEGV, segfaultHandler);
 
   auto updateFunction = [](Entidade *entidade) {
@@ -59,7 +58,6 @@ void Lista_Entidades::atualizarTodas() {
 
   LEs->percorrerLista(updateFunction);
 
-  // Restore default signal handler
   signal(SIGSEGV, SIG_DFL);
 }
 void Lista_Entidades::limparLista() {
@@ -80,7 +78,6 @@ void Lista_Entidades::removerEntidade(Entidade *entidade, const bool deletar) {
   }
 }
 Entidade *Listas::Lista_Entidades::getElemento(int pos) {
-  // return objListaEntidade.operator[](pos);
   return LEs->operator[](pos);
 }
 bool Lista_Entidades::contem(Entidade *entidade) {

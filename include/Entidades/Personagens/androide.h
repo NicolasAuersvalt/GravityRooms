@@ -12,22 +12,11 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Androide : public Inimigo {
-private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-  // float raio;
-
+ private:
   bool movingRight;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+ protected:
+ public:
   Androide(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   ~Androide();
 
@@ -39,10 +28,8 @@ public:
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   void mover() override;
   int getDano();
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-} // namespace Entidades::Personagens
+}  // namespace Entidades::Personagens
 
 #endif

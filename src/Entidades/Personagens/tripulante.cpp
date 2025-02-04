@@ -44,19 +44,11 @@ void Tripulante::setGerenciadorEvento(Gerenciador_Eventos *GE) {
   }
 }
 
-void Tripulante::tirarMunicao() { 
+void Tripulante::tirarMunicao() { municao--; }
 
-  municao--;
+int Tripulante::getMunicao() { return municao.getQtd(); }
 
-}
-
-int Tripulante::getMunicao() { 
-  return municao.getQtd(); 
-  }
-
-void Tripulante::setMunicao(int qtd) { 
-  municao.setQtd(qtd); 
-  }
+void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
 
 void Tripulante::mover() {
   // cair();
@@ -114,8 +106,7 @@ void Tripulante::mover() {
     tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
     if (tecla == "Q" && noChao) {
       // Jump only if on ground
-      atirar(); // o correto
-      
+      atirar();  // o correto
     }
   }
   // Jogador 2 (Setas + Q)
@@ -148,7 +139,7 @@ void Tripulante::mover() {
   if (!noChao) {
     velFinal.y += GF.aplicarGravidade() * 0.016f;
   }
-  
+
   getSprite().move(velFinal.x, velFinal.y);
 }
 
@@ -188,13 +179,7 @@ void Tripulante::setChao(bool chao) { noChao = chao; }
 
 bool Tripulante::getChao() { return noChao; }
 void Tripulante::setPontos(int ponto) { pontos = ponto; }
-void Tripulante::podePular() {
-  // if (noChao) {
-  //   velFinal.y = -sqrt(2.0f * GRAVIDADE * TAMANHO_PULO);
-  //   noChao = false;
-  //   atacando = false;
-  // }
-}
+void Tripulante::podePular() {}
 void Tripulante::atualizar() {
   if (pontosVida <= 0) {
     morrer();
@@ -205,7 +190,7 @@ void Tripulante::atualizar() {
 }
 
 void Tripulante::atirar() {
-  if(getMunicao() > 0){
+  if (getMunicao() > 0) {
     if (!projetil->getAtivo()) {
       projetil->setAtivo(true, getSprite().getPosition());
       tirarMunicao();
@@ -256,7 +241,6 @@ void Tripulante::colisao(Entidade *outraEntidade, Vector2f ds) {
 
       float myLeft = myPos.x;
       float platRight = platPos.x + platSize.x;
-      // Platform collision from above
       if (myBottom >= platTop && ds.y <= 5.f) {
         velFinal.y = 0;
         myPos.y = platTop - mySize.y;
@@ -265,11 +249,9 @@ void Tripulante::colisao(Entidade *outraEntidade, Vector2f ds) {
         onPlatform = true;
       }
 
-      // Check if the Tripulante is landing on top of the platform
-
     } break;
     case (IDs::IDs::espinho): {
-            Entidades::Obstaculos::Espinho *espinho =
+      Entidades::Obstaculos::Espinho *espinho =
           dynamic_cast<Entidades::Obstaculos::Espinho *>(outraEntidade);
 
       recebeDano(espinho->getDano());

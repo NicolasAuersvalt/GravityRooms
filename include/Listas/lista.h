@@ -62,16 +62,15 @@ class Lista {
         aux2->setProx(aux->getProximo());
       }
 
-      // Update pUltimo if we are removing the last element
       if (aux == pUltimo) {
         pUltimo = aux2;
       }
 
       if (deletar) {
-        delete aux->pInfo;  // Free entity
+        delete aux->pInfo;
         aux->pInfo = nullptr;
       }
-      delete aux;  // Free node
+      delete aux;
       aux = nullptr;
 
       tamanho--;
@@ -96,7 +95,6 @@ class Lista {
 
   // Método para incluir um elemento na lista
   void incluir(TL *p) {
-    // cout << "Incluindo elemento na lista" << endl;
     Elemento<TL> *novoElemento = new Elemento<TL>();
     novoElemento->incluir(p);
     if (pUltimo != nullptr) {
@@ -114,7 +112,7 @@ class Lista {
 
   // Método para percorrer a lista e aplicar uma função em cada elemento
   void percorrerLista(void (*funcao)(TL *)) {
-        if (!pPrimeiro) {
+    if (!pPrimeiro) {
       return;
     }
 
@@ -147,19 +145,7 @@ class Lista {
     return atual ? atual->pInfo : nullptr;
   }
 };
-// template <class TL>
-// TL* Lista<TL>::operator[](int pos) {
-//   if (pos >= (int)tam || pos < 0) {
-//     std::cout << "ERROR::Lista pos eh maior que o tamanho da lista"
-//               << std::endl;
-//     exit(1);
-//   }
-//   Elemento<TL>* aux = pPrimeiro;
-//   for (int i = 0; i < pos; i++) {
-//     aux = aux->getProx();
-//   }
-//   return aux->getElemento();
-// }
+
 }  // namespace Listas
 
 #endif  // LISTA_H

@@ -10,16 +10,15 @@ namespace Menus {
 namespace Botoes {
 
 class BotaoTexto : public Botao {
-private:
-  // ===/==
-protected:
+ private:
+ protected:
   bool selecionado;
   sf::Color corSelecionado;
   sf::Text texto;
   sf::Font font;
   const sf::Vector2f getTamTexto() const;
 
-public:
+ public:
   BotaoTexto(const std::string info, const sf::Vector2f pos,
              const sf::Vector2f tam, const IDs::IDs ID,
              const sf::Color corSelecionado);
@@ -33,7 +32,7 @@ public:
   void setText(const std::string &text);
 };
 
-} // namespace Botoes
-} // namespace Menus
+}  // namespace Botoes
+}  // namespace Menus
 
 #endif

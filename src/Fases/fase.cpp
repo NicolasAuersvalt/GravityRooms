@@ -1,6 +1,5 @@
 #include "Fases/fase.h"
 
-// ===/===/===/===/ Obrigatório ===/===/===/===/
 namespace Fases {
 
 // Construtor
@@ -35,7 +34,6 @@ void Fase::criarPlataforma(const Vector2f pos) {
     exit(1);
   }
 
-  // plataforma->setTamanho(escala);
   listaObstaculos->incluir(static_cast<Entidade *>(plataforma));
 }
 
@@ -49,7 +47,6 @@ void Fase::criarEspinho(const Vector2f pos) {
     exit(1);
   }
 
-  // plataforma->setTamanho(escala);
   listaObstaculos->incluir(static_cast<Entidade *>(espinho));
 }
 
@@ -66,15 +63,11 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
   if (tripulantes[0] == nullptr) {
-    criarJogador({100.f, 100.f}, 0);  // Create player 1
+    criarJogador({100.f, 100.f}, 0);
     tripulantes[0]->setProjetil(
         criarProjetil(pos, IDs::IDs::projetil_tripulante));
   }
-  // if (tripulantes[1] == nullptr) {
-  //   criarJogador({150.f, 100.f}, 1);  // Create player 2
-  //   tripulantes[1]->setProjetil(
-  //       criarProjetil(pos, IDs::IDs::projetil_tripulante));
-  // }
+
   switch (letra) {
     case ('i'): {
       if (contadorFaceis < 3) {
@@ -123,14 +116,7 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
       break;
 
     } break;
-    case ('k'): {  // PARA TESTES, REMOVER DEPOIS
-      criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
 
-    } break;
-    case ('l'): {  // PARA TESTES, REMOVER DEPOIS
-      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
-
-    } break;
     case ('c'): {
       criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
 
@@ -143,9 +129,7 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
       criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
 
     } break;
-    case ('j'): {
-      // listaPersonagens->incluir(static_cast<Entidade*>(tripulantes[0]));
-    } break;
+
     case ('b'): {
       criarBackground(getID());
     }
@@ -198,15 +182,7 @@ void Fase::criarInimDificeis(const Vector2f pos, Tripulante *tripulante) {
       criarProjetil(Vector2f(100.0f, 100.0f), IDs::IDs::projetil_inimigo));
   std::cout << "Fase:: foi possivel criar inim dificil" << std::endl;
 }
-void Fase::executar() {
-  // fundo.executar();
-  // pJogador = getTripulante();
-  // if (pJogador) {
-
-  //   pGrafico->atualizarCamera(pJogador->getPos(), pJogador->getTam());
-  //}
-  desenhar();
-}
+void Fase::executar() { desenhar(); }
 
 Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   Entidades::Projetil *projetil =
@@ -219,16 +195,5 @@ Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   listaPersonagens->incluir(static_cast<Entidade *>(projetil));
   return projetil;
 }
-// void Fase::setLimiteCamera(IntRect limiteCamera) {
-//   this->limiteCamera = limiteCamera;
-// }
-
-// const IntRect Fase::getLimiteCamera() const { return limiteCamera; }
-
-// void Fase::gerenciar_colisoes() {}
-
-// void Fase::criarCenario() {}
-
-// ===/===/===/===/ Outros  ===/===/===/===/
 
 }  // namespace Fases

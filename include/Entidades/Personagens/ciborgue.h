@@ -12,20 +12,11 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Ciborgue : public Inimigo {
-private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+ private:
   int tamanho;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+ protected:
+ public:
   Ciborgue(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   ~Ciborgue();
 
@@ -35,11 +26,8 @@ public:
   void mover() override;
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   int getDano();
-  // void colidir(Entidade* outro, string direction = "") override;
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-} // namespace Entidades::Personagens
+}  // namespace Entidades::Personagens
 
 #endif

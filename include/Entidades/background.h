@@ -10,13 +10,7 @@ namespace Entidades {
 
 class Background : public Entidade {
  protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
  public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
   Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
       : Entidade(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID) {
     if ((ID == IDs::IDs::fase_nave)) {

@@ -23,12 +23,10 @@ using namespace sf;
 
 class Gravity_Rooms;
 
-// using Menus::Botao::BotaoTexto;
-
 namespace Menus {
 
 class Menu : public Ente {
-protected:
+ protected:
   list<Menus::Botoes::BotaoTexto *> listaBotaoTexto;
   list<Menus::Botoes::BotaoTexto *>::iterator it;
 
@@ -38,16 +36,14 @@ protected:
   Menus::Botoes::Texto titulo;
   bool botaoSelecionado;
 
-  // --- TESTE sprite do background ---
   sf::Texture texturaBackground;
   sf::Sprite spriteBackground;
   sf::Vector2f posFundo;
-  /**/
+
   void atualizarPosicaoFundo();
   virtual void criarFundo() {};
-  // void inicializarIterator();
 
-public:
+ public:
   void inicializarIterator();
 
   Menu(const IDs::IDs ID, const Vector2f tamBotao, const string nome,
@@ -69,6 +65,6 @@ public:
   void setSelecionado(bool status);
 };
 
-} // namespace Menus
+}  // namespace Menus
 
 #endif

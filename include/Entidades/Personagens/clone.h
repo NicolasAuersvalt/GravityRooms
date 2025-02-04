@@ -12,22 +12,13 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Clone : public Inimigo {
-private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-  //   float raio;
-  Clock timerTiro; // Timer to control shooting frequency
+ private:
+  Clock timerTiro;  // Temporizador para controlar a frequência de disparo
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+ protected:
   Projetil *projetil;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+ public:
   Clone(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   ~Clone();
   using Ente::setSprite;
@@ -38,12 +29,10 @@ public:
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   void mover() override;
   void setProjetil(Projetil *proj) { projetil = proj; };
-  void atirar(); // New method to handle shooting
+  void atirar();
   int getDano();
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
 };
 
-} // namespace Entidades::Personagens
+}  // namespace Entidades::Personagens
 
 #endif

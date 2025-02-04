@@ -52,8 +52,7 @@ void Gerenciador_Colisoes::executar(Lista_Entidades *listaPer,
     return;
   }
 
-  // Replace the existing dead entity removal loop with:
-  for (int i = listaPer->getTamanho() - 1; i >= 0; i--) {  // Iterate backward
+  for (int i = listaPer->getTamanho() - 1; i >= 0; i--) {
     Entidades::Personagens::Personagem *personagem =
         dynamic_cast<Entidades::Personagens::Personagem *>(
             listaPer->operator[](i));
@@ -65,28 +64,26 @@ void Gerenciador_Colisoes::executar(Lista_Entidades *listaPer,
         pJog1->setPontos(pJog1->getPontos() + inimigo->getNivelMaldade());
       }
 
-      listaPer->removerEntidade(personagem, true);  // Delete entity and node
-        }
+      listaPer->removerEntidade(personagem, true);
+    }
   }
 
-  // In the Personagem vs Personagem loop:
   for (int i = 0; i < listaPer->getTamanho() - 1; i++) {
     Entidades::Entidade *ent1 = listaPer->operator[](i);
-    if (!ent1) continue;  // Skip if null
+    if (!ent1) continue;
 
     for (int j = i + 1; j < listaPer->getTamanho(); j++) {
       Entidades::Entidade *ent2 = listaPer->operator[](j);
-      if (!ent2) continue;  // Skip if null
+      if (!ent2) continue;
 
       sf::Vector2f ds = calculaColisao(ent1, ent2);
       if (ds.x < 0.0f && ds.y < 0.0f) {
         ent1->colisao(ent2, ds);
-        ent2->colisao(ent1, ds);  // Ensure both entities process collisions
+        ent2->colisao(ent1, ds);
       }
     }
   }
 
-  // verifica colisao entre Personagens e Obstáculos
   for (int i = 0; i < listaPer->getTamanho(); i++) {
     Entidades::Entidade *ent1 = listaPer->operator[](i);
     for (int j = 0; j < listaObs->getTamanho(); j++) {

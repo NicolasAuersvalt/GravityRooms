@@ -1,10 +1,10 @@
 #ifndef ENTE_H
 #define ENTE_H
 
-#include "Gerenciadores/gerenciador_grafico.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "Gerenciadores/gerenciador_grafico.h"
 #include "IDs/IDs.h"
 
 using namespace std;
@@ -15,42 +15,25 @@ using Gerenciadores::Gerenciador_Grafico;
 class Gerenciador_Grafico;
 
 class Ente {
-private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+ private:
+ protected:
   const IDs::IDs ID;
   static Gerenciador_Grafico
-      *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
+      *pGG;  // Ente utiliza Gerenciador Gráfico (Bidirecional)
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-  // Figura *pFig;
-  Texture *texture; // Substituido
+  Texture *texture;
   Sprite sprite;
 
-public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
+ public:
   Ente(const IDs::IDs ID);
   ~Ente();
 
-  // virtual void executar() = 0; // Pois é abstrata
-
-  void desenhar(); // Possui o endereço do gerenciador gráfico em protected,
-                   // mas só UTILIZA o gerenciador
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
+  void desenhar();  // Possui o endereço do gerenciador gráfico em protected,
+                    // mas só UTILIZA o gerenciador
 
   void setSprite(string local, int posX, int posY);
-  Texture *
-  getTexture(); // retorna o endereço da textura do protected Texture *pFig
-  Sprite &
-  getSprite(); // retorna o endereço da textura do protected Texture *pFig
-
+  Texture *getTexture();
+  Sprite &getSprite();
   static void setGerenciador(Gerenciadores::Gerenciador_Grafico *gg);
 
   FloatRect getHitBox() const { return sprite.getGlobalBounds(); }

@@ -3,8 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <sstream> // Para o ostringstream
-#include <utility> // Para usar pair
+#include <sstream>
+#include <utility>
 
 #include "ente.h"
 #include "json.hpp"
@@ -18,31 +18,19 @@ class Gerenciador_Grafico;
 namespace Entidades {
 
 class Entidade : public Ente {
-private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  Vector2f pos; // Posição (x,y)
-  Vector2f tam; // Dimensão (x,y)
+ private:
+ protected:
+  Vector2f pos;  // Posição (x,y)
+  Vector2f tam;  // Dimensão (x,y)
 
   ostringstream buffer;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
   RectangleShape corpo;
 
-public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  Entidade(const Vector2f pos, const Vector2f tam,
-           const IDs::IDs ID); // COM PARAMETRO
+ public:
+  Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   virtual ~Entidade();
 
-  // Métodos Virtuais
-  // virtual void executar() = 0;
   virtual void salvar() = 0;
   virtual void mover() = 0;
 
@@ -52,11 +40,10 @@ public:
   const Vector2f getPosicao() const;
   const Vector2f getTamanho() const;
   virtual void atualizarPosicao() = 0;
-  // ===/===/===/===/ Outros  ===/===/===/===/
   virtual void colisao(Entidade *outraEntidade,
                        sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f)) = 0;
 };
 
-} // namespace Entidades
+}  // namespace Entidades
 
 #endif

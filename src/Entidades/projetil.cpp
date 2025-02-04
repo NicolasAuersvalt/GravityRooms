@@ -73,7 +73,6 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
           }
         }
 
-        // Deactivate projectile after hit
         setAtivo(false, Vector2f(-130.f, -130.f));
       }
       break;
@@ -86,7 +85,6 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
         if (inimigo) {
           inimigo->recebeDano(dano);
 
-          // Deactivate projectile first
           ativo = false;
           sprite.setPosition(-130.f, -130.f);
           setPosicao(-130.f, -130.f);
@@ -98,7 +96,7 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
       break;
     }
     case (IDs::IDs::tripulante): {
-          if (ID == IDs::IDs::projetil_inimigo) {
+      if (ID == IDs::IDs::projetil_inimigo) {
         Entidades::Personagens::Tripulante *tripulante =
             dynamic_cast<Entidades::Personagens::Tripulante *>(outraEntidade);
         tripulante->recebeDano(dano);

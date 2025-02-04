@@ -46,20 +46,14 @@ using namespace std;
 namespace Fases {
 
 class Fase : public Ente {
-private:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
-protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+ private:
+ protected:
   short inimAleatorio = 0;
-  int contadorFaceis = 0;   // Contador de inimigos fáceis
-  int contadorMedios = 0;   // Contador de inimigos medios
-  int contadorDificeis = 0; // Contador de inimigos difíceis
+  int contadorFaceis = 0;    // Contador de inimigos fáceis
+  int contadorMedios = 0;    // Contador de inimigos medios
+  int contadorDificeis = 0;  // Contador de inimigos difíceis
 
-public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
+ public:
   bool complete;
   Lista_Entidades *listaObstaculos;
   Gerenciador_Grafico *GG;
@@ -67,18 +61,14 @@ public:
   Vector2f pos1;
   Vector2f pos2;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
   Gerenciador_Colisoes *pColisao;
-  // Gerenciador_Salvamento GS;
   Lista_Entidades *listaPersonagens;
-  Texture bgTexture; // Add texture member
+  Texture bgTexture;
   Sprite backgroundSprite;
 
   Background *bg;
   Lista_Entidades *listaBackground;
 
-  // Fase(const IDs IDs_Fase,const IDs IDs_Fundo);
   Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo);
   ~Fase();
 
@@ -95,9 +85,7 @@ public:
     listaBackground->incluir(static_cast<Entidade *>(bg));
   }
 
-  // void gerenciar_colisoes();
   void criarInimFaceis(const Vector2f pos, Tripulante *tripulante);
-  // void criarPlataformas();
 
   void criarInimDificeis(const Vector2f pos, Tripulante *tripulante);
   void criarInimMedios(const Vector2f pos, Tripulante *tripulante);
@@ -108,22 +96,18 @@ public:
   void criarCentroGravidade(const Vector2f pos);
 
   void setGerenciadorG(Gerenciador_Grafico *GG) {
-    if (GG != nullptr)
-      this->GG = GG;
+    if (GG != nullptr) this->GG = GG;
   }
   Gerenciador_Grafico *getGerenciador() { return GG; }
 
-  // virtual void criarCaixa(const Vector2f pos);
   virtual void criarEntidades(char letra, const Vector2f pos);
 
-  virtual void criarFundo() = 0; // fundo
+  virtual void criarFundo() = 0;  // fundo
   virtual void criarMapa() = 0;
   virtual void desenhar() = 0;
 
-  // ===/===/===/===/ Outros  ===/===/===/===/
-
   Entidades::Projetil *criarProjetil(const Vector2f pos, IDs::IDs ID);
 };
-} // namespace Fases
+}  // namespace Fases
 
 #endif
