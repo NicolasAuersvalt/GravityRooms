@@ -320,6 +320,15 @@ void Gravity_Rooms::criarJogadorDois() {
 }
 
 void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
+  if (fase) {
+    delete fase;
+    fase = nullptr;
+  }
+  listaPersonagem.limparLista();
+  listaObstaculo.limparLista();
+  listaBackgrounds.limparLista();
+  GC.pJog1 = nullptr;
+  GC.pJog2 = nullptr;
   if (faseSelecionada == IDs::IDs::fase_laboratorio) {
     Laboratorio *aux = new Laboratorio(IDs::IDs::fase_laboratorio);
 
