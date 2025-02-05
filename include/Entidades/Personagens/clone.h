@@ -31,6 +31,9 @@ class Clone : public Inimigo {
   void setProjetil(Projetil *proj) { projetil = proj; };
   void atirar();
   int getDano();
+  REGISTRAR_CLASSE(Clone, "clone",
+                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
+                   nullptr, static_cast<IDs::IDs>(data["id"]));
 };
 
 }  // namespace Entidades::Personagens

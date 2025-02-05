@@ -60,6 +60,16 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 
   listaObstaculos->incluir(static_cast<Entidade *>(centro_gravidade));
 }
+void Fase::criarEspinhoRetratil(const Vector2f pos) {
+  EspinhoRetratil *espinhoRetratil = new EspinhoRetratil(
+      pos, Vector2f(90.0f, 90.0f), IDs::IDs::espinhoRetratil);
+  if (espinhoRetratil == nullptr) {
+    cout << "Fase::nao foi possivel criar centro de gravidade" << endl;
+    exit(1);
+  }
+
+  listaObstaculos->incluir(static_cast<Entidade *>(espinhoRetratil));
+}
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
   if (tripulantes[0] == nullptr) {
@@ -120,20 +130,18 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
       if (contadorEspinho < 3) {
         criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
         contadorEspinho++;
-      } else if (contadorDificeis < 3) {
-        criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                          tripulantes[0]);
-        contadorEspinho++;
+      } else if (contadorEspinhoRetratil < 3) {
+        criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+        contadorEspinhoRetratil++;
       } else {
         // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
         obsAleatorio = rand() % 2;
         if (obsAleatorio == 0 && contadorEspinho < 7) {
           criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
           contadorEspinho++;
-        } else if (obsAleatorio == 1 && contadorDificeis < 7) {
-          criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                            tripulantes[0]);
-          contadorDificeis++;
+        } else if (obsAleatorio == 1 && contadorEspinhoRetratil < 7) {
+          criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+          contadorEspinhoRetratil++;
         }
       }
       break;
@@ -143,11 +151,33 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
       criarPlataforma(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 
     } break;
+    case ('r'): {
+      criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+    } break;
     case ('g'): {
       criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
 
     } break;
-
+    case ('k'): {
+      if (contadorEspinhoRetratil < 3) {
+        criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+        contadorEspinhoRetratil++;
+      } else if (contadorCg < 1) {
+        criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
+        contadorCg++;
+      } else {
+        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+        obsAleatorio = rand() % 2;
+        if (obsAleatorio == 0 && contadorEspinho < 7) {
+          criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+          contadorEspinhoRetratil++;
+        } else if (obsAleatorio == 1 && contadorCg < 7) {
+          criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
+          contadorCg++;
+        }
+      }
+      break;
+    } break;
     case ('b'): {
       criarBackground(getID());
     }

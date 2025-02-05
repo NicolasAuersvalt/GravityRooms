@@ -26,6 +26,9 @@ class Ciborgue : public Inimigo {
   void mover() override;
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   int getDano();
+  REGISTRAR_CLASSE(Ciborgue, "ciborgue",
+                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
+                   nullptr, static_cast<IDs::IDs>(data["id"]));
 };
 
 }  // namespace Entidades::Personagens

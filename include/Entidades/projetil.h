@@ -11,7 +11,6 @@ using namespace sf;
 using namespace Entidades;
 
 namespace Entidades {
-class Personagem;
 
 class Projetil : public Entidade {
  private:
@@ -38,7 +37,6 @@ class Projetil : public Entidade {
   bool getAtivo();
   void setAtirador(Entidade *a);
   bool getColidir(Entidade *e);
-  void danificar(Personagem *p);
   int getDano();
   void atualizarPosicao() {};
   void colisao(Entidade *outraEntidade,
@@ -50,7 +48,10 @@ class Projetil : public Entidade {
     arquivo["posicao"]["x"] = getPosicao().x;
     arquivo["posicao"]["y"] = getPosicao().y;
   }
-  void carregar(std::ifstream &arquivo) override {};
+  REGISTRAR_CLASSE(Projetil, "projetil",
+                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
+                   sf::Vector2f(10, 10), static_cast<IDs::IDs>(data["id"]));
+  void carregar(json &arquivo) override {};
   std::string getTipo() const override { return "Projetil"; }
 };
 

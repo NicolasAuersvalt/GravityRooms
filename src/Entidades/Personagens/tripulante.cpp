@@ -31,13 +31,6 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
 
 Tripulante::~Tripulante() {}
 
-// Implementação da função executar()
-/*
-   void Tripulante::executar() {
-// Implementação do comportamento da função
-}
-*/
-
 void Tripulante::setGerenciadorEvento(Gerenciador_Eventos *GE) {
   if (GE) {
     this->GE = GE;  // Atribui o ponteiro GE à variável membro this->GE
@@ -51,40 +44,6 @@ int Tripulante::getMunicao() { return municao.getQtd(); }
 void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
 
 void Tripulante::mover() {
-  // cair();
-  // // Movimentação (sem física, apenas mover pela tela)
-  // string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
-  // if (tecla == "Left Arrow") {
-  //   getSprite().move(-5.f, 0.f);  // Move para a esquerda
-  // }
-  // tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
-  // if (tecla == "Q" && noChao) {
-  //   // Jump only if on ground
-  //   atirar();  // o correto
-
-  //   cout << "Shooting projectile" << endl;
-  // }
-  // tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
-  // if (tecla == "Right Arrow") {
-  //   getSprite().move(5.f, 0.f);  // Move para a direita
-  // }
-
-  // tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
-  // if (tecla == "Space" && noChao) {
-  //   // Jump only if on ground
-  //   float jumpForce = -20.0f;  // controle do pulo
-  //   velFinal.y = jumpForce;
-  //   noChao = false;
-  // }
-  // if (!noChao) {
-  //   // Apply gravity
-  //   float dt = 0.016f;  // Assuming 60fps, adjust if using different time
-  //   step velFinal.y += GF.aplicarGravidade() * dt;
-  // }
-  // getSprite().move(velFinal.x, velFinal.y);
-  // // Apply movement
-
-  /*----------------------------------------------------------------*/
   // Jogador 1 (WASD + Espaço)
   cair();
   if (isPlayerOne) {
@@ -271,6 +230,14 @@ void Tripulante::colisao(Entidade *outraEntidade, Vector2f ds) {
       recebeDano(projetil->getDano());
       projetil->setAtivo(false, {-130.f, -130.f});
 
+    } break;
+    case (IDs::IDs::espinhoRetratil): {
+      Entidades::Obstaculos::EspinhoRetratil *espinhoRetratil =
+          dynamic_cast<Entidades::Obstaculos::EspinhoRetratil *>(outraEntidade);
+
+      if (espinhoRetratil->estaLigado()) {
+        recebeDano(espinhoRetratil->getDano());
+      }
     } break;
     default: {
       onPlatform = false;

@@ -12,7 +12,8 @@ enum class IDs {
   androide,                // 6
   ciborgue,                // 7
   plataforma,              // 8
-  espinho,                 // 9
+  espinho,                 // 8
+  espinhoRetratil,         // 9
   centro_gravidade,        // 10
   vida,                    // 11
   fundo_laboratorio,       // 12

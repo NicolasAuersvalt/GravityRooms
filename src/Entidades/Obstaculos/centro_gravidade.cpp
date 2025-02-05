@@ -14,14 +14,11 @@ Centro_Gravidade::Centro_Gravidade(const sf::Vector2f pos,
   this->dano = 10;
 
   setSprite("assets/regiao_gravitacional.png", pos.x, pos.y);
-  // Adjust size to match the actual sprite dimensions
   setTamanho(sf::Vector2f(90.0f, 90.0f));
 
   setPosicao(pos.x, pos.y);
 
   sprite.setPosition(pos.x, pos.y);
-  std::cout << "centro_gravidade Position: " << pos.x << " " << pos.y
-            << std::endl;
 }
 
 Centro_Gravidade::~Centro_Gravidade() {}

@@ -33,7 +33,7 @@ class Background : public Entidade {
   void atualizarPosicao() {};
 
   void salvar(json &arquivo) override {};
-  void carregar(std::ifstream &arquivo) override {};
+  void carregar(json &arquivo) override {};
   std::string getTipo() const override { return "Background"; }
 };
 

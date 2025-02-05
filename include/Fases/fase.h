@@ -7,6 +7,7 @@
 
 #include "Entidades/Obstaculos/centro_gravidade.h"
 #include "Entidades/Obstaculos/espinho.h"
+#include "Entidades/Obstaculos/espinhoRetratil.h"
 #include "Entidades/Obstaculos/plataforma.h"
 #include "Entidades/Personagens/androide.h"
 #include "Entidades/Personagens/ciborgue.h"
@@ -31,6 +32,8 @@ using Entidades::Obstaculos::Centro_Gravidade;
 using Entidades::Obstaculos::Espinho;
 using Entidades::Obstaculos::Plataforma;
 
+using Entidades::Obstaculos::EspinhoRetratil;
+
 using Entidades::Personagens::Androide;
 using Entidades::Personagens::Ciborgue;
 using Entidades::Personagens::Clone;
@@ -53,6 +56,7 @@ class Fase : public Ente {
   int contadorMedios = 0;    // Contador de inimigos medios
   int contadorDificeis = 0;  // Contador de inimigos difíceis
   int contadorEspinho = 0;
+  int contadorEspinhoRetratil = 0;
   short obsAleatorio = 0;
   int contadorCg = 0;
 
@@ -77,7 +81,7 @@ class Fase : public Ente {
 
   void executar();
   std::string getTipo() const override { return "Fase"; }
-  void carregar(std::ifstream &arquivo) {}
+  void carregar(json &arquivo) {}
   void salvar(json &arquivo) override {}
   void criarBackground(const IDs::IDs ID_Fase) {
     bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID_Fase);
@@ -100,6 +104,7 @@ class Fase : public Ente {
   void criarEspinho(const Vector2f pos);
   void criarCentroGravidade(const Vector2f pos);
 
+  void criarEspinhoRetratil(const Vector2f pos);
   void setGerenciadorG(Gerenciador_Grafico *GG) {
     if (GG != nullptr) this->GG = GG;
   }

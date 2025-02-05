@@ -400,91 +400,82 @@ void Gravity_Rooms::salvarEntidades(const std::string &nomeArquivo) {
   }
 }
 void Gravity_Rooms::carregarEntidades(const std::string &nomeArquivo) {
+  // Limpa o estado atual - pode se tornar um metodo
   if (fase) {
     delete fase;
     fase = nullptr;
   }
   listaPersonagem.limparLista();
   listaObstaculo.limparLista();
+  listaBackgrounds.limparLista();
   GC.pJog1 = nullptr;
   GC.pJog2 = nullptr;
+  // end Limpa o estado atual - pode se tornar um metodo
+
   std::ifstream arquivo(nomeArquivo);
+  if (!arquivo.is_open()) {
+    std::cerr << "Erro ao abrir arquivo de salvamento!\n";
+    return;
+  }
 
-  if (arquivo.is_open()) {
-    json dados;
-    arquivo >> dados;
-    if (dados.empty() || !dados.is_array()) {
-      std::cerr << "Formato JSON inválido.\n";
-    }
-    std::string level = dados["fase"];
-    IDs::IDs faseID = (level == "laboratorio") ? IDs::IDs::fase_laboratorio
-                                               : IDs::IDs::fase_nave;
-    fase = (faseID == IDs::IDs::fase_laboratorio)
-               ? static_cast<Fase *>(new Laboratorio(faseID))
-               : static_cast<Fase *>(new Nave(faseID));
+  json dados;
+  arquivo >> dados;
 
-    for (size_t i = 1; i < dados.size(); i++) {
-      if (!dados[i].is_object())
-        continue;  // Pula valores inválidos como `null`
+  // Carrega a fase
+  std::string tipoFase = dados["fase"];
+  if (tipoFase == "laboratorio") {
+    fase = new Laboratorio(IDs::IDs::fase_laboratorio);
+  } else if (tipoFase == "nave") {
+    fase = new Nave(IDs::IDs::fase_nave);
+  }
+  fase->criarMapa();  // Pré-configura o mapa
 
-      IDs::IDs id = static_cast<IDs::IDs>(dados["id"]);
-      Vector2f pos(dados[i]["posicao"]["x"], dados[i]["posicao"]["y"]);
+  // Carrega todas as entidades
+  for (auto &entidadeData : dados["entities"]) {
+    std::string tipo = entidadeData["tipo"];
+    auto ente = Registry::getInstance().criar(entidadeData);
 
-      switch (id) {
-        case IDs::IDs::androide: {
-          fase->criarInimMedios(pos, GC.pJog1);
-          break;
-        }
-        case IDs::IDs::ciborgue:
-          fase->criarInimFaceis(pos, GC.pJog1);
-          break;
-        case IDs::IDs::clone:
-          fase->criarInimDificeis(pos, GC.pJog1);
-          break;
-        case IDs::IDs::plataforma:
-          fase->criarPlataforma(pos);
-          break;
-        case IDs::IDs::espinho:
-          fase->criarEspinho(pos);
-          break;
-        case IDs::IDs::centro_gravidade:
-          fase->criarCentroGravidade(pos);
-          break;
-        case IDs::IDs::tripulante:
-          fase->criarJogador(pos, 0);
-          if (fase->tripulantes[0]) {
-            GC.incluirTripulante(*(fase->tripulantes[0]));
-            GC.pJog1->setVida(dados[i]["vida"]);
-            Projetil *projetil =
-                fase->criarProjetil(pos, IDs::IDs::projetil_tripulante);
-            GC.pJog1->setProjetil(projetil);
-            listaPersonagem.incluir(projetil);
-          } else {
-            GC.incluirTripulante(*(fase->tripulantes[1]));
-            GC.pJog2->setVida(dados[i]["vida"]);
-            Projetil *projetil =
-                fase->criarProjetil(pos, IDs::IDs::projetil_tripulante);
-            GC.pJog2->setProjetil(projetil);
-            listaPersonagem.incluir(projetil);
-          }
-          break;
-        default:
-          std::cerr << "Tipo de inimigo desconhecido" << std::endl;
-          break;
+    if (ente) {
+      // Adiciona nas listas apropriadas
+      if (dynamic_cast<Personagem *>(ente.get())) {
+        listaPersonagem.incluir(dynamic_cast<Entidade *>(ente.release()));
+
+      } else if (dynamic_cast<Obstaculo *>(ente.get())) {
+        listaObstaculo.incluir(dynamic_cast<Entidade *>(ente.release()));
+      } else if (dynamic_cast<Background *>(ente.get())) {
+        listaBackgrounds.incluir(dynamic_cast<Entidade *>(ente.release()));
       }
     }
-
-    auto atualObstaculos = fase->listaObstaculos->LEs->getPrimeiro();
-    while (atualObstaculos != nullptr) {
-      listaObstaculo.incluir(
-          atualObstaculos->pInfo);  // Add entity to listaPersonagem
-      atualObstaculos = atualObstaculos->getProximo();
-    }
-    auto atualPersonagens = fase->listaPersonagens->LEs->getPrimeiro();
-    while (atualPersonagens != nullptr) {
-      listaPersonagem.incluir(
-          atualPersonagens->pInfo);  // Add entity to listaPersonagem
-      atualPersonagens = atualPersonagens->getProximo();
-    }
   }
+
+  // Reconecta inimigos aos tripulantes
+
+  // Reconecta jogadores e projéteis
+  auto atual = listaPersonagem.LEs->getPrimeiro();
+  while (atual != nullptr) {
+    if (auto jogador = dynamic_cast<Tripulante *>(atual->pInfo)) {
+      if (!GC.pJog1) {
+        GC.pJog1 = jogador;
+        Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
+                                                 IDs::IDs::projetil_tripulante);
+        fase->tripulantes[1]->setProjetil(projetil);
+      } else if (!GC.pJog2) {
+        GC.pJog2 = jogador;
+        Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
+                                                 IDs::IDs::projetil_tripulante);
+        fase->tripulantes[1]->setProjetil(projetil);
+      }
+    }
+    atual = atual->getProximo();
+  }
+  auto atual1 = listaPersonagem.LEs->getPrimeiro();
+  while (atual1 != nullptr) {
+    if (auto inimigo = dynamic_cast<Inimigo *>(atual1->pInfo)) {
+      if (GC.pJog1) {
+        inimigo->setTripulante(GC.pJog1);  // Reconecta o tripulante
+      }
+    }
+    atual1 = atual1->getProximo();
+  }
+  currentState = PLAYING;
 }

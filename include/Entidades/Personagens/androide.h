@@ -28,6 +28,10 @@ class Androide : public Inimigo {
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   void mover() override;
   int getDano();
+
+  REGISTRAR_CLASSE(Androide, "androide",
+                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
+                   nullptr, static_cast<IDs::IDs>(data["id"]));
 };
 
 }  // namespace Entidades::Personagens

@@ -37,7 +37,7 @@ class Botao : public Ente {
   void setTextura(Texture* textura);
   const Vector2f getPos() const;
   std::string getTipo() const override { return "Botao"; }
-  void carregar(std::ifstream& arquivo) {}
+  void carregar(json& arquivo) {}
   void salvar(json& arquivo) override {}
 };
 

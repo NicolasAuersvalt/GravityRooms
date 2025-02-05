@@ -64,7 +64,7 @@ class Menu : public Ente {
   void desenhar(Gerenciador_Grafico *GG);
   void setSelecionado(bool status);
   std::string getTipo() const override { return "Menu"; }
-  void carregar(std::ifstream &arquivo) {}
+  void carregar(json &arquivo) {}
   void salvar(json &arquivo) override {}
 };
 

@@ -6,6 +6,7 @@
 
 #include "Entidades/Obstaculos/centro_gravidade.h"
 #include "Entidades/Obstaculos/espinho.h"
+#include "Entidades/Obstaculos/espinhoRetratil.h"
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/projetil.h"
@@ -27,33 +28,27 @@ using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
 
 class Tripulante : public Personagem {
-private:
+ private:
   class Municao {
-  private:
+   private:
     int quantidade;
 
-  public:
+   public:
     Municao() : quantidade(0) {}
 
-    void setQtd(int qtd) 
-    { 
-      quantidade = qtd; 
-      }
-      
-    int getQtd() const 
-    { 
-      return quantidade; 
-      }
+    void setQtd(int qtd) { quantidade = qtd; }
+
+    int getQtd() const { return quantidade; }
 
     Municao operator++(int) {
-        Municao temp = *this;  // Cria uma cópia do objeto atual
-        quantidade += 1;
-        return temp;  // Retorna a cópia antes da alteração
+      Municao temp = *this;  // Cria uma cópia do objeto atual
+      quantidade += 1;
+      return temp;  // Retorna a cópia antes da alteração
     }
     Municao operator--(int) {
-        Municao temp = *this;  
-        quantidade -= 1;
-        return temp;  
+      Municao temp = *this;
+      quantidade -= 1;
+      return temp;
     }
   };
 
@@ -65,14 +60,14 @@ private:
   // ===/===/===/===/ Outros  ===/===/===/===/
   bool isPlayerOne;
 
-protected:
+ protected:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   // Gerenciadores::Gerenciador_Salvamento* GS;
   //  ===/===/===/===/ Outros  ===/===/===/===/
   Projetil *projetil;
 
-public:
+ public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
   Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID,
@@ -106,9 +101,12 @@ public:
   void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
 
+  REGISTRAR_CLASSE(Tripulante, "tripulante",
+                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
+                   sf::Vector2f(10, 10), static_cast<IDs::IDs>(data["id"]));
   void atirar();
 };
 
-} // namespace Entidades::Personagens
+}  // namespace Entidades::Personagens
 
 #endif

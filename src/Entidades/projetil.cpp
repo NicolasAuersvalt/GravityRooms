@@ -26,8 +26,6 @@ void Projetil::atualizar() {}
 
 void Projetil::setAtirador(Entidade *a) {}
 
-void Projetil::danificar(Personagem *p) {}
-
 int Projetil::getDano() { return dano; }
 
 bool Projetil::getAtivo() { return ativo; }

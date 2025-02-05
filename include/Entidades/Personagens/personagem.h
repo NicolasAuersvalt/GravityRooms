@@ -98,7 +98,7 @@ class Personagem : public Entidade {
     arquivo["posicao"]["x"] = getPosicao().x;
     arquivo["posicao"]["y"] = getPosicao().y;
   }
-  void carregar(std::ifstream &arquivo) override {};
+  void carregar(json &arquivo) override {};
   std::string getTipo() const override { return "Personagem"; }
 };
 
