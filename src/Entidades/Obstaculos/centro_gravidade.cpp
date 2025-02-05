@@ -31,8 +31,7 @@ void Centro_Gravidade::executar() {
 }
 
 void Centro_Gravidade::mover() {}
-void Centro_Gravidade::salvar() {}
 void Centro_Gravidade::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
 
 int Centro_Gravidade::getDano() { return dano; }
-} // namespace Entidades::Obstaculos
+}  // namespace Entidades::Obstaculos

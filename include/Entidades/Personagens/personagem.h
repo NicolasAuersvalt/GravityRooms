@@ -82,7 +82,6 @@ class Personagem : public Entidade {
   void recebeDano(int dano);
   void setPisando(bool pisa);
   bool getPisando();
-  void salvar();
   bool verificarVivo();
   void morrer();
   void atualizarPosicao();
@@ -93,6 +92,14 @@ class Personagem : public Entidade {
   void setVelFinal(const sf::Vector2f velFinal);
   const sf::Vector2f getVelFinal() const;
   void cair();
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["vida"] = getVida();
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+  }
+  void carregar(std::ifstream &arquivo) override {};
+  std::string getTipo() const override { return "Personagem"; }
 };
 
 }  // namespace Entidades::Personagens

@@ -52,6 +52,9 @@ class Fase : public Ente {
   int contadorFaceis = 0;    // Contador de inimigos fáceis
   int contadorMedios = 0;    // Contador de inimigos medios
   int contadorDificeis = 0;  // Contador de inimigos difíceis
+  int contadorEspinho = 0;
+  short obsAleatorio = 0;
+  int contadorCg = 0;
 
  public:
   bool complete;
@@ -73,7 +76,9 @@ class Fase : public Ente {
   ~Fase();
 
   void executar();
-
+  std::string getTipo() const override { return "Fase"; }
+  void carregar(std::ifstream &arquivo) {}
+  void salvar(json &arquivo) override {}
   void criarBackground(const IDs::IDs ID_Fase) {
     bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID_Fase);
 

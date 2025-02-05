@@ -12,8 +12,6 @@ Personagem::Personagem(const Vector2f pos, const Vector2f tam,
     : Entidade(pos, tam, ID), noChao(false), vivo(true), pontosVida(10) {}
 
 Personagem::~Personagem() {}
-void Personagem::salvar() {}
-
 const RectangleShape &Personagem::getCorpo() const { return corpo; }
 
 int Personagem::getVida() { return pontosVida; }

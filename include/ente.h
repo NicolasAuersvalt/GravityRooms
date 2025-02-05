@@ -6,10 +6,12 @@
 
 #include "Gerenciadores/gerenciador_grafico.h"
 #include "IDs/IDs.h"
+#include "json.hpp"
 
 using namespace std;
 using namespace sf;
 
+using json = nlohmann::json;
 using Gerenciadores::Gerenciador_Grafico;
 
 class Gerenciador_Grafico;
@@ -38,6 +40,9 @@ class Ente {
 
   FloatRect getHitBox() const { return sprite.getGlobalBounds(); }
   const IDs::IDs getID() const;
+  virtual void salvar(json &arquivo) = 0;
+  virtual void carregar(std::ifstream &arquivo) = 0;
+  virtual std::string getTipo() const = 0;
 };
 
 #endif

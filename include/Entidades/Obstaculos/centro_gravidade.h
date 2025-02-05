@@ -17,7 +17,10 @@ class Centro_Gravidade : public Obstaculo {
   ~Centro_Gravidade();
   void executar() override;
   void mover() override;
-  void salvar() override;
+
+  void salvar(json &arquivo) override {};
+  void carregar(std::ifstream &arquivo) override {};
+  std::string getTipo() const override { return "Background"; }
   void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   int getDano();

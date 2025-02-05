@@ -20,11 +20,13 @@ class Plataforma : public Obstaculo {
 
   void executar() override;
   void mover() override;
-  void salvar() override;
+
+  std::string getTipo() const override { return "Plataforma"; }
+  void carregar(std::ifstream& arquivo) {}
   // void desenhar(Gerenciador_Grafico pGG) override;
   // void atualizar() override;
   // void colisao(Entidade* outra) override;
-  void colisao(Entidade *outraEntidade,
+  void colisao(Entidade* outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   int getDano();
 };

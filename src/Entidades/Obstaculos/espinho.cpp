@@ -28,9 +28,6 @@ void Espinho::executar() {
   desenhar();
 }
 void Espinho::mover() {}
-void Espinho::salvar() {
-  // Add implementation
-}
 
 void Espinho::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
 int Entidades::Obstaculos::Espinho::getDano() { return dano; }

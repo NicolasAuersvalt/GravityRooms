@@ -80,9 +80,11 @@ class Gravity_Rooms {
   ~Gravity_Rooms();
   bool ligarMenu(IDs::IDs pMenu);
 
+  void salvarEntidades(const std::string &nomeArquivo);
   void executar();
   void criarJogadorDois();
   void criarFases(IDs::IDs faseSelecionada);
+  void carregarEntidades(const std::string &nomeArquivo);
   Lista_Entidades listaBackgrounds;
 };
 

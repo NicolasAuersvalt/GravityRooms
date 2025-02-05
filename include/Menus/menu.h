@@ -63,6 +63,9 @@ class Menu : public Ente {
   virtual void executar() = 0;
   void desenhar(Gerenciador_Grafico *GG);
   void setSelecionado(bool status);
+  std::string getTipo() const override { return "Menu"; }
+  void carregar(std::ifstream &arquivo) {}
+  void salvar(json &arquivo) override {}
 };
 
 }  // namespace Menus

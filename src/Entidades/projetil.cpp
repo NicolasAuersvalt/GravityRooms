@@ -32,7 +32,6 @@ int Projetil::getDano() { return dano; }
 
 bool Projetil::getAtivo() { return ativo; }
 
-void Projetil::salvar() {}
 void Projetil::mover() {
   if (ativo) {
     getSprite().move(20.0f, 0.0f);

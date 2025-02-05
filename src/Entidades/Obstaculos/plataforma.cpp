@@ -30,9 +30,6 @@ void Plataforma::executar() {
 void Plataforma::mover() {
   // Implementation
 }
-void Plataforma::salvar() {
-  // Implementation for saving state
-}
 
 void Plataforma::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   if (outraEntidade->getID() == IDs::IDs::clone ||
@@ -50,4 +47,4 @@ void Plataforma::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
 }
 int Plataforma::getDano() { return dano; }
 
-} // namespace Entidades::Obstaculos
+}  // namespace Entidades::Obstaculos

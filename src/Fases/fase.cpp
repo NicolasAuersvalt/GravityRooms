@@ -116,9 +116,27 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
       break;
 
     } break;
-
     case ('c'): {
-      criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+      if (contadorEspinho < 3) {
+        criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+        contadorEspinho++;
+      } else if (contadorDificeis < 3) {
+        criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
+                          tripulantes[0]);
+        contadorEspinho++;
+      } else {
+        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+        obsAleatorio = rand() % 2;
+        if (obsAleatorio == 0 && contadorEspinho < 7) {
+          criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+          contadorEspinho++;
+        } else if (obsAleatorio == 1 && contadorDificeis < 7) {
+          criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
+                            tripulantes[0]);
+          contadorDificeis++;
+        }
+      }
+      break;
 
     } break;
     case ('#'): {

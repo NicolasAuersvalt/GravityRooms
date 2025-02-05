@@ -10,15 +10,13 @@
 
                 "${workspaceFolder}/**",
 
-                "${workspaceFolder}/include",
-
-                "D:/Bella/GravityRooms/include"
+                "${workspaceFolder}/include"
 
             ],
 
             "defines": [],
 
-            "compilerPath":"C:/mingw64/bin/gcc.exe",
+            "compilerPath": "C:/MinGW/bin/g++.exe",
 
             "cStandard": "c17",
 
@@ -33,4 +31,3 @@
     "version": 4
 
 }
-

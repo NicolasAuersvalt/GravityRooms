@@ -31,7 +31,7 @@ class Projetil : public Entidade {
   void executar();
 
   void setVelocidade(const sf::Vector2f &vel);
-  void salvar();
+
   void mover();
   void atualizar();
   void setAtivo(bool i, sf::Vector2f pos);
@@ -43,6 +43,15 @@ class Projetil : public Entidade {
   void atualizarPosicao() {};
   void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["ativo"] = getAtivo();
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+  }
+  void carregar(std::ifstream &arquivo) override {};
+  std::string getTipo() const override { return "Projetil"; }
 };
 
 }  // namespace Entidades
