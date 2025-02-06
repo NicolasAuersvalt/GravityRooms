@@ -30,4 +30,6 @@ void Espinho::mover() {}
 
 void Espinho::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
 int Entidades::Obstaculos::Espinho::getDano() { return dano; }
+
+REGISTRAR_CLASSE(Espinho, "espinho")
 }  // namespace Entidades::Obstaculos

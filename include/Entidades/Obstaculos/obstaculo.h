@@ -25,11 +25,6 @@ class Obstaculo : public Entidade {
   bool getColidindo();
   void setColidindo(bool colide);
 
-  void salvar(json &arquivo) override {
-    arquivo["id"] = static_cast<int>(getID());
-    arquivo["posicao"]["x"] = getPosicao().x;
-    arquivo["posicao"]["y"] = getPosicao().y;
-  }
   virtual void colisao(Entidade *outraEntidade, sf::Vector2f ds) = 0;
   virtual void colisaoObstaculo(Vector2f ds, Personagem *pPersonagem);
 };

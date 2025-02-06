@@ -111,4 +111,5 @@ void Projetil::setAtivo(bool status, const Vector2f pos) {
   sprite.setPosition(pos.x, pos.y);
 }
 
+REGISTRAR_CLASSE(Projetil, "projetil")
 }  // namespace Entidades

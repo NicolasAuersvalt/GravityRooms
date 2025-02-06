@@ -57,4 +57,5 @@ void Clone::atirar() {
 }
 int Clone::getDano() { return dano; }
 
+REGISTRAR_CLASSE(Clone, "clone")
 }  // namespace Entidades::Personagens

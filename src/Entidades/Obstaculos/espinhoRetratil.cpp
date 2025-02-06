@@ -50,4 +50,6 @@ void EspinhoRetratil::colisao(Entidade* outraEntidade, sf::Vector2f ds) {}
 int EspinhoRetratil::getDano() { return dano; }
 
 bool EspinhoRetratil::estaLigado() const { return ligado; }
+
+REGISTRAR_CLASSE(EspinhoRetratil, "espinhoRetratil")
 }  // namespace Entidades::Obstaculos

@@ -5,6 +5,7 @@
 
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/tripulante.h"
+#include "Gerenciadores/registry.h"
 using namespace std;
 using namespace sf;
 using namespace Entidades::Personagens;
@@ -31,9 +32,13 @@ class Clone : public Inimigo {
   void setProjetil(Projetil *proj) { projetil = proj; };
   void atirar();
   int getDano();
-  REGISTRAR_CLASSE(Clone, "clone",
-                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
-                   nullptr, static_cast<IDs::IDs>(data["id"]));
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["vida"] = getVida();
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "clone";
+  }
 };
 
 }  // namespace Entidades::Personagens

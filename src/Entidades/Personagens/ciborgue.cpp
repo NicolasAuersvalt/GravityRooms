@@ -38,4 +38,6 @@ void Entidades::Personagens::Ciborgue::mover() {
 }
 void Ciborgue::salvarDataBuffer(nlohmann::ordered_json &json) {}
 int Ciborgue::getDano() { return dano; }
-} // namespace Entidades::Personagens
+
+REGISTRAR_CLASSE(Ciborgue, "ciborgue")
+}  // namespace Entidades::Personagens

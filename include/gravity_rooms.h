@@ -84,7 +84,7 @@ class Gravity_Rooms {
   void executar();
   void criarJogadorDois();
   void criarFases(IDs::IDs faseSelecionada);
-  void carregarEntidades(const std::string &nomeArquivo);
+  bool carregarEntidades(const std::string &nomeArquivo);
   Lista_Entidades listaBackgrounds;
 };
 

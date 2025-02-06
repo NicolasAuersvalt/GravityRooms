@@ -6,8 +6,9 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
+REGISTRAR_CLASSE(Tripulante, "tripulante");
 Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
-                       const IDs::IDs ID, bool isFirstPlayer)
+                       const IDs::IDs ID)
     : Personagem(pos, tam, ID), pontos(0), GF(pos) {
   projetil = new Projetil(Vector2f(-1000, -1000), Vector2f(50, 25),
                           IDs::IDs::projetil_tripulante);
@@ -20,7 +21,6 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
                       getSprite().getTexture()->getSize().y));
   // setPosicao(pos.x, pos.y);
   vivo = true;
-  isPlayerOne = isFirstPlayer;
   tempoSemColisao = 0.0f;
   noChao = false;
   sprite.setPosition(pos.x, pos.y);
@@ -45,6 +45,7 @@ void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
 
 void Tripulante::mover() {
   // Jogador 1 (WASD + Espaço)
+  cout << isPlayerOne << endl;
   cair();
   if (isPlayerOne) {
     string tecla = GE->isTeclaPressionada(sf::Keyboard::A);

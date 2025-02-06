@@ -94,9 +94,8 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
         return true;
       }
       if (selecao == IDs::IDs::botao_carregar) {
-        if (save.carregar(GC, listaPersonagem, listaObstaculo, fase)) {
-          currentState = PLAYING;
-          return true;
+        if (carregarEntidades("save.json")) {
+          out = true;
         }
       }
       if (selecao == IDs::IDs::botao_novoJogo) {
@@ -287,13 +286,12 @@ void Gravity_Rooms::executar() {
 
         listaPersonagem.desenharTodos();
 
-        GC.setLista_Entidades(&listaPersonagem, &listaObstaculo);
-
         GC.executar(&listaPersonagem, &listaObstaculo);
 
         GG.exibir();
 
         listaPersonagem.atualizarTodas();
+
         listaObstaculo.atualizarTodas();
 
         break;
@@ -408,7 +406,8 @@ void Gravity_Rooms::salvarEntidades(const std::string &nomeArquivo) {
     arquivo << j.dump(4);  // Formatação bonita com 4 espaços
   }
 }
-void Gravity_Rooms::carregarEntidades(const std::string &nomeArquivo) {
+
+bool Gravity_Rooms::carregarEntidades(const std::string &nomeArquivo) {
   // Limpa o estado atual - pode se tornar um metodo
   if (fase) {
     delete fase;
@@ -424,7 +423,7 @@ void Gravity_Rooms::carregarEntidades(const std::string &nomeArquivo) {
   std::ifstream arquivo(nomeArquivo);
   if (!arquivo.is_open()) {
     std::cerr << "Erro ao abrir arquivo de salvamento!\n";
-    return;
+    return false;
   }
 
   json dados;
@@ -437,18 +436,40 @@ void Gravity_Rooms::carregarEntidades(const std::string &nomeArquivo) {
   } else if (tipoFase == "nave") {
     fase = new Nave(IDs::IDs::fase_nave);
   }
-  fase->criarMapa();  // Pré-configura o mapa
 
   // Carrega todas as entidades
   for (auto &entidadeData : dados["entities"]) {
+    if (entidadeData.is_null() || !entidadeData.contains("tipo")) {
+      continue;  // Skip null entries and entries without "tipo"
+    }
+
     std::string tipo = entidadeData["tipo"];
-    auto ente = Registry::getInstance().criar(entidadeData);
+    auto &registry = Registry::getInstance();
+    auto ente = registry.criar(entidadeData);
 
     if (ente) {
       // Adiciona nas listas apropriadas
       if (dynamic_cast<Personagem *>(ente.get())) {
+        if (auto jogador = dynamic_cast<Tripulante *>(ente.get())) {
+          if (!GC.pJog1) {
+            cout << "here" << endl;
+            GC.pJog1 = jogador;
+            GC.pJog1->setPlayerOne(false);
+          } else if (!GC.pJog2) {
+            cout << "here jog2" << endl;
+            GC.pJog2 = jogador;
+            GC.pJog2->setPlayerOne(true);
+            Projetil *projetil = fase->criarProjetil(
+                Vector2f(200.0f, 100.0f), IDs::IDs::projetil_tripulante);
+            fase->tripulantes[1]->setProjetil(projetil);
+          }
+        } else {
+          if (GC.pJog1) {
+            auto inimigo = dynamic_cast<Inimigo *>(ente.get());
+            inimigo->setTripulante(GC.pJog1);
+          }
+        }
         listaPersonagem.incluir(dynamic_cast<Entidade *>(ente.release()));
-
       } else if (dynamic_cast<Obstaculo *>(ente.get())) {
         listaObstaculo.incluir(dynamic_cast<Entidade *>(ente.release()));
       } else if (dynamic_cast<Background *>(ente.get())) {
@@ -456,35 +477,15 @@ void Gravity_Rooms::carregarEntidades(const std::string &nomeArquivo) {
       }
     }
   }
-
-  // Reconecta inimigos aos tripulantes
-
-  // Reconecta jogadores e projéteis
-  auto atual = listaPersonagem.LEs->getPrimeiro();
-  while (atual != nullptr) {
-    if (auto jogador = dynamic_cast<Tripulante *>(atual->pInfo)) {
-      if (!GC.pJog1) {
-        GC.pJog1 = jogador;
-        Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
-                                                 IDs::IDs::projetil_tripulante);
-        fase->tripulantes[1]->setProjetil(projetil);
-      } else if (!GC.pJog2) {
-        GC.pJog2 = jogador;
-        Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
-                                                 IDs::IDs::projetil_tripulante);
-        fase->tripulantes[1]->setProjetil(projetil);
-      }
-    }
-    atual = atual->getProximo();
-  }
-  auto atual1 = listaPersonagem.LEs->getPrimeiro();
-  while (atual1 != nullptr) {
-    if (auto inimigo = dynamic_cast<Inimigo *>(atual1->pInfo)) {
-      if (GC.pJog1) {
-        inimigo->setTripulante(GC.pJog1);  // Reconecta o tripulante
-      }
-    }
-    atual1 = atual1->getProximo();
+  auto atualPersonagens = listaPersonagem.LEs->getPrimeiro();
+  while (atualPersonagens != nullptr) {
+    if (dynamic_cast<Inimigo *>(atualPersonagens->pInfo))
+      dynamic_cast<Inimigo *>(atualPersonagens->pInfo)
+          ->setTripulante(GC.pJog1);  // Add entity to listaPersonagem
+    if (dynamic_cast<Projetil *>(atualPersonagens->pInfo))
+      GC.pJog1->setProjetil(dynamic_cast<Projetil *>(atualPersonagens->pInfo));
+    atualPersonagens = atualPersonagens->getProximo();
   }
   currentState = PLAYING;
+  return true;
 }

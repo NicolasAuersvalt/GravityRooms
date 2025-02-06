@@ -13,6 +13,7 @@
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_fisico.h"
 #include "Gerenciadores/gerenciador_json.h"
+#include "Gerenciadores/registry.h"
 #include "json.hpp"
 
 using namespace sf;
@@ -20,10 +21,6 @@ using namespace std;
 
 using Gerenciadores::Gerenciador_Eventos;
 using Gerenciadores::Gerenciador_Fisica;
-
-// namespace Gerenciadores {
-// // class Gerenciador_Salvamento;
-// }
 
 namespace Entidades::Personagens {
 
@@ -53,7 +50,6 @@ class Tripulante : public Personagem {
   };
 
   Municao municao;
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
   int pontos;
   Gerenciador_Eventos *GE;
   Gerenciador_Fisica GF;
@@ -70,8 +66,7 @@ class Tripulante : public Personagem {
  public:
   // ===/===/===/===/ Obrigatório ===/===/===/===/
 
-  Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID,
-             bool isFirstPlayer = true);
+  Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Tripulante();
 
   void carregarDataBuffer(const nlohmann::ordered_json &json);
@@ -86,7 +81,7 @@ class Tripulante : public Personagem {
   void setProjetil(Projetil *new_projetil) { projetil = new_projetil; };
   void setGerenciadorEvento(Gerenciador_Eventos *GE);
   void setMunicao(int qtd);
-
+  void setPlayerOne(bool isone) { isPlayerOne = isone; }
   // Get
   bool getChao();
   int getPontos();
@@ -101,9 +96,13 @@ class Tripulante : public Personagem {
   void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
 
-  REGISTRAR_CLASSE(Tripulante, "tripulante",
-                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
-                   sf::Vector2f(10, 10), static_cast<IDs::IDs>(data["id"]));
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["vida"] = getVida();
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "tripulante";
+  }
   void atirar();
 };
 

@@ -23,16 +23,16 @@ class Plataforma : public Obstaculo {
 
   std::string getTipo() const override { return "Plataforma"; }
   void carregar(json& arquivo) {}
-  // void desenhar(Gerenciador_Grafico pGG) override;
-  // void atualizar() override;
-  // void colisao(Entidade* outra) override;
   void colisao(Entidade* outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   int getDano();
 
-  REGISTRAR_CLASSE(Plataforma, "plataforma",
-                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
-                   sf::Vector2f(10, 10), static_cast<IDs::IDs>(data["id"]));
+  void salvar(json& arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "plataforma";
+  }
 };
 }  // namespace Entidades::Obstaculos
 #endif

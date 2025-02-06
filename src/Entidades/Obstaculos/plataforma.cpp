@@ -47,4 +47,6 @@ void Plataforma::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
 }
 int Plataforma::getDano() { return dano; }
 
+REGISTRAR_CLASSE(Plataforma, "plataforma")
+
 }  // namespace Entidades::Obstaculos

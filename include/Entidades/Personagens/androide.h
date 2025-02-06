@@ -29,9 +29,13 @@ class Androide : public Inimigo {
   void mover() override;
   int getDano();
 
-  REGISTRAR_CLASSE(Androide, "androide",
-                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
-                   nullptr, static_cast<IDs::IDs>(data["id"]));
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["vida"] = getVida();
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "androide";
+  }
 };
 
 }  // namespace Entidades::Personagens

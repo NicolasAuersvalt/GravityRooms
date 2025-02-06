@@ -47,12 +47,10 @@ class Projetil : public Entidade {
     arquivo["ativo"] = getAtivo();
     arquivo["posicao"]["x"] = getPosicao().x;
     arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "projetil";
   }
-  REGISTRAR_CLASSE(Projetil, "projetil",
-                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
-                   sf::Vector2f(10, 10), static_cast<IDs::IDs>(data["id"]));
   void carregar(json &arquivo) override {};
-  std::string getTipo() const override { return "Projetil"; }
+  std::string getTipo() const override { return "projetil"; }
 };
 
 }  // namespace Entidades

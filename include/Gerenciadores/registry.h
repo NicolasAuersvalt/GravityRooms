@@ -2,6 +2,7 @@
 #define REGISTRY_H
 
 #include <functional>
+#include <iostream>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -22,13 +23,19 @@ class Registry {
   }
 
   void registrarClasse(const std::string& tipo, FactoryFunc factory) {
+    std::cout << "Registrando classe: " << tipo << std::endl;
     factories[tipo] = factory;
   }
 
   std::unique_ptr<Ente> criar(json& data) {
     std::string tipo = data["tipo"];
     auto it = factories.find(tipo);
-    return (it != factories.end()) ? it->second(data) : nullptr;
+    if (it != factories.end()) {
+      return it->second(data);
+    } else {
+      std::cerr << "Tipo de entidade não registrado: " << tipo << std::endl;
+      return nullptr;
+    }
   }
 
  private:
@@ -36,15 +43,39 @@ class Registry {
   std::unordered_map<std::string, FactoryFunc> factories;
 };
 
-#define REGISTRAR_CLASSE(CLASS, TIPO, ...)                           \
-  static struct Registrar##CLASS {                                   \
-    Registrar##CLASS() {                                             \
-      Registry::getInstance().registrarClasse(TIPO, [](json& data) { \
-        auto obj = std::make_unique<CLASS>(__VA_ARGS__);             \
-        obj->carregar(data);                                         \
-        return obj;                                                  \
-      });                                                            \
-    }                                                                \
+#define REGISTRAR_CLASSE(CLASS, TIPO)                                          \
+  static struct Registrar##CLASS {                                             \
+    Registrar##CLASS() {                                                       \
+      Registry::getInstance().registrarClasse(                                 \
+          TIPO,                                                                \
+          [](json& data)                                                       \
+              -> std::unique_ptr<                                              \
+                  Ente> { /* Retorno explícito necessário */                   \
+                          if constexpr (std::is_constructible_v<               \
+                                            CLASS, sf::Vector2f, sf::Vector2f, \
+                                            IDs::IDs>) {                       \
+                            return std::make_unique<CLASS>(                    \
+                                sf::Vector2f(data["posicao"]["x"],             \
+                                             data["posicao"]["y"]),            \
+                                sf::Vector2f(10, 10),                          \
+                                static_cast<IDs::IDs>(data["id"]));            \
+                          } else if constexpr (std::is_constructible_v<        \
+                                                   CLASS, sf::Vector2f,        \
+                                                   std::nullptr_t,             \
+                                                   IDs::IDs>) {                \
+                            return std::make_unique<CLASS>(                    \
+                                sf::Vector2f(data["posicao"]["x"],             \
+                                             data["posicao"]["y"]),            \
+                                nullptr, static_cast<IDs::IDs>(data["id"]));   \
+                          } else {                                             \
+                            std::cerr << "Erro: Nenhum construtor adequado "   \
+                                         "encontrado para "                    \
+                                      << TIPO << std::endl;                    \
+                            return nullptr; /* Necessário para evitar erro de \
+                                               conversão */                   \
+                          }                                                    \
+          });                                                                  \
+    }                                                                          \
   } registrar##CLASS;
 
 #endif

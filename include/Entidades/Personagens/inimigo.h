@@ -46,7 +46,7 @@ class Inimigo : public Personagem {
                            const sf::Vector2f posInimigo);
   void movimentarAleatorio();
   int getNivelMaldade() const;
-  void setTripulante(Tripulante *tripulante) { tripulante = tripulante; };
+  void setTripulante(Tripulante *tripulante) { this->tripulante = tripulante; };
 };
 
 }  // namespace Entidades::Personagens

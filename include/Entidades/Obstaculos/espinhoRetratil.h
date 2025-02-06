@@ -25,12 +25,15 @@ class EspinhoRetratil : public Obstaculo {
   int getDano();
 
   bool estaLigado() const;
-  REGISTRAR_CLASSE(EspinhoRetratil, "espinhoretratil",
-                   sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),
-                   sf::Vector2f(10, 10), static_cast<IDs::IDs>(data["id"]));
 
   void carregar(json& arquivo) {}
-  std::string getTipo() const override { return "espinhoretratil"; }
+  std::string getTipo() const override { return "espinhoRetratil"; }
+  void salvar(json& arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "espinhoRetratil";
+  }
 };
 
 }  // namespace Entidades::Obstaculos

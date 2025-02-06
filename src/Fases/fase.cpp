@@ -186,12 +186,12 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
 void Fase::criarJogador(const Vector2f pos, int index) {
   tripulantes[index] =
-      new Tripulante(pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante, index);
+      new Tripulante(pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante);
   if (tripulantes[index] == nullptr) {
     std::cerr << "Fase::nao foi possivel criar jogador" << std::endl;
     exit(1);
   }
-
+  tripulantes[index]->setPlayerOne(index);
   listaPersonagens->incluir(static_cast<Entidade *>(tripulantes[index]));
 }
 void Fase::desenhar() {
