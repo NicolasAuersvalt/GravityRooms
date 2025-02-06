@@ -23,7 +23,6 @@ class Registry {
   }
 
   void registrarClasse(const std::string& tipo, FactoryFunc factory) {
-    std::cout << "Registrando classe: " << tipo << std::endl;
     factories[tipo] = factory;
   }
 

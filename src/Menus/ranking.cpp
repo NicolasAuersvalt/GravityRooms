@@ -12,8 +12,8 @@ Ranking::Ranking(IDs::IDs id)
 
 Ranking::Ranking(const IDs::IDs ID, std::string nome,
                  const unsigned int tamFonte)
-    : Menu(IDs::IDs::menu_pausa,  // ID CORRETO
-           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte) {
+    : Menu(IDs::IDs::menu_pausa, sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y),
+           nome, tamFonte) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
@@ -22,9 +22,6 @@ Ranking::Ranking(const IDs::IDs ID, std::string nome,
 Ranking::~Ranking() {}
 
 void Ranking::criarBotoes() {
-  // Centralizar horizontalmente (igual ao menu principal)
-  // float bottomY = tamJanela.y * 0.85f;
-  // Botões em maiúsculas e centralizados
   addBotao("VOLTAR PARA O MENU",
            sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),
            IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
@@ -48,7 +45,7 @@ void Ranking::carregarRanking() {
   float startY = tamJanela.y * 0.75f;
   float spacing = tamBotao.y * 1.5f;
 
-  // Mostre apenas o top 5
+  // Mostra apenas o top 5
   const auto &rankingArray = rankingData["ranking"];
   int maxDisplay = std::min(5, static_cast<int>(rankingArray.size()));
 

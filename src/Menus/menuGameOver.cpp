@@ -5,7 +5,7 @@ namespace Menus {
 MenuGameOver::MenuGameOver(IDs::IDs id)
     : Menu(IDs::IDs::menu_game_over,
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180),
-      texto("", 30),  // Initialize texto with empty string and font size
+      texto("", 30),
       nome(""),
       pontuacao(0) {
   titulo.setPos(
@@ -15,10 +15,9 @@ MenuGameOver::MenuGameOver(IDs::IDs id)
 
 MenuGameOver::MenuGameOver(const IDs::IDs ID, std::string nome,
                            const unsigned int tamFonte)
-    : Menu(IDs::IDs::menu_game_over,  // ID CORRETO
+    : Menu(IDs::IDs::menu_game_over,
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte),
-      texto("", 30),  // Initialize texto with empty string and font size
-      nome(""),
+      texto("", 30),
       pontuacao(0) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
@@ -86,11 +85,9 @@ void MenuGameOver::carregarMenuGameOver() {
   file >> rankingData;
   file.close();
 
-  // Starting position and spacing
-  float startY = tamJanela.y * 0.3f;  // Start 30% from top
-  float spacing = tamBotao.y * 1.5f;  // 1.5x button height spacing
+  float startY = tamJanela.y * 0.3f;
+  float spacing = tamBotao.y * 1.5f;
 
-  // Access the "ranking" array
   const auto &rankingArray = rankingData["ranking"];
   int position = 1;
 

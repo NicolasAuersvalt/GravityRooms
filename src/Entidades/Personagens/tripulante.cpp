@@ -25,8 +25,6 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   noChao = false;
   sprite.setPosition(pos.x, pos.y);
   setMunicao(40);
-  std::cout << "TripulantePosition: " << pos.x << " " << pos.y << "vivo "
-            << vivo << std::endl;
 }
 
 Tripulante::~Tripulante() {}
@@ -44,8 +42,7 @@ int Tripulante::getMunicao() { return municao.getQtd(); }
 void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
 
 void Tripulante::mover() {
-  // Jogador 1 (WASD + Espaço)
-  cout << isPlayerOne << endl;
+  // Jogador 1 (WASD + Q)
   cair();
   if (isPlayerOne) {
     string tecla = GE->isTeclaPressionada(sf::Keyboard::A);
@@ -58,18 +55,16 @@ void Tripulante::mover() {
     }
     tecla = GE->isTeclaPressionada(sf::Keyboard::W);
     if (tecla == "W" && noChao) {
-      // Jump only if on ground
       float jumpForce = -12.0f;  // controle do pulo
       velFinal.y = jumpForce;
       noChao = false;
     }
     tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
     if (tecla == "Q" && noChao) {
-      // Jump only if on ground
-      atirar();  // o correto
+      atirar();
     }
   }
-  // Jogador 2 (Setas + Q)
+  // Jogador 2 (Setas + Z)
   else {
     string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
     if (tecla == "Left Arrow") {
@@ -81,17 +76,13 @@ void Tripulante::mover() {
     }
     tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
     if (tecla == "Space" && noChao) {
-      // Jump only if on ground
       float jumpForce = -12.0f;  // controle do pulo
       velFinal.y = jumpForce;
       noChao = false;
     }
     tecla = GE->isTeclaPressionada(sf::Keyboard::Z);
     if (tecla == "Z" && noChao) {
-      // Jump only if on ground
       atirar();  // o correto
-
-      cout << "player 1 is Shooting projectile" << endl;
     }
   }
 
@@ -170,7 +161,7 @@ void Tripulante::colisao(Entidade *outraEntidade, Vector2f ds) {
         recebeDano(inimigo->getDano());  // Aplica o dano do inimigo
       }
     } break;
-    case (IDs::IDs::clone):  //  inimigo fácil
+    case (IDs::IDs::clone):  //  inimigo difícil
     {
       Entidades::Personagens::Inimigo *inimigo =
           dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
@@ -178,7 +169,7 @@ void Tripulante::colisao(Entidade *outraEntidade, Vector2f ds) {
         recebeDano(inimigo->getDano());  // Aplica o dano do inimigo
       }
     } break;
-    case (IDs::IDs::androide):  //  inimigo fácil
+    case (IDs::IDs::androide):  //  inimigo médio
     {
       Entidades::Personagens::Inimigo *inimigo =
           dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);

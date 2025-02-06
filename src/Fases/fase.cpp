@@ -228,7 +228,6 @@ void Fase::criarInimDificeis(const Vector2f pos, Tripulante *tripulante) {
 
   clone->setProjetil(
       criarProjetil(Vector2f(100.0f, 100.0f), IDs::IDs::projetil_inimigo));
-  std::cout << "Fase:: foi possivel criar inim dificil" << std::endl;
 }
 void Fase::executar() { desenhar(); }
 
@@ -243,5 +242,18 @@ Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   listaPersonagens->incluir(static_cast<Entidade *>(projetil));
   return projetil;
 }
+void Fase::criarBackground(const IDs::IDs ID_Fase) {
+  bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID_Fase);
 
+  if (bg == nullptr) {
+    cout << "Fase::nao foi possivel criar jogador" << endl;
+    exit(1);
+  }
+
+  listaBackground->incluir(static_cast<Entidade *>(bg));
+}
+
+void Fase::setGerenciadorG(Gerenciador_Grafico *GG) {
+  if (GG != nullptr) this->GG = GG;
+}
 }  // namespace Fases

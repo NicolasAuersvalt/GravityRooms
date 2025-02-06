@@ -30,6 +30,7 @@ class Clone : public Inimigo {
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   void mover() override;
   void setProjetil(Projetil *proj) { projetil = proj; };
+  Projetil *getProjetil() { return projetil; };
   void atirar();
   int getDano();
   void salvar(json &arquivo) override {

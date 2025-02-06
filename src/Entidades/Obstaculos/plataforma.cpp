@@ -10,7 +10,6 @@ Plataforma::Plataforma(sf::Vector2f pos, const sf::Vector2f tam,
                        const IDs::IDs ID)
     : Obstaculo(pos, tam, ID) {
   this->dano = 0;
-  // setSprite("assets/plataformaP.png", pos.x, pos.y);
 
   setSprite("assets/plataforma.png", pos.x, pos.y);
   setTamanho(sf::Vector2f(266.0f, 80.0f));
@@ -22,14 +21,11 @@ Plataforma::Plataforma(sf::Vector2f pos, const sf::Vector2f tam,
 Plataforma::~Plataforma() {}
 
 void Plataforma::executar() {
-  // Implementation
   mover();
   desenhar();
 }
 
-void Plataforma::mover() {
-  // Implementation
-}
+void Plataforma::mover() {}
 
 void Plataforma::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   if (outraEntidade->getID() == IDs::IDs::clone ||
@@ -38,11 +34,6 @@ void Plataforma::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
       outraEntidade->getID() == IDs::IDs::tripulante) {
     colisaoObstaculo(
         ds, static_cast<Entidades::Personagens::Personagem *>(outraEntidade));
-    // } else if (outraEntidade->getID() == IDs::IDs::projetil_inimigo) {
-    //   Entidades::Projetil* projetil =
-    //       dynamic_cast<Item::Projetil*>(outraEntidade);
-    //   projetil->setColidiu(true);
-    //   projetil->setVelocidade(sf::Vector2f(0.0f, 0.0f));
   }
 }
 int Plataforma::getDano() { return dano; }

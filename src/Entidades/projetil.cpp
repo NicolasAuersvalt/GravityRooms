@@ -44,7 +44,7 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
   if (!outraEntidade) {
     std::cout << "Warning: Null entity in collision" << std::endl;
     return;
-  }  // TESTE
+  }
   switch (outraEntidade->getID()) {
     case (IDs::IDs::clone): {
       if (ID == IDs::IDs::projetil_tripulante) {

@@ -83,39 +83,21 @@ class Fase : public Ente {
   std::string getTipo() const override { return "Fase"; }
   void carregar(json &arquivo) {}
   void salvar(json &arquivo) override {}
-  void criarBackground(const IDs::IDs ID_Fase) {
-    bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID_Fase);
-
-    if (bg == nullptr) {
-      cout << "Fase::nao foi possivel criar jogador" << endl;
-      exit(1);
-    }
-
-    listaBackground->incluir(static_cast<Entidade *>(bg));
-  }
-
+  void criarBackground(const IDs::IDs ID_Fase);
   void criarInimFaceis(const Vector2f pos, Tripulante *tripulante);
-
   void criarInimDificeis(const Vector2f pos, Tripulante *tripulante);
   void criarInimMedios(const Vector2f pos, Tripulante *tripulante);
-
   void criarJogador(const Vector2f pos, int index);
   void criarPlataforma(const Vector2f pos);
   void criarEspinho(const Vector2f pos);
   void criarCentroGravidade(const Vector2f pos);
-
   void criarEspinhoRetratil(const Vector2f pos);
-  void setGerenciadorG(Gerenciador_Grafico *GG) {
-    if (GG != nullptr) this->GG = GG;
-  }
+  void setGerenciadorG(Gerenciador_Grafico *GG);
   Gerenciador_Grafico *getGerenciador() { return GG; }
-
   virtual void criarEntidades(char letra, const Vector2f pos);
-
   virtual void criarFundo() = 0;  // fundo
   virtual void criarMapa() = 0;
   virtual void desenhar() = 0;
-
   Entidades::Projetil *criarProjetil(const Vector2f pos, IDs::IDs ID);
 };
 }  // namespace Fases
