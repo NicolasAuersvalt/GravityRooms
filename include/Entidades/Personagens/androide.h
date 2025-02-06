@@ -12,11 +12,11 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Androide : public Inimigo {
- private:
+private:
   bool movingRight;
 
- protected:
- public:
+protected:
+public:
   Androide(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   ~Androide();
 
@@ -38,6 +38,6 @@ class Androide : public Inimigo {
   }
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

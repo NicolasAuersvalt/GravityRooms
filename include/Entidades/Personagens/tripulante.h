@@ -25,12 +25,12 @@ using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
 
 class Tripulante : public Personagem {
- private:
+private:
   class Municao {
-   private:
+  private:
     int quantidade;
 
-   public:
+  public:
     Municao() : quantidade(0) {}
 
     void setQtd(int qtd) { quantidade = qtd; }
@@ -38,9 +38,9 @@ class Tripulante : public Personagem {
     int getQtd() const { return quantidade; }
 
     Municao operator++(int) {
-      Municao temp = *this;  // Cria uma cópia do objeto atual
+      Municao temp = *this; // Cria uma cópia do objeto atual
       quantidade += 1;
-      return temp;  // Retorna a cópia antes da alteração
+      return temp; // Retorna a cópia antes da alteração
     }
     Municao operator--(int) {
       Municao temp = *this;
@@ -55,10 +55,10 @@ class Tripulante : public Personagem {
   Gerenciador_Fisica GF;
   bool isPlayerOne;
 
- protected:
+protected:
   Projetil *projetil;
 
- public:
+public:
   Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Tripulante();
 
@@ -92,6 +92,6 @@ class Tripulante : public Personagem {
   void atirar();
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

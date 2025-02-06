@@ -49,18 +49,18 @@ using namespace std;
 namespace Fases {
 
 class Fase : public Ente {
- private:
- protected:
+private:
+protected:
   short inimAleatorio = 0;
-  int contadorFaceis = 0;    // Contador de inimigos fáceis
-  int contadorMedios = 0;    // Contador de inimigos medios
-  int contadorDificeis = 0;  // Contador de inimigos difíceis
+  int contadorFaceis = 0;   // Contador de inimigos fáceis
+  int contadorMedios = 0;   // Contador de inimigos medios
+  int contadorDificeis = 0; // Contador de inimigos difíceis
   int contadorEspinho = 0;
   int contadorEspinhoRetratil = 0;
   short obsAleatorio = 0;
   int contadorCg = 0;
 
- public:
+public:
   bool complete;
   Lista_Entidades *listaObstaculos;
   Gerenciador_Grafico *GG;
@@ -95,11 +95,11 @@ class Fase : public Ente {
   void setGerenciadorG(Gerenciador_Grafico *GG);
   Gerenciador_Grafico *getGerenciador() { return GG; }
   virtual void criarEntidades(char letra, const Vector2f pos);
-  virtual void criarFundo() = 0;  // fundo
+  virtual void criarFundo() = 0; // fundo
   virtual void criarMapa() = 0;
   virtual void desenhar() = 0;
   Entidades::Projetil *criarProjetil(const Vector2f pos, IDs::IDs ID);
 };
-}  // namespace Fases
+} // namespace Fases
 
 #endif

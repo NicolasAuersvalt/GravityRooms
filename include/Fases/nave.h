@@ -9,11 +9,11 @@ using namespace sf;
 namespace Fases {
 
 class Nave : public Fase {
- private:
+private:
   const int maxInimMedios = 2;
 
- protected:
- public:
+protected:
+public:
   Nave(const IDs::IDs ID);
   ~Nave();
 
@@ -25,6 +25,6 @@ class Nave : public Fase {
 
   void desenhar() override;
 };
-}  // namespace Fases
+} // namespace Fases
 
 #endif

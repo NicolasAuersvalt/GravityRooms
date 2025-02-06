@@ -4,7 +4,7 @@ namespace Gerenciadores {
 float Gerenciador_Fisica::aplicarGravidade() {
   // Aplica a gravidade ao objeto, alterando sua velocidade na direção Y
   return velocidade.y +=
-         gravidade*tempo; // Acelerando na direção Y devido à gravidade
+         gravidade * tempo; // Acelerando na direção Y devido à gravidade
 }
 
 void Gerenciador_Fisica::atualizarPosicao() {
@@ -38,20 +38,20 @@ void Gerenciador_Fisica::setPosicao(const Vector2f &novaPosicao) {
 
 double Gerenciador_Fisica::gravidadePersonagemBuracoNegro() {
 
-        double M = 1.989e30 * 10; // Massa do buraco negro (10 massas solares)
-        const double G = 6.67430e-11; // Constante gravitacional (m^3 kg^-1 s^-2)
-        const double m = 70; // Massa do personagem (kg)
-        const double a = 1.0; // Distância inicial (m)
-        const double b = 0.1; // Distância final (m)
-        const int n = 100; // Número de subdivisões para precisão de 5 casas
-        double soma = 0.0;
-        double dx = (b - a) / n;
+  double M = 1.989e30 * 10;     // Massa do buraco negro (10 massas solares)
+  const double G = 6.67430e-11; // Constante gravitacional (m^3 kg^-1 s^-2)
+  const double m = 70;          // Massa do personagem (kg)
+  const double a = 1.0;         // Distância inicial (m)
+  const double b = 0.1;         // Distância final (m)
+  const int n = 100; // Número de subdivisões para precisão de 5 casas
+  double soma = 0.0;
+  double dx = (b - a) / n;
 
-        for (int i = 0; i < n; i++) {
-            double x = a + i * dx; // Ponto na subdivisão
-            soma += (G * M * m) / (x * x) * abs(dx);
-        }
+  for (int i = 0; i < n; i++) {
+    double x = a + i * dx; // Ponto na subdivisão
+    soma += (G * M * m) / (x * x) * abs(dx);
+  }
 
-        return soma;
+  return soma;
 }
 } // namespace Gerenciadores

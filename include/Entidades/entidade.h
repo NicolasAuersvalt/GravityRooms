@@ -19,16 +19,16 @@ class Gerenciador_Grafico;
 namespace Entidades {
 
 class Entidade : public Ente {
- private:
- protected:
-  Vector2f pos;  // Posição (x,y)
-  Vector2f tam;  // Dimensão (x,y)
+private:
+protected:
+  Vector2f pos; // Posição (x,y)
+  Vector2f tam; // Dimensão (x,y)
 
   ostringstream buffer;
 
   RectangleShape corpo;
 
- public:
+public:
   Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   virtual ~Entidade();
 
@@ -44,6 +44,6 @@ class Entidade : public Ente {
                        sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f)) = 0;
 };
 
-}  // namespace Entidades
+} // namespace Entidades
 
 #endif

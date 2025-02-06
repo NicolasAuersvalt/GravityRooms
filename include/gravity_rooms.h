@@ -55,7 +55,7 @@ using namespace std;
 using namespace sf;
 
 class Gravity_Rooms {
- private:
+private:
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
   Gerenciador_Eventos GE;
@@ -74,8 +74,8 @@ class Gravity_Rooms {
   GameState currentState = MAIN;
   int currentPontos;
 
- protected:
- public:
+protected:
+public:
   Gravity_Rooms();
   ~Gravity_Rooms();
   bool ligarMenu(IDs::IDs pMenu);

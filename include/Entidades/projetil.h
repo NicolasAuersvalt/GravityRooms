@@ -13,7 +13,7 @@ using namespace Entidades;
 namespace Entidades {
 
 class Projetil : public Entidade {
- private:
+private:
   static int danoProjetil;
   bool ativo;
 
@@ -22,8 +22,8 @@ class Projetil : public Entidade {
   int dano;
   Vector2f velocidade;
 
- protected:
- public:
+protected:
+public:
   Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   virtual ~Projetil();
 
@@ -53,6 +53,6 @@ class Projetil : public Entidade {
   std::string getTipo() const override { return "projetil"; }
 };
 
-}  // namespace Entidades
+} // namespace Entidades
 
 #endif

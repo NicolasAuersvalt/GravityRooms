@@ -33,4 +33,4 @@ void Centro_Gravidade::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
 int Centro_Gravidade::getDano() { return dano; }
 
 REGISTRAR_CLASSE(Centro_Gravidade, "centro_gravidade")
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos

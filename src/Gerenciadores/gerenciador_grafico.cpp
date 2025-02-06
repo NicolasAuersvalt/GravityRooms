@@ -73,12 +73,12 @@ void Gerenciador_Grafico::exibir() { window.display(); }
 
 // Desenhar todos os objetos na tela
 void Gerenciador_Grafico::desenhar(Sprite &sprite) {
-  window.clear();  // Limpa a tela
+  window.clear(); // Limpa a tela
 
   // Desenha o fundo (ou qualquer sprite que seja passado)
   window.draw(sprite);
 
-  window.display();  // Exibe os objetos na tela
+  window.display(); // Exibe os objetos na tela
 }
 
 void Gerenciador_Grafico::desenharTexto(const Drawable &Texto) {
@@ -112,7 +112,7 @@ void Gerenciador_Grafico::executar() {
     if (event.type == sf::Event::Closed) {
       fechar();
     }
-    window.display();  // Exibe a tela atualizada
+    window.display(); // Exibe a tela atualizada
   }
 }
 
@@ -121,4 +121,4 @@ void Gerenciador_Grafico::desenharBackground(Sprite &sprite) {
   window.draw(sprite);
 }
 
-}  // namespace Gerenciadores
+} // namespace Gerenciadores

@@ -5,7 +5,7 @@
 #include <mutex>
 #include <thread>
 
-#include "json.hpp"  // Inclua a biblioteca nlohmann/json
+#include "json.hpp" // Inclua a biblioteca nlohmann/json
 
 using json = nlohmann::json;
 
@@ -14,7 +14,7 @@ std::mutex mtx;
 
 // Classe Item
 class Item {
- public:
+public:
   std::string nome;
   int quantidade;
 
@@ -33,7 +33,7 @@ class Item {
 
 // Classe Inventario
 class Inventario {
- public:
+public:
   std::vector<Item> itens;
 
   // Adiciona um item ao inventário
@@ -60,11 +60,11 @@ class Inventario {
 
 // Classe Jogador
 class Jogador {
- public:
+public:
   float x, y;
   std::string nome;
   sf::RectangleShape shape;
-  Inventario inventario;  // Relacionamento: Jogador tem um Inventário
+  Inventario inventario; // Relacionamento: Jogador tem um Inventário
 
   Jogador(float x = 100, float y = 100, std::string nome = "Jogador")
       : x(x), y(y), nome(nome) {
@@ -85,7 +85,7 @@ class Jogador {
         {"x", x},
         {"y", y},
         {"nome", nome},
-        {"inventario", inventario.toJson()}  // Inclui o inventário no JSON
+        {"inventario", inventario.toJson()} // Inclui o inventário no JSON
     };
   }
 
@@ -94,27 +94,27 @@ class Jogador {
     x = j.at("x").get<float>();
     y = j.at("y").get<float>();
     nome = j.at("nome").get<std::string>();
-    inventario.fromJson(j.at("inventario"));  // Carrega o inventário
+    inventario.fromJson(j.at("inventario")); // Carrega o inventário
     shape.setPosition(x, y);
   }
 
   void salvar(const std::string &arquivo) {
-    std::lock_guard<std::mutex> lock(mtx);  // Bloqueia o acesso concorrente
+    std::lock_guard<std::mutex> lock(mtx); // Bloqueia o acesso concorrente
     std::ofstream file(arquivo);
     if (file.is_open()) {
-      json j = toJson();  // Converte o objeto para JSON
-      file << j.dump(4);  // Salva o JSON no arquivo
+      json j = toJson(); // Converte o objeto para JSON
+      file << j.dump(4); // Salva o JSON no arquivo
       file.close();
     }
   }
 
   void carregar(const std::string &arquivo) {
-    std::lock_guard<std::mutex> lock(mtx);  // Bloqueia o acesso concorrente
+    std::lock_guard<std::mutex> lock(mtx); // Bloqueia o acesso concorrente
     std::ifstream file(arquivo);
     if (file.is_open()) {
       json j;
-      file >> j;    // Lê o JSON do arquivo
-      fromJson(j);  // Converte o JSON de volta para o objeto
+      file >> j;   // Lê o JSON do arquivo
+      fromJson(j); // Converte o JSON de volta para o objeto
       file.close();
     }
   }
@@ -135,7 +135,7 @@ int main() {
 
   // Verifica se o arquivo de salvamento existe
   std::string arquivoSalvamento = "jogador_save.json";
-  Jogador jogador;  // Posição inicial padrão
+  Jogador jogador; // Posição inicial padrão
 
   if (arquivoExiste(arquivoSalvamento)) {
     std::cout << "Arquivo de salvamento encontrado. Carregando estado do "
@@ -154,7 +154,8 @@ int main() {
   while (window.isOpen()) {
     sf::Event event;
     while (window.pollEvent(event)) {
-      if (event.type == sf::Event::Closed) window.close();
+      if (event.type == sf::Event::Closed)
+        window.close();
 
       // Menu de Pausa
       if (event.type == sf::Event::KeyPressed) {
@@ -163,7 +164,7 @@ int main() {
           if (pausado) {
             // Salva o estado do jogador em uma thread separada
             std::thread t(salvarJogador, std::ref(jogador), arquivoSalvamento);
-            t.detach();  // Executa em segundo plano
+            t.detach(); // Executa em segundo plano
           }
         }
       }
@@ -175,7 +176,8 @@ int main() {
         jogador.mover(-0.8f, 0);
       if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         jogador.mover(0.8f, 0);
-      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) jogador.mover(0, -0.8f);
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        jogador.mover(0, -0.8f);
       if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         jogador.mover(0, 0.8f);
     }

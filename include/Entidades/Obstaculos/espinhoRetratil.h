@@ -6,29 +6,29 @@
 
 namespace Entidades::Obstaculos {
 class EspinhoRetratil : public Obstaculo {
- private:
+private:
   float largura;
   float tempoDesdeUltimaAlternancia;
   bool ligado;
   sf::Clock relogio;
 
- protected:
- public:
+protected:
+public:
   EspinhoRetratil(const sf::Vector2f pos, const sf::Vector2f tam,
                   const IDs::IDs ID);
   ~EspinhoRetratil();
   void executar();
   void mover();
 
-  void colisao(Entidade* outraEntidade,
+  void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   int getDano();
 
   bool estaLigado() const;
 
-  void carregar(json& arquivo) {}
+  void carregar(json &arquivo) {}
   std::string getTipo() const override { return "espinhoRetratil"; }
-  void salvar(json& arquivo) override {
+  void salvar(json &arquivo) override {
     arquivo["id"] = static_cast<int>(getID());
     arquivo["posicao"]["x"] = getPosicao().x;
     arquivo["posicao"]["y"] = getPosicao().y;
@@ -36,6 +36,6 @@ class EspinhoRetratil : public Obstaculo {
   }
 };
 
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos
 
 #endif

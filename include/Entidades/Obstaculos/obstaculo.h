@@ -10,12 +10,12 @@ using Entidades::Personagens::Personagem;
 namespace Entidades::Obstaculos {
 
 class Obstaculo : public Entidade {
- protected:
+protected:
   bool danoso;
   bool colidindo;
   int dano;
 
- public:
+public:
   Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Obstaculo();
   void salvarDataBuffer() {};
@@ -29,6 +29,6 @@ class Obstaculo : public Entidade {
   virtual void colisaoObstaculo(Vector2f ds, Personagem *pPersonagem);
 };
 
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos
 
 #endif

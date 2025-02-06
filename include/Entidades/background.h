@@ -12,8 +12,8 @@ using namespace std;
 namespace Entidades {
 
 class Background : public Entidade {
- protected:
- public:
+protected:
+public:
   Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
 
   ~Background();
@@ -27,6 +27,6 @@ class Background : public Entidade {
   void carregar(json &arquivo) override;
 };
 
-}  // namespace Entidades
+} // namespace Entidades
 
 #endif

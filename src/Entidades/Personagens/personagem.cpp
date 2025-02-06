@@ -60,9 +60,9 @@ void Personagem::setVelFinal(const sf::Vector2f velFinal) {
 }
 const sf::Vector2f Personagem::getVelFinal() const { return velFinal; }
 void Personagem::cair() {
-  tempoSemColisao += 0.016f;
+  tempoSemColisao += 0.016f; // Incrementa o tempo sem colisão (60 FPS)
   if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
     noChao = false;
   }
 }
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

@@ -18,21 +18,21 @@ using Gerenciadores::Gerenciador_Grafico;
 class Gerenciador_Grafico;
 
 class Ente {
- private:
- protected:
+private:
+protected:
   const IDs::IDs ID;
   static Gerenciador_Grafico
-      *pGG;  // Ente utiliza Gerenciador Gráfico (Bidirecional)
+      *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
 
   Texture *texture;
   Sprite sprite;
 
- public:
+public:
   Ente(const IDs::IDs ID);
   ~Ente();
 
-  void desenhar();  // Possui o endereço do gerenciador gráfico em protected,
-                    // mas só UTILIZA o gerenciador
+  void desenhar(); // Possui o endereço do gerenciador gráfico em protected,
+                   // mas só UTILIZA o gerenciador
 
   void setSprite(string local, int posX, int posY);
   Texture *getTexture();

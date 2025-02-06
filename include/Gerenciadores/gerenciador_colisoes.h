@@ -30,14 +30,14 @@ class Obstaculo;
 namespace Gerenciadores {
 
 class Gerenciador_Colisoes {
- private:
+private:
   vector<Inimigo *> LIs;
   list<Obstaculo *> LOs;
   set<Projetil *> LPs;
   Lista_Entidades *listaPersonagem;
   Lista_Entidades *listaObstaculo;
 
- public:
+public:
   Tripulante *pJog1;
   Tripulante *pJog2;
 
@@ -52,6 +52,6 @@ class Gerenciador_Colisoes {
   void executar(Lista_Entidades *listaPer, Lista_Entidades *listaObs);
 };
 
-}  // namespace Gerenciadores
+} // namespace Gerenciadores
 
 #endif

@@ -13,13 +13,13 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Clone : public Inimigo {
- private:
-  Clock timerTiro;  // Temporizador para controlar a frequência de disparo
+private:
+  Clock timerTiro; // Temporizador para controlar a frequência de disparo
 
- protected:
+protected:
   Projetil *projetil;
 
- public:
+public:
   Clone(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   ~Clone();
   using Ente::setSprite;
@@ -42,6 +42,6 @@ class Clone : public Inimigo {
   }
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

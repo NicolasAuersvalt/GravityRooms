@@ -26,7 +26,7 @@ class Gravity_Rooms;
 namespace Menus {
 
 class Menu : public Ente {
- protected:
+protected:
   list<Menus::Botoes::BotaoTexto *> listaBotaoTexto;
   list<Menus::Botoes::BotaoTexto *>::iterator it;
 
@@ -43,7 +43,7 @@ class Menu : public Ente {
   void atualizarPosicaoFundo();
   virtual void criarFundo() {};
 
- public:
+public:
   void inicializarIterator();
 
   Menu(const IDs::IDs ID, const Vector2f tamBotao, const string nome,
@@ -68,6 +68,6 @@ class Menu : public Ente {
   void salvar(json &arquivo) override {}
 };
 
-}  // namespace Menus
+} // namespace Menus
 
 #endif

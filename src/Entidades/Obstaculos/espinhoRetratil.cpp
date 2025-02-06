@@ -28,10 +28,10 @@ void EspinhoRetratil::executar() {
 }
 void EspinhoRetratil::mover() {
   float deltaTime =
-      relogio.restart().asSeconds();  // Assumindo 60 FPS (16ms por frame)
+      relogio.restart().asSeconds(); // Assumindo 60 FPS (16ms por frame)
 
   tempoDesdeUltimaAlternancia += deltaTime;
-  if (tempoDesdeUltimaAlternancia >= 2.0f) {  // Alterna a cada 5 segundos
+  if (tempoDesdeUltimaAlternancia >= 2.0f) { // Alterna a cada 5 segundos
     ligado = !ligado;
     tempoDesdeUltimaAlternancia = 0.0f;
 
@@ -46,10 +46,10 @@ void EspinhoRetratil::mover() {
   }
 }
 
-void EspinhoRetratil::colisao(Entidade* outraEntidade, sf::Vector2f ds) {}
+void EspinhoRetratil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
 int EspinhoRetratil::getDano() { return dano; }
 
 bool EspinhoRetratil::estaLigado() const { return ligado; }
 
 REGISTRAR_CLASSE(EspinhoRetratil, "espinhoRetratil")
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos

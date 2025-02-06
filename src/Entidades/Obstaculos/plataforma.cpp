@@ -40,4 +40,4 @@ int Plataforma::getDano() { return dano; }
 
 REGISTRAR_CLASSE(Plataforma, "plataforma")
 
-}  // namespace Entidades::Obstaculos
+} // namespace Entidades::Obstaculos

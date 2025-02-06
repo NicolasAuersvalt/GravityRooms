@@ -17,8 +17,8 @@ using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
 class Tripulante;
 class Inimigo : public Personagem {
- private:
- protected:
+private:
+protected:
   int nivel_maldade;
 
   int dano;
@@ -28,7 +28,7 @@ class Inimigo : public Personagem {
   void inicializar();
   Gerenciador_Fisica GF;
 
- public:
+public:
   Inimigo(const Vector2f pos, const Vector2f tam, Tripulante *tripulante,
           const IDs::IDs ID);
   ~Inimigo();
@@ -49,6 +49,6 @@ class Inimigo : public Personagem {
   void setTripulante(Tripulante *tripulante) { this->tripulante = tripulante; };
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

@@ -36,4 +36,4 @@ void Nave::criarMapa() {
   arquivo.close();
 }
 void Nave::desenhar() {}
-}  // namespace Fases
+} // namespace Fases

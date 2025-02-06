@@ -14,67 +14,61 @@ using json = nlohmann::json;
 class Ente;
 
 class Registry {
- public:
-  using FactoryFunc = std::function<std::unique_ptr<Ente>(json&)>;
+public:
+  using FactoryFunc = std::function<std::unique_ptr<Ente>(json &)>;
 
-  static Registry& getInstance() {
+  // Singleton: retorna a instância única do Registry
+  static Registry &getInstance() {
     static Registry instance;
     return instance;
   }
 
-  void registrarClasse(const std::string& tipo, FactoryFunc factory) {
+  // Registra uma classe no Registry com uma função de fábrica
+  void registrarClasse(const std::string &tipo, FactoryFunc factory) {
     factories[tipo] = factory;
   }
 
-  std::unique_ptr<Ente> criar(json& data) {
+  // Cria uma entidade com base nos dados JSON
+  std::unique_ptr<Ente> criar(json &data) {
     std::string tipo = data["tipo"];
     auto it = factories.find(tipo);
     if (it != factories.end()) {
-      return it->second(data);
+      return it->second(data); // Chama a função de fábrica correspondente
     } else {
       std::cerr << "Tipo de entidade não registrado: " << tipo << std::endl;
       return nullptr;
     }
   }
 
- private:
-  Registry() = default;
-  std::unordered_map<std::string, FactoryFunc> factories;
+private:
+  Registry() = default; // Construtor privado para garantir Singleton
+  std::unordered_map<std::string, FactoryFunc> factories; // Mapa de fábricas
 };
 
+// Macro para registrar classes automaticamente no Registry
 #define REGISTRAR_CLASSE(CLASS, TIPO)                                          \
   static struct Registrar##CLASS {                                             \
     Registrar##CLASS() {                                                       \
       Registry::getInstance().registrarClasse(                                 \
-          TIPO,                                                                \
-          [](json& data)                                                       \
-              -> std::unique_ptr<                                              \
-                  Ente> { /* Retorno explícito necessário */                   \
-                          if constexpr (std::is_constructible_v<               \
-                                            CLASS, sf::Vector2f, sf::Vector2f, \
-                                            IDs::IDs>) {                       \
-                            return std::make_unique<CLASS>(                    \
-                                sf::Vector2f(data["posicao"]["x"],             \
-                                             data["posicao"]["y"]),            \
-                                sf::Vector2f(10, 10),                          \
-                                static_cast<IDs::IDs>(data["id"]));            \
-                          } else if constexpr (std::is_constructible_v<        \
-                                                   CLASS, sf::Vector2f,        \
-                                                   std::nullptr_t,             \
-                                                   IDs::IDs>) {                \
-                            return std::make_unique<CLASS>(                    \
-                                sf::Vector2f(data["posicao"]["x"],             \
-                                             data["posicao"]["y"]),            \
-                                nullptr, static_cast<IDs::IDs>(data["id"]));   \
-                          } else {                                             \
-                            std::cerr << "Erro: Nenhum construtor adequado "   \
-                                         "encontrado para "                    \
-                                      << TIPO << std::endl;                    \
-                            return nullptr; /* Necessário para evitar erro de \
-                                               conversão */                   \
-                          }                                                    \
+          TIPO, [](json &data) -> std::unique_ptr<Ente> {                      \
+            if constexpr (std::is_constructible_v<CLASS, sf::Vector2f,         \
+                                                  sf::Vector2f, IDs::IDs>) {   \
+              return std::make_unique<CLASS>(                                  \
+                  sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),    \
+                  sf::Vector2f(10, 10), static_cast<IDs::IDs>(data["id"]));    \
+            } else if constexpr (std::is_constructible_v<CLASS, sf::Vector2f,  \
+                                                         std::nullptr_t,       \
+                                                         IDs::IDs>) {          \
+              return std::make_unique<CLASS>(                                  \
+                  sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]),    \
+                  nullptr, static_cast<IDs::IDs>(data["id"]));                 \
+            } else {                                                           \
+              std::cerr << "Erro: Nenhum construtor adequado encontrado para " \
+                        << TIPO << std::endl;                                  \
+              return nullptr;                                                  \
+            }                                                                  \
           });                                                                  \
     }                                                                          \
-  } registrar##CLASS;
+  } registrar##CLASS; // Instância estática para registro automático
 
-#endif
+#endif // REGISTRY_H

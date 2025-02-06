@@ -1,16 +1,16 @@
-#include <fstream>  // Para manipulação de arquivos
+#include <fstream> // Para manipulação de arquivos
 #include <iostream>
 #include <string>
 #include <vector>
 
-#include "json.hpp"  // Incluir a biblioteca nlohmann/json.hpp
+#include "json.hpp" // Incluir a biblioteca nlohmann/json.hpp
 
 using namespace std;
-using json = nlohmann::json;  // Alias para o tipo json da biblioteca
+using json = nlohmann::json; // Alias para o tipo json da biblioteca
 
 // Classe Abstrata GerenciadorArquivos
 class GerenciadorArquivos {
- public:
+public:
   virtual void abrirArquivo(const string &nome) = 0;
   virtual void fecharArquivo() = 0;
   virtual ~GerenciadorArquivos() {}
@@ -18,7 +18,7 @@ class GerenciadorArquivos {
 
 // Classe JsonHandler (herda de GerenciadorArquivos)
 class JsonHandler : public GerenciadorArquivos {
- public:
+public:
   void abrirArquivo(const string &nome) override {
     cout << "Abrindo arquivo JSON: " << nome << endl;
   }
@@ -29,44 +29,44 @@ class JsonHandler : public GerenciadorArquivos {
 
   // Método para salvar dados em formato JSON
   void salvarJson(const string &nomeArquivo, const json &dados) {
-    ofstream out(nomeArquivo);  // Abre o arquivo para escrita
+    ofstream out(nomeArquivo); // Abre o arquivo para escrita
     if (out.is_open()) {
       out << dados.dump(
-          4);  // Salva os dados formatados com indentação de 4 espaços
+          4); // Salva os dados formatados com indentação de 4 espaços
       cout << "Dados JSON salvos em " << nomeArquivo << endl;
     } else {
       cout << "Erro ao abrir o arquivo para salvar dados." << endl;
     }
-    out.close();  // Fecha o arquivo
+    out.close(); // Fecha o arquivo
   }
 
   // Método para carregar dados JSON
   json carregarJson(const string &nomeArquivo) {
-    ifstream in(nomeArquivo);  // Abre o arquivo para leitura
+    ifstream in(nomeArquivo); // Abre o arquivo para leitura
     json dados;
     if (in.is_open()) {
-      in >> dados;  // Carrega os dados do arquivo JSON
+      in >> dados; // Carrega os dados do arquivo JSON
     } else {
       cout << "Erro ao abrir o arquivo para carregar dados." << endl;
     }
-    in.close();  // Fecha o arquivo
+    in.close(); // Fecha o arquivo
     return dados;
   }
 };
 
 // Classe Ranking (herda de GerenciadorArquivos)
 class Ranking : public GerenciadorArquivos {
- private:
+private:
   vector<string> dadosRanking;
 
- public:
+public:
   void abrirArquivo(const string &nome) override {
-    ifstream in(nome);  // Abre o arquivo para leitura
+    ifstream in(nome); // Abre o arquivo para leitura
     string linha;
     while (getline(in, linha)) {
-      dadosRanking.push_back(linha);  // Adiciona cada linha ao vetor de dados
+      dadosRanking.push_back(linha); // Adiciona cada linha ao vetor de dados
     }
-    in.close();  // Fecha o arquivo
+    in.close(); // Fecha o arquivo
   }
 
   void fecharArquivo() override {

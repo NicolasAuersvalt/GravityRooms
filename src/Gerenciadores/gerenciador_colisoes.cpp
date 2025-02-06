@@ -6,13 +6,8 @@ namespace Gerenciadores {
 Gerenciador_Colisoes::Gerenciador_Colisoes(
     Listas::Lista_Entidades *listaPersonagem,
     Listas::Lista_Entidades *listaObstaculo)
-    : LIs(),
-      LOs(),
-      LPs(),
-      pJog1(nullptr),
-      pJog2(nullptr),
-      listaPersonagem(listaPersonagem),
-      listaObstaculo(listaObstaculo) {
+    : LIs(), LOs(), LPs(), pJog1(nullptr), pJog2(nullptr),
+      listaPersonagem(listaPersonagem), listaObstaculo(listaObstaculo) {
   // Inicializações necessárias
   LIs.clear();
   LOs.clear();
@@ -28,8 +23,9 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes() {
   pJog1 = nullptr;
 }
 
-const sf::Vector2f Gerenciador_Colisoes::calculaColisao(
-    Entidades::Entidade *ent1, Entidades::Entidade *ent2) {
+const sf::Vector2f
+Gerenciador_Colisoes::calculaColisao(Entidades::Entidade *ent1,
+                                     Entidades::Entidade *ent2) {
   sf::Vector2f pos1 = ent1->getSprite().getPosition();
   sf::Vector2f pos2 = ent2->getSprite().getPosition();
 
@@ -70,11 +66,13 @@ void Gerenciador_Colisoes::executar(Lista_Entidades *listaPer,
 
   for (int i = 0; i < listaPer->getTamanho() - 1; i++) {
     Entidades::Entidade *ent1 = listaPer->operator[](i);
-    if (!ent1) continue;
+    if (!ent1)
+      continue;
 
     for (int j = i + 1; j < listaPer->getTamanho(); j++) {
       Entidades::Entidade *ent2 = listaPer->operator[](j);
-      if (!ent2) continue;
+      if (!ent2)
+        continue;
 
       sf::Vector2f ds = calculaColisao(ent1, ent2);
       if (ds.x < 0.0f && ds.y < 0.0f) {
@@ -109,4 +107,4 @@ void Gerenciador_Colisoes::incluirTripulante(Tripulante &jogador) {
     pJog2 = &jogador;
   }
 }
-}  // namespace Gerenciadores
+} // namespace Gerenciadores

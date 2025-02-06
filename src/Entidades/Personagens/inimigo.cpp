@@ -11,10 +11,7 @@ namespace Entidades::Personagens {
 
 Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Tripulante *tripulante,
                  const IDs::IDs ID)
-    : Personagem(pos, tam, ID),
-      tripulante(tripulante),
-      relogio(),
-      GF(pos),
+    : Personagem(pos, tam, ID), tripulante(tripulante), relogio(), GF(pos),
       dano(-1) {
   inicializar();
   tempoSemColisao = 0.0f;
@@ -35,44 +32,51 @@ void Inimigo::inicializar() {
 
 void Inimigo::executar() {}
 void Inimigo::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
-  bool onPlatform = false;
+  bool onPlatform =
+      false; // Variável para verificar se o inimigo está sobre uma plataforma
+
+  // Verifica o ID da entidade com a qual ocorreu a colisão
   switch (outraEntidade->getID()) {
-    case IDs::IDs::plataforma: {
-      tempoSemColisao = 0.0f;
-      Vector2f myPos = getSprite().getPosition();
-      Vector2f platPos = outraEntidade->getSprite().getPosition();
-      Vector2f mySize = getTamanho();
-      Vector2f platSize = outraEntidade->getTamanho();
+  case IDs::IDs::plataforma: { // Caso a entidade seja uma plataforma
+    tempoSemColisao = 0.0f;
 
-      float myBottom = myPos.y + mySize.y;
-      float platTop = platPos.y;
+    // Obtém a posição e o tamanho do inimigo e da plataforma
+    Vector2f myPos = getSprite().getPosition();
+    Vector2f platPos = outraEntidade->getSprite().getPosition();
+    Vector2f mySize = getTamanho();
+    Vector2f platSize = outraEntidade->getTamanho();
 
-      float myRight = myPos.x + mySize.x;
-      float platLeft = platPos.x;
+    // Calcula os limites inferiores e superiores do inimigo e da plataforma
+    float myBottom = myPos.y + mySize.y;
+    float platTop = platPos.y;
 
-      float myLeft = myPos.x;
-      float platRight = platPos.x + platSize.x;
-      // Platform collision from above
-      if (myBottom >= platTop && ds.y <= 5.f) {
-        velFinal.y = 0;
-        myPos.y = platTop - mySize.y;
-        getSprite().setPosition(myPos);
-        setPosicao(myPos.x, myPos.y);
-        onPlatform = true;
-      }
+    float myRight = myPos.x + mySize.x;
+    float platLeft = platPos.x;
 
-      // Check if the Tripulante is landing on top of the platform
+    float myLeft = myPos.x;
+    float platRight = platPos.x + platSize.x;
 
-    } break;
-    default: {
-      tempoSemColisao = 0.0f;
-      onPlatform = false;
-    } break;
+    // Verifica se o inimigo está colidindo com a parte superior da plataforma
+    if (myBottom >= platTop && ds.y <= 5.f) {
+      velFinal.y = 0;
+      myPos.y = platTop - mySize.y;
+
+      getSprite().setPosition(myPos);
+      setPosicao(myPos.x, myPos.y);
+      onPlatform = true;
+    }
+
+  } break;
+
+  default: { // Caso a entidade não seja uma plataforma
+    tempoSemColisao = 0.0f;
+    onPlatform = false;
+
+  } break;
   }
 }
 void Inimigo::mover() {
   // Obtem as posicoes do Tripulante e do inimigo
-  // Debug print current positions
   Vector2f posJogador = tripulante->getSprite().getPosition();
   Vector2f posInimigo = getSprite().getPosition();
 
@@ -96,41 +100,38 @@ void Inimigo::mover() {
   getSprite().move(velFinal.x, velFinal.y);
 }
 void Inimigo::salvarDataBuffer(nlohmann::ordered_json &json) {}
-// Pode sobrescrever se quiser (com algum multiplicador)
 
 void Inimigo::perseguirTripulante(Vector2f posJogador,
                                   const Vector2f posInimigo) {
-  // Reset horizontal velocity to apply new direction
   velFinal.x = 0.0f;
-
-  // Move right if player is to the right
+  // Verifica a posição do jogador em relação ao inimigo
   if (posJogador.x > posInimigo.x) {
+    // Se o jogador estiver à direita do inimigo
     velFinal.x += vel.x;
-  }
-  // Move left if player is to the left
-  else if (posJogador.x < posInimigo.x) {
+  } else if (posJogador.x < posInimigo.x) {
+    // Se o jogador estiver à esquerda do inimigo
     velFinal.x -= vel.x;
   }
 }
-
 void Inimigo::movimentarAleatorio() {
-  // Reset horizontal velocity
-  velFinal.x = 0.0f;
+  velFinal.x = 0.0f; // Reseta a velocidade horizontal final do inimigo
 
-  // Randomly choose left or right movement
+  // Verifica a direção do movimento aleatório
   if (moverAleatorio == 0) {
     velFinal.x -= vel.x;
   } else {
     velFinal.x += vel.x;
   }
 
-  // Update direction periodically
+  // Obtém o tempo decorrido desde a última mudança de direção
   float dt = relogio.getElapsedTime().asSeconds();
+
+  // Verifica se já se passou 1 segundo desde a última mudança de direção
   if (dt >= 1.0f) {
-    moverAleatorio = rand() % 2;  // Simplify to 0 or 1 (left/right)
+    moverAleatorio = rand() % 2;
     relogio.restart();
   }
 }
 
 int Inimigo::getNivelMaldade() const { return nivel_maldade; }
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
