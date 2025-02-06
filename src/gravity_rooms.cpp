@@ -2,9 +2,16 @@
 
 // Construtor
 Gravity_Rooms::Gravity_Rooms()
-    : GG(), listaPersonagem(), listaObstaculo(),
-      GC(&listaPersonagem, &listaObstaculo), GE(), menu(nullptr), fase(nullptr),
-      player2Active(false), currentState(MAIN), currentPontos(0) {
+    : GG(),
+      listaPersonagem(),
+      listaObstaculo(),
+      GC(&listaPersonagem, &listaObstaculo),
+      GE(),
+      menu(nullptr),
+      fase(nullptr),
+      player2Active(false),
+      currentState(MAIN),
+      currentPontos(0) {
   Ente::setGerenciador(&GG);
 
   executar();
@@ -158,128 +165,127 @@ void Gravity_Rooms::executar() {
     Event evento;
 
     switch (currentState) {
-    case MAIN: {
-      if (ligarMenu(IDs::IDs::menu_principal)) {
-        if (currentState == COLOCACAO)
-          break;
-        currentState = PLAYING;
-      }
-      break;
-    }
-    case PAUSE: {
-      menu->setSelecionado(false);
-      if (ligarMenu(IDs::IDs::menu_pausa)) {
-      }
-      break;
-    }
-    case COLOCACAO: {
-      menu->setSelecionado(false);
-      if (ligarMenu(IDs::IDs::menu_colocacao)) {
-        currentState = MAIN;
-      }
-      break;
-    }
-    case GAMEOVER: {
-      menu->setSelecionado(false);
-      if (ligarMenu(IDs::IDs::menu_game_over)) {
-        currentState = MAIN;
-      }
-      break;
-    }
-
-    case PLAYING: {
-      string tecla = pGE->isTeclaPressionada(sf::Keyboard::M);
-      if (GC.pJog1) {
-        currentPontos = GC.pJog1->getPontos();
-      }
-      if (tecla == "M" && !player2Active) {
-        criarJogadorDois();
-      }
-      if ((!GC.pJog1 || !GC.pJog1->verificarVivo()) &&
-          (!GC.pJog2 || !GC.pJog2->verificarVivo())) {
-        if (fase != nullptr) {
-          delete fase;
-          fase = nullptr;
+      case MAIN: {
+        if (ligarMenu(IDs::IDs::menu_principal)) {
+          if (currentState == COLOCACAO) break;
+          currentState = PLAYING;
         }
-        listaPersonagem.limparLista();
-        listaObstaculo.limparLista();
-        player2Active = false;
-        GC.pJog1 = nullptr;
-        GC.pJog2 = nullptr;
-        currentState = GAMEOVER;
-
+        break;
+      }
+      case PAUSE: {
+        menu->setSelecionado(false);
+        if (ligarMenu(IDs::IDs::menu_pausa)) {
+        }
+        break;
+      }
+      case COLOCACAO: {
+        menu->setSelecionado(false);
+        if (ligarMenu(IDs::IDs::menu_colocacao)) {
+          currentState = MAIN;
+        }
+        break;
+      }
+      case GAMEOVER: {
+        menu->setSelecionado(false);
+        if (ligarMenu(IDs::IDs::menu_game_over)) {
+          currentState = MAIN;
+        }
         break;
       }
 
-      bool enemiesExist = false;
+      case PLAYING: {
+        string tecla = pGE->isTeclaPressionada(sf::Keyboard::M);
+        if (GC.pJog1) {
+          currentPontos = GC.pJog1->getPontos();
+        }
+        if (tecla == "M" && !player2Active) {
+          criarJogadorDois();
+        }
+        if ((!GC.pJog1 || !GC.pJog1->verificarVivo()) &&
+            (!GC.pJog2 || !GC.pJog2->verificarVivo())) {
+          if (fase != nullptr) {
+            delete fase;
+            fase = nullptr;
+          }
+          listaPersonagem.limparLista();
+          listaObstaculo.limparLista();
+          player2Active = false;
+          GC.pJog1 = nullptr;
+          GC.pJog2 = nullptr;
+          currentState = GAMEOVER;
 
-      auto atual = listaPersonagem.LEs->getPrimeiro();
-      while (atual != nullptr) {
-        if (dynamic_cast<Inimigo *>(atual->pInfo)) {
-          enemiesExist = true;
           break;
         }
-        atual = atual->getProximo();
-      }
 
-      if (!enemiesExist && fase->complete == false) {
-        if (dynamic_cast<Laboratorio *>(fase)) {
-          delete fase;
-          fase = nullptr;
-          listaPersonagem.limparLista();
-          listaObstaculo.limparLista();
-          GC.pJog1 = nullptr;
-          GC.pJog2 = nullptr;
-          criarFases(IDs::IDs::fase_nave);
-          if (player2Active) {
-            criarJogadorDois();
+        bool enemiesExist = false;
+
+        auto atual = listaPersonagem.LEs->getPrimeiro();
+        while (atual != nullptr) {
+          if (dynamic_cast<Inimigo *>(atual->pInfo)) {
+            enemiesExist = true;
+            break;
           }
-          continue;
-        } else if (dynamic_cast<Nave *>(fase)) {
-          delete fase;
-          fase = nullptr;
-          listaPersonagem.limparLista();
-          listaObstaculo.limparLista();
-          GC.pJog1 = nullptr;
-          GC.pJog2 = nullptr;
-          player2Active = false;
-          menu->setSelecionado(false);
-          currentState = GAMEOVER;
-          continue;
+          atual = atual->getProximo();
         }
+
+        if (!enemiesExist && fase->complete == false) {
+          if (dynamic_cast<Laboratorio *>(fase)) {
+            delete fase;
+            fase = nullptr;
+            listaPersonagem.limparLista();
+            listaObstaculo.limparLista();
+            GC.pJog1 = nullptr;
+            GC.pJog2 = nullptr;
+            criarFases(IDs::IDs::fase_nave);
+            if (player2Active) {
+              criarJogadorDois();
+            }
+            continue;
+          } else if (dynamic_cast<Nave *>(fase)) {
+            delete fase;
+            fase = nullptr;
+            listaPersonagem.limparLista();
+            listaObstaculo.limparLista();
+            GC.pJog1 = nullptr;
+            GC.pJog2 = nullptr;
+            player2Active = false;
+            menu->setSelecionado(false);
+            currentState = GAMEOVER;
+            continue;
+          }
+        }
+        while (GG.processarEvento(evento)) {
+          if (evento.type == Event::Closed) {
+            GG.fechar();
+          }
+          if (evento.type == Event::KeyPressed &&
+              evento.key.code == Keyboard::Y) {
+            salvarEntidades("save.json");
+          }
+          if (evento.type == Event::KeyPressed &&
+              evento.key.code == Keyboard::Escape) {
+            salvarEntidades("save.json");
+            currentState = PAUSE;
+          }
+        }
+
+        GG.limpar();
+        listaBackgrounds.desenharTodos();
+
+        listaObstaculo.desenharTodos();
+
+        listaPersonagem.desenharTodos();
+
+        GC.executar(&listaPersonagem, &listaObstaculo);
+
+        GG.exibir();
+
+        listaPersonagem.atualizarTodas();
+
+        listaObstaculo.atualizarTodas();
+
+        break;
       }
-      while (GG.processarEvento(evento)) {
-        if (evento.type == Event::Closed) {
-          GG.fechar();
-        }
-        if (evento.type == Event::KeyPressed &&
-            evento.key.code == Keyboard::Y) {
-          salvarEntidades("save.json");
-        }
-        if (evento.type == Event::KeyPressed &&
-            evento.key.code == Keyboard::Escape) {
-          salvarEntidades("save.json");
-          currentState = PAUSE;
-        }
-      }
-
-      GG.limpar();
-      listaBackgrounds.desenharTodos();
-
-      listaObstaculo.desenharTodos();
-
-      listaPersonagem.desenharTodos();
-
-      GC.executar(&listaPersonagem, &listaObstaculo);
-
-      GG.exibir();
-
-      listaPersonagem.atualizarTodas();
-
-      listaObstaculo.atualizarTodas();
-
-      break;
-    }
     }
   }
 }
@@ -385,7 +391,7 @@ void Gravity_Rooms::salvarEntidades(const std::string &nomeArquivo) {
 
   std::ofstream arquivo(nomeArquivo);
   if (arquivo.is_open()) {
-    arquivo << j.dump(4); // Formatação bonita com 4 espaços
+    arquivo << j.dump(4);  // Formatação bonita com 4 espaços
   }
 }
 
