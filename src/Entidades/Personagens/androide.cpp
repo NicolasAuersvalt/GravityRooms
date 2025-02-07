@@ -18,11 +18,19 @@ Androide::Androide(const Vector2f pos, Tripulante *tripulante,
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
 }
-
+Androide::Androide(sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID)
+    : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), nullptr, ID) {
+  this->dano = 2;
+  this->pontosVida = 10;
+  nivel_maldade = 2;
+  setSprite("assets/androide.png", pos.x, pos.y);
+  setPosicao(pos.x, pos.y);
+  vivo = true;
+  sprite.setPosition(pos.x, pos.y);
+}
 Androide::~Androide() {}
 void Androide::executar() {
-  if (vivo)
-    mover();
+  if (vivo) mover();
 }
 
 void Androide::danificar(Tripulante *p) {}
@@ -38,4 +46,4 @@ int Androide::getDano() { return dano; }
 void Androide::salvarDataBuffer(nlohmann::ordered_json &json) {}
 
 REGISTRAR_CLASSE(Androide, "androide")
-} // namespace Entidades::Personagens
+}  // namespace Entidades::Personagens

@@ -12,12 +12,13 @@ using namespace Entidades::Personagens;
 namespace Entidades::Personagens {
 
 class Androide : public Inimigo {
-private:
+ private:
   bool movingRight;
 
-protected:
-public:
+ protected:
+ public:
   Androide(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
+  Androide(sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID);
   ~Androide();
 
   using Ente::setSprite;
@@ -39,6 +40,6 @@ public:
   }
 };
 
-} // namespace Entidades::Personagens
+}  // namespace Entidades::Personagens
 
 #endif
