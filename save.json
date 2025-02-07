@@ -1,13 +1,4 @@
 {
-    "entities": [
-        {
-            "id": 15,
-            "posicao": {
-                "x": 50.0,
-                "y": 50.0
-            },
-            "tipo": "background"
-        }
-    ],
+    "entities": [],
     "fase": "nave"
 }

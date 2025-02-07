@@ -20,6 +20,9 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   noChao = false;
   sprite.setPosition(pos.x, pos.y);
   setMunicao(40);
+  projetil = new Projetil(pos, sf::Vector2f(50.0f, 54.0f),
+                          IDs::IDs::projetil_tripulante);
+  setProjetil(projetil);
 }
 
 Tripulante::~Tripulante() {}

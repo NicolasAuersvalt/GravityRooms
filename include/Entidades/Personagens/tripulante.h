@@ -12,7 +12,6 @@
 #include "Entidades/projetil.h"
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_fisico.h"
-#include "Gerenciadores/gerenciador_json.h"
 #include "Gerenciadores/registry.h"
 #include "json.hpp"
 
@@ -88,6 +87,14 @@ public:
     arquivo["posicao"]["x"] = getPosicao().x;
     arquivo["posicao"]["y"] = getPosicao().y;
     arquivo["tipo"] = "tripulante";
+    if (projetil) {
+      arquivo["projetil"]["id"] = static_cast<int>(projetil->getID());
+
+      arquivo["projetil"]["ativo"] = projetil->getAtivo();
+      arquivo["projetil"]["posicao"]["x"] = projetil->getPosicao().x;
+      arquivo["projetil"]["posicao"]["y"] = projetil->getPosicao().y;
+      arquivo["projetil"]["tipo"] = "projetil";
+    }
   }
   void atirar();
 };

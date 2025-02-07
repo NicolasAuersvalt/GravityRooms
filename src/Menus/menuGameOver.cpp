@@ -5,9 +5,7 @@ namespace Menus {
 MenuGameOver::MenuGameOver(IDs::IDs id)
     : Menu(IDs::IDs::menu_game_over,
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180),
-      texto("", 30),
-      nome(""),
-      pontuacao(0) {
+      texto("", 30), nome(""), pontuacao(0) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
@@ -17,8 +15,7 @@ MenuGameOver::MenuGameOver(const IDs::IDs ID, std::string nome,
                            const unsigned int tamFonte)
     : Menu(IDs::IDs::menu_game_over,
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte),
-      texto("", 30),
-      pontuacao(0) {
+      texto("", 30), pontuacao(0) {
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
@@ -68,7 +65,7 @@ void MenuGameOver::salvarColocacao(int pontos) {
     return;
   }
 
-  outFile << rankingData.dump(4);  // Salvar com indentação de 4 espaços
+  outFile << rankingData.dump(4); // Salvar com indentação de 4 espaços
   outFile.close();
 }
 
@@ -141,4 +138,4 @@ void MenuGameOver::criarBotoes() {
   inicializarIterator();
 }
 
-}  // namespace Menus
+} // namespace Menus

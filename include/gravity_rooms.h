@@ -16,7 +16,6 @@
 #include "Gerenciadores/gerenciador_colisoes.h"
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Gerenciadores/gerenciador_json.h"
 #include "Gerenciadores/save.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
@@ -85,6 +84,7 @@ public:
   void criarJogadorDois();
   void criarFases(IDs::IDs faseSelecionada);
   bool carregarEntidades(const std::string &nomeArquivo);
+  void limparJogo();
   Lista_Entidades listaBackgrounds;
 };
 

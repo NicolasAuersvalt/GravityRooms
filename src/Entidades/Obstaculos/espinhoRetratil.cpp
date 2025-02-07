@@ -17,7 +17,7 @@ EspinhoRetratil::EspinhoRetratil(const sf::Vector2f pos, const sf::Vector2f tam,
   setTamanho(sf::Vector2f(90.0f, 90.0f));
   sprite.setOrigin(45.0f, 45.0f);
   setPosicao(pos.x, pos.y);
-
+  tempoDesdeUltimaAlternancia = 0.0f;
   sprite.setPosition(pos.x, pos.y);
 }
 
@@ -31,7 +31,7 @@ void EspinhoRetratil::mover() {
       relogio.restart().asSeconds(); // Assumindo 60 FPS (16ms por frame)
 
   tempoDesdeUltimaAlternancia += deltaTime;
-  if (tempoDesdeUltimaAlternancia >= 2.0f) { // Alterna a cada 5 segundos
+  if (tempoDesdeUltimaAlternancia >= 4.0f) { // Alterna a cada 5 segundos
     ligado = !ligado;
     tempoDesdeUltimaAlternancia = 0.0f;
 
