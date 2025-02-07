@@ -19,6 +19,9 @@ Clone::Clone(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID)
   setPosicao(pos.x, pos.y);
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
+  projetil =
+      new Projetil(pos, sf::Vector2f(50.0f, 54.0f), IDs::IDs::projetil_inimigo);
+  setProjetil(projetil);
 }
 
 Clone::~Clone() {}
@@ -58,4 +61,8 @@ void Clone::atirar() {
 }
 int Clone::getDano() { return dano; }
 
+<<<<<<< HEAD
+=======
+REGISTRAR_CLASSE(Clone, "clone")
+>>>>>>> psave
 } // namespace Entidades::Personagens

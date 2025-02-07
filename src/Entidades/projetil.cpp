@@ -26,13 +26,10 @@ void Projetil::atualizar() {}
 
 void Projetil::setAtirador(Entidade *a) {}
 
-void Projetil::danificar(Personagem *p) {}
-
 int Projetil::getDano() { return dano; }
 
 bool Projetil::getAtivo() { return ativo; }
 
-void Projetil::salvar() {}
 void Projetil::mover() {
   if (ativo) {
     getSprite().move(20.0f, 0.0f);
@@ -44,13 +41,23 @@ void Projetil::mover() {
 }
 
 void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
+  // Verifica se a entidade passada é nula
   if (!outraEntidade) {
     std::cout << "Warning: Null entity in collision" << std::endl;
     return;
+<<<<<<< HEAD
   } // TESTE
   switch (outraEntidade->getID()) {
   case (IDs::IDs::clone): {
     if (ID == IDs::IDs::projetil_tripulante) {
+=======
+  }
+  // Verifica o ID da entidade com a qual o projétil colidiu
+  switch (outraEntidade->getID()) {
+  case (IDs::IDs::clone): {                    // Caso a entidade seja um clone
+    if (ID == IDs::IDs::projetil_tripulante) { // Verifica se o projétil é do
+                                               // tripulante
+>>>>>>> psave
       Entidades::Personagens::Inimigo *inimigo =
           dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
       inimigo->recebeDano(dano);
@@ -60,8 +67,14 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
     }
     break;
   }
+<<<<<<< HEAD
   case (IDs::IDs::ciborgue): {
     if (ID == IDs::IDs::projetil_tripulante) {
+=======
+  case (IDs::IDs::ciborgue): { // Caso a entidade seja um ciborgue
+    if (ID == IDs::IDs::projetil_tripulante) { // Verifica se o projétil é do
+                                               // tripulante
+>>>>>>> psave
       Entidades::Personagens::Inimigo *inimigo =
           dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
 
@@ -77,8 +90,14 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
     }
     break;
   }
+<<<<<<< HEAD
   case (IDs::IDs::androide): {
     if (ID == IDs::IDs::projetil_tripulante) {
+=======
+  case (IDs::IDs::androide): { // Caso a entidade seja um androide
+    if (ID == IDs::IDs::projetil_tripulante) { // Verifica se o projétil é do
+                                               // tripulante
+>>>>>>> psave
       Entidades::Personagens::Inimigo *inimigo =
           dynamic_cast<Entidades::Personagens::Inimigo *>(outraEntidade);
 
@@ -95,8 +114,14 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
     }
     break;
   }
+<<<<<<< HEAD
   case (IDs::IDs::tripulante): {
     if (ID == IDs::IDs::projetil_inimigo) {
+=======
+  case (IDs::IDs::tripulante): { // Caso a entidade seja um tripulante
+    if (ID == IDs::IDs::projetil_inimigo) { // Verifica se o projétil é de um
+                                            // inimigo
+>>>>>>> psave
       Entidades::Personagens::Tripulante *tripulante =
           dynamic_cast<Entidades::Personagens::Tripulante *>(outraEntidade);
       tripulante->recebeDano(dano);
@@ -114,4 +139,8 @@ void Projetil::setAtivo(bool status, const Vector2f pos) {
   sprite.setPosition(pos.x, pos.y);
 }
 
+<<<<<<< HEAD
+=======
+REGISTRAR_CLASSE(Projetil, "projetil")
+>>>>>>> psave
 } // namespace Entidades

@@ -56,6 +56,16 @@ void Fase::criarCentroGravidade(const Vector2f pos) {
 
   listaObstaculos->incluir(static_cast<Entidade *>(centro_gravidade));
 }
+void Fase::criarEspinhoRetratil(const Vector2f pos) {
+  EspinhoRetratil *espinhoRetratil = new EspinhoRetratil(
+      pos, Vector2f(90.0f, 90.0f), IDs::IDs::espinhoRetratil);
+  if (espinhoRetratil == nullptr) {
+    cout << "Fase::nao foi possivel criar centro de gravidade" << endl;
+    exit(1);
+  }
+
+  listaObstaculos->incluir(static_cast<Entidade *>(espinhoRetratil));
+}
 
 void Fase::criarEntidades(char letra, const Vector2f pos) {
   if (tripulantes[0] == nullptr) {
@@ -108,20 +118,71 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
     break;
 
   } break;
+<<<<<<< HEAD
 
   case ('c'): {
     criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+=======
+  case ('c'): {
+    if (contadorEspinho < 3) {
+      criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+      contadorEspinho++;
+    } else if (contadorEspinhoRetratil < 3) {
+      criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+      contadorEspinhoRetratil++;
+    } else {
+      // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+      obsAleatorio = rand() % 2;
+      if (obsAleatorio == 0 && contadorEspinho < 7) {
+        criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+        contadorEspinho++;
+      } else if (obsAleatorio == 1 && contadorEspinhoRetratil < 7) {
+        criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+        contadorEspinhoRetratil++;
+      }
+    }
+    break;
+>>>>>>> psave
 
   } break;
   case ('#'): {
     criarPlataforma(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 
   } break;
+<<<<<<< HEAD
+=======
+  case ('r'): {
+    criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+  } break;
+>>>>>>> psave
   case ('g'): {
     criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
 
   } break;
+<<<<<<< HEAD
 
+=======
+  case ('k'): {
+    if (contadorEspinhoRetratil < 3) {
+      criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+      contadorEspinhoRetratil++;
+    } else if (contadorCg < 1) {
+      criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
+      contadorCg++;
+    } else {
+      // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+      obsAleatorio = rand() % 2;
+      if (obsAleatorio == 0 && contadorEspinho < 7) {
+        criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+        contadorEspinhoRetratil++;
+      } else if (obsAleatorio == 1 && contadorCg < 7) {
+        criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
+        contadorCg++;
+      }
+    }
+    break;
+  } break;
+>>>>>>> psave
   case ('b'): {
     criarBackground(getID());
   }
@@ -130,12 +191,12 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
 
 void Fase::criarJogador(const Vector2f pos, int index) {
   tripulantes[index] =
-      new Tripulante(pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante, index);
+      new Tripulante(pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante);
   if (tripulantes[index] == nullptr) {
     std::cerr << "Fase::nao foi possivel criar jogador" << std::endl;
     exit(1);
   }
-
+  tripulantes[index]->setPlayerOne(index);
   listaPersonagens->incluir(static_cast<Entidade *>(tripulantes[index]));
 }
 void Fase::desenhar() {
@@ -172,7 +233,6 @@ void Fase::criarInimDificeis(const Vector2f pos, Tripulante *tripulante) {
 
   clone->setProjetil(
       criarProjetil(Vector2f(100.0f, 100.0f), IDs::IDs::projetil_inimigo));
-  std::cout << "Fase:: foi possivel criar inim dificil" << std::endl;
 }
 void Fase::executar() { desenhar(); }
 
@@ -187,5 +247,22 @@ Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   listaPersonagens->incluir(static_cast<Entidade *>(projetil));
   return projetil;
 }
+void Fase::criarBackground(const IDs::IDs ID_Fase) {
+  bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID_Fase);
 
+<<<<<<< HEAD
+=======
+  if (bg == nullptr) {
+    cout << "Fase::nao foi possivel criar jogador" << endl;
+    exit(1);
+  }
+
+  listaBackground->incluir(static_cast<Entidade *>(bg));
+}
+
+void Fase::setGerenciadorG(Gerenciador_Grafico *GG) {
+  if (GG != nullptr)
+    this->GG = GG;
+}
+>>>>>>> psave
 } // namespace Fases

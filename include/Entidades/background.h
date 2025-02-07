@@ -1,16 +1,20 @@
 #ifndef BACKGROUND_H
 #define BACKGROUND_H
 
-#include "Entidades/background.h"
-#include "IDs/IDs.h"
+#include <SFML/Graphics.hpp>
 
+#include "Entidades/entidade.h"
+#include "IDs/IDs.h"
+#include "json.hpp"
 using namespace sf;
+using namespace std;
 
 namespace Entidades {
 
 class Background : public Entidade {
 protected:
 public:
+<<<<<<< HEAD
   Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
       : Entidade(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID) {
     if ((ID == IDs::IDs::fase_nave)) {
@@ -18,18 +22,19 @@ public:
     } else if (ID == IDs::IDs::fase_laboratorio) {
       setSprite("assets/lab.png", 50.0f, 50.0f);
     }
+=======
+  Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
+>>>>>>> psave
 
-    setTamanho(sf::Vector2f(1280.0f, 920.0f));
-    setPosicao(50.0f, 50.0f);
-    sprite.setPosition(0.f, 0.f);
-  }
+  ~Background();
 
-  ~Background() {}
+  void mover() override;
+  void colisao(Entidade *outraEntidade, sf::Vector2f ds) override;
+  void atualizarPosicao();
 
-  void mover() override {}
-  void salvar() override {}
-  void colisao(Entidade *outraEntidade, sf::Vector2f ds) override {}
-  void atualizarPosicao() {};
+  std::string getTipo() const override;
+  void salvar(json &arquivo) override;
+  void carregar(json &arquivo) override;
 };
 
 } // namespace Entidades

@@ -10,7 +10,6 @@ Menu::Menu(const IDs::IDs ID, const sf::Vector2f tamBotao,
     std::cerr << "Erro ao carregar textura do background!" << std::endl;
     exit(1);
   }
-  /*/*/
   spriteBackground.setTexture(texturaBackground);
 
   atualizarPosicaoFundo();

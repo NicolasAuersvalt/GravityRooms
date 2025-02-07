@@ -103,11 +103,6 @@ Vector2f Gerenciador_Eventos::obterMovimento() {
     movimento.y = -5.f; // Move para cima
   }
 
-  // if (!noChao) {
-  //     movimento.y = 5.f;   // Move
-  //     para baixo
-  // }
-
   return movimento;
 }
 } // namespace Gerenciadores

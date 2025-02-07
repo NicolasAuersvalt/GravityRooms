@@ -20,11 +20,8 @@ namespace Gerenciadores {
 class Gerenciador_Eventos {
 public:
   void processarEventoJanela(Gerenciador_Grafico &GG, MenuPrincipal &menuGeral);
-
   string processarTecla(Keyboard::Key tecla);
-
   string isTeclaPressionada(const Keyboard::Key tecla);
-
   Vector2f obterMovimento();
 };
 } // namespace Gerenciadores

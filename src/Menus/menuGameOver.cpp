@@ -5,8 +5,12 @@ namespace Menus {
 MenuGameOver::MenuGameOver(IDs::IDs id)
     : Menu(IDs::IDs::menu_game_over,
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180),
+<<<<<<< HEAD
       texto("", 30), // Initialize texto with empty string and font size
       nome(""), pontuacao(0) {
+=======
+      texto("", 30), nome(""), pontuacao(0) {
+>>>>>>> psave
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
@@ -14,10 +18,16 @@ MenuGameOver::MenuGameOver(IDs::IDs id)
 
 MenuGameOver::MenuGameOver(const IDs::IDs ID, std::string nome,
                            const unsigned int tamFonte)
+<<<<<<< HEAD
     : Menu(IDs::IDs::menu_game_over, // ID CORRETO
            sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte),
       texto("", 30), // Initialize texto with empty string and font size
       nome(""), pontuacao(0) {
+=======
+    : Menu(IDs::IDs::menu_game_over,
+           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte),
+      texto("", 30), pontuacao(0) {
+>>>>>>> psave
   titulo.setPos(
       sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(sf::Color{0, 200, 0});
@@ -84,11 +94,15 @@ void MenuGameOver::carregarMenuGameOver() {
   file >> rankingData;
   file.close();
 
+<<<<<<< HEAD
   // Starting position and spacing
   float startY = tamJanela.y * 0.3f; // Start 30% from top
   float spacing = tamBotao.y * 1.5f; // 1.5x button height spacing
+=======
+  float startY = tamJanela.y * 0.3f;
+  float spacing = tamBotao.y * 1.5f;
+>>>>>>> psave
 
-  // Access the "ranking" array
   const auto &rankingArray = rankingData["ranking"];
   int position = 1;
 
@@ -96,23 +110,24 @@ void MenuGameOver::carregarMenuGameOver() {
     std::string playerName = entry["nome"];
     int score = entry["pontos"];
 
-    // Format ranking text
     std::string rankText = std::to_string(position) + ". " + playerName +
                            " - " + std::to_string(score);
 
-    // Create centered button
     float buttonY = startY + (spacing * position);
+<<<<<<< HEAD
     addBotao(rankText, sf::Vector2f(0.f, buttonY),
              IDs::IDs::menu_game_over, // Use appropriate ID
              sf::Color(0, 255, 0));    // Green color for consistency
+=======
+    addBotao(rankText, sf::Vector2f(0.f, buttonY), IDs::IDs::menu_game_over,
+             sf::Color(0, 255, 0));
+>>>>>>> psave
 
     position++;
   }
 }
 void MenuGameOver::addCaracter(char caracter) {
   if (nome.length() < 10) {
-    // Allow only letters and numbers
-
     if ((caracter >= 'a' && caracter <= 'z') ||
         (caracter >= 'A' && caracter <= 'Z') ||
         (caracter >= '0' && caracter <= '9')) {
@@ -121,7 +136,11 @@ void MenuGameOver::addCaracter(char caracter) {
       for (auto it = listaBotaoTexto.begin(); it != listaBotaoTexto.end();
            ++it) {
         if ((*it)->getID() == IDs::IDs::botao_nome) {
+<<<<<<< HEAD
           (*it)->setText(nome + "_"); // Add cursor
+=======
+          (*it)->setText(nome + "_");
+>>>>>>> psave
           break;
         }
       }
@@ -131,7 +150,6 @@ void MenuGameOver::addCaracter(char caracter) {
 
 void MenuGameOver::exibirMenuGameOver() {
   for (auto &texto : rankingTexts) {
-    // texto.desenhar(*GG);  // Assuming GG is a pointer to Gerenciador_Grafico
   }
 }
 
@@ -140,9 +158,13 @@ void MenuGameOver::criarBotoes() {
            sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 600.0f),
            IDs::IDs::menu_game_over, sf::Color(0, 255, 0));
 
+<<<<<<< HEAD
   // Add name input field
   addBotao("_", // Empty text field with cursor
            sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
+=======
+  addBotao("_", sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
+>>>>>>> psave
            IDs::IDs::botao_nome, sf::Color(0, 255, 0));
   addBotao("VOLTAR PARA O MENU",
            sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),

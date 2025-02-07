@@ -36,4 +36,9 @@ void Androide::mover() {
 int Androide::getDano() { return dano; }
 
 void Androide::salvarDataBuffer(nlohmann::ordered_json &json) {}
+<<<<<<< HEAD
+=======
+
+REGISTRAR_CLASSE(Androide, "androide")
+>>>>>>> psave
 } // namespace Entidades::Personagens

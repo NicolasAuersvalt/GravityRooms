@@ -1,7 +1,11 @@
 #include "Gerenciadores/gerenciador_grafico.h"
 
 #include "Entidades/Personagens/tripulante.h"
+<<<<<<< HEAD
 #include "ente.h" // Substitua pelo caminho correto, se necessário
+=======
+#include "ente.h"
+>>>>>>> psave
 namespace Gerenciadores {
 
 // Inicializar o atributo estático
@@ -49,7 +53,6 @@ void Gerenciador_Grafico::desenharEnte(Ente *pE) {
   if (!texture) {
     cerr << "Erro: Ente não possui uma textura carregada!" << endl;
 
-    // Teste: Tenta carregar uma textura padrão
     static Texture texturaPadrao;
     if (!texturaPadrao.loadFromFile("textura_padrao.png")) {
       cerr << "Erro: Não foi possível carregar a textura padrão!" << endl;
@@ -113,11 +116,14 @@ void Gerenciador_Grafico::executar() {
     if (event.type == sf::Event::Closed) {
       fechar();
     }
+<<<<<<< HEAD
 
     // indow.clear(sf::Color::Black); Limpa a tela
 
     // Chame a função de desenho para desenhar os entes
     // Aqui você pode desenhar o Tripulante ou outros objetos
+=======
+>>>>>>> psave
     window.display(); // Exibe a tela atualizada
   }
 }

@@ -1,7 +1,12 @@
 {
     "ranking": [
         {
+            "nome": "zzz",
+            "pontos": 6
+        },
+        {
             "nome": "kaskdksa",
+<<<<<<< HEAD
             "pontos": 18
         },
         {
@@ -22,27 +27,37 @@
         },
         {
             "nome": "BORBOLETAF1",
+=======
+>>>>>>> psave
             "pontos": 5
         },
         {
+            "nome": "nico",
+            "pontos": 3
+        },
+        {
+            "nome": "zztset",
+            "pontos": 2
+        },
+        {
+            "nome": "BORBOLETAF1",
+            "pontos": 1
+        },
+        {
             "nome": "Morgan",
-            "pontos": 4
+            "pontos": 0
         },
         {
             "nome": "NICOLAU",
-            "pontos": 1
+            "pontos": 0
         },
         {
             "nome": "reiZinho",
-            "pontos": 1
-        },
-        {
-            "nome": "zzz",
-            "pontos": 1
+            "pontos": 0
         },
         {
             "nome": "sjff",
-            "pontos": 1
+            "pontos": 0
         },
         {
             "nome": "nicolas",
@@ -65,7 +80,15 @@
             "pontos": 0
         },
         {
+<<<<<<< HEAD
             "nome": "AAAAAAAAAA",
+=======
+            "nome": "dkfjgfdg",
+            "pontos": 0
+        },
+        {
+            "nome": "flkglf",
+>>>>>>> psave
             "pontos": 0
         }
     ]

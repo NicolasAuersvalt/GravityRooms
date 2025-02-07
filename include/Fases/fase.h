@@ -7,6 +7,7 @@
 
 #include "Entidades/Obstaculos/centro_gravidade.h"
 #include "Entidades/Obstaculos/espinho.h"
+#include "Entidades/Obstaculos/espinhoRetratil.h"
 #include "Entidades/Obstaculos/plataforma.h"
 #include "Entidades/Personagens/androide.h"
 #include "Entidades/Personagens/ciborgue.h"
@@ -14,7 +15,6 @@
 #include "Entidades/background.h"
 #include "Gerenciadores/gerenciador_colisoes.h"
 #include "Gerenciadores/gerenciador_grafico.h"
-#include "Gerenciadores/gerenciador_json.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
 #include "ente.h"
@@ -30,6 +30,8 @@ using Gerenciadores::Gerenciador_Grafico;
 using Entidades::Obstaculos::Centro_Gravidade;
 using Entidades::Obstaculos::Espinho;
 using Entidades::Obstaculos::Plataforma;
+
+using Entidades::Obstaculos::EspinhoRetratil;
 
 using Entidades::Personagens::Androide;
 using Entidades::Personagens::Ciborgue;
@@ -52,6 +54,13 @@ protected:
   int contadorFaceis = 0;   // Contador de inimigos fáceis
   int contadorMedios = 0;   // Contador de inimigos medios
   int contadorDificeis = 0; // Contador de inimigos difíceis
+<<<<<<< HEAD
+=======
+  int contadorEspinho = 0;
+  int contadorEspinhoRetratil = 0;
+  short obsAleatorio = 0;
+  int contadorCg = 0;
+>>>>>>> psave
 
 public:
   bool complete;
@@ -73,40 +82,36 @@ public:
   ~Fase();
 
   void executar();
-
-  void criarBackground(const IDs::IDs ID_Fase) {
-    bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID_Fase);
-
-    if (bg == nullptr) {
-      cout << "Fase::nao foi possivel criar jogador" << endl;
-      exit(1);
-    }
-
-    listaBackground->incluir(static_cast<Entidade *>(bg));
-  }
-
+  std::string getTipo() const override { return "Fase"; }
+  void carregar(json &arquivo) {}
+  void salvar(json &arquivo) override {}
+  void criarBackground(const IDs::IDs ID_Fase);
   void criarInimFaceis(const Vector2f pos, Tripulante *tripulante);
-
   void criarInimDificeis(const Vector2f pos, Tripulante *tripulante);
   void criarInimMedios(const Vector2f pos, Tripulante *tripulante);
-
   void criarJogador(const Vector2f pos, int index);
   void criarPlataforma(const Vector2f pos);
   void criarEspinho(const Vector2f pos);
   void criarCentroGravidade(const Vector2f pos);
+<<<<<<< HEAD
 
   void setGerenciadorG(Gerenciador_Grafico *GG) {
     if (GG != nullptr)
       this->GG = GG;
   }
+=======
+  void criarEspinhoRetratil(const Vector2f pos);
+  void setGerenciadorG(Gerenciador_Grafico *GG);
+>>>>>>> psave
   Gerenciador_Grafico *getGerenciador() { return GG; }
-
   virtual void criarEntidades(char letra, const Vector2f pos);
+<<<<<<< HEAD
 
+=======
+>>>>>>> psave
   virtual void criarFundo() = 0; // fundo
   virtual void criarMapa() = 0;
   virtual void desenhar() = 0;
-
   Entidades::Projetil *criarProjetil(const Vector2f pos, IDs::IDs ID);
 };
 } // namespace Fases

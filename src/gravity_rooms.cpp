@@ -58,14 +58,17 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
     }
     menu = static_cast<Menu *>(aux);
     menu->criarBotoes();
+<<<<<<< HEAD
     // menu->inicializarIterator();
     menu->inicializarIterator(); // Add this line
+=======
+    menu->inicializarIterator();
+>>>>>>> psave
   }
   Event eventao;
   bool out = false;
   if (GG.getJanela().pollEvent(eventao)) {
     if ((currentState == GAMEOVER) && (eventao.type == Event::TextEntered)) {
-      // Handle regular text input
       if (eventao.text.unicode >= 32 && eventao.text.unicode < 128) {
         Menus::MenuGameOver *menuGameOver =
             dynamic_cast<Menus::MenuGameOver *>(menu);
@@ -82,19 +85,25 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
     if (menu->getSelecionado()) {
       IDs::IDs selecao = menu->getIDBotaoSelecionado();
       if (selecao == IDs::IDs::menu_salvar_jogada) {
+<<<<<<< HEAD
         save.salvar(GC, listaPersonagem, listaObstaculo, *fase);
         currentState = MAIN; // Keep menu open after saving
+=======
+        salvarEntidades("save.json");
+        currentState = MAIN;
+>>>>>>> psave
         return true;
       }
       if (selecao == IDs::IDs::botao_carregar) {
-        if (save.carregar(GC, listaPersonagem, listaObstaculo, fase)) {
-          currentState = PLAYING;
-          return true;
+        if (carregarEntidades("save.json")) {
+          out = true;
         }
       }
       if (selecao == IDs::IDs::botao_novoJogo) {
         criarFases(IDs::IDs::fase_laboratorio);
+
         fase->complete = false;
+        currentState = PLAYING;
         out = true;
       }
       if (selecao == IDs::IDs::botao2) {
@@ -124,17 +133,8 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
         out = true;
       }
       if (selecao == IDs::IDs::estado_menu_principal) {
-        // Clean up game state
-        save.salvar(GC, listaPersonagem, listaObstaculo, *fase);
-        if (fase) {
-          delete fase;
-          fase = nullptr;
-        }
-        listaPersonagem.limparLista();
-        listaObstaculo.limparLista();
-        GC.pJog1 = nullptr;
-        GC.pJog2 = nullptr;
-        player2Active = false;
+        salvarEntidades("save.json");
+        limparJogo();
 
         currentState = MAIN;
         out = true;
@@ -143,7 +143,6 @@ bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
   }
 
   GG.limpar();
-  // menuGeral.desenhar(&GG);
   menu->desenhar(&GG);
   GG.exibir();
   return out;
@@ -191,7 +190,10 @@ void Gravity_Rooms::executar() {
     }
 
     case PLAYING: {
+<<<<<<< HEAD
       // Check for "2" key press to activate Player 2
+=======
+>>>>>>> psave
       string tecla = pGE->isTeclaPressionada(sf::Keyboard::M);
       if (GC.pJog1) {
         currentPontos = GC.pJog1->getPontos();
@@ -201,6 +203,7 @@ void Gravity_Rooms::executar() {
       }
       if ((!GC.pJog1 || !GC.pJog1->verificarVivo()) &&
           (!GC.pJog2 || !GC.pJog2->verificarVivo())) {
+<<<<<<< HEAD
         // Cleanup when player dies
         if (fase != nullptr) {
           delete fase;
@@ -212,12 +215,18 @@ void Gravity_Rooms::executar() {
         player2Active = false;
         GC.pJog1 = nullptr;
         GC.pJog2 = nullptr;
+=======
+        limparJogo();
+>>>>>>> psave
         currentState = GAMEOVER;
 
         break;
       }
 
+<<<<<<< HEAD
       // Check if all enemies are dead
+=======
+>>>>>>> psave
       bool enemiesExist = false;
 
       auto atual = listaPersonagem.LEs->getPrimeiro();
@@ -229,6 +238,7 @@ void Gravity_Rooms::executar() {
         atual = atual->getProximo();
       }
 
+<<<<<<< HEAD
       // Transition logic
       if (!enemiesExist && fase->complete == false) {
         if (dynamic_cast<Laboratorio *>(fase)) {
@@ -238,12 +248,18 @@ void Gravity_Rooms::executar() {
           listaObstaculo.limparLista();
           GC.pJog1 = nullptr;
           GC.pJog2 = nullptr;
+=======
+      if (!enemiesExist && fase->complete == false) {
+        if (dynamic_cast<Laboratorio *>(fase)) {
+          limparJogo();
+>>>>>>> psave
           criarFases(IDs::IDs::fase_nave);
           if (player2Active) {
             criarJogadorDois();
           }
           continue;
         } else if (dynamic_cast<Nave *>(fase)) {
+<<<<<<< HEAD
           cout << "Nave completed. Returning to main menu..." << endl;
           delete fase;
           fase = nullptr;
@@ -252,28 +268,45 @@ void Gravity_Rooms::executar() {
           GC.pJog1 = nullptr;
           GC.pJog2 = nullptr;
           player2Active = false;
+=======
+          limparJogo();
+>>>>>>> psave
           menu->setSelecionado(false);
           currentState = GAMEOVER;
           continue;
         }
       }
+<<<<<<< HEAD
       // Handle game events
+=======
+>>>>>>> psave
       while (GG.processarEvento(evento)) {
         if (evento.type == Event::Closed) {
           GG.fechar();
         }
         if (evento.type == Event::KeyPressed &&
             evento.key.code == Keyboard::Y) {
+<<<<<<< HEAD
           save.salvar(GC, listaPersonagem, listaObstaculo, *fase);
         }
         if (evento.type == Event::KeyPressed &&
             evento.key.code == Keyboard::Escape) {
           save.salvar(GC, listaPersonagem, listaObstaculo, *fase);
+=======
+          salvarEntidades("save.json");
+        }
+        if (evento.type == Event::KeyPressed &&
+            evento.key.code == Keyboard::Escape) {
+          salvarEntidades("save.json");
+>>>>>>> psave
           currentState = PAUSE;
         }
       }
 
+<<<<<<< HEAD
       // Update game state
+=======
+>>>>>>> psave
       GG.limpar();
       listaBackgrounds.desenharTodos();
 
@@ -281,13 +314,20 @@ void Gravity_Rooms::executar() {
 
       listaPersonagem.desenharTodos();
 
+<<<<<<< HEAD
       GC.setLista_Entidades(&listaPersonagem, &listaObstaculo);
 
+=======
+>>>>>>> psave
       GC.executar(&listaPersonagem, &listaObstaculo);
 
       GG.exibir();
 
       listaPersonagem.atualizarTodas();
+<<<<<<< HEAD
+=======
+
+>>>>>>> psave
       listaObstaculo.atualizarTodas();
 
       break;
@@ -297,7 +337,11 @@ void Gravity_Rooms::executar() {
 }
 
 void Gravity_Rooms::criarJogadorDois() {
+<<<<<<< HEAD
   if (fase && !GC.pJog2) { // Only create if doesn't exist
+=======
+  if (fase && !GC.pJog2) {
+>>>>>>> psave
     fase->criarJogador(Vector2f(200.0f, 100.0f), 1);
     Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
                                              IDs::IDs::projetil_tripulante);
@@ -314,6 +358,15 @@ void Gravity_Rooms::criarJogadorDois() {
 }
 
 void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
+  if (fase) {
+    delete fase;
+    fase = nullptr;
+  }
+  listaPersonagem.limparLista();
+  listaObstaculo.limparLista();
+  listaBackgrounds.limparLista();
+  GC.pJog1 = nullptr;
+  GC.pJog2 = nullptr;
   if (faseSelecionada == IDs::IDs::fase_laboratorio) {
     Laboratorio *aux = new Laboratorio(IDs::IDs::fase_laboratorio);
 
@@ -337,8 +390,12 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
 
   auto atualObstaculos = fase->listaObstaculos->LEs->getPrimeiro();
   while (atualObstaculos != nullptr) {
+<<<<<<< HEAD
     listaObstaculo.incluir(
         atualObstaculos->pInfo); // Add entity to listaPersonagem
+=======
+    listaObstaculo.incluir(atualObstaculos->pInfo);
+>>>>>>> psave
     atualObstaculos = atualObstaculos->getProximo();
   }
   auto atualPersonagens = fase->listaPersonagens->LEs->getPrimeiro();
@@ -349,9 +406,36 @@ void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
       GC.incluirTripulante(*tripPtr);
     }
 
+<<<<<<< HEAD
     listaPersonagem.incluir(
         atualPersonagens->pInfo); // Add entity to listaPersonagem
+=======
+    listaPersonagem.incluir(atualPersonagens->pInfo);
+>>>>>>> psave
     atualPersonagens = atualPersonagens->getProximo();
   }
   listaBackgrounds.incluir(fase->bg);
+}
+void Gravity_Rooms::salvarEntidades(const std::string &nomeArquivo) {
+  save.salvar(GC, listaPersonagem, listaObstaculo, listaBackgrounds, fase,
+              nomeArquivo);
+}
+bool Gravity_Rooms::carregarEntidades(const std::string &nomeArquivo) {
+  limparJogo();
+  if (save.carregar(GC, listaPersonagem, listaObstaculo, listaBackgrounds, fase,
+                    nomeArquivo))
+    currentState = PLAYING;
+  return true;
+}
+
+void Gravity_Rooms::limparJogo() {
+  if (fase) {
+    delete fase;
+    fase = nullptr;
+  }
+  listaPersonagem.limparLista();
+  listaObstaculo.limparLista();
+  listaBackgrounds.limparLista();
+  GC.pJog1 = nullptr;
+  GC.pJog2 = nullptr;
 }

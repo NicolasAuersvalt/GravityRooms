@@ -1,10 +1,11 @@
-#include "json.hpp" // Inclua a biblioteca nlohmann/json
 #include <SFML/Graphics.hpp>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <mutex>
 #include <thread>
+
+#include "json.hpp" // Inclua a biblioteca nlohmann/json
 
 using json = nlohmann::json;
 
@@ -122,7 +123,10 @@ public:
 // Função para salvar o estado do jogador em uma thread separada
 void salvarJogador(Jogador &jogador, const std::string &arquivo) {
   jogador.salvar(arquivo);
+<<<<<<< HEAD
   std::cout << "Jogador e Inventário salvos!\n";
+=======
+>>>>>>> psave
 }
 
 // Função para verificar se o arquivo existe

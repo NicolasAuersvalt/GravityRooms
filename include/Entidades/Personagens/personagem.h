@@ -33,35 +33,34 @@ protected:
   void verificarLimitesTela() {
     Vector2f pos = getSprite().getPosition();
     Vector2f tamanho = getTamanho();
-
-    // Horizontal boundaries (use actual window dimensions)
+    // Limites horizontais (usar dimensões reais da janela)
     const float LARGURA_TELA = 1280.0f;
     const float ALTURA_TELA = 920.0f;
 
-    // Left boundary
+    // Limite esquerdo
     if (pos.x < 0.0f) {
       pos.x = 0.0f;
       velFinal.x = 0.0f;
     }
-    // Right boundary
+    // Limite direito
     if (pos.x + tamanho.x > LARGURA_TELA) {
       pos.x = LARGURA_TELA - tamanho.x;
       velFinal.x = 0.0f;
     }
 
-    // Top boundary
+    // Limite superior
     if (pos.y < 0.0f) {
       pos.y = 0.0f;
       velFinal.y = 0.0f;
     }
-    // Bottom boundary
+    // Limite inferior
     if (pos.y + tamanho.y > ALTURA_TELA) {
       pos.y = ALTURA_TELA - tamanho.y;
       velFinal.y = 0.0f;
       noChao = true;
     }
 
-    // Update both sprite and hitbox positions
+    // Atualiza as posições do sprite e da hitbox
     getSprite().setPosition(pos);
     setPosicao(pos.x, pos.y);
   }
@@ -82,7 +81,6 @@ public:
   void recebeDano(int dano);
   void setPisando(bool pisa);
   bool getPisando();
-  void salvar();
   bool verificarVivo();
   void morrer();
   void atualizarPosicao();
@@ -93,6 +91,8 @@ public:
   void setVelFinal(const sf::Vector2f velFinal);
   const sf::Vector2f getVelFinal() const;
   void cair();
+  void carregar(json &arquivo) override {};
+  std::string getTipo() const override { return "Personagem"; }
 };
 
 } // namespace Entidades::Personagens
