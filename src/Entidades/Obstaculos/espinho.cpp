@@ -12,7 +12,6 @@ Espinho::Espinho(const sf::Vector2f pos, const sf::Vector2f tam,
                  const IDs::IDs ID)
     : Obstaculo(pos, tam, ID) {
   this->dano = 2;
-  // setSprite("assets/espinhoP.png", pos.x, pos.y);
   setSprite("assets/espinho.png", pos.x, pos.y);
 
   setTamanho(sf::Vector2f(90.0f, 90.0f));
@@ -28,10 +27,9 @@ void Espinho::executar() {
   desenhar();
 }
 void Espinho::mover() {}
-void Espinho::salvar() {
-  // Add implementation
-}
 
 void Espinho::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
 int Entidades::Obstaculos::Espinho::getDano() { return dano; }
+
+REGISTRAR_CLASSE(Espinho, "espinho")
 } // namespace Entidades::Obstaculos

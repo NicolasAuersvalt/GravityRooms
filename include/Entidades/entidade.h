@@ -2,6 +2,7 @@
 #define ENTIDADE_H
 
 #include <SFML/Graphics.hpp>
+#include <fstream>
 #include <iostream>
 #include <sstream>
 #include <utility>
@@ -31,9 +32,8 @@ public:
   Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   virtual ~Entidade();
 
-  virtual void salvar() = 0;
   virtual void mover() = 0;
-
+  virtual void salvar(json &arquivo) = 0;
   void setPosicao(int x, int y);
   void setTamanho(const Vector2f tam);
 

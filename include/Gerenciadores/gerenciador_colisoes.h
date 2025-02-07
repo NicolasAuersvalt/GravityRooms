@@ -42,26 +42,14 @@ public:
   Tripulante *pJog2;
 
   void setLista_Entidades(Lista_Entidades *listaPersonagem,
-                          Lista_Entidades *listaObstaculo) {
-    this->listaPersonagem = listaPersonagem;
-    this->listaObstaculo = listaObstaculo;
-  }
-
-  void incluirTripulante(Tripulante &jogador) {
-    if (!pJog1) {
-      pJog1 = &jogador;
-    } else if (!pJog2) {
-      pJog2 = &jogador;
-    }
-  }
+                          Lista_Entidades *listaObstaculo);
+  void incluirTripulante(Tripulante &jogador);
   Gerenciador_Colisoes(Lista_Entidades *listaPersonagem,
                        Lista_Entidades *listaObstaculo);
   ~Gerenciador_Colisoes();
   const sf::Vector2f calculaColisao(Entidades::Entidade *ent1,
                                     Entidades::Entidade *ent2);
   void executar(Lista_Entidades *listaPer, Lista_Entidades *listaObs);
-
-protected:
 };
 
 } // namespace Gerenciadores

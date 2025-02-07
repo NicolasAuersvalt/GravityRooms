@@ -17,10 +17,18 @@ public:
   ~Centro_Gravidade();
   void executar() override;
   void mover() override;
-  void salvar() override;
+
+  void carregar(json &arquivo) override {};
+  std::string getTipo() const override { return "Centro_Gravidade"; }
   void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   int getDano();
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "centro_gravidade";
+  }
 };
 
 } // namespace Entidades::Obstaculos

@@ -20,7 +20,7 @@ void Ente::setSprite(std::string local, int posX, int posY) {
     std::cerr << "Erro ao carregar a textura: " << local << std::endl;
   } else {
     sprite.setTexture(*texture); // Associa a textura ao sprite
-    // Se for necessário recortar a imagem para o sprite
+    // Se for necessário recorta a imagem para o sprite
   }
 }
 

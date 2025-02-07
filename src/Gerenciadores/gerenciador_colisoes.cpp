@@ -94,4 +94,17 @@ void Gerenciador_Colisoes::executar(Lista_Entidades *listaPer,
     }
   }
 }
+
+void Gerenciador_Colisoes::setLista_Entidades(Lista_Entidades *listaPersonagem,
+                                              Lista_Entidades *listaObstaculo) {
+  this->listaPersonagem = listaPersonagem;
+  this->listaObstaculo = listaObstaculo;
+}
+void Gerenciador_Colisoes::incluirTripulante(Tripulante &jogador) {
+  if (!pJog1) {
+    pJog1 = &jogador;
+  } else if (!pJog2) {
+    pJog2 = &jogador;
+  }
+}
 } // namespace Gerenciadores

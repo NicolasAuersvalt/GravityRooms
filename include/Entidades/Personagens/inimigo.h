@@ -9,6 +9,7 @@
 
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/Personagens/tripulante.h"
+#include "Entidades/projetil.h"
 #include "Gerenciadores/gerenciador_fisico.h"
 
 using namespace sf;
@@ -40,12 +41,14 @@ public:
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   virtual void mover();
 
+  virtual Projetil *getProjetil() = 0;
   virtual int getDano() = 0;
 
   void perseguirTripulante(sf::Vector2f posTripulante,
                            const sf::Vector2f posInimigo);
   void movimentarAleatorio();
   int getNivelMaldade() const;
+  void setTripulante(Tripulante *tripulante) { this->tripulante = tripulante; };
 };
 
 } // namespace Entidades::Personagens

@@ -14,7 +14,6 @@ Centro_Gravidade::Centro_Gravidade(const sf::Vector2f pos,
   this->dano = 10;
 
   setSprite("assets/regiao_gravitacional.png", pos.x, pos.y);
-  // Adjust size to match the actual sprite dimensions
   setTamanho(sf::Vector2f(90.0f, 90.0f));
 
   setPosicao(pos.x, pos.y);
@@ -29,8 +28,9 @@ void Centro_Gravidade::executar() {
 }
 
 void Centro_Gravidade::mover() {}
-void Centro_Gravidade::salvar() {}
 void Centro_Gravidade::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
 
 int Centro_Gravidade::getDano() { return dano; }
+
+REGISTRAR_CLASSE(Centro_Gravidade, "centro_gravidade")
 } // namespace Entidades::Obstaculos

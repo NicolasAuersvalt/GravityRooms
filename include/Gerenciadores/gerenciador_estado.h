@@ -12,7 +12,6 @@ private:
   std::stack<int *> pilhaEstados;
   static GerenciadorEstado *pGerenciadorEstado;
   GerenciadorEstado();
-
   void desativarObservadores();
   void ativarObservadores();
 

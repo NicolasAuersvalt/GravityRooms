@@ -31,11 +31,15 @@ public:
   Entidades::Personagens::Tripulante *getJogador();
 
   void salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
-              Lista_Entidades &listaObstaculo, Fase &fase);
-  void gravarDados();
+              Lista_Entidades &listaObstaculo,
+              Lista_Entidades &listaBackgrounds, Fase *&fase,
+              const std::string &nomeArquivo);
 
+  void gravarDados();
   bool carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
-                Lista_Entidades &listaObstaculo, Fase *&fase);
+                Lista_Entidades &listaObstaculo,
+                Lista_Entidades &listaBackgrounds, Fase *&fase,
+                const std::string &nomeArquivo);
 };
 
 #endif

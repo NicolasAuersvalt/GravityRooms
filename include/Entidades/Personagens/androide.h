@@ -28,6 +28,15 @@ public:
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   void mover() override;
   int getDano();
+  Projetil *getProjetil() { return nullptr; };
+
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["vida"] = getVida();
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "androide";
+  }
 };
 
 } // namespace Entidades::Personagens

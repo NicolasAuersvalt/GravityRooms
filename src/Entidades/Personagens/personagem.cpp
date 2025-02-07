@@ -12,8 +12,6 @@ Personagem::Personagem(const Vector2f pos, const Vector2f tam,
     : Entidade(pos, tam, ID), noChao(false), vivo(true), pontosVida(10) {}
 
 Personagem::~Personagem() {}
-void Personagem::salvar() {}
-
 const RectangleShape &Personagem::getCorpo() const { return corpo; }
 
 int Personagem::getVida() { return pontosVida; }
@@ -62,7 +60,7 @@ void Personagem::setVelFinal(const sf::Vector2f velFinal) {
 }
 const sf::Vector2f Personagem::getVelFinal() const { return velFinal; }
 void Personagem::cair() {
-  tempoSemColisao += 0.016f;
+  tempoSemColisao += 0.016f; // Incrementa o tempo sem colisão (60 FPS)
   if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {
     noChao = false;
   }

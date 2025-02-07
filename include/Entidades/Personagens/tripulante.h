@@ -6,12 +6,13 @@
 
 #include "Entidades/Obstaculos/centro_gravidade.h"
 #include "Entidades/Obstaculos/espinho.h"
+#include "Entidades/Obstaculos/espinhoRetratil.h"
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/projetil.h"
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_fisico.h"
-#include "Gerenciadores/gerenciador_json.h"
+#include "Gerenciadores/registry.h"
 #include "json.hpp"
 
 using namespace sf;
@@ -19,10 +20,6 @@ using namespace std;
 
 using Gerenciadores::Gerenciador_Eventos;
 using Gerenciadores::Gerenciador_Fisica;
-
-// namespace Gerenciadores {
-// // class Gerenciador_Salvamento;
-// }
 
 namespace Entidades::Personagens {
 
@@ -52,54 +49,53 @@ private:
   };
 
   Municao municao;
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
   int pontos;
   Gerenciador_Eventos *GE;
   Gerenciador_Fisica GF;
-  // ===/===/===/===/ Outros  ===/===/===/===/
   bool isPlayerOne;
 
 protected:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  // Gerenciadores::Gerenciador_Salvamento* GS;
-  //  ===/===/===/===/ Outros  ===/===/===/===/
   Projetil *projetil;
 
 public:
-  // ===/===/===/===/ Obrigatório ===/===/===/===/
-
-  Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID,
-             bool isFirstPlayer = true);
+  Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Tripulante();
 
   void carregarDataBuffer(const nlohmann::ordered_json &json);
 
-  // virtual void executar() override;
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
   virtual void mover() override;
 
-  // Set
   void setPontos(int ponto);
   void setChao(bool chao);
   void setProjetil(Projetil *new_projetil) { projetil = new_projetil; };
+  Projetil *getProjetil() { return projetil; };
   void setGerenciadorEvento(Gerenciador_Eventos *GE);
   void setMunicao(int qtd);
-
-  // Get
+  void setPlayerOne(bool isone) { isPlayerOne = isone; }
   bool getChao();
   int getPontos();
   int getMunicao();
-
-  // Gerenciadores::Gerenciador_Salvamento* getGerenciadorSalvamento() {
-  //   return GS;
-  // }
   void tirarMunicao();
   void atualizar();
   void podePular();
   void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["vida"] = getVida();
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "tripulante";
+    if (projetil) {
+      arquivo["projetil"]["id"] = static_cast<int>(projetil->getID());
 
+      arquivo["projetil"]["ativo"] = projetil->getAtivo();
+      arquivo["projetil"]["posicao"]["x"] = projetil->getPosicao().x;
+      arquivo["projetil"]["posicao"]["y"] = projetil->getPosicao().y;
+      arquivo["projetil"]["tipo"] = "projetil";
+    }
+  }
   void atirar();
 };
 

@@ -20,13 +20,19 @@ public:
 
   void executar() override;
   void mover() override;
-  void salvar() override;
-  // void desenhar(Gerenciador_Grafico pGG) override;
-  // void atualizar() override;
-  // void colisao(Entidade* outra) override;
+
+  std::string getTipo() const override { return "Plataforma"; }
+  void carregar(json &arquivo) {}
   void colisao(Entidade *outraEntidade,
                sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
   int getDano();
+
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["posicao"]["x"] = getPosicao().x;
+    arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["tipo"] = "plataforma";
+  }
 };
 } // namespace Entidades::Obstaculos
 #endif
