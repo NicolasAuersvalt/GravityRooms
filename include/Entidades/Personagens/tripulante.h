@@ -49,6 +49,23 @@ class Tripulante : public Personagem {
       }
       return false;
     }
+    // Sobrecarga do operador +=
+    Municao &operator+=(int qtd) {
+      setQtd(quantidade + qtd);  // Adiciona a quantidade, respeitando o limite
+      return *this;
+    }
+
+    // Sobrecarga do operador -=
+    Municao &operator-=(int qtd) {
+      setQtd(quantidade - qtd);  // Remove a quantidade, mas sem ir abaixo de 0
+      return *this;
+    }
+    Municao &operator--() {
+      if (quantidade > 0) {
+        quantidade--;  // Decrementa se houver munição
+      }
+      return *this;
+    }
   };
 
   Municao municao;

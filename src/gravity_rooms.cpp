@@ -243,8 +243,10 @@ void Gravity_Rooms::executar() {
 
         cout << "bloia3" << endl;
         listaObstaculo.desenharTodos();
-        if (GC.pJog1 || GC.pJog1->verificarVivo()) {
-          listaPersonagem.juntarListas(*GC.pJog1->getProjeteis());
+        if (GC.pJog1) {
+          if (GC.pJog1->verificarVivo()) {
+            listaPersonagem.juntarListas(*GC.pJog1->getProjeteis());
+          }
         }
 
         cout << "bloia4" << endl;

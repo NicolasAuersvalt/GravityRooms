@@ -16,16 +16,13 @@ BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f pos,
 BotaoTexto::~BotaoTexto() {}
 
 void BotaoTexto::atualizarPosicaoCaixa(const sf::Vector2f pos) {
-  // Update box position
   this->pos = pos;
   caixa.setPosition(pos);
 
-  // Calculate center of button
-  sf::Vector2f centerPos(pos.x + (tam.x / 2.0f),  // Center X
-                         pos.y + (tam.y / 2.0f)   // Center Y
+  sf::Vector2f centerPos(pos.x + (tam.x / 2.0f),  // Centro x
+                         pos.y + (tam.y / 2.0f)   // Centro y
   );
 
-  // Since text origin is centered, just set position to button center
   setPos(centerPos);
 }
 
