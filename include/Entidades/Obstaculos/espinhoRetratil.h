@@ -6,14 +6,14 @@
 
 namespace Entidades::Obstaculos {
 class EspinhoRetratil : public Obstaculo {
-private:
+ private:
   float largura;
   float tempoDesdeUltimaAlternancia;
   bool ligado;
   sf::Clock relogio;
 
-protected:
-public:
+ protected:
+ public:
   EspinhoRetratil(const sf::Vector2f pos, const sf::Vector2f tam,
                   const IDs::IDs ID);
   ~EspinhoRetratil();
@@ -36,6 +36,6 @@ public:
   }
 };
 
-} // namespace Entidades::Obstaculos
+}  // namespace Entidades::Obstaculos
 
 #endif

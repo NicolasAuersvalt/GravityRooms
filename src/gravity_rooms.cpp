@@ -2,9 +2,16 @@
 
 // Construtor
 Gravity_Rooms::Gravity_Rooms()
-    : GG(), listaPersonagem(), listaObstaculo(),
-      GC(&listaPersonagem, &listaObstaculo), GE(), menu(nullptr), fase(nullptr),
-      player2Active(false), currentState(MAIN), currentPontos(0) {
+    : GG(),
+      listaPersonagem(),
+      listaObstaculo(),
+      GC(&listaPersonagem, &listaObstaculo),
+      GE(),
+      menu(nullptr),
+      fase(nullptr),
+      player2Active(false),
+      currentState(MAIN),
+      currentPontos(0) {
   Ente::setGerenciador(&GG);
 
   executar();
@@ -150,109 +157,115 @@ void Gravity_Rooms::executar() {
     Event evento;
 
     switch (currentState) {
-    case MAIN: {
-      if (ligarMenu(IDs::IDs::menu_principal)) {
-        if (currentState == COLOCACAO)
-          break;
-        currentState = PLAYING;
+      case MAIN: {
+        if (ligarMenu(IDs::IDs::menu_principal)) {
+          if (currentState == COLOCACAO) break;
+          currentState = PLAYING;
+        }
+        break;
       }
-      break;
-    }
-    case PAUSE: {
-      menu->setSelecionado(false);
-      if (ligarMenu(IDs::IDs::menu_pausa)) {
+      case PAUSE: {
+        menu->setSelecionado(false);
+        if (ligarMenu(IDs::IDs::menu_pausa)) {
+        }
+        break;
       }
-      break;
-    }
-    case COLOCACAO: {
-      menu->setSelecionado(false);
-      if (ligarMenu(IDs::IDs::menu_colocacao)) {
-        currentState = MAIN;
+      case COLOCACAO: {
+        menu->setSelecionado(false);
+        if (ligarMenu(IDs::IDs::menu_colocacao)) {
+          currentState = MAIN;
+        }
+        break;
       }
-      break;
-    }
-    case GAMEOVER: {
-      menu->setSelecionado(false);
-      if (ligarMenu(IDs::IDs::menu_game_over)) {
-        currentState = MAIN;
-      }
-      break;
-    }
-
-    case PLAYING: {
-      string tecla = pGE->isTeclaPressionada(sf::Keyboard::M);
-      if (GC.pJog1) {
-        currentPontos = GC.pJog1->getPontos();
-      }
-      if (tecla == "M" && !player2Active) {
-        criarJogadorDois();
-      }
-      if ((!GC.pJog1 || !GC.pJog1->verificarVivo()) &&
-          (!GC.pJog2 || !GC.pJog2->verificarVivo())) {
-        limparJogo();
-        currentState = GAMEOVER;
-
+      case GAMEOVER: {
+        menu->setSelecionado(false);
+        if (ligarMenu(IDs::IDs::menu_game_over)) {
+          currentState = MAIN;
+        }
         break;
       }
 
-      bool enemiesExist = false;
+      case PLAYING: {
+        string tecla = pGE->isTeclaPressionada(sf::Keyboard::M);
+        if (GC.pJog1) {
+          currentPontos = GC.pJog1->getPontos();
+        }
+        if (tecla == "M" && !player2Active) {
+          criarJogadorDois();
+        }
+        cout << "bloia1" << endl;
+        if ((!GC.pJog1 || !GC.pJog1->verificarVivo()) &&
+            (!GC.pJog2 || !GC.pJog2->verificarVivo())) {
+          limparJogo();
+          currentState = GAMEOVER;
 
-      auto atual = listaPersonagem.LEs->getPrimeiro();
-      while (atual != nullptr) {
-        if (dynamic_cast<Inimigo *>(atual->pInfo)) {
-          enemiesExist = true;
           break;
         }
-        atual = atual->getProximo();
-      }
+        if ((!GC.pJog2 || !GC.pJog2->verificarVivo())) {
+          player2Active = false;
+        }
+        cout << "bloia" << endl;
+        bool enemiesExist = listaPersonagem.contemTipo<Inimigo>();
+        cout << "bloia2" << endl;
 
-      if (!enemiesExist && fase->complete == false) {
-        if (dynamic_cast<Laboratorio *>(fase)) {
-          limparJogo();
-          criarFases(IDs::IDs::fase_nave);
-          if (player2Active) {
-            criarJogadorDois();
+        if (!enemiesExist && fase->complete == false) {
+          if (dynamic_cast<Laboratorio *>(fase)) {
+            limparJogo();
+            criarFases(IDs::IDs::fase_nave);
+            if (player2Active) {
+              criarJogadorDois();
+            }
+            continue;
+          } else if (dynamic_cast<Nave *>(fase)) {
+            limparJogo();
+            menu->setSelecionado(false);
+            currentState = GAMEOVER;
+            continue;
           }
-          continue;
-        } else if (dynamic_cast<Nave *>(fase)) {
-          limparJogo();
-          menu->setSelecionado(false);
-          currentState = GAMEOVER;
-          continue;
         }
+        while (GG.processarEvento(evento)) {
+          if (evento.type == Event::Closed) {
+            GG.fechar();
+          }
+          if (evento.type == Event::KeyPressed &&
+              evento.key.code == Keyboard::Y) {
+            salvarEntidades("save.json");
+          }
+          if (evento.type == Event::KeyPressed &&
+              evento.key.code == Keyboard::Escape) {
+            salvarEntidades("save.json");
+            currentState = PAUSE;
+          }
+        }
+
+        GG.limpar();
+        listaBackgrounds.desenharTodos();
+
+        cout << "bloia3" << endl;
+        listaObstaculo.desenharTodos();
+        if (GC.pJog1 || GC.pJog1->verificarVivo()) {
+          listaPersonagem.juntarListas(*GC.pJog1->getProjeteis());
+        }
+
+        cout << "bloia4" << endl;
+        if (GC.pJog2) {
+          if (GC.pJog2->verificarVivo())
+            listaPersonagem.juntarListas(*GC.pJog2->getProjeteis());
+        }
+
+        cout << "bloia5" << endl;
+        listaPersonagem.desenharTodos();
+
+        GC.executar(&listaPersonagem, &listaObstaculo);
+
+        GG.exibir();
+
+        listaPersonagem.atualizarTodas();
+
+        listaObstaculo.atualizarTodas();
+
+        break;
       }
-      while (GG.processarEvento(evento)) {
-        if (evento.type == Event::Closed) {
-          GG.fechar();
-        }
-        if (evento.type == Event::KeyPressed &&
-            evento.key.code == Keyboard::Y) {
-          salvarEntidades("save.json");
-        }
-        if (evento.type == Event::KeyPressed &&
-            evento.key.code == Keyboard::Escape) {
-          salvarEntidades("save.json");
-          currentState = PAUSE;
-        }
-      }
-
-      GG.limpar();
-      listaBackgrounds.desenharTodos();
-
-      listaObstaculo.desenharTodos();
-
-      listaPersonagem.desenharTodos();
-
-      GC.executar(&listaPersonagem, &listaObstaculo);
-
-      GG.exibir();
-
-      listaPersonagem.atualizarTodas();
-
-      listaObstaculo.atualizarTodas();
-
-      break;
-    }
     }
   }
 }
@@ -260,10 +273,6 @@ void Gravity_Rooms::executar() {
 void Gravity_Rooms::criarJogadorDois() {
   if (fase && !GC.pJog2) {
     fase->criarJogador(Vector2f(200.0f, 100.0f), 1);
-    Projetil *projetil = fase->criarProjetil(Vector2f(200.0f, 100.0f),
-                                             IDs::IDs::projetil_tripulante);
-    fase->tripulantes[1]->setProjetil(projetil);
-    listaPersonagem.incluir(projetil);
     Tripulante *tripPtr = dynamic_cast<Tripulante *>(fase->tripulantes[1]);
     if (tripPtr) {
       GC.incluirTripulante(*tripPtr);
@@ -275,15 +284,7 @@ void Gravity_Rooms::criarJogadorDois() {
 }
 
 void Gravity_Rooms::criarFases(IDs::IDs faseSelecionada) {
-  if (fase) {
-    delete fase;
-    fase = nullptr;
-  }
-  listaPersonagem.limparLista();
-  listaObstaculo.limparLista();
-  listaBackgrounds.limparLista();
-  GC.pJog1 = nullptr;
-  GC.pJog2 = nullptr;
+  limparJogo();
   if (faseSelecionada == IDs::IDs::fase_laboratorio) {
     Laboratorio *aux = new Laboratorio(IDs::IDs::fase_laboratorio);
 

@@ -54,7 +54,7 @@ void Save::salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
 
   std::ofstream arquivo(nomeArquivo);
   if (arquivo.is_open()) {
-    arquivo << j.dump(4); // Formatação bonita com 4 espaços
+    arquivo << j.dump(4);  // Formatação bonita com 4 espaços
   }
 }
 
@@ -95,23 +95,9 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
           if (!GC.pJog1) {
             GC.pJog1 = jogador;
             GC.pJog1->setPlayerOne(false);
-            if (entidadeData.contains("projetil")) {
-              auto proj = registry.criar(entidadeData["projetil"]);
-              if (proj) {
-                listaPersonagem.incluir(
-                    dynamic_cast<Entidade *>(jogador->getProjetil()));
-              }
-            }
           } else if (!GC.pJog2) {
             GC.pJog2 = jogador;
             GC.pJog2->setPlayerOne(true);
-            if (entidadeData.contains("projetil")) {
-              auto proj = registry.criar(entidadeData["projetil"]);
-              if (proj) {
-                listaPersonagem.incluir(
-                    dynamic_cast<Entidade *>(jogador->getProjetil()));
-              }
-            }
           }
         } else {
           if (GC.pJog1) {

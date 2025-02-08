@@ -13,6 +13,7 @@
 #include "Gerenciadores/gerenciador_eventos.h"
 #include "Gerenciadores/gerenciador_fisico.h"
 #include "Gerenciadores/registry.h"
+#include "Listas/lista_entidades.h"
 #include "json.hpp"
 
 using namespace sf;
@@ -24,27 +25,29 @@ using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
 
 class Tripulante : public Personagem {
-private:
+ private:
   class Municao {
-  private:
+   private:
     int quantidade;
+    int maxMunicao;
 
-  public:
-    Municao() : quantidade(0) {}
+   public:
+    Municao(int maxM = 40) : quantidade(maxM), maxMunicao(maxM) {}
 
-    void setQtd(int qtd) { quantidade = qtd; }
+    void setQtd(int qtd) {
+      quantidade = std::max(0, std::min(qtd, maxMunicao));
+    }
 
     int getQtd() const { return quantidade; }
 
-    Municao operator++(int) {
-      Municao temp = *this; // Cria uma cópia do objeto atual
-      quantidade += 1;
-      return temp; // Retorna a cópia antes da alteração
-    }
-    Municao operator--(int) {
-      Municao temp = *this;
-      quantidade -= 1;
-      return temp;
+    void recarregar(int qtd) { setQtd(quantidade + qtd); }
+
+    bool consumir() {
+      if (quantidade > 0) {
+        quantidade--;
+        return true;
+      }
+      return false;
     }
   };
 
@@ -53,11 +56,13 @@ private:
   Gerenciador_Eventos *GE;
   Gerenciador_Fisica GF;
   bool isPlayerOne;
+  float tempoUltimoTiro;  // Tempo desde o último disparo
+  float tempoCooldown;
 
-protected:
-  Projetil *projetil;
+ protected:
+  Listas::Lista_Entidades *projeteis;
 
-public:
+ public:
   Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Tripulante();
 
@@ -68,15 +73,16 @@ public:
 
   void setPontos(int ponto);
   void setChao(bool chao);
-  void setProjetil(Projetil *new_projetil) { projetil = new_projetil; };
-  Projetil *getProjetil() { return projetil; };
+  void atualizarProjeteis();
+  void removerProjetilInativo();
+  Listas::Lista_Entidades *getProjeteis() { return projeteis; };
+  bool podeAtirar() { return municao.getQtd() > 0; }
   void setGerenciadorEvento(Gerenciador_Eventos *GE);
   void setMunicao(int qtd);
   void setPlayerOne(bool isone) { isPlayerOne = isone; }
   bool getChao();
   int getPontos();
   int getMunicao();
-  void tirarMunicao();
   void atualizar();
   void podePular();
   void colisao(Entidade *outraEntidade,
@@ -87,18 +93,10 @@ public:
     arquivo["posicao"]["x"] = getPosicao().x;
     arquivo["posicao"]["y"] = getPosicao().y;
     arquivo["tipo"] = "tripulante";
-    if (projetil) {
-      arquivo["projetil"]["id"] = static_cast<int>(projetil->getID());
-
-      arquivo["projetil"]["ativo"] = projetil->getAtivo();
-      arquivo["projetil"]["posicao"]["x"] = projetil->getPosicao().x;
-      arquivo["projetil"]["posicao"]["y"] = projetil->getPosicao().y;
-      arquivo["projetil"]["tipo"] = "projetil";
-    }
   }
   void atirar();
 };
 
-} // namespace Entidades::Personagens
+}  // namespace Entidades::Personagens
 
 #endif

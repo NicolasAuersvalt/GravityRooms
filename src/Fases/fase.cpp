@@ -85,8 +85,6 @@ void Fase::criarEspinhoRetratil(const Vector2f pos) {
 void Fase::criarEntidades(char letra, const Vector2f pos) {
   if (tripulantes[0] == nullptr) {
     criarJogador({100.f, 100.f}, 0);
-    tripulantes[0]->setProjetil(
-        criarProjetil(pos, IDs::IDs::projetil_tripulante));
   }
 
   switch (letra) {
