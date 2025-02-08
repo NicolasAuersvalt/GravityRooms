@@ -6,9 +6,15 @@ namespace Botoes {
 
 Botao::Botao(const sf::Vector2f tam, const sf::Vector2f pos, const IDs::IDs ID,
              const float tempoTroca, const sf::Vector2f tamMax)
-    : Ente(ID), pos(pos), tam(tam), textura(new sf::Texture()),
+    : Ente(ID),
+      pos(pos),
+      tam(tam),
+      textura(new sf::Texture()),
       tamMax(tamMax == sf::Vector2f(0.0f, 0.0f) ? tam : tamMax),
-      tempoTroca(tempoTroca), tempo(0.0f), tamInicial(tam), aumentando(true) {
+      tempoTroca(tempoTroca),
+      tempo(0.0f),
+      tamInicial(tam),
+      aumentando(true) {
   caixa.setPosition(pos);
   caixa.setSize(tam);
 }
@@ -34,8 +40,6 @@ void Botao::setTextura(sf::Texture *textura) {
 
 void Botao::desenhar() {}
 
-void Botao::atualizarAnimacao() {}
+}  // namespace Botoes
 
-} // namespace Botoes
-
-} // namespace Menus
+}  // namespace Menus

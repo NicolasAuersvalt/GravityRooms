@@ -24,9 +24,14 @@ using namespace sf;
 class Gravity_Rooms;
 
 namespace Menus {
+class Drawable {
+ public:
+  virtual void desenhar(Gerenciador_Grafico *GG) = 0;
+  virtual ~Drawable() = default;
+};
 
-class Menu : public Ente {
-protected:
+class Menu : public Ente, public Drawable {
+ protected:
   list<Menus::Botoes::BotaoTexto *> listaBotaoTexto;
   list<Menus::Botoes::BotaoTexto *>::iterator it;
 
@@ -43,7 +48,7 @@ protected:
   void atualizarPosicaoFundo();
   virtual void criarFundo() {};
 
-public:
+ public:
   void inicializarIterator();
 
   Menu(const IDs::IDs ID, const Vector2f tamBotao, const string nome,
@@ -68,6 +73,6 @@ public:
   void salvar(json &arquivo) override {}
 };
 
-} // namespace Menus
+}  // namespace Menus
 
 #endif

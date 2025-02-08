@@ -12,12 +12,12 @@ namespace Menus {
 namespace Botoes {
 
 class Botao : public Ente {
-private:
+ private:
   const Vector2f tamMax;
   const Vector2f tamInicial;
   bool aumentando;
 
-protected:
+ protected:
   RectangleShape caixa;
   Texture *textura;
   Vector2f pos;
@@ -26,13 +26,12 @@ protected:
   const float tempoTroca;
   float tempo;
 
-public:
+ public:
   Botao(const Vector2f tam, const Vector2f pos, const IDs::IDs ID,
         const float tempoTroca = 0.0f,
         const Vector2f tamMax = Vector2f(0.0f, 0.0f));
   virtual ~Botao();
   virtual void desenhar();
-  virtual void atualizarAnimacao();
   virtual void atualizarPosicaoCaixa(const Vector2f pos);
   void setTextura(Texture *textura);
   const Vector2f getPos() const;
@@ -41,8 +40,8 @@ public:
   void salvar(json &arquivo) override {}
 };
 
-} // namespace Botoes
+}  // namespace Botoes
 
-} // namespace Menus
+}  // namespace Menus
 
 #endif

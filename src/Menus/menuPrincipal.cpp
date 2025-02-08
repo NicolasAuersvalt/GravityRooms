@@ -24,17 +24,18 @@ MenuPrincipal::MenuPrincipal(const IDs::IDs ID, std::string nome,
 MenuPrincipal::~MenuPrincipal() {}
 
 void MenuPrincipal::criarBotoes() {
+  float centerX = tamJanela.x / 2.0f - tamBotao.x / 2.0f;
   float startY = tamJanela.y * 0.9f;
   float spacing = tamBotao.y * 1.5f;
-  addBotao("LABORATORIO", sf::Vector2f(0.f, startY), IDs::IDs::botao_novoJogo,
+  addBotao("LABORATORIO", sf::Vector2f(centerX, startY),
+           IDs::IDs::botao_novoJogo, sf::Color(0, 255, 0));
+  addBotao("NAVE", sf::Vector2f(centerX, startY + spacing), IDs::IDs::botao2,
            sf::Color(0, 255, 0));
-  addBotao("NAVE", sf::Vector2f(0.f, startY + spacing), IDs::IDs::botao2,
-           sf::Color(0, 255, 0));
-  addBotao("RANKING", sf::Vector2f(0.f, startY + spacing * 2),
+  addBotao("RANKING", sf::Vector2f(centerX, startY + spacing * 2),
            IDs::IDs::botao_colocacao, sf::Color(0, 255, 0));
-  addBotao("CARREGAR JOGO", sf::Vector2f(0.f, startY + spacing * 3),
+  addBotao("CARREGAR JOGO", sf::Vector2f(centerX, startY + spacing * 3),
            IDs::IDs::botao_carregar, sf::Color(0, 255, 0));
-  addBotao("SAIR", sf::Vector2f(0.f, startY + spacing * 4),
+  addBotao("SAIR", sf::Vector2f(centerX, startY + spacing * 4),
            IDs::IDs::botao_sair, sf::Color(0, 255, 0));
 
   inicializarIterator();
@@ -52,4 +53,4 @@ void MenuPrincipal::criarFundo() {
   atualizarPosicaoFundo();
 }
 
-} // namespace Menus
+}  // namespace Menus
