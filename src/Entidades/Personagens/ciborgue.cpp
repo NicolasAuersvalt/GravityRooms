@@ -21,8 +21,8 @@ Ciborgue::Ciborgue(const Vector2f pos, Tripulante *tripulante,
   sprite.setPosition(pos.x, pos.y);
 }
 
-Ciborgue::Ciborgue(sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID)
-    : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), nullptr, ID) {
+Ciborgue::Ciborgue(Vector2f pos, const Vector2f tam, const IDs::IDs ID)
+    : Inimigo(pos, Vector2f(100.0f, 100.0f), nullptr, ID) {
   this->pontosVida = 5;
   this->dano = 1;
   nivel_maldade = 1;

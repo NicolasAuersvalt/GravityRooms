@@ -28,7 +28,7 @@ public:
   ~Background();
 
   void mover() override;
-  void colisao(Entidade *outraEntidade, sf::Vector2f ds) override;
+  void colisao(Entidade *outraEntidade, Vector2f ds) override;
   void atualizarPosicao();
 
   void lerSprite();

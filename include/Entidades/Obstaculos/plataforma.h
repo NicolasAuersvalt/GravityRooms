@@ -6,6 +6,9 @@
 
 #include "Entidades/Obstaculos/obstaculo.h"
 
+using namespace std;
+using namespace sf;
+
 namespace Entidades::Obstaculos {
 
 class Plataforma : public Obstaculo {
@@ -15,16 +18,19 @@ private:
 protected:
 public:
   using Ente::setSprite;
-  Plataforma(const sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID);
+  Plataforma(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Plataforma();
 
   void executar() override;
   void mover() override;
 
-  std::string getTipo() const override { return "Plataforma"; }
+  string getTipo() const override 
+  { 
+    return "Plataforma"; 
+  }
   void carregar(json &arquivo) {}
   void colisao(Entidade *outraEntidade,
-               sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+               Vector2f ds = Vector2f(0.0f, 0.0f));
   int getDano();
 
   void salvar(json &arquivo) override {

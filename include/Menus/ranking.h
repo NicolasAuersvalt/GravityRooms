@@ -12,11 +12,11 @@ class Ranking : public Menu {
 private:
   void carregarRanking();
   void exibirRanking();
-  std::vector<Botoes::Texto> rankingTexts;
+  vector<Botoes::Texto> rankingTexts;
 
 public:
   Ranking(const IDs::IDs id);
-  Ranking(const IDs::IDs ID, std::string nome,
+  Ranking(const IDs::IDs ID, string nome,
           const unsigned int tamFonte = 180);
   virtual ~Ranking();
   void criarBotoes();

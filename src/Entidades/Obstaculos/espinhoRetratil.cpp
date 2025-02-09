@@ -3,18 +3,18 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-using namespace std;
+
 using namespace Entidades::Obstaculos;
 
 namespace Entidades::Obstaculos {
 
-EspinhoRetratil::EspinhoRetratil(const sf::Vector2f pos, const sf::Vector2f tam,
+EspinhoRetratil::EspinhoRetratil(const Vector2f pos, const Vector2f tam,
                                  const IDs::IDs ID)
     : Obstaculo(pos, tam, ID), ligado(false) {
   this->dano = 2;
   setSprite("assets/espinhoretratil_verde.png", pos.x, pos.y);
 
-  setTamanho(sf::Vector2f(90.0f, 90.0f));
+  setTamanho(Vector2f(90.0f, 90.0f));
   sprite.setOrigin(45.0f, 45.0f);
   setPosicao(pos.x, pos.y);
   tempoDesdeUltimaAlternancia = 0.0f;
@@ -46,7 +46,7 @@ void EspinhoRetratil::mover() {
   }
 }
 
-void EspinhoRetratil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
+void EspinhoRetratil::colisao(Entidade *outraEntidade, Vector2f ds) {}
 int EspinhoRetratil::getDano() { return dano; }
 
 bool EspinhoRetratil::estaLigado() const { return ligado; }

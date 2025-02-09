@@ -202,7 +202,7 @@ void Fase::criarJogador(const Vector2f pos, int index) {
   tripulantes[index] =
       new Tripulante(pos, Vector2f(50.0f, 50.0f), IDs::IDs::tripulante);
   if (tripulantes[index] == nullptr) {
-    std::cerr << "Fase::nao foi possivel criar jogador" << std::endl;
+    cerr << "Fase::nao foi possivel criar jogador" << endl;
     exit(1);
   }
   tripulantes[index]->setPlayerOne(index);
@@ -247,9 +247,9 @@ void Fase::executar() { desenhar(); }
 
 Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   Entidades::Projetil *projetil =
-      new Entidades::Projetil(pos, sf::Vector2f(50.0f, 54.0f), ID);
+      new Entidades::Projetil(pos, Vector2f(50.0f, 54.0f), ID);
   if (projetil == nullptr) {
-    std::cout << "Fase::nao foi possivel criar projetil" << std::endl;
+    cout << "Fase::nao foi possivel criar projetil" << endl;
     exit(1);
   }
 
@@ -258,7 +258,7 @@ Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
 }
 void Fase::criarBackground(const IDs::IDs ID_Fase) {
   
-  cout << "Criar Background" << endl;
+  //cout << "Criar Background" << endl;
 
   bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID_Fase);
 

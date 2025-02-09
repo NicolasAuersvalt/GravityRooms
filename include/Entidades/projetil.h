@@ -29,18 +29,18 @@ public:
 
   void executar();
 
-  void setVelocidade(const sf::Vector2f &vel);
+  void setVelocidade(const Vector2f &vel);
 
   void mover();
   void atualizar();
-  void setAtivo(bool i, sf::Vector2f pos);
+  void setAtivo(bool i, Vector2f pos);
   bool getAtivo();
   void setAtirador(Entidade *a);
   bool getColidir(Entidade *e);
   int getDano();
   void atualizarPosicao() {};
   void colisao(Entidade *outraEntidade,
-               sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+               Vector2f ds = Vector2f(0.0f, 0.0f));
 
   void salvar(json &arquivo) override {
     arquivo["id"] = static_cast<int>(getID());

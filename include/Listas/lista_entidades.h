@@ -48,10 +48,10 @@ class Lista_Entidades {
               dynamic_cast<T *>(atual->pInfo)) {
             return true;
           }
-        } catch (const std::bad_cast &) {
+        } catch (const bad_cast &) {
           // Handle invalid cast gracefully
-          std::cerr << "Warning: Invalid cast attempted in contemTipo()"
-                    << std::endl;
+          cerr << "Warning: Invalid cast attempted in contemTipo()"
+                    << endl;
         }
       }
       atual = proximo;

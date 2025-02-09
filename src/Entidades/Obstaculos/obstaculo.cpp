@@ -5,12 +5,12 @@
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/Personagens/tripulante.h"
 
-using namespace std;
+
 using namespace Entidades::Obstaculos;
 
 namespace Entidades::Obstaculos {
 
-Obstaculo::Obstaculo(const sf::Vector2f pos, const sf::Vector2f tam,
+Obstaculo::Obstaculo(const Vector2f pos, const Vector2f tam,
                      const IDs::IDs ID)
     : Entidade(pos, tam, ID) {}
 
@@ -23,10 +23,10 @@ void Obstaculo::setColidindo(bool colide) { colidindo = colide; }
 void Obstaculo::colisaoObstaculo(
     Vector2f ds, Entidades::Personagens::Personagem *pPersonagem) {
   // Obtém a posição e o tamanho do personagem envolvido na colisão
-  sf::Vector2f posOutro = pPersonagem->getPosicao();
-  sf::Vector2f tamOutro = pPersonagem->getTamanho();
+  Vector2f posOutro = pPersonagem->getPosicao();
+  Vector2f tamOutro = pPersonagem->getTamanho();
   // Obtém a velocidade final do personagem
-  sf::Vector2f velFinal = pPersonagem->getVelFinal();
+  Vector2f velFinal = pPersonagem->getVelFinal();
 
   // Verifica se houve colisão (ds.x e ds.y são negativos em caso de colisão)
   if (ds.x < 0.0f && ds.y < 0.0f) { // Houve colisão

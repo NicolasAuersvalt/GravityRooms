@@ -3,6 +3,9 @@
 
 #include "Entidades/Obstaculos/obstaculo.h"
 
+using namespace std;
+using namespace sf;
+
 namespace Entidades::Obstaculos {
 
 class Centro_Gravidade : public Obstaculo {
@@ -12,16 +15,16 @@ private:
 protected:
 public:
   using Ente::setSprite;
-  Centro_Gravidade(const sf::Vector2f pos, const sf::Vector2f tam,
+  Centro_Gravidade(const Vector2f pos, const Vector2f tam,
                    const IDs::IDs ID);
   ~Centro_Gravidade();
   void executar() override;
   void mover() override;
 
   void carregar(json &arquivo) override {};
-  std::string getTipo() const override { return "Centro_Gravidade"; }
+  string getTipo() const override { return "Centro_Gravidade"; }
   void colisao(Entidade *outraEntidade,
-               sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+               Vector2f ds = Vector2f(0.0f, 0.0f));
   int getDano();
   void salvar(json &arquivo) override {
     arquivo["id"] = static_cast<int>(getID());

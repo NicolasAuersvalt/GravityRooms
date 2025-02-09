@@ -35,7 +35,7 @@ class Botao : public Ente {
   virtual void atualizarPosicaoCaixa(const Vector2f pos);
   void setTextura(Texture *textura);
   const Vector2f getPos() const;
-  std::string getTipo() const override { return "Botao"; }
+  string getTipo() const override { return "Botao"; }
   void carregar(json &arquivo) {}
   void salvar(json &arquivo) override {}
 };

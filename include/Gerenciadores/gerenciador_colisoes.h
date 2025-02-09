@@ -23,6 +23,9 @@ using Entidades::Personagens::Tripulante;
 using Gerenciadores::Gerenciador_Grafico;
 using Listas::Lista_Entidades;
 
+using namespace std;
+using namespace sf;
+
 using namespace Entidades;
 
 class Obstaculo;
@@ -47,7 +50,7 @@ public:
   Gerenciador_Colisoes(Lista_Entidades *listaPersonagem,
                        Lista_Entidades *listaObstaculo);
   ~Gerenciador_Colisoes();
-  const sf::Vector2f calculaColisao(Entidades::Entidade *ent1,
+  const Vector2f calculaColisao(Entidades::Entidade *ent1,
                                     Entidades::Entidade *ent2);
   void executar(Lista_Entidades *listaPer, Lista_Entidades *listaObs);
 };

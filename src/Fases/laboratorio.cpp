@@ -20,7 +20,7 @@ Laboratorio::~Laboratorio() {}
 void Laboratorio::criarProjeteis() {}
 
 void Laboratorio::criarMapa() {
-  std::ifstream arquivo;
+  ifstream arquivo;
   string linha;
   arquivo.open("assets/mapa.txt");
 
@@ -44,7 +44,7 @@ void Laboratorio::criarMapa() {
 
 void Laboratorio::criarFundo() {
   if (!bgTexture.loadFromFile("assets/lab.png")) {
-    std::cerr << "Failed to load background texture!" << std::endl;
+    cerr << "Failed to load background texture!" << endl;
     return;
   }
 

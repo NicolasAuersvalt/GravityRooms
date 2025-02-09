@@ -41,7 +41,7 @@ public: // Definição da classe aninhada Elemento
 
   void removerElemento(TL *elemento, const bool deletar) {
     if (!elemento) {
-      std::cout << "ERROR::Lista elemento eh nullptr" << std::endl;
+      cout << "ERROR::Lista elemento eh nullptr" << endl;
       return;
     }
 
@@ -122,8 +122,8 @@ public: // Definição da classe aninhada Elemento
       if (atual && atual->pInfo) {
         try {
           funcao(atual->pInfo);
-        } catch (const std::exception &e) {
-          std::cerr << "Error in percorrerLista: " << e.what() << std::endl;
+        } catch (const exception &e) {
+          cerr << "Error in percorrerLista: " << e.what() << endl;
         }
       }
       atual = proximo;

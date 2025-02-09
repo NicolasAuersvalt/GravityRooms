@@ -19,7 +19,7 @@ void Save::gravarDados() {}
 void Save::salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
                   Lista_Entidades &listaObstaculo,
                   Lista_Entidades &listaBackgrounds, Fase *&fase,
-                  const std::string &nomeArquivo) {
+                  const string &nomeArquivo) {
   json j;
 
   j["fase"] = dynamic_cast<Laboratorio *>(fase) ? "laboratorio" : "nave";
@@ -52,7 +52,7 @@ void Save::salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
     atual2 = atual2->getProximo();
   }
 
-  std::ofstream arquivo(nomeArquivo);
+  ofstream arquivo(nomeArquivo);
   if (arquivo.is_open()) {
     arquivo << j.dump(4);  // Formatação bonita com 4 espaços
   }
@@ -61,10 +61,10 @@ void Save::salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
 bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
                     Lista_Entidades &listaObstaculo,
                     Lista_Entidades &listaBackgrounds, Fase *&fase,
-                    const std::string &nomeArquivo) {
-  std::ifstream arquivo(nomeArquivo);
+                    const string &nomeArquivo) {
+  ifstream arquivo(nomeArquivo);
   if (!arquivo.is_open()) {
-    std::cerr << "Erro ao abrir arquivo de salvamento!\n";
+    cerr << "Erro ao abrir arquivo de salvamento!\n";
     return false;
   }
 
@@ -72,7 +72,7 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
   arquivo >> dados;
 
   // Carrega a fase
-  std::string tipoFase = dados["fase"];
+  string tipoFase = dados["fase"];
   if (tipoFase == "laboratorio") {
     fase = new Laboratorio(IDs::IDs::fase_laboratorio);
   } else if (tipoFase == "nave") {
@@ -85,7 +85,7 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
       continue;
     }
 
-    std::string tipo = entidadeData["tipo"];
+    string tipo = entidadeData["tipo"];
     auto &registry = Registry::getInstance();
     auto ente = registry.criar(entidadeData);
     if (ente) {

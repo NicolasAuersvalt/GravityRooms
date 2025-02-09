@@ -106,10 +106,10 @@ bool Gerenciador_Grafico::processarEvento(Event &event) {
 RenderWindow &Gerenciador_Grafico::getJanela() { return window; }
 
 void Gerenciador_Grafico::executar() {
-  sf::Event event;
+  Event event;
 
   if (window.pollEvent(event)) {
-    if (event.type == sf::Event::Closed) {
+    if (event.type == Event::Closed) {
       fechar();
     }
     window.display(); // Exibe a tela atualizada

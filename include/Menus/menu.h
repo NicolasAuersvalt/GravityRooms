@@ -41,9 +41,9 @@ class Menu : public Ente, public Drawable {
   Menus::Botoes::Texto titulo;
   bool botaoSelecionado;
 
-  sf::Texture texturaBackground;
-  sf::Sprite spriteBackground;
-  sf::Vector2f posFundo;
+  Texture texturaBackground;
+  Sprite spriteBackground;
+  Vector2f posFundo;
 
   void atualizarPosicaoFundo();
   virtual void criarFundo() {};
@@ -68,7 +68,7 @@ class Menu : public Ente, public Drawable {
   virtual void executar() = 0;
   void desenhar(Gerenciador_Grafico *GG);
   void setSelecionado(bool status);
-  std::string getTipo() const override { return "Menu"; }
+  string getTipo() const override { return "Menu"; }
   void carregar(json &arquivo) {}
   void salvar(json &arquivo) override {}
 };

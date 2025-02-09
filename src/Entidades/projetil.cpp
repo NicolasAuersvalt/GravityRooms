@@ -9,7 +9,7 @@ namespace Entidades {
 Projetil::Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
     : Entidade(pos, tam, ID), dano(3), ativo(false) {
   setSprite("assets/projetil.png", pos.x, pos.y);
-  setTamanho(sf::Vector2f(50.0f, 25.0f));
+  setTamanho(Vector2f(50.0f, 25.0f));
   setPosicao(-12000.f, -12000.f);
   sprite.setPosition(-12000.f, -12000.f);
 }
@@ -20,7 +20,7 @@ void Projetil::executar() {
   }
 }
 
-void Projetil::setVelocidade(const sf::Vector2f &vel) { velocidade = vel; }
+void Projetil::setVelocidade(const Vector2f &vel) { velocidade = vel; }
 
 void Projetil::atualizar() {}
 
@@ -40,10 +40,9 @@ void Projetil::mover() {
   }
 }
 
-void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
+void Projetil::colisao(Entidade *outraEntidade, Vector2f ds) {
   // Verifica se a entidade passada é nula
   if (!outraEntidade) {
-    std::cout << "Warning: Null entity in collision" << std::endl;
     return;
   }
   // Verifica o ID da entidade com a qual o projétil colidiu
@@ -70,7 +69,7 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
         try {
           inimigo->recebeDano(dano);
 
-        } catch (const std::exception &e) {
+        } catch (const exception &e) {
         }
       }
 
@@ -92,7 +91,7 @@ void Projetil::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
         setPosicao(-130.f, -130.f);
 
       } else {
-        std::cout << "Failed to cast enemy" << std::endl;
+        cout << "Failed to cast enemy" << endl;
       }
     }
     break;

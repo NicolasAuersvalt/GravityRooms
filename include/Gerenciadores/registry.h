@@ -11,11 +11,14 @@
 
 using json = nlohmann::json;
 
+using namespace std;
+using namespace sf;
+
 class Ente;
 
 class Registry {
  public:
-  using FactoryFunc = std::function<std::unique_ptr<Ente>(json &)>;
+  using FactoryFunc = function<unique_ptr<Ente>(json &)>;
 
   // Singleton: retorna a instância única do Registry
   static Registry &getInstance() {
@@ -24,25 +27,25 @@ class Registry {
   }
 
   // Registra uma classe no Registry com uma função de fábrica
-  void registrarClasse(const std::string &tipo, FactoryFunc factory) {
+  void registrarClasse(const string &tipo, FactoryFunc factory) {
     factories[tipo] = factory;
   }
 
   // Cria uma entidade com base nos dados JSON
-  std::unique_ptr<Ente> criar(json &data) {
-    std::string tipo = data["tipo"];
+  unique_ptr<Ente> criar(json &data) {
+    string tipo = data["tipo"];
     auto it = factories.find(tipo);
     if (it != factories.end()) {
       return it->second(data);  // Chama a função de fábrica correspondente
     } else {
-      std::cerr << "Tipo de entidade não registrado: " << tipo << std::endl;
+      cerr << "Tipo de entidade não registrado: " << tipo << endl;
       return nullptr;
     }
   }
 
  private:
   Registry() = default;  // Construtor privado para garantir Singleton
-  std::unordered_map<std::string, FactoryFunc> factories;  // Mapa de fábricas
+  unordered_map<string, FactoryFunc> factories;  // Mapa de fábricas
 };
 
 // Macro para registrar classes automaticamente no Registry
@@ -50,10 +53,10 @@ class Registry {
   static struct Registrar##CLASS {                                        \
     Registrar##CLASS() {                                                  \
       Registry::getInstance().registrarClasse(                            \
-          TIPO, [](json &data) -> std::unique_ptr<Ente> {                 \
-            return std::make_unique<CLASS>(                               \
-                sf::Vector2f(data["posicao"]["x"], data["posicao"]["y"]), \
-                sf::Vector2f(10, 10), static_cast<IDs::IDs>(data["id"])); \
+          TIPO, [](json &data) -> unique_ptr<Ente> {                 \
+            return make_unique<CLASS>(                               \
+                Vector2f(data["posicao"]["x"], data["posicao"]["y"]), \
+                Vector2f(10, 10), static_cast<IDs::IDs>(data["id"])); \
           });                                                             \
     }                                                                     \
   } registrar##CLASS;  // Instância estática para registro automático

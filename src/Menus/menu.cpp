@@ -1,13 +1,13 @@
 #include "Menus/menu.h"
 
 namespace Menus {
-Menu::Menu(const IDs::IDs ID, const sf::Vector2f tamBotao,
-           const std::string nome, const unsigned int tamFonte)
+Menu::Menu(const IDs::IDs ID, const Vector2f tamBotao,
+           const string nome, const unsigned int tamFonte)
     : Ente(ID), listaBotaoTexto(), it(), tamBotao(tamBotao),
       tamJanela(1280.0f, 920.0f), // Ajuste manual da tela
       botaoSelecionado(false), titulo(nome, tamFonte) {
   if (!texturaBackground.loadFromFile("assets/menu.png")) {
-    std::cerr << "Erro ao carregar textura do background!" << std::endl;
+    cerr << "Erro ao carregar textura do background!" << endl;
     exit(1);
   }
   spriteBackground.setTexture(texturaBackground);
@@ -27,10 +27,10 @@ Menu::~Menu() {
 
 void Menu::mudarEstadoObservador() {}
 
-void Menu::addBotao(const std::string info, const sf::Vector2f pos,
-                    const IDs::IDs ID, const sf::Color corSelecionado) {
+void Menu::addBotao(const string info, const Vector2f pos,
+                    const IDs::IDs ID, const Color corSelecionado) {
   float centerX = tamJanela.x / 2.0f - tamBotao.x / 2.0f;
-  sf::Vector2f centeredPos(centerX, pos.y);
+  Vector2f centeredPos(centerX, pos.y);
 
   Botoes::BotaoTexto *botao =
       new Botoes::BotaoTexto(info, tamBotao, centeredPos, ID, corSelecionado);
@@ -41,20 +41,20 @@ void Menu::addBotao(const std::string info, const sf::Vector2f pos,
 
 void Menu::atualizarPosicaoFundo() {
   // Centraliza o background
-  sf::FloatRect bounds = spriteBackground.getLocalBounds();
+  FloatRect bounds = spriteBackground.getLocalBounds();
   spriteBackground.setOrigin(bounds.width / 2, bounds.height / 2);
   spriteBackground.setPosition(tamJanela.x / 2, tamJanela.y / 2);
 
   // Centraliza o título
-  titulo.setPos(sf::Vector2f(tamJanela.x / 2, tamJanela.y * 0.2f));
+  titulo.setPos(Vector2f(tamJanela.x / 2, tamJanela.y * 0.2f));
 }
 
 void Menu::inicializarIterator() {
   try {
     it = listaBotaoTexto.begin();
     (*it)->setSelecionado(true);
-  } catch (const std::exception &e) {
-    std::cerr << e.what() << std::endl;
+  } catch (const exception &e) {
+    cerr << e.what() << endl;
     exit(1);
   }
 }
@@ -83,7 +83,7 @@ void Menu::selecionaBaixo() {
 
 const IDs::IDs Menu::getIDBotaoSelecionado() const { return (*it)->getID(); }
 
-void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
+void Menu::eventoTeclado(const Keyboard::Key tecla) {
   if (listaBotaoTexto.empty()) {
     return;
   }
@@ -97,25 +97,25 @@ void Menu::eventoTeclado(const sf::Keyboard::Key tecla) {
     if (*it) {
       (*it)->setSelecionado(false);
 
-      if (tecla == sf::Keyboard::Down) {
+      if (tecla == Keyboard::Down) {
         it++;
         if (it == listaBotaoTexto.end()) {
           it = listaBotaoTexto.begin();
         }
-      } else if (tecla == sf::Keyboard::Up) {
+      } else if (tecla == Keyboard::Up) {
         if (it == listaBotaoTexto.begin()) {
           it = --listaBotaoTexto.end();
         } else {
           --it;
         }
-      } else if (tecla == sf::Keyboard::Enter) {
+      } else if (tecla == Keyboard::Enter) {
         botaoSelecionado = true;
       }
 
       (*it)->setSelecionado(true);
     }
-  } catch (std::exception &e) {
-    std::cerr << "Error in eventoTeclado: " << e.what() << std::endl;
+  } catch (exception &e) {
+    cerr << "Error in eventoTeclado: " << e.what() << endl;
     inicializarIterator();
   }
 }
@@ -125,7 +125,7 @@ void Menu::setSelecionado(bool status) { botaoSelecionado = status; }
 
 void Menu::desenhar(Gerenciador_Grafico *GG) {
   // Desenha os botões
-  std::list<Botoes::BotaoTexto *>::iterator aux;
+  list<Botoes::BotaoTexto *>::iterator aux;
 
   GG->desenharBackground(spriteBackground);
   for (aux = listaBotaoTexto.begin(); aux != listaBotaoTexto.end(); aux++) {

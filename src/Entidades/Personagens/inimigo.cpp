@@ -31,7 +31,7 @@ void Inimigo::inicializar() {
 }
 
 void Inimigo::executar() {}
-void Inimigo::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
+void Inimigo::colisao(Entidade *outraEntidade, Vector2f ds) {
   bool onPlatform =
       false; // Variável para verificar se o inimigo está sobre uma plataforma
 

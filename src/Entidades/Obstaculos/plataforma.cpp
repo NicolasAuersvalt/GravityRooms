@@ -4,15 +4,16 @@
 
 #include "Entidades/Personagens/personagem.h"
 
+
 namespace Entidades::Obstaculos {
 
-Plataforma::Plataforma(sf::Vector2f pos, const sf::Vector2f tam,
+Plataforma::Plataforma(Vector2f pos, const Vector2f tam,
                        const IDs::IDs ID)
     : Obstaculo(pos, tam, ID) {
   this->dano = 0;
 
   setSprite("assets/plataforma.png", pos.x, pos.y);
-  setTamanho(sf::Vector2f(266.0f, 80.0f));
+  setTamanho(Vector2f(266.0f, 80.0f));
   setPosicao(pos.x, pos.y);
 
   sprite.setPosition(pos.x, pos.y);
@@ -27,7 +28,7 @@ void Plataforma::executar() {
 
 void Plataforma::mover() {}
 
-void Plataforma::colisao(Entidade *outraEntidade, sf::Vector2f ds) {
+void Plataforma::colisao(Entidade *outraEntidade, Vector2f ds) {
   if (outraEntidade->getID() == IDs::IDs::clone ||
       outraEntidade->getID() == IDs::IDs::ciborgue ||
       outraEntidade->getID() == IDs::IDs::androide ||

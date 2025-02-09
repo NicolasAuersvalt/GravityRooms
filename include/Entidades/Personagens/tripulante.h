@@ -28,13 +28,11 @@ class Tripulante : public Personagem {
  private:
   class Municao {
    private:
-   
     int quantidade;
     int maxMunicao;
 
    public:
-    Municao(int maxM = 100) : quantidade(maxM), maxMunicao(maxM) 
-    {}
+    Municao(int maxM = 100) : quantidade(maxM), maxMunicao(maxM) {}
 
     void setQtd(int qtd) {
       quantidade = std::max(0, std::min(qtd, maxMunicao));
@@ -104,8 +102,7 @@ class Tripulante : public Personagem {
   int getMunicao();
   void atualizar();
   void podePular();
-  void colisao(Entidade *outraEntidade,
-               sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+  void colisao(Entidade *outraEntidade, Vector2f ds = Vector2f(0.0f, 0.0f));
   void salvar(json &arquivo) override {
     arquivo["id"] = static_cast<int>(getID());
     arquivo["vida"] = getVida();

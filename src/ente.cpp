@@ -9,15 +9,15 @@ Ente::Ente(const IDs::IDs ID) : ID(ID), texture(nullptr) {}
 Ente::~Ente() { texture = nullptr; }
 void Ente::desenhar() { pGG->desenharEnte(this); }
 
-void Ente::setSprite(std::string local, int posX, int posY) {
+void Ente::setSprite(string local, int posX, int posY) {
   if (!texture) {
-    texture = new sf::Texture();
+    texture = new Texture();
   }
 
   // Tenta carregar a textura inteira, mas com um recorte específico se
   // necessário
   if (!texture->loadFromFile(local)) {
-    std::cerr << "Erro ao carregar a textura: " << local << std::endl;
+    cerr << "Erro ao carregar a textura: " << local << endl;
   } else {
     sprite.setTexture(*texture); // Associa a textura ao sprite
     // Se for necessário recorta a imagem para o sprite
@@ -25,10 +25,10 @@ void Ente::setSprite(std::string local, int posX, int posY) {
 }
 
 // Retorna o ponteiro da textura
-sf::Texture *Ente::getTexture() { return texture; }
+Texture *Ente::getTexture() { return texture; }
 
 // Retorna uma cópia do sprite
-sf::Sprite &Ente::getSprite() { return sprite; }
+Sprite &Ente::getSprite() { return sprite; }
 
 void Ente::setGerenciador(Gerenciadores::Gerenciador_Grafico *gg) { pGG = gg; }
 

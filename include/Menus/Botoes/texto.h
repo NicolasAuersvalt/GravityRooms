@@ -4,36 +4,39 @@
 
 #include <SFML/Graphics.hpp>
 
+using namespace std;
+using namespace sf;
+
 namespace Menus {
 
 namespace Botoes {
 
 class Texto {
  private:
-  std::string info;
+  string info;
 
  protected:
-  sf::Text texto;
-  sf::Vector2f tamTexto;
-  sf::Vector2f posTexto;
+  Text texto;
+  Vector2f tamTexto;
+  Vector2f posTexto;
   unsigned int tamFonte;
-  sf::Color corTexto;
-  sf::Color corBorda;
-  sf::Font fonte;
+  Color corTexto;
+  Color corBorda;
+  Font fonte;
   void inicializa();
 
  public:
-  Texto(const std::string info, const unsigned int tamFonte = 50);
+  Texto(const string info, const unsigned int tamFonte = 50);
   virtual ~Texto();
-  const sf::Text getTexto() const;
-  void setPos(const sf::Vector2f pos);
-  const sf::Vector2f getPos() const;
-  const sf::Vector2f getTam() const;
-  void setCorTexto(const sf::Color corTexto);
+  const Text getTexto() const;
+  void setPos(const Vector2f pos);
+  const Vector2f getPos() const;
+  const Vector2f getTam() const;
+  void setCorTexto(const Color corTexto);
   void setTamanhoBorda(const float tamBorda);
   void setEspacamento(const float tamEspaco);
-  void setString(std::string nome);
-  const std::string getString() const;
+  void setString(string nome);
+  const string getString() const;
   void setTamFonte(const unsigned int tamFonte);
 };
 

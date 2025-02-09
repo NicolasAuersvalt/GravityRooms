@@ -22,7 +22,7 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   tempoCooldown = 0.5f;
 
   projeteis = new Listas::Lista_Entidades();
-  projeteis->incluir(new Projetil(pos, sf::Vector2f(50.0f, 54.0f),
+  projeteis->incluir(new Projetil(pos, Vector2f(50.0f, 54.0f),
                                   IDs::IDs::projetil_tripulante));
 }
 
@@ -44,42 +44,42 @@ void Tripulante::mover() {
   tempoUltimoTiro += deltaTime;
   cair();
   if (isPlayerOne) {
-    string tecla = GE->isTeclaPressionada(sf::Keyboard::A);
+    string tecla = GE->isTeclaPressionada(Keyboard::A);
     if (tecla == "A") {
       getSprite().move(-5.f, 0.f);  // Move para a esquerda
     }
-    tecla = GE->isTeclaPressionada(sf::Keyboard::D);
+    tecla = GE->isTeclaPressionada(Keyboard::D);
     if (tecla == "D") {
       getSprite().move(5.f, 0.f);  // Move para a direita
     }
-    tecla = GE->isTeclaPressionada(sf::Keyboard::W);
+    tecla = GE->isTeclaPressionada(Keyboard::W);
     if (tecla == "W" && noChao) {
       float jumpForce = -12.0f;  // controle do pulo
       velFinal.y = jumpForce;
       noChao = false;
     }
-    tecla = GE->isTeclaPressionada(sf::Keyboard::Q);
+    tecla = GE->isTeclaPressionada(Keyboard::Q);
     if (tecla == "Q" && noChao) {
       atirar();  // Atirar
     }
   }
   // Jogador 2 (Setas + Z)
   else {
-    string tecla = GE->isTeclaPressionada(sf::Keyboard::Left);
+    string tecla = GE->isTeclaPressionada(Keyboard::Left);
     if (tecla == "Left Arrow") {
       getSprite().move(-5.f, 0.f);  // Move para a esquerda
     }
-    tecla = GE->isTeclaPressionada(sf::Keyboard::Right);
+    tecla = GE->isTeclaPressionada(Keyboard::Right);
     if (tecla == "Right Arrow") {
       getSprite().move(5.f, 0.f);  // Move para a direita
     }
-    tecla = GE->isTeclaPressionada(sf::Keyboard::Space);
+    tecla = GE->isTeclaPressionada(Keyboard::Space);
     if (tecla == "Space" && noChao) {
       float jumpForce = -12.0f;  // controle do pulo
       velFinal.y = jumpForce;
       noChao = false;
     }
-    tecla = GE->isTeclaPressionada(sf::Keyboard::Z);
+    tecla = GE->isTeclaPressionada(Keyboard::Z);
     if (tecla == "Z" && noChao) {
       atirar();  // Atirar
     }
@@ -151,7 +151,7 @@ void Tripulante::atualizar() {
 void Tripulante::atirar() {
   if (podeAtirar()) {
     if (tempoUltimoTiro >= tempoCooldown) {
-      cout << "municao " << municao.getQtd() << endl;
+      //cout << "municao " << municao.getQtd() << endl;
       Projetil *novoProjetil =
           new Projetil(getSprite().getPosition(), Vector2f(50.0f, 25.0f),
                        IDs::IDs::projetil_tripulante);
@@ -256,7 +256,6 @@ void Tripulante::removerProjetilInativo() {
   for (int i = 0; i < projeteis->getTamanho(); i++) {
     Projetil *proj = dynamic_cast<Projetil *>(projeteis->getElemento(i));
     if (proj && !proj->getAtivo()) {
-      std::cout << "Removing inactive projectile at index " << i << std::endl;
       projeteis->removerEntidade(proj, true);
       i--;  // Adjust index after removal
     }

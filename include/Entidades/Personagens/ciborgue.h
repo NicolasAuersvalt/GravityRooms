@@ -17,8 +17,8 @@ class Ciborgue : public Inimigo {
 
  protected:
  public:
-  Ciborgue(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
-  Ciborgue(sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID);
+  Ciborgue(const Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
+  Ciborgue(Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Ciborgue();
 
   using Ente::setSprite;

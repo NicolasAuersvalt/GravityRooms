@@ -13,9 +13,10 @@
 #include "Gerenciadores/gerenciador_colisoes.h"
 #include "json.hpp"
 
-using json = nlohmann::json;
 using namespace std;
 using namespace sf;
+
+using json = nlohmann::json;
 using Fases::Fase;
 using Fases::Laboratorio;
 using Fases::Nave;
@@ -33,13 +34,13 @@ public:
   void salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
               Lista_Entidades &listaObstaculo,
               Lista_Entidades &listaBackgrounds, Fase *&fase,
-              const std::string &nomeArquivo);
+              const string &nomeArquivo);
 
   void gravarDados();
   bool carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
                 Lista_Entidades &listaObstaculo,
                 Lista_Entidades &listaBackgrounds, Fase *&fase,
-                const std::string &nomeArquivo);
+                const string &nomeArquivo);
 };
 
 #endif

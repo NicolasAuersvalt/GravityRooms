@@ -20,8 +20,8 @@ class Clone : public Inimigo {
   Projetil *projetil;
 
  public:
-  Clone(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
-  Clone(sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID);
+  Clone(const Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
+  Clone(Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Clone();
   using Ente::setSprite;
 

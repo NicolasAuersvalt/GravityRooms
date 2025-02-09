@@ -15,7 +15,7 @@ Background::Background(const Vector2f pos, const Vector2f tam,
   }
     */
 
-  setTamanho(sf::Vector2f(1280.0f, 920.0f));
+  setTamanho(Vector2f(1280.0f, 920.0f));
   setPosicao(50.0f, 50.0f);
   sprite.setPosition(0.f, 0.f);
 
@@ -54,7 +54,7 @@ void Background::lerSprite()
 
 
 
-void Background::colisao(Entidade *outraEntidade, sf::Vector2f ds) {}
+void Background::colisao(Entidade *outraEntidade, Vector2f ds) {}
 
 void Background::atualizarPosicao() {}
 
@@ -72,7 +72,7 @@ void Background::salvar(json &arquivo) {
   arquivo["tipo"] = getTipo();
 }
 
-std::string Background::getTipo() const { return "background"; };
+string Background::getTipo() const { return "background"; };
 
 void Background::carregar(json &arquivo) {}
 

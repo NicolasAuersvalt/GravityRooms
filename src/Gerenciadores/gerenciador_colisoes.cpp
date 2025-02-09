@@ -23,21 +23,21 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes() {
   pJog1 = nullptr;
 }
 
-const sf::Vector2f
+const Vector2f
 Gerenciador_Colisoes::calculaColisao(Entidades::Entidade *ent1,
                                      Entidades::Entidade *ent2) {
-  sf::Vector2f pos1 = ent1->getSprite().getPosition();
-  sf::Vector2f pos2 = ent2->getSprite().getPosition();
+  Vector2f pos1 = ent1->getSprite().getPosition();
+  Vector2f pos2 = ent2->getSprite().getPosition();
 
-  sf::Vector2f tam1 = ent1->getTamanho();
-  sf::Vector2f tam2 = ent2->getTamanho();
+  Vector2f tam1 = ent1->getTamanho();
+  Vector2f tam2 = ent2->getTamanho();
 
-  sf::Vector2f distanciaEntreCentros(
+  Vector2f distanciaEntreCentros(
       fabs((pos1.x + tam1.x / 2.0f) - (pos2.x + tam2.x / 2.0f)),
       fabs((pos1.y + tam1.y / 2.0f) - (pos2.y + tam2.y / 2.0f)));
-  sf::Vector2f somaMetadeRectangulo(tam1.x / 2.0f + tam2.x / 2.0f,
+  Vector2f somaMetadeRectangulo(tam1.x / 2.0f + tam2.x / 2.0f,
                                     tam1.y / 2.0f + tam2.y / 2.0f);
-  return sf::Vector2f(distanciaEntreCentros.x - somaMetadeRectangulo.x,
+  return Vector2f(distanciaEntreCentros.x - somaMetadeRectangulo.x,
                       distanciaEntreCentros.y - somaMetadeRectangulo.y);
 }
 
@@ -74,7 +74,7 @@ void Gerenciador_Colisoes::executar(Lista_Entidades *listaPer,
       if (!ent2)
         continue;
 
-      sf::Vector2f ds = calculaColisao(ent1, ent2);
+      Vector2f ds = calculaColisao(ent1, ent2);
       if (ds.x < 0.0f && ds.y < 0.0f) {
         ent1->colisao(ent2, ds);
         ent2->colisao(ent1, ds);
@@ -86,7 +86,7 @@ void Gerenciador_Colisoes::executar(Lista_Entidades *listaPer,
     Entidades::Entidade *ent1 = listaPer->operator[](i);
     for (int j = 0; j < listaObs->getTamanho(); j++) {
       Entidades::Entidade *ent2 = listaObs->operator[](j);
-      sf::Vector2f ds = calculaColisao(ent1, ent2);
+      Vector2f ds = calculaColisao(ent1, ent2);
 
       if (ds.x < 5.0f && ds.y < 5.0f) {
         ent1->colisao(ent2, ds);

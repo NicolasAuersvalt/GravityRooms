@@ -64,7 +64,7 @@ int GerenciadorEstado::getEstadoAtual() {
 }
 
 int *GerenciadorEstado::getEstado(const int qtdRemove) {
-  std::stack<int *> pilhaEstadoAux = pilhaEstados;
+  stack<int *> pilhaEstadoAux = pilhaEstados;
   int i = 0;
   while (i < qtdRemove && !pilhaEstadoAux.empty()) {
     pilhaEstadoAux.pop();
@@ -89,7 +89,7 @@ void GerenciadorEstado::executar() {
       break;
       // Adicione outros casos conforme necessário
     default:
-      std::cout << "Estado desconhecido: " << estado << std::endl;
+      cout << "Estado desconhecido: " << estado << endl;
       break;
     }
   }

@@ -4,32 +4,32 @@ namespace Menus {
 
 MenuGameOver::MenuGameOver(IDs::IDs id)
     : Menu(IDs::IDs::menu_game_over,
-           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180),
+           Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180),
       texto("", 30),
       nome(""),
       pontuacao(0) {
   titulo.setPos(
-      sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
-  titulo.setCorTexto(sf::Color{0, 200, 0});
+      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+  titulo.setCorTexto(Color{0, 200, 0});
 }
 
-MenuGameOver::MenuGameOver(const IDs::IDs ID, std::string nome,
+MenuGameOver::MenuGameOver(const IDs::IDs ID, string nome,
                            const unsigned int tamFonte)
     : Menu(IDs::IDs::menu_game_over,
-           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte),
+           Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte),
       texto("", 30),
       pontuacao(0) {
   titulo.setPos(
-      sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
-  titulo.setCorTexto(sf::Color{0, 200, 0});
+      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+  titulo.setCorTexto(Color{0, 200, 0});
 }
 
 MenuGameOver::~MenuGameOver() {}
 void MenuGameOver::salvarColocacao(int pontos) {
   // Abrir o arquivo rank.json
-  std::ifstream file("saves/rank.json");
+  ifstream file("saves/rank.json");
   if (!file.is_open()) {
-    std::cout << "Erro ao abrir rank.json para leitura" << std::endl;
+    cout << "Erro ao abrir rank.json para leitura" << endl;
     return;
   }
 
@@ -56,15 +56,15 @@ void MenuGameOver::salvarColocacao(int pontos) {
   }
 
   // Ordenar o ranking por pontuação (do maior para o menor)
-  std::sort(rankingData["ranking"].begin(), rankingData["ranking"].end(),
+  sort(rankingData["ranking"].begin(), rankingData["ranking"].end(),
             [](const nlohmann::json &a, const nlohmann::json &b) {
               return a["pontos"] > b["pontos"];
             });
 
   // Salvar o arquivo JSON atualizado
-  std::ofstream outFile("saves/rank.json");
+  ofstream outFile("saves/rank.json");
   if (!outFile.is_open()) {
-    std::cout << "Erro ao abrir rank.json para escrita" << std::endl;
+    cout << "Erro ao abrir rank.json para escrita" << endl;
     return;
   }
 
@@ -75,9 +75,9 @@ void MenuGameOver::salvarColocacao(int pontos) {
 void MenuGameOver::executar() {}
 
 void MenuGameOver::carregarMenuGameOver() {
-  std::ifstream file("saves/rank.json");
+  ifstream file("saves/rank.json");
   if (!file.is_open()) {
-    std::cout << "Erro ao abrir rank.json" << std::endl;
+    cout << "Erro ao abrir rank.json" << endl;
     return;
   }
 
@@ -92,15 +92,15 @@ void MenuGameOver::carregarMenuGameOver() {
   int position = 1;
 
   for (const auto &entry : rankingArray) {
-    std::string playerName = entry["nome"];
+    string playerName = entry["nome"];
     int score = entry["pontos"];
 
-    std::string rankText = std::to_string(position) + ". " + playerName +
-                           " - " + std::to_string(score);
+    string rankText = to_string(position) + ". " + playerName +
+                           " - " + to_string(score);
 
     float buttonY = startY + (spacing * position);
-    addBotao(rankText, sf::Vector2f(0.f, buttonY), IDs::IDs::menu_game_over,
-             sf::Color(0, 255, 0));
+    addBotao(rankText, Vector2f(0.f, buttonY), IDs::IDs::menu_game_over,
+             Color(0, 255, 0));
 
     position++;
   }
@@ -130,14 +130,14 @@ void MenuGameOver::exibirMenuGameOver() {
 
 void MenuGameOver::criarBotoes() {
   addBotao("DIGITE SEU NOME:",
-           sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 600.0f),
-           IDs::IDs::menu_game_over, sf::Color(0, 255, 0));
+           Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 600.0f),
+           IDs::IDs::menu_game_over, Color(0, 255, 0));
 
-  addBotao("_", sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
-           IDs::IDs::botao_nome, sf::Color(0, 255, 0));
+  addBotao("_", Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 800.0f),
+           IDs::IDs::botao_nome, Color(0, 255, 0));
   addBotao("VOLTAR PARA O MENU",
-           sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),
-           IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
+           Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),
+           IDs::IDs::estado_menu_principal, Color{0, 255, 0});
   inicializarIterator();
 }
 

@@ -9,7 +9,7 @@ namespace Entidades::Personagens {
 
 Androide::Androide(const Vector2f pos, Tripulante *tripulante,
                    const IDs::IDs ID)
-    : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), tripulante, ID) {
+    : Inimigo(pos, Vector2f(100.0f, 100.0f), tripulante, ID) {
   this->dano = 2;
   this->pontosVida = 10;
   nivel_maldade = 2;
@@ -18,8 +18,8 @@ Androide::Androide(const Vector2f pos, Tripulante *tripulante,
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
 }
-Androide::Androide(sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID)
-    : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), nullptr, ID) {
+Androide::Androide(Vector2f pos, const Vector2f tam, const IDs::IDs ID)
+    : Inimigo(pos, Vector2f(100.0f, 100.0f), nullptr, ID) {
   this->dano = 2;
   this->pontosVida = 10;
   nivel_maldade = 2;

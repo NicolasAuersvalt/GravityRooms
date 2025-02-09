@@ -16,7 +16,7 @@ void Nave::criarInimMedios() {}
 void Nave::criarObstMedios() {}
 void Nave::criarFundo() {}
 void Nave::criarMapa() {
-  std::ifstream arquivo;
+  ifstream arquivo;
   string linha;
   arquivo.open("assets/mapa2.txt");
   if (!arquivo.is_open()) {

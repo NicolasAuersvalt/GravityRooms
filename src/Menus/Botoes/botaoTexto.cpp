@@ -3,9 +3,9 @@
 namespace Menus {
 namespace Botoes {
 
-BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f pos,
-                       const sf::Vector2f tam, const IDs::IDs ID,
-                       const sf::Color corSelecionado)
+BotaoTexto::BotaoTexto(const string info, const Vector2f pos,
+                       const Vector2f tam, const IDs::IDs ID,
+                       const Color corSelecionado)
     : Botao(tam, pos, ID, 0.01f),
       Texto(info, 24),
       corSelecionado(corSelecionado),
@@ -15,11 +15,11 @@ BotaoTexto::BotaoTexto(const std::string info, const sf::Vector2f pos,
 
 BotaoTexto::~BotaoTexto() {}
 
-void BotaoTexto::atualizarPosicaoCaixa(const sf::Vector2f pos) {
+void BotaoTexto::atualizarPosicaoCaixa(const Vector2f pos) {
   this->pos = pos;
   caixa.setPosition(pos);
 
-  sf::Vector2f centerPos(pos.x + (tam.x / 2.0f),  // Centro x
+  Vector2f centerPos(pos.x + (tam.x / 2.0f),  // Centro x
                          pos.y + (tam.y / 2.0f)   // Centro y
   );
 
@@ -27,7 +27,7 @@ void BotaoTexto::atualizarPosicaoCaixa(const sf::Vector2f pos) {
 }
 
 void BotaoTexto::setSelecionado(bool selecionado) {
-  setCorTexto(selecionado ? corSelecionado : sf::Color::White);
+  setCorTexto(selecionado ? corSelecionado : Color::White);
   this->selecionado = selecionado;
 }
 

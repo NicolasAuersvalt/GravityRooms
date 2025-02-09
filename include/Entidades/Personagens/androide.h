@@ -5,6 +5,7 @@
 
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/tripulante.h"
+
 using namespace std;
 using namespace sf;
 using namespace Entidades::Personagens;
@@ -17,8 +18,8 @@ class Androide : public Inimigo {
 
  protected:
  public:
-  Androide(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
-  Androide(sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID);
+  Androide(const Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
+  Androide(Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Androide();
 
   using Ente::setSprite;

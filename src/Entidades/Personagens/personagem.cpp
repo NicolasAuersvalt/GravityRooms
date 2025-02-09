@@ -55,10 +55,10 @@ void Personagem::andar(const bool paraEsquerda) {
   this->paraEsquerda = paraEsquerda;
 }
 
-void Personagem::setVelFinal(const sf::Vector2f velFinal) {
+void Personagem::setVelFinal(const Vector2f velFinal) {
   this->velFinal = velFinal;
 }
-const sf::Vector2f Personagem::getVelFinal() const { return velFinal; }
+const Vector2f Personagem::getVelFinal() const { return velFinal; }
 void Personagem::cair() {
   tempoSemColisao += 0.016f; // Incrementa o tempo sem colisão (60 FPS)
   if (tempoSemColisao >= TEMPO_MAX_SEM_COLISAO) {

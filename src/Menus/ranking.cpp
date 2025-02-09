@@ -4,19 +4,19 @@ namespace Menus {
 
 Ranking::Ranking(IDs::IDs id)
     : Menu(IDs::IDs::menu_colocacao,
-           sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180) {
+           Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180) {
   titulo.setPos(
-      sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
-  titulo.setCorTexto(sf::Color{0, 200, 0});
+      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+  titulo.setCorTexto(Color{0, 200, 0});
 }
 
-Ranking::Ranking(const IDs::IDs ID, std::string nome,
+Ranking::Ranking(const IDs::IDs ID, string nome,
                  const unsigned int tamFonte)
-    : Menu(IDs::IDs::menu_pausa, sf::Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y),
+    : Menu(IDs::IDs::menu_pausa, Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y),
            nome, tamFonte) {
   titulo.setPos(
-      sf::Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
-  titulo.setCorTexto(sf::Color{0, 200, 0});
+      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+  titulo.setCorTexto(Color{0, 200, 0});
 }
 
 Ranking::~Ranking() {}
@@ -24,8 +24,8 @@ Ranking::~Ranking() {}
 void Ranking::criarBotoes() {
   // Adiciona o botão "VOLTAR PARA O MENU" na posição especificada
   addBotao("VOLTAR PARA O MENU",
-           sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),
-           IDs::IDs::estado_menu_principal, sf::Color{0, 255, 0});
+           Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),
+           IDs::IDs::estado_menu_principal, Color{0, 255, 0});
 
   carregarRanking();     // Carrega os dados do ranking
   inicializarIterator(); // Inicializa o iterador
@@ -34,9 +34,9 @@ void Ranking::criarBotoes() {
 void Ranking::executar() {}
 void Ranking::carregarRanking() {
   // Abre o arquivo "rank.json" para leitura
-  std::ifstream file("saves/rank.json");
+  ifstream file("saves/rank.json");
   if (!file.is_open()) {
-    std::cout << "Erro ao abrir rank.json" << std::endl;
+    cout << "Erro ao abrir rank.json" << endl;
     return;
   }
 
@@ -50,25 +50,25 @@ void Ranking::carregarRanking() {
 
   // Obtém o array de rankings do JSON e limita a exibição ao top 5
   const auto &rankingArray = rankingData["ranking"];
-  int maxDisplay = std::min(5, static_cast<int>(rankingArray.size()));
+  int maxDisplay = min(5, static_cast<int>(rankingArray.size()));
 
   // Itera sobre as entradas do ranking e cria botões para exibição
   for (int i = 0; i < maxDisplay; i++) {
     const auto &entry = rankingArray[i];
-    std::string playerName = entry["nome"];
+    string playerName = entry["nome"];
     int score = entry["pontos"];
 
     // Formata o texto do ranking
-    std::string rankText = std::to_string(i + 1) + ". " + playerName + " - " +
-                           std::to_string(score);
+    string rankText = to_string(i + 1) + ". " + playerName + " - " +
+                           to_string(score);
 
     // Calcula a posição Y do botão
     float buttonY = startY + (spacing * (i + 1));
 
     // Adiciona um botão com o texto do ranking
     addBotao(rankText,
-             sf::Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, buttonY),
-             IDs::IDs::menu_colocacao, sf::Color(0, 255, 0));
+             Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, buttonY),
+             IDs::IDs::menu_colocacao, Color(0, 255, 0));
   }
 }
 

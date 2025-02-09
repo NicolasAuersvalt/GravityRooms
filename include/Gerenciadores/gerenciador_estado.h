@@ -2,14 +2,18 @@
 #define GERENCIADOR_ESTADO_H
 // Gerenciadores
 #include "Gerenciadores/gerenciador_grafico.h"
+
 // Pilha
 #include <stack>
+
+using namespace std;
+using namespace sf;
 
 namespace Gerenciadores {
 
 class GerenciadorEstado {
 private:
-  std::stack<int *> pilhaEstados;
+  stack<int *> pilhaEstados;
   static GerenciadorEstado *pGerenciadorEstado;
   GerenciadorEstado();
   void desativarObservadores();

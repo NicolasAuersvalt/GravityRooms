@@ -9,7 +9,7 @@ namespace {
 jmp_buf jumpBuffer;
 
 void segfaultHandler(int signal) {
-  std::cerr << "Caught segmentation fault!" << std::endl;
+  cerr << "Caught segmentation fault!" << endl;
   longjmp(jumpBuffer, 1);
 }
 }  // namespace
@@ -42,7 +42,7 @@ void Lista_Entidades::atualizarTodas() {
 
   auto updateFunction = [](Entidade *entidade) {
     if (!entidade) {
-      std::cout << "Entidade nula encontrada!" << std::endl;
+      cout << "Entidade nula encontrada!" << endl;
       return;
     }
 
@@ -50,8 +50,8 @@ void Lista_Entidades::atualizarTodas() {
       try {
         entidade->mover();
         entidade->atualizarPosicao();
-      } catch (const std::exception &e) {
-        std::cerr << "Error updating entity: " << e.what() << std::endl;
+      } catch (const exception &e) {
+        cerr << "Error updating entity: " << e.what() << endl;
       }
     } else {
     }

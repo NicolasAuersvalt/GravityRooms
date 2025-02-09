@@ -4,7 +4,9 @@
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/entidade.h"
 
+using namespace std;
 using namespace sf;
+
 using Entidades::Personagens::Personagem;
 
 namespace Entidades::Obstaculos {
@@ -25,7 +27,7 @@ public:
   bool getColidindo();
   void setColidindo(bool colide);
 
-  virtual void colisao(Entidade *outraEntidade, sf::Vector2f ds) = 0;
+  virtual void colisao(Entidade *outraEntidade, Vector2f ds) = 0;
   virtual void colisaoObstaculo(Vector2f ds, Personagem *pPersonagem);
 };
 

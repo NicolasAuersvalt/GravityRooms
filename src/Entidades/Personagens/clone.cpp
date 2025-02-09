@@ -7,8 +7,8 @@ using namespace Entidades::Personagens;
 
 namespace Entidades::Personagens {
 
-Clone::Clone(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID)
-    : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), tripulante, ID) {
+Clone::Clone(const Vector2f pos, Tripulante *tripulante, const IDs::IDs ID)
+    : Inimigo(pos, Vector2f(100.0f, 100.0f), tripulante, ID) {
   this->pontosVida = 20;
   this->dano = 3;
 
@@ -19,12 +19,12 @@ Clone::Clone(const sf::Vector2f pos, Tripulante *tripulante, const IDs::IDs ID)
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
   projetil =
-      new Projetil(pos, sf::Vector2f(50.0f, 54.0f), IDs::IDs::projetil_inimigo);
+      new Projetil(pos, Vector2f(50.0f, 54.0f), IDs::IDs::projetil_inimigo);
   setProjetil(projetil);
 }
 
-Clone::Clone(sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID)
-    : Inimigo(pos, sf::Vector2f(100.0f, 100.0f), nullptr, ID) {
+Clone::Clone(Vector2f pos, const Vector2f tam, const IDs::IDs ID)
+    : Inimigo(pos, Vector2f(100.0f, 100.0f), nullptr, ID) {
   this->pontosVida = 20;
   this->dano = 3;
 
@@ -35,7 +35,7 @@ Clone::Clone(sf::Vector2f pos, const sf::Vector2f tam, const IDs::IDs ID)
   vivo = true;
   sprite.setPosition(pos.x, pos.y);
   projetil =
-      new Projetil(pos, sf::Vector2f(50.0f, 54.0f), IDs::IDs::projetil_inimigo);
+      new Projetil(pos, Vector2f(50.0f, 54.0f), IDs::IDs::projetil_inimigo);
   setProjetil(projetil);
 }
 

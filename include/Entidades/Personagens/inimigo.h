@@ -14,6 +14,7 @@
 
 using namespace sf;
 using namespace std;
+
 using Gerenciadores::Gerenciador_Fisica;
 namespace Entidades::Personagens {
 class Tripulante;
@@ -38,14 +39,14 @@ public:
   virtual void danificar(Tripulante *p) = 0;
   virtual void executar() = 0;
   void colisao(Entidade *outraEntidade,
-               sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f));
+               Vector2f ds = Vector2f(0.0f, 0.0f));
   virtual void mover();
 
   virtual Projetil *getProjetil() = 0;
   virtual int getDano() = 0;
 
-  void perseguirTripulante(sf::Vector2f posTripulante,
-                           const sf::Vector2f posInimigo);
+  void perseguirTripulante(Vector2f posTripulante,
+                           const Vector2f posInimigo);
   void movimentarAleatorio();
   int getNivelMaldade() const;
   void setTripulante(Tripulante *tripulante) { this->tripulante = tripulante; };

@@ -87,9 +87,9 @@ public:
   void parar();
   void andar(const bool paraEsquerda);
   virtual void colisao(Entidade *outraEntidade,
-                       sf::Vector2f ds = sf::Vector2f(0.0f, 0.0f)) = 0;
-  void setVelFinal(const sf::Vector2f velFinal);
-  const sf::Vector2f getVelFinal() const;
+                       Vector2f ds = Vector2f(0.0f, 0.0f)) = 0;
+  void setVelFinal(const Vector2f velFinal);
+  const Vector2f getVelFinal() const;
   void cair();
   void carregar(json &arquivo) override {};
   std::string getTipo() const override { return "Personagem"; }
