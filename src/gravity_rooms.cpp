@@ -11,7 +11,8 @@ Gravity_Rooms::Gravity_Rooms()
       fase(nullptr),
       player2Active(false),
       currentState(MAIN),
-      currentPontos(0) {
+      currentPontos(0) 
+      {
   Ente::setGerenciador(&GG);
 
   executar();
@@ -193,7 +194,7 @@ void Gravity_Rooms::executar() {
         if (tecla == "M" && !player2Active) {
           criarJogadorDois();
         }
-        cout << "bloia1" << endl;
+        //cout << "bloia1" << endl;
         if ((!GC.pJog1 || !GC.pJog1->verificarVivo()) &&
             (!GC.pJog2 || !GC.pJog2->verificarVivo())) {
           limparJogo();
@@ -204,9 +205,9 @@ void Gravity_Rooms::executar() {
         if ((!GC.pJog2 || !GC.pJog2->verificarVivo())) {
           player2Active = false;
         }
-        cout << "bloia" << endl;
+        //cout << "bloia" << endl;
         bool enemiesExist = listaPersonagem.contemTipo<Inimigo>();
-        cout << "bloia2" << endl;
+        //cout << "bloia2" << endl;
 
         if (!enemiesExist && fase->complete == false) {
           if (dynamic_cast<Laboratorio *>(fase)) {
@@ -241,7 +242,7 @@ void Gravity_Rooms::executar() {
         GG.limpar();
         listaBackgrounds.desenharTodos();
 
-        cout << "bloia3" << endl;
+        //cout << "bloia3" << endl;
         listaObstaculo.desenharTodos();
         if (GC.pJog1) {
           if (GC.pJog1->verificarVivo()) {
@@ -249,13 +250,13 @@ void Gravity_Rooms::executar() {
           }
         }
 
-        cout << "bloia4" << endl;
+        //cout << "bloia4" << endl;
         if (GC.pJog2) {
           if (GC.pJog2->verificarVivo())
             listaPersonagem.juntarListas(*GC.pJog2->getProjeteis());
         }
 
-        cout << "bloia5" << endl;
+        //cout << "bloia5" << endl;
         listaPersonagem.desenharTodos();
 
         GC.executar(&listaPersonagem, &listaObstaculo);
@@ -330,7 +331,8 @@ void Gravity_Rooms::salvarEntidades(const std::string &nomeArquivo) {
   save.salvar(GC, listaPersonagem, listaObstaculo, listaBackgrounds, fase,
               nomeArquivo);
 }
-bool Gravity_Rooms::carregarEntidades(const std::string &nomeArquivo) {
+bool Gravity_Rooms::carregarEntidades(const std::string &nomeArquivo) 
+{
   limparJogo();
   if (save.carregar(GC, listaPersonagem, listaObstaculo, listaBackgrounds, fase,
                     nomeArquivo))

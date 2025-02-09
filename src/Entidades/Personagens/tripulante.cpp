@@ -17,7 +17,7 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   tempoSemColisao = 0.0f;
   noChao = false;
   sprite.setPosition(pos.x, pos.y);
-  setMunicao(40);
+  setMunicao(100);
   tempoUltimoTiro = 0.0f;
   tempoCooldown = 0.5f;
 

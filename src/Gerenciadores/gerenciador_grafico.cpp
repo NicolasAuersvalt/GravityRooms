@@ -51,7 +51,7 @@ void Gerenciador_Grafico::desenharEnte(Ente *pE) {
 
     static Texture texturaPadrao;
     if (!texturaPadrao.loadFromFile("textura_padrao.png")) {
-      cerr << "Erro: Não foi possível carregar a textura padrão!" << endl;
+      //cerr << "Erro: Não foi possível carregar a textura padrão!" << endl;
       return;
     }
 

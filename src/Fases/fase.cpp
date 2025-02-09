@@ -16,6 +16,7 @@ Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
       complete(false) {
   srand(time(nullptr));
 }
+
 // Destrutor
 Fase::~Fase() {
   if (pColisao) {
@@ -175,7 +176,7 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
       if (contadorEspinhoRetratil < 3) {
         criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
         contadorEspinhoRetratil++;
-      } else if (contadorCg < 1) {
+      } else if (contadorCg < 2) {
         criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
         contadorCg++;
       } else {
@@ -256,6 +257,9 @@ Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   return projetil;
 }
 void Fase::criarBackground(const IDs::IDs ID_Fase) {
+  
+  cout << "Criar Background" << endl;
+
   bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID_Fase);
 
   if (bg == nullptr) {
@@ -263,7 +267,23 @@ void Fase::criarBackground(const IDs::IDs ID_Fase) {
     exit(1);
   }
 
+  bg->setFase(this);
+
   listaBackground->incluir(static_cast<Entidade *>(bg));
+}
+
+bool Fase::isNave(){
+  if(getID() == IDs::IDs::fase_nave){
+    return true;
+  }
+  return false;
+}
+
+bool Fase::isLab(){
+  if(getID() == IDs::IDs::fase_laboratorio){
+    return true;
+  }
+  return false;
 }
 
 void Fase::setGerenciadorG(Gerenciador_Grafico *GG) {

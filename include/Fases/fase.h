@@ -39,12 +39,16 @@ using Entidades::Personagens::Ciborgue;
 using Entidades::Personagens::Clone;
 using Entidades::Personagens::Tripulante;
 
-using Entidades::Background;
+//using Entidades::Background;
 using Entidades::Projetil;
 using Listas::Lista_Entidades;
 
 using namespace sf;
 using namespace std;
+
+namespace Entidades{
+  class Background;
+} 
 
 namespace Fases {
 
@@ -81,7 +85,7 @@ class Fase : public Ente {
   Texture bgTexture;
   Sprite backgroundSprite;
 
-  Background *bg;
+  Entidades::Background *bg;
   Lista_Entidades *listaBackground;
 
   Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo);
@@ -107,6 +111,9 @@ class Fase : public Ente {
   virtual void criarMapa() = 0;
   virtual void desenhar() = 0;
   Entidades::Projetil *criarProjetil(const Vector2f pos, IDs::IDs ID);
+
+  bool isNave();
+  bool isLab();
 };
 }  // namespace Fases
 

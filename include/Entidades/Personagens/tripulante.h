@@ -28,11 +28,13 @@ class Tripulante : public Personagem {
  private:
   class Municao {
    private:
+   
     int quantidade;
     int maxMunicao;
 
    public:
-    Municao(int maxM = 40) : quantidade(maxM), maxMunicao(maxM) {}
+    Municao(int maxM = 100) : quantidade(maxM), maxMunicao(maxM) 
+    {}
 
     void setQtd(int qtd) {
       quantidade = std::max(0, std::min(qtd, maxMunicao));
