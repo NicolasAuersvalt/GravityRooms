@@ -6,8 +6,13 @@
 
 namespace Fases {
 
+REGISTRAR_CLASSE(Nave, "nave");
 // Construtor
 Nave::Nave(const IDs::IDs ID) : Fase(ID, IDs::IDs::fundo_nave) {}
+Nave::Nave(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
+    : Fase(ID, IDs::IDs::fundo_nave) {
+  criarFundo();
+}
 // Destrutor
 Nave::~Nave() {}
 
@@ -36,4 +41,4 @@ void Nave::criarMapa() {
   arquivo.close();
 }
 void Nave::desenhar() {}
-} // namespace Fases
+}  // namespace Fases

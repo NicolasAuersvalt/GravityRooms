@@ -4,8 +4,7 @@
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/tripulante.h"
 #include "Entidades/background.h"
-#include "Fases/laboratorio.h"
-#include "Fases/nave.h"
+#include "Fases/fase.h"
 #include "Gerenciadores/registry.h"
 
 Save::Save() {}
@@ -22,7 +21,11 @@ void Save::salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
                   const string &nomeArquivo) {
   json j;
 
-  j["fase"] = dynamic_cast<Laboratorio *>(fase) ? "laboratorio" : "nave";
+  json fase_save_content;
+
+  fase->salvar(fase_save_content);
+  j["fase"].push_back(fase_save_content);
+
   j["entities"] = json::array();
   auto atual = listaPersonagem.LEs->getPrimeiro();
   while (atual != nullptr) {
@@ -54,7 +57,7 @@ void Save::salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
 
   ofstream arquivo(nomeArquivo);
   if (arquivo.is_open()) {
-    arquivo << j.dump(4); // Formatação bonita com 4 espaços
+    arquivo << j.dump(4);  // Formatação bonita com 4 espaços
   }
 }
 
@@ -72,11 +75,15 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
   arquivo >> dados;
 
   // Carrega a fase
-  string tipoFase = dados["fase"];
-  if (tipoFase == "laboratorio") {
-    fase = new Laboratorio(IDs::IDs::fase_laboratorio);
-  } else if (tipoFase == "nave") {
-    fase = new Nave(IDs::IDs::fase_nave);
+  if (dados.contains("fase") && dados["fase"].is_array() &&
+      !dados["fase"].empty()) {
+    auto &registry = Registry::getInstance();
+    auto ente = registry.criar(dados["fase"][0]);
+    fase = dynamic_cast<Fase *>(ente.release());
+
+    if (!fase) {
+      std::cerr << "Error: Failed to load Fase from JSON." << std::endl;
+    }
   }
 
   // Carrega todas as entidades
@@ -95,9 +102,11 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
           if (!GC.pJog1) {
             GC.pJog1 = jogador;
             GC.pJog1->setPlayerOne(false);
+            GC.pJog1->carregarDataBuffer(entidadeData);
           } else if (!GC.pJog2) {
             GC.pJog2 = jogador;
             GC.pJog2->setPlayerOne(true);
+            GC.pJog2->carregarDataBuffer(entidadeData);
           }
         } else {
           if (GC.pJog1) {
@@ -117,6 +126,7 @@ bool Save::carregar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
       } else if (dynamic_cast<Obstaculo *>(ente.get())) {
         listaObstaculo.incluir(dynamic_cast<Entidade *>(ente.release()));
       } else if (dynamic_cast<Background *>(ente.get())) {
+        (dynamic_cast<Background *>(ente.get()))->setFase(fase);
         listaBackgrounds.incluir(dynamic_cast<Entidade *>(ente.release()));
       }
     }

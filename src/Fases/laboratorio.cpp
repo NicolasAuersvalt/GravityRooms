@@ -9,8 +9,14 @@
 
 namespace Fases {
 
+REGISTRAR_CLASSE(Laboratorio, "laboratorio");
 // Construtor
 Laboratorio::Laboratorio(const IDs::IDs ID)
+    : Fase(ID, IDs::IDs::fundo_laboratorio) {
+  criarFundo();
+}
+Laboratorio::Laboratorio(const Vector2f pos, const Vector2f tam,
+                         const IDs::IDs ID)
     : Fase(ID, IDs::IDs::fundo_laboratorio) {
   criarFundo();
 }
@@ -55,4 +61,4 @@ void Laboratorio::desenhar() {
   pGG->desenhar(backgroundSprite);
   Fase::desenhar();
 }
-} // namespace Fases
+}  // namespace Fases

@@ -15,12 +15,13 @@ using namespace sf;
 namespace Fases {
 
 class Nave : public Fase {
-private:
+ private:
   const int maxInimMedios = 2;
 
-protected:
-public:
+ protected:
+ public:
   Nave(const IDs::IDs ID);
+  Nave(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Nave();
 
   void criarInimMedios();
@@ -30,7 +31,14 @@ public:
   void criarMapa() override;
 
   void desenhar() override;
+
+  void salvar(json &arquivo) override {
+    arquivo["id"] = static_cast<int>(getID());
+    arquivo["posicao"]["x"] = 0.0f;
+    arquivo["posicao"]["y"] = 0.0f;
+    arquivo["tipo"] = "nave";
+  }
 };
-} // namespace Fases
+}  // namespace Fases
 
 #endif

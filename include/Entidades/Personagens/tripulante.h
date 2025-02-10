@@ -113,6 +113,7 @@ class Tripulante : public Personagem {
     arquivo["vida"] = getVida();
     arquivo["posicao"]["x"] = getPosicao().x;
     arquivo["posicao"]["y"] = getPosicao().y;
+    arquivo["municao"] = municao.getQtd();
     arquivo["tipo"] = "tripulante";
   }
   void atirar();

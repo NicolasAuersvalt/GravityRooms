@@ -22,10 +22,10 @@ void Ranking::criarBotoes() {
   // Adiciona o botão "VOLTAR PARA O MENU" na posição especificada
   addBotao("VOLTAR PARA O MENU",
            Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 1250.0f),
-           IDs::IDs::estado_menu_principal, Color{0, 255, 0});
+           IDs::IDs::botao_menu, Color{0, 255, 0});
 
-  carregarRanking();     // Carrega os dados do ranking
-  inicializarIterator(); // Inicializa o iterador
+  carregarRanking();      // Carrega os dados do ranking
+  inicializarIterator();  // Inicializa o iterador
 }
 
 void Ranking::executar() {}
@@ -38,7 +38,7 @@ void Ranking::carregarRanking() {
   }
 
   nlohmann::json rankingData;
-  file >> rankingData; // Lê o conteúdo do arquivo JSON
+  file >> rankingData;  // Lê o conteúdo do arquivo JSON
   file.close();
 
   // Define a posição inicial e o espaçamento para exibir os rankings
@@ -71,4 +71,4 @@ void Ranking::carregarRanking() {
 
 void Ranking::exibirRanking() {}
 
-} // namespace Menus
+}  // namespace Menus
