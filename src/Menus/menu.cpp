@@ -3,9 +3,13 @@
 namespace Menus {
 Menu::Menu(const IDs::IDs ID, const Vector2f tamBotao, const string nome,
            const unsigned int tamFonte)
-    : Ente(ID), listaBotaoTexto(), it(), tamBotao(tamBotao),
-      tamJanela(1280.0f, 920.0f), // Ajuste manual da tela
-      botaoSelecionado(false), titulo(nome, tamFonte) {
+    : Ente(ID),
+      listaBotaoTexto(),
+      it(),
+      tamBotao(tamBotao),
+      tamJanela(1280.0f, 920.0f),  // Ajuste manual da tela
+      botaoSelecionado(false),
+      titulo(nome, tamFonte) {
   if (!texturaBackground.loadFromFile("assets/menu.png")) {
     cerr << "Erro ao carregar textura do background!" << endl;
     exit(1);
@@ -24,8 +28,6 @@ Menu::~Menu() {
     listaBotaoTexto.clear();
   }
 }
-
-void Menu::mudarEstadoObservador() {}
 
 void Menu::addBotao(const string info, const Vector2f pos, const IDs::IDs ID,
                     const Color corSelecionado) {
@@ -135,4 +137,4 @@ void Menu::desenhar(Gerenciador_Grafico *GG) {
   }
 }
 
-} // namespace Menus
+}  // namespace Menus

@@ -1,3 +1,5 @@
+/*Feito com auxilio do ChatGPT e do DeepSeek*/
+
 #ifndef REGISTRY_H
 #define REGISTRY_H
 
@@ -24,7 +26,7 @@ class Ente;
 // =====/=====/=====/=====/=====/=====/
 
 class Registry {
-public:
+ public:
   using FactoryFunc = function<unique_ptr<Ente>(json &)>;
 
   // Singleton: retorna a instância única do Registry
@@ -43,29 +45,29 @@ public:
     string tipo = data["tipo"];
     auto it = factories.find(tipo);
     if (it != factories.end()) {
-      return it->second(data); // Chama a função de fábrica correspondente
+      return it->second(data);  // Chama a função de fábrica correspondente
     } else {
       cerr << "Tipo de entidade não registrado: " << tipo << endl;
       return nullptr;
     }
   }
 
-private:
-  Registry() = default; // Construtor privado para garantir Singleton
-  unordered_map<string, FactoryFunc> factories; // Mapa de fábricas
+ private:
+  Registry() = default;  // Construtor privado para garantir Singleton
+  unordered_map<string, FactoryFunc> factories;  // Mapa de fábricas
 };
 
 // Macro para registrar classes automaticamente no Registry
-#define REGISTRAR_CLASSE(CLASS, TIPO)                                          \
-  static struct Registrar##CLASS {                                             \
-    Registrar##CLASS() {                                                       \
-      Registry::getInstance().registrarClasse(                                 \
-          TIPO, [](json &data) -> unique_ptr<Ente> {                           \
-            return make_unique<CLASS>(                                         \
-                Vector2f(data["posicao"]["x"], data["posicao"]["y"]),          \
-                Vector2f(10, 10), static_cast<IDs::IDs>(data["id"]));          \
-          });                                                                  \
-    }                                                                          \
-  } registrar##CLASS; // Instância estática para registro automático
+#define REGISTRAR_CLASSE(CLASS, TIPO)                                 \
+  static struct Registrar##CLASS {                                    \
+    Registrar##CLASS() {                                              \
+      Registry::getInstance().registrarClasse(                        \
+          TIPO, [](json &data) -> unique_ptr<Ente> {                  \
+            return make_unique<CLASS>(                                \
+                Vector2f(data["posicao"]["x"], data["posicao"]["y"]), \
+                Vector2f(10, 10), static_cast<IDs::IDs>(data["id"])); \
+          });                                                         \
+    }                                                                 \
+  } registrar##CLASS;  // Instância estática para registro automático
 
-#endif // REGISTRY_H
+#endif  // REGISTRY_H
