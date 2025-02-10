@@ -1,4 +1,442 @@
 {
-    "entities": [],
-    "fase": "nave"
+    "entities": [
+        {
+            "id": 7,
+            "posicao": {
+                "x": 780.0,
+                "y": 702.0
+            },
+            "tipo": "ciborgue",
+            "vida": 5
+        },
+        {
+            "id": 6,
+            "posicao": {
+                "x": 786.0,
+                "y": 702.0
+            },
+            "tipo": "androide",
+            "vida": 10
+        },
+        {
+            "id": 6,
+            "posicao": {
+                "x": 1098.0,
+                "y": 402.0
+            },
+            "tipo": "androide",
+            "vida": 10
+        },
+        {
+            "id": 6,
+            "posicao": {
+                "x": 486.0,
+                "y": 702.0
+            },
+            "tipo": "androide",
+            "vida": 10
+        },
+        {
+            "id": 6,
+            "posicao": {
+                "x": 706.0,
+                "y": 702.0
+            },
+            "tipo": "androide",
+            "vida": 10
+        },
+        {
+            "id": 6,
+            "posicao": {
+                "x": 272.0,
+                "y": 702.0
+            },
+            "tipo": "androide",
+            "vida": 10
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -12000.0,
+                "y": -12000.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -130.0,
+                "y": -130.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -130.0,
+                "y": -130.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -130.0,
+                "y": -130.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -130.0,
+                "y": -130.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "id": 1,
+            "municao": 92,
+            "posicao": {
+                "x": 1050.0,
+                "y": 393.0
+            },
+            "tipo": "tripulante",
+            "vida": 0
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -12000.0,
+                "y": -12000.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "ativo": false,
+            "id": 4,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "id": 15,
+            "posicao": {
+                "x": 50.0,
+                "y": 50.0
+            },
+            "tipo": "background"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 0.0,
+                "y": 250.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 250.0,
+                "y": 250.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 500.0,
+                "y": 250.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 750.0,
+                "y": 500.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 1000.0,
+                "y": 500.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 1250.0,
+                "y": 500.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 9,
+            "posicao": {
+                "x": 50.0,
+                "y": 756.0
+            },
+            "tipo": "espinho"
+        },
+        {
+            "id": 9,
+            "posicao": {
+                "x": 150.0,
+                "y": 756.0
+            },
+            "tipo": "espinho"
+        },
+        {
+            "id": 9,
+            "posicao": {
+                "x": 250.0,
+                "y": 756.0
+            },
+            "tipo": "espinho"
+        },
+        {
+            "id": 10,
+            "posicao": {
+                "x": 600.0,
+                "y": 756.0
+            },
+            "tipo": "espinhoRetratil"
+        },
+        {
+            "id": 10,
+            "posicao": {
+                "x": 700.0,
+                "y": 756.0
+            },
+            "tipo": "espinhoRetratil"
+        },
+        {
+            "id": 10,
+            "posicao": {
+                "x": 800.0,
+                "y": 756.0
+            },
+            "tipo": "espinhoRetratil"
+        },
+        {
+            "id": 10,
+            "posicao": {
+                "x": 900.0,
+                "y": 756.0
+            },
+            "tipo": "espinhoRetratil"
+        },
+        {
+            "id": 9,
+            "posicao": {
+                "x": 1000.0,
+                "y": 756.0
+            },
+            "tipo": "espinho"
+        },
+        {
+            "id": 9,
+            "posicao": {
+                "x": 1100.0,
+                "y": 756.0
+            },
+            "tipo": "espinho"
+        },
+        {
+            "id": 9,
+            "posicao": {
+                "x": 1200.0,
+                "y": 756.0
+            },
+            "tipo": "espinho"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 0.0,
+                "y": 800.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 250.0,
+                "y": 800.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 500.0,
+                "y": 800.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 750.0,
+                "y": 800.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 1000.0,
+                "y": 800.0
+            },
+            "tipo": "plataforma"
+        },
+        {
+            "id": 8,
+            "posicao": {
+                "x": 1250.0,
+                "y": 800.0
+            },
+            "tipo": "plataforma"
+        }
+    ],
+    "fase": [
+        {
+            "id": 15,
+            "posicao": {
+                "x": 0.0,
+                "y": 0.0
+            },
+            "tipo": "laboratorio"
+        }
+    ]
 }
