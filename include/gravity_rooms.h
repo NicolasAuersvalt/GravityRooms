@@ -14,8 +14,8 @@
 #include "Fases/laboratorio.h"
 #include "Fases/nave.h"
 #include "Gerenciadores/gerenciador_colisoes.h"
-#include "Gerenciadores/gerenciador_input.h"
 #include "Gerenciadores/gerenciador_grafico.h"
+#include "Gerenciadores/gerenciador_input.h"
 #include "Gerenciadores/save.h"
 #include "IDs/IDs.h"
 #include "Listas/lista_entidades.h"
@@ -35,8 +35,8 @@ using Entidades::Personagens::Tripulante;
 
 // Includes de Gerenciadores
 using Gerenciadores::Gerenciador_Colisoes;
-using Gerenciadores::Gerenciador_Input;
 using Gerenciadores::Gerenciador_Grafico;
+using Gerenciadores::Gerenciador_Input;
 
 // Includes de Listas e Menus
 using Listas::Lista_Entidades;
@@ -59,11 +59,11 @@ using namespace sf;
 // =====/=====/=====/=====/=====/=====/
 
 class Gravity_Rooms {
-private:
+ private:
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
   Gerenciador_Input GE;
-  Fase *fase; // PROBLEMA QUE FASE NÃO DEVE SER INSTÂNCIADA
+  Fase *fase;  // PROBLEMA QUE FASE NÃO DEVE SER INSTÂNCIADA
   Menu *menu;
   Save save;
 
@@ -78,17 +78,17 @@ private:
   GameState currentState = MAIN;
   int currentPontos;
 
-protected:
-public:
+ protected:
+ public:
   Gravity_Rooms();
   ~Gravity_Rooms();
   bool ligarMenu(IDs::IDs pMenu);
 
-  void salvarEntidades(const std::string &nomeArquivo);
+  void salvarEntidades(const string &nomeArquivo);
   void executar();
   void criarJogadorDois();
   void criarFases(IDs::IDs faseSelecionada);
-  bool carregarEntidades(const std::string &nomeArquivo);
+  bool carregarEntidades(const string &nomeArquivo);
   void limparJogo();
   Lista_Entidades listaBackgrounds;
 };

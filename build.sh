@@ -7,4 +7,4 @@ cmake ..
 echo "Compilando..."
 make
 echo "Executando..."
-./build/GravityRooms
+./GravityRooms

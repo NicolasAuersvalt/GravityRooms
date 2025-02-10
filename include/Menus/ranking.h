@@ -7,7 +7,6 @@
 #include "../json.hpp"
 #include "Menus/menu.h"
 
-
 // =====/=====/=====/=====/=====/=====/
 // Requisitos Funcionais  10
 // =====/=====/=====/=====/=====/=====/

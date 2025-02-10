@@ -67,20 +67,18 @@ class Background;
 namespace Fases {
 
 class Fase : public Ente {
-
-  
-private:
-protected:
+ private:
+ protected:
   short inimAleatorio = 0;
-  queue<Vector2f> filaInimigosFaceis;    // Queue for easy enemies
-  queue<Vector2f> filaInimigosMedios;    // Queue for medium enemies
-  queue<Vector2f> filaInimigosDificeis;  // Queue for difficult enemies
-  queue<Vector2f> filaEspinhos;          // Queue for spikes
-  queue<Vector2f> filaEspinhosRetrateis; // Queue for retractable spikes
-  queue<Vector2f> filaCentrosGravidade;  // Queue for gravity centers
-  int contadorFaceis = 0;                // Contador de inimigos fáceis
-  int contadorMedios = 0;                // Contador de inimigos medios
-  int contadorDificeis = 0;              // Contador de inimigos difíceis
+  queue<Vector2f> filaInimigosFaceis;     // Queue for easy enemies
+  queue<Vector2f> filaInimigosMedios;     // Queue for medium enemies
+  queue<Vector2f> filaInimigosDificeis;   // Queue for difficult enemies
+  queue<Vector2f> filaEspinhos;           // Queue for spikes
+  queue<Vector2f> filaEspinhosRetrateis;  // Queue for retractable spikes
+  queue<Vector2f> filaCentrosGravidade;   // Queue for gravity centers
+  int contadorFaceis = 0;                 // Contador de inimigos fáceis
+  int contadorMedios = 0;                 // Contador de inimigos medios
+  int contadorDificeis = 0;               // Contador de inimigos difíceis
   int contadorEspinho = 0;
   int contadorEspinhoRetratil = 0;
   short obsAleatorio = 0;
@@ -88,7 +86,7 @@ protected:
   const int MAX_INIMIGOS_INICIAIS = 3;
   const int MAX_INIMIGOS_TOTAL = 7;
 
-public:
+ public:
   bool complete;
   Lista_Entidades *listaObstaculos;
   Gerenciador_Grafico *GG;
@@ -114,7 +112,7 @@ public:
   ~Fase();
 
   void executar();
-  std::string getTipo() const override { return "Fase"; }
+  string getTipo() const override { return "Fase"; }
   void carregar(json &arquivo) {}
   void salvar(json &arquivo) override {}
   void criarBackground(const IDs::IDs ID_Fase);
@@ -129,7 +127,7 @@ public:
   void setGerenciadorG(Gerenciador_Grafico *GG);
   Gerenciador_Grafico *getGerenciador() { return GG; }
   virtual void criarEntidades(char letra, const Vector2f pos);
-  virtual void criarFundo() = 0; // fundo
+  virtual void criarFundo() = 0;  // fundo
   virtual void criarMapa() = 0;
   virtual void desenhar() = 0;
   Entidades::Projetil *criarProjetil(const Vector2f pos, IDs::IDs ID);
@@ -137,6 +135,6 @@ public:
   bool isNave();
   bool isLab();
 };
-} // namespace Fases
+}  // namespace Fases
 
 #endif

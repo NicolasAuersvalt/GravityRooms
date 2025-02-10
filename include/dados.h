@@ -10,7 +10,7 @@
 // class Dados {
 //  private:
 //   string level;
-//   sf::Vector2f player2Pos;
+//   Vector2f player2Pos;
 //   int player2Health;
 //   string nome, local;
 //   int pontos;
@@ -61,8 +61,8 @@
 
 //   int getPontos() const { return pontos; }
 
-//   void setLevel(const std::string& lvl) { level = lvl; }
-//   void setPlayer2Pos(sf::Vector2f pos) { player2Pos = pos; }
+//   void setLevel(const string& lvl) { level = lvl; }
+//   void setPlayer2Pos(Vector2f pos) { player2Pos = pos; }
 //   void setPlayer2Health(int health) { player2Health = health; }
 // };
 

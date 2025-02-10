@@ -13,8 +13,8 @@ using namespace std;
 
 // =====/=====/=====/=====/=====/=====/
 
-// Requisitos Funcionais 2 
-// Requisitos Funcionais 4 
+// Requisitos Funcionais 2
+// Requisitos Funcionais 4
 // Requisitos Funcionais 9
 
 // Requisitos Conceituais 1.2
@@ -27,7 +27,7 @@ using namespace std;
 namespace Entidades::Personagens {
 
 class Personagem : public Entidade {
-protected:
+ protected:
   Vector2f vel;
 
   int pontosVida;
@@ -78,7 +78,7 @@ protected:
     setPosicao(pos.x, pos.y);
   }
 
-public:
+ public:
   Personagem(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Personagem();
 
@@ -104,10 +104,10 @@ public:
   void setVelFinal(const Vector2f velFinal);
   const Vector2f getVelFinal() const;
   void cair();
-  void carregar(json &arquivo) override{};
-  std::string getTipo() const override { return "Personagem"; }
+  void carregar(json &arquivo) override {};
+  string getTipo() const override { return "Personagem"; }
 };
 
-} // namespace Entidades::Personagens
+}  // namespace Entidades::Personagens
 
 #endif

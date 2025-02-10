@@ -9,14 +9,14 @@ using namespace sf;
 
 namespace Entidades::Obstaculos {
 class EspinhoRetratil : public Obstaculo {
-private:
+ private:
   float largura;
   float tempoDesdeUltimaAlternancia;
   bool ligado;
   Clock relogio;
 
-protected:
-public:
+ protected:
+ public:
   EspinhoRetratil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~EspinhoRetratil();
   void executar();
@@ -28,7 +28,7 @@ public:
   bool estaLigado() const;
 
   void carregar(json &arquivo) {}
-  std::string getTipo() const override { return "espinhoRetratil"; }
+  string getTipo() const override { return "espinhoRetratil"; }
   void salvar(json &arquivo) override {
     arquivo["id"] = static_cast<int>(getID());
     arquivo["posicao"]["x"] = getPosicao().x;
@@ -37,6 +37,6 @@ public:
   }
 };
 
-} // namespace Entidades::Obstaculos
+}  // namespace Entidades::Obstaculos
 
 #endif

@@ -5,9 +5,9 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
-#include <mutex> // Para usar std::mutex, se necessário
+#include <mutex>  // Para usar mutex, se necessário
 #include <string>
-#include <thread> // Para usar std::thread
+#include <thread>  // Para usar thread
 
 using namespace std;
 using namespace sf;
@@ -27,12 +27,12 @@ class Ente;
 namespace Gerenciadores {
 
 class Gerenciador_Grafico {
-private:
-  static Gerenciador_Grafico *grafico; // Instância única
+ private:
+  static Gerenciador_Grafico *grafico;  // Instância única
 
-  string nomeJanela = "GravityRooms"; // Nome da janela
-  RenderWindow window;                // Janela de renderização
-  const int fps = 60;                 // Limite de frames por segundo
+  string nomeJanela = "GravityRooms";  // Nome da janela
+  RenderWindow window;                 // Janela de renderização
+  const int fps = 60;                  // Limite de frames por segundo
 
   const int largura = 1280;
   const int altura = 920;
@@ -45,7 +45,7 @@ private:
   Gerenciador_Grafico(const Gerenciador_Grafico &) = delete;
   Gerenciador_Grafico &operator=(const Gerenciador_Grafico &) = delete;
 
-public:
+ public:
   // Construtor
   Gerenciador_Grafico();
 
@@ -86,6 +86,6 @@ public:
   void desenharBackground(Sprite &sprite);
 };
 
-} // namespace Gerenciadores
+}  // namespace Gerenciadores
 
 #endif

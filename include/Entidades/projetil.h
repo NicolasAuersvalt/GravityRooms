@@ -20,7 +20,7 @@ using namespace Entidades;
 namespace Entidades {
 
 class Projetil : public Entidade {
-private:
+ private:
   static int danoProjetil;
   bool ativo;
 
@@ -29,8 +29,8 @@ private:
   int dano;
   Vector2f velocidade;
 
-protected:
-public:
+ protected:
+ public:
   Projetil(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   virtual ~Projetil();
 
@@ -45,7 +45,7 @@ public:
   void setAtirador(Entidade *a);
   bool getColidir(Entidade *e);
   int getDano();
-  void atualizarPosicao(){};
+  void atualizarPosicao() {};
   void colisao(Entidade *outraEntidade, Vector2f ds = Vector2f(0.0f, 0.0f));
 
   void salvar(json &arquivo) override {
@@ -55,10 +55,10 @@ public:
     arquivo["posicao"]["y"] = getPosicao().y;
     arquivo["tipo"] = "projetil";
   }
-  void carregar(json &arquivo) override{};
-  std::string getTipo() const override { return "projetil"; }
+  void carregar(json &arquivo) override {};
+  string getTipo() const override { return "projetil"; }
 };
 
-} // namespace Entidades
+}  // namespace Entidades
 
 #endif

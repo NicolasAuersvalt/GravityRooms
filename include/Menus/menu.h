@@ -23,7 +23,6 @@ using namespace sf;
 
 class Gravity_Rooms;
 
-
 // =====/=====/=====/=====/=====/=====/
 
 // Requisitos Funcionais 1
@@ -42,7 +41,6 @@ public:
   virtual void desenhar(Gerenciador_Grafico *GG) = 0;
   virtual ~Drawable() = default;
 };
-
 
 class Menu : public Ente, public Drawable {
 

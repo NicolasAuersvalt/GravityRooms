@@ -32,7 +32,6 @@ using namespace Entidades;
 // Requisitos Funcionais  8
 // Requisitos Funcionais  9
 
-
 // Requisitos Conceituais 1.1
 // Requisitos Conceituais 1.2
 // Requisitos Conceituais 6.4

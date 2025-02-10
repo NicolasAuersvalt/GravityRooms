@@ -23,7 +23,8 @@ void Gerenciador_Fisica::processarFisica() {
     this_thread::sleep_for(
         chrono::milliseconds(16)); // Simula o tempo de cada frame
 
-    lock_guard<mutex> lock(mtx); // Garante acesso seguro aos dados compartilhados
+    lock_guard<mutex> lock(
+        mtx); // Garante acesso seguro aos dados compartilhados
     aplicarGravidade();
     atualizarPosicao();
   }
@@ -51,6 +52,6 @@ double Gerenciador_Fisica::gravidadePersonagemBuracoNegro(float velFinalX) {
     soma += (G * M * m) / (x * x) * abs(dx);
   }
 
-  return sqrt((soma/1e15));
+  return sqrt((soma / 1e15));
 }
 } // namespace Gerenciadores

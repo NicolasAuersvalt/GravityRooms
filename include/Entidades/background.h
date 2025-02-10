@@ -23,11 +23,10 @@ class Fase;
 namespace Entidades {
 
 class Background : public Entidade {
-
-private:
+ private:
   Fases::Fase *fase;
 
-public:
+ public:
   Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
 
   ~Background();
@@ -39,11 +38,11 @@ public:
   void lerSprite();
   void setFase(Fases::Fase *fase);
 
-  std::string getTipo() const override;
+  string getTipo() const override;
   void salvar(json &arquivo) override;
   void carregar(json &arquivo) override;
 };
 
-} // namespace Entidades
+}  // namespace Entidades
 
 #endif

@@ -4,16 +4,12 @@ namespace Fases {
 
 // Construtor
 Fase::Fase(const IDs::IDs ID_Fase, const IDs::IDs ID_Fundo)
-    : Ente(ID_Fase),
-      listaPersonagens(new Lista_Entidades()),
+    : Ente(ID_Fase), listaPersonagens(new Lista_Entidades()),
       listaObstaculos(new Lista_Entidades()),
-      listaBackground(new Lista_Entidades()),
-      tripulantes{nullptr, nullptr},
-      pos1(100.0f, 100.0f),
-      pos2(200.0f, 100.0f),
+      listaBackground(new Lista_Entidades()), tripulantes{nullptr, nullptr},
+      pos1(100.0f, 100.0f), pos2(200.0f, 100.0f),
       pColisao(new Gerenciador_Colisoes(listaPersonagens, listaObstaculos)),
-      bg(),
-      complete(false) {
+      bg(), complete(false) {
   srand(time(nullptr));
 }
 
@@ -89,112 +85,107 @@ void Fase::criarEntidades(char letra, const Vector2f pos) {
   }
 
   switch (letra) {
-    case ('i'): {
-      if (filaInimigosFaceis.size() < MAX_INIMIGOS_INICIAIS) {
+  case ('i'): {
+    if (filaInimigosFaceis.size() < MAX_INIMIGOS_INICIAIS) {
+      criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
+      filaInimigosFaceis.push(pos);
+    } else if (filaInimigosMedios.size() < MAX_INIMIGOS_INICIAIS) {
+      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
+      filaInimigosMedios.push(pos);
+    } else {
+      // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+      inimAleatorio = rand() % 2;
+      if (inimAleatorio == 0 &&
+          filaInimigosFaceis.size() < MAX_INIMIGOS_TOTAL) {
         criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
         filaInimigosFaceis.push(pos);
-      } else if (filaInimigosMedios.size() < MAX_INIMIGOS_INICIAIS) {
+      } else if (inimAleatorio == 1 &&
+                 filaInimigosMedios.size() < MAX_INIMIGOS_TOTAL) {
         criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
         filaInimigosMedios.push(pos);
-      } else {
-        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
-        inimAleatorio = rand() % 2;
-        if (inimAleatorio == 0 &&
-            filaInimigosFaceis.size() < MAX_INIMIGOS_TOTAL) {
-          criarInimFaceis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                          tripulantes[0]);
-          filaInimigosFaceis.push(pos);
-        } else if (inimAleatorio == 1 &&
-                   filaInimigosMedios.size() < MAX_INIMIGOS_TOTAL) {
-          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                          tripulantes[0]);
-          filaInimigosMedios.push(pos);
-        }
       }
-      break;
     }
+    break;
+  }
 
-    case ('d'): {
-      if (filaInimigosMedios.size() < MAX_INIMIGOS_INICIAIS) {
+  case ('d'): {
+    if (filaInimigosMedios.size() < MAX_INIMIGOS_INICIAIS) {
+      criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
+      filaInimigosMedios.push(pos);
+    } else if (filaInimigosDificeis.size() < MAX_INIMIGOS_INICIAIS) {
+      criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
+      filaInimigosDificeis.push(pos);
+    } else {
+      // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+      inimAleatorio = rand() % 2;
+      if (inimAleatorio == 0 & filaInimigosMedios.size() < MAX_INIMIGOS_TOTAL) {
         criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f), tripulantes[0]);
         filaInimigosMedios.push(pos);
-      } else if (filaInimigosDificeis.size() < MAX_INIMIGOS_INICIAIS) {
+      } else if (inimAleatorio == 1 &
+                 filaInimigosDificeis.size() < MAX_INIMIGOS_TOTAL) {
         criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
                           tripulantes[0]);
         filaInimigosDificeis.push(pos);
-      } else {
-        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
-        inimAleatorio = rand() % 2;
-        if (inimAleatorio == 0 &
-            filaInimigosMedios.size() < MAX_INIMIGOS_TOTAL) {
-          criarInimMedios(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                          tripulantes[0]);
-          filaInimigosMedios.push(pos);
-        } else if (inimAleatorio == 1 &
-                   filaInimigosDificeis.size() < MAX_INIMIGOS_TOTAL) {
-          criarInimDificeis(Vector2f(pos.x * 50.0f, pos.y * 50.0f),
-                            tripulantes[0]);
-          filaInimigosDificeis.push(pos);
-        }
       }
-      break;
+    }
+    break;
 
-    } break;
-    case ('c'): {
-      if (contadorEspinho < 3) {
+  } break;
+  case ('c'): {
+    if (contadorEspinho < 3) {
+      criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+      contadorEspinho++;
+    } else if (contadorEspinhoRetratil < 3) {
+      criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+      contadorEspinhoRetratil++;
+    } else {
+      // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+      obsAleatorio = rand() % 2;
+      if (obsAleatorio == 0 && contadorEspinho < 7) {
         criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
         contadorEspinho++;
-      } else if (contadorEspinhoRetratil < 3) {
+      } else if (obsAleatorio == 1 && contadorEspinhoRetratil < 7) {
         criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
         contadorEspinhoRetratil++;
-      } else {
-        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
-        obsAleatorio = rand() % 2;
-        if (obsAleatorio == 0 && contadorEspinho < 7) {
-          criarEspinho(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
-          contadorEspinho++;
-        } else if (obsAleatorio == 1 && contadorEspinhoRetratil < 7) {
-          criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
-          contadorEspinhoRetratil++;
-        }
       }
-      break;
+    }
+    break;
 
-    } break;
-    case ('#'): {
-      criarPlataforma(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
+  } break;
+  case ('#'): {
+    criarPlataforma(Vector2f(pos.x * 50.0f, pos.y * 50.0f));
 
-    } break;
-    case ('r'): {
+  } break;
+  case ('r'): {
+    criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
+  } break;
+  case ('g'): {
+    criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
+
+  } break;
+  case ('k'): {
+    if (contadorEspinhoRetratil < 3) {
       criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
-    } break;
-    case ('g'): {
+      contadorEspinhoRetratil++;
+    } else if (contadorCg < 2) {
       criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
-
-    } break;
-    case ('k'): {
-      if (contadorEspinhoRetratil < 3) {
+      contadorCg++;
+    } else {
+      // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
+      obsAleatorio = rand() % 2;
+      if (obsAleatorio == 0 && contadorEspinho < 7) {
         criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
         contadorEspinhoRetratil++;
-      } else if (contadorCg < 2) {
+      } else if (obsAleatorio == 1 && contadorCg < 7) {
         criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
         contadorCg++;
-      } else {
-        // Após garantir 3 instâncias de cada tipo, criar aleatoriamente
-        obsAleatorio = rand() % 2;
-        if (obsAleatorio == 0 && contadorEspinho < 7) {
-          criarEspinhoRetratil(Vector2f(pos.x * 50.0f, pos.y * 54.0f));
-          contadorEspinhoRetratil++;
-        } else if (obsAleatorio == 1 && contadorCg < 7) {
-          criarCentroGravidade(Vector2f(pos.x * 50.0f, pos.y * 51.0f));
-          contadorCg++;
-        }
       }
-      break;
-    } break;
-    case ('b'): {
-      criarBackground(getID());
     }
+    break;
+  } break;
+  case ('b'): {
+    criarBackground(getID());
+  }
   }
 }
 
@@ -257,8 +248,8 @@ Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   return projetil;
 }
 void Fase::criarBackground(const IDs::IDs ID_Fase) {
-  
-  //cout << "Criar Background" << endl;
+
+  // cout << "Criar Background" << endl;
 
   bg = new Background(Vector2f(0.0f, 0.0f), Vector2f(0.0f, 0.0f), ID_Fase);
 
@@ -272,21 +263,22 @@ void Fase::criarBackground(const IDs::IDs ID_Fase) {
   listaBackground->incluir(static_cast<Entidade *>(bg));
 }
 
-bool Fase::isNave(){
-  if(getID() == IDs::IDs::fase_nave){
+bool Fase::isNave() {
+  if (getID() == IDs::IDs::fase_nave) {
     return true;
   }
   return false;
 }
 
-bool Fase::isLab(){
-  if(getID() == IDs::IDs::fase_laboratorio){
+bool Fase::isLab() {
+  if (getID() == IDs::IDs::fase_laboratorio) {
     return true;
   }
   return false;
 }
 
 void Fase::setGerenciadorG(Gerenciador_Grafico *GG) {
-  if (GG != nullptr) this->GG = GG;
+  if (GG != nullptr)
+    this->GG = GG;
 }
-}  // namespace Fases
+} // namespace Fases

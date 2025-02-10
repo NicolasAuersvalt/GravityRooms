@@ -13,11 +13,11 @@ using namespace sf;
 
 namespace Entidades::Obstaculos {
 class Espinho : public Obstaculo {
-private:
+ private:
   float largura;
 
-protected:
-public:
+ protected:
+ public:
   Espinho(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Espinho();
   void executar();
@@ -26,7 +26,7 @@ public:
   int getDano();
 
   void carregar(json &arquivo) {}
-  std::string getTipo() const override { return "espinho"; }
+  string getTipo() const override { return "espinho"; }
   void salvar(json &arquivo) override {
     arquivo["id"] = static_cast<int>(getID());
     arquivo["posicao"]["x"] = getPosicao().x;
@@ -35,6 +35,6 @@ public:
   }
 };
 
-} // namespace Entidades::Obstaculos
+}  // namespace Entidades::Obstaculos
 
 #endif

@@ -2,7 +2,7 @@
 
 namespace Gerenciadores {
 void Gerenciador_Input::processarEventoJanela(Gerenciador_Grafico &GG,
-                                                MenuPrincipal &menuGeral) {
+                                              MenuPrincipal &menuGeral) {
   Event evento;
 
   // Verificar se há eventos na fila
