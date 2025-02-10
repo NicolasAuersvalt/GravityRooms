@@ -43,40 +43,7 @@ class Personagem : public Entidade {
   float tempoSemColisao;
   const float TEMPO_MAX_SEM_COLISAO = 0.1f;
 
-  void verificarLimitesTela() {
-    Vector2f pos = getSprite().getPosition();
-    Vector2f tamanho = getTamanho();
-    // Limites horizontais (usar dimensões reais da janela)
-    const float LARGURA_TELA = 1280.0f;
-    const float ALTURA_TELA = 920.0f;
-
-    // Limite esquerdo
-    if (pos.x < 0.0f) {
-      pos.x = 0.0f;
-      velFinal.x = 0.0f;
-    }
-    // Limite direito
-    if (pos.x + tamanho.x > LARGURA_TELA) {
-      pos.x = LARGURA_TELA - tamanho.x;
-      velFinal.x = 0.0f;
-    }
-
-    // Limite superior
-    if (pos.y < 0.0f) {
-      pos.y = 0.0f;
-      velFinal.y = 0.0f;
-    }
-    // Limite inferior
-    if (pos.y + tamanho.y > ALTURA_TELA) {
-      pos.y = ALTURA_TELA - tamanho.y;
-      velFinal.y = 0.0f;
-      noChao = true;
-    }
-
-    // Atualiza as posições do sprite e da hitbox
-    getSprite().setPosition(pos);
-    setPosicao(pos.x, pos.y);
-  }
+  void verificarLimitesTela();
 
  public:
   Personagem(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);

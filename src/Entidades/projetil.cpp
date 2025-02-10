@@ -116,5 +116,13 @@ void Projetil::setAtivo(bool status, const Vector2f pos) {
   sprite.setPosition(pos.x, pos.y);
 }
 
+void Projetil::salvar(json &arquivo) override {
+  arquivo["id"] = static_cast<int>(getID());
+  arquivo["ativo"] = getAtivo();
+  arquivo["posicao"]["x"] = getPosicao().x;
+  arquivo["posicao"]["y"] = getPosicao().y;
+  arquivo["tipo"] = "projetil";
+}
+
 REGISTRAR_CLASSE(Projetil, "projetil")
 } // namespace Entidades

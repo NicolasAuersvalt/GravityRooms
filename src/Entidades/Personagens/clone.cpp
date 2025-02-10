@@ -76,5 +76,21 @@ void Clone::atirar() {
 }
 int Clone::getDano() { return dano; }
 
+void Clone::salvar(json &arquivo) override {
+  arquivo["id"] = static_cast<int>(getID());
+  arquivo["vida"] = getVida();
+  arquivo["posicao"]["x"] = getPosicao().x;
+  arquivo["posicao"]["y"] = getPosicao().y;
+  arquivo["tipo"] = "clone";
+  if (projetil) {
+    arquivo["projetil"]["id"] = static_cast<int>(projetil->getID());
+
+    arquivo["projetil"]["ativo"] = projetil->getAtivo();
+    arquivo["projetil"]["posicao"]["x"] = projetil->getPosicao().x;
+    arquivo["projetil"]["posicao"]["y"] = projetil->getPosicao().y;
+    arquivo["projetil"]["tipo"] = "projetil";
+  }
+}
+
 REGISTRAR_CLASSE(Clone, "clone")
 } // namespace Entidades::Personagens

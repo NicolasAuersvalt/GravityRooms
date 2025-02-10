@@ -21,18 +21,17 @@ class Espinho : public Obstaculo {
   Espinho(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Espinho();
   void executar();
-  void mover();
+  void mover() override;
   void colisao(Entidade *outraEntidade, Vector2f ds = Vector2f(0.0f, 0.0f));
   int getDano();
 
   void carregar(json &arquivo) {}
-  string getTipo() const override { return "espinho"; }
-  void salvar(json &arquivo) override {
-    arquivo["id"] = static_cast<int>(getID());
-    arquivo["posicao"]["x"] = getPosicao().x;
-    arquivo["posicao"]["y"] = getPosicao().y;
-    arquivo["tipo"] = "espinho";
-  }
+  
+  string getTipo() const override {
+     return "espinho"; 
+    }
+
+  void salvar(json &arquivo) override;
 };
 
 }  // namespace Entidades::Obstaculos

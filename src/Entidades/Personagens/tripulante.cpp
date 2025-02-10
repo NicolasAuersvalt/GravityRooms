@@ -38,6 +38,15 @@ int Tripulante::getMunicao() { return municao.getQtd(); }
 
 void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
 
+void Tripulante::salvar(json &arquivo) override {
+  arquivo["id"] = static_cast<int>(getID());
+  arquivo["vida"] = getVida();
+  arquivo["posicao"]["x"] = getPosicao().x;
+  arquivo["posicao"]["y"] = getPosicao().y;
+  arquivo["municao"] = municao.getQtd();
+  arquivo["tipo"] = "tripulante";
+}
+
 void Tripulante::mover() {
   // Jogador 1 (WASD + Q)
   float deltaTime = relogio.restart().asSeconds();

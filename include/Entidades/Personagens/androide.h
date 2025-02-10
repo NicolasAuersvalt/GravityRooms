@@ -29,21 +29,17 @@ public:
 
   using Ente::setSprite;
 
-  void danificar(Tripulante *p) override;
-
   virtual void executar() override;
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
+
+  void danificar(Tripulante *p) override;
   void mover() override;
   int getDano();
-  Projetil *getProjetil() { return nullptr; };
+  Projetil *getProjetil() {
+     return nullptr; 
+    };
 
-  void salvar(json &arquivo) override {
-    arquivo["id"] = static_cast<int>(getID());
-    arquivo["vida"] = getVida();
-    arquivo["posicao"]["x"] = getPosicao().x;
-    arquivo["posicao"]["y"] = getPosicao().y;
-    arquivo["tipo"] = "androide";
-  }
+  void salvar(json &arquivo) override;
 };
 
 } // namespace Entidades::Personagens

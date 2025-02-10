@@ -27,7 +27,16 @@ void Espinho::executar() {
 void Espinho::mover() {}
 
 void Espinho::colisao(Entidade *outraEntidade, Vector2f ds) {}
-int Entidades::Obstaculos::Espinho::getDano() { return dano; }
+int Entidades::Obstaculos::Espinho::getDano() { 
+  return dano; 
+}
+
+void Espinho::salvar(json &arquivo) {
+  arquivo["id"] = static_cast<int>(getID());
+  arquivo["posicao"]["x"] = getPosicao().x;
+  arquivo["posicao"]["y"] = getPosicao().y;
+  arquivo["tipo"] = "espinho";
+}
 
 REGISTRAR_CLASSE(Espinho, "espinho")
 } // namespace Entidades::Obstaculos

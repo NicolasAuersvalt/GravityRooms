@@ -14,9 +14,13 @@ Obstaculo::Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
 
 Obstaculo::~Obstaculo() {}
 
-bool Obstaculo::getColidindo() { return colidindo; }
+bool Obstaculo::getColidindo() {
+   return colidindo; 
+  }
 
-void Obstaculo::setColidindo(bool colide) { colidindo = colide; }
+void Obstaculo::setColidindo(bool colide) { 
+  colidindo = colide; 
+}
 
 void Obstaculo::colisaoObstaculo(
     Vector2f ds, Entidades::Personagens::Personagem *pPersonagem) {

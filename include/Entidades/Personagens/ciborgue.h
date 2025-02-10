@@ -28,19 +28,19 @@ public:
   ~Ciborgue();
 
   using Ente::setSprite;
+
   void executar() override;
   void danificar(Tripulante *p) override;
   void mover() override;
+
   virtual void salvarDataBuffer(nlohmann::ordered_json &json) override;
+
   int getDano();
-  Projetil *getProjetil() { return nullptr; };
-  void salvar(json &arquivo) override {
-    arquivo["id"] = static_cast<int>(getID());
-    arquivo["vida"] = getVida();
-    arquivo["posicao"]["x"] = getPosicao().x;
-    arquivo["posicao"]["y"] = getPosicao().y;
-    arquivo["tipo"] = "ciborgue";
-  }
+  Projetil *getProjetil() { 
+    return nullptr; 
+  };
+  
+  void salvar(json &arquivo) override;
 };
 
 } // namespace Entidades::Personagens

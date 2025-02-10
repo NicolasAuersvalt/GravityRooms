@@ -45,10 +45,24 @@ void EspinhoRetratil::mover() {
   }
 }
 
-void EspinhoRetratil::colisao(Entidade *outraEntidade, Vector2f ds) {}
-int EspinhoRetratil::getDano() { return dano; }
+void EspinhoRetratil::colisao(Entidade *outraEntidade, Vector2f ds) 
+{
 
-bool EspinhoRetratil::estaLigado() const { return ligado; }
+}
+int EspinhoRetratil::getDano() { 
+  return dano;
+ }
+
+bool EspinhoRetratil::estaLigado() const { 
+  return ligado; 
+}
+
+void EspinhoRetratil::salvar(json &arquivo) override {
+  arquivo["id"] = static_cast<int>(getID());
+  arquivo["posicao"]["x"] = getPosicao().x;
+  arquivo["posicao"]["y"] = getPosicao().y;
+  arquivo["tipo"] = "espinhoRetratil";
+}
 
 REGISTRAR_CLASSE(EspinhoRetratil, "espinhoRetratil")
 } // namespace Entidades::Obstaculos

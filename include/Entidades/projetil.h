@@ -48,13 +48,7 @@ class Projetil : public Entidade {
   void atualizarPosicao() {};
   void colisao(Entidade *outraEntidade, Vector2f ds = Vector2f(0.0f, 0.0f));
 
-  void salvar(json &arquivo) override {
-    arquivo["id"] = static_cast<int>(getID());
-    arquivo["ativo"] = getAtivo();
-    arquivo["posicao"]["x"] = getPosicao().x;
-    arquivo["posicao"]["y"] = getPosicao().y;
-    arquivo["tipo"] = "projetil";
-  }
+  void salvar(json &arquivo) override;
   void carregar(json &arquivo) override {};
   string getTipo() const override { return "projetil"; }
 };

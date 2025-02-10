@@ -29,12 +29,9 @@ class EspinhoRetratil : public Obstaculo {
 
   void carregar(json &arquivo) {}
   string getTipo() const override { return "espinhoRetratil"; }
-  void salvar(json &arquivo) override {
-    arquivo["id"] = static_cast<int>(getID());
-    arquivo["posicao"]["x"] = getPosicao().x;
-    arquivo["posicao"]["y"] = getPosicao().y;
-    arquivo["tipo"] = "espinhoRetratil";
-  }
+
+  void salvar(json &arquivo) override;
+
 };
 
 }  // namespace Entidades::Obstaculos

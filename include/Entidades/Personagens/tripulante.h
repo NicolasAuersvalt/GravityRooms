@@ -54,6 +54,7 @@ class Tripulante : public Personagem {
       }
       return false;
     }
+
     // Sobrecarga do operador +=
     Municao &operator+=(int qtd) {
       setQtd(quantidade + qtd);  // Adiciona a quantidade, respeitando o limite
@@ -108,14 +109,7 @@ class Tripulante : public Personagem {
   void atualizar();
   void podePular();
   void colisao(Entidade *outraEntidade, Vector2f ds = Vector2f(0.0f, 0.0f));
-  void salvar(json &arquivo) override {
-    arquivo["id"] = static_cast<int>(getID());
-    arquivo["vida"] = getVida();
-    arquivo["posicao"]["x"] = getPosicao().x;
-    arquivo["posicao"]["y"] = getPosicao().y;
-    arquivo["municao"] = municao.getQtd();
-    arquivo["tipo"] = "tripulante";
-  }
+  void salvar(json &arquivo) override
   void atirar();
 };
 

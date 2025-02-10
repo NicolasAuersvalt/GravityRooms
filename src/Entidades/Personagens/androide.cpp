@@ -42,7 +42,17 @@ void Androide::mover() {
   }
 }
 
-int Androide::getDano() { return dano; }
+int Androide::getDano() { 
+  return dano; 
+}
+
+void Androide::salvar(json &arquivo) override {
+  arquivo["id"] = static_cast<int>(getID());
+  arquivo["vida"] = getVida();
+  arquivo["posicao"]["x"] = getPosicao().x;
+  arquivo["posicao"]["y"] = getPosicao().y;
+  arquivo["tipo"] = "androide";
+}
 
 void Androide::salvarDataBuffer(nlohmann::ordered_json &json) {}
 

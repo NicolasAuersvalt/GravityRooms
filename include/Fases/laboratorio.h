@@ -34,12 +34,6 @@ class Laboratorio : public Fase {
   void desenhar() override;
   void criarMapa() override;
 
-  void salvar(json &arquivo) override {
-    arquivo["id"] = static_cast<int>(getID());
-    arquivo["posicao"]["x"] = 0.0f;
-    arquivo["posicao"]["y"] = 0.0f;
-    arquivo["tipo"] = "laboratorio";
-  }
 };
 }  // namespace Fases
 

@@ -26,15 +26,17 @@ protected:
 public:
   Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Obstaculo();
-  void salvarDataBuffer(){};
+
+  virtual void colisao(Entidade *outraEntidade, Vector2f ds) = 0;
+  virtual void colisaoObstaculo(Vector2f ds, Personagem *pPersonagem);  
   virtual void executar() = 0;
   virtual int getDano() = 0;
+
+  void salvarDataBuffer(){};
   void atualizarPosicao(){};
   bool getColidindo();
   void setColidindo(bool colide);
 
-  virtual void colisao(Entidade *outraEntidade, Vector2f ds) = 0;
-  virtual void colisaoObstaculo(Vector2f ds, Personagem *pPersonagem);
 };
 
 } // namespace Entidades::Obstaculos

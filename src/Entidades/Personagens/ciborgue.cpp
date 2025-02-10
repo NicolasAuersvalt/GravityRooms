@@ -48,7 +48,22 @@ void Entidades::Personagens::Ciborgue::mover() {
   }
 }
 void Ciborgue::salvarDataBuffer(nlohmann::ordered_json &json) {}
-int Ciborgue::getDano() { return dano; }
+
+int Ciborgue::getDano() { 
+  return dano;
+ }
+
+ void Ciborgue::salvar(json &arquivo) override 
+ {
+
+   arquivo["id"] = static_cast<int>(getID());
+   arquivo["vida"] = getVida();
+   arquivo["posicao"]["x"] = getPosicao().x;
+   arquivo["posicao"]["y"] = getPosicao().y;
+   arquivo["tipo"] = "ciborgue";
+
+ }
+
 
 REGISTRAR_CLASSE(Ciborgue, "ciborgue")
 } // namespace Entidades::Personagens

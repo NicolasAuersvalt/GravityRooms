@@ -48,6 +48,14 @@ void Laboratorio::criarMapa() {
   arquivo.close();
 }
 
+void Laboratorio::salvar(json &arquivo) override {
+  arquivo["id"] = static_cast<int>(getID());
+  arquivo["posicao"]["x"] = 0.0f;
+  arquivo["posicao"]["y"] = 0.0f;
+  arquivo["tipo"] = "laboratorio";
+}
+
+
 void Laboratorio::criarFundo() {
   if (!bgTexture.loadFromFile("assets/lab.png")) {
     cerr << "Failed to load background texture!" << endl;

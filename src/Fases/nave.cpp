@@ -40,5 +40,14 @@ void Nave::criarMapa() {
   }
   arquivo.close();
 }
+
 void Nave::desenhar() {}
+
+void Nave::salvar(json &arquivo) override {
+  arquivo["id"] = static_cast<int>(getID());
+  arquivo["posicao"]["x"] = 0.0f;
+  arquivo["posicao"]["y"] = 0.0f;
+  arquivo["tipo"] = "nave";
+}
+
 }  // namespace Fases

@@ -32,12 +32,8 @@ class Nave : public Fase {
 
   void desenhar() override;
 
-  void salvar(json &arquivo) override {
-    arquivo["id"] = static_cast<int>(getID());
-    arquivo["posicao"]["x"] = 0.0f;
-    arquivo["posicao"]["y"] = 0.0f;
-    arquivo["tipo"] = "nave";
-  }
+  void salvar(json &arquivo) override;
+  
 };
 }  // namespace Fases
 
