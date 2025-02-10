@@ -59,7 +59,7 @@ public:
   void setPosicao(const Vector2f &novaPosicao);
 
   // Método para gravidade aproximada do personagem e do buraco negro
-  double gravidadePersonagemBuracoNegro();
+  double gravidadePersonagemBuracoNegro(float velFinalX);
 };
 } // namespace Gerenciadores
 

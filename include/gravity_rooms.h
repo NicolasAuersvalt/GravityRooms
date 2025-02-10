@@ -14,7 +14,7 @@
 #include "Fases/laboratorio.h"
 #include "Fases/nave.h"
 #include "Gerenciadores/gerenciador_colisoes.h"
-#include "Gerenciadores/gerenciador_eventos.h"
+#include "Gerenciadores/gerenciador_input.h"
 #include "Gerenciadores/gerenciador_grafico.h"
 #include "Gerenciadores/save.h"
 #include "IDs/IDs.h"
@@ -35,7 +35,7 @@ using Entidades::Personagens::Tripulante;
 
 // Includes de Gerenciadores
 using Gerenciadores::Gerenciador_Colisoes;
-using Gerenciadores::Gerenciador_Eventos;
+using Gerenciadores::Gerenciador_Input;
 using Gerenciadores::Gerenciador_Grafico;
 
 // Includes de Listas e Menus
@@ -62,7 +62,7 @@ class Gravity_Rooms {
 private:
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
-  Gerenciador_Eventos GE;
+  Gerenciador_Input GE;
   Fase *fase; // PROBLEMA QUE FASE NÃO DEVE SER INSTÂNCIADA
   Menu *menu;
   Save save;
@@ -74,7 +74,7 @@ private:
   Sprite backgroundSprite;
   Texture backgroundTexture;
   bool player2Active;
-  Gerenciador_Eventos *pGE;
+  Gerenciador_Input *pGE;
   GameState currentState = MAIN;
   int currentPontos;
 

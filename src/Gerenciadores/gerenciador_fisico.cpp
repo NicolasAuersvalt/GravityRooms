@@ -23,8 +23,7 @@ void Gerenciador_Fisica::processarFisica() {
     this_thread::sleep_for(
         chrono::milliseconds(16)); // Simula o tempo de cada frame
 
-    lock_guard<mutex> lock(
-        mtx); // Garante acesso seguro aos dados compartilhados
+    lock_guard<mutex> lock(mtx); // Garante acesso seguro aos dados compartilhados
     aplicarGravidade();
     atualizarPosicao();
   }
@@ -36,7 +35,7 @@ void Gerenciador_Fisica::setPosicao(const Vector2f &novaPosicao) {
   posicao = novaPosicao;
 }
 
-double Gerenciador_Fisica::gravidadePersonagemBuracoNegro() {
+double Gerenciador_Fisica::gravidadePersonagemBuracoNegro(float velFinalX) {
 
   double M = 1.989e30 * 10;     // Massa do buraco negro (10 massas solares)
   const double G = 6.67430e-11; // Constante gravitacional (m^3 kg^-1 s^-2)
@@ -52,6 +51,6 @@ double Gerenciador_Fisica::gravidadePersonagemBuracoNegro() {
     soma += (G * M * m) / (x * x) * abs(dx);
   }
 
-  return soma;
+  return (soma/1e15);
 }
 } // namespace Gerenciadores

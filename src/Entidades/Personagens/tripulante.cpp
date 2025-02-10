@@ -28,7 +28,7 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
 
 Tripulante::~Tripulante() {}
 
-void Tripulante::setGerenciadorEvento(Gerenciador_Eventos *GE) {
+void Tripulante::setGerenciadorEvento(Gerenciador_Input *GE) {
   if (GE) {
     this->GE = GE; // Atribui o ponteiro GE à variável membro this->GE
   }
@@ -227,7 +227,7 @@ void Tripulante::colisao(Entidade *outraEntidade, Vector2f ds) {
     Entidades::Obstaculos::Centro_Gravidade *centro_gravidade =
         dynamic_cast<Entidades::Obstaculos::Centro_Gravidade *>(outraEntidade);
 
-    recebeDano((GF.gravidadePersonagemBuracoNegro() / 1e15));
+    recebeDano((GF.gravidadePersonagemBuracoNegro(velFinal.x)));
   } break;
   case IDs::IDs::projetil_inimigo: { // Colisão com projetil inimigo
     Entidades::Projetil *projetil =

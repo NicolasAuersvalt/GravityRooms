@@ -1,7 +1,7 @@
-#include "Gerenciadores/gerenciador_eventos.h"
+#include "Gerenciadores/gerenciador_input.h"
 
 namespace Gerenciadores {
-void Gerenciador_Eventos::processarEventoJanela(Gerenciador_Grafico &GG,
+void Gerenciador_Input::processarEventoJanela(Gerenciador_Grafico &GG,
                                                 MenuPrincipal &menuGeral) {
   Event evento;
 
@@ -16,7 +16,7 @@ void Gerenciador_Eventos::processarEventoJanela(Gerenciador_Grafico &GG,
   }
 }
 
-string Gerenciador_Eventos::processarTecla(Keyboard::Key tecla) {
+string Gerenciador_Input::processarTecla(Keyboard::Key tecla) {
   // Mapeamento das teclas para strings
   static map<Keyboard::Key, string> teclas{{Keyboard::A, "A"},
                                            {Keyboard::B, "B"},
@@ -62,7 +62,7 @@ string Gerenciador_Eventos::processarTecla(Keyboard::Key tecla) {
   return "Desconhecida";
 }
 
-string Gerenciador_Eventos::isTeclaPressionada(const Keyboard::Key tecla) {
+string Gerenciador_Input::isTeclaPressionada(const Keyboard::Key tecla) {
   if (Keyboard::isKeyPressed(tecla)) {
     // Chama processarTecla quando a
     // tecla está pressionada
@@ -80,7 +80,7 @@ string Gerenciador_Eventos::isTeclaPressionada(const Keyboard::Key tecla) {
              // esteja pressionada
 }
 
-Vector2f Gerenciador_Eventos::obterMovimento() {
+Vector2f Gerenciador_Input::obterMovimento() {
   // Define o vetor de movimento
   // inicial como (0.f, 0.f)
   Vector2f movimento(0.f, 0.f);

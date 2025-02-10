@@ -1,5 +1,5 @@
-#ifndef GERENCIADOR_EVENTOS_H
-#define GERENCIADOR_EVENTOS_H
+#ifndef GERENCIADOR_INPUT_H
+#define GERENCIADOR_INPUT_H
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -25,7 +25,7 @@ using Menus::MenuPrincipal;
 
 namespace Gerenciadores {
 
-class Gerenciador_Eventos {
+class Gerenciador_Input {
 public:
   void processarEventoJanela(Gerenciador_Grafico &GG, MenuPrincipal &menuGeral);
   string processarTecla(Keyboard::Key tecla);

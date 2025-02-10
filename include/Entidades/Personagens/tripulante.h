@@ -10,16 +10,17 @@
 #include "Entidades/Personagens/inimigo.h"
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/projetil.h"
-#include "Gerenciadores/gerenciador_eventos.h"
+#include "Gerenciadores/gerenciador_input.h"
 #include "Gerenciadores/gerenciador_fisico.h"
 #include "Gerenciadores/registry.h"
 #include "Listas/lista_entidades.h"
+
 #include "json.hpp"
 
 using namespace sf;
 using namespace std;
 
-using Gerenciadores::Gerenciador_Eventos;
+using Gerenciadores::Gerenciador_Input;
 using Gerenciadores::Gerenciador_Fisica;
 
 // =====/=====/=====/=====/=====/=====/
@@ -77,7 +78,7 @@ private:
 
   Municao municao;
   int pontos;
-  Gerenciador_Eventos *GE;
+  Gerenciador_Input *GE;
   Gerenciador_Fisica GF;
   bool isPlayerOne;
   float tempoUltimoTiro; // Tempo desde o último disparo
@@ -101,7 +102,7 @@ public:
   void removerProjetilInativo();
   Listas::Lista_Entidades *getProjeteis() { return projeteis; };
   bool podeAtirar() { return municao.getQtd() > 0; }
-  void setGerenciadorEvento(Gerenciador_Eventos *GE);
+  void setGerenciadorEvento(Gerenciador_Input *GE);
   void setMunicao(int qtd);
   void setPlayerOne(bool isone) { isPlayerOne = isone; }
   bool getChao();
