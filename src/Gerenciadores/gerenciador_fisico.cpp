@@ -51,6 +51,6 @@ double Gerenciador_Fisica::gravidadePersonagemBuracoNegro(float velFinalX) {
     soma += (G * M * m) / (x * x) * abs(dx);
   }
 
-  return (soma/1e15);
+  return sqrt((soma/1e15));
 }
 } // namespace Gerenciadores

@@ -227,7 +227,7 @@ void Tripulante::colisao(Entidade *outraEntidade, Vector2f ds) {
     Entidades::Obstaculos::Centro_Gravidade *centro_gravidade =
         dynamic_cast<Entidades::Obstaculos::Centro_Gravidade *>(outraEntidade);
 
-    recebeDano((GF.gravidadePersonagemBuracoNegro(velFinal.x)));
+    recebeDano((int) GF.gravidadePersonagemBuracoNegro(velFinal.x));
   } break;
   case IDs::IDs::projetil_inimigo: { // Colisão com projetil inimigo
     Entidades::Projetil *projetil =
