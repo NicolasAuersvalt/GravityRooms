@@ -86,15 +86,15 @@ Para rodar o jogo em modo de depuração, utilize:
 
 (V) Opções de seleção de fases. (Observer: Menu)
 
-( ) Exibição do ranking de jogadores.
+(V) Exibição do ranking de jogadores.
 
 (V) Outras funcionalidades pertinentes.
 
-( ) Implementar suporte para:
+(V) Implementar suporte para:
 
 (V) Um jogador.
 
-( ) Dois jogadores (opcional ou parcialmente realizado).
+(V) Dois jogadores (opcional ou parcialmente realizado).
 
 (V) Desenvolver ao menos duas fases jogáveis:
 
@@ -118,13 +118,13 @@ Para rodar o jogo em modo de depuração, utilize:
 
 (V) Detecção de colisões entre jogadores, inimigos e obstáculos. (Mediator: Gerenciador de Colisões)
 
-( ) Incluir persistência de dados:
+(V) Incluir persistência de dados:
 
 (V) Salvar nome do jogador e pontuação.
 
 (V) Salvar e recuperar estado do jogo.
 
-( ) Gerar ranking.
+(V) Gerar ranking.
 
 ## Modelagem e Projeto
 
@@ -134,7 +134,7 @@ Para rodar o jogo em modo de depuração, utilize:
 
 (V) Melhorar e expandir conforme necessário.
 
-( ) Validar o diagrama com o professor.
+(V) Validar o diagrama com o professor.
 
 ## Implementação
 
@@ -158,53 +158,53 @@ Para rodar o jogo em modo de depuração, utilize:
 
 (V) Seguir o modelo de formatação fornecido.
 
-( ) Escrever as seguintes seções no documento:
+(V) Escrever as seguintes seções no documento:
 
-( ) Introdução:
+(V) Introdução:
 
-( ) Contexto e objetivo do trabalho.
+(V) Contexto e objetivo do trabalho.
 
-( ) Objeto de estudo.
+(V) Objeto de estudo.
 
-( ) Método utilizado.
+(V) Método utilizado.
 
-( ) Estrutura do documento.
+(V) Estrutura do documento.
 
-( ) Explicação do Jogo:
+(V) Explicação do Jogo:
 
-( ) Tela e funcionalidades principais.
+(V) Tela e funcionalidades principais.
 
-( ) Figuras e telas do jogo.
+(V) Figuras e telas do jogo.
 
-( ) Desenvolvimento:
+(V) Desenvolvimento:
 
-( ) Requisitos funcionais atendidos.
+(V) Requisitos funcionais atendidos.
 
-( ) Descrição do diagrama de classes.
+(V) Descrição do diagrama de classes.
 
-( ) Principais classes e sua interação.
+(V) Principais classes e sua interação.
 
-( ) Reflexão comparativa (se aplicável):
+(V) Reflexão comparativa (se aplicável):
 
-( ) Comparação com desenvolvimento procedimental.
+(V) Comparação com desenvolvimento procedimental.
 
-( ) Discussão e Conclusões:
+(V) Discussão e Conclusões:
 
-( ) Reflexão sobre dificuldades e resultados.
+(V) Reflexão sobre dificuldades e resultados.
 
-( ) Considerações pessoais (opcional).
+(V) Considerações pessoais (opcional).
 
 (V) Divisão de tarefas:
 
-( ) Tabela com atividades e responsáveis.
+(V) Tabela com atividades e responsáveis.
 
-( ) Revisar o documento para evitar erros de português e formatação.
+(V) Revisar o documento para evitar erros de português e formatação.
 
 ## Reuniões e Interações
 
 (V) Realizar pelo menos duas reuniões com o professor.
 
-( ) Realizar quatro reuniões com o monitor.
+(V) Realizar quatro reuniões com o monitor.
 
 (V) Registrar e enviar resumos das reuniões por e-mail.
 
@@ -218,15 +218,15 @@ Para rodar o jogo em modo de depuração, utilize:
 
 ( ) Enviar:
 
-( ) Documento escrito (.docx e .pdf).
+(V) Documento escrito (.docx e .pdf).
 
-( ) Diagrama(s) de classes (digital e impresso).
+(V) Diagrama(s) de classes (digital e impresso).
 
-( ) Código-fonte do jogo.
+(V) Código-fonte do jogo.
 
-( ) Slides da apresentação.
+(V) Slides da apresentação.
 
-( ) Utilizar plataformas seguras para envio (preferencialmente Google Drive institucional).
+(V) Utilizar plataformas seguras para envio (preferencialmente Google Drive institucional).
 
 ## Padrões de Software Aplicados
 
@@ -256,7 +256,7 @@ Para rodar o jogo em modo de depuração, utilize:
 
 (V) Herança elementar. & - Herança em vários níveis.
 
-( ) Herança múltipla.
+(V) Herança múltipla.
 
 (V) Operador this para fins de relacionamento bidirecional.
 
@@ -294,9 +294,9 @@ Para rodar o jogo em modo de depuração, utilize:
 
 (V) Pilha, Fila, Bifila, Fila de Prioridade, Conjunto, Multi-Conjunto, Mapa OU Multi-Mapa.
 
-(V) Threads (Linhas de Execução) no âmbito da Orientação a Objetos, utilizando Posix, C-Run-Time OU Win32API ou afins.
+( ) Threads (Linhas de Execução) no âmbito da Orientação a Objetos, utilizando Posix, C-Run-Time OU Win32API ou afins.
 
-(V) Threads (Linhas de Execução) no âmbito da Orientação a Objetos com uso de Mutex, Semáforos, OU Troca de mensagens.
+( ) Threads (Linhas de Execução) no âmbito da Orientação a Objetos com uso de Mutex, Semáforos, OU Troca de mensagens.
 
 (V) Funcionalidades Elementares. & Funcionalidades Avançadas como: tratamento de colisões e duplo buffer
 
@@ -320,7 +320,7 @@ Para rodar o jogo em modo de depuração, utilize:
 
 (V) Reuniões com monitor da disciplina para acompanhamento do andamento do projeto. [ITEM OBRIGATÓRIO PARA A ENTREGA]
 
-( )Escrita do trabalho e feitura da apresentação & Revisão do trabalho escrito de outra equipe e vice-versa.
+(V)Escrita do trabalho e feitura da apresentação & Revisão do trabalho escrito de outra equipe e vice-versa.
 
 
 ![Andoid](assets/androide.png)
