@@ -12,7 +12,7 @@ void segfaultHandler(int signal) {
   cerr << "Caught segmentation fault!" << endl;
   longjmp(jumpBuffer, 1);
 }
-}  // namespace
+} // namespace
 namespace Listas {
 
 Lista_Entidades::Lista_Entidades() { LEs = new Lista<Entidade>(); }
@@ -29,7 +29,7 @@ void Lista_Entidades::incluir(Entidade *pE) { LEs->incluir(pE); }
 // Percorrer todos os elementos da lista e desenhar cada um
 void Lista_Entidades::desenharTodos() {
   LEs->percorrerLista([](Entidade *entidade) {
-    entidade->desenhar();  // Chama o método desenhar() de cada Entidadep
+    entidade->desenhar(); // Chama o método desenhar() de cada Entidadep
   });
 }
 
@@ -95,11 +95,11 @@ bool Lista_Entidades::contem(Entidade *entidade) {
 void Lista_Entidades::juntarListas(Lista_Entidades &other) {
   auto current = other.LEs->getPrimeiro();
   while (current != nullptr) {
-    if (!this->contem(current->pInfo)) {  // Check if the entity is not already
-                                          // in the list
-      this->incluir(current->pInfo);      // Only add if not found
+    if (!this->contem(current->pInfo)) { // Check if the entity is not already
+                                         // in the list
+      this->incluir(current->pInfo);     // Only add if not found
     }
     current = current->getProximo();
   }
 }
-}  // namespace Listas
+} // namespace Listas

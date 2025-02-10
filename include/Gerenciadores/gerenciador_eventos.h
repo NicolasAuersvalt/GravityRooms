@@ -15,6 +15,14 @@ using namespace sf;
 
 using Menus::MenuPrincipal;
 
+// =====/=====/=====/=====/=====/=====/
+
+// Requisitos Conceituais 1.1
+// Requisitos Conceituais 1.2
+// Requisitos Conceituais 6.4
+
+// =====/=====/=====/=====/=====/=====/
+
 namespace Gerenciadores {
 
 class Gerenciador_Eventos {

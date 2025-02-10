@@ -10,18 +10,21 @@
 using namespace std;
 using namespace sf;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Conceituais 2.4
+// =====/=====/=====/=====/=====/=====/
+
 namespace Menus {
 namespace Botoes {
 
 class BotaoTexto : public Botao, public Texto {
- private:
+private:
   bool selecionado;
   Color corSelecionado;
 
- public:
-  BotaoTexto(const string info, const Vector2f pos,
-             const Vector2f tam, const IDs::IDs ID,
-             const Color corSelecionado);
+public:
+  BotaoTexto(const string info, const Vector2f pos, const Vector2f tam,
+             const IDs::IDs ID, const Color corSelecionado);
   ~BotaoTexto();
 
   void atualizarPosicaoCaixa(const Vector2f pos);
@@ -30,7 +33,7 @@ class BotaoTexto : public Botao, public Texto {
   void desenhar(Gerenciador_Grafico &pGrafico);
 };
 
-}  // namespace Botoes
-}  // namespace Menus
+} // namespace Botoes
+} // namespace Menus
 
 #endif

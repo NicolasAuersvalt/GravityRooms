@@ -17,12 +17,16 @@ using Gerenciadores::Gerenciador_Grafico;
 
 class Gerenciador_Grafico;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Conceituais 2.1
+// Requisitos Conceituais 5.2
+// =====/=====/=====/=====/=====/=====/
+
 class Ente {
 private:
 protected:
   const IDs::IDs ID;
-  static Gerenciador_Grafico
-      *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
+  static Gerenciador_Grafico *pGG; // Ente utiliza Gerenciador Gráfico (Direcional)
 
   Texture *texture;
   Sprite sprite;

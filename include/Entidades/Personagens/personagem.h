@@ -11,6 +11,19 @@
 using namespace sf;
 using namespace std;
 
+// =====/=====/=====/=====/=====/=====/
+
+// Requisitos Funcionais 2 
+// Requisitos Funcionais 4 
+// Requisitos Funcionais 9
+
+// Requisitos Conceituais 1.2
+// Requisitos Conceituais 2.3
+// Requisitos Conceituais 5.1
+// Requisitos Conceituais 8.3
+
+// =====/=====/=====/=====/=====/=====/
+
 namespace Entidades::Personagens {
 
 class Personagem : public Entidade {
@@ -91,7 +104,7 @@ public:
   void setVelFinal(const Vector2f velFinal);
   const Vector2f getVelFinal() const;
   void cair();
-  void carregar(json &arquivo) override {};
+  void carregar(json &arquivo) override{};
   std::string getTipo() const override { return "Personagem"; }
 };
 

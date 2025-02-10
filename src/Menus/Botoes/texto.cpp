@@ -7,10 +7,7 @@ namespace Menus {
 
 namespace Botoes {
 Texto::Texto(const string info, const unsigned int tamFonte)
-    : texto(),
-      info(info),
-      corTexto(Color::White),
-      corBorda(Color::Black),
+    : texto(), info(info), corTexto(Color::White), corBorda(Color::Black),
       tamFonte(tamFonte) {
   if (!fonte.loadFromFile("assets/Fontes/Gameplay.ttf")) {
     cout << "Error loading font!" << endl;
@@ -37,8 +34,8 @@ void Texto::inicializa() {
   // Centraliza a origem do texto
   FloatRect textBounds = texto.getLocalBounds();
   texto.setOrigin(
-      textBounds.left + textBounds.width / 2.0f,  // Origem X no centro
-      textBounds.top + textBounds.height / 2.0f   // Origem Y no centro
+      textBounds.left + textBounds.width / 2.0f, // Origem X no centro
+      textBounds.top + textBounds.height / 2.0f  // Origem Y no centro
   );
 
   // Atualiza o tamanho do texto
@@ -66,29 +63,29 @@ const Vector2f Texto::getTam() const {
 
 void Texto::setTamanhoBorda(const float tamBorda) {
   texto.setOutlineThickness(tamBorda);
-  tamTexto = Vector2f(texto.getGlobalBounds().width,
-                          texto.getGlobalBounds().height);
+  tamTexto =
+      Vector2f(texto.getGlobalBounds().width, texto.getGlobalBounds().height);
 }
 
 void Texto::setEspacamento(const float tamEspaco) {
   texto.setLetterSpacing(tamEspaco);
-  tamTexto = Vector2f(texto.getGlobalBounds().width,
-                          texto.getGlobalBounds().height);
+  tamTexto =
+      Vector2f(texto.getGlobalBounds().width, texto.getGlobalBounds().height);
 }
 
 void Texto::setString(string nome) {
   texto.setString(nome);
-  tamTexto = Vector2f(texto.getGlobalBounds().width,
-                          texto.getGlobalBounds().height);
+  tamTexto =
+      Vector2f(texto.getGlobalBounds().width, texto.getGlobalBounds().height);
 }
 
 const string Texto::getString() const { return texto.getString(); }
 
 void Texto::setTamFonte(const unsigned int tamFonte) {
   texto.setCharacterSize(tamFonte);
-  tamTexto = Vector2f(texto.getGlobalBounds().width,
-                          texto.getGlobalBounds().height);
+  tamTexto =
+      Vector2f(texto.getGlobalBounds().width, texto.getGlobalBounds().height);
 }
-}  // namespace Botoes
+} // namespace Botoes
 
-}  // namespace Menus
+} // namespace Menus

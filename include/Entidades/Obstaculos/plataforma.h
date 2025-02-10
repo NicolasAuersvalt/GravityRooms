@@ -9,6 +9,10 @@
 using namespace std;
 using namespace sf;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  6
+// =====/=====/=====/=====/=====/=====/
+
 namespace Entidades::Obstaculos {
 
 class Plataforma : public Obstaculo {
@@ -24,13 +28,9 @@ public:
   void executar() override;
   void mover() override;
 
-  string getTipo() const override 
-  { 
-    return "Plataforma"; 
-  }
+  string getTipo() const override { return "Plataforma"; }
   void carregar(json &arquivo) {}
-  void colisao(Entidade *outraEntidade,
-               Vector2f ds = Vector2f(0.0f, 0.0f));
+  void colisao(Entidade *outraEntidade, Vector2f ds = Vector2f(0.0f, 0.0f));
   int getDano();
 
   void salvar(json &arquivo) override {

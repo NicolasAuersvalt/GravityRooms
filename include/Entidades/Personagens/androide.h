@@ -10,14 +10,19 @@ using namespace std;
 using namespace sf;
 using namespace Entidades::Personagens;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Conceituais 4.1
+// Requisitos Conceituais 5.2
+// =====/=====/=====/=====/=====/=====/
+
 namespace Entidades::Personagens {
 
 class Androide : public Inimigo {
- private:
+private:
   bool movingRight;
 
- protected:
- public:
+protected:
+public:
   Androide(const Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   Androide(Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Androide();
@@ -41,6 +46,6 @@ class Androide : public Inimigo {
   }
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

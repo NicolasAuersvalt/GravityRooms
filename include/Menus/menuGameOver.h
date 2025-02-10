@@ -11,6 +11,10 @@
 using namespace std;
 using namespace sf;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  10
+// =====/=====/=====/=====/=====/=====/
+
 namespace Menus {
 
 class MenuGameOver : public Menu {

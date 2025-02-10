@@ -12,10 +12,10 @@ namespace Menus {
 namespace Botoes {
 
 class Texto {
- private:
+private:
   string info;
 
- protected:
+protected:
   Text texto;
   Vector2f tamTexto;
   Vector2f posTexto;
@@ -25,7 +25,7 @@ class Texto {
   Font fonte;
   void inicializa();
 
- public:
+public:
   Texto(const string info, const unsigned int tamFonte = 50);
   virtual ~Texto();
   const Text getTexto() const;
@@ -40,7 +40,7 @@ class Texto {
   void setTamFonte(const unsigned int tamFonte);
 };
 
-}  // namespace Botoes
+} // namespace Botoes
 
-}  // namespace Menus
+} // namespace Menus
 #endif

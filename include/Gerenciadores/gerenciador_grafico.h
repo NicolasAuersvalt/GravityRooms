@@ -14,6 +14,16 @@ using namespace sf;
 
 class Ente;
 
+// =====/=====/=====/=====/=====/=====/
+
+// Requisitos Conceituais 1.1
+// Requisitos Conceituais 1.2
+// Requisitos Conceituais 6.3
+// Requisitos Conceituais 6.4
+// Requisitos Conceituais 7.1
+
+// =====/=====/=====/=====/=====/=====/
+
 namespace Gerenciadores {
 
 class Gerenciador_Grafico {

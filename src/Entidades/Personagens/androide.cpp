@@ -30,7 +30,8 @@ Androide::Androide(Vector2f pos, const Vector2f tam, const IDs::IDs ID)
 }
 Androide::~Androide() {}
 void Androide::executar() {
-  if (vivo) mover();
+  if (vivo)
+    mover();
 }
 
 void Androide::danificar(Tripulante *p) {}
@@ -46,4 +47,4 @@ int Androide::getDano() { return dano; }
 void Androide::salvarDataBuffer(nlohmann::ordered_json &json) {}
 
 REGISTRAR_CLASSE(Androide, "androide")
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

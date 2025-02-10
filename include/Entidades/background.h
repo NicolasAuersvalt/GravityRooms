@@ -11,16 +11,21 @@
 using namespace sf;
 using namespace std;
 
-namespace Fases{
-  class Fase;
+namespace Fases {
+class Fase;
 }
+
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Conceituais 2.1
+// Requisitos Conceituais 3.1
+// =====/=====/=====/=====/=====/=====/
 
 namespace Entidades {
 
 class Background : public Entidade {
 
 private:
-Fases::Fase* fase;
+  Fases::Fase *fase;
 
 public:
   Background(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
@@ -32,7 +37,7 @@ public:
   void atualizarPosicao();
 
   void lerSprite();
-  void setFase(Fases::Fase* fase);
+  void setFase(Fases::Fase *fase);
 
   std::string getTipo() const override;
   void salvar(json &arquivo) override;

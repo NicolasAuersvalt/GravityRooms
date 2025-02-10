@@ -10,6 +10,16 @@
 using namespace std;
 using namespace sf;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  9
+
+// Requisitos Conceituais 1.1
+// Requisitos Conceituais 1.2
+// Requisitos Conceituais 6.4
+// Requisitos Conceituais 8.4
+
+// =====/=====/=====/=====/=====/=====/
+
 namespace Gerenciadores {
 
 class Gerenciador_Fisica {

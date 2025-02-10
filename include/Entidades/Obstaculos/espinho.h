@@ -7,6 +7,10 @@
 using namespace std;
 using namespace sf;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  6
+// =====/=====/=====/=====/=====/=====/
+
 namespace Entidades::Obstaculos {
 class Espinho : public Obstaculo {
 private:
@@ -18,8 +22,7 @@ public:
   ~Espinho();
   void executar();
   void mover();
-  void colisao(Entidade *outraEntidade,
-               Vector2f ds = Vector2f(0.0f, 0.0f));
+  void colisao(Entidade *outraEntidade, Vector2f ds = Vector2f(0.0f, 0.0f));
   int getDano();
 
   void carregar(json &arquivo) {}

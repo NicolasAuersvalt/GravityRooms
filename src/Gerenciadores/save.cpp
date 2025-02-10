@@ -54,7 +54,7 @@ void Save::salvar(Gerenciador_Colisoes &GC, Lista_Entidades &listaPersonagem,
 
   ofstream arquivo(nomeArquivo);
   if (arquivo.is_open()) {
-    arquivo << j.dump(4);  // Formatação bonita com 4 espaços
+    arquivo << j.dump(4); // Formatação bonita com 4 espaços
   }
 }
 

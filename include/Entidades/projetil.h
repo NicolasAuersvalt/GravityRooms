@@ -10,6 +10,13 @@ using namespace std;
 using namespace sf;
 using namespace Entidades;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  9
+
+// Requisitos Conceituais 3.4
+// Requisitos Conceituais 5.2
+// =====/=====/=====/=====/=====/=====/
+
 namespace Entidades {
 
 class Projetil : public Entidade {
@@ -38,9 +45,8 @@ public:
   void setAtirador(Entidade *a);
   bool getColidir(Entidade *e);
   int getDano();
-  void atualizarPosicao() {};
-  void colisao(Entidade *outraEntidade,
-               Vector2f ds = Vector2f(0.0f, 0.0f));
+  void atualizarPosicao(){};
+  void colisao(Entidade *outraEntidade, Vector2f ds = Vector2f(0.0f, 0.0f));
 
   void salvar(json &arquivo) override {
     arquivo["id"] = static_cast<int>(getID());
@@ -49,7 +55,7 @@ public:
     arquivo["posicao"]["y"] = getPosicao().y;
     arquivo["tipo"] = "projetil";
   }
-  void carregar(json &arquivo) override {};
+  void carregar(json &arquivo) override{};
   std::string getTipo() const override { return "projetil"; }
 };
 

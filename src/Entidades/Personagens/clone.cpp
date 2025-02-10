@@ -41,7 +41,8 @@ Clone::Clone(Vector2f pos, const Vector2f tam, const IDs::IDs ID)
 
 Clone::~Clone() {}
 void Clone::executar() {
-  if (vivo) mover();
+  if (vivo)
+    mover();
 }
 
 void Clone::salvarDataBuffer(nlohmann::ordered_json &json) {}
@@ -76,4 +77,4 @@ void Clone::atirar() {
 int Clone::getDano() { return dano; }
 
 REGISTRAR_CLASSE(Clone, "clone")
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

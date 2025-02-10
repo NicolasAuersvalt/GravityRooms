@@ -22,16 +22,23 @@ using namespace std;
 using Gerenciadores::Gerenciador_Eventos;
 using Gerenciadores::Gerenciador_Fisica;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  8
+// Requisitos Funcionais  9
+
+// Requisitos Conceituais 5.2
+// =====/=====/=====/=====/=====/=====/
+
 namespace Entidades::Personagens {
 
 class Tripulante : public Personagem {
- private:
+private:
   class Municao {
-   private:
+  private:
     int quantidade;
     int maxMunicao;
 
-   public:
+  public:
     Municao(int maxM = 100) : quantidade(maxM), maxMunicao(maxM) {}
 
     void setQtd(int qtd) {
@@ -51,18 +58,18 @@ class Tripulante : public Personagem {
     }
     // Sobrecarga do operador +=
     Municao &operator+=(int qtd) {
-      setQtd(quantidade + qtd);  // Adiciona a quantidade, respeitando o limite
+      setQtd(quantidade + qtd); // Adiciona a quantidade, respeitando o limite
       return *this;
     }
 
     // Sobrecarga do operador -=
     Municao &operator-=(int qtd) {
-      setQtd(quantidade - qtd);  // Remove a quantidade, mas sem ir abaixo de 0
+      setQtd(quantidade - qtd); // Remove a quantidade, mas sem ir abaixo de 0
       return *this;
     }
     Municao &operator--() {
       if (quantidade > 0) {
-        quantidade--;  // Decrementa se houver munição
+        quantidade--; // Decrementa se houver munição
       }
       return *this;
     }
@@ -73,13 +80,13 @@ class Tripulante : public Personagem {
   Gerenciador_Eventos *GE;
   Gerenciador_Fisica GF;
   bool isPlayerOne;
-  float tempoUltimoTiro;  // Tempo desde o último disparo
+  float tempoUltimoTiro; // Tempo desde o último disparo
   float tempoCooldown;
 
- protected:
+protected:
   Listas::Lista_Entidades *projeteis;
 
- public:
+public:
   Tripulante(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Tripulante();
 
@@ -113,6 +120,6 @@ class Tripulante : public Personagem {
   void atirar();
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

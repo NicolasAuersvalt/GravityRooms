@@ -3,13 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-
 using namespace Entidades::Obstaculos;
 
 namespace Entidades::Obstaculos {
 
-Espinho::Espinho(const Vector2f pos, const Vector2f tam,
-                 const IDs::IDs ID)
+Espinho::Espinho(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
     : Obstaculo(pos, tam, ID) {
   this->dano = 2;
   setSprite("assets/espinho.png", pos.x, pos.y);

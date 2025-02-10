@@ -7,8 +7,8 @@ using namespace Entidades::Obstaculos;
 
 namespace Entidades::Obstaculos {
 
-Centro_Gravidade::Centro_Gravidade(const Vector2f pos,
-                                   const Vector2f tam, const IDs::IDs ID)
+Centro_Gravidade::Centro_Gravidade(const Vector2f pos, const Vector2f tam,
+                                   const IDs::IDs ID)
     : Obstaculo(pos, tam, ID) {
   this->dano = 10;
 

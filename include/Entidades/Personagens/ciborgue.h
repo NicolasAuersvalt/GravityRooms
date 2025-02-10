@@ -9,14 +9,20 @@ using namespace std;
 using namespace sf;
 using namespace Entidades::Personagens;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Conceituais 4.1
+
+// Requisitos Conceituais 5.2
+// =====/=====/=====/=====/=====/=====/
+
 namespace Entidades::Personagens {
 
 class Ciborgue : public Inimigo {
- private:
+private:
   int tamanho;
 
- protected:
- public:
+protected:
+public:
   Ciborgue(const Vector2f pos, Tripulante *tripulante, const IDs::IDs ID);
   Ciborgue(Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   ~Ciborgue();
@@ -37,6 +43,6 @@ class Ciborgue : public Inimigo {
   }
 };
 
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens
 
 #endif

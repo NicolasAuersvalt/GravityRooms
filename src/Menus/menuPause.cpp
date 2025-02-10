@@ -5,8 +5,7 @@ namespace Menus {
 MenuPause::MenuPause(IDs::IDs id)
     : Menu(IDs::IDs::menu_pausa, Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y),
            "PAUSA", 180) {
-  titulo.setPos(
-      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+  titulo.setPos(Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(Color{0, 200, 0});
 }
 
@@ -14,8 +13,7 @@ MenuPause::MenuPause(const IDs::IDs ID, string nome,
                      const unsigned int tamFonte)
     : Menu(IDs::IDs::menu_pausa, // ID CORRETO
            Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte) {
-  titulo.setPos(
-      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+  titulo.setPos(Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(Color{0, 200, 0});
 }
 

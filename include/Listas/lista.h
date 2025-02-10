@@ -4,6 +4,14 @@
 #include <iostream>
 using namespace std;
 
+// =====/=====/=====/=====/=====/=====/
+
+// Requisitos Conceituais 1.1
+// Requisitos Conceituais 3.2
+// Requisitos Conceituais 3.3
+
+// =====/=====/=====/=====/=====/=====/
+
 namespace Listas {
 
 template <typename TL> class Lista {

@@ -4,11 +4,9 @@
 
 #include "Entidades/Personagens/personagem.h"
 
-
 namespace Entidades::Obstaculos {
 
-Plataforma::Plataforma(Vector2f pos, const Vector2f tam,
-                       const IDs::IDs ID)
+Plataforma::Plataforma(Vector2f pos, const Vector2f tam, const IDs::IDs ID)
     : Obstaculo(pos, tam, ID) {
   this->dano = 0;
 

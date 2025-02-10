@@ -6,6 +6,12 @@
 
 #include "../json.hpp"
 #include "Menus/menu.h"
+
+
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  10
+// =====/=====/=====/=====/=====/=====/
+
 namespace Menus {
 
 class Ranking : public Menu {
@@ -16,8 +22,7 @@ private:
 
 public:
   Ranking(const IDs::IDs id);
-  Ranking(const IDs::IDs ID, string nome,
-          const unsigned int tamFonte = 180);
+  Ranking(const IDs::IDs ID, string nome, const unsigned int tamFonte = 180);
   virtual ~Ranking();
   void criarBotoes();
   void executar();

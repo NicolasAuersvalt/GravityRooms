@@ -53,12 +53,17 @@ using Fases::Nave;
 using namespace std;
 using namespace sf;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Conceituais 1.3
+// Requisitos Conceituais 2.2
+// =====/=====/=====/=====/=====/=====/
+
 class Gravity_Rooms {
 private:
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
   Gerenciador_Eventos GE;
-  Fase *fase;
+  Fase *fase; // PROBLEMA QUE FASE NÃO DEVE SER INSTÂNCIADA
   Menu *menu;
   Save save;
 

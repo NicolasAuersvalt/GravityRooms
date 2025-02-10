@@ -3,19 +3,16 @@
 namespace Menus {
 
 Ranking::Ranking(IDs::IDs id)
-    : Menu(IDs::IDs::menu_colocacao,
-           Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180) {
-  titulo.setPos(
-      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+    : Menu(IDs::IDs::menu_colocacao, Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y),
+           "COLOCACAO", 180) {
+  titulo.setPos(Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(Color{0, 200, 0});
 }
 
-Ranking::Ranking(const IDs::IDs ID, string nome,
-                 const unsigned int tamFonte)
+Ranking::Ranking(const IDs::IDs ID, string nome, const unsigned int tamFonte)
     : Menu(IDs::IDs::menu_pausa, Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y),
            nome, tamFonte) {
-  titulo.setPos(
-      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+  titulo.setPos(Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(Color{0, 200, 0});
 }
 
@@ -59,8 +56,8 @@ void Ranking::carregarRanking() {
     int score = entry["pontos"];
 
     // Formata o texto do ranking
-    string rankText = to_string(i + 1) + ". " + playerName + " - " +
-                           to_string(score);
+    string rankText =
+        to_string(i + 1) + ". " + playerName + " - " + to_string(score);
 
     // Calcula a posição Y do botão
     float buttonY = startY + (spacing * (i + 1));

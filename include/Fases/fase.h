@@ -39,32 +39,48 @@ using Entidades::Personagens::Ciborgue;
 using Entidades::Personagens::Clone;
 using Entidades::Personagens::Tripulante;
 
-//using Entidades::Background;
+// using Entidades::Background;
 using Entidades::Projetil;
 using Listas::Lista_Entidades;
 
 using namespace sf;
 using namespace std;
 
-namespace Entidades{
-  class Background;
-} 
+namespace Entidades {
+class Background;
+}
+
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  3
+// Requisitos Funcionais  5
+// Requisitos Funcionais  7
+// Requisitos Funcionais  8
+
+// Requisitos Conceituais 2.1
+// Requisitos Conceituais 3.1
+// Requisitos Conceituais 3.3
+// Requisitos Conceituais 5.2
+// Requisitos Conceituais 7.2
+
+// =====/=====/=====/=====/=====/=====/
 
 namespace Fases {
 
 class Fase : public Ente {
- private:
- protected:
+
+  
+private:
+protected:
   short inimAleatorio = 0;
-  queue<Vector2f> filaInimigosFaceis;     // Queue for easy enemies
-  queue<Vector2f> filaInimigosMedios;     // Queue for medium enemies
-  queue<Vector2f> filaInimigosDificeis;   // Queue for difficult enemies
-  queue<Vector2f> filaEspinhos;           // Queue for spikes
-  queue<Vector2f> filaEspinhosRetrateis;  // Queue for retractable spikes
-  queue<Vector2f> filaCentrosGravidade;   // Queue for gravity centers
-  int contadorFaceis = 0;                 // Contador de inimigos fáceis
-  int contadorMedios = 0;                 // Contador de inimigos medios
-  int contadorDificeis = 0;               // Contador de inimigos difíceis
+  queue<Vector2f> filaInimigosFaceis;    // Queue for easy enemies
+  queue<Vector2f> filaInimigosMedios;    // Queue for medium enemies
+  queue<Vector2f> filaInimigosDificeis;  // Queue for difficult enemies
+  queue<Vector2f> filaEspinhos;          // Queue for spikes
+  queue<Vector2f> filaEspinhosRetrateis; // Queue for retractable spikes
+  queue<Vector2f> filaCentrosGravidade;  // Queue for gravity centers
+  int contadorFaceis = 0;                // Contador de inimigos fáceis
+  int contadorMedios = 0;                // Contador de inimigos medios
+  int contadorDificeis = 0;              // Contador de inimigos difíceis
   int contadorEspinho = 0;
   int contadorEspinhoRetratil = 0;
   short obsAleatorio = 0;
@@ -72,11 +88,17 @@ class Fase : public Ente {
   const int MAX_INIMIGOS_INICIAIS = 3;
   const int MAX_INIMIGOS_TOTAL = 7;
 
- public:
+public:
   bool complete;
   Lista_Entidades *listaObstaculos;
   Gerenciador_Grafico *GG;
+
+  // =====/=====/=====/=====/=====/=====/
+  // Requisitos Funcionais 2 (Um ou mais Jogadores)
+
   Tripulante *tripulantes[2];
+  // =====/=====/=====/=====/=====/=====/
+
   Vector2f pos1;
   Vector2f pos2;
 
@@ -107,7 +129,7 @@ class Fase : public Ente {
   void setGerenciadorG(Gerenciador_Grafico *GG);
   Gerenciador_Grafico *getGerenciador() { return GG; }
   virtual void criarEntidades(char letra, const Vector2f pos);
-  virtual void criarFundo() = 0;  // fundo
+  virtual void criarFundo() = 0; // fundo
   virtual void criarMapa() = 0;
   virtual void desenhar() = 0;
   Entidades::Projetil *criarProjetil(const Vector2f pos, IDs::IDs ID);
@@ -115,6 +137,6 @@ class Fase : public Ente {
   bool isNave();
   bool isLab();
 };
-}  // namespace Fases
+} // namespace Fases
 
 #endif

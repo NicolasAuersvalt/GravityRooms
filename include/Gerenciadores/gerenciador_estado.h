@@ -9,6 +9,14 @@
 using namespace std;
 using namespace sf;
 
+// =====/=====/=====/=====/=====/=====/
+
+// Requisitos Conceituais 1.1
+// Requisitos Conceituais 1.2
+// Requisitos Conceituais 6.4
+
+// =====/=====/=====/=====/=====/=====/
+
 namespace Gerenciadores {
 
 class GerenciadorEstado {

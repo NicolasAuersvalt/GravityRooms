@@ -16,19 +16,28 @@ using namespace IDs;
 
 class Gerenciador_Grafico;
 
+// =====/=====/=====/=====/=====/=====/
+
+// Requisitos Conceituais 1.1
+// Requisitos Conceituais 1.2
+// Requisitos Conceituais 2.3
+// Requisitos Conceituais 5.2
+
+// =====/=====/=====/=====/=====/=====/
+
 namespace Entidades {
 
 class Entidade : public Ente {
- private:
- protected:
-  Vector2f pos;  // Posição (x,y)
-  Vector2f tam;  // Dimensão (x,y)
+private:
+protected:
+  Vector2f pos; // Posição (x,y)
+  Vector2f tam; // Dimensão (x,y)
 
   ostringstream buffer;
 
   RectangleShape corpo;
 
- public:
+public:
   Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs ID);
   virtual ~Entidade();
 
@@ -44,6 +53,6 @@ class Entidade : public Ente {
                        Vector2f ds = Vector2f(0.0f, 0.0f)) = 0;
 };
 
-}  // namespace Entidades
+} // namespace Entidades
 
 #endif

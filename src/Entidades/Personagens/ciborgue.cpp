@@ -51,4 +51,4 @@ void Ciborgue::salvarDataBuffer(nlohmann::ordered_json &json) {}
 int Ciborgue::getDano() { return dano; }
 
 REGISTRAR_CLASSE(Ciborgue, "ciborgue")
-}  // namespace Entidades::Personagens
+} // namespace Entidades::Personagens

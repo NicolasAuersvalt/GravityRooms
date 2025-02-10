@@ -6,6 +6,12 @@
 using namespace std;
 using namespace sf;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  3
+// Requisitos Funcionais  5
+// Requisitos Funcionais  7
+// =====/=====/=====/=====/=====/=====/
+
 namespace Fases {
 
 class Laboratorio : public Fase {

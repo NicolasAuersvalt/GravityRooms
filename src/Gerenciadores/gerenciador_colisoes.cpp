@@ -23,9 +23,8 @@ Gerenciador_Colisoes::~Gerenciador_Colisoes() {
   pJog1 = nullptr;
 }
 
-const Vector2f
-Gerenciador_Colisoes::calculaColisao(Entidades::Entidade *ent1,
-                                     Entidades::Entidade *ent2) {
+const Vector2f Gerenciador_Colisoes::calculaColisao(Entidades::Entidade *ent1,
+                                                    Entidades::Entidade *ent2) {
   Vector2f pos1 = ent1->getSprite().getPosition();
   Vector2f pos2 = ent2->getSprite().getPosition();
 
@@ -36,9 +35,9 @@ Gerenciador_Colisoes::calculaColisao(Entidades::Entidade *ent1,
       fabs((pos1.x + tam1.x / 2.0f) - (pos2.x + tam2.x / 2.0f)),
       fabs((pos1.y + tam1.y / 2.0f) - (pos2.y + tam2.y / 2.0f)));
   Vector2f somaMetadeRectangulo(tam1.x / 2.0f + tam2.x / 2.0f,
-                                    tam1.y / 2.0f + tam2.y / 2.0f);
+                                tam1.y / 2.0f + tam2.y / 2.0f);
   return Vector2f(distanciaEntreCentros.x - somaMetadeRectangulo.x,
-                      distanciaEntreCentros.y - somaMetadeRectangulo.y);
+                  distanciaEntreCentros.y - somaMetadeRectangulo.y);
 }
 
 void Gerenciador_Colisoes::executar(Lista_Entidades *listaPer,

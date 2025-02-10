@@ -28,6 +28,17 @@ using namespace sf;
 
 using namespace Entidades;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  8
+// Requisitos Funcionais  9
+
+
+// Requisitos Conceituais 1.1
+// Requisitos Conceituais 1.2
+// Requisitos Conceituais 6.4
+
+// =====/=====/=====/=====/=====/=====/
+
 class Obstaculo;
 
 namespace Gerenciadores {
@@ -51,7 +62,7 @@ public:
                        Lista_Entidades *listaObstaculo);
   ~Gerenciador_Colisoes();
   const Vector2f calculaColisao(Entidades::Entidade *ent1,
-                                    Entidades::Entidade *ent2);
+                                Entidades::Entidade *ent2);
   void executar(Lista_Entidades *listaPer, Lista_Entidades *listaObs);
 };
 

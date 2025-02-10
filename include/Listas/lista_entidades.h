@@ -9,13 +9,20 @@
 using namespace std;
 using namespace Entidades;
 
+// =====/=====/=====/=====/=====/=====/
+
+// Requisitos Conceituais 1.1
+// Requisitos Conceituais 3.4
+
+// =====/=====/=====/=====/=====/=====/
+
 namespace Listas {
 
 class Lista_Entidades {
- private:  // Lista de Entidades
+private: // Lista de Entidades
   Lista<Entidade> objListaEntidade;
 
- public:
+public:
   Lista<Entidade> *LEs;
   // Construtor
   Lista_Entidades();
@@ -31,9 +38,9 @@ class Lista_Entidades {
   bool contem(Entidade *entidade);
   void juntarListas(Lista_Entidades &other);
 
-  template <typename T>
-  bool contemTipo() const {
-    if (!LEs) return false;
+  template <typename T> bool contemTipo() const {
+    if (!LEs)
+      return false;
 
     auto atual = LEs->getPrimeiro();
     while (atual != nullptr) {
@@ -50,8 +57,7 @@ class Lista_Entidades {
           }
         } catch (const bad_cast &) {
           // Handle invalid cast gracefully
-          cerr << "Warning: Invalid cast attempted in contemTipo()"
-                    << endl;
+          cerr << "Warning: Invalid cast attempted in contemTipo()" << endl;
         }
       }
       atual = proximo;
@@ -59,6 +65,6 @@ class Lista_Entidades {
     return false;
   }
 };
-}  // namespace Listas
+} // namespace Listas
 
 #endif

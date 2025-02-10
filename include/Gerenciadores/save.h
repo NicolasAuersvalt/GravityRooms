@@ -22,6 +22,13 @@ using Fases::Laboratorio;
 using Fases::Nave;
 using Gerenciadores::Gerenciador_Colisoes;
 
+// =====/=====/=====/=====/=====/=====/
+// Requisitos Funcionais  10
+
+// Requisitos Conceituais 4.3
+// Requisitos Conceituais 4.4
+// =====/=====/=====/=====/=====/=====/
+
 class Save {
 private:
 public:

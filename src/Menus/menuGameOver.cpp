@@ -3,24 +3,19 @@
 namespace Menus {
 
 MenuGameOver::MenuGameOver(IDs::IDs id)
-    : Menu(IDs::IDs::menu_game_over,
-           Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), "COLOCACAO", 180),
-      texto("", 30),
-      nome(""),
-      pontuacao(0) {
-  titulo.setPos(
-      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+    : Menu(IDs::IDs::menu_game_over, Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y),
+           "COLOCACAO", 180),
+      texto("", 30), nome(""), pontuacao(0) {
+  titulo.setPos(Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(Color{0, 200, 0});
 }
 
 MenuGameOver::MenuGameOver(const IDs::IDs ID, string nome,
                            const unsigned int tamFonte)
-    : Menu(IDs::IDs::menu_game_over,
-           Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y), nome, tamFonte),
-      texto("", 30),
-      pontuacao(0) {
-  titulo.setPos(
-      Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
+    : Menu(IDs::IDs::menu_game_over, Vector2f(TAMANHO_BOTAO_X, TAMANHO_BOTAO_Y),
+           nome, tamFonte),
+      texto("", 30), pontuacao(0) {
+  titulo.setPos(Vector2f(tamJanela.x / 2.0f - titulo.getTam().x / 2.0f, 25.0f));
   titulo.setCorTexto(Color{0, 200, 0});
 }
 
@@ -57,9 +52,9 @@ void MenuGameOver::salvarColocacao(int pontos) {
 
   // Ordenar o ranking por pontuação (do maior para o menor)
   sort(rankingData["ranking"].begin(), rankingData["ranking"].end(),
-            [](const nlohmann::json &a, const nlohmann::json &b) {
-              return a["pontos"] > b["pontos"];
-            });
+       [](const nlohmann::json &a, const nlohmann::json &b) {
+         return a["pontos"] > b["pontos"];
+       });
 
   // Salvar o arquivo JSON atualizado
   ofstream outFile("saves/rank.json");
@@ -68,7 +63,7 @@ void MenuGameOver::salvarColocacao(int pontos) {
     return;
   }
 
-  outFile << rankingData.dump(4);  // Salvar com indentação de 4 espaços
+  outFile << rankingData.dump(4); // Salvar com indentação de 4 espaços
   outFile.close();
 }
 
@@ -95,8 +90,8 @@ void MenuGameOver::carregarMenuGameOver() {
     string playerName = entry["nome"];
     int score = entry["pontos"];
 
-    string rankText = to_string(position) + ". " + playerName +
-                           " - " + to_string(score);
+    string rankText =
+        to_string(position) + ". " + playerName + " - " + to_string(score);
 
     float buttonY = startY + (spacing * position);
     addBotao(rankText, Vector2f(0.f, buttonY), IDs::IDs::menu_game_over,
@@ -141,4 +136,4 @@ void MenuGameOver::criarBotoes() {
   inicializarIterator();
 }
 
-}  // namespace Menus
+} // namespace Menus

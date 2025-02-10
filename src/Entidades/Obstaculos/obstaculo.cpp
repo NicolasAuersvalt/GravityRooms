@@ -5,13 +5,11 @@
 #include "Entidades/Personagens/personagem.h"
 #include "Entidades/Personagens/tripulante.h"
 
-
 using namespace Entidades::Obstaculos;
 
 namespace Entidades::Obstaculos {
 
-Obstaculo::Obstaculo(const Vector2f pos, const Vector2f tam,
-                     const IDs::IDs ID)
+Obstaculo::Obstaculo(const Vector2f pos, const Vector2f tam, const IDs::IDs ID)
     : Entidade(pos, tam, ID) {}
 
 Obstaculo::~Obstaculo() {}

@@ -8,6 +8,8 @@ using namespace sf;
 
 namespace Menus {
 
+// Requisitos Funcionais 1
+
 class MenuPrincipal : public Menu {
 private:
 public:
