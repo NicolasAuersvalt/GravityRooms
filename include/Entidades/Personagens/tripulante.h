@@ -98,18 +98,23 @@ class Tripulante : public Personagem {
   void setChao(bool chao);
   void atualizarProjeteis();
   void removerProjetilInativo();
-  Listas::Lista_Entidades *getProjeteis() { return projeteis; };
-  bool podeAtirar() { return municao.getQtd() > 0; }
+  void podePular();
+
+  Listas::Lista_Entidades *getProjeteis();
+
+  bool podeAtirar();
   void setGerenciadorEvento(Gerenciador_Input *GE);
   void setMunicao(int qtd);
-  void setPlayerOne(bool isone) { isPlayerOne = isone; }
+  void setPlayerOne(bool isone);
+
   bool getChao();
   int getPontos();
   int getMunicao();
   void atualizar();
-  void podePular();
+
+
   void colisao(Entidade *outraEntidade, Vector2f ds = Vector2f(0.0f, 0.0f));
-  void salvar(json &arquivo) override
+  void salvar(json &arquivo) override;
   void atirar();
 };
 

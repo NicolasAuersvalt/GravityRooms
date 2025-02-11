@@ -123,6 +123,12 @@ void MenuGameOver::exibirMenuGameOver() {
   }
 }
 
+
+void MenuGameOver::setPlayerData(const string &playerName, int score) {
+  nome = playerName;
+  pontuacao = score;
+}
+
 void MenuGameOver::criarBotoes() {
   addBotao("DIGITE SEU NOME:",
            Vector2f(tamJanela.x / 2.0f - tamBotao.x / 2.0f, 600.0f),

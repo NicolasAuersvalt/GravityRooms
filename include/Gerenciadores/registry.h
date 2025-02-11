@@ -1,5 +1,3 @@
-/*Feito com auxilio do ChatGPT e do DeepSeek*/
-
 #ifndef REGISTRY_H
 #define REGISTRY_H
 
@@ -17,13 +15,6 @@ using namespace std;
 using namespace sf;
 
 class Ente;
-
-// =====/=====/=====/=====/=====/=====/
-// Requisitos Funcionais  10
-
-// Requisitos Conceituais 4.3
-// Requisitos Conceituais 6.3
-// =====/=====/=====/=====/=====/=====/
 
 class Registry {
  public:
@@ -58,16 +49,16 @@ class Registry {
 };
 
 // Macro para registrar classes automaticamente no Registry
-#define REGISTRAR_CLASSE(CLASS, TIPO)                                 \
-  static struct Registrar##CLASS {                                    \
-    Registrar##CLASS() {                                              \
-      Registry::getInstance().registrarClasse(                        \
-          TIPO, [](json &data) -> unique_ptr<Ente> {                  \
-            return make_unique<CLASS>(                                \
+#define REGISTRAR_CLASSE(CLASS, TIPO)                                     \
+  static struct Registrar##CLASS {                                        \
+    Registrar##CLASS() {                                                  \
+      Registry::getInstance().registrarClasse(                            \
+          TIPO, [](json &data) -> unique_ptr<Ente> {                 \
+            return make_unique<CLASS>(                               \
                 Vector2f(data["posicao"]["x"], data["posicao"]["y"]), \
                 Vector2f(10, 10), static_cast<IDs::IDs>(data["id"])); \
-          });                                                         \
-    }                                                                 \
+          });                                                             \
+    }                                                                     \
   } registrar##CLASS;  // Instância estática para registro automático
 
 #endif  // REGISTRY_H

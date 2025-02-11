@@ -13,7 +13,7 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   setSprite("assets/tripulante.png", pos.x, pos.y);
   setTamanho(Vector2f(getSprite().getTexture()->getSize().x,
                       getSprite().getTexture()->getSize().y));
-  vivo = true;
+  setVida(100);
   tempoSemColisao = 0.0f;
   noChao = false;
   sprite.setPosition(pos.x, pos.y);
@@ -25,6 +25,11 @@ Tripulante::Tripulante(const Vector2f pos, const Vector2f tam,
   projeteis->incluir(
       new Projetil(pos, Vector2f(50.0f, 54.0f), IDs::IDs::projetil_tripulante));
 }
+
+bool Tripulante::podeAtirar() { return municao.getQtd() > 0; }
+Listas::Lista_Entidades *Tripulante::getProjeteis() { return projeteis; };
+
+void Tripulante::setPlayerOne(bool isone) { isPlayerOne = isone; }
 
 Tripulante::~Tripulante() {}
 
@@ -38,7 +43,7 @@ int Tripulante::getMunicao() { return municao.getQtd(); }
 
 void Tripulante::setMunicao(int qtd) { municao.setQtd(qtd); }
 
-void Tripulante::salvar(json &arquivo) override {
+void Tripulante::salvar(json &arquivo) {
   arquivo["id"] = static_cast<int>(getID());
   arquivo["vida"] = getVida();
   arquivo["posicao"]["x"] = getPosicao().x;
@@ -116,6 +121,8 @@ void Tripulante::salvarDataBuffer(nlohmann::ordered_json &json) {
   };
 }
 
+void Tripulante::podePular() {}
+
 void Tripulante::carregarDataBuffer(const nlohmann::ordered_json &json) {
   // Verifica se o JSON contém a chave "posicao"
   if (json.contains("posicao")) {
@@ -152,7 +159,6 @@ void Tripulante::setChao(bool chao) { noChao = chao; }
 
 bool Tripulante::getChao() { return noChao; }
 void Tripulante::setPontos(int ponto) { pontos = ponto; }
-void Tripulante::podePular() {}
 void Tripulante::atualizar() {
   if (pontosVida <= 0) {
     morrer();

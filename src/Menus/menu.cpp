@@ -41,6 +41,10 @@ void Menu::addBotao(const string info, const Vector2f pos, const IDs::IDs ID,
   }
 }
 
+string Menu::getTipo() const { 
+  return "Menu";
+ }
+
 void Menu::atualizarPosicaoFundo() {
   // Centraliza o background
   FloatRect bounds = spriteBackground.getLocalBounds();

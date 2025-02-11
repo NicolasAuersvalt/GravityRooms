@@ -33,6 +33,7 @@ class Laboratorio : public Fase {
   void criarFundo() override;
   void desenhar() override;
   void criarMapa() override;
+  void salvar(json &arquivo);
 
 };
 }  // namespace Fases

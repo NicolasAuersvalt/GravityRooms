@@ -29,13 +29,21 @@ void Personagem::recebeDano(int dano) {
   }
 }
 
-bool Personagem::verificarVivo() { return (pontosVida > 0); }
+bool Personagem::verificarVivo() {
+   return (pontosVida > 0); 
+  }
 
-void Personagem::morrer() { vivo = false; }
+void Personagem::morrer() {
+   vivo = false; 
+  }
 
-void Personagem::setPisando(bool pisa) { noChao = pisa; }
+void Personagem::setPisando(bool pisa) {
+   noChao = pisa; 
+  }
 
-bool Personagem::getPisando() { return noChao; }
+bool Personagem::getPisando() {
+   return noChao; 
+  }
 
 void Personagem::atualizarPosicao() {
   verificarLimitesTela();

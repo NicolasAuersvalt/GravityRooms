@@ -62,7 +62,8 @@ class Gravity_Rooms {
  private:
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
-  Gerenciador_Input GE;
+  Gerenciador_Input *pGE;
+  
   Fase *fase;  // PROBLEMA QUE FASE NÃO DEVE SER INSTÂNCIADA
   Menu *menu;
   Save save;
@@ -74,7 +75,7 @@ class Gravity_Rooms {
   Sprite backgroundSprite;
   Texture backgroundTexture;
   bool player2Active;
-  Gerenciador_Input *pGE;
+  
   GameState currentState = MAIN;
   int currentPontos;
 

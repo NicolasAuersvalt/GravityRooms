@@ -17,27 +17,22 @@ using Gerenciadores::Gerenciador_Grafico;
 
 class Gerenciador_Grafico;
 
-// =====/=====/=====/=====/=====/=====/
-// Requisitos Conceituais 2.1
-// Requisitos Conceituais 5.2
-// =====/=====/=====/=====/=====/=====/
-
 class Ente {
- private:
- protected:
+private:
+protected:
   const IDs::IDs ID;
   static Gerenciador_Grafico
-      *pGG;  // Ente utiliza Gerenciador Gráfico (Direcional)
+      *pGG; // Ente utiliza Gerenciador Gráfico (Bidirecional)
 
   Texture *texture;
   Sprite sprite;
 
- public:
+public:
   Ente(const IDs::IDs ID);
   ~Ente();
 
-  void desenhar();  // Possui o endereço do gerenciador gráfico em protected,
-                    // mas só UTILIZA o gerenciador
+  void desenhar(); // Possui o endereço do gerenciador gráfico em protected,
+                   // mas só UTILIZA o gerenciador
 
   void setSprite(string local, int posX, int posY);
   Texture *getTexture();
@@ -48,7 +43,7 @@ class Ente {
   const IDs::IDs getID() const;
   virtual void salvar(json &arquivo) = 0;
   virtual void carregar(json &arquivo) = 0;
-  virtual string getTipo() const = 0;
+  virtual std::string getTipo() const = 0;
 };
 
 #endif

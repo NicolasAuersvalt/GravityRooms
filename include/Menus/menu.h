@@ -71,15 +71,17 @@ class Menu : public Ente, public Drawable {
   virtual void criarBotoes() = 0;
   void selecionaCima();
   void selecionaBaixo();
+  
   virtual void selecionaEsquerda() {}
   virtual void selecionaDireita() {}
+
   const IDs::IDs getIDBotaoSelecionado() const;
   void eventoTeclado(const Keyboard::Key tecla);
   bool getSelecionado();
   virtual void executar() = 0;
   void desenhar(Gerenciador_Grafico *GG);
   void setSelecionado(bool status);
-  string getTipo() const override { return "Menu"; }
+  string getTipo() const override;
   void carregar(json &arquivo) {}
   void salvar(json &arquivo) override {}
 };

@@ -39,7 +39,7 @@ int Plataforma::getDano() {
    return dano; 
   }
 
-void Plataforma::salvar(json &arquivo) override {
+void Plataforma::salvar(json &arquivo) {
   arquivo["id"] = static_cast<int>(getID());
   arquivo["posicao"]["x"] = getPosicao().x;
   arquivo["posicao"]["y"] = getPosicao().y;

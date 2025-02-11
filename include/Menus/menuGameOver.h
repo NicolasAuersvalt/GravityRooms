@@ -35,10 +35,8 @@ public:
   void criarBotoes() override;
   void executar();
   void salvarColocacao(int pontos);
-  void setPlayerData(const string &playerName, int score) {
-    nome = playerName;
-    pontuacao = score;
-  }
+  void setPlayerData(const string &playerName, int score);
+  
 };
 
 } // namespace Menus

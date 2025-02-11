@@ -116,7 +116,7 @@ void Projetil::setAtivo(bool status, const Vector2f pos) {
   sprite.setPosition(pos.x, pos.y);
 }
 
-void Projetil::salvar(json &arquivo) override {
+void Projetil::salvar(json &arquivo) {
   arquivo["id"] = static_cast<int>(getID());
   arquivo["ativo"] = getAtivo();
   arquivo["posicao"]["x"] = getPosicao().x;

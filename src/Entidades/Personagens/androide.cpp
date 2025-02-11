@@ -46,7 +46,7 @@ int Androide::getDano() {
   return dano; 
 }
 
-void Androide::salvar(json &arquivo) override {
+void Androide::salvar(json &arquivo) {
   arquivo["id"] = static_cast<int>(getID());
   arquivo["vida"] = getVida();
   arquivo["posicao"]["x"] = getPosicao().x;

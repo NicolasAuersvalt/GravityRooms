@@ -53,7 +53,7 @@ int Ciborgue::getDano() {
   return dano;
  }
 
- void Ciborgue::salvar(json &arquivo) override 
+ void Ciborgue::salvar(json &arquivo) 
  {
 
    arquivo["id"] = static_cast<int>(getID());

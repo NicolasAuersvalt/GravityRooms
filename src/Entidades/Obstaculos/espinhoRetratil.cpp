@@ -57,7 +57,7 @@ bool EspinhoRetratil::estaLigado() const {
   return ligado; 
 }
 
-void EspinhoRetratil::salvar(json &arquivo) override {
+void EspinhoRetratil::salvar(json &arquivo) {
   arquivo["id"] = static_cast<int>(getID());
   arquivo["posicao"]["x"] = getPosicao().x;
   arquivo["posicao"]["y"] = getPosicao().y;

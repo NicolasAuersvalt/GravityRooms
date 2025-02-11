@@ -76,7 +76,7 @@ void Clone::atirar() {
 }
 int Clone::getDano() { return dano; }
 
-void Clone::salvar(json &arquivo) override {
+void Clone::salvar(json &arquivo) {
   arquivo["id"] = static_cast<int>(getID());
   arquivo["vida"] = getVida();
   arquivo["posicao"]["x"] = getPosicao().x;

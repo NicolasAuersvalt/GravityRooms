@@ -30,7 +30,9 @@ void Gerenciador_Fisica::processarFisica() {
   }
 }
 
-Vector2f Gerenciador_Fisica::getPosicao() const { return posicao; }
+Vector2f Gerenciador_Fisica::getPosicao() const {
+   return posicao; 
+  }
 
 void Gerenciador_Fisica::setPosicao(const Vector2f &novaPosicao) {
   posicao = novaPosicao;
@@ -52,6 +54,6 @@ double Gerenciador_Fisica::gravidadePersonagemBuracoNegro(float velFinalX) {
     soma += (G * M * m) / (x * x) * abs(dx);
   }
 
-  return sqrt((soma / 1e15));
+  return sqrt((soma * 2 / 1e15));
 }
 } // namespace Gerenciadores

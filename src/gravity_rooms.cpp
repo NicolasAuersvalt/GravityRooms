@@ -6,19 +6,29 @@ Gravity_Rooms::Gravity_Rooms()
       listaPersonagem(),
       listaObstaculo(),
       GC(&listaPersonagem, &listaObstaculo),
-      GE(),
       menu(nullptr),
       fase(nullptr),
       player2Active(false),
       currentState(MAIN),
-      currentPontos(0) {
+      currentPontos(0),
+      pGE() {
   Ente::setGerenciador(&GG);
 
   executar();
 }
 
 // Destrutor
-Gravity_Rooms::~Gravity_Rooms() {}
+Gravity_Rooms::~Gravity_Rooms() {
+  
+  delete fase;        
+  delete menu;         
+  delete pGE;        
+
+  pGE = nullptr;
+
+  listaPersonagem.limparLista();
+  listaObstaculo.limparLista();   
+}
 
 bool Gravity_Rooms::ligarMenu(IDs::IDs pMenu) {
   if (pMenu == IDs::IDs::menu_principal &&
