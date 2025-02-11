@@ -2,36 +2,18 @@
     "entities": [
         {
             "id": 1,
-            "municao": 92,
+            "municao": 100,
             "posicao": {
-                "x": 675.0,
-                "y": 400.0
+                "x": 1180.0,
+                "y": 632.0
             },
             "tipo": "tripulante",
-            "vida": -2
-        },
-        {
-            "id": 7,
-            "posicao": {
-                "x": 540.0,
-                "y": 700.0
-            },
-            "tipo": "ciborgue",
-            "vida": 5
+            "vida": -39816
         },
         {
             "id": 6,
             "posicao": {
-                "x": 594.0,
-                "y": 700.0
-            },
-            "tipo": "androide",
-            "vida": 10
-        },
-        {
-            "id": 6,
-            "posicao": {
-                "x": 764.0,
+                "x": 620.0,
                 "y": 400.0
             },
             "tipo": "androide",
@@ -40,7 +22,7 @@
         {
             "id": 6,
             "posicao": {
-                "x": 730.0,
+                "x": 744.0,
                 "y": 400.0
             },
             "tipo": "androide",
@@ -49,7 +31,97 @@
         {
             "id": 6,
             "posicao": {
-                "x": 738.0,
+                "x": 812.0,
+                "y": 400.0
+            },
+            "tipo": "androide",
+            "vida": 10
+        },
+        {
+            "id": 5,
+            "posicao": {
+                "x": 912.0,
+                "y": 400.0
+            },
+            "projetil": {
+                "ativo": false,
+                "id": 3,
+                "posicao": {
+                    "x": -130.0,
+                    "y": -130.0
+                },
+                "tipo": "projetil"
+            },
+            "tipo": "clone",
+            "vida": 20
+        },
+        {
+            "ativo": false,
+            "id": 3,
+            "posicao": {
+                "x": -130.0,
+                "y": -130.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "id": 5,
+            "posicao": {
+                "x": 86.0,
+                "y": 700.0
+            },
+            "projetil": {
+                "ativo": false,
+                "id": 3,
+                "posicao": {
+                    "x": -150.0,
+                    "y": -150.0
+                },
+                "tipo": "projetil"
+            },
+            "tipo": "clone",
+            "vida": 20
+        },
+        {
+            "ativo": false,
+            "id": 3,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "id": 5,
+            "posicao": {
+                "x": 766.0,
+                "y": 700.0
+            },
+            "projetil": {
+                "ativo": false,
+                "id": 3,
+                "posicao": {
+                    "x": -150.0,
+                    "y": -150.0
+                },
+                "tipo": "projetil"
+            },
+            "tipo": "clone",
+            "vida": 20
+        },
+        {
+            "ativo": false,
+            "id": 3,
+            "posicao": {
+                "x": -150.0,
+                "y": -150.0
+            },
+            "tipo": "projetil"
+        },
+        {
+            "id": 6,
+            "posicao": {
+                "x": 816.0,
                 "y": 700.0
             },
             "tipo": "androide",
@@ -58,7 +130,7 @@
         {
             "id": 6,
             "posicao": {
-                "x": 324.0,
+                "x": 866.0,
                 "y": 700.0
             },
             "tipo": "androide",
@@ -74,84 +146,20 @@
             "tipo": "projetil"
         },
         {
-            "ativo": false,
-            "id": 4,
-            "posicao": {
-                "x": -130.0,
-                "y": -130.0
-            },
-            "tipo": "projetil"
-        },
-        {
-            "ativo": false,
-            "id": 4,
-            "posicao": {
-                "x": -130.0,
-                "y": -130.0
-            },
-            "tipo": "projetil"
-        },
-        {
-            "ativo": false,
-            "id": 4,
-            "posicao": {
-                "x": -130.0,
-                "y": -130.0
-            },
-            "tipo": "projetil"
-        },
-        {
-            "ativo": false,
-            "id": 4,
-            "posicao": {
-                "x": -130.0,
-                "y": -130.0
-            },
-            "tipo": "projetil"
-        },
-        {
-            "ativo": false,
-            "id": 4,
-            "posicao": {
-                "x": -150.0,
-                "y": -150.0
-            },
-            "tipo": "projetil"
-        },
-        {
-            "ativo": false,
-            "id": 4,
-            "posicao": {
-                "x": -150.0,
-                "y": -150.0
-            },
-            "tipo": "projetil"
-        },
-        {
-            "ativo": false,
-            "id": 4,
-            "posicao": {
-                "x": -150.0,
-                "y": -150.0
-            },
-            "tipo": "projetil"
-        },
-        {
-            "ativo": false,
-            "id": 4,
-            "posicao": {
-                "x": -150.0,
-                "y": -150.0
-            },
-            "tipo": "projetil"
-        },
-        {
-            "id": 15,
+            "id": 16,
             "posicao": {
                 "x": 50.0,
                 "y": 50.0
             },
             "tipo": "background"
+        },
+        {
+            "id": 11,
+            "posicao": {
+                "x": 0.0,
+                "y": 153.0
+            },
+            "tipo": "centro_gravidade"
         },
         {
             "id": 8,
@@ -172,15 +180,7 @@
         {
             "id": 8,
             "posicao": {
-                "x": 500.0,
-                "y": 250.0
-            },
-            "tipo": "plataforma"
-        },
-        {
-            "id": 8,
-            "posicao": {
-                "x": 750.0,
+                "x": 300.0,
                 "y": 500.0
             },
             "tipo": "plataforma"
@@ -188,7 +188,7 @@
         {
             "id": 8,
             "posicao": {
-                "x": 1000.0,
+                "x": 550.0,
                 "y": 500.0
             },
             "tipo": "plataforma"
@@ -196,90 +196,66 @@
         {
             "id": 8,
             "posicao": {
-                "x": 1250.0,
+                "x": 800.0,
                 "y": 500.0
             },
             "tipo": "plataforma"
         },
         {
-            "id": 9,
-            "posicao": {
-                "x": 50.0,
-                "y": 756.0
-            },
-            "tipo": "espinho"
-        },
-        {
-            "id": 9,
+            "id": 10,
             "posicao": {
                 "x": 150.0,
                 "y": 756.0
             },
-            "tipo": "espinho"
+            "tipo": "espinhoRetratil"
         },
         {
-            "id": 9,
+            "id": 10,
             "posicao": {
                 "x": 250.0,
                 "y": 756.0
             },
-            "tipo": "espinho"
-        },
-        {
-            "id": 10,
-            "posicao": {
-                "x": 600.0,
-                "y": 756.0
-            },
             "tipo": "espinhoRetratil"
         },
         {
             "id": 10,
             "posicao": {
-                "x": 700.0,
+                "x": 350.0,
                 "y": 756.0
             },
             "tipo": "espinhoRetratil"
         },
         {
-            "id": 10,
+            "id": 11,
             "posicao": {
-                "x": 800.0,
-                "y": 756.0
+                "x": 750.0,
+                "y": 714.0
             },
-            "tipo": "espinhoRetratil"
+            "tipo": "centro_gravidade"
         },
         {
-            "id": 10,
+            "id": 11,
             "posicao": {
                 "x": 900.0,
+                "y": 714.0
+            },
+            "tipo": "centro_gravidade"
+        },
+        {
+            "id": 10,
+            "posicao": {
+                "x": 1050.0,
                 "y": 756.0
             },
             "tipo": "espinhoRetratil"
         },
         {
-            "id": 9,
+            "id": 11,
             "posicao": {
-                "x": 1000.0,
-                "y": 756.0
+                "x": 1150.0,
+                "y": 714.0
             },
-            "tipo": "espinho"
-        },
-        {
-            "id": 9,
-            "posicao": {
-                "x": 1100.0,
-                "y": 756.0
-            },
-            "tipo": "espinho"
-        },
-        {
-            "id": 9,
-            "posicao": {
-                "x": 1200.0,
-                "y": 756.0
-            },
-            "tipo": "espinho"
+            "tipo": "centro_gravidade"
         },
         {
             "id": 8,
@@ -332,12 +308,12 @@
     ],
     "fase": [
         {
-            "id": 15,
+            "id": 16,
             "posicao": {
                 "x": 0.0,
                 "y": 0.0
             },
-            "tipo": "laboratorio"
+            "tipo": "nave"
         }
     ]
 }

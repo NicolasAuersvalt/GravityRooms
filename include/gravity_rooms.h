@@ -68,7 +68,9 @@ class Gravity_Rooms {
   Menu *menu;
   Save save;
 
-  enum GameState { MAIN, PLAYING, PAUSE, COLOCACAO, GAMEOVER };
+  enum GameState { 
+    MAIN, PLAYING, PAUSE, COLOCACAO, GAMEOVER
+   };
 
   Lista_Entidades listaPersonagem;
   Lista_Entidades listaObstaculo;

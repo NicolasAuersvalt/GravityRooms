@@ -34,6 +34,10 @@ Fase::~Fase() {
   listaPersonagens->limparLista();
 }
 
+string Fase::getTipo() const {
+   return "Fase"; 
+}
+
 void Fase::criarPlataforma(const Vector2f pos) {
   Plataforma *plataforma =
       new Plataforma(pos, Vector2f(266.0f, 80.0f), IDs::IDs::plataforma);
@@ -234,7 +238,14 @@ void Fase::criarInimDificeis(const Vector2f pos, Tripulante *tripulante) {
   clone->setProjetil(
       criarProjetil(Vector2f(100.0f, 100.0f), IDs::IDs::projetil_inimigo));
 }
-void Fase::executar() { desenhar(); }
+void Fase::executar() {
+   desenhar(); 
+  }
+
+Gerenciador_Grafico* Fase::getGerenciador() {
+  return GG;
+}
+
 
 Entidades::Projetil *Fase::criarProjetil(const Vector2f pos, IDs::IDs ID) {
   Entidades::Projetil *projetil =

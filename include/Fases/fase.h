@@ -68,6 +68,7 @@ namespace Fases {
 
 class Fase : public Ente {
  private:
+
  protected:
   short inimAleatorio = 0;
   queue<Vector2f> filaInimigosFaceis;     // Queue for easy enemies
@@ -76,9 +77,6 @@ class Fase : public Ente {
   queue<Vector2f> filaEspinhos;           // Queue for spikes
   queue<Vector2f> filaEspinhosRetrateis;  // Queue for retractable spikes
   queue<Vector2f> filaCentrosGravidade;   // Queue for gravity centers
-  int contadorFaceis = 0;                 // Contador de inimigos fáceis
-  int contadorMedios = 0;                 // Contador de inimigos medios
-  int contadorDificeis = 0;               // Contador de inimigos difíceis
   int contadorEspinho = 0;
   int contadorEspinhoRetratil = 0;
   short obsAleatorio = 0;
@@ -87,6 +85,7 @@ class Fase : public Ente {
   const int MAX_INIMIGOS_TOTAL = 7;
 
  public:
+
   bool complete;
   Lista_Entidades *listaObstaculos;
   Gerenciador_Grafico *GG;
@@ -102,8 +101,6 @@ class Fase : public Ente {
 
   Gerenciador_Colisoes *pColisao;
   Lista_Entidades *listaPersonagens;
-  Texture bgTexture;
-  Sprite backgroundSprite;
 
   Entidades::Background *bg;
   Lista_Entidades *listaBackground;
@@ -112,7 +109,7 @@ class Fase : public Ente {
   ~Fase();
 
   void executar();
-  string getTipo() const override { return "Fase"; }
+  string getTipo() const override;
   void carregar(json &arquivo) {}
   void salvar(json &arquivo) override {}
   void criarBackground(const IDs::IDs ID_Fase);
@@ -125,7 +122,7 @@ class Fase : public Ente {
   void criarCentroGravidade(const Vector2f pos);
   void criarEspinhoRetratil(const Vector2f pos);
   void setGerenciadorG(Gerenciador_Grafico *GG);
-  Gerenciador_Grafico *getGerenciador() { return GG; }
+  Gerenciador_Grafico* getGerenciador();
   virtual void criarEntidades(char letra, const Vector2f pos);
   virtual void criarFundo() = 0;  // fundo
   virtual void criarMapa() = 0;

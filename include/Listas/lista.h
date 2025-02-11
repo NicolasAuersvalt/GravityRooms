@@ -114,7 +114,9 @@ public: // Definição da classe aninhada Elemento
   }
 
   // Método para obter o primeiro elemento
-  Elemento<TL> *getPrimeiro() { return pPrimeiro; }
+  Elemento<TL> *getPrimeiro() { 
+    return pPrimeiro; 
+  }
 
   // Método para percorrer a lista e aplicar uma função em cada elemento
   void percorrerLista(void (*funcao)(TL *)) {
