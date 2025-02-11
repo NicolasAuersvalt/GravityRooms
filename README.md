@@ -59,7 +59,10 @@ Após a instalação, para rodar o jogo, utilize:
 
     ./build.sh
 
+Uma vez construído, basta:
 
+    ./run.sh
+    
 ---
 
 ## Debug
