@@ -6,6 +6,7 @@
 #include <iostream>
 #include <mutex>
 #include <thread>
+#include "Gerenciadores/gerenciador_thread.h"
 
 using namespace std;
 using namespace sf;
@@ -32,6 +33,8 @@ private:
   int m1 = 70;
   int m2 = 200;
 
+  double soma = 0.0;
+
   const int passos = 1000; // Número de divisões
 
   Vector2f velocidade; // Velocidade do personagem
@@ -50,7 +53,10 @@ public:
 
   void atualizarPosicao();
 
-  void processarFisica();
+  double executarGravitacional();
+
+  double calcularSomaRiemann(double M, double G, double m,
+    double a, double b, int n);
 
   // Getter para a posição (para renderizar no jogo)
   Vector2f getPosicao() const;
@@ -59,7 +65,7 @@ public:
   void setPosicao(const Vector2f &novaPosicao);
 
   // Método para gravidade aproximada do personagem e do buraco negro
-  double gravidadePersonagemBuracoNegro(float velFinalX);
+  double gravidadePersonagemBuracoNegro();
 };
 } // namespace Gerenciadores
 

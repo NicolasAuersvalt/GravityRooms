@@ -4,7 +4,7 @@ namespace Gerenciadores {
 float Gerenciador_Fisica::aplicarGravidade() {
   // Aplica a gravidade ao objeto, alterando sua velocidade na direção Y
   return velocidade.y +=
-         gravidade * tempo; // Acelerando na direção Y devido à gravidade
+         gravidade * tempo;  // Acelerando na direção Y devido à gravidade
 }
 
 void Gerenciador_Fisica::atualizarPosicao() {
@@ -18,42 +18,57 @@ void Gerenciador_Fisica::atualizarPosicao() {
     velocidade.y = 0.f;
   }
 }
-void Gerenciador_Fisica::processarFisica() {
-  while (true) {
-    this_thread::sleep_for(
-        chrono::milliseconds(16)); // Simula o tempo de cada frame
+double Gerenciador_Fisica::calcularSomaRiemann(double M, double G, double m, double a, double b, int n) {
+  double somaLocal = 0.0;
+  double dx = (b - a) / n;
 
-    lock_guard<mutex> lock(
-        mtx); // Garante acesso seguro aos dados compartilhados
-    aplicarGravidade();
-    atualizarPosicao();
+  for (int i = 0; i < n; i++) {
+      double x = a + i * dx;
+      double termo = (G * M * m) / (x * x) * abs(dx);
+
+      lock_guard<mutex> lock(mtx);
+      somaLocal += termo;
   }
+
+  lock_guard<mutex> lock(mtx);
+  soma = somaLocal;
+  return soma;
 }
 
-Vector2f Gerenciador_Fisica::getPosicao() const {
-   return posicao; 
-  }
+Vector2f Gerenciador_Fisica::getPosicao() const { return posicao; }
 
 void Gerenciador_Fisica::setPosicao(const Vector2f &novaPosicao) {
   posicao = novaPosicao;
 }
 
-double Gerenciador_Fisica::gravidadePersonagemBuracoNegro(float velFinalX) {
+double Gerenciador_Fisica::gravidadePersonagemBuracoNegro() {
+  lock_guard<mutex> lock(mtx);
+  return sqrt((soma * 2 / 1e15));
+}
 
+
+double Gerenciador_Fisica::executarGravitacional() {
   double M = 1.989e30 * 10;     // Massa do buraco negro (10 massas solares)
   const double G = 6.67430e-11; // Constante gravitacional (m^3 kg^-1 s^-2)
   const double m = 70;          // Massa do personagem (kg)
   const double a = 1.0;         // Distância inicial (m)
   const double b = 0.1;         // Distância final (m)
-  const int n = 100; // Número de subdivisões para precisão de 5 casas
-  double soma = 0.0;
-  double dx = (b - a) / n;
+  const int n = 100;            // Número de subdivisões para precisão de 5 casas
 
-  for (int i = 0; i < n; i++) {
-    double x = a + i * dx; // Ponto na subdivisão
-    soma += (G * M * m) / (x * x) * abs(dx);
-  }
+  double resultado = 0.0;
 
-  return sqrt((soma * 2 / 1e15));
+  // Usando a classe Thread para gerenciar a criação e o join das threads
+  Gerenciador_Thread threadSoma(&Gerenciador_Fisica::calcularSomaRiemann, this, M, G, m, a, b, n);
+  
+  Gerenciador_Thread threadGravidade([this, &threadSoma, &resultado]() {
+    threadSoma.join(); // Aguarda a soma de Riemann ser concluída
+    resultado = gravidadePersonagemBuracoNegro(); // Exemplo de valor de velFinalX
+  });
+
+  threadGravidade.join(); // Aguarda o cálculo da gravidade
+
+  return resultado;
 }
-} // namespace Gerenciadores
+
+
+}  // namespace Gerenciadores
