@@ -76,7 +76,7 @@ class Tripulante : public Personagem {
 
   Municao municao;
   int pontos;
-  Gerenciador_Input *GE;
+  Gerenciador_Input *GI;
   Gerenciador_Fisica GF;
   bool isPlayerOne;
   float tempoUltimoTiro;  // Tempo desde o último disparo
@@ -103,7 +103,7 @@ class Tripulante : public Personagem {
   Listas::Lista_Entidades *getProjeteis();
 
   bool podeAtirar();
-  void setGerenciadorEvento(Gerenciador_Input *GE);
+  void setGerenciadorEvento(Gerenciador_Input *GI);
   void setMunicao(int qtd);
   void setPlayerOne(bool isone);
 

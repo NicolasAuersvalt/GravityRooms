@@ -33,9 +33,9 @@ void Tripulante::setPlayerOne(bool isone) { isPlayerOne = isone; }
 
 Tripulante::~Tripulante() {}
 
-void Tripulante::setGerenciadorEvento(Gerenciador_Input *GE) {
-  if (GE) {
-    this->GE = GE;  // Atribui o ponteiro GE à variável membro this->GE
+void Tripulante::setGerenciadorEvento(Gerenciador_Input *GI) {
+  if (GI) {
+    this->GI = GI;  // Atribui o ponteiro GI à variável membro this->GI
   }
 }
 
@@ -58,42 +58,42 @@ void Tripulante::mover() {
   tempoUltimoTiro += deltaTime;
   cair();
   if (isPlayerOne) {
-    string tecla = GE->isTeclaPressionada(Keyboard::A);
+    string tecla = GI->isTeclaPressionada(Keyboard::A);
     if (tecla == "A") {
       getSprite().move(-5.f, 0.f);  // Move para a esquerda
     }
-    tecla = GE->isTeclaPressionada(Keyboard::D);
+    tecla = GI->isTeclaPressionada(Keyboard::D);
     if (tecla == "D") {
       getSprite().move(5.f, 0.f);  // Move para a direita
     }
-    tecla = GE->isTeclaPressionada(Keyboard::W);
+    tecla = GI->isTeclaPressionada(Keyboard::W);
     if (tecla == "W" && noChao) {
       float jumpForce = -12.0f;  // controle do pulo
       velFinal.y = jumpForce;
       noChao = false;
     }
-    tecla = GE->isTeclaPressionada(Keyboard::Q);
+    tecla = GI->isTeclaPressionada(Keyboard::Q);
     if (tecla == "Q" && noChao) {
       atirar();  // Atirar
     }
   }
   // Jogador 2 (Setas + Z)
   else {
-    string tecla = GE->isTeclaPressionada(Keyboard::Left);
+    string tecla = GI->isTeclaPressionada(Keyboard::Left);
     if (tecla == "Left Arrow") {
       getSprite().move(-5.f, 0.f);  // Move para a esquerda
     }
-    tecla = GE->isTeclaPressionada(Keyboard::Right);
+    tecla = GI->isTeclaPressionada(Keyboard::Right);
     if (tecla == "Right Arrow") {
       getSprite().move(5.f, 0.f);  // Move para a direita
     }
-    tecla = GE->isTeclaPressionada(Keyboard::Space);
+    tecla = GI->isTeclaPressionada(Keyboard::Space);
     if (tecla == "Space" && noChao) {
       float jumpForce = -12.0f;  // controle do pulo
       velFinal.y = jumpForce;
       noChao = false;
     }
-    tecla = GE->isTeclaPressionada(Keyboard::Z);
+    tecla = GI->isTeclaPressionada(Keyboard::Z);
     if (tecla == "Z" && noChao) {
       atirar();  // Atirar
     }

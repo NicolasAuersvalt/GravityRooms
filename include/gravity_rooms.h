@@ -62,7 +62,7 @@ class Gravity_Rooms {
  private:
   Gerenciador_Grafico GG;
   Gerenciador_Colisoes GC;
-  Gerenciador_Input *pGE;
+  Gerenciador_Input *pGI;
   
   Fase *fase;  // PROBLEMA QUE FASE NÃO DEVE SER INSTÂNCIADA
   Menu *menu;

@@ -11,7 +11,7 @@ Gravity_Rooms::Gravity_Rooms()
       player2Active(false),
       currentState(MAIN),
       currentPontos(0),
-      pGE() {
+      pGI() {
   Ente::setGerenciador(&GG);
 
   executar();
@@ -22,9 +22,9 @@ Gravity_Rooms::~Gravity_Rooms() {
   
   delete fase;        
   delete menu;         
-  delete pGE;        
+  delete pGI;        
 
-  pGE = nullptr;
+  pGI = nullptr;
 
   listaPersonagem.limparLista();
   listaObstaculo.limparLista();   
@@ -200,7 +200,7 @@ void Gravity_Rooms::executar() {
       }
 
       case PLAYING: {
-        string tecla = pGE->isTeclaPressionada(Keyboard::M);
+        string tecla = pGI->isTeclaPressionada(Keyboard::M);
         if (GC.pJog1) {
           currentPontos = GC.pJog1->getPontos();
         }
