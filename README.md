@@ -240,7 +240,7 @@ Quando o **Tripulante** colide com o **Centro Gravitacional**, é calculado um d
 
 O cálculo do dano segue uma fórmula que leva em consideração a **velocidade final** do jogador ao colidir com o Centro Gravitacional. O dano é proporcional à velocidade com que o jogador entra na área de influência gravitacional, aumentando conforme o impacto.
 
-![Lab](assets/lab.png)
+![RGravitacional](assets/formula.PNG)
 
 ## Espinhos Retráteis
 
@@ -256,6 +256,8 @@ Esse comportamento introduz uma dinâmica de tempo, onde o jogador deve observar
 Na tela inicial do jogo, o jogador pode selecionar a fase desejada utilizando as **setas do teclado** (←↑→↓) e pressionando **Enter** para confirmar a escolha. 
 
 - Cada fase possui um **inimigo** e um **obstáculo exclusivo**, proporcionando uma experiência de jogo variada e desafiadora a cada escolha de fase.
+
+![Lab](assets/lab.png)
 
 ## Ranking de Jogadores
 
@@ -275,8 +277,6 @@ Durante o desenvolvimento do projeto, foi necessária a **adaptação do modelo 
 ### Contribuição dos Cursos do PETECO
 
 Os **cursos do PETECO** proporcionaram uma visão antecipada dos desafios e das soluções possíveis, além de possibilitar a aquisição de novas técnicas e o aprimoramento das habilidades de trabalho em grupo. As reuniões com os monitores foram essenciais para a resolução de erros, além de fornecerem sugestões e revisões do código.
-
-![Lab](assets/nave.png)
 
 ### Importância do Versionamento e Ferramentas Utilizadas
 
@@ -299,6 +299,8 @@ Além do **GitHub**, diversas outras ferramentas foram essenciais para o desenvo
 ### Modelo UML e Requisitos
 
 A atualização contínua do modelo UML e o preenchimento simultâneo dos requisitos durante o desenvolvimento foram estratégias fundamentais para organizar e otimizar o tempo. Esse método facilitou a adaptação ao progresso do projeto, proporcionando uma visão clara do estado atual do desenvolvimento e permitindo a identificação de melhorias necessárias.
+
+![Lab](assets/nave.png)
 
 ### Planejamento e Testes
 
