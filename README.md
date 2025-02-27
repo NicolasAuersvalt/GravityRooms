@@ -73,8 +73,6 @@ Para rodar o jogo em modo de depuração, utilize:
 
 ---
 
-![Lab](assets/lab.png)
-
 
 ## Descrição
 
@@ -242,6 +240,7 @@ Quando o **Tripulante** colide com o **Centro Gravitacional**, é calculado um d
 
 O cálculo do dano segue uma fórmula que leva em consideração a **velocidade final** do jogador ao colidir com o Centro Gravitacional. O dano é proporcional à velocidade com que o jogador entra na área de influência gravitacional, aumentando conforme o impacto.
 
+![Lab](assets/lab.png)
 
 ## Espinhos Retráteis
 
@@ -276,6 +275,8 @@ Durante o desenvolvimento do projeto, foi necessária a **adaptação do modelo 
 ### Contribuição dos Cursos do PETECO
 
 Os **cursos do PETECO** proporcionaram uma visão antecipada dos desafios e das soluções possíveis, além de possibilitar a aquisição de novas técnicas e o aprimoramento das habilidades de trabalho em grupo. As reuniões com os monitores foram essenciais para a resolução de erros, além de fornecerem sugestões e revisões do código.
+
+![Lab](assets/nave.png)
 
 ### Importância do Versionamento e Ferramentas Utilizadas
 
