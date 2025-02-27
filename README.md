@@ -112,7 +112,7 @@ O desenvolvimento do jogo permitiu o cumprimento do objetivo de aprendizado prop
 
 # Jogo de Plataforma - Desenvolvimento com SFML e UML
 
-![Tripulante](assets/GR1.png)
+![Tripulante](assets/GR1.PNG)
 
 ## Introdução
 
@@ -122,7 +122,7 @@ Para a melhor compreensão dos conteúdos abordados na disciplina de **Técnicas
 
 O objetivo principal é a criação de um jogo de plataforma com estética pixelada, desenvolvido utilizando a biblioteca **SFML** em **C++**. A SFML (Simple and Fast Multimedia Library) oferece ferramentas adequadas para a construção de ambientes gráficos interativos, permitindo experimentação e testes dentro do contexto da disciplina.
 
-![Tripulante](assets/GR2.png)
+![Tripulante](assets/GR2.PNG)
 
 ### Desenvolvimento do Jogo
 
@@ -183,7 +183,7 @@ O jogo conta com inimigos de **quantidade aleatória** e **limitada**, cada um c
 - **Reflexão Filosófica**: "Um clone é um ser humano?"
 - **Características**: O inimigo mais desafiador, que ataca com projéteis e traz à tona dilemas éticos e existenciais sobre a natureza da identidade e a criação de cópias humanas.
 
-![Tripulante](assets/inimigos.png)
+![Tripulante](assets/inimigos.PNG)
 
 ## Dinâmica do Jogo
 
