@@ -315,7 +315,6 @@ Os conceitos de **coesão** e **desacoplamento** estruturaram uma nova perspecti
 Seguir uma **tabela de requisitos** mostrou-se uma forma eficaz de dimensionar o resultado final, pois ao contabilizar a quantidade de requisitos, foi possível estipular a **qualidade final** do projeto.
 
 
-
 ## Contexto e Planejamento
 
 (V) Escolher o jogo de plataforma a ser desenvolvido.
@@ -456,11 +455,11 @@ Seguir uma **tabela de requisitos** mostrou-se uma forma eficaz de dimensionar o
 
 (V) Preparar os slides (.ppt ou .pdf).
 
-( ) Ensaiar a apresentação do trabalho.
+(V) Ensaiar a apresentação do trabalho.
 
 ## Entrega
 
-( ) Enviar:
+(V) Enviar:
 
 (V) Documento escrito (.docx e .pdf).
 
@@ -480,7 +479,7 @@ Seguir uma **tabela de requisitos** mostrou-se uma forma eficaz de dimensionar o
 
 ( ) (Mediator: Gerenciador de Colisões)
 
-( ) (Template Method: Hierarquia de Ente, Entidade, Personagem)
+(V) (Template Method: Hierarquia de Ente, Entidade, Personagem)
 
 ( ) (Builder: Construção de entidades na fase)
 
@@ -540,7 +539,7 @@ Seguir uma **tabela de requisitos** mostrou-se uma forma eficaz de dimensionar o
 
 ( ) Threads (Linhas de Execução) no âmbito da Orientação a Objetos, utilizando Posix, C-Run-Time OU Win32API ou afins.
 
-( ) Threads (Linhas de Execução) no âmbito da Orientação a Objetos com uso de Mutex, Semáforos, OU Troca de mensagens.
+(V) Threads (Linhas de Execução) no âmbito da Orientação a Objetos com uso de Mutex, Semáforos, OU Troca de mensagens.
 
 (V) Funcionalidades Elementares. & Funcionalidades Avançadas como: tratamento de colisões e duplo buffer
 
