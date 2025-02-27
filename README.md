@@ -82,6 +82,8 @@ A disciplina de **Técnicas de Programação** exige o desenvolvimento de um sof
 
 Para este trabalho, escolheu-se o **jogo GravityRooms**, onde o jogador enfrenta inimigos na espaçonave **Thalos I**. O jogo possui duas fases, que se diferenciam pela dificuldade apresentada ao jogador.
 
+![Tripulante](assets/UML.jpg)
+
 ## Requisitos e Modelagem
 
 O desenvolvimento do jogo foi realizado com base nos requisitos textualmente propostos e uma modelagem (análise e projeto) via **Diagrama de Classes em UML**. A modelagem foi feita com base em um diagrama genérico e prévio proposto.
@@ -209,6 +211,8 @@ O jogador assume o papel de um **tripulante da nave**, com a capacidade de **ati
 - **Munição limitada**: A munição para atirar é limitada, tornando a gestão de recursos uma parte essencial da estratégia do jogo.
 
 Todos os inimigos presentes no jogo perseguem o jogador, com **quantidades de vida variáveis**, proporcionais ao nível de dificuldade da fase.
+
+
 
 ### Controles
 
