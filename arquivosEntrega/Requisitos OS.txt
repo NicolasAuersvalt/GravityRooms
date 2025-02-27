@@ -1,0 +1,32 @@
+OBS:
+Requisitos:
+
+CMake: Ferramenta de automação de compilação (3.22.1).
+
+Make: Sistema de compilação (GNU Make 4.3).
+
+Compilador C++: Recomendado o g++ ou clang++ (g++ (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0).
+
+SFML 2.5.1 (Audio, Graphics, Network, System, Window)
+
+Debian 12
+
+
+Instação segue como explicado no github
+(https://github.com/NicolasAuersvalt/GravityRooms)
+
+Para baixar o jogo, use:
+
+mkdir GravityRooms && cd GravityRooms
+git clone https://github.com/NicolasAuersvalt/GravityRooms.git
+cd GravityRooms
+Para instalar o jogo, execute o script install.sh:
+
+chmod +x install.sh
+./install.sh
+
+Após a instalação, para rodar o jogo, utilize:
+
+./build.sh
+./run.sh
+
